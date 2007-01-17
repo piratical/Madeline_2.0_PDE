@@ -1,0 +1,250 @@
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <title>Madeline-2.0 Suite of Test Data</title>
+  <meta name="owner" content="COPYRIGHT (c) 2006 Edward H. Trager, Ann Arbor, Michigan, USA" />
+  <link rel="stylesheet" title="Default Style" href="css/main.css" type="text/css" media="screen" />
+
+ </head>
+ <body>
+  
+  <table>
+
+   <tr>
+    <td class="header">
+     Data Labels
+    </td>
+   </tr>
+
+   <!-- DATA LABELS BASIC LATIN -->
+   <tr>
+    <td>
+     <h2>uni0002-BasicLatin</h2>
+     <img class="floatRight" src="images/Uni0002BL.png" alt="Uni0002-BasicLatin" />
+     <p>
+      This data set contains the uni0002 pedigree with labels (IndividualId, Gender, Firstname, Surname, 
+      Town, County, State) in Basic Latin.
+      This data set is used to test the display of data labels in Basic Latin.
+     </p>
+     <p class="clearFloats">
+      Download <a href="data/uni0002-BasicLatin.data">uni0002-BasicLatin.data</a> in Madeline flat file format.
+     </p>
+     <p>
+      Download <a href="data/uni0002-BasicLatin.labels">uni0002-BasicLatin.labels</a> list of labels.
+     </p>
+     <p>
+      Command line:
+      <br/><code>&gt; minimadeline -l uni0002-BasicLatin.labels uni0002-BasicLatin.data</code>
+     </p>
+     
+     <p>
+      Madeline Rendering Test: <b>2006.08.30.ET Pass</b>
+     </p>
+    </td>
+   </tr>
+
+   <!-- DATA LABELS EXTENDED LATIN -->
+   <tr>
+    <td>
+     <h2>uni0002-ExtendedLatin</h2>
+     <img class="floatRight" src="images/Uni0002EL.png" alt="Uni0002-ExtendedLatin" />
+     <p>
+      This data set contains the uni0002 pedigree with labels (IndividualId, Gender, Firstname,
+      Surname, Municipality, County, Country) in Extended Latin.
+      This data set is used to test the display of data labels in Unicode Extended Latin.
+      Extended Latin generally requires increased vertical line spacing to provide room for
+      diacritical marks without overlapping.
+     </p>
+     <p class="clearFloats">
+      Download <a href="data/uni0002-ExtendedLatin.ods">uni0002-ExtendedLatin.ods</a> in OpenOffice.org OASIS format.
+     </p>
+     <p>
+      Download <a href="data/uni0002-ExtendedLatin.labels">uni0002-ExtendedLatin.labels</a> list of labels.
+     </p>
+     <p>
+      Command line:
+      <br/><code>&gt; minimadeline -l uni0002-ExtendedLatin.labels uni0002-ExtendedLatin.ods</code>
+     </p>
+     
+     <p>
+      Madeline Rendering Test: <b class="fail">2006.08.30.ET Fail: Labels not trimmed to width.</b>
+     </p>
+    </td>
+   </tr>
+
+   <!-- DATA LABELS THAI -->
+   <tr>
+    <td>
+     <h2>uni0002-ไทย</h2>
+     <img class="floatRight" src="images/Uni0002-Thai.png" alt="Uni0002-Thai" />
+     <p>
+      This data set contains the uni0002 pedigree with labels (IndividualId, Gender,     
+     ชื่อ , นามสกุล , ตำบล , อำเภอ , จังหวัด) in Thai.
+      This data set is used as an example of displaying Unicode labels in a 
+      complex text layout (CTL) Indic-derived script on a pedigree drawing.
+      Such scripts require increased vertical line spacing and have special glyph layout
+      requirements.
+     </p>
+     <p class="clearFloats">
+      Download <a href="data/uni0002-ไทย.ods">uni0002-ไทย.ods</a> in OpenOffice.org OASIS format.
+     </p>
+     <p>
+      Download <a href="data/uni0002-ไทย.labels">uni0002-ไทย.labels</a> list of labels.
+     </p>
+     <p>
+      Command line:
+      <br/><code>&gt;  minimadeline -l uni0002-ไทย.labels uni0002-ไทย.ods</code>
+     </p>
+     
+     <p>
+      Madeline Rendering Test: <b>2006.08.30.ET Pass.</b>
+     </p>
+    </td>
+   </tr>
+
+   <!-- DATA LABELS CHINESE -->
+   <tr>
+    <td>
+     <h2>uni0002-中文</h2>
+     <img class="floatRight" src="images/uni0002-Chinese.png" alt="Uni0002-Chinese" />
+     <p>
+      This data set contains the uni0002 pedigree with labels (IndividualId, Gender,
+     姓 , 名字 , 村 , 鄉 , 省 ) in Chinese.
+      This data set is used as an example of displaying Unicode labels in an
+       East Asian (CJK) script on a pedigree drawing.  The data file also contains
+      data in Chinese that Madeline must interpret.  For example,  "男" and "女"
+      are used respectively in the Gender column to indicate male and female.
+     </p>
+     <p>
+      This data set is also available in several formats for verifying Madeline's
+      ability to seamlessly read different file formats.
+     </p>
+     <p>
+      Download <a href="data/uni0002-中文.ods">uni0002-中文.ods</a> in OpenOffice.org OASIS format.
+     </p>
+     <p>
+      Download <a href="data/uni0002-中文.xhtml">uni0002-中文.xhtml</a> in W3C XHTML table format.
+     </p>
+     <p>
+      Download <a href="data/uni0002-中文.madeline-xml">uni0002-中文.madeline-xml</a> in Madeline's XML format.
+     </p>
+     <p>
+      Download <a href="data/uni0002-中文.labels">uni0002-中文.labels</a> list of labels.
+     </p>
+     <p>
+      Command line:
+      <br/><code>&gt;  minimadeline -l uni0002-中文.labels uni0002-中文.{ods/xhtml/madeline-xml}</code>
+     </p>
+     
+     <p>
+      Madeline Rendering Test: <b>2006.08.30.ET Pass.</b>
+     </p>
+    </td>
+   </tr>
+
+   <tr>
+    <td class="header">
+     Consanguinity
+    </td>
+   </tr>
+     
+   <!-- CONSANGUINITY01 -->
+   <tr>
+    <td>
+     <h2>consanguinity01</h2>
+     <img class="floatRight" src="images/consanguinity01.png" alt="consanguinity01" />
+     <p>
+      The consanguinity01 pedigree contains a single uncle--neice marriage loop.
+     </p>
+     <p>
+      Download <a href="data/consanguinity01.data">consanguinity01.data</a> in Madeline flat file format.
+     </p>
+     <p>
+      Madeline Rendering Test: <b>2006.08.30.ET Pass</b>
+     </p>
+    </td>
+   </tr>
+
+   <!-- CONSANGUINITY02 -->
+   <tr>
+    <td>
+     <h2>consanguinity02</h2>
+     <img class="floatRight" src="images/consanguinity02.png" alt="consanguinity02" />
+     <p>
+      The consanguinity02 pedigree is an expansion of the consanguinity01 pedigree which has
+      a first-cousin--first-cousin marriage loop in addition to the uncle--neice marriage loop.
+      One of the cousins is the offspring of the uncle--neice marriage, thus resulting in two
+      loops in two generations.
+     </p>
+     <p>
+      Download <a href="data/consanguinity02.data">consanguinity02.data</a> in Madeline flat file format.
+     </p>
+     <p>
+      Madeline Rendering Test: <b class="fail">2006.08.30.ET Marginal -- Needs some work</b>
+     </p>
+    </td>
+   </tr>
+
+   <!-- CONSANGUINITY03 -->
+   <tr>
+    <td>
+     <h2>consanguinity03</h2>
+     <img class="floatRight" src="images/consanguinity03.png" alt="consanguinity03" />
+     <p>
+      The consanguinity03 pedigree is an expansion of the consanguinity02 pedigree which has
+      added an aunt-nephew loop in the same generation as the uncle-neice loop.
+     </p>
+     <p>
+      Download <a href="data/consanguinity03.data">consanguinity03.data</a> in Madeline flat file format.
+     </p>
+     <p>
+      Madeline Rendering Test: <b class="fail">2006.08.30.ET Fail</b>
+     </p>
+    </td>
+   </tr>
+
+   <!-- CONSANGUINITY04 -->
+   <tr>
+    <td>
+     <h2>consanguinity04</h2>
+     <img class="floatRight" src="images/consanguinity04.png" alt="consanguinity04" />
+     <p>
+      The consanguinity04 pedigree has a great uncle -- great neice loop.
+      This tests drawing of a pedigree in which consanguinity spans two generations
+      instead of the more common single generation (i.e., uncle--neice).
+     </p>
+     <p>
+      Download <a href="data/consanguinity04.data">consanguinity04.data</a> in Madeline flat file format.
+     </p>
+     <p>
+      Madeline Rendering Test: <b>2006.08.30.ET Pass</b>
+     </p>
+    </td>
+   </tr>
+
+   <!-- CONSANGUINITY05 -->
+   <tr>
+    <td>
+     <h2>consanguinity05</h2>
+     <img class="floatRight" src="images/consanguinity05.png" alt="consanguinity05" />
+     <p>
+      The consanguinity05 pedigree has a consanguinous loop that spans three generations
+      instead of the more common single generation (i.e., uncle--neice).
+     </p>
+     <p>
+      Download <a href="data/consanguinity05.data">consanguinity05.data</a> in Madeline flat file format.
+     </p>
+     <p>
+      Madeline Rendering Test: <b>2006.08.30.ET Pass</b>
+     </p>
+    </td>
+   </tr>
+
+   
+  </table>
+  
+ </body>
+</html>

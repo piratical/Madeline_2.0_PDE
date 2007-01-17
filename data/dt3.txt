@@ -1,0 +1,13 @@
+IndividualId	FamilyId	Gender	Mother	Father
+m100	mf3	m	.	.
+m101	mf3	f	.	.
+m102	mf3	m	.	.
+m103	mf3	f	.	.
+m104	mf3	f	m101	m100
+m105	mf3	m	m101	m100
+m106	mf3	f	m103	m102
+m107	mf3	f	m103	m102
+m108	mf3	m	m103	m102
+m109	mf3	m	m106	m105
+m110	mf3	f	m106	m105
+m111	mf3	f	m106	m105

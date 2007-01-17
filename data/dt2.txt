@@ -1,0 +1,11 @@
+IndividualId	FamilyId	Gender	Mother	Father
+m100	mf1	m	.	.
+m101	mf1	f	.	.
+m102	mf1	f	m101	m100
+m103	mf1	m	m101	m100
+m104	mf1	f	m101	m100
+m105	mf1	f	m104	m202
+m200	mf1	m	.	.
+m201	mf1	f	.	.
+m202	mf1	m	m201	m200
+m203	mf1	m	m201	m200

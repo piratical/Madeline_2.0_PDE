@@ -1,0 +1,30 @@
+# Chinese translations for the Madeline 2.0 package
+# 
+# Copyright (C) 2006, 2007 by the Regents of the University of Michigan
+# This file is distributed under the same license as the Madeline 2.0 package.
+# Edward H. Trager <ed.trager@gmail.com>, 2006.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Madeline 2.0 \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2006-12-19 17:46-0500\n"
+"PO-Revision-Date: 2006-12-19 17:47-0500\n"
+"Last-Translator: Edward Trager\n"
+"Language-Team: Chinese\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+
+msgid "Unrecoverable Error"
+msgstr "有无法补救的错误"
+
+msgid "Warning"
+msgstr "警告"
+
+msgid "Column %1$i. %2$s appears to be completely missing."
+msgstr "第 %1$i 列 %2$s 好象沒有内容。"
+
+msgid "(Message has been truncated)"
+msgstr "(讯息缩短了)"

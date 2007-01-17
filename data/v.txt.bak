@@ -1,0 +1,4 @@
+Individualid	Familyid	Gender	Mother	Father
+m100	mf1	m	.	.
+m101	mf1	f	.	.
+m102	mf1	m	m101	m100

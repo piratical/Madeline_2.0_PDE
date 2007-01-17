@@ -1,0 +1,11 @@
+IndividualId	FamilyId	Gender	Mother	Father
+a	m	m	.	.
+b	m	f	.	.
+c	m	m	b	a
+d	m	m	b	a
+e	m	f	i	h
+f	m	f	i	h
+g	m	m	f	c
+h	m	m	.	.
+i	m	f	.	.
+j	m	f	e	d

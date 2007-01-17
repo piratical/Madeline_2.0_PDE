@@ -1,0 +1,5 @@
+Father
+Mother
+Gender
+FamilyId
+IndividualId

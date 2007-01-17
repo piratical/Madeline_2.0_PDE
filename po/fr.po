@@ -1,0 +1,30 @@
+# French translations for Madeline 2.0 package
+# 
+# Copyright (C) 2006, 2007 The Regents of the University of Michigan
+# This file is distributed under the same license as the Madeline 2.0 package.
+# Ritu Khanna <rituk@retina.ophthy.med.umich.edu>, 2006.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Madeline 2.0 \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2006-12-19 17:46-0500\n"
+"PO-Revision-Date: 2006-12-19 17:47-0500\n"
+"Last-Translator: Ritu Khanna <rituk@retina.ophthy.med.umich.edu>\n"
+"Language-Team: French\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+
+msgid "Unrecoverable Error"
+msgstr "Erreur irrécouvrable"
+
+msgid "Warning"
+msgstr "Avertissement"
+
+msgid "Column %1$i. %2$s appears to be completely missing."
+msgstr "Colonne %1$i. %2$s a l'air d'être entièrement manquante."
+
+msgid "(Message has been truncated)"
+msgstr "(Le message a été tronqué)"

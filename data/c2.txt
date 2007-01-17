@@ -1,0 +1,12 @@
+Individualid	Familyid	Gender	Mother	Father
+1	w	m	.	.
+2	w	f	.	.
+3	w	f	2	1
+4	w	m	.	.
+95	w	m	2	1
+6	w	m	2	1
+7	w	m	3	4
+8	w	f	3	4
+9	w	f	8	95
+10	w	m	8	95
+11	w	f	9	7	

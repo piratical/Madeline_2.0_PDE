@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?mso-application progid="Excel.Sheet"?>
+<Workbook xmlns="urn:schemas-microsoft-com:office:spreadsheet" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:x="urn:schemas-microsoft-com:office:excel" xmlns:x2="http://schemas.microsoft.com/office/excel/2003/xml" xmlns:ss="urn:schemas-microsoft-com:office:spreadsheet" xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:html="http://www.w3.org/TR/REC-html40" xmlns:c="urn:schemas-microsoft-com:office:component:spreadsheet">
+
+<OfficeDocumentSettings xmlns="urn:schemas-microsoft-com:office:office"><DownloadComponents/></OfficeDocumentSettings>
+
+<ExcelWorkbook xmlns="urn:schemas-microsoft-com:office:excel">
+<WindowHeight>9000</WindowHeight>
+<WindowWidth>13860</WindowWidth>
+<WindowTopX>240</WindowTopX>
+<WindowTopY>75</WindowTopY>
+<ProtectStructure>False</ProtectStructure>
+<ProtectWindows>False</ProtectWindows>
+</ExcelWorkbook>
+
+<Styles>
+<Style ss:ID="Default" ss:Name="Normal"/><Style ss:ID="Result" ss:Name="Result" ss:Parent="Default">
+<Font ss:Bold="1" ss:Italic="1" ss:Underline="Single"/>
+</Style>
+
+<Style ss:ID="Result2" ss:Name="Result2" ss:Parent="Result">
+<NumberFormat ss:Format="Currency"/>
+</Style>
+
+<Style ss:ID="Heading" ss:Name="Heading" ss:Parent="Default">
+<Alignment ss:Horizontal="Center"/>
+<Font ss:Bold="1" ss:Italic="1" ss:Size="16"/>
+</Style>
+
+<Style ss:ID="Heading1" ss:Name="Heading1" ss:Parent="Heading">
+<Alignment ss:Rotate="90"/></Style><Style ss:ID="co1"/>
+<Style ss:ID="ro1"/><Style ss:ID="ta1"/>
+</Styles>
+
+<Worksheet ss:Name="Sheet1">
+<Table ss:StyleID="ta1">
+<Column ss:Span="2" ss:Width="64.26"/><Row ss:StyleID="ro1" ss:Height="12.1032"><Cell ss:StyleID="Default"><Data ss:Type="String">Label1</Data></Cell><Cell ss:StyleID="Default"><Data ss:Type="String">Label2</Data></Cell><Cell ss:StyleID="Default"><Data ss:Type="String">Label3</Data></Cell></Row><Row ss:StyleID="ro1" ss:Height="12.1032"><Cell ss:StyleID="Default"><Data ss:Type="String">Abcd</Data></Cell><Cell ss:StyleID="Default"><Data ss:Type="Number">20</Data></Cell>
+<Cell ss:StyleID="Default"><Data ss:Type="Number">2.34</Data></Cell></Row><Row ss:StyleID="ro1" ss:Height="12.1032"><Cell ss:StyleID="Default" xmlns="urn:schemas-microsoft-com:office:spreadsheet"/><Cell ss:StyleID="Default" xmlns="urn:schemas-microsoft-com:office:spreadsheet"/><Cell ss:StyleID="Default" xmlns="urn:schemas-microsoft-com:office:spreadsheet"/></Row><Row ss:StyleID="ro1" ss:Height="12.1032"><Cell ss:StyleID="Default"><Data ss:Type="String">Efgh</Data></Cell><Cell ss:StyleID="Default"><Data ss:Type="Number">26</Data></Cell><Cell ss:StyleID="Default"><Data ss:Type="Number">13.6</Data></Cell></Row><Row ss:StyleID="ro1" ss:Height="12.1032"><Cell ss:StyleID="Default"><Data ss:Type="String">Ijkl</Data></Cell><Cell ss:StyleID="Default"><Data ss:Type="Number">12</Data></Cell><Cell ss:StyleID="Default"><Data ss:Type="Number">6.9</Data></Cell></Row><Row ss:StyleID="ro1" ss:Height="12.1032"><Cell ss:StyleID="Default"><Data ss:Type="String">Mnop</Data></Cell><Cell ss:StyleID="Default"/><Cell ss:StyleID="Default"><Data ss:Type="Number">14.7</Data></Cell></Row></Table>
+</Worksheet></Workbook>

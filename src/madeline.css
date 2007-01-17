@@ -1,0 +1,43 @@
+line{
+	stroke-linejoin: miter;
+	stroke: #000;
+}
+
+rect{
+        fill:#fff;
+        stroke-width: 0.5px;
+        stroke: #000;
+}
+
+circle{
+        fill:#fff;
+        stroke-width: 0.5px;
+        stroke: #000;
+}
+
+text{
+        font-family:Charter,Helvetica,sans-serif;
+        font-size: 3px;
+        font-style: normal;
+}
+
+.dashed{
+        stroke: #993300;
+}
+
+.layer text{
+        fill: #993300;
+}
+
+.layer line{
+        stroke: #6D7B8D;
+}
+
+.affected{
+	fill: #6D7B8D;
+}
+
+.header{
+	font-size: 6px;
+	font-weight: bold;
+}

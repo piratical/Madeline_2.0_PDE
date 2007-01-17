@@ -1,0 +1,17 @@
+# MADELINE 2.0 
+# Copyright (C) 2007 by the REGENTS OF THE UNIVERSITY OF MICHIGAN
+# This file is distributed under the same license as the MADELINE 2.0 package.
+# Edward Trager <ed.trager@gmail.com>, 2007.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: MADELINE 2.0\n"
+"Report-Msgid-Bugs-To: ed.trager@gmail.com\n"
+"POT-Creation-Date: 2006-12-19 17:46-0500\n"
+"PO-Revision-Date: \n"
+"Last-Translator: Edward H. Trager <ed.trager@gmail.com>\n"
+"Language-Team: LANGUAGE\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"

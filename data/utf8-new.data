@@ -1,0 +1,57 @@
+FamilyId      C  
+IndividualId    C  
+Gender        X  
+Father     C  
+Mother     C  
+MZTWIN     C  
+DZTWIN     C  
+AFFECTED   C  
+HEARTCOND  C  
+PLACE_UTF8 C  
+PLACE_ENGL C  
+ 
+F002  I2448  F U0332  U0333  . .  A . 京都府                                        Kyoto Prefecture         
+F002  I5605  F U0334  U0335  . .  A 1 さいたま市                                  Saitama City             
+F002  I6039  F U0334  U0335  . .  A . 北海道                                        Hokkaido                 
+F002  U0332  M .      .      . .  I . 長野県                                        Nagano Prefecture        
+F002  U0333  F U0336  U0337  . .  I . 豊田市                                        Toyota City              
+F002  U0334  M U0336  U0337  . .  I . 東京都                                        Tokyo                    
+F002  U0335  F .      .      . .  I . 千葉県                                        Chiba Prefecture         
+F002  U0336  M .      .      . .  I . ニューヨーク                               New York                 
+F002  U0337  F .      .      . .  I . シカゴ                                        Chicago                  
+F004  I2453  M U0167  I5758  A .  A 3 北京市                                        Beijing                  
+F004  I5758  F U0165  U0166  . .  U . 山东省                                        Shandong Province        
+F004  I5759  M U0167  I5758  A .  A 3 西藏自治区                                  Tibet Autonomous Region  
+F004  I5856  M U0167  I5758  . .  U 2 安徽省                                        Anhwei Province          
+F004  I5876  F U0167  I5758  . .  U . 湖北省                                        Hubei Province           
+F004  U0165  M .      .      . .  I 1 郑州市                                        Zhengzhou City           
+F004  U0166  F .      .      . .  I . 广东省                                        Guangdong Province       
+F004  U0167  M .      .      . .  I . 北京市                                        Beijing                  
+F005  I2454  F U0207  U0208  . .  A . Δελφοί                                     Delphi                   
+F005  I5526  F U0205  U0206  . .  A . Θεσσαλονίκη                           Thessalonika             
+F005  U0205  M .      .      . .  I . Ολυμπία                                   Olympia                  
+F005  U0206  F .      .      . .  I . Ρόδος                                       Rhodes                   
+F005  U0207  M .      .      . .  I . Μυστράς                                   Mystras                  
+F005  U0208  F U0205  U0206  . .  I . Ακρόπολις Αθηνών                  Acropolis                
+F006  I2456  M U0291  U0292  . A  A 1 阿里山                                        Alishan                  
+F006  I5623  F U0291  U0292  . A  A 2 嘉義市                                        Jiayi City               
+F006  I5742  M I2456  U0293  . .  U . 馬公市                                        Magong City              
+F006  U0291  M .      .      . .  I . 台東市                                        Taidong City             
+F006  U0292  F .      .      . .  I . 蘭嶼                                           Lanyu (Orchid Island)    
+F006  U0293  F .      .      . .  I 3 台北市                                        Taipei City              
+F008  I2461  F U0294  U0295  . .  A . กรุงเทพฯ                         Bangkok                  
+F008  I5421  M U0294  U0295  . .  A . สุโขทัย                            Sukhothai                
+F008  U0294  M .      .      . .  I . พระนครศรีอยุธยา    Ayuthaya                 
+F008  U0295  F .      .      . .  I . อุทัยธานี                      Uthaithani               
+F013  I2475  F U0174  U0175  . .  A 2 Карелию                                   Karelia                  
+F013  I2476  F U0174  U0175  . .  A 1 Санкт-Петербург                    St. Petersburg           
+F013  I2477  F U0174  U0175  . .  I . Таганрог                                 Taganrog                 
+F013  I2478  F U0174  U0175  . .  I . Новосибирск                           Novosibirsk              
+F013  U0174  M .      .      . .  I . Балашиха                                 Balashikha               
+F013  U0175  F .      .      . .  I 1 Омск                                         Omsk                     
+F017  I2500  M U0296  U0297  . .  A . الأقصر                                     Luxor                    
+F017  I2514  M U0296  U0297  . .  A 3 الإسكندرية                             Alexandria               
+F017  U0296  M .      .      . .  I . أسوان                                       Aswan                    
+F017  U0297  F .      .      . .  I 1 ؟                                               ?                        
+
+

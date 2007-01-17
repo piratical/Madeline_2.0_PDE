@@ -1,0 +1,586 @@
+########################################################
+#
+# FIRST DRAFT MAKEFILE FOR MADELINE-2.0 TARGETS
+# 2005.09.14.ET
+# 
+########################################################
+
+########################################################
+#
+# COMPILER
+#
+########################################################
+CC = g++
+CFLAGS = -g -Wall
+
+########################################################
+#
+# XML2 :
+#
+########################################################
+XML2_CFLAGS=`xml2-config --cflags`
+XML2_LIBS=`xml2-config --libs`
+
+########################################################
+#
+# MYSQL :
+#
+########################################################
+MYSQL_CFLAGS=-I/opt/mysql-4.1.7/include/mysql/
+MYSQL_LIBS=-L/opt/mysql-4.1.7/lib/mysql/ -lmysqlclient
+
+########################################################
+#
+# MYSQL++ :
+#
+########################################################
+MYSQLPP_CFLAGS=-I/opt/mysql++-1.7.28/include/
+MYSQLPP_LIBS=-L/opt/mysql++-1.7.28/lib/ -lmysqlpp
+
+#LASi:
+
+LASi_CFLAGS=`pkg-config --cflags pango pangoft2 lasi` 
+LASi_LIBS=`pkg-config --libs pango pangoft2 lasi`
+
+########################################################
+#
+# BZIP2 COMPRESSOR :
+#
+########################################################
+BZIP2_PATH=../3rdParty/bzip2/
+BZIP2_OBJECTS= \
+     $(BZIP2_PATH)blocksort.o \
+     $(BZIP2_PATH)bzlib.o \
+     $(BZIP2_PATH)compress.o \
+     $(BZIP2_PATH)crctable.o \
+     $(BZIP2_PATH)decompress.o \
+     $(BZIP2_PATH)huffman.o \
+     $(BZIP2_PATH)randtable.o 
+
+########################################################
+#
+# ZIP COMPRESSOR :
+#
+########################################################
+ZIP_PATH=../3rdParty/unzip/
+ZIP_OBJECTS=$(ZIP_PATH)unzip.o
+
+########################################################
+#
+# NETXX :
+#
+########################################################
+NETXX_PATH=../3rdParty/netxx/
+NETXX_OBJECTS= \
+     $(NETXX_PATH)address.o \
+     $(NETXX_PATH)osutil.o \
+     $(NETXX_PATH)peer.o \
+     $(NETXX_PATH)probe.o \
+     $(NETXX_PATH)probe_select.o \
+     $(NETXX_PATH)resolve_getaddrinfo.o \
+     $(NETXX_PATH)sockaddr.o \
+     $(NETXX_PATH)socket.o \
+     $(NETXX_PATH)sockopt.o \
+     $(NETXX_PATH)streambase.o \
+     $(NETXX_PATH)stream.o \
+     $(NETXX_PATH)tls_certificate.o \
+     $(NETXX_PATH)tls_context.o \
+     $(NETXX_PATH)tls_stream.o \
+     $(NETXX_PATH)tls_tls_pimpl.o
+
+########################################################
+#
+# SSL LIBRARY : 
+#
+########################################################
+#
+# ADRIAN/RITU: WHAT YOU HAD ORIGINALLY DID NOT LOOK RIGHT TO ME -- CHECK !
+#
+SSL_CFLAGS=-I/usr/include/ssl
+SSL_LIBS=-lssl
+
+########################################################
+#
+# FOR CLARITY, PLEASE ADD TARGETS IN ALPHABETICAL ORDER.
+# NOTE THAT THERE IS AT LEAST ONE LINE FOR TARGETS 
+# BEGINNING WITH EACH LETTER OF THE ALPHABET:
+# 
+########################################################
+ALL_OBJECTS = \
+     Affected.o AssociativeArray.o \
+     Boolean.o \
+     ColumnClassifier.o Compressor.o \
+     Data.o Date.o Database.o DataColumn.o DataTable.o DrawingCanvas.o DrawingMetrics.o \
+     DelimitedTableParser.o DigitConverter.o \
+     FieldLabels.o \
+     Gender.o Genotype.o \
+     Haplotype.o \
+     Individual.o \
+     LabelSet.o LivingDead.o \
+     MadelineTable.o \
+     Network.o NuclearFamily.o Number.o \
+     Parser.o Proband.o \
+     RandomGenerator.o \
+     Scalar.o String.o \
+     Twin.o \
+     Warning.o \
+     XMLTableParser.o
+
+########################################################
+#
+# TEST OBJECT LISTS
+#
+########################################################
+
+
+TEST_XMLPARSER_OBJECTS= \
+     Affected.o \
+     Boolean.o \
+     ColumnClassifier.o \
+     Compressor.o \
+     Database.o \
+     DataTable.o \
+     DataColumn.o \
+     DelimitedTableParser.o \
+     Data.o \
+     Date.o \
+     DigitConverter.o \
+     FieldLabels.o \
+     Gender.o \
+     Genotype.o \
+     Haplotype.o \
+     LabelSet.o \
+     MadelineTable.o \
+     Network.o \
+     Number.o \
+     Parser.o \
+     RandomGenerator.o \
+     String.o \
+     Twin.o \
+     Warning.o \
+     XMLTableParser.o
+
+TEST_INDIVIDUAL_OBJECTS= \
+     DescentTree.o \
+     DrawingMetrics.o \
+     DrawingCanvas.o \
+     Individual.o \
+     PedigreeSet.o \
+     Pedigree.o \
+     NuclearFamily.o
+
+TEST_AFFECTED_OBJECTS= \
+     Affected.o \
+     Boolean.o \
+     Data.o \
+     String.o
+
+TEST_BOOLEAN_OBJECTS= \
+     Boolean.o \
+     Data.o 
+
+TEST_CLP_OBJECTS=\
+    CLP.o \
+    Debug.o
+    
+TEST_DATE_OBJECTS= \
+    Data.o Date.o DigitConverter.o \
+    Number.o \
+    Warning.o
+
+TEST_DIGIT_CONVERTER_OBJECTS= \
+     Data.o Date.o DigitConverter.o \
+     Genotype.o \
+     Number.o \
+     Warning.o
+
+TEST_GENDER_OBJECTS= \
+    Boolean.o \
+    Data.o \
+    Gender.o \
+    Warning.o
+    
+TEST_GENOTYPE_OBJECTS= \
+    Data.o DigitConverter.o \
+    Genotype.o \
+    Number.o \
+    Warning.o 
+
+TEST_HAPLOTYPE_OBJECTS= \
+    Data.o \
+    Haplotype.o \
+
+TEST_LIVING_DEAD_OBJECTS= \
+    Boolean.o \
+    Data.o \
+    LivingDead.o 
+
+TEST_MADELINE_TABLE_OBJECTS= \
+     ColumnClassifier.o \
+     DigitConverter.o \
+     MadelineTable.o \
+     Warning.o \
+     RandomGenerator.o
+
+TEST_NUMBER_OBJECTS= \
+    Data.o DigitConverter.o \
+    Number.o \
+    Warning.o 
+
+TEST_PROBAND_OBJECTS= \
+    Boolean.o \
+    Data.o \
+    Proband.o 
+
+TEST_STRING_OBJECTS= \
+    Data.o \
+    String.o
+
+TEST_TWIN_OBJECTS= \
+    Data.o \
+    String.o \
+    Twin.o
+
+TEST_WARNING_OBJECTS= \
+    Warning.o
+
+TEST_SCALAR_OBJECTS= \
+    Boolean.o \
+    Data.o Date.o DigitConverter.o \
+    Genotype.o \
+    Number.o \
+    Scalar.o String.o \
+    Warning.o
+
+TEST_ASSOCIATIVEARRAY_OBJECTS= \
+    AssociativeArray.o \
+    Boolean.o \
+    Data.o Date.o DigitConverter.o \
+    Genotype.o \
+    Number.o \
+    String.o \
+    Warning.o
+    
+TEST_UNIQUELIST_OBJECTS= \
+    testUniqueList.o \
+    UniqueList.o \
+    String.o \
+    Number.o \
+    DigitConverter.o \
+    Warning.o \
+    Data.o \
+    Date.o \
+    Boolean.o \
+    Gender.o \
+    Affected.o \
+    Proband.o \
+    Genotype.o \
+    Haplotype.o
+
+TEST_UNICODE_CONVERTERS_OBJECTS= \
+    testUTF16AndUTF32Conversion.cpp \
+    Utf8String.cpp
+
+all:
+	echo "*** Nothing has been defined for target \"all\" *** "
+
+clean:
+	rm -f *.o *.gch
+
+
+########################################################
+#
+# FOR CLARITY, PLEASE KEEP TARGETS IN ALPHABETIC ORDER :
+#
+########################################################
+
+Affected.o: Affected.cpp 
+	$(CC) $(CFLAGS) -c Affected.cpp
+
+AssociativeArray.o: AssociativeArray.cpp 
+	$(CC) $(CFLAGS) -c AssociativeArray.cpp
+
+Boolean.o: Boolean.cpp  
+	$(CC) $(CFLAGS) -c Boolean.cpp
+
+ColumnClassifier.o: ColumnClassifier.cpp 
+	$(CC) $(CFLAGS) -c ColumnClassifier.cpp
+
+Compressor.o: Compressor.cpp 
+	$(CC) $(CFLAGS) $(XML2_CFLAGS) -c Compressor.cpp
+
+CLP.o: CLP.cpp
+	$(CC) $(CFLAGS) -c CLP.cpp
+
+Data.o: Data.cpp 
+	$(CC) $(CFLAGS) -c Data.cpp
+
+Date.o: Date.cpp
+	$(CC) $(CFLAGS) -c Date.cpp
+
+Database.o: Database.cpp
+	$(CC) $(CFLAGS) $(MYSQL_CFLAGS) $(MYSQLPP_CFLAGS) -c Database.cpp
+
+DataColumn.o: DataColumn.cpp
+	$(CC) $(CFLAGS) -c DataColumn.cpp
+
+DataTable.o: DataTable.cpp
+	$(CC) $(CFLAGS) $(XML2_CFLAGS) $(MYSQL_CFLAGS) $(MYSQLPP_CFLAGS) -c DataTable.cpp
+
+Debug.o: Debug.cpp
+	$(CC) $(CFLAGS) -c Debug.cpp
+
+DelimitedTableParser.o: DelimitedTableParser.cpp
+	$(CC) $(CFLAGS) -c DelimitedTableParser.cpp
+
+DescentTree.o: DescentTree.cpp
+	$(CC) $(CFLAGS) -c DescentTree.cpp
+
+DigitConverter.o: DigitConverter.cpp
+	$(CC) $(CFLAGS) -c DigitConverter.cpp
+
+DrawingCanvas.o: DrawingCanvas.cpp
+	$(CC) $(CFLAGS) $(XML2_CFLAGS) $(MYSQL_CFLAGS) $(MYSQLPP_CFLAGS) -c DrawingCanvas.cpp
+
+DrawingMetrics.o: DrawingMetrics.cpp
+	$(CC) $(CFLAGS) $(LASi_CFLAGS) -c DrawingMetrics.cpp
+
+FieldLabels.o: FieldLabels.cpp
+	$(CC) $(CFLAGS) -c FieldLabels.cpp
+
+Gender.o: Gender.cpp
+	$(CC) $(CFLAGS) -c Gender.cpp
+
+Genotype.o: Genotype.cpp
+	$(CC) $(CFLAGS) -c Genotype.cpp
+
+Haplotype.o: Haplotype.cpp
+	$(CC) $(CFLAGS) -c Haplotype.cpp
+
+Individual.o: Individual.cpp
+	$(CC) $(CFLAGS) -c Individual.cpp
+
+LabelSet.o: LabelSet.cpp
+	$(CC) $(CFLAGS) $(XML2_CFLAGS) $(MYSQL_CFLAGS) $(MYSQLPP_CFLAGS) -c LabelSet.cpp
+
+LivingDead.o: LivingDead.cpp
+	$(CC) $(CFLAGS) -c LivingDead.cpp
+
+MadelineTable.o: MadelineTable.cpp
+	$(CC) $(CFLAGS) -c MadelineTable.cpp
+
+Network.o: Network.cpp
+	$(CC) $(CFLAGS) -c Network.cpp
+
+NuclearFamily.o: NuclearFamily.cpp
+	$(CC) $(CFLAGS) $(XML2_CFLAGS) $(MYSQL_CFLAGS) $(MYSQLPP_CFLAGS) -c NuclearFamily.cpp
+
+Number.o: Number.cpp
+	$(CC) $(CFLAGS) -c Number.cpp
+
+Parser.o: Parser.cpp
+	$(CC) $(CFLAGS) $(XML2_CFLAGS) $(MYSQL_CFLAGS) $(MYSQLPP_CFLAGS) -c Parser.cpp
+
+Pedigree.o: Pedigree.cpp
+	$(CC) $(CFLAGS) $(XML2_CFLAGS) $(MYSQL_CFLAGS) $(MYSQLPP_CFLAGS) -c Pedigree.cpp
+
+PedigreeSet.o: PedigreeSet.cpp
+	$(CC) $(CFLAGS) $(XML2_CFLAGS) $(MYSQL_CFLAGS) $(MYSQLPP_CFLAGS) -c PedigreeSet.cpp
+
+Proband.o: Proband.cpp
+	$(CC) $(CFLAGS) -c Proband.cpp
+
+RandomGenerator.o: RandomGenerator.cpp
+	$(CC) $(CFLAGS) -c RandomGenerator.cpp
+
+Scalar.o: Scalar.cpp
+	$(CC) $(CFLAGS) -c Scalar.cpp
+
+String.o: String.cpp
+	$(CC) $(CFLAGS) -c String.cpp
+
+Twin.o: Twin.cpp
+	$(CC) $(CFLAGS) -c Twin.cpp
+
+Warning.o: Warning.cpp
+	$(CC) $(CFLAGS) -c Warning.cpp
+
+XMLTableParser.o: XMLTableParser.cpp
+	$(CC) $(CFLAGS) $(XML2_CFLAGS) -c XMLTableParser.cpp
+
+########################################################
+#
+# ATOMIC CONVENIENCE TARGETS:
+#
+########################################################
+
+Affected: Affected.o
+	
+
+AssociativeArray: AssociativeArray.o
+	
+
+Boolean: Boolean.o
+	
+
+ColumnClassifier: ColumnClassifier.o
+	
+
+Compressor: Compressor.o
+	
+CLP: CLP.o
+
+Date: Date.o
+	
+
+Database: Database.o
+	
+
+DataColumn: DataColumn.o
+	
+
+DataTable: DataTable.o
+	
+Debug: Debug.o
+
+DelimitedTableParser: DelimitedTableParser.o
+	
+
+DigitConverter: DigitConverter.o
+
+DrawingCanvas: DrawingCanvas.o
+	
+DrawingMetrics: DrawingMetrics.o
+
+FieldLabels: FieldLabels.o
+	
+
+Gender: Gender.o
+	
+
+Genotype: Genotype.o
+	
+
+Haplotype: Haplotype.o
+	
+
+Individual: Indvidual.o
+	
+
+LabelSet: LabelSet.o
+
+LivingDead: LivingDead.o
+	
+
+MadelineTable: MadelineTable.o
+	
+
+Network: Network.o
+	
+
+NuclearFamily: NuclearFamily.o
+
+
+Number: Number.o
+	
+
+Parser: Parser.o
+	
+
+Proband: Proband.o
+	
+
+RandomGenerator: RandomGenerator.o
+	
+
+Scalar: Scalar.o
+	
+
+String: String.o
+	
+
+Twin: Twin.o
+	
+
+Warning: Warning.o
+	
+
+XMLTableParser: XMLTableParser.o
+	
+
+########################################################
+#
+# "MOLECULAR" TARGETS:
+#
+########################################################
+
+#
+# ADRIAN -- THIS WORKS NOW -- 2005.09.16.ET
+#
+#
+testParser: $(TEST_XMLPARSER_OBJECTS)
+	$(CC) $(CFLAGS) $(XML2_CFLAGS)  $(MYSQLPP_CFLAGS) $(MYSQL_CFLAGS) $(XML2_LIBS) $(SSL_LIBS) $(MYSQL_LIBS) $(MYSQLPP_LIBS) -o testParser testParser.c $(TEST_XMLPARSER_OBJECTS) $(BZIP2_OBJECTS) $(ZIP_OBJECTS) $(NETXX_OBJECTS)
+
+minimadeline: $(TEST_XMLPARSER_OBJECTS) $(TEST_INDIVIDUAL_OBJECTS) $(TEST_CLP_OBJECTS)
+	$(CC) $(CFLAGS) $(XML2_CFLAGS)  $(MYSQLPP_CFLAGS) $(MYSQL_CFLAGS) $(LASi_CFLAGS) $(XML2_LIBS) $(SSL_LIBS) $(MYSQL_LIBS) $(MYSQLPP_LIBS) $(LASi_LIBS) -o minimadeline main.cpp  $(TEST_XMLPARSER_OBJECTS) $(BZIP2_OBJECTS) $(ZIP_OBJECTS) $(NETXX_OBJECTS) $(TEST_INDIVIDUAL_OBJECTS) $(TEST_CLP_OBJECTS)
+
+testPedigreeSet: $(TEST_XMLPARSER_OBJECTS) $(TEST_INDIVIDUAL_OBJECTS)
+	$(CC) $(CFLAGS) $(XML2_CFLAGS)  $(MYSQLPP_CFLAGS) $(MYSQL_CFLAGS) $(XML2_LIBS) $(SSL_LIBS) $(MYSQL_LIBS) $(MYSQLPP_LIBS) -o testPedigreeSet testPedigreeSet.cpp  $(TEST_XMLPARSER_OBJECTS) $(BZIP2_OBJECTS) $(ZIP_OBJECTS) $(NETXX_OBJECTS) $(TEST_INDIVIDUAL_OBJECTS)
+
+testAffected: $(TEST_AFFECTED_OBJECTS)
+	$(CC) $(CFLAGS) -o testAffected testAffected.c $(TEST_AFFECTED_OBJECTS)
+
+testBoolean: $(TEST_BOOLEAN_OBJECTS)
+	$(CC) $(CFLAGS) -o testBoolean testBoolean.c $(TEST_BOOLEAN_OBJECTS)
+
+testDate: $(TEST_DATE_OBJECTS)
+	$(CC) $(CFLAGS) -o testDate testDate.c $(TEST_DATE_OBJECTS)
+
+testDigitConverter: $(TEST_DIGIT_CONVERTER_OBJECTS)
+	$(CC) $(CFLAGS) -o testDigitConverter testDigitConverter.c $(TEST_DIGIT_CONVERTER_OBJECTS)
+
+testGender: $(TEST_GENDER_OBJECTS)
+	$(CC) $(CFLAGS) -o testGender testGender.c $(TEST_GENDER_OBJECTS)
+
+testGenotype: $(TEST_GENOTYPE_OBJECTS)
+	$(CC) $(CFLAGS) -o testGenotype testGenotype.c $(TEST_GENOTYPE_OBJECTS)
+
+testHaplotype: $(TEST_HAPLOTYPE_OBJECTS)
+	$(CC) $(CFLAGS) -o testHaplotype testHaplotype.c $(TEST_HAPLOTYPE_OBJECTS)
+
+testLivingDead: $(TEST_LIVING_DEAD_OBJECTS)
+	$(CC) $(CFLAGS) -o testLivingDead testLivingDead.c $(TEST_LIVING_DEAD_OBJECTS)
+
+testMadelineTable: $(TEST_MADELINE_TABLE_OBJECTS)
+	$(CC) $(CFLAGS) -o testMadelineTable testMadelineTable.c $(TEST_MADELINE_TABLE_OBJECTS)
+
+testNumber: $(TEST_NUMBER_OBJECTS)
+	$(CC) $(CFLAGS) -o testNumber testNumber.c $(TEST_NUMBER_OBJECTS)
+
+testProband: $(TEST_PROBAND_OBJECTS)
+	$(CC) $(CFLAGS) -o testProband testProband.c $(TEST_PROBAND_OBJECTS)
+
+testString: $(TEST_STRING_OBJECTS)
+	$(CC) $(CFLAGS) -o testString testString.c $(TEST_STRING_OBJECTS)
+
+testTwin: $(TEST_TWIN_OBJECTS)
+	$(CC) $(CFLAGS) -o testTwin testTwin.c $(TEST_TWIN_OBJECTS)
+
+testWarning: $(TEST_WARNING_OBJECTS)
+	$(CC) $(CFLAGS) -o testWarning testWarning.c $(TEST_WARNING_OBJECTS)
+
+testScalar: $(TEST_SCALAR_OBJECTS)
+	$(CC) $(CFLAGS) -o testScalar testScalar.c $(TEST_SCALAR_OBJECTS)
+
+testAssociativeArray: $(TEST_ASSOCIATIVEARRAY_OBJECTS)
+	$(CC) $(CFLAGS) -o testAssociativeArray testAssociativeArray.c $(TEST_ASSOCIATIVEARRAY_OBJECTS)
+
+testUtf8String: testUtf8String.c
+	$(CC) $(CFLAGS) -o testUtf8String testUtf8String.c Utf8String.cpp
+
+testUnicodeConverters: testUTF16AndUTF32Conversion.cpp
+	$(CC) $(CFLAGS) -o testUnicodeConverters testUTF16AndUTF32Conversion.cpp Utf8String.cpp
+
+testUniqueList: $(TEST_UNIQUELIST_OBJECTS)
+	$(CC) $(CFLAGS) -o testUniqueList $(TEST_UNIQUELIST_OBJECTS)
+

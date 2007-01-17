@@ -1,0 +1,105 @@
+<?xml version="1.0" standalone="no"?>
+ <svg version="1.1"  id="svgDC" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0,0,1024,768"  onload="init()" >
+ <defs>
+  <style type="text/css"><![CDATA[
+
+line{
+	stroke-linejoin:miter;
+	stroke:#000;
+	stroke-width:0.5mm;
+	stroke-linejoin:miter;
+	stroke-linecap:square;
+}
+
+rect{
+	fill:#fff;
+	stroke:#000;
+	stroke-width:0.5mm;
+	stroke-linejoin:miter;
+	stroke-linecap:square;
+}
+
+circle{
+	fill:#fff;
+	stroke:#000;
+	stroke-width:0.5mm;
+}
+
+text{
+	font-family:"Bitstream Vera Sans",sans-serif;
+	font-size:12px;
+}
+
+.dashed{
+	stroke:#930;
+}
+
+.layer text{
+	fill:#930;
+}
+
+.layer line{
+	stroke:#6d7b8d;
+}
+
+.affected{
+	fill:#6d7b8d;
+}
+
+.header{
+	font-size:18px;
+	font-weight:bold;
+}
+
+]]></style>
+ <script type="text/javascript" xlink:href="javascript/madeline.js"></script>
+ </defs>
+
+ <g id="layer0" class="layer" >
+ </g>
+
+  <text x="540.35" y="30" text-anchor="middle"  class="header" >F006</text>
+  <rect x="500.66" y="38.66" width="22.68" height="22.68" id="U0291"  />
+  <text x="512" y="78.0927" text-anchor="middle" >I</text>
+  <text x="512" y="97.1825" text-anchor="middle" >.</text>
+  <text x="512" y="116.272" text-anchor="middle" >台東市</text>
+  <text x="512" y="135.362" text-anchor="middle" >.</text>
+  <line x1="523.34" y1="50" x2="557.36" y2="50" />
+  <circle cx="568.7" cy="50" r="11.34" id="U0292"  />
+  <text x="568.7" y="78.0927" text-anchor="middle" >I</text>
+  <text x="568.7" y="97.1825" text-anchor="middle" >.</text>
+  <text x="568.7" y="116.272" text-anchor="middle" >蘭嶼</text>
+  <text x="568.7" y="135.362" text-anchor="middle" >.</text>
+  <line x1="540.35" y1="50" x2="540.35" y2="163.4" />
+  <line x1="483.65" y1="187.97" x2="483.65" y2="191.75" />
+  <rect x="472.31" y="191.75" width="22.68" height="22.68" id="I2456"  class="affected"  />
+  <text x="483.65" y="231.183" text-anchor="middle" >A</text>
+  <text x="483.65" y="250.272" text-anchor="middle" >1</text>
+  <text x="483.65" y="269.362" text-anchor="middle" >阿里山</text>
+  <text x="483.65" y="288.452" text-anchor="middle" >.</text>
+  <line x1="494.99" y1="203.09" x2="529.01" y2="203.09" />
+  <circle cx="540.35" cy="203.09" r="11.34" id="U0293"  />
+  <text x="540.35" y="231.183" text-anchor="middle" >I</text>
+  <text x="540.35" y="250.272" text-anchor="middle" >3</text>
+  <text x="540.35" y="269.362" text-anchor="middle" >台北市</text>
+  <text x="540.35" y="288.452" text-anchor="middle" >.</text>
+  <line x1="512" y1="203.09" x2="512" y2="316.49" />
+  <line x1="512" y1="316.49" x2="512" y2="344.84" />
+  <rect x="500.66" y="344.84" width="22.68" height="22.68" id="I5742"  />
+  <text x="512" y="384.273" text-anchor="middle" >U</text>
+  <text x="512" y="403.362" text-anchor="middle" >.</text>
+  <text x="512" y="422.452" text-anchor="middle" >馬公市</text>
+  <text x="512" y="441.542" text-anchor="middle" >.</text>
+  <line x1="597.05" y1="187.97" x2="597.05" y2="191.75" />
+  <circle cx="597.05" cy="203.09" r="11.34" id="I5623"  class="affected"  />
+  <text x="597.05" y="231.183" text-anchor="middle" >A</text>
+  <text x="597.05" y="250.272" text-anchor="middle" >2</text>
+  <text x="597.05" y="269.362" text-anchor="middle" >嘉義市</text>
+  <text x="597.05" y="288.452" text-anchor="middle" >.</text>
+  <line x1="540.35" y1="163.4" x2="540.35" y2="167.18" />
+  <line x1="483.65" y1="187.97" x2="540.35" y2="167.18" />
+  <line x1="597.05" y1="187.97" x2="540.35" y2="167.18" />
+  <line x1="540.35" y1="163.4" x2="540.35" y2="163.4" />
+
+ </svg>
+

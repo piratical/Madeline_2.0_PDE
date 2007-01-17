@@ -1,0 +1,5 @@
+individualid	familyid	gender	mother	father
+u123	mf09	m	.	.
+u124	mf09	f	.	.
+u125	mf09	m	u124	u123
+u126	mf09	f	u124	u123

@@ -1,0 +1,15 @@
+FamilyId
+IndividualId
+Father
+Mother
+Gender
+
+ABC C A B M
+ABC D A . F
+ABC E . B F
+ABC F . E M
+ABC G . E F
+ABC ^ H D .
+ABC & C I .
+ABC @ F J .
+ABC K F J .

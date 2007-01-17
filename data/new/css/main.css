@@ -1,0 +1,97 @@
+body{
+	font-family:"Bitstream Vera Sans",sans;
+	font-size:14px;
+	background-color:white;
+	margin:12px;
+	padding:0px;
+}
+
+table{
+	border-collapse:collapse;
+	border:2px solid silver;
+	width:90%;
+	margin-top:12px;
+	margin-bottom:12px;
+	margin-left:auto;
+	margin-right:auto;
+}
+
+th{
+	font-weight:bold;
+}
+
+td{
+	margin:0px;
+	padding:0px;
+	border:1px solid silver;
+}
+
+h2{
+	font-size:20px;
+	font-weight:bold;
+	color:green;
+	margin:12px;
+	margin-bottom:12px;
+}
+
+p{
+	
+	margin:12px;
+	
+}
+
+.floatLeft{
+	display:block;
+	float:left;
+	margin:12px;
+	padding:0px;
+	border:none;
+}
+
+.floatRight{
+	display:block;
+	float:right;
+	margin:12px;
+	padding:0px;
+	border:none;
+}
+
+a{
+	text-decoration:none;
+	color:green;
+	font-weight:bold;
+	font-size:16px;
+}
+
+a:hover{
+	background-color:green;
+	color:white;
+}
+
+b{
+	font-weight:bold;
+	font-size:16px;
+	color:green;
+}
+
+.fail{
+	color:red;
+}
+
+.header{
+	background-color:green;
+	color:white;
+	font-weight:bold;
+	font-size:25px;
+	padding-left:12px;
+}
+
+.clearFloats{
+	clear:both;
+}
+
+code{
+	font-family:"Bitstream Vera Sans Mono",monospace;
+	color:green;
+}
+

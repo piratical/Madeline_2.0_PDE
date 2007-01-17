@@ -1,0 +1,15 @@
+Familyid	Individualid	father	mother	gender
+w	1	.	.	f
+w	2	.	.	m
+w	3	.	.	f
+w	4	.	.	m
+w	5	2	1	f
+w	6	2	3	m
+w	7	.	.	f
+w	8	2	3	m
+w	9	4	3	m
+w	10	6	7	f
+w	11	6	7	f
+w	12	9	7	f
+w	13	9	7	m
+w	14	6	5	f

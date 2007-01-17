@@ -1,0 +1,121 @@
+/*
+ * Copyright (C) 2001-2004 Peter J Jones (pjones@pmade.org)
+ * All Rights Reserved
+ * 
+ * Redistribution and use in source and binary forms, with or without
+ * modification, are permitted provided that the following conditions
+ * are met:
+ * 
+ * 1. Redistributions of source code must retain the above copyright
+ *    notice, this list of conditions and the following disclaimer.
+ * 2. Redistributions in binary form must reproduce the above copyright
+ *    notice, this list of conditions and the following disclaimer in
+ *    the documentation and/or other materials provided with the
+ *    distribution.
+ * 3. Neither the name of the Author nor the names of its contributors
+ *    may be used to endorse or promote products derived from this software
+ *    without specific prior written permission.
+ * 
+ * THIS SOFTWARE IS PROVIDED BY THE AUTHOR AND CONTRIBUTORS ``AS IS''
+ * AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED
+ * TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A
+ * PARTICULAR PURPOSE ARE DISCLAIMED.  IN NO EVENT SHALL THE AUTHOR
+ * OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,
+ * SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT
+ * LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF
+ * USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED
+ * AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY,
+ * OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT
+ * OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF
+ * SUCH DAMAGE.
+ */
+
+/*
+ * This is a simple example of how you can use the Netxx::Address class and
+ * the Netxx::Stream class to do make a HTTP GET request to a web server.
+ */
+
+// Netxx Includes
+#include "netxx/netxx.h"
+
+// Standard Includes
+#include <iostream>
+#include <exception>
+#include <fstream>
+
+int main (int argc, char *argv[]) {
+    if (argc != 2 && argc != 3) {
+	std::cout << "Usage: " << argv[0] << " URI [Host: header]\n";
+	return 0;
+    }
+
+    try {
+	Netxx::Address addr(argv[1], 80);
+	Netxx::Stream client(addr, Netxx::Timeout(10));
+
+	std::string request("GET ");
+
+	if (addr.get_path()) {
+	    request += addr.get_path();
+	} else {
+	    request += "/";
+	}
+
+	// setup the request line and headers
+	request += " HTTP/1.0";
+	request += 13; request += 10;
+
+	// send the Host header
+	request += "Host: ";
+	if (argc == 3) request += argv[2];
+	else request += addr.get_name();
+	request += 13; request += 10;
+
+	request += "Connection: close";
+	request += 13; request += 10;
+	request += 13; request += 10;
+
+	// send the request
+	client.write(request.c_str(), request.size());
+
+	char buffer[1024],temp[1024];
+	Netxx::signed_size_type length;
+	bool headerFlag=false;
+	char *end;
+	char *start;
+	int headerOffset;
+	// Read the result from the server and copy
+	// the requested document to a file.
+	std::ofstream outfile ("networkFile",std::ofstream::binary);
+	while ( (length = client.read(buffer, sizeof(buffer))) > 0){
+		if(!headerFlag){
+			//
+			// Determine the location of the SERVER response header
+			// in bytes. 
+			// 
+			start = buffer;	
+			headerFlag=true;
+			// The server response header terminates with an empty line.
+			end = strstr(buffer,"\r\n\r\n");
+			end+=4;
+			headerOffset = (end - start);
+			memcpy(temp,end,length-headerOffset);
+			//std::cout.write(temp,length-headerOffset);
+			//
+			// Copy the stream that follows after the header into a file.
+			//
+			outfile.write(temp,length-headerOffset);
+		}else{
+			outfile.write(buffer,length);
+		}
+	}
+		
+	outfile.close();
+
+    } catch (std::exception &e) {
+	std::cerr << e.what() << std::endl;
+	return 1;
+    }
+
+    return 0;
+}

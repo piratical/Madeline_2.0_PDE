@@ -1,0 +1,1052 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<office:document-content xmlns:office="urn:oasis:names:tc:opendocument:xmlns:office:1.0" xmlns:style="urn:oasis:names:tc:opendocument:xmlns:style:1.0" xmlns:text="urn:oasis:names:tc:opendocument:xmlns:text:1.0" xmlns:table="urn:oasis:names:tc:opendocument:xmlns:table:1.0" xmlns:draw="urn:oasis:names:tc:opendocument:xmlns:drawing:1.0" xmlns:fo="urn:oasis:names:tc:opendocument:xmlns:xsl-fo-compatible:1.0" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:meta="urn:oasis:names:tc:opendocument:xmlns:meta:1.0" xmlns:number="urn:oasis:names:tc:opendocument:xmlns:datastyle:1.0" xmlns:svg="urn:oasis:names:tc:opendocument:xmlns:svg-compatible:1.0" xmlns:chart="urn:oasis:names:tc:opendocument:xmlns:chart:1.0" xmlns:dr3d="urn:oasis:names:tc:opendocument:xmlns:dr3d:1.0" xmlns:math="http://www.w3.org/1998/Math/MathML" xmlns:form="urn:oasis:names:tc:opendocument:xmlns:form:1.0" xmlns:script="urn:oasis:names:tc:opendocument:xmlns:script:1.0" xmlns:ooo="http://openoffice.org/2004/office" xmlns:ooow="http://openoffice.org/2004/writer" xmlns:oooc="http://openoffice.org/2004/calc" xmlns:dom="http://www.w3.org/2001/xml-events" xmlns:xforms="http://www.w3.org/2002/xforms" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" office:version="1.0">
+<office:scripts/>
+<office:font-face-decls>
+<style:font-face style:name="MS Sans Serif" svg:font-family="&apos;MS Sans Serif&apos;"/>
+<style:font-face style:name="AR PL ZenKai Uni" svg:font-family="&apos;AR PL ZenKai Uni&apos;" style:font-pitch="variable"/>
+<style:font-face style:name="Albany AMT1" svg:font-family="&apos;Albany AMT&apos;" style:font-pitch="variable"/>
+<style:font-face style:name="Nimbus Sans L1" svg:font-family="&apos;Nimbus Sans L&apos;" style:font-pitch="variable"/>
+<style:font-face style:name="Thorndale AMT" svg:font-family="&apos;Thorndale AMT&apos;" style:font-family-generic="roman" style:font-pitch="variable"/>
+<style:font-face style:name="Albany AMT" svg:font-family="&apos;Albany AMT&apos;" style:font-family-generic="swiss" style:font-pitch="variable"/>
+<style:font-face style:name="Nimbus Sans L" svg:font-family="&apos;Nimbus Sans L&apos;" style:font-family-generic="swiss" style:font-pitch="variable"/>
+</office:font-face-decls>
+<office:automatic-styles>
+<style:style style:name="co1" style:family="table-column">
+<style:table-column-properties fo:break-before="auto" style:column-width="0.8925in"/>
+</style:style>
+<style:style style:name="ro1" style:family="table-row">
+<style:table-row-properties style:row-height="0.1681in" fo:break-before="auto" style:use-optimal-row-height="true"/>
+</style:style>
+<style:style style:name="ro2" style:family="table-row">
+<style:table-row-properties style:row-height="0.2118in" fo:break-before="auto" style:use-optimal-row-height="true"/>
+</style:style>
+<style:style style:name="ta1" style:family="table" style:master-page-name="Default">
+<style:table-properties table:display="true" style:writing-mode="lr-tb"/>
+</style:style>
+<style:style style:name="ce1" style:family="table-cell" style:parent-style-name="Default">
+<style:text-properties style:font-name-asian="AR PL ZenKai Uni" style:font-name-complex="AR PL ZenKai Uni"/>
+</style:style>
+<style:style style:name="ce2" style:family="table-cell" style:parent-style-name="Default">
+<style:table-cell-properties fo:wrap-option="wrap"/>
+<style:text-properties style:use-window-font-color="true" style:text-outline="false" style:text-line-through-style="none" style:font-name="Thorndale AMT" fo:font-size="10pt" fo:language="en" fo:country="US" fo:font-style="normal" fo:text-shadow="none" style:text-underline-style="none" fo:font-weight="normal" style:text-underline-mode="continuous" style:text-line-through-mode="continuous" style:font-name-asian="AR PL ZenKai Uni" style:font-size-asian="10pt" style:language-asian="none" style:country-asian="none" style:font-style-asian="normal" style:font-weight-asian="normal" style:font-name-complex="AR PL ZenKai Uni" style:font-size-complex="10pt" style:language-complex="none" style:country-complex="none" style:font-style-complex="normal" style:font-weight-complex="normal" style:text-emphasize="none" style:font-relief="none"/>
+</style:style>
+<style:style style:name="ce3" style:family="table-cell" style:parent-style-name="Default">
+<style:text-properties fo:font-size="10pt" style:font-name-asian="AR PL ZenKai Uni" style:font-name-complex="AR PL ZenKai Uni" style:font-size-complex="10pt"/>
+</style:style>
+<style:style style:name="ce4" style:family="table-cell" style:parent-style-name="Default">
+<style:text-properties style:font-name-asian="AR PL ZenKai Uni"/>
+</style:style>
+</office:automatic-styles>
+<office:body>
+<office:spreadsheet>
+<table:table table:name="Sheet1" table:style-name="ta1" table:print="false">
+<table:table-column table:style-name="co1" table:number-columns-repeated="8" table:default-cell-style-name="Default"/>
+<table:table-column table:style-name="co1" table:default-cell-style-name="ce3"/>
+<table:table-column table:style-name="co1" table:number-columns-repeated="4" table:default-cell-style-name="ce1"/>
+<table:table-row table:style-name="ro1">
+<table:table-cell office:value-type="string">
+<text:p>FamilyId</text:p>
+</table:table-cell>
+<table:table-cell office:value-type="string">
+<text:p>IndividualId</text:p>
+</table:table-cell>
+<table:table-cell office:value-type="string">
+<text:p>Gender</text:p>
+</table:table-cell>
+<table:table-cell office:value-type="string">
+<text:p>Father</text:p>
+</table:table-cell>
+<table:table-cell office:value-type="string">
+<text:p>Mother</text:p>
+</table:table-cell>
+<table:table-cell office:value-type="string">
+<text:p>Affected</text:p>
+</table:table-cell>
+<table:table-cell office:value-type="string">
+<text:p>DZTwin</text:p>
+</table:table-cell>
+<table:table-cell office:value-type="string">
+<text:p>MZTwin</text:p>
+</table:table-cell>
+<table:table-cell table:style-name="ce1" office:value-type="string">
+<text:p>姓</text:p>
+</table:table-cell>
+<table:table-cell office:value-type="string">
+<text:p>名字</text:p>
+</table:table-cell>
+<table:table-cell office:value-type="string">
+<text:p>村</text:p>
+</table:table-cell>
+<table:table-cell office:value-type="string">
+<text:p>鄉</text:p>
+</table:table-cell>
+<table:table-cell office:value-type="string">
+<text:p>省</text:p>
+</table:table-cell>
+</table:table-row>
+<table:table-row table:style-name="ro2">
+<table:table-cell office:value-type="string">
+<text:p>Uni0002ZH</text:p>
+</table:table-cell>
+<table:table-cell office:value-type="string">
+<text:p>Indv0001</text:p>
+</table:table-cell>
+<table:table-cell office:value-type="string">
+<text:p>男</text:p>
+</table:table-cell>
+<table:table-cell table:number-columns-repeated="2" office:value-type="string">
+<text:p>.</text:p>
+</table:table-cell>
+<table:table-cell office:value-type="string">
+<text:p>A</text:p>
+</table:table-cell>
+<table:table-cell table:number-columns-repeated="2" office:value-type="string">
+<text:p>.</text:p>
+</table:table-cell>
+<table:table-cell table:style-name="ce2" office:value-type="string">
+<text:p>周</text:p>
+</table:table-cell>
+<table:table-cell table:style-name="ce4" office:value-type="string">
+<text:p>祿山</text:p>
+</table:table-cell>
+<table:table-cell table:number-columns-repeated="3" office:value-type="string">
+<text:p>.</text:p>
+</table:table-cell>
+</table:table-row>
+<table:table-row table:style-name="ro2">
+<table:table-cell office:value-type="string">
+<text:p>Uni0002ZH</text:p>
+</table:table-cell>
+<table:table-cell office:value-type="string">
+<text:p>Indv0002</text:p>
+</table:table-cell>
+<table:table-cell office:value-type="string">
+<text:p>女</text:p>
+</table:table-cell>
+<table:table-cell table:number-columns-repeated="5" office:value-type="string">
+<text:p>.</text:p>
+</table:table-cell>
+<table:table-cell table:style-name="ce2" office:value-type="string">
+<text:p>虞</text:p>
+</table:table-cell>
+<table:table-cell table:number-columns-repeated="4" office:value-type="string">
+<text:p>.</text:p>
+</table:table-cell>
+</table:table-row>
+<table:table-row table:style-name="ro2">
+<table:table-cell office:value-type="string">
+<text:p>Uni0002ZH</text:p>
+</table:table-cell>
+<table:table-cell office:value-type="string">
+<text:p>Indv0003</text:p>
+</table:table-cell>
+<table:table-cell office:value-type="string">
+<text:p>男</text:p>
+</table:table-cell>
+<table:table-cell table:number-columns-repeated="5" office:value-type="string">
+<text:p>.</text:p>
+</table:table-cell>
+<table:table-cell table:style-name="ce2" office:value-type="string">
+<text:p>吴</text:p>
+</table:table-cell>
+<table:table-cell table:number-columns-repeated="4" office:value-type="string">
+<text:p>.</text:p>
+</table:table-cell>
+</table:table-row>
+<table:table-row table:style-name="ro2">
+<table:table-cell office:value-type="string">
+<text:p>Uni0002ZH</text:p>
+</table:table-cell>
+<table:table-cell office:value-type="string">
+<text:p>Indv0004</text:p>
+</table:table-cell>
+<table:table-cell office:value-type="string">
+<text:p>女</text:p>
+</table:table-cell>
+<table:table-cell table:number-columns-repeated="5" office:value-type="string">
+<text:p>.</text:p>
+</table:table-cell>
+<table:table-cell table:style-name="ce2" office:value-type="string">
+<text:p>滑</text:p>
+</table:table-cell>
+<table:table-cell table:number-columns-repeated="4" office:value-type="string">
+<text:p>.</text:p>
+</table:table-cell>
+</table:table-row>
+<table:table-row table:style-name="ro2">
+<table:table-cell office:value-type="string">
+<text:p>Uni0002ZH</text:p>
+</table:table-cell>
+<table:table-cell office:value-type="string">
+<text:p>Indv0005</text:p>
+</table:table-cell>
+<table:table-cell office:value-type="string">
+<text:p>男</text:p>
+</table:table-cell>
+<table:table-cell table:number-columns-repeated="5" office:value-type="string">
+<text:p>.</text:p>
+</table:table-cell>
+<table:table-cell table:style-name="ce2" office:value-type="string">
+<text:p>马</text:p>
+</table:table-cell>
+<table:table-cell table:number-columns-repeated="4" office:value-type="string">
+<text:p>.</text:p>
+</table:table-cell>
+</table:table-row>
+<table:table-row table:style-name="ro2">
+<table:table-cell office:value-type="string">
+<text:p>Uni0002ZH</text:p>
+</table:table-cell>
+<table:table-cell office:value-type="string">
+<text:p>Indv0006</text:p>
+</table:table-cell>
+<table:table-cell office:value-type="string">
+<text:p>女</text:p>
+</table:table-cell>
+<table:table-cell table:number-columns-repeated="5" office:value-type="string">
+<text:p>.</text:p>
+</table:table-cell>
+<table:table-cell table:style-name="ce2" office:value-type="string">
+<text:p>山</text:p>
+</table:table-cell>
+<table:table-cell table:number-columns-repeated="4" office:value-type="string">
+<text:p>.</text:p>
+</table:table-cell>
+</table:table-row>
+<table:table-row table:style-name="ro2">
+<table:table-cell office:value-type="string">
+<text:p>Uni0002ZH</text:p>
+</table:table-cell>
+<table:table-cell office:value-type="string">
+<text:p>Indv0007</text:p>
+</table:table-cell>
+<table:table-cell office:value-type="string">
+<text:p>女</text:p>
+</table:table-cell>
+<table:table-cell office:value-type="string">
+<text:p>Indv0001</text:p>
+</table:table-cell>
+<table:table-cell office:value-type="string">
+<text:p>Indv0002</text:p>
+</table:table-cell>
+<table:table-cell table:number-columns-repeated="3" office:value-type="string">
+<text:p>.</text:p>
+</table:table-cell>
+<table:table-cell table:style-name="ce2" office:value-type="string">
+<text:p>周</text:p>
+</table:table-cell>
+<table:table-cell table:number-columns-repeated="4" office:value-type="string">
+<text:p>.</text:p>
+</table:table-cell>
+</table:table-row>
+<table:table-row table:style-name="ro2">
+<table:table-cell office:value-type="string">
+<text:p>Uni0002ZH</text:p>
+</table:table-cell>
+<table:table-cell office:value-type="string">
+<text:p>Indv0008</text:p>
+</table:table-cell>
+<table:table-cell office:value-type="string">
+<text:p>男</text:p>
+</table:table-cell>
+<table:table-cell office:value-type="string">
+<text:p>Indv0001</text:p>
+</table:table-cell>
+<table:table-cell office:value-type="string">
+<text:p>Indv0002</text:p>
+</table:table-cell>
+<table:table-cell table:number-columns-repeated="3" office:value-type="string">
+<text:p>.</text:p>
+</table:table-cell>
+<table:table-cell table:style-name="ce2" office:value-type="string">
+<text:p>周</text:p>
+</table:table-cell>
+<table:table-cell table:number-columns-repeated="4" office:value-type="string">
+<text:p>.</text:p>
+</table:table-cell>
+</table:table-row>
+<table:table-row table:style-name="ro2">
+<table:table-cell office:value-type="string">
+<text:p>Uni0002ZH</text:p>
+</table:table-cell>
+<table:table-cell office:value-type="string">
+<text:p>Indv0009</text:p>
+</table:table-cell>
+<table:table-cell office:value-type="string">
+<text:p>男</text:p>
+</table:table-cell>
+<table:table-cell office:value-type="string">
+<text:p>Indv0001</text:p>
+</table:table-cell>
+<table:table-cell office:value-type="string">
+<text:p>Indv0002</text:p>
+</table:table-cell>
+<table:table-cell table:number-columns-repeated="3" office:value-type="string">
+<text:p>.</text:p>
+</table:table-cell>
+<table:table-cell table:style-name="ce2" office:value-type="string">
+<text:p>周</text:p>
+</table:table-cell>
+<table:table-cell table:number-columns-repeated="4" office:value-type="string">
+<text:p>.</text:p>
+</table:table-cell>
+</table:table-row>
+<table:table-row table:style-name="ro2">
+<table:table-cell office:value-type="string">
+<text:p>Uni0002ZH</text:p>
+</table:table-cell>
+<table:table-cell office:value-type="string">
+<text:p>Indv0010</text:p>
+</table:table-cell>
+<table:table-cell office:value-type="string">
+<text:p>女</text:p>
+</table:table-cell>
+<table:table-cell office:value-type="string">
+<text:p>Indv0003</text:p>
+</table:table-cell>
+<table:table-cell office:value-type="string">
+<text:p>Indv0004</text:p>
+</table:table-cell>
+<table:table-cell table:number-columns-repeated="3" office:value-type="string">
+<text:p>.</text:p>
+</table:table-cell>
+<table:table-cell table:style-name="ce2" office:value-type="string">
+<text:p>吴</text:p>
+</table:table-cell>
+<table:table-cell table:number-columns-repeated="4" office:value-type="string">
+<text:p>.</text:p>
+</table:table-cell>
+</table:table-row>
+<table:table-row table:style-name="ro2">
+<table:table-cell office:value-type="string">
+<text:p>Uni0002ZH</text:p>
+</table:table-cell>
+<table:table-cell office:value-type="string">
+<text:p>Indv0011</text:p>
+</table:table-cell>
+<table:table-cell office:value-type="string">
+<text:p>男</text:p>
+</table:table-cell>
+<table:table-cell office:value-type="string">
+<text:p>Indv0003</text:p>
+</table:table-cell>
+<table:table-cell office:value-type="string">
+<text:p>Indv0004</text:p>
+</table:table-cell>
+<table:table-cell table:number-columns-repeated="3" office:value-type="string">
+<text:p>.</text:p>
+</table:table-cell>
+<table:table-cell table:style-name="ce2" office:value-type="string">
+<text:p>吴</text:p>
+</table:table-cell>
+<table:table-cell table:number-columns-repeated="4" office:value-type="string">
+<text:p>.</text:p>
+</table:table-cell>
+</table:table-row>
+<table:table-row table:style-name="ro2">
+<table:table-cell office:value-type="string">
+<text:p>Uni0002ZH</text:p>
+</table:table-cell>
+<table:table-cell office:value-type="string">
+<text:p>Indv0012</text:p>
+</table:table-cell>
+<table:table-cell office:value-type="string">
+<text:p>女</text:p>
+</table:table-cell>
+<table:table-cell office:value-type="string">
+<text:p>Indv0005</text:p>
+</table:table-cell>
+<table:table-cell office:value-type="string">
+<text:p>Indv0006</text:p>
+</table:table-cell>
+<table:table-cell office:value-type="string">
+<text:p>A</text:p>
+</table:table-cell>
+<table:table-cell table:number-columns-repeated="2" office:value-type="string">
+<text:p>.</text:p>
+</table:table-cell>
+<table:table-cell table:style-name="ce2" office:value-type="string">
+<text:p>马</text:p>
+</table:table-cell>
+<table:table-cell table:number-columns-repeated="4" office:value-type="string">
+<text:p>.</text:p>
+</table:table-cell>
+</table:table-row>
+<table:table-row table:style-name="ro2">
+<table:table-cell office:value-type="string">
+<text:p>Uni0002ZH</text:p>
+</table:table-cell>
+<table:table-cell office:value-type="string">
+<text:p>Indv0013</text:p>
+</table:table-cell>
+<table:table-cell office:value-type="string">
+<text:p>女</text:p>
+</table:table-cell>
+<table:table-cell office:value-type="string">
+<text:p>Indv0005</text:p>
+</table:table-cell>
+<table:table-cell office:value-type="string">
+<text:p>Indv0006</text:p>
+</table:table-cell>
+<table:table-cell table:number-columns-repeated="3" office:value-type="string">
+<text:p>.</text:p>
+</table:table-cell>
+<table:table-cell table:style-name="ce2" office:value-type="string">
+<text:p>马</text:p>
+</table:table-cell>
+<table:table-cell table:number-columns-repeated="4" office:value-type="string">
+<text:p>.</text:p>
+</table:table-cell>
+</table:table-row>
+<table:table-row table:style-name="ro2">
+<table:table-cell office:value-type="string">
+<text:p>Uni0002ZH</text:p>
+</table:table-cell>
+<table:table-cell office:value-type="string">
+<text:p>Indv0014</text:p>
+</table:table-cell>
+<table:table-cell office:value-type="string">
+<text:p>男</text:p>
+</table:table-cell>
+<table:table-cell office:value-type="string">
+<text:p>Indv0005</text:p>
+</table:table-cell>
+<table:table-cell office:value-type="string">
+<text:p>Indv0006</text:p>
+</table:table-cell>
+<table:table-cell office:value-type="string">
+<text:p>A</text:p>
+</table:table-cell>
+<table:table-cell table:number-columns-repeated="2" office:value-type="string">
+<text:p>.</text:p>
+</table:table-cell>
+<table:table-cell table:style-name="ce2" office:value-type="string">
+<text:p>马</text:p>
+</table:table-cell>
+<table:table-cell table:number-columns-repeated="4" office:value-type="string">
+<text:p>.</text:p>
+</table:table-cell>
+</table:table-row>
+<table:table-row table:style-name="ro2">
+<table:table-cell office:value-type="string">
+<text:p>Uni0002ZH</text:p>
+</table:table-cell>
+<table:table-cell office:value-type="string">
+<text:p>Indv0015</text:p>
+</table:table-cell>
+<table:table-cell office:value-type="string">
+<text:p>女</text:p>
+</table:table-cell>
+<table:table-cell table:number-columns-repeated="5" office:value-type="string">
+<text:p>.</text:p>
+</table:table-cell>
+<table:table-cell table:style-name="ce2" office:value-type="string">
+<text:p>晁</text:p>
+</table:table-cell>
+<table:table-cell table:number-columns-repeated="4" office:value-type="string">
+<text:p>.</text:p>
+</table:table-cell>
+</table:table-row>
+<table:table-row table:style-name="ro2">
+<table:table-cell office:value-type="string">
+<text:p>Uni0002ZH</text:p>
+</table:table-cell>
+<table:table-cell office:value-type="string">
+<text:p>Indv0016</text:p>
+</table:table-cell>
+<table:table-cell office:value-type="string">
+<text:p>男</text:p>
+</table:table-cell>
+<table:table-cell table:number-columns-repeated="5" office:value-type="string">
+<text:p>.</text:p>
+</table:table-cell>
+<table:table-cell table:style-name="ce2" office:value-type="string">
+<text:p>丁</text:p>
+</table:table-cell>
+<table:table-cell table:number-columns-repeated="4" office:value-type="string">
+<text:p>.</text:p>
+</table:table-cell>
+</table:table-row>
+<table:table-row table:style-name="ro2">
+<table:table-cell office:value-type="string">
+<text:p>Uni0002ZH</text:p>
+</table:table-cell>
+<table:table-cell office:value-type="string">
+<text:p>Indv0017</text:p>
+</table:table-cell>
+<table:table-cell office:value-type="string">
+<text:p>女</text:p>
+</table:table-cell>
+<table:table-cell office:value-type="string">
+<text:p>Indv0016</text:p>
+</table:table-cell>
+<table:table-cell office:value-type="string">
+<text:p>Indv0007</text:p>
+</table:table-cell>
+<table:table-cell table:number-columns-repeated="3" office:value-type="string">
+<text:p>.</text:p>
+</table:table-cell>
+<table:table-cell table:style-name="ce2" office:value-type="string">
+<text:p>丁</text:p>
+</table:table-cell>
+<table:table-cell table:number-columns-repeated="4" office:value-type="string">
+<text:p>.</text:p>
+</table:table-cell>
+</table:table-row>
+<table:table-row table:style-name="ro2">
+<table:table-cell office:value-type="string">
+<text:p>Uni0002ZH</text:p>
+</table:table-cell>
+<table:table-cell office:value-type="string">
+<text:p>Indv0018</text:p>
+</table:table-cell>
+<table:table-cell office:value-type="string">
+<text:p>男</text:p>
+</table:table-cell>
+<table:table-cell office:value-type="string">
+<text:p>Indv0016</text:p>
+</table:table-cell>
+<table:table-cell office:value-type="string">
+<text:p>Indv0007</text:p>
+</table:table-cell>
+<table:table-cell table:number-columns-repeated="3" office:value-type="string">
+<text:p>.</text:p>
+</table:table-cell>
+<table:table-cell table:style-name="ce2" office:value-type="string">
+<text:p>丁</text:p>
+</table:table-cell>
+<table:table-cell table:number-columns-repeated="4" office:value-type="string">
+<text:p>.</text:p>
+</table:table-cell>
+</table:table-row>
+<table:table-row table:style-name="ro2">
+<table:table-cell office:value-type="string">
+<text:p>Uni0002ZH</text:p>
+</table:table-cell>
+<table:table-cell office:value-type="string">
+<text:p>Indv0019</text:p>
+</table:table-cell>
+<table:table-cell office:value-type="string">
+<text:p>女</text:p>
+</table:table-cell>
+<table:table-cell office:value-type="string">
+<text:p>Indv0016</text:p>
+</table:table-cell>
+<table:table-cell office:value-type="string">
+<text:p>Indv0007</text:p>
+</table:table-cell>
+<table:table-cell table:number-columns-repeated="3" office:value-type="string">
+<text:p>.</text:p>
+</table:table-cell>
+<table:table-cell table:style-name="ce2" office:value-type="string">
+<text:p>丁</text:p>
+</table:table-cell>
+<table:table-cell table:number-columns-repeated="4" office:value-type="string">
+<text:p>.</text:p>
+</table:table-cell>
+</table:table-row>
+<table:table-row table:style-name="ro2">
+<table:table-cell office:value-type="string">
+<text:p>Uni0002ZH</text:p>
+</table:table-cell>
+<table:table-cell office:value-type="string">
+<text:p>Indv0020</text:p>
+</table:table-cell>
+<table:table-cell office:value-type="string">
+<text:p>女</text:p>
+</table:table-cell>
+<table:table-cell office:value-type="string">
+<text:p>Indv0008</text:p>
+</table:table-cell>
+<table:table-cell office:value-type="string">
+<text:p>Indv0015</text:p>
+</table:table-cell>
+<table:table-cell table:number-columns-repeated="3" office:value-type="string">
+<text:p>.</text:p>
+</table:table-cell>
+<table:table-cell table:style-name="ce2" office:value-type="string">
+<text:p>周</text:p>
+</table:table-cell>
+<table:table-cell table:number-columns-repeated="4" office:value-type="string">
+<text:p>.</text:p>
+</table:table-cell>
+</table:table-row>
+<table:table-row table:style-name="ro2">
+<table:table-cell office:value-type="string">
+<text:p>Uni0002ZH</text:p>
+</table:table-cell>
+<table:table-cell office:value-type="string">
+<text:p>Indv0021</text:p>
+</table:table-cell>
+<table:table-cell office:value-type="string">
+<text:p>男</text:p>
+</table:table-cell>
+<table:table-cell office:value-type="string">
+<text:p>Indv0008</text:p>
+</table:table-cell>
+<table:table-cell office:value-type="string">
+<text:p>Indv0015</text:p>
+</table:table-cell>
+<table:table-cell table:number-columns-repeated="3" office:value-type="string">
+<text:p>.</text:p>
+</table:table-cell>
+<table:table-cell table:style-name="ce2" office:value-type="string">
+<text:p>周</text:p>
+</table:table-cell>
+<table:table-cell table:number-columns-repeated="4" office:value-type="string">
+<text:p>.</text:p>
+</table:table-cell>
+</table:table-row>
+<table:table-row table:style-name="ro2">
+<table:table-cell office:value-type="string">
+<text:p>Uni0002ZH</text:p>
+</table:table-cell>
+<table:table-cell office:value-type="string">
+<text:p>Indv0022</text:p>
+</table:table-cell>
+<table:table-cell office:value-type="string">
+<text:p>男</text:p>
+</table:table-cell>
+<table:table-cell office:value-type="string">
+<text:p>Indv0008</text:p>
+</table:table-cell>
+<table:table-cell office:value-type="string">
+<text:p>Indv0015</text:p>
+</table:table-cell>
+<table:table-cell table:number-columns-repeated="3" office:value-type="string">
+<text:p>.</text:p>
+</table:table-cell>
+<table:table-cell table:style-name="ce2" office:value-type="string">
+<text:p>周</text:p>
+</table:table-cell>
+<table:table-cell table:number-columns-repeated="4" office:value-type="string">
+<text:p>.</text:p>
+</table:table-cell>
+</table:table-row>
+<table:table-row table:style-name="ro2">
+<table:table-cell office:value-type="string">
+<text:p>Uni0002ZH</text:p>
+</table:table-cell>
+<table:table-cell office:value-type="string">
+<text:p>Indv0023</text:p>
+</table:table-cell>
+<table:table-cell office:value-type="string">
+<text:p>女</text:p>
+</table:table-cell>
+<table:table-cell office:value-type="string">
+<text:p>Indv0009</text:p>
+</table:table-cell>
+<table:table-cell office:value-type="string">
+<text:p>Indv0010</text:p>
+</table:table-cell>
+<table:table-cell table:number-columns-repeated="3" office:value-type="string">
+<text:p>.</text:p>
+</table:table-cell>
+<table:table-cell table:style-name="ce2" office:value-type="string">
+<text:p>周</text:p>
+</table:table-cell>
+<table:table-cell table:number-columns-repeated="4" office:value-type="string">
+<text:p>.</text:p>
+</table:table-cell>
+</table:table-row>
+<table:table-row table:style-name="ro2">
+<table:table-cell office:value-type="string">
+<text:p>Uni0002ZH</text:p>
+</table:table-cell>
+<table:table-cell office:value-type="string">
+<text:p>Indv0024</text:p>
+</table:table-cell>
+<table:table-cell office:value-type="string">
+<text:p>男</text:p>
+</table:table-cell>
+<table:table-cell office:value-type="string">
+<text:p>Indv0009</text:p>
+</table:table-cell>
+<table:table-cell office:value-type="string">
+<text:p>Indv0010</text:p>
+</table:table-cell>
+<table:table-cell table:number-columns-repeated="3" office:value-type="string">
+<text:p>.</text:p>
+</table:table-cell>
+<table:table-cell table:style-name="ce2" office:value-type="string">
+<text:p>周</text:p>
+</table:table-cell>
+<table:table-cell table:number-columns-repeated="4" office:value-type="string">
+<text:p>.</text:p>
+</table:table-cell>
+</table:table-row>
+<table:table-row table:style-name="ro2">
+<table:table-cell office:value-type="string">
+<text:p>Uni0002ZH</text:p>
+</table:table-cell>
+<table:table-cell office:value-type="string">
+<text:p>Indv0025</text:p>
+</table:table-cell>
+<table:table-cell office:value-type="string">
+<text:p>女</text:p>
+</table:table-cell>
+<table:table-cell office:value-type="string">
+<text:p>Indv0011</text:p>
+</table:table-cell>
+<table:table-cell office:value-type="string">
+<text:p>Indv0013</text:p>
+</table:table-cell>
+<table:table-cell table:number-columns-repeated="3" office:value-type="string">
+<text:p>.</text:p>
+</table:table-cell>
+<table:table-cell table:style-name="ce2" office:value-type="string">
+<text:p>吴</text:p>
+</table:table-cell>
+<table:table-cell table:number-columns-repeated="4" office:value-type="string">
+<text:p>.</text:p>
+</table:table-cell>
+</table:table-row>
+<table:table-row table:style-name="ro2">
+<table:table-cell office:value-type="string">
+<text:p>Uni0002ZH</text:p>
+</table:table-cell>
+<table:table-cell office:value-type="string">
+<text:p>Indv0026</text:p>
+</table:table-cell>
+<table:table-cell office:value-type="string">
+<text:p>女</text:p>
+</table:table-cell>
+<table:table-cell office:value-type="string">
+<text:p>Indv0011</text:p>
+</table:table-cell>
+<table:table-cell office:value-type="string">
+<text:p>Indv0013</text:p>
+</table:table-cell>
+<table:table-cell table:number-columns-repeated="3" office:value-type="string">
+<text:p>.</text:p>
+</table:table-cell>
+<table:table-cell table:style-name="ce2" office:value-type="string">
+<text:p>吴</text:p>
+</table:table-cell>
+<table:table-cell table:number-columns-repeated="4" office:value-type="string">
+<text:p>.</text:p>
+</table:table-cell>
+</table:table-row>
+<table:table-row table:style-name="ro2">
+<table:table-cell office:value-type="string">
+<text:p>Uni0002ZH</text:p>
+</table:table-cell>
+<table:table-cell office:value-type="string">
+<text:p>Indv0027</text:p>
+</table:table-cell>
+<table:table-cell office:value-type="string">
+<text:p>男</text:p>
+</table:table-cell>
+<table:table-cell office:value-type="string">
+<text:p>Indv0011</text:p>
+</table:table-cell>
+<table:table-cell office:value-type="string">
+<text:p>Indv0013</text:p>
+</table:table-cell>
+<table:table-cell table:number-columns-repeated="3" office:value-type="string">
+<text:p>.</text:p>
+</table:table-cell>
+<table:table-cell table:style-name="ce2" office:value-type="string">
+<text:p>吴</text:p>
+</table:table-cell>
+<table:table-cell table:number-columns-repeated="4" office:value-type="string">
+<text:p>.</text:p>
+</table:table-cell>
+</table:table-row>
+<table:table-row table:style-name="ro2">
+<table:table-cell office:value-type="string">
+<text:p>Uni0002ZH</text:p>
+</table:table-cell>
+<table:table-cell office:value-type="string">
+<text:p>Indv0028</text:p>
+</table:table-cell>
+<table:table-cell office:value-type="string">
+<text:p>女</text:p>
+</table:table-cell>
+<table:table-cell office:value-type="string">
+<text:p>Indv0039</text:p>
+</table:table-cell>
+<table:table-cell office:value-type="string">
+<text:p>Indv0012</text:p>
+</table:table-cell>
+<table:table-cell table:number-columns-repeated="2" office:value-type="string">
+<text:p>.</text:p>
+</table:table-cell>
+<table:table-cell office:value-type="string">
+<text:p>A</text:p>
+</table:table-cell>
+<table:table-cell table:style-name="ce2" office:value-type="string">
+<text:p>黄</text:p>
+</table:table-cell>
+<table:table-cell table:number-columns-repeated="4" office:value-type="string">
+<text:p>.</text:p>
+</table:table-cell>
+</table:table-row>
+<table:table-row table:style-name="ro2">
+<table:table-cell office:value-type="string">
+<text:p>Uni0002ZH</text:p>
+</table:table-cell>
+<table:table-cell office:value-type="string">
+<text:p>Indv0029</text:p>
+</table:table-cell>
+<table:table-cell office:value-type="string">
+<text:p>女</text:p>
+</table:table-cell>
+<table:table-cell office:value-type="string">
+<text:p>Indv0039</text:p>
+</table:table-cell>
+<table:table-cell office:value-type="string">
+<text:p>Indv0012</text:p>
+</table:table-cell>
+<table:table-cell office:value-type="string">
+<text:p>A</text:p>
+</table:table-cell>
+<table:table-cell office:value-type="string">
+<text:p>.</text:p>
+</table:table-cell>
+<table:table-cell office:value-type="string">
+<text:p>A</text:p>
+</table:table-cell>
+<table:table-cell table:style-name="ce2" office:value-type="string">
+<text:p>黄</text:p>
+</table:table-cell>
+<table:table-cell table:number-columns-repeated="4" office:value-type="string">
+<text:p>.</text:p>
+</table:table-cell>
+</table:table-row>
+<table:table-row table:style-name="ro2">
+<table:table-cell office:value-type="string">
+<text:p>Uni0002ZH</text:p>
+</table:table-cell>
+<table:table-cell office:value-type="string">
+<text:p>Indv0030</text:p>
+</table:table-cell>
+<table:table-cell office:value-type="string">
+<text:p>女</text:p>
+</table:table-cell>
+<table:table-cell office:value-type="string">
+<text:p>Indv0039</text:p>
+</table:table-cell>
+<table:table-cell office:value-type="string">
+<text:p>Indv0012</text:p>
+</table:table-cell>
+<table:table-cell table:number-columns-repeated="2" office:value-type="string">
+<text:p>.</text:p>
+</table:table-cell>
+<table:table-cell office:value-type="string">
+<text:p>A</text:p>
+</table:table-cell>
+<table:table-cell table:style-name="ce2" office:value-type="string">
+<text:p>黄</text:p>
+</table:table-cell>
+<table:table-cell table:number-columns-repeated="4" office:value-type="string">
+<text:p>.</text:p>
+</table:table-cell>
+</table:table-row>
+<table:table-row table:style-name="ro2">
+<table:table-cell office:value-type="string">
+<text:p>Uni0002ZH</text:p>
+</table:table-cell>
+<table:table-cell office:value-type="string">
+<text:p>Indv0033</text:p>
+</table:table-cell>
+<table:table-cell office:value-type="string">
+<text:p>女</text:p>
+</table:table-cell>
+<table:table-cell office:value-type="string">
+<text:p>Indv0011</text:p>
+</table:table-cell>
+<table:table-cell office:value-type="string">
+<text:p>Indv0013</text:p>
+</table:table-cell>
+<table:table-cell table:number-columns-repeated="3" office:value-type="string">
+<text:p>.</text:p>
+</table:table-cell>
+<table:table-cell table:style-name="ce2" office:value-type="string">
+<text:p>周</text:p>
+</table:table-cell>
+<table:table-cell table:number-columns-repeated="4" office:value-type="string">
+<text:p>.</text:p>
+</table:table-cell>
+</table:table-row>
+<table:table-row table:style-name="ro2">
+<table:table-cell office:value-type="string">
+<text:p>Uni0002ZH</text:p>
+</table:table-cell>
+<table:table-cell office:value-type="string">
+<text:p>Indv0034</text:p>
+</table:table-cell>
+<table:table-cell office:value-type="string">
+<text:p>女</text:p>
+</table:table-cell>
+<table:table-cell office:value-type="string">
+<text:p>Indv0008</text:p>
+</table:table-cell>
+<table:table-cell office:value-type="string">
+<text:p>Indv0019</text:p>
+</table:table-cell>
+<table:table-cell office:value-type="string">
+<text:p>A</text:p>
+</table:table-cell>
+<table:table-cell table:number-columns-repeated="2" office:value-type="string">
+<text:p>.</text:p>
+</table:table-cell>
+<table:table-cell table:style-name="ce2" office:value-type="string">
+<text:p>周</text:p>
+</table:table-cell>
+<table:table-cell table:number-columns-repeated="4" office:value-type="string">
+<text:p>.</text:p>
+</table:table-cell>
+</table:table-row>
+<table:table-row table:style-name="ro2">
+<table:table-cell office:value-type="string">
+<text:p>Uni0002ZH</text:p>
+</table:table-cell>
+<table:table-cell office:value-type="string">
+<text:p>Indv0035</text:p>
+</table:table-cell>
+<table:table-cell office:value-type="string">
+<text:p>男</text:p>
+</table:table-cell>
+<table:table-cell office:value-type="string">
+<text:p>Indv0008</text:p>
+</table:table-cell>
+<table:table-cell office:value-type="string">
+<text:p>Indv0019</text:p>
+</table:table-cell>
+<table:table-cell table:number-columns-repeated="3" office:value-type="string">
+<text:p>.</text:p>
+</table:table-cell>
+<table:table-cell table:style-name="ce2" office:value-type="string">
+<text:p>东</text:p>
+</table:table-cell>
+<table:table-cell table:number-columns-repeated="4" office:value-type="string">
+<text:p>.</text:p>
+</table:table-cell>
+</table:table-row>
+<table:table-row table:style-name="ro2">
+<table:table-cell office:value-type="string">
+<text:p>Uni0002ZH</text:p>
+</table:table-cell>
+<table:table-cell office:value-type="string">
+<text:p>Indv0036</text:p>
+</table:table-cell>
+<table:table-cell office:value-type="string">
+<text:p>女</text:p>
+</table:table-cell>
+<table:table-cell office:value-type="string">
+<text:p>Indv0014</text:p>
+</table:table-cell>
+<table:table-cell office:value-type="string">
+<text:p>Indv0033</text:p>
+</table:table-cell>
+<table:table-cell table:number-columns-repeated="3" office:value-type="string">
+<text:p>.</text:p>
+</table:table-cell>
+<table:table-cell table:style-name="ce2" office:value-type="string">
+<text:p>马</text:p>
+</table:table-cell>
+<table:table-cell table:number-columns-repeated="4" office:value-type="string">
+<text:p>.</text:p>
+</table:table-cell>
+</table:table-row>
+<table:table-row table:style-name="ro2">
+<table:table-cell office:value-type="string">
+<text:p>Uni0002ZH</text:p>
+</table:table-cell>
+<table:table-cell office:value-type="string">
+<text:p>Indv0037</text:p>
+</table:table-cell>
+<table:table-cell office:value-type="string">
+<text:p>男</text:p>
+</table:table-cell>
+<table:table-cell office:value-type="string">
+<text:p>Indv0014</text:p>
+</table:table-cell>
+<table:table-cell office:value-type="string">
+<text:p>Indv0033</text:p>
+</table:table-cell>
+<table:table-cell office:value-type="string">
+<text:p>A</text:p>
+</table:table-cell>
+<table:table-cell table:number-columns-repeated="2" office:value-type="string">
+<text:p>.</text:p>
+</table:table-cell>
+<table:table-cell table:style-name="ce2" office:value-type="string">
+<text:p>马</text:p>
+</table:table-cell>
+<table:table-cell table:number-columns-repeated="4" office:value-type="string">
+<text:p>.</text:p>
+</table:table-cell>
+</table:table-row>
+<table:table-row table:style-name="ro2">
+<table:table-cell office:value-type="string">
+<text:p>Uni0002ZH</text:p>
+</table:table-cell>
+<table:table-cell office:value-type="string">
+<text:p>Indv0038</text:p>
+</table:table-cell>
+<table:table-cell office:value-type="string">
+<text:p>女</text:p>
+</table:table-cell>
+<table:table-cell office:value-type="string">
+<text:p>Indv0018</text:p>
+</table:table-cell>
+<table:table-cell office:value-type="string">
+<text:p>Indv0034</text:p>
+</table:table-cell>
+<table:table-cell office:value-type="string">
+<text:p>A</text:p>
+</table:table-cell>
+<table:table-cell table:number-columns-repeated="2" office:value-type="string">
+<text:p>.</text:p>
+</table:table-cell>
+<table:table-cell table:style-name="ce2" office:value-type="string">
+<text:p>丁</text:p>
+</table:table-cell>
+<table:table-cell table:number-columns-repeated="4" office:value-type="string">
+<text:p>.</text:p>
+</table:table-cell>
+</table:table-row>
+<table:table-row table:style-name="ro2">
+<table:table-cell office:value-type="string">
+<text:p>Uni0002ZH</text:p>
+</table:table-cell>
+<table:table-cell office:value-type="string">
+<text:p>Indv0039</text:p>
+</table:table-cell>
+<table:table-cell office:value-type="string">
+<text:p>男</text:p>
+</table:table-cell>
+<table:table-cell table:number-columns-repeated="5" office:value-type="string">
+<text:p>.</text:p>
+</table:table-cell>
+<table:table-cell table:style-name="ce2" office:value-type="string">
+<text:p>黄</text:p>
+</table:table-cell>
+<table:table-cell table:number-columns-repeated="4" office:value-type="string">
+<text:p>.</text:p>
+</table:table-cell>
+</table:table-row>
+<table:table-row table:style-name="ro1" table:number-rows-repeated="65497">
+<table:table-cell table:number-columns-repeated="13"/>
+</table:table-row>
+<table:table-row table:style-name="ro1">
+<table:table-cell table:number-columns-repeated="13"/>
+</table:table-row>
+</table:table>
+<table:table table:name="Sheet2" table:style-name="ta1" table:print="false">
+<table:table-column table:style-name="co1" table:default-cell-style-name="Default"/>
+<table:table-row table:style-name="ro1">
+<table:table-cell/>
+</table:table-row>
+</table:table>
+<table:table table:name="Sheet3" table:style-name="ta1" table:print="false">
+<table:table-column table:style-name="co1" table:default-cell-style-name="Default"/>
+<table:table-row table:style-name="ro1">
+<table:table-cell/>
+</table:table-row>
+</table:table>
+</office:spreadsheet>
+</office:body>
+</office:document-content>

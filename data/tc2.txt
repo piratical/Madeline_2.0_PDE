@@ -1,0 +1,14 @@
+Individualid	Familyid	gender	father	mother
+1	t	m	.	.
+2	t	f	.	.
+3	t	m	.	.
+4	t	f	1	2
+5	t	m	1	2
+6	t	f	.	.
+7	t	f	3	4
+8	t	f	3	4
+10	t	f	3	4
+9	t	f	10	11
+11	t	f	5	6
+12	t	f	5	6
+13	t	m	10	12

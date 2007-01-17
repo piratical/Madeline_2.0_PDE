@@ -1,0 +1,51 @@
+FamilyId   
+IndividualId
+Gender     
+Father     
+Mother     
+Affected   
+DZTwin     
+MZTwin     
+Firstname  
+Surname    
+Town       
+County     
+State
+      
+Uni0002BL  Indv0001   M          .          .          A          .          .          Charles    James      Chesaning  Saginaw    Michigan   
+Uni0002BL  Indv0002   F          .          .          .          .          .          Francine   Pitt       Chesaning  Saginaw    Michigan   
+Uni0002BL  Indv0003   M          .          .          .          .          .          Robert     Black      Dundee     Monroe     Michigan   
+Uni0002BL  Indv0004   F          .          .          .          .          .          Penelope   White      Dundee     Monroe     Michigan   
+Uni0002BL  Indv0005   M          .          .          .          .          .          James      Green      Litchfield Hillsdale  Michigan   
+Uni0002BL  Indv0006   F          .          .          .          .          .          Rachel     Burns      Milford    Oakland    Michigan   
+Uni0002BL  Indv0007   F          Indv0001   Indv0002   .          .          .          June       James      Chesaning  Saginaw    Michigan   
+Uni0002BL  Indv0008   M          Indv0001   Indv0002   .          .          .          Thomas     James      Chesaning  Saginaw    Michigan   
+Uni0002BL  Indv0009   M          Indv0001   Indv0002   .          .          .          Richard    James      Chesaning  Saginaw    Michigan   
+Uni0002BL  Indv0010   F          Indv0003   Indv0004   .          .          .          Francesca  Black      Dundee     Monroe     Michigan   
+Uni0002BL  Indv0011   M          Indv0003   Indv0004   .          .          .          George     Black      Dundee     Monroe     Michigan   
+Uni0002BL  Indv0012   F          Indv0005   Indv0006   A          .          .          Georgina   Green      Milford    Oakland    Michigan   
+Uni0002BL  Indv0013   F          Indv0005   Indv0006   .          .          .          Karina     Green      Milford    Oakland    Michigan   
+Uni0002BL  Indv0014   M          Indv0005   Indv0006   A          .          .          Edward     Green      Milford    Oakland    Michigan   
+Uni0002BL  Indv0015   F          .          .          .          .          .          Catherine  Smith      Chesaning  Saginaw    Michigan   
+Uni0002BL  Indv0016   M          .          .          .          .          .          Paul       Farmer     Chesaning  Saginaw    Michigan   
+Uni0002BL  Indv0017   F          Indv0016   Indv0007   .          .          .          May        Farmer     Chesaning  Saginaw    Michigan   
+Uni0002BL  Indv0018   M          Indv0016   Indv0007   .          .          .          Phillip    Farmer     Chesaning  Saginaw    Michigan   
+Uni0002BL  Indv0019   F          Indv0016   Indv0007   .          .          .          Joyce      Farmer     Chesaning  Saginaw    Michigan   
+Uni0002BL  Indv0020   F          Indv0008   Indv0015   .          .          .          Jennifer   James      Chesaning  Saginaw    Michigan   
+Uni0002BL  Indv0021   M          Indv0008   Indv0015   .          .          .          Tracy      James      Chesaning  Saginaw    Michigan   
+Uni0002BL  Indv0022   M          Indv0008   Indv0015   .          .          .          Boyd       James      Chesaning  Saginaw    Michigan   
+Uni0002BL  Indv0023   F          Indv0009   Indv0010   .          .          .          Angela     James      Dundee     Monroe     Michigan   
+Uni0002BL  Indv0024   M          Indv0009   Indv0010   .          .          .          Adam       James      Dundee     Monroe     Michigan   
+Uni0002BL  Indv0025   F          Indv0011   Indv0013   .          .          .          Angelina   Black      Milford    Oakland    Michigan   
+Uni0002BL  Indv0026   F          Indv0011   Indv0013   .          .          .          Jane       Black      Milford    Oakland    Michigan   
+Uni0002BL  Indv0027   M          Indv0011   Indv0013   .          .          .          William    Black      Milford    Oakland    Michigan   
+Uni0002BL  Indv0028   F          Indv0039   Indv0012   .          .          A          Alice      Post       Milford    Oakland    Michigan   
+Uni0002BL  Indv0029   F          Indv0039   Indv0012   A          .          A          Elizabeth  Post       Milford    Oakland    Michigan   
+Uni0002BL  Indv0030   F          Indv0039   Indv0012   .          .          A          Catherine  Post       Milford    Oakland    Michigan   
+Uni0002BL  Indv0033   F          Indv0011   Indv0013   .          .          .          Victoria   Black      Milford    Oakland    Michigan   
+Uni0002BL  Indv0034   F          Indv0008   Indv0019   A          .          .          Isabelle   James      Chesaning  Saginaw    Michigan   
+Uni0002BL  Indv0035   M          Indv0008   Indv0019   .          .          .          Matthew    James      Chesaning  Saginaw    Michigan   
+Uni0002BL  Indv0036   F          Indv0014   Indv0033   .          .          .          Francine   Green      Milford    Oakland    Michigan   
+Uni0002BL  Indv0037   M          Indv0014   Indv0033   A          .          .          Louis      Green      Milford    Oakland    Michigan   
+Uni0002BL  Indv0038   F          Indv0018   Indv0034   A          .          .          Mary       Farmer     Chesaning  Saginaw    Michigan   
+Uni0002BL  Indv0039   M          .          .          .          .          .          Patrick    Post       Zeeland    Ottawa     Michigan   

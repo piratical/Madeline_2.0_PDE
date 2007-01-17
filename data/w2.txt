@@ -1,0 +1,8 @@
+Individualid	Familyid	Gender	Father	Mother	Affected	Deceased	Sampled	Proband	DOB	DZTwin
+M100	MF2	M	.	.	.	.	.	.	.	.
+M101	MF2	F	.	.	.	Y	Y	.	.	.
+M102	MF2	.	M100	M101	A	.	.	.	.	.
+M103	MF2	M	.	.	.	.	.	.	.	.
+M104	MF2	F	M103	M102	.	.	Y	Y	1989	A	
+M105	MF2	F	M103	M102	U	.	.	.	1989	A
+M106	MF2	F	M103	M102	A	.	.	.	1991	.

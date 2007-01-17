@@ -1,0 +1,89 @@
+<?xml version="1.0" standalone="no"?>
+ <svg version="1.1"  id="svgDC" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0,0,1024,768"  onload="init()" >
+ <defs>
+  <style type="text/css"><![CDATA[
+
+line{
+	stroke-linejoin:miter;
+	stroke:#000;
+	stroke-width:0.5mm;
+	stroke-linejoin:miter;
+	stroke-linecap:square;
+}
+
+rect{
+	fill:#fff;
+	stroke:#000;
+	stroke-width:0.5mm;
+	stroke-linejoin:miter;
+	stroke-linecap:square;
+}
+
+circle{
+	fill:#fff;
+	stroke:#000;
+	stroke-width:0.5mm;
+}
+
+text{
+	font-family:"Bitstream Vera Sans",sans-serif;
+	font-size:12px;
+}
+
+.dashed{
+	stroke:#930;
+}
+
+.layer text{
+	fill:#930;
+}
+
+.layer line{
+	stroke:#6d7b8d;
+}
+
+.affected{
+	fill:#6d7b8d;
+}
+
+.header{
+	font-size:18px;
+	font-weight:bold;
+}
+
+]]></style>
+ <script type="text/javascript" xlink:href="javascript/madeline.js"></script>
+ </defs>
+
+ <g id="layer0" class="layer" >
+ </g>
+
+  <text x="540.35" y="30" text-anchor="middle"  class="header" >F008</text>
+  <rect x="500.66" y="38.66" width="22.68" height="22.68" id="U0294"  />
+  <text x="512" y="78.0927" text-anchor="middle" >I</text>
+  <text x="512" y="97.1825" text-anchor="middle" >.</text>
+  <text x="512" y="116.272" text-anchor="middle" >พระนคร...</text>
+  <text x="512" y="135.362" text-anchor="middle" >.</text>
+  <line x1="523.34" y1="50" x2="557.36" y2="50" />
+  <circle cx="568.7" cy="50" r="11.34" id="U0295"  />
+  <text x="568.7" y="78.0927" text-anchor="middle" >I</text>
+  <text x="568.7" y="97.1825" text-anchor="middle" >.</text>
+  <text x="568.7" y="116.272" text-anchor="middle" >อุทัยธานี</text>
+  <text x="568.7" y="135.362" text-anchor="middle" >.</text>
+  <line x1="540.35" y1="50" x2="540.35" y2="163.4" />
+  <line x1="512" y1="163.4" x2="512" y2="191.75" />
+  <circle cx="512" cy="203.09" r="11.34" id="I2461"  class="affected"  />
+  <text x="512" y="231.183" text-anchor="middle" >A</text>
+  <text x="512" y="250.272" text-anchor="middle" >.</text>
+  <text x="512" y="269.362" text-anchor="middle" >กรุงเทพฯ</text>
+  <text x="512" y="288.452" text-anchor="middle" >.</text>
+  <line x1="568.7" y1="163.4" x2="568.7" y2="191.75" />
+  <rect x="557.36" y="191.75" width="22.68" height="22.68" id="I5421"  class="affected"  />
+  <text x="568.7" y="231.183" text-anchor="middle" >A</text>
+  <text x="568.7" y="250.272" text-anchor="middle" >.</text>
+  <text x="568.7" y="269.362" text-anchor="middle" >สุโขทัย</text>
+  <text x="568.7" y="288.452" text-anchor="middle" >.</text>
+  <line x1="512" y1="163.4" x2="568.7" y2="163.4" />
+
+ </svg>
+
