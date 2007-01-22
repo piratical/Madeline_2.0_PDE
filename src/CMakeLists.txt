@@ -247,7 +247,7 @@ TARGET_LINK_LIBRARIES(minimadeline
 	${LASI_LINK_FLAGS}
 	${optionalLibs}
 	${LIBXML2_LIBRARIES} 
-	
+	stdc++	
 )
 
 #
