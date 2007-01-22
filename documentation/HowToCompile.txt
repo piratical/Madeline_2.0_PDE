@@ -1,0 +1,69 @@
+Notes on Compiling Madeline
+
+Required Tools
+==============
+
+The following software tools may be required before you can
+build Madeline:
+
+1. SVN: http://subversion.tigris.org/ 
+
+You may need an SVN client in order to checkout the latest code
+from our code repository.  You must use svn+ssh to access 
+our repository:
+
+~> svn co svn+ssh://retina.ophthy.med.umich.edu/SVN/madeline2/trunk madeline2
+
+The first time you check out the code, SVN may ask you for your 
+password as many as three times.  After that, SVN will normally ask
+you for your password only once.
+
+2. CMake: http://cmake.org/
+
+The CMake build system is used instead of the GNU automake and
+autoconf system that you may be more familiar with.  Once you 
+have checked out Madeline, enter the Madeline directory and run
+ccmake in order to configure interactively.  Be sure to include
+the "." indicating the current directory:
+
+~> cd madeline2
+~> ccmake .
+
+CCMake is a curses configuration client.  You can also use the
+command-line client, cmake :
+
+~> cmake .
+
+
+Required Libraries
+==================
+
+1. LibXML2
+
+2. Pango
+
+3. LASi
+
+
+GCC Compiler
+============
+
+By default, the CMake build system will look for a working GCC
+compiler.
+
+
+Intel ICC Compiler
+==================
+
+You need to tell CMake if you want to use Intel's ICC compiler.
+Be sure to provide the actual paths to the icc and icpc executables.
+Depending on your platform and how you install ICC, you might have
+symbolic links in /usr/bin or in /usr/local/bin, or you might even
+have to specify the full path in /opt/intel/... :
+
+~> CC=/usr/bin/icc CXX=/usr/bin/icpc ccmake .
+
+... or:
+
+~> CC=/usr/bin/icc CXX=/usr/bin/icpc cmake .
+

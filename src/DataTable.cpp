@@ -872,8 +872,11 @@ ColorSeries *DataTable::getColorSeriesFromStack(unsigned nth) const{
 void DataTable::_setColorSeriesStack(void){
 	
 	if(_iconColumns.size()){
-		
-		if(!_colorSeriesStack) _colorSeriesStack = new ColorSeriesStack();
+		//
+		// Passing true to the ColorSeriesStack 
+		// constructor creates bichromatic color series:
+		//
+		if(!_colorSeriesStack) _colorSeriesStack = new ColorSeriesStack(true);
 		for(unsigned int i=0;i<_iconColumns.size();i++){
 			
 			unsigned levels = getColumn(_iconColumns[i])->getUniqueList()->getAllLevels();
