@@ -4,8 +4,6 @@
 #include <iostream>
 #include <fstream>
 #include <cstring>
-//#include <netxx/netxx.h>
-//#include <netxx/tls/netxx.h>
 #include "../3rdParty/netxx/netxx/netxx.h"
 #include "../3rdParty/netxx/netxx/tls/netxx.h"
 
@@ -18,7 +16,7 @@ private:
 	std::string _networkFileString;
 	std::string _serverResponseHeader;
 	unsigned int _fileSize;
-  std::string _fileName;
+	std::string _fileName;
 	//
 	// Private Methods:
 	//
@@ -33,6 +31,6 @@ public:
 	std::string getNetworkFile(const char*);
 	std::string getServerResponseHeader() const { return _serverResponseHeader; }
 	unsigned int getFileSize() const{ return _fileSize; }
-  std::string getFileName() {return _fileName;}
+	std::string getFileName() {return _fileName;}
 };
 #endif

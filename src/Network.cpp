@@ -75,12 +75,6 @@ void Network::_requestServerResource(const char* url){
 		}
 	}
 	_fileName = sfn;
-//  fwrite(sfp,);
-//  fclose(sfp);
-//  std::cout << "------------------------------------------INSIDE-------------------------------------------" << sfn << std::endl;
- // std::cout << sfp << std::endl;
-//	std::ofstream outfile ("net",std::ofstream::binary);
-//	std::ofstream outfile(sfn,std::ofstream::binary);
 	Netxx::signed_size_type length;
 	
 	while ( (length = client.read(buffer, sizeof(buffer))) > 0){
@@ -100,29 +94,19 @@ void Network::_requestServerResource(const char* url){
 			// Copy the stream that follows after the header into a file.
 			//
 			memcpy(tempBuffer,end,length-headerOffset);
-
-			// Debugging: Write to a file:
-			//outfile.write(tempBuffer,length-headerOffset);
-
+			
 			fwrite (tempBuffer , 1 , length-headerOffset , sfp);
 			_networkFileString.assign(tempBuffer,length-headerOffset);
 			currentSize = length-headerOffset;
 			
-			// Debugging:
-			// std::cout.write(buffer,headerOffset);
-			
 			// Copy the server response header:
 			_serverResponseHeader.assign(buffer,headerOffset);
 		}else{
-		//	outfile.write(buffer,length);
 			fwrite (buffer , 1 , length , sfp);
 			_networkFileString.append(buffer,length);
 			currentSize+=length;
 		}
 	}
-//   std::cout << "\n\n\n\nNETWORK FILE STRING:\n" << _networkFileString << std::endl<< std::endl<< std::endl<< std::endl<< std::endl<< std::endl;
-//	outfile.close();
-//  outfile.clear();
 	fclose(sfp);
 	// Set the file size:
 	_fileSize = currentSize;
@@ -169,16 +153,12 @@ void Network::_requestSecureServerResource(const char* url){
 		}
 	}
 	_fileName = sfn;
-
-	//std::ofstream outfile ("net",std::ofstream::binary);
+	
 	Netxx::signed_size_type length;
 	
 	while ( (length = client.read(buffer, sizeof(buffer))) > 0){
 		
 		if(!headerFlag){
-			// Debugging:
-			// std::cout << "Filesize is:" << _fileSize << std::endl;
-			
 			//
 			// Determine the location of the SERVER response header
 			// in bytes. 
@@ -192,11 +172,6 @@ void Network::_requestSecureServerResource(const char* url){
 			headerOffset = (end - start);
 			
 			memcpy(tempBuffer,end,length-headerOffset);
-			// Debugging: write to a file
-			//outfile.write(tempBuffer,length-headerOffset);
-			
-			// Debugging:
-			// std::cout.write(tempBuffer,length-headerOffset);
 			
 			//
 			// Copy the stream that follows after the header into a file.
@@ -210,10 +185,8 @@ void Network::_requestSecureServerResource(const char* url){
 			_networkFileString.append(buffer,length);
 			currentSize+=length;
 			fwrite (buffer , 1 , length , sfp);
-			//outfile.write(buffer,length);
 		}
 	}
-	//outfile.close();
 	fclose(sfp);
 	// Set the file size:
 	_fileSize = currentSize;
