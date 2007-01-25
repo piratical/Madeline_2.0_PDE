@@ -691,14 +691,17 @@ void Pedigree::_reorderDescentTreesBasedOnExternalConnections(){
 	
 	// The most complex tree is in the center; 2 of the remaining trees which have max connections with it flank it on either side 
 	unsigned max= 0,complexDTIndex=0;
+	
 	for(unsigned i=0;i<_descentTrees.size();i++){
 		if(_descentTrees[i]->getNumberOfExternalConnections() >= max){
 			max = _descentTrees[i]->getNumberOfExternalConnections();
-			if(complexDTIndex  == 0 || _descentTrees[i]->hasConsanguinity())
+			if(complexDTIndex  == 0 || _descentTrees[i]->hasConsanguinity()){
 				complexDTIndex = i;
+			}else if(!_dtsHaveConsanguinity && _descentTrees[complexDTIndex]->getNumberOfExternalConnections() < max){
+				complexDTIndex = i;
+			}
 		}
 	}
-	//std::cout << " Most complex descent Tree is " << _descentTrees[complexDTIndex]->getId() << std::endl;
 	std::deque<DescentTree*> orderedDescentTrees;
 	orderedDescentTrees.push_back(_descentTrees[complexDTIndex]);
 	
@@ -756,12 +759,10 @@ void Pedigree::_reorderDescentTreesBasedOnExternalConnections(){
 	}
 	// DEBUG:
 	//std::cout << " THE REORDERED DT vector IS " << std::endl;
-	//bool dtsHaveConsanguinity= false;
+	
 	_descentTrees.clear();
 	for(unsigned i=0;i<orderedDescentTrees.size();i++){
 		_descentTrees.push_back(orderedDescentTrees[i]);
-		//if(orderedDescentTrees[i]->hasConsanguinity())
-			//dtsHaveConsanguinity = true;
 	}
 	
 	

@@ -738,7 +738,8 @@ void DrawingCanvas::drawIndividual(Individual* pIndividual,double x,double y,boo
 		// or an individual with a consanguinous or external loop.
 		// In such cases draw a dashed individual to represent a repeat.
 		//
-		if(pIndividual->isOrdinaryFounder() || isDashed);
+		//if(pIndividual->isOrdinaryFounder() || isDashed);
+		if(isDashed);
 		else return;
 		
 	}
@@ -810,7 +811,7 @@ void DrawingCanvas::drawIndividual(Individual* pIndividual,double x,double y,boo
 	//
 	// Draw the icon shading first:
 	//
-	if(!pIndividual->hasBeenDrawn()) 
+	if(!pIndividual->hasBeenDrawn() && pIndividual->getGender().getEnum() != Gender::MISSING) 
 		iconPie(x,y,pIndividual);
 	
 	//
@@ -863,7 +864,7 @@ void DrawingCanvas::drawIndividual(Individual* pIndividual,double x,double y,boo
 		// drawLabelSet
 		drawLabelSet(pIndividual);
 		
-	}else{
+	}else if(pIndividual->isOriginalFounder()){
 		// For individuals who have already been drawn -- display only the id 
 		y+= DrawingMetrics::getIconRadius()  +
 		    DrawingMetrics::getLabelMargin() + 
