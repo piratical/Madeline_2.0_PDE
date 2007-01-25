@@ -863,18 +863,17 @@ void DrawingCanvas::drawIndividual(Individual* pIndividual,double x,double y,boo
 		// drawLabelSet
 		drawLabelSet(pIndividual);
 		
-	}
-	/*else{
+	}else{
+		// For individuals who have already been drawn -- display only the id 
 		y+= DrawingMetrics::getIconRadius()  +
 		    DrawingMetrics::getLabelMargin() + 
 		    DrawingMetrics::getYMaximum()    +
 		    DrawingMetrics::getLineHeight();
 		
-		//
 		drawText(x,y, _labelManager.fitStringToLabelWidth(pIndividual->getId().get()) );
 		
 	}
-	*/
+	
 	
 	//
 	// Mark as drawn:
