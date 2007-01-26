@@ -1161,9 +1161,9 @@ void DrawingCanvas::iconPie( double x, double y, Individual *pIndividual ){
 		//
 		// No affected fields : Draw a small circle in the middle:
 		//
-		_body << "<circle cx=\"" << x << "\" cy=\"" << y << "\" r=\"" << 0.5*DrawingMetrics::getScalingFactor() << "\"";
-		_body << " class=\"thinLine\"";
-		_body << "/>\n";
+		//_body << "<circle cx=\"" << x << "\" cy=\"" << y << "\" r=\"" << 0.5*DrawingMetrics::getScalingFactor() << "\"";
+		//_body << " class=\"thinLine\"";
+		//_body << "/>\n";
 		return;
 	}
 	
@@ -1215,7 +1215,6 @@ void DrawingCanvas::iconPie( double x, double y, Individual *pIndividual ){
 		unsigned level;
 		std::string label;
 		pUL->getOrdinalAndLabelForKey( pDC->getDataAtIndex( pIndividual->getRowIndex() ),label,level );
-		unsigned numberOfLevels = pUL->getAllLevels();
 		//
 		// UniqueList ordinals are 1-offset, so we should only get zero back
 		// if the key was not found, which should never happen:

@@ -68,6 +68,7 @@ public:
 			// Get the UniqueList for this column:
 			//
 			const UniqueList * pUL = pDC->getUniqueList();
+			//std::cout << " pUL has missing " << pUL->getCountMissing() << std::endl;
 			//
 			// What is the level and label in the UniqueList corresponding to the data value
 			// for this individual?
@@ -75,7 +76,8 @@ public:
 			std::string label = _ppedigreeTable->getColumn( _ppedigreeTable->getIconColumnIndex(i) )->getName();
 			psvg->drawText(os,x,ystt, plm->fitStringToLabelWidth( label ) );
 			ystt += labelMargin;
-			std::vector<std::string> levels = pUL->getLabels();
+			std::vector<std::string> labels = pUL->getLabels();
+			unsigned levelsCount = labels.size();
 			//
 			// Get the color series corresponding to this icon column:
 			//
@@ -85,12 +87,22 @@ public:
 			//
 			bool reversed=true;
 			std::string textClass;
-			for(unsigned j=0;j<levels.size();j++){
+			// Check if there exists a missing level
+			if(pUL->getCountMissing()){
+				levelsCount++;
+				// push the missing label:
+				labels.push_back(".");
+			}
+			double ytemp;
+			for(unsigned j=0;j<levelsCount;j++){
 				if(pCS->reversedSeriesUseBlackInkAtLevel(j)) textClass = "blackInkLetter_1";
 				else textClass="whiteInkLetter_1";
 				std::string style = "fill:" + (reversed?pCS->reversedSeriesGetColorAtLevel(j):pCS->getColorAtLevel(j)) + ";";
 				psvg->drawRectangle(os,xstt,ystt,_width-2*labelMargin,lineHeight,"","",style);
-				psvg->drawText(os,x,ystt+lineHeight/2+DrawingMetrics::getYMaximum()/2, plm->fitStringToLabelWidth( levels[j] ),textClass );
+				ytemp = ystt+lineHeight/2;
+				if(j < levelsCount - 1) ytemp +=  DrawingMetrics::getYMaximum()/2;
+				else if(!pUL->getCountMissing()) ytemp += DrawingMetrics::getYMaximum()/2;
+				psvg->drawText(os,x,ytemp, plm->fitStringToLabelWidth( labels[j] ),textClass );
 				ystt += lineHeight;
 				_height += lineHeight;
 			}
