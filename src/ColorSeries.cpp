@@ -37,7 +37,7 @@
 // Static Members:
 //
 
-double ColorSeries::_twoSaturations[]   = {0.12,1.0};
+double ColorSeries::_twoSaturations[]   = {0.00,1.0};
 double ColorSeries::_threeSaturations[] = {0.12,0.48,1.0};
 double ColorSeries::_fourSaturations[]  = {0.12,0.30,0.65,1.0};
 double ColorSeries::_fiveSaturations[]  = {0.12,0.24,0.48,0.65,1.0};
@@ -105,7 +105,7 @@ ColorSeries::ColorSeries(unsigned levels,const DrawingColor &endColor,const Draw
 	
 	double h,s,v,fraction;
 	
-	for(int i=0;i<_levels;i++){
+	for(unsigned i=0;i<_levels;i++){
 		
 		if( startColorIsWhite && _levels<=5){
 			//

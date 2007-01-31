@@ -375,19 +375,25 @@ public:
 		// => For monochromatic series, just the "monochromat" colors are
 		//    used to create ColorSeries.
 		//
-		// => For bichormatic series, both the "monochromat" and the 
+		// => For bichromatic series, both the "monochromat" and the 
 		//    "bichromat" at a given matching index are used.
 		//    
-		DrawingMetrics::monochromat.push_back(DrawingColor("black","#000"));
-		DrawingMetrics::bichromat.push_back(  DrawingColor("yellowOrange","#ffc600"));
-		DrawingMetrics::monochromat.push_back(DrawingColor("navy","#0055ff")); // was #060083
+		// => The very first color series is used as the default when there is
+		//    only one pie section.  Therefore, we force it to be plain black
+		//    & white.
+		//    
+		// => The 2nd, 3rd, 4th, etc. color series are to be used when
+		//    there is more than one pie section:
+		//    
+		//DrawingMetrics::monochromat.push_back(DrawingColor("black","#000")); // DEFAULT
+		//DrawingMetrics::bichromat.push_back(  DrawingColor("white","#fff")); // DEFAULT
+		
+		DrawingMetrics::monochromat.push_back(DrawingColor("navy","#0055ff"));
 		DrawingMetrics::bichromat.push_back(  DrawingColor("maize","#ffd803"));
-		DrawingMetrics::monochromat.push_back(DrawingColor("red","#ffb400")); // was #800
+		DrawingMetrics::monochromat.push_back(DrawingColor("red","#ffb400"));
 		DrawingMetrics::bichromat.push_back(  DrawingColor("banana","#ffffa2"));
 		DrawingMetrics::monochromat.push_back(DrawingColor("forest","#003f00"));
 		DrawingMetrics::bichromat.push_back(  DrawingColor("peach","#ffcca2"));
-		//DrawingMetrics::monochromat.push_back(DrawingColor("navy","#060083"));
-		//DrawingMetrics::bichromat.push_back(  DrawingColor("maize","#ffd803"));
 		DrawingMetrics::monochromat.push_back(DrawingColor("ceramicBlue","#768dff"));
 		DrawingMetrics::bichromat.push_back(  DrawingColor("lavender","#fcf"));
 	}

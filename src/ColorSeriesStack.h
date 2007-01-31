@@ -34,9 +34,14 @@
 
 class ColorSeriesStack{
 	
+public:
+	
+	enum SERIESTYPE{ BLACKANDWHITE, MONOCHROMATIC, BICHROMATIC };
+	
 private:
 	
-	bool _seriesAreBichromatic;
+	SERIESTYPE _type;
+	
 	//unsigned _n;
 	std::vector<ColorSeries *> _colorSeriesStack;
 	
@@ -44,7 +49,7 @@ private:
 public:
 	
 	// Constructor:
-	ColorSeriesStack(bool seriesAreBichromatic=false);
+	ColorSeriesStack( SERIESTYPE type = BICHROMATIC );
 	
 	// Destructor:
 	~ColorSeriesStack();

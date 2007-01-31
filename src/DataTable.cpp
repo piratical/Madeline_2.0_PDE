@@ -220,6 +220,7 @@ DataTable::~DataTable()
 	// If there is a ColorSeriesStack, remove it:
 	//
 	if(_colorSeriesStack) delete _colorSeriesStack;
+	if(_blackAndWhiteSeriesStack) delete _blackAndWhiteSeriesStack;
 	
 	//std::cout << "~Datacolumn end" << std::endl;
 	
@@ -867,6 +868,17 @@ ColorSeries *DataTable::getColorSeriesFromStack(unsigned nth) const{
 }
 
 //
+// getBlackAndWhiteSeriesFromStack
+//
+ColorSeries *DataTable::getBlackAndWhiteSeriesFromStack(unsigned nth) const{
+	
+	if(_blackAndWhiteSeriesStack) return _blackAndWhiteSeriesStack->get(nth);
+	else                          return 0;
+	
+}
+
+
+//
 // _setColorSeriesStack(void);
 //
 void DataTable::_setColorSeriesStack(void){
@@ -876,11 +888,14 @@ void DataTable::_setColorSeriesStack(void){
 		// Passing true to the ColorSeriesStack 
 		// constructor creates bichromatic color series:
 		//
-		if(!_colorSeriesStack) _colorSeriesStack = new ColorSeriesStack(true);
+		if(!_colorSeriesStack) _colorSeriesStack = new ColorSeriesStack(ColorSeriesStack::BICHROMATIC);
+		if(!_blackAndWhiteSeriesStack) _blackAndWhiteSeriesStack = new ColorSeriesStack(ColorSeriesStack::BLACKANDWHITE);
+		
 		for(unsigned int i=0;i<_iconColumns.size();i++){
 			
 			unsigned levels = getColumn(_iconColumns[i])->getUniqueList()->getAllLevels();
 			_colorSeriesStack->add(levels);
+			_blackAndWhiteSeriesStack->add(levels);
 			
 		}
 	}

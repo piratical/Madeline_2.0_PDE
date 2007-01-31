@@ -1160,6 +1160,7 @@ void DrawingCanvas::iconPie( double x, double y, Individual *pIndividual ){
 	if(!sections){
 		//
 		// No affected fields : Draw a small circle in the middle:
+		// (Nice for debugging -- otherwise comment out )
 		//
 		//_body << "<circle cx=\"" << x << "\" cy=\"" << y << "\" r=\"" << 0.5*DrawingMetrics::getScalingFactor() << "\"";
 		//_body << " class=\"thinLine\"";
@@ -1228,16 +1229,30 @@ void DrawingCanvas::iconPie( double x, double y, Individual *pIndividual ){
 		//
 		// Get the color series corresponding to this icon column:
 		//
-		ColorSeries * pCS = pDT->getColorSeriesFromStack(i);
+		// NOTA BENE: (1) IF there is only one section, we use the blackAndWhite series.
+		//
+		//            (2) ELSE if there are more than one section, we use the color series:
+		//
+		ColorSeries *pCS;
+		if(sections==1){
+			pCS = pDT->getBlackAndWhiteSeriesFromStack(i);
+		}else{
+			pCS = pDT->getColorSeriesFromStack(i);
+		}
 		//
 		// Assume reversed for now:
 		//
 		bool reversed=true;
 		std::string arcClass="blackInkLetter";
 		if(!pCS->reversedSeriesUseBlackInkAtLevel(level)) arcClass="whiteInkLetter";
-		if(sections == 1)      arcClass += "_1";
-		else if(sections == 2) arcClass += "_2";
-		else if(sections == 3) arcClass += "_3";
+		
+		//
+		// What is the point of "arcClass_n" ? I don't get it ...
+		//
+		//if(sections == 1)      arcClass += "_1";
+		//else if(sections == 2) arcClass += "_2";
+		//else if(sections == 3) arcClass += "_3";
+		
 		arc(x,y,radius,startAngle,endAngle,(reversed?pCS->reversedSeriesGetColorAtLevel(level):pCS->getColorAtLevel(level)),label,arcClass,isMale);
 		startAngle+=arcAngle;
 		endAngle+=arcAngle;

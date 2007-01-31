@@ -110,6 +110,7 @@ private:
 	std::vector<unsigned> _labelColumns; // columns shown as labels or for output;
 	
 	ColorSeriesStack *_colorSeriesStack;
+	ColorSeriesStack *_blackAndWhiteSeriesStack;
 	
 	//
 	// Which optional core data columns exist?
@@ -226,7 +227,8 @@ public:
 	
 	ColorSeriesStack *getColorSeriesStack(void) const;
 	ColorSeries *getColorSeriesFromStack(unsigned nth) const;
-
+	ColorSeries *getBlackAndWhiteSeriesFromStack(unsigned nth) const;
+	
 };
 
 #endif

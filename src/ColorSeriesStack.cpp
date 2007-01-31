@@ -30,11 +30,11 @@
 //
 // Constructor:
 //
-ColorSeriesStack::ColorSeriesStack( bool seriesAreBichromatic){
+ColorSeriesStack::ColorSeriesStack( SERIESTYPE type ){
 	
-	_seriesAreBichromatic = seriesAreBichromatic;
+	_type = type;
 	
-};
+}
 
 
 //
@@ -42,7 +42,7 @@ ColorSeriesStack::ColorSeriesStack( bool seriesAreBichromatic){
 //
 void ColorSeriesStack::setBichromatic(bool seriesAreBichromatic){
 	
-	_seriesAreBichromatic = seriesAreBichromatic;
+	_type = BICHROMATIC;
 	
 }
 
@@ -78,32 +78,42 @@ void ColorSeriesStack::add(unsigned levels){
 		//
 		// Use predefined color series based on DrawingMetrics colors:
 		//
-		if(_seriesAreBichromatic){
-			pCS = new ColorSeries(levels,DrawingMetrics::monochromat[n],DrawingMetrics::bichromat[n]);
-		}else{
+		switch(_type){
+		case BLACKANDWHITE:
+			pCS = new ColorSeries(levels,DrawingColor("black","#000"));
+			break;
+		case MONOCHROMATIC:
 			pCS = new ColorSeries(levels,DrawingMetrics::monochromat[n]);
+			break;
+		case BICHROMATIC:
+			pCS = new ColorSeries(levels,DrawingMetrics::monochromat[n],DrawingMetrics::bichromat[n]);
+			break;
 		}
 	}else{
-		//
-		// Use random colors:
-		//
-		RandomGenerator r;
-		DrawingColor color1;
-		//
-		// Randomly choose a color with at least 50% saturation and 50% value:
-		// i.e., we choose relatively brighter and more saturated colors ...
-		//
-		color1.setFromHSV(r.getIntegerInRange(0,360),r.getIntegerInRange(50,100),r.getIntegerInRange(50,100));
 		
-		if(_seriesAreBichromatic){
-			// Set color2 to the complement of color1:
-			DrawingColor color2;
-			color2.set(color1.getComplement());
-			pCS = new ColorSeries(levels,color1,color2);
+		if( _type==BLACKANDWHITE ){
+			pCS = new ColorSeries(levels,DrawingColor("black","#000"));
 		}else{
-			pCS = new ColorSeries(levels,color1);
+			//
+			// Use random colors:
+			//
+			RandomGenerator r;
+			DrawingColor color1;
+			//
+			// Randomly choose a color with at least 50% saturation and 50% value:
+			// i.e., we choose relatively brighter and more saturated colors ...
+			//
+			color1.setFromHSV(r.getIntegerInRange(0,360),r.getIntegerInRange(50,100),r.getIntegerInRange(50,100));
+			
+			if(_type==BICHROMATIC){
+				// Set color2 to the complement of color1:
+				DrawingColor color2;
+				color2.set(color1.getComplement());
+				pCS = new ColorSeries(levels,color1,color2);
+			}else{
+				pCS = new ColorSeries(levels,color1);
+			}
 		}
-		
 	}
 	_colorSeriesStack.push_back(pCS);
 	
