@@ -338,6 +338,18 @@ void NuclearFamily::_drawTwinConnectors(DrawingCanvas& dc,bool classicalOrder){
 	 
 }
 
+bool NuclearFamily::_hasIndividualInDeque(Individual* individual,const std::deque<Individual*>& individualQ){
+	
+	
+	for(unsigned j=0;j<individualQ.size();j++){
+		if(individualQ[j]->getId() == individual->getId()){
+			return true;
+		}
+	}
+	return false;
+	
+}
+
 ////////////////////////////////////////
 //
 // PUBLIC METHODS
@@ -432,32 +444,21 @@ void NuclearFamily::sortChildrenInClassicalOrder(bool consanguinousLoop,bool mul
 			leftLoopIndividuals.pop_back();
 			rightLoopIndividuals.pop_front();
 			
-			bool leftflag=true;
+			bool hasLeftLoopIndividuals = false;
 			// Merge the remaining individuals on the left loop to the LHS of result
 			while(!leftLoopIndividuals.empty()){
-				leftflag = true;
 				// Check if the individual is not already in the result
-				for(unsigned j=0;j<result.size();j++){
-					if(result[j]->getId() == leftLoopIndividuals.back()->getId()){
-						leftLoopIndividuals.pop_back();
-						leftflag=false;
-						break;
-					}
-				}
-				if(leftflag){ result.push_front(leftLoopIndividuals.back()); leftLoopIndividuals.pop_back(); }
+				if(!_hasIndividualInDeque(leftLoopIndividuals.back(),result)){ 
+					result.push_front(leftLoopIndividuals.back()); 
+				}else hasLeftLoopIndividuals=true;
+				leftLoopIndividuals.pop_back(); 
 			}
-			bool rightflag = true;
 			// Merge the remaining individuals on the right loop to the RHS of result
 			while(!rightLoopIndividuals.empty()){
-				rightflag = true;
-				for(unsigned j=0;j<result.size();j++){
-					if(result[j]->getId() == rightLoopIndividuals.front()->getId()){
-						rightLoopIndividuals.pop_front();
-						rightflag=false;
-						break;
-					}
+				if(!_hasIndividualInDeque(rightLoopIndividuals.front(),result)){ 
+					result.push_back(rightLoopIndividuals.front()); 
 				}
-				if(rightflag){ result.push_back(rightLoopIndividuals.front()); rightLoopIndividuals.pop_front(); }
+				rightLoopIndividuals.pop_front(); 
 				
 			}
 			
@@ -477,8 +478,11 @@ void NuclearFamily::sortChildrenInClassicalOrder(bool consanguinousLoop,bool mul
 						initial.pop_back();
 					}
 				
-				}else{ 
+				}else if(hasLeftLoopIndividuals){ 
 					result.push_front(initial.back());
+					initial.pop_back();
+				}else{ 
+					result.push_back(initial.back());
 					initial.pop_back();
 				}
 			}
@@ -486,23 +490,27 @@ void NuclearFamily::sortChildrenInClassicalOrder(bool consanguinousLoop,bool mul
 		
 	}else{
 		// push all the left loop individuals to the right of result
+		
 		while(!leftLoopIndividuals.empty()){
-			initial.push_back(leftLoopIndividuals.front());
-			leftLoopIndividuals.pop_front();
-		}
-		// merge the remaining individuals on the right loop to the left of result
-		bool flag;
-		while(!rightLoopIndividuals.empty()){
-			flag = true;
-			for(unsigned j=0;j<initial.size();j++){
-				
-				if(initial[j]->getId() == rightLoopIndividuals.back()->getId()){
-					rightLoopIndividuals.pop_back();
-					flag=false;
-					break;
+			if(!_hasIndividualInDeque(leftLoopIndividuals.front(),initial)){
+				initial.push_back(leftLoopIndividuals.front());
+				if(rightLoopIndividuals.front()->getRightFlag(consanguinousLoop) == initial.back()->getLeftFlag(consanguinousLoop) && initial.back()->getId() != rightLoopIndividuals.front()->getId()){
+					// Check to see if the individual is already in the result
+					if(!_hasIndividualInDeque(rightLoopIndividuals.front(),initial)){
+						initial.push_back(rightLoopIndividuals.front());
+						rightLoopIndividuals.pop_front();
+					}
 				}
 			}
-			if(flag){ initial.push_front(rightLoopIndividuals.back()); rightLoopIndividuals.pop_back(); }
+			leftLoopIndividuals.pop_front();
+			
+		}
+		// merge the remaining individuals on the right loop to the left of result
+		while(!rightLoopIndividuals.empty()){
+			if(!_hasIndividualInDeque(rightLoopIndividuals.back(),initial)){ 
+				initial.push_front(rightLoopIndividuals.back());
+			}
+			rightLoopIndividuals.pop_back(); 
 		}
 		
 		result = initial;
@@ -559,7 +567,7 @@ void NuclearFamily::calculateWidth(bool classicalOrder){
 					else 
 					if(children[i]->getNuclearFamily(j)->getFather()->hasBeenVisited() && children[i]->getNumberOfNuclearFamilies() == 1 ){
 						
-						// NOTE: Commented the if on 2006-11-14; This allows the leftSpouseConnector flag to be set
+						// This allows the leftSpouseConnector flag to be set
 						// whenever the male spouse is on the left
 						// Further checks are performed in the draw code
 						//
@@ -619,12 +627,13 @@ void NuclearFamily::calculateWidth(bool classicalOrder){
 					// Since this is a multiple spouse case we need to add the extra space between the NFs
 					// In multiple spouse case if nf 0 is not consang its width takes care of the width of the individual
 					// In cases where the individual has NFs only on the left, we need to add extra width of 2 to 
-					// accomodate the individual itself. See eg. amdtest3.txt
+					// accomodate the individual itself (one unit on each side of the individual that gets added to the left in multiple spouse cases). See eg. amdtest3.txt
 					sumLeftWidth += 2;
 					totalWidth += 2;
 					
 				}
 				// DEBUG: for individuals with multiple spouses
+				//std::cout << " Multiple Spouse calculation for child " << children[i]->getId() << std::endl;
 				//std::cout << "SUM Right width " << sumRightWidth << " SUM Left width " << sumLeftWidth << std::endl;
 				//std::cout << "Total Width " << totalWidth << std::endl;
 				
@@ -735,7 +744,9 @@ void NuclearFamily::calculateWidth(bool classicalOrder){
 			if(_isMaleWithLoopFlags(children[0],0)){
 				if(children[0]->getLeftWidth() != 0){
 					if(children[0]->getRightWidth() == 0){
-						leftWidth += (totalWidth - children[0]->getLeftWidth()-1); // 2 is the width of the individual
+						if(totalWidth/2 <  children[0]->getLeftWidth()) leftWidth += (totalWidth - children[0]->getLeftWidth()-1); // 2 is the width of the individual
+						else leftWidth += (totalWidth - children[0]->getLeftWidth()-1)/2;
+						//std::cout << " Additional LW Manipulation done " << leftWidth << " children 0 lw " << children[0]->getLeftWidth() << std::endl;
 					}else{
 						leftWidth += (totalWidth - children[0]->getLeftWidth());
 					}
@@ -797,6 +808,7 @@ void NuclearFamily::calculateWidth(bool classicalOrder){
 	std::cout << "Right width for NF is :" << rightWidth << std::endl;
 	std::cout << "Total width for NF is :" << totalWidth << std::endl;
 	*/
+	if(_leftConnectionShiftFlag) std::cout << " LEFT connection shift flag is set" << std::endl;
 	
 }
 
@@ -861,13 +873,15 @@ void NuclearFamily::draw(Individual* startIndividual,DrawingCanvas& dc,double st
 	x1 = currentX + iconDiameter/2; 
 	x2 = currentX + iconInterval-iconDiameter/2;
 	
-	dc.drawLine(x1,currentY,x2,currentY);
+	//dc.drawLine(x1,currentY,x2,currentY);
 	
 	//
 	// If consanguinous, make a double line:
 	//
-	if(isConsanguinous()) dc.drawHorizontalLine(currentY-verticalTick,x1,x2);
-	
+	if(isConsanguinous()){
+		dc.drawHorizontalLine(currentY+verticalTick/2,x1,x2);
+		 dc.drawHorizontalLine(currentY-verticalTick/2,x1,x2);
+	}else   dc.drawHorizontalLine(currentY,x1,x2);
 	//
 	// Draw the spouse
 	//
@@ -888,15 +902,18 @@ void NuclearFamily::draw(Individual* startIndividual,DrawingCanvas& dc,double st
 	// 2006.09.13.ET: ADDENDUM: ADD CLASS and ID to vertical drop line:
 	//
 	std::string dropLineId= _mother->getId().get() + std::string(":") + _father->getId().get();
-	dc.drawVerticalLine(currentX,currentY,currentY+verticalDrop1,std::string("mating"),dropLineId);
+	if(isConsanguinous()) dc.drawVerticalLine(currentX,currentY+verticalTick/2,currentY-verticalTick/2+verticalDrop1,std::string("mating"),dropLineId);
+	else                  dc.drawVerticalLine(currentX,currentY,currentY+verticalDrop1,std::string("mating"),dropLineId);
 	
 	if(_leftConnectionShiftFlag){
+		//std::cout << " LEFT SHIFT Connn set " << std::endl;
+		
 		currentX -= horizontalInterval;
 	}
 	
 	//
 	// Adjust the currentX based on the left width of the first child's nuclear family
-	// NOTE: The left width can be = 1 even in case of multiple NFs due to CONSANG
+	// The left width can be = 1 even in case of multiple NFs due to CONSANG
 	//
 	if(children[0]->getNumberOfNuclearFamilies() > 1 && children[0]->getLeftWidth() > 1){
 		
@@ -907,6 +924,7 @@ void NuclearFamily::draw(Individual* startIndividual,DrawingCanvas& dc,double st
 		else
 		if(_width.getLeft() > children[0]->getLeftWidth()){
 			currentX -= (_width.getLeft()-children[0]->getLeftWidth()+1) * horizontalInterval;
+		
 		}else if(_width.getLeft() == children[0]->getLeftWidth()) currentX -= horizontalInterval;
 		
 	}else
@@ -920,9 +938,8 @@ void NuclearFamily::draw(Individual* startIndividual,DrawingCanvas& dc,double st
 		// so that he gets drawn just under the first parent instead of the center
 		if(children.size() == 1 ){
 			if((!children[0]->isConsanguinous() && !children[0]->hasExternalConnection()) || children[0]->getGender().getEnum()==Gender::FEMALE){
-			
-			currentX -= horizontalInterval;
-		}
+					currentX -= horizontalInterval;
+			}
 		}else{
 			if(_isMaleWithLoopFlags(children[0],0)){
 				if(children.size() == 1);
@@ -930,9 +947,10 @@ void NuclearFamily::draw(Individual* startIndividual,DrawingCanvas& dc,double st
 					currentX -= horizontalInterval * (_width.getLeft() - 1);
 				}
 			}else{
-				if(_width.getLeft() > children[0]->getNuclearFamily((unsigned)0)->getLeftWidth())
+				if(_width.getLeft() > children[0]->getNuclearFamily((unsigned)0)->getLeftWidth()){
 					currentX -= (_width.getLeft()-children[0]->getNuclearFamily((unsigned)0)->getLeftWidth()+1) * horizontalInterval;
-				else currentX -= iconInterval;
+				}else currentX -= iconInterval;
+				
 			}
 		}
 	}else{
@@ -955,13 +973,15 @@ void NuclearFamily::draw(Individual* startIndividual,DrawingCanvas& dc,double st
 			
 			// Check if the child has the left spouse connector flag set:
 			if(children[i]->getLeftSpouseConnector()){
+				//std::cout << " Child " << children[i]->getId() << " has Left spouse connector !!! " << std::endl;
 				// Even though the leftSpouseConnector is set we need to verify that the male spouse is
 				// actually the last to be drawn on his NF. If not we reset the leftconnector flag
 				NuclearFamily* lcnf = children[i]->getNuclearFamily(0);
 				// Check if the spouse is a single child 
 				// If the NF has only one child and the father is to the right reset the leftSpouseConnector flag:
-				if(lcnf->getNumberOfChildren() == 1 && lcnf->getFather()->hasBeenDrawn() && lcnf->getFather()->getX() > currentX){
-					if(_twinGroupCount && children[i]->getTwinMarker().get() != "."){
+				
+				if((lcnf->getNumberOfChildren() == 1 && lcnf->getFather()->hasBeenDrawn() && lcnf->getFather()->getX() > currentX)){
+ 					if(_twinGroupCount && children[i]->getTwinMarker().get() != "."){
 						dc.drawVerticalLine(currentX,currentY+verticalDrop2-verticalTick,currentY+verticalDrop2);
 					}else if(children[i]->getGender().get() == "."){
 						dc.drawVerticalLine(currentX,currentY,currentY+verticalDrop2-(M_SQRT2-1)*iconDiameter);
@@ -971,19 +991,21 @@ void NuclearFamily::draw(Individual* startIndividual,DrawingCanvas& dc,double st
 					//std::cout << " RESET the LEFT SPOUSE CONNECTOR FOR " <<  children[i]->getId() << std::endl;
 					children[i]->setLeftSpouseConnector(false);
 				}else{
-				
 					// Draw verticalDrop2 for the child
 					// Draw a short vertical drop for twins
 					if(_twinGroupCount && children[i]->getTwinMarker().get() != "."){
 						dc.drawVerticalLine(currentX+iconInterval,currentY+verticalDrop2-verticalTick,currentY+verticalDrop2);
 					}else if(children[i]->getGender().get() == "."){
 						dc.drawVerticalLine(currentX+iconInterval,currentY,currentY+verticalDrop2-(M_SQRT2-1)*iconDiameter);
+					}else if(children[i]->getNuclearFamily((unsigned)0)->getLeftConnectionShiftFlag() && !_isMaleWithLoopFlags(children[i],0)){
+						dc.drawVerticalLine(currentX+iconInterval+horizontalInterval,currentY,currentY+verticalDrop2);
 					}else{
 						dc.drawVerticalLine(currentX+iconInterval,currentY,currentY+verticalDrop2);
 					}
 				}
 			}
 			else if(children[i]->getNuclearFamily((unsigned)0)->getLeftConnectionShiftFlag() && !_isMaleWithLoopFlags(children[i],0)){
+				
 				if(_twinGroupCount && children[i]->getTwinMarker().get() != "."){
 					dc.drawVerticalLine(currentX+horizontalInterval,currentY+verticalDrop2-verticalTick,currentY+verticalDrop2);
 				}else if(children[i]->getGender().get() == "."){
@@ -1010,7 +1032,8 @@ void NuclearFamily::draw(Individual* startIndividual,DrawingCanvas& dc,double st
 					else{
 						if(j != 0) xr += children[i]->getNuclearFamily(j)->getLeftWidth() * horizontalInterval;
 						children[i]->getNuclearFamily(j)->draw(children[i],dc,xr,currentY+verticalDrop2+iconDiameter/2,classicalOrder);
-						 xr += children[i]->getNuclearFamily(j)->getRightWidth() * horizontalInterval;
+						xr += children[i]->getNuclearFamily(j)->getRightWidth() * horizontalInterval;
+						
 					}
 				}else{
 					
@@ -1060,10 +1083,11 @@ void NuclearFamily::draw(Individual* startIndividual,DrawingCanvas& dc,double st
 						}else{ 
 							// Check if the rw of the current child is 0 implying no nf on the right
 							if(children[i]->getRightWidth() == 0){
-								if(children[i+1]->getNuclearFamily((unsigned)0)->getLeftWidth() == 2)
+								if(children[i+1]->getNuclearFamily((unsigned)0)->getLeftWidth() == 2){
 									currentX += iconInterval;
-								else
-									currentX += (children[i+1]->getNuclearFamily((unsigned)0)->getLeftWidth()) * horizontalInterval+horizontalInterval;
+								}else{
+									currentX += (children[i+1]->getNuclearFamily((unsigned)0)->getLeftWidth()) * horizontalInterval;
+								}
 							}else{
 								currentX += (children[i]->getRightWidth()+children[i+1]->getNuclearFamily((unsigned)0)->getLeftWidth()) * horizontalInterval;
 							}
@@ -1210,8 +1234,9 @@ void NuclearFamily::drawSpouseConnectors(Individual* individual,const double hor
 	yr  = individual->getY();
 	
 	double verticalTick=DrawingMetrics::getVerticalTick();
+	double consangOffset=0.0;
 	
-	// NOTE: The distance between the 2 lines for Consanguinous connectors is 1 scalingFactor unit.
+	// NOTE: The distance between the 2 lines for Consanguinous connectors is 1 verticalTick.
 	
 	if(individual->getNumberOfNuclearFamilies() >= 2){
 		//
@@ -1219,9 +1244,10 @@ void NuclearFamily::drawSpouseConnectors(Individual* individual,const double hor
 		//
 		if(_isMaleWithLoopFlags(individual,1));
 		else{
-			dc.drawHorizontalLine(yr,xr-radius,xr-radius+iconInterval-(individual->getNuclearFamily((unsigned)0)->getLeftWidth()+individual->getNuclearFamily((unsigned)1)->getRightWidth())*horizontalInterval);
+			if(individual->getNuclearFamily((unsigned)1)->isConsanguinous()) consangOffset = verticalTick/2;
+			dc.drawHorizontalLine(yr+consangOffset,xr-radius,xr-radius+iconInterval-(individual->getNuclearFamily((unsigned)0)->getLeftWidth()+individual->getNuclearFamily((unsigned)1)->getRightWidth())*horizontalInterval);
 			if(individual->getNuclearFamily((unsigned)1)->isConsanguinous())
-				dc.drawHorizontalLine(yr-verticalTick,xr-radius,xr-radius+iconInterval-(individual->getNuclearFamily((unsigned)0)->getLeftWidth()+individual->getNuclearFamily((unsigned)1)->getRightWidth())*horizontalInterval);
+				dc.drawHorizontalLine(yr+consangOffset-verticalTick,xr-radius,xr-radius+iconInterval-(individual->getNuclearFamily((unsigned)0)->getLeftWidth()+individual->getNuclearFamily((unsigned)1)->getRightWidth())*horizontalInterval);
 		}
 	}
 	//

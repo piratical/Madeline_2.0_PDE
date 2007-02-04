@@ -164,7 +164,14 @@ void PedigreeSet::addPedigreesFromDataTable(const DataTable * p_pedigreeTable, u
 	while(index < numberOfRows){
 		
 		currentFamily = familyIdColumn->get(index);
-		
+		if(currentFamily == "."){
+			Warning("PedigreeSet::addPedigreesFromDataTable()",
+			        "Family Id is missing for individual %s and will be ignored.",
+			        individualIdColumn->get(index).c_str()
+			);
+			index++;
+			continue;
+		}
 		std::pair<std::set<Pedigree*,comparePedigrees>::iterator,bool> pp;
 		pp = _pedigrees.insert(new Pedigree(currentFamily,tableIndex));
 		if(pp.second){

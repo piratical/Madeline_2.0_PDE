@@ -626,15 +626,31 @@ void Pedigree::_determineConnectorIndividuals(){
 		while(cnt > 0){
 			cnt--;
 			if(cnt > 0){
-				const std::set<Individual*,Individual::compareIndividual> * pspouses = startIndividual->getSpouses();
+				/*const std::set<Individual*,Individual::compareIndividual> * pspouses = startIndividual->getSpouses();
 				std::set<Individual*,compareIndividual>::iterator it = (*pspouses).begin();
 				while(it != (*pspouses).end()){
 					(*it)->setVisited(true);
 					const std::set<Individual*,Individual::compareIndividual> * pchildren = startIndividual->getChildren();
 					std::set<Individual*,compareIndividual>::iterator childIt = (*pchildren).begin();
 					while(childIt != (*pchildren).end()){
+						std::cout << " Child is  " << (*childIt)->getId() << std::endl;
 						_markConnectorIndividuals((*childIt),loopNumber);
 						++childIt;
+					}
+					cnt--;
+					++it;
+				}*/
+
+				const std::set<Individual*,Individual::compareIndividual> * pspouses = startIndividual->getSpouses();
+				std::set<Individual*,compareIndividual>::iterator it = (*pspouses).begin();
+				while(it != (*pspouses).end()){
+					(*it)->setVisited(true);
+					std::vector<Individual*> children;
+					startIndividual->getChildrenWithSpouse((*it),children);
+					unsigned childCnt = 0;
+					while(childCnt < children.size()){
+						//std::cout << " New child is " << children[childCnt]->getId() << std::endl;
+						_markConnectorIndividuals(children[childCnt++],loopNumber);
 					}
 					cnt--;
 					++it;
@@ -763,6 +779,7 @@ void Pedigree::_reorderDescentTreesBasedOnExternalConnections(){
 	_descentTrees.clear();
 	for(unsigned i=0;i<orderedDescentTrees.size();i++){
 		_descentTrees.push_back(orderedDescentTrees[i]);
+		//std::cout << " DT SI " << orderedDescentTrees[i]->getStartIndividual()->getId() << std::endl;
 	}
 	
 	
@@ -926,6 +943,7 @@ void Pedigree::_markConsanguinousFlags(Individual* individual,unsigned& loopNumb
 			continue;
 		}
 		if((*spouseIt)->isConsanguinous()){
+			//std::cout << " LSL " << individual->getId() << " RSL " << (*spouseIt)->getId() << std::endl;
 			loopNumber++;
 			// Check if this pair is consanguinous
 			std::string pairId;
@@ -951,6 +969,7 @@ void Pedigree::_markConsanguinousFlags(Individual* individual,unsigned& loopNumb
 		while(childCnt < sortedChildren.size()){
 			if(sortedChildren[childCnt]->getNumberOfSpouses() > 0){
 				_markConsanguinousFlags(sortedChildren[childCnt],loopNumber);
+				
 			}
 			childCnt++;
 		}
@@ -1111,6 +1130,13 @@ void Pedigree::_setLeftShiftConnectionFlags(){
 			Individual* spouseFather = lcnf->getFather()->getFather();
 			Individual* spouseMother = lcnf->getFather()->getMother();
 			NuclearFamily *spouseParentNF;
+			// Check if any one of the parent has multiple mates:
+			// Reset the left spouse connector flag in such cases
+			if((!spouseFather->isOrdinaryFounder() && spouseFather->getNumberOfSpouses() > 1) || (!spouseFather->isOrdinaryFounder() && spouseFather->getNumberOfSpouses() > 1)){
+				(*individualIt)->setLeftSpouseConnector(false);
+				++individualIt;
+				continue;
+			}
 			unsigned j=0;
 			while(j < spouseFather->getNumberOfSpouses()){
 				spouseParentNF = spouseFather->getNuclearFamily(j);
@@ -1233,8 +1259,21 @@ bool Pedigree::_hasIndividualAtPosition(Individual* start,Individual* end){
 	double xend   = end->getX();
 	double yend   = end->getY();
 	double horizontalInterval = DrawingMetrics::getHorizontalInterval();
-	
-	if(ystart != yend) { return true; }
+	if(ystart != yend) { 
+		std::cout << " Trying a new approach " << start->getId() << " and " << end->getId() << std::endl;
+                xstart += horizontalInterval;
+                int ystarti = int(ystart);
+                xend -= horizontalInterval;
+                if(xstart >= xend) return true;
+                while(xstart < xend){
+                        Individual* found = _individualGrid.find(int(xstart),ystarti);
+                        if(found){ return true; }
+                        xstart+= horizontalInterval;
+                }
+		return false;
+		//return true; 
+		
+	}
 	xstart += horizontalInterval;
 	int ystarti=int(ystart);
 	if(xstart >= xend) return true;
@@ -1259,6 +1298,7 @@ void Pedigree::_sortSibsBasedOnExternalConnections(const std::vector<Individual*
 	
 	// If there is only one sib return:
 	if(sibs.size() == 1){
+		sortedSibs.push_back(sibs.front());
 		return;
 	}
 	
@@ -1296,6 +1336,7 @@ void Pedigree::_sortSibsBasedOnExternalConnections(const std::vector<Individual*
 	std::string parentPair = father->getId().get()+mother->getId().get();
 	//mother->setChildrenIdsSortedByExternalConnections(parentPair,idsSortedByExternalConnection);
 	mother->setChildrenIdsSortedByExternalConnections(parentPair,sortedSibs);
+	
 }
 
 //
@@ -1329,6 +1370,8 @@ void Pedigree::_drawConsanguinityLetter(Individual* mother,Individual* father,ch
 //
 void Pedigree::_drawHorizontalConnectorLine(double y,double x1,double x2,bool isConsanguinous,DrawingCanvas& dc){
 	
+	double verticalTick = DrawingMetrics::getVerticalTick();
+	if(isConsanguinous) y += verticalTick/2;
 	dc.drawHorizontalLine(y,x1,x2);
 	if(isConsanguinous)
 		dc.drawHorizontalLine(y-DrawingMetrics::getVerticalTick(),x1,x2);
@@ -1338,25 +1381,39 @@ void Pedigree::_drawHorizontalConnectorLine(double y,double x1,double x2,bool is
 //
 // _drawVerticalConnectorLine:
 //
-void Pedigree::_drawVerticalConnectorLine(double motherY,double fatherY,double motherX,double fatherX,bool isConsanguinous,DrawingCanvas& dc,double multipleSpouseOffset){
+void Pedigree::_drawVerticalConnectorLine(double motherY,double fatherY,double motherX,double fatherX,bool isConsanguinous,DrawingCanvas& dc,double multipleSpouseOffset,bool singleChild){
 	
 	double verticalTick = DrawingMetrics::getVerticalTick();
-	
+	double radius = DrawingMetrics::getIconRadius();
 	double motherOffset,fatherOffset;
 	motherOffset = fatherOffset = -1*verticalTick;
 	double extension;
+
+	if(isConsanguinous){
+		motherY += verticalTick/2;
+		fatherY += verticalTick/2;
+	}
 	if(fatherX > motherX){ 
 		//extension = DrawingMetrics::getHorizontalInterval()*-1;
-		extension = (DrawingMetrics::getHorizontalInterval()+DrawingMetrics::getHorizontalInterval()/4)*-1;
+		//extension = (DrawingMetrics::getHorizontalInterval()+DrawingMetrics::getHorizontalInterval()/4)*-1;
+		extension = (DrawingMetrics::getHorizontalInterval() - radius - verticalTick) * -1;
 		if(fatherY > motherY){ extension += -verticalTick; motherOffset*=-1;fatherOffset*=-1;} 
 		if(multipleSpouseOffset) multipleSpouseOffset = multipleSpouseOffset + extension; 
 	}else{
 		//extension = DrawingMetrics::getHorizontalInterval() - verticalTick;
-		extension = DrawingMetrics::getHorizontalInterval()+DrawingMetrics::getHorizontalInterval()/4;
-		if(fatherY > motherY){ extension += verticalTick; }
-		else { fatherOffset *= -1; motherOffset *= -1; }
+		//extension = DrawingMetrics::getHorizontalInterval()+DrawingMetrics::getHorizontalInterval()/4;
+		extension = DrawingMetrics::getHorizontalInterval() - radius - verticalTick; 
+		if(singleChild){
+			extension += DrawingMetrics::getHorizontalInterval();
+		}
+		if(fatherY > motherY){ 
+			extension += verticalTick; 
+		}else { 
+			fatherOffset *= -1; motherOffset *= -1;
+		}
 		if(multipleSpouseOffset) multipleSpouseOffset = multipleSpouseOffset + extension; 
 	}
+	
 	dc.drawHorizontalLine(motherY,motherX,fatherX+extension-multipleSpouseOffset);
 	dc.drawHorizontalLine(fatherY,fatherX,fatherX+extension-multipleSpouseOffset);
 	dc.drawVerticalLine(fatherX+extension-multipleSpouseOffset,motherY,fatherY);
@@ -1408,12 +1465,16 @@ void Pedigree::_drawConsanguinousConnectors(DrawingCanvas& dc){
 						if(mother->getY() == father->getY()){
 							_drawHorizontalConnectorLine(mother->getY(),mother->getX()-iconInterval+radius,father->getX()+radius,(*nfIt)->isConsanguinous(),dc);
 						}else{
+							// Check if father is the only child
+							bool singleChild=false;
+							std::vector<std::string> temp = father->getMother()->getChildrenIds(father->getFather());
+							if(temp.size() == 1) singleChild = true;
 							// Draw a vertical line
-							_drawVerticalConnectorLine(mother->getY(),father->getY(),mother->getX()-iconInterval+radius,father->getX()+radius,(*nfIt)->isConsanguinous(),dc);
+							_drawVerticalConnectorLine(mother->getY(),father->getY(),mother->getX()-iconInterval+radius,father->getX()+radius,(*nfIt)->isConsanguinous(),dc,0.0,singleChild);
 						}
 					}else{
 						// std::cout << "LEFT connector: Draw dashed individual" << std::endl;
-						if(_hasIndividualAtPosition(father,mother)){
+						if(mother->getY() != father->getY() || _hasIndividualAtPosition(father,mother)){
 							//dc.drawDashedIndividual(father,mother->getX()-iconInterval,mother->getY(),iconDiameter);
 							dc.drawIndividual(father,mother->getX()-iconInterval,mother->getY(),true);
 							_drawConsanguinityLetter(mother,father,consanguinityLetter,iconInterval,iconDiameter,individualConsanguinityLetter,dc,0,true);
@@ -1473,7 +1534,11 @@ void Pedigree::_drawConsanguinousConnectors(DrawingCanvas& dc){
 							dc.drawIndividual(father,mother->getX()+iconInterval,mother->getY(),true);
 							_drawConsanguinityLetter(mother,father,consanguinityLetter,iconInterval,iconDiameter,individualConsanguinityLetter,dc);
 						}else{
-							_drawHorizontalConnectorLine(mother->getY(),mother->getX()+iconInterval-radius,father->getX()-radius,(*nfIt)->isConsanguinous(),dc); 
+							if(mother->getY() == father->getY()){
+								_drawHorizontalConnectorLine(mother->getY(),mother->getX()+iconInterval-radius,father->getX()-radius,(*nfIt)->isConsanguinous(),dc); 
+							}else{
+								_drawVerticalConnectorLine(mother->getY(),father->getY(),mother->getX()+iconInterval-radius,father->getX()-radius,(*nfIt)->isConsanguinous(),dc);
+							}
 						}
 					}
 				}
@@ -1540,7 +1605,7 @@ void Pedigree::_drawConsanguinousConnectors(DrawingCanvas& dc){
 						}
 					
 					}else{
-						if(_hasIndividualAtPosition(father,mother)){
+						if(mother->getY() != father->getY() || _hasIndividualAtPosition(father,mother)){
 							//dc.drawDashedIndividual(father,mother->getX()-lw*horizontalInterval,mother->getY(),iconDiameter);
 							dc.drawIndividual(father,mother->getX()-lw*horizontalInterval,mother->getY(),true);
 							_drawConsanguinityLetter(mother,father,consanguinityLetter,iconInterval,iconDiameter,individualConsanguinityLetter,dc,lw*horizontalInterval*(-1.0));
@@ -1570,7 +1635,10 @@ void Pedigree::addIndividual(const std::string ind,std::string mother,std::strin
 	
 	// for warnings:
 	const char *methodName="Pedigree::addIndiidual()";
-	
+	if(ind == "."){
+		Warning(methodName,"Id is missing for individual with father %s and mother %s. This individual will be ignored.",father.c_str(),mother.c_str());
+		return;
+	}
 	if(mother != "." && mother != ind && mother == father){
 		//
 		// check if the mother/father is already in the pedigree

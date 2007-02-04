@@ -49,7 +49,7 @@ private:
 	void _orderTwins(Individual* pivotIndividual,std::deque<Individual*>& srcLoopIndividuals, std::deque<Individual*>& dstLoopIndividuals,const std::deque<unsigned>& indices,bool front=false );
 	void _drawTwinConnectors(DrawingCanvas& dc,bool classicalOrder);
 	inline bool _isMaleWithLoopFlags(Individual* individual,unsigned nuclearFamilyIndex);
-	
+	bool _hasIndividualInDeque(Individual* individual,const std::deque<Individual*>& individualQ);	
 public:
 	//
 	// Constructors:

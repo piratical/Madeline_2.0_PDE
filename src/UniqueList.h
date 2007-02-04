@@ -115,6 +115,7 @@ class UniqueList{
 	void getOrdinalAndLabelForKey(const Data *dp,std::string& label,unsigned& ordinal) const;
 	std::vector<std::string> getLabels(void) const;
 	void printResults(void) const;
+	
 };
 
 

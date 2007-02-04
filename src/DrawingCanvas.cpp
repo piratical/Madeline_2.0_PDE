@@ -738,8 +738,7 @@ void DrawingCanvas::drawIndividual(Individual* pIndividual,double x,double y,boo
 		// or an individual with a consanguinous or external loop.
 		// In such cases draw a dashed individual to represent a repeat.
 		//
-		//if(pIndividual->isOrdinaryFounder() || isDashed);
-		if(isDashed);
+		if(pIndividual->isOrdinaryFounder() || isDashed);
 		else return;
 		
 	}
@@ -864,7 +863,7 @@ void DrawingCanvas::drawIndividual(Individual* pIndividual,double x,double y,boo
 		// drawLabelSet
 		drawLabelSet(pIndividual);
 		
-	}else if(pIndividual->isOriginalFounder()){
+	}else if(pIndividual->isOriginalFounder() || pIndividual->isOrdinaryFounder()){
 		// For individuals who have already been drawn -- display only the id 
 		y+= DrawingMetrics::getIconRadius()  +
 		    DrawingMetrics::getLabelMargin() + 
@@ -1143,9 +1142,9 @@ void DrawingCanvas::iconPie( double x, double y, Individual *pIndividual ){
 	//
 	if(pIndividual->isVirtual()){
 		
-		_body << "<circle cx=\"" << x << "\" cy=\"" << y << "\" r=\"" << 0.5*DrawingMetrics::getScalingFactor() << "\"";
-		_body << " class=\"thinLine\"";
-		_body << "/>\n";
+		//_body << "<circle cx=\"" << x << "\" cy=\"" << y << "\" r=\"" << 0.5*DrawingMetrics::getScalingFactor() << "\"";
+		//_body << " class=\"thinLine\"";
+		//_body << "/>\n";
 		return;
 		
 	}

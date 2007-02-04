@@ -392,7 +392,6 @@ void Individual::sortSpouses(){
 	
 	// Check if the individual is a male and consanguinous
 	// In such cases the first spouse should be one that has no loop flags set
-	// *** ADDED NOW
 	if(_gender.get() == "M" && _isConsanguinous && _spouses.size() > 2){
 		if(initial.size()){
 			result.push_back(initial.front());
@@ -403,9 +402,29 @@ void Individual::sortSpouses(){
 	// If there exists a left spouse and a right spouse with the same flag merge them into the result vector
 	if(leftLoopIndividuals.size() > 0 && rightLoopIndividuals.size() > 0)
 	if(leftLoopIndividuals.back()->getLeftFlag(consanguinousLoop) == rightLoopIndividuals.front()->getRightFlag(consanguinousLoop)){
-		if(leftLoopIndividuals.back()->getId() != rightLoopIndividuals.front()->getId()){
+		
+		while(leftLoopIndividuals.size() > 0 && rightLoopIndividuals.size() > 0 && leftLoopIndividuals.back()->getId() == rightLoopIndividuals.front()->getId()){
+			std::cout << " IN THE MULTIPLE SPOUSE WHILE " << std::endl;
+			if(rightLoopIndividuals.size() > 1 && leftLoopIndividuals.size() > 1){
+				result.push_back(leftLoopIndividuals.back());
+				rightLoopIndividuals.pop_front();
+				leftLoopIndividuals.pop_back();
+			}else
+			if(rightLoopIndividuals.size() > 1){
+				rightLoopIndividuals.pop_front(); 
+			}else if(leftLoopIndividuals.size() > 1){ 
+				leftLoopIndividuals.pop_back(); 
+			}else{ 
+				// Both left and right seem to have only one element in the Deque (NF)
+				result.push_back(leftLoopIndividuals.back());
+				leftLoopIndividuals.pop_back();
+			}
 			
-			// NOTE: Added the below if on 2006-11-14 to enable left and right loop flag individuals to be drawn on the same side of the multiple spouse individual
+		}
+		
+		if(leftLoopIndividuals.size() > 0 && rightLoopIndividuals.size() > 0 && leftLoopIndividuals.back()->getId() != rightLoopIndividuals.front()->getId()){
+			
+			// Enable left and right loop flag individuals to be drawn on the same side of the multiple spouse individual
 			if(!initial.empty()){
 				
 				result.push_back(leftLoopIndividuals.back());
@@ -620,7 +639,7 @@ void Individual::groupIndividualsBasedOn(bool consanguinousLoop,const std::vecto
 	
 	// DEBUG:
 	
-	/*std::cout << "Sorting the  Inds" << std::endl;
+	/*std::cout << "Sorting the  Inds :" << consanguinousLoop << std::endl;
 	std::cout << " %%%%%%%%%%%%%START " << std::endl;
 	std::cout << " INITIAL INITIAL " << std::endl;
 	for(unsigned i=0;i<initial.size();i++){
