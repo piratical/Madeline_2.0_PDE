@@ -19,19 +19,32 @@ int main( int argc, char *argv[] ){
 	std::vector<std::string> showColumns; // vector containing field labels that need to be displayed on the pedigree
 	std::cout << "DEBUG flag is " << Debug::DEBUG << std::endl;
 	CLP clp;
+	// ABCDEFGH:
+	clp.addSwitch("--bw","Print pedigrees in black and white");
+	clp.addSwitch("-b","Print pedigrees in black and white");
+	clp.addSwitch("--color","Print pedigrees in color");
+	clp.addSwitch("-c","Print pedigrees in color");
 	clp.addSwitch("--debug","Print run-time progress messages");
-	clp.addSwitch("--version","Print version and exit");
 	clp.addSwitch("-d","Print run-time progress messages");
-	clp.addSwitch("-v","Print version and exit");
-	clp.addSwitch("-h","Print this help and exit");
+	clp.addSwitch("--embedded","Produce an XML file that can be embedded in another XML document");
+	clp.addSwitch("-e","Produce an XML file that can be embedded in another XML document");
+	clp.addSwitch("--font","Font to be used for the display of Pedigree labels",1);
+	clp.addSwitch("-f","Font to be used for the display of Pedigree labels",1);
+	clp.addSwitch("--font-size","Font size to be used for the display of Pedigree labels",1);
+	clp.addSwitch("-z","Font size to be used for the display of Pedigree labels",1);
 	clp.addSwitch("--help","Print this help and exit");
-	clp.addSwitch("-s","Field based on which siblings are sorted",1);
+	clp.addSwitch("-h","Print this help and exit");
+	// IJKLMNOP:
+	clp.addSwitch("--labels","Path to the file that has a list of labels to be displayed on the Pedigree",1);
 	clp.addSwitch("-l","Path to the file that has a list of labels to be displayed on the Pedigree",1);
 	clp.addSwitch("-L","Specify labels to be displayed on the Pedigree using a single string containing space-delimited labels",1);
-	clp.addSwitch("--font","Font to be used for the display of Pedigree labels",1);
-	clp.addSwitch("--font-size","Font size to be used for the display of Pedigree labels",1);
-	clp.addSwitch("--embedded","Produce an XML file that can be embedded in another XML document");
 	clp.addSwitch("--outputprefix","Specify output file name prefix",1);
+	clp.addSwitch("-o","Specify output file name prefix",1);
+	// RSTUVWXYZ:
+	clp.addSwitch("--sort","Field based on which siblings are sorted",1);
+	clp.addSwitch("-s","Field based on which siblings are sorted",1);
+	clp.addSwitch("--version","Print version and exit");
+	clp.addSwitch("-v","Print version and exit");
 	clp.addUsage("minimadeline [option]... [file]...\n If input file is remote, specify the file name starting with 'http://'. To retrieve the data from a mysql database use 'mysql://[host:port/]username:passwd@database:table'");
 	
 	if(clp.parse(argc,argv)){
@@ -48,17 +61,16 @@ int main( int argc, char *argv[] ){
 				Debug::DEBUG=true;
 				
 			}
-			if(clp.hasSwitchSet("--font-size")){
+			if(clp.hasSwitchSet("--font-size") || clp.hasSwitchSet("-z") ){
 				std::string fontSizeArgument = clp.getSwitchArgument("--font-size",1);
 				if(fontSizeArgument != "."){
 					double fontSize;
 					std::stringstream sstr(fontSizeArgument);
 					sstr >> fontSize;
-					//fontSize *= 1.0;
 					DrawingMetrics::setFontSize(fontSize);
 				}
 			}
-			if(clp.hasSwitchSet("--font")){
+			if(clp.hasSwitchSet("--font") || clp.hasSwitchSet("-f") ){
 				std::string fontFamily = clp.getSwitchArgument("--font",1);
 				if(fontFamily != ".")
 					DrawingMetrics::setFontFamily(fontFamily);
@@ -67,7 +79,7 @@ int main( int argc, char *argv[] ){
 			//
 			// Set drawing metrics for embedded drawings:
 			//
-			if( clp.hasSwitchSet("--embedded") ){
+			if( clp.hasSwitchSet("--embedded") || clp.hasSwitchSet("-e") ){
 				
 				DrawingMetrics::setEmbeddedState(true);
 				
@@ -76,7 +88,7 @@ int main( int argc, char *argv[] ){
 			//
 			// Handle a file containing a list of labels, one per line:
 			//
-			if(clp.hasSwitchSet("-l")){
+			if(clp.hasSwitchSet("-l") || clp.hasSwitchSet("--labels") ){
 				std::string labelarg = clp.getSwitchArgument("-l",1);
 				std::cout << "Labels are in an external file " << labelarg << std::endl;
 				
@@ -98,6 +110,7 @@ int main( int argc, char *argv[] ){
 			//
 			// Handle a string containing labels to be tokenized
 			// and used as the labels on the pedigree drawing:
+			//
 			if(clp.hasSwitchSet("-L")){
 				std::string labelString = clp.getSwitchArgument("-L",1);
 				showColumns = split(labelString);
@@ -106,9 +119,29 @@ int main( int argc, char *argv[] ){
 			//
 			// Handle specification of a file name prefix:
 			//
-			if(clp.hasSwitchSet("--outputprefix")){
+			if(clp.hasSwitchSet("--outputprefix") || clp.hasSwitchSet("-o") ){
 				DrawingMetrics::setDrawingFileNamePrefix( clp.getSwitchArgument("--outputprefix",1) );
 			}
+			
+			//
+			// Handle specification of a file name prefix:
+			//
+			if(clp.hasSwitchSet("--bw") || clp.hasSwitchSet("-b") ){
+				DrawingMetrics::setBlackAndWhite(true);
+			}
+			//
+			// Handle specification of a file name prefix:
+			//
+			if(clp.hasSwitchSet("--color") || clp.hasSwitchSet("-c") ){
+				DrawingMetrics::setColor(true);
+			}
+			
+			///////////////////////
+			//
+			// MAIN PROCESSING:
+			//
+			///////////////////////
+			
 			
 			//
 			// DEBUGGING: Show column information

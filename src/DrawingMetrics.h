@@ -142,6 +142,8 @@ private:
 	//
 	static bool _isEmbedded;
 	static bool _displayBirthOrder;
+	static bool _blackAndWhite;
+	static bool _color;
 	
 	//
 	// Output File naming prefix
@@ -198,6 +200,10 @@ public:
 	static std::string getDrawingFileNamePrefix();
 	static bool getHasOnlyOnePedigreeState();
 	static bool getDisplayBirthOrder();
+	
+	static bool getColor();
+	static bool getBlackAndWhite();
+	
 	//
 	// Setters:
 	//
@@ -218,6 +224,9 @@ public:
 	static void setDrawingFileNamePrefix(const std::string &prefix);
 	static void setHasOnlyOnePedigreeState(bool hasOnlyOne);
 	static void setDisplayBirthOrder(bool value);
+	
+	static void setColor(bool value);
+	static void setBlackAndWhite(bool value);
 };
 
 ///////////////////////////////////
@@ -275,6 +284,12 @@ public:
 		// State flags:
 		//
 		DrawingMetrics::_isEmbedded=false;
+		DrawingMetrics::_displayBirthOrder=false;
+		//
+		// These two override the automatic settings:
+		//
+		DrawingMetrics::_blackAndWhite=false;
+		DrawingMetrics::_color=false;
 		
 		//
 		// This is the default scaling factor used for SVG drawing output to a screen.
@@ -388,9 +403,9 @@ public:
 		//DrawingMetrics::monochromat.push_back(DrawingColor("black","#000")); // DEFAULT
 		//DrawingMetrics::bichromat.push_back(  DrawingColor("white","#fff")); // DEFAULT
 		
-		DrawingMetrics::monochromat.push_back(DrawingColor("navy","#0055ff"));
+		DrawingMetrics::monochromat.push_back(DrawingColor("navy","#0000a0"));
 		DrawingMetrics::bichromat.push_back(  DrawingColor("maize","#ffd803"));
-		DrawingMetrics::monochromat.push_back(DrawingColor("red","#ffb400"));
+		DrawingMetrics::monochromat.push_back(DrawingColor("red","#800"));
 		DrawingMetrics::bichromat.push_back(  DrawingColor("banana","#ffffa2"));
 		DrawingMetrics::monochromat.push_back(DrawingColor("forest","#003f00"));
 		DrawingMetrics::bichromat.push_back(  DrawingColor("peach","#ffcca2"));

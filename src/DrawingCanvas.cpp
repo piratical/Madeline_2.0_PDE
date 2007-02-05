@@ -1079,6 +1079,10 @@ void DrawingCanvas::arc( double x, double y, double r, double startAngle, double
 	
 	double delta   = endAngle - startAngle;
 	double modulus = fmod(delta,Number::TWO_PI);
+	
+	// Used to calculate baseline adjustment for label:
+	double lineSpacing,xAdvance,yMinimum,yMaximum;
+	
 	if(modulus<Number::MINIMUM_DIFFERENCE){
 		//
 		// Case of a full circle:
@@ -1086,7 +1090,11 @@ void DrawingCanvas::arc( double x, double y, double r, double startAngle, double
 		_body << "<circle cx=\"" << x << "\" cy=\"" << y << "\" r=\"" << r << "\"";
 		_body << " style=\"fill:" << color << ";stroke:none;\"/>\n";
 		// Draw the label:
-		if(arcLabel != std::string(".")) y += DrawingMetrics::getYMaximum()/2;
+		if(arcLabel != std::string(".")){
+			// y += DrawingMetrics::getYMaximum()/2;
+			_doc.get_dimensions(arcLabel,&lineSpacing,&xAdvance,&yMinimum,&yMaximum);
+			 y+= 0.5*(yMaximum-yMinimum);
+		}
 		drawText(x,y ,arcLabel,arcClass);
 		return;
 	}
@@ -1114,7 +1122,10 @@ void DrawingCanvas::arc( double x, double y, double r, double startAngle, double
 	_body << "A " << r << " " << r << " 0 0 1 " << x2 << " " << y2 << " ";
 	// Line back to center:
 	_body << "z\" style=\"fill:" << color << ";stroke:none;\"/>\n";
+	
+	//
 	// Draw the label:
+	//
 	double x3 = x;
 	double y3 = y;
 	if(isMale){
@@ -1127,7 +1138,15 @@ void DrawingCanvas::arc( double x, double y, double r, double startAngle, double
 		x3 -= cos(startAngle+delta/2) * r * 0.5;
 		y3 -= sin(startAngle+delta/2) * r * 0.5;
 	}
-	if(arcLabel != std::string(".")) y3 += DrawingMetrics::getYMaximum()*0.5;
+	
+	//
+	// if(arcLabel != std::string(".")) y3 += DrawingMetrics::getYMaximum()*0.5;
+	// *DrawingMetrics::getScalingFactor();
+	//
+	if(arcLabel != std::string(".")){
+		_doc.get_dimensions(arcLabel,&lineSpacing,&xAdvance,&yMinimum,&yMaximum);
+		 y3+= 0.5*(yMaximum-yMinimum);
+	}
 	drawText(x3,y3,arcLabel,arcClass);
 	
 }
@@ -1228,15 +1247,21 @@ void DrawingCanvas::iconPie( double x, double y, Individual *pIndividual ){
 		//
 		// Get the color series corresponding to this icon column:
 		//
-		// NOTA BENE: (1) IF there is only one section, we use the blackAndWhite series.
+		// NOTA BENE: (1) IF there is only one section, we use the 
+		//                blackAndWhite series
+		//                UNLESS there is a color override.
 		//
-		//            (2) ELSE if there are more than one section, we use the color series:
+		//            (2) OTHERWISE if there are more than one section, 
+		//                we use the color series
+		//                UNLESS there is a black-and-white override.
 		//
 		ColorSeries *pCS;
 		if(sections==1){
-			pCS = pDT->getBlackAndWhiteSeriesFromStack(i);
+			if(DrawingMetrics::getColor()) pCS = pDT->getColorSeriesFromStack(i);
+			else                           pCS = pDT->getBlackAndWhiteSeriesFromStack(i);
 		}else{
-			pCS = pDT->getColorSeriesFromStack(i);
+			if(DrawingMetrics::getBlackAndWhite()) pCS = pDT->getBlackAndWhiteSeriesFromStack(i);
+			else                                   pCS = pDT->getColorSeriesFromStack(i);
 		}
 		//
 		// Assume reversed for now:

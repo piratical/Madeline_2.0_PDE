@@ -74,6 +74,8 @@ DrawingMetricsLoader DrawingMetricsLoader::drawingMetricsLoader;
 std::string DrawingMetrics::_drawingFileNamePrefix;
 bool DrawingMetrics::_hasOnlyOnePedigree;
 
+bool DrawingMetrics::_blackAndWhite;
+bool DrawingMetrics::_color;
 
 ///////////////////////////////////
 //
@@ -433,6 +435,34 @@ bool DrawingMetrics::getDisplayBirthOrder(){
 	
 	return _displayBirthOrder;
 	
+}
+
+//
+// getColor(): Get the color override flag
+//
+bool DrawingMetrics::getColor(){
+	return _color;
+}
+
+//
+// getBlackAndWhite(): Get the black and white override flag
+//
+bool DrawingMetrics::getBlackAndWhite(){
+	return _blackAndWhite;
+}
+
+//
+// setColor(): Set the color override flag
+//
+void DrawingMetrics::setColor(bool value){
+	_color=value;
+}
+
+//
+// setBlackAndWhite(): Set the black and white override flag
+//
+void DrawingMetrics::setBlackAndWhite(bool value){ 
+	_blackAndWhite=value;
 }
 
 ////////////////////////////////

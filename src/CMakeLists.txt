@@ -143,8 +143,7 @@ OPTION( WITH_MYSQLPP_SUPPORT "Build Madeline with MySQL database support" OFF )
 IF( WITH_MYSQLPP_SUPPORT )
 	
 	FIND_PACKAGE( MySQL REQUIRED)
-	FIND_PACKAGE( MySQL++ REQUIRED)
-	
+	FIND_PACKAGE( MySQL++ REQUIRED)	
 	IF (MYSQL_FOUND AND MYSQLPP_FOUND)
 		MESSAGE(STATUS "=== NOTE BENE: === Madeline will be built with MySQL support.")
 		SET_SOURCE_FILES_PROPERTIES( Database.h DataTable.h Parser.h  Parser.cpp Database.cpp DataTable.cpp main.cpp COMPILE_FLAGS -DMYSQLPP )
@@ -253,7 +252,7 @@ TARGET_LINK_LIBRARIES(minimadeline
 #
 # Installation directory:
 #
-MESSAGE(STATUS "=== NOTE BENE: === Madeline will be installed in ${CMAKE_INSTALL_PREFIX}")
+MESSAGE(STATUS "=== NOTA BENE: === Madeline will be installed in ${CMAKE_INSTALL_PREFIX}")
 
 #
 # Installable items:
