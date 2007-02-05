@@ -65,11 +65,11 @@ DataTable::DataTable(TableParser &parser){
 	_sampledColumnIndex  = COLUMN_IS_MISSING;
 	
 	//
-	// Set ColorSeriesStack pointer to null
+	// Set ColorSeriesStack, blackAndWhiteSeriesStack pointer to null
 	// by default:
 	//
 	_colorSeriesStack = 0;
-	
+	_blackAndWhiteSeriesStack = 0;
 	//
 	// Set number of rows and columns:
 	//
@@ -884,6 +884,7 @@ ColorSeries *DataTable::getBlackAndWhiteSeriesFromStack(unsigned nth) const{
 void DataTable::_setColorSeriesStack(void){
 	
 	if(_iconColumns.size()){
+		std::cout << " iconColumns size " << _iconColumns.size() << std::endl;
 		//
 		// Passing true to the ColorSeriesStack 
 		// constructor creates bichromatic color series:
