@@ -47,14 +47,15 @@ Parser::Parser(){};
 Parser::~Parser()
 {
 	
+	
 	std::vector<DataTable *>::iterator it = _tables.begin();
 	
-	for(it = _tables.begin() ; it != _tables.end() ; it++ ){
+	for(it = _tables.begin() ; it != _tables.end() ; ++it ){
 		
 		delete *it;
 		
 	}
-	
+	_tables.clear();
 	return;
 	
 }
@@ -427,6 +428,7 @@ void Parser::_readXML(std::string data)
 //
 void Parser::_readDelimited(std::string data)
 { 
+	
 	
 	DelimitedTableParser delimitedTableParser;
 	delimitedTableParser.readString( data );

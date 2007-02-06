@@ -45,6 +45,7 @@
 
 Pedigree::~Pedigree(){
 	
+	
 	std::set<Individual*,compareIndividual>::iterator it = _individuals.begin();
 	while(it != _individuals.end()){
 		delete *it;
@@ -1132,7 +1133,7 @@ void Pedigree::_setLeftShiftConnectionFlags(){
 			NuclearFamily *spouseParentNF;
 			// Check if any one of the parent has multiple mates:
 			// Reset the left spouse connector flag in such cases
-			if((!spouseFather->isOrdinaryFounder() && spouseFather->getNumberOfSpouses() > 1) || (!spouseFather->isOrdinaryFounder() && spouseFather->getNumberOfSpouses() > 1)){
+			if((!spouseFather->isOrdinaryFounder() && spouseFather->getNumberOfSpouses() > 1) || (!spouseMother->isOrdinaryFounder() && spouseMother->getNumberOfSpouses() > 1)){
 				(*individualIt)->setLeftSpouseConnector(false);
 				++individualIt;
 				continue;
@@ -1895,6 +1896,7 @@ void Pedigree::computePedigreeWidth(const std::string& sortField,bool dobSortOrd
 	
 	// Determine external and internal connectors:
 	_determineConnectorIndividuals();
+	
 	//determineConnectorIndividualsOld();
 	// Establish nuclear families for width calculation:
 	_establishNuclearFamilies();

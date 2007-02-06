@@ -46,31 +46,51 @@ const std::string CLP::_MYSQL_TYPE = "mysql://";
 ///////////////////////////////////
 
 //
+// _getShortSwitchNameMapping: returns the long  name corresponding to the short switch name
+//
+std::string CLP::_getShortSwitchNameMapping(const std::string& shortName){
+	
+	std::string switchName=".";
+	std::map<std::string,std::string>::iterator it = _shortSwitchMapping.find(shortName);
+	if(it != _shortSwitchMapping.end()) switchName= it->second;
+	return switchName;
+	
+}
+
+bool CLP::_shortNameExists(const std::string& shortName){
+	
+	std::map<std::string,std::string>::iterator it = _shortSwitchMapping.find(shortName);
+	if(it != _shortSwitchMapping.end()) return true;
+	return false;
+	
+}
+
+//
 // _setSwitchArguments: Some of the switches require arguments. This method saves the arguments passed to a switch in a map.
 //
-void CLP::_setSwitchArguments(std::string currentSwitch,int argc,char* argv[],int& currentIndex){
+void CLP::_setSwitchArguments(std::string currentSwitch,int argc,char* argv[],int& currentIndex, CLS& cls){
 	
-	std::map<std::string,unsigned>::iterator mit2 = _numberOfSwitchArguments.find(currentSwitch);
-	if(mit2 != _numberOfSwitchArguments.end()){
 	std::vector<std::string> tempArgs;
-	int switchArgumentSize = (int)(*mit2).second;
-	for(int k=0;k<switchArgumentSize;k++){
+	unsigned switchArgumentSize =cls.getNumberOfSwitchArguments();
+	for(unsigned k=0;k<switchArgumentSize;k++){
 		if((currentIndex+k+1) < argc && argv[currentIndex+k+1][0] != '-'){
 			std::string temp = argv[currentIndex+k+1];
 			tempArgs.push_back(temp);
 		}else{
 			
 			Warning("CLP::_setSwitchArguments()",
-			        "Insufficient arguments provided for switch %1$s.",
+			        "Insufficient arguments provided for switch %1$s. The switch will be ignored",
 			        currentSwitch.c_str()
 			);
-			
+			currentIndex += k;
+			cls.resetSwitch();
+			return;
 		}
 	}
-	if(tempArgs.size() == (*mit2).second)
-		_switchArguments.insert(std::pair<std::string,std::vector<std::string> >(currentSwitch,tempArgs));
-		//std::cout << "This switch also has argument" << std::endl;
-		currentIndex += (*mit2).second;
+	if(tempArgs.size() == switchArgumentSize){
+		for(unsigned cnt=0;cnt<tempArgs.size();cnt++) cls.addSwitchArgument(tempArgs[cnt]);
+		currentIndex += switchArgumentSize;
+		cls.setSwitch();
 	}
 	
 }
@@ -142,6 +162,7 @@ void CLP::_processMysqlArguments(std::string argument){
 	
 }
 
+
 ///////////////////////////////////
 //
 // PUBLIC METHODS:
@@ -152,13 +173,16 @@ void CLP::_processMysqlArguments(std::string argument){
 // printHelp:
 //
 void CLP::printHelp(){
+	
 	std::cout << "Usage: " << _usage << std::endl;
-	std::map<std::string,std::string>::iterator mit = _switches.begin();
+	std::map<std::string,CLS>::iterator mit = _switches.begin();
 	while(mit != _switches.end()){
-		std::cout << std::endl << std::setw(10) << mit->first << " " << mit->second;
+		std::cout << std::endl << std::setw(16) << mit->first << " " << mit->second.getDescription();
+		std::cout << std::endl << std::setw(16) << mit->second.getShortName();
 		mit++;
 	}
 	std::cout << std::endl;
+	
 }
 
 //
@@ -173,18 +197,21 @@ void CLP::addUsage(const std::string usage){
 //
 // addSwitch:
 //
-void CLP::addSwitch(std::string name,std::string description,unsigned numberOfArguments){
+void CLP::addSwitch(std::string name,std::string shortName,std::string description,unsigned numberOfArguments){
 	
-	std::pair<std::map<std::string,std::string>::iterator,bool> p;
-	p = _switches.insert(std::pair<std::string,std::string>(name,description));
+	if(_shortNameExists(shortName)){
+		Warning("CLP::addSwitch()","The shortName %s for %s is being used by another switch. Specify an alternate short name.",shortName.c_str(),name.c_str());
+		return;
+	}
+	std::pair<std::map<std::string,CLS>::iterator,bool> p;
+	p = _switches.insert(std::pair<std::string,CLS>(name,CLS(name,shortName,description,numberOfArguments)));
 	if(!p.second){
 		Warning("CLP::addSwitch()",
 		        "Duplicate Switch %1$s not allowed.",
 		        name.c_str()
 		);
 	}else{
-		if(numberOfArguments > 0)
-			_numberOfSwitchArguments.insert(std::pair<std::string,unsigned>(name,numberOfArguments));
+		_shortSwitchMapping.insert(std::pair<std::string,std::string>(shortName,name));
 	}
 }
 
@@ -193,8 +220,13 @@ void CLP::addSwitch(std::string name,std::string description,unsigned numberOfAr
 //
 bool CLP::hasSwitchSet(std::string name){
 	
-	std::set<std::string>::iterator sit = _setSwitches.find(name);
-	if(sit != _setSwitches.end()) return true;
+	std::string switchName;
+	if(name[1] != '-'){
+		switchName = _getShortSwitchNameMapping(name);
+		if(switchName==".") return false;
+	}else switchName=name;
+	std::map<std::string,CLS>::iterator mit = _switches.find(switchName);
+	if(mit != _switches.end()) return mit->second.isSet();
 	return false;
 	
 }
@@ -215,12 +247,10 @@ bool CLP::parse(int argc,char* argv[]){
 		if(argv[i][0] == '-'){ 
 			if(argv[i][1] == '-'){
 				// Check for switches 
-				std::map<std::string,std::string>::iterator mit = _switches.find(argv[i]);
+				std::map<std::string,CLS>::iterator mit = _switches.find(argv[i]);
 				if(mit != _switches.end()){
-					//std::cout << "Found switch " << argv[i] << std::endl;
 					// Insert this switch into the list of switches that are set
-					_setSwitches.insert(argv[i]);
-					_setSwitchArguments(argv[i],argc,argv,i);
+					_setSwitchArguments(argv[i],argc,argv,i,mit->second);
 				}else{
 					
 					Warning(methodName,
@@ -234,12 +264,14 @@ bool CLP::parse(int argc,char* argv[]){
 				// Check for the switches associated with '-'
 				std::string temp=argv[i];
 				unsigned j=1;
+				// For multiple short switches specified together
 				while(j < temp.length()){
 					std::string shortSwitch="-"+temp.substr(j,1);
-					std::map<std::string,std::string>::iterator mit = _switches.find(shortSwitch);
-					if(mit != _switches.end()){
-						_setSwitches.insert(shortSwitch);
-						_setSwitchArguments(shortSwitch,argc,argv,i);
+					// Find the equivalent name of the shortSwitch 
+					std::string switchName = _getShortSwitchNameMapping(shortSwitch);
+					if(switchName != "."){
+						std::map<std::string,CLS>::iterator mit = _switches.find(switchName);
+						_setSwitchArguments(shortSwitch,argc,argv,i,mit->second);
 					}else{
 						
 						Warning(methodName,
@@ -266,6 +298,7 @@ bool CLP::parse(int argc,char* argv[]){
 		}
 	}
 	return true;
+	
 }
 
 //
@@ -300,15 +333,17 @@ const std::vector<std::string>& CLP::getMysqlArguments(){
 //
 std::string CLP::getSwitchArgument(std::string name,unsigned index){
 	
-	std::map<std::string,std::vector<std::string> >::iterator mit = _switchArguments.find(name);
+	std::string switchName=name;
+	if(name[1] != '-') switchName = _getShortSwitchNameMapping(name);
+	
+	std::map<std::string,CLS>::iterator mit = _switches.find(switchName);
 	std::string temp=".";
-	if(mit != _switchArguments.end()){
-		std::cout << " size " << (*mit).second.size() << std::endl;
-		if(index > (*mit).second.size() || index <= 0){
+	if(mit != _switches.end()){
+		if(index > mit->second.getNumberOfSwitchArguments() || index <= 0){
 			std::cout << "Warning: No such arguments with index " << index << std::endl;
 			return temp;
 		}
-		return (*mit).second[index-1];
+		return mit->second.getSwitchArgument(index-1);
 	}
 	return temp;
 	
@@ -322,3 +357,34 @@ void CLP::printArguments(void){
 	for(unsigned i=0;i<_arguments.size();i++) std::cout << _arguments[i] << std::endl;
 	
 }
+
+//
+// CLS (Command Line Switch)
+//
+
+//
+// Constructor:
+//
+CLS::CLS(std::string name,std::string shortName,std::string description,unsigned numberOfSwitchArguments){
+	
+	_name=name;
+	_shortName = shortName;
+	_description = description;
+	_numberOfSwitchArguments = numberOfSwitchArguments;
+	_isSet = false;
+}
+
+std::string CLS::getSwitchArgument(unsigned index){
+	return _switchArguments[index];
+}
+
+bool CLS::isSet(void) { return _isSet; }
+
+const std::string CLS::getDescription(void){
+	return _description;
+}
+
+const std::string CLS::getShortName(void){
+	return _shortName;
+}
+

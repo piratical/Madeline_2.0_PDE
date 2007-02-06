@@ -51,6 +51,7 @@ void ColorSeriesStack::setBichromatic(bool seriesAreBichromatic){
 //
 ColorSeriesStack::~ColorSeriesStack(){
 	
+	
 	if(_colorSeriesStack.size()>0){
 		
 		std::vector<ColorSeries *>::const_iterator p;
@@ -59,6 +60,7 @@ ColorSeriesStack::~ColorSeriesStack(){
 			delete (*p);
 			
 		}
+		_colorSeriesStack.clear();
 	}
 }
 

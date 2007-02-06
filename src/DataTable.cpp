@@ -716,8 +716,8 @@ void DataTable::toggleColumnsForPedigree(const std::vector<std::string> &columns
 		if(columnExists(columns[i])){
 			DataColumn* dc = getColumn(stringToUpper(columns[i]).c_str());
 			dc->setShowOnPedigree(true);
-			_labelColumns.push_back(i);
-		}else std::cout << " Could not find column " << columns[i] << std::endl;
+			_labelColumns.push_back(dc->getOrdinal());
+		}else Warning("DataTable::toggleColumnsForPedigree","Could not find column %s to show on the pedigree.",columns[i].c_str());
 	}
 	
 }

@@ -59,12 +59,13 @@ SET( SOURCES
 	
 	Haplotype.cpp 
 	Haplotype.h 
-	
+
+	IconLegend.h	
 	Individual.cpp
-	
+
+	LabelLegend.h	
 	LabelSet.cpp 
 	Legend.h
-	LabelLegend.h
 	LineInformation.h 
 	LivingDead.cpp
 	

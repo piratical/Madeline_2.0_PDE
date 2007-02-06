@@ -904,6 +904,7 @@ void DrawingCanvas::drawLabelSet(Individual* pIndividual){
 	// By default just the individualId is displayed:
 	//
 	if(_labelSet->getNumberOfLabels() == 0){
+		
 		//
 		// Print just the ID:
 		// drawText(x,y, pIndividual->getId().get());
@@ -930,8 +931,8 @@ void DrawingCanvas::drawLabelSet(Individual* pIndividual){
 	// Get here if there are labels to process:
 	//
 	std::vector<UTF8String> labels = _labelSet->getLabelSet(pIndividual);
-	           
 	for(unsigned i=0;i<labels.size();i++){
+		
 		drawText(x,y, _labelManager.fitStringToLabelWidth( labels[i] ) );
 		y+=lineHeight;
 	}

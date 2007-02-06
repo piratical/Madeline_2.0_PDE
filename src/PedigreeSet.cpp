@@ -41,6 +41,7 @@
 PedigreeSet::~PedigreeSet()
 {
 	
+	
 	std::set<Pedigree*,comparePedigrees>::iterator pit = _pedigrees.begin();
 	while(pit != _pedigrees.end()){
 		delete *pit;

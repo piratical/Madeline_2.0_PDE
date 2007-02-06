@@ -39,6 +39,7 @@ private:
 public:
 	
 	LabelLegend() {}
+	
 	void setLabelSet(const LabelSet *const labelSet){
 		
 		_labelSet = labelSet;
@@ -48,6 +49,9 @@ public:
 		
 	}
 	
+	
+	
+	//void draw(std::ostringstream& os,SVG* psvg,DrawingLabelManager* plm,const double x,const double y);
 	void draw(std::ostringstream& os,SVG* psvg,DrawingLabelManager* plm,const double x,const double y){
 		
 		// lineHeight:

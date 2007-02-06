@@ -27,25 +27,48 @@
 #include <map>
 #include <set>
 #include <vector>
+
+class CLS{
+private: 
+	std::string _name;
+	std::string _shortName;
+	std::string _description;
+	unsigned _numberOfSwitchArguments;
+	std::vector<std::string> _switchArguments;
+	bool _isSet;
+	
+public: 
+	CLS(std::string name, std::string shortName, std::string description, unsigned numberOfSwitchArguments);
+	void setSwitch(void) { _isSet = true; }
+	void addSwitchArgument(std::string argument) { _switchArguments.push_back(argument); }
+	void resetSwitch() { _isSet = false; }
+	std::string getSwitchArgument(unsigned index);
+	unsigned getNumberOfSwitchArguments(void) { return _numberOfSwitchArguments; }
+	bool isSet();
+	const std::string getDescription(void);
+	const std::string getShortName(void);
+};
+
 class CLP{
 	
 private:
 	std::string _usage;
-	std::map<std::string,std::string> _switches;
-	std::set<std::string> _setSwitches;
+	std::map<std::string,std::string> _shortSwitchMapping;
+	std::map<std::string, CLS> _switches;
 	std::vector<std::string> _arguments;
 	std::vector<std::string> _networkArguments;
 	std::vector<std::string> _mysqlArguments;
-	std::map<std::string,std::vector<std::string> > _switchArguments;
-	std::map<std::string,unsigned> _numberOfSwitchArguments;
 	const static std::string _NETWORK_TYPE;
 	const static std::string _NETWORK_TYPE_SECURE;
 	const static std::string _MYSQL_TYPE;
-	void _setSwitchArguments(std::string currentSwitch,int argc,char* argv[],int& currentIndex);
+	void _setSwitchArguments(std::string currentSwitch,int argc,char* argv[],int& currentIndex,CLS& cls);
 	void _processMysqlArguments(std::string argument);
+	std::string _getShortSwitchNameMapping(const std::string& shortName);
+	bool _shortNameExists(const std::string& shortName);
+	
 public:
 	void addUsage(const std::string usage);
-	void addSwitch(std::string name,std::string description,unsigned numberOfArguments=0);
+	void addSwitch(std::string name,std::string shortName,std::string description,unsigned numberOfArguments=0);
 	std::string getSwitchArgument(std::string name,unsigned index);
 	bool parse(int argc,char* argv[]);
 	bool hasSwitchSet(std::string name);

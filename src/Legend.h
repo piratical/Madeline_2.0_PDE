@@ -34,10 +34,14 @@ protected:
 public:
 	
 	Legend() {}
+	virtual ~Legend(){};
+	
+	virtual void draw(std::ostringstream& os,SVG* psvg,DrawingLabelManager* plm,const double x,const double y)=0;
+	
+	
 	double getWidth(void) const { return _width; }
 	double getHeight(void) const { return _height; }
 	
-	virtual void draw(std::ostringstream& os,SVG* psvg,DrawingLabelManager* plm,const double x,const double y)=0;
 	
 };
 

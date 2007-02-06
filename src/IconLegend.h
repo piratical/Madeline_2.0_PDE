@@ -38,8 +38,7 @@ private:
 	
 public:
 	
-	IconLegend() {}
-	
+	IconLegend() { _width=_height=0;}
 	void setPedigreeTable(const DataTable *const pedigreeTable){
 		
 		_ppedigreeTable = pedigreeTable;
@@ -81,7 +80,12 @@ public:
 			//
 			// Get the color series corresponding to this icon column:
 			//
-			ColorSeries * pCS = _ppedigreeTable->getColorSeriesFromStack(i);
+			ColorSeries *pCS;
+			if(sections == 1){
+				if(DrawingMetrics::getColor()) pCS = _ppedigreeTable->getColorSeriesFromStack(i);
+				else                       pCS =   _ppedigreeTable->getBlackAndWhiteSeriesFromStack(i);
+			}else if(DrawingMetrics::getBlackAndWhite()) pCS=_ppedigreeTable->getBlackAndWhiteSeriesFromStack(i);
+			else                                     pCS = _ppedigreeTable->getColorSeriesFromStack(i);
 			//
 			// Assume reversed for now:
 			//

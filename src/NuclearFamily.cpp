@@ -743,12 +743,12 @@ void NuclearFamily::calculateWidth(bool classicalOrder){
 		}else{
 			if(_isMaleWithLoopFlags(children[0],0)){
 				if(children[0]->getLeftWidth() != 0){
+					unsigned delta = totalWidth - children[0]->getLeftWidth()-1;
 					if(children[0]->getRightWidth() == 0){
-						if(totalWidth/2 <  children[0]->getLeftWidth()) leftWidth += (totalWidth - children[0]->getLeftWidth()-1); // 2 is the width of the individual
-						else leftWidth += (totalWidth - children[0]->getLeftWidth()-1)/2;
-						//std::cout << " Additional LW Manipulation done " << leftWidth << " children 0 lw " << children[0]->getLeftWidth() << std::endl;
+						if(delta + leftWidth < totalWidth) leftWidth += delta;
+						else  leftWidth += delta/2;
 					}else{
-						leftWidth += (totalWidth - children[0]->getLeftWidth());
+						if(delta+leftWidth+1 < totalWidth) leftWidth += delta+1;
 					}
 					rightWidth = totalWidth - leftWidth;
 				} 
@@ -770,8 +770,7 @@ void NuclearFamily::calculateWidth(bool classicalOrder){
 			//
 			if(leftWidth == 0) leftWidth = totalWidth/2;
 			
-			//std::cout << "***ADDITIONAL LEFT width manipulation required for " << children[0]->getId() << std::endl;
-			// If rigthwidth > totalwidth/2 added for pedigrees with left skew. 
+			// If rightwidth > totalwidth/2 added for pedigrees with left skew. 
 			if(totalWidth/2 < children[0]->getNuclearFamily((unsigned)0)->getRightWidth() || (rightWidth > totalWidth/2)){
 				
 				if(leftWidth <= children[0]->getNuclearFamily((unsigned)0)->getLeftWidth()){
@@ -808,7 +807,7 @@ void NuclearFamily::calculateWidth(bool classicalOrder){
 	std::cout << "Right width for NF is :" << rightWidth << std::endl;
 	std::cout << "Total width for NF is :" << totalWidth << std::endl;
 	*/
-	if(_leftConnectionShiftFlag) std::cout << " LEFT connection shift flag is set" << std::endl;
+	
 	
 }
 
@@ -1338,7 +1337,6 @@ void NuclearFamily::drawSpouseConnectors(Individual* individual,const double hor
 // sortChildrenBasedOnDataField:
 //
 void NuclearFamily::sortChildrenBasedOnDataField(const std::string& name,bool dobSortOrder){
-	
 	
 	std::vector<Individual*> temp = Individual::sortIndividualsBasedOnDataField(name,_sortedChildren,dobSortOrder);
 	_sortedChildren.swap(temp);
