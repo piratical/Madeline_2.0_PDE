@@ -60,6 +60,11 @@ unsigned LabelSet::getNumberOfLabels() const{
 std::vector<UTF8String> LabelSet::getLabelSet(Individual* individual) const{
 	
 	std::vector<UTF8String> labelSet;
+	
+	if(individual->isVirtual()) return labelSet;
+	//
+	// Get here if person is not virtual:
+	//
 	for(unsigned i=0;i<_pedigreeTable->getNumberOfShowOnPedigreeColumns();i++){
 		labelSet.push_back(_pedigreeTable->getColumn(_pedigreeTable->getLabelColumnIndex(i))->get(individual->getRowIndex()));
 	}
