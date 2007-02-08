@@ -29,6 +29,7 @@
 #include "DrawingCanvas.h"
 #include "DrawingMetrics.h"
 #include "Number.h"
+#include "Debug.h"
 
 #include <deque>
 #include <map>
@@ -443,7 +444,7 @@ void NuclearFamily::sortChildrenInClassicalOrder(bool consanguinousLoop,bool mul
 			// delete these two individuals from both the queues
 			leftLoopIndividuals.pop_back();
 			rightLoopIndividuals.pop_front();
-			
+		}
 			bool hasLeftLoopIndividuals = false;
 			// Merge the remaining individuals on the left loop to the LHS of result
 			while(!leftLoopIndividuals.empty()){
@@ -465,12 +466,14 @@ void NuclearFamily::sortChildrenInClassicalOrder(bool consanguinousLoop,bool mul
 			// Merge initial with result
 			while(!initial.empty()){
 				if(multipleDT){
+					
 					// Check for right side external flags
 					unsigned resultRightExternal =  result.front()->getRightSideOfExternalConnection();
 					unsigned initialRightExternal =  initial.back()->getRightSideOfExternalConnection();
 					unsigned resultLeftExternal =  result.back()->getLeftSideOfExternalConnection();
 					unsigned initialLeftExternal =  initial.back()->getLeftSideOfExternalConnection();
-					if((resultRightExternal > initialRightExternal) || (initialLeftExternal > resultLeftExternal) || (result.front()->isConsanguinous() && !result.back()->hasExternalConnection())){
+					
+					if((resultRightExternal > initialRightExternal) || (initialLeftExternal > resultLeftExternal) || (result.front()->isConsanguinous() && !result.back()->hasExternalConnection() && !initial.back()->hasExternalConnection())){
 						result.push_back(initial.back());
 						initial.pop_back();
 					}else{ 
@@ -486,21 +489,22 @@ void NuclearFamily::sortChildrenInClassicalOrder(bool consanguinousLoop,bool mul
 					initial.pop_back();
 				}
 			}
-		}
 		
 	}else{
 		// push all the left loop individuals to the right of result
 		
 		while(!leftLoopIndividuals.empty()){
 			if(!_hasIndividualInDeque(leftLoopIndividuals.front(),initial)){
-				initial.push_back(leftLoopIndividuals.front());
-				if(rightLoopIndividuals.front()->getRightFlag(consanguinousLoop) == initial.back()->getLeftFlag(consanguinousLoop) && initial.back()->getId() != rightLoopIndividuals.front()->getId()){
+				if(rightLoopIndividuals.front()->getRightFlag(consanguinousLoop) == leftLoopIndividuals.front()->getLeftFlag(consanguinousLoop) && leftLoopIndividuals.front()->getId() != rightLoopIndividuals.front()->getId()){
 					// Check to see if the individual is already in the result
 					if(!_hasIndividualInDeque(rightLoopIndividuals.front(),initial)){
-						initial.push_back(rightLoopIndividuals.front());
+						initial.push_front(rightLoopIndividuals.front());
+						initial.push_front(leftLoopIndividuals.front());
 						rightLoopIndividuals.pop_front();
-					}
-				}
+					}else initial.push_back(leftLoopIndividuals.front());
+				}else
+					initial.push_back(leftLoopIndividuals.front());
+				
 			}
 			leftLoopIndividuals.pop_front();
 			
@@ -633,10 +637,11 @@ void NuclearFamily::calculateWidth(bool classicalOrder){
 					
 				}
 				// DEBUG: for individuals with multiple spouses
-				//std::cout << " Multiple Spouse calculation for child " << children[i]->getId() << std::endl;
-				//std::cout << "SUM Right width " << sumRightWidth << " SUM Left width " << sumLeftWidth << std::endl;
-				//std::cout << "Total Width " << totalWidth << std::endl;
-				
+				if(Debug::DEBUG){
+					std::cout << " Multiple Spouse calculation for child " << children[i]->getId() << std::endl;
+					std::cout << "SUM Right width " << sumRightWidth << " SUM Left width " << sumLeftWidth << std::endl;
+					std::cout << "Total Width " << totalWidth << std::endl;
+				}
 				if(sumLeftWidth+sumRightWidth == 0){ 
 					
 					children[i]->setRightWidth(1);
@@ -800,13 +805,14 @@ void NuclearFamily::calculateWidth(bool classicalOrder){
 	_width.setRight(rightWidth);
 	
 	// DEBUG:
-	/*std::cout << std::endl;
-	std::cout << "***WIDTH calculation of NF***" << std::endl;
-	display();
-	std::cout << "Left width for NF is  :" << leftWidth << std::endl;
-	std::cout << "Right width for NF is :" << rightWidth << std::endl;
-	std::cout << "Total width for NF is :" << totalWidth << std::endl;
-	*/
+	if(Debug::DEBUG){
+		std::cout << std::endl;
+		std::cout << "***WIDTH calculation of NF***" << std::endl;
+		display();
+		std::cout << "Left width for NF is  :" << leftWidth << std::endl;
+		std::cout << "Right width for NF is :" << rightWidth << std::endl;
+		std::cout << "Total width for NF is :" << totalWidth << std::endl;
+	}
 	
 	
 }
@@ -840,6 +846,8 @@ void NuclearFamily::draw(Individual* startIndividual,DrawingCanvas& dc,double st
 	
 	// If the left connection shift flag is set adjust the currentX
 	if(_leftConnectionShiftFlag && !_isMaleWithLoopFlags(startIndividual,0)){
+		//std::cout << "LCSF SET" << std::endl;
+		//display();
 		currentX += horizontalInterval;
 	}
 	
@@ -1023,6 +1031,8 @@ void NuclearFamily::draw(Individual* startIndividual,DrawingCanvas& dc,double st
 			}
 			
 			double xl = currentX - (children[i]->getNuclearFamily((unsigned)0)->getLeftWidth()) * horizontalInterval;
+			// If the child has multiple spouses with rightWidth=0, adjust for the individual width
+			if(children[i]->getRightWidth() == 0) xl = currentX - iconInterval;
 			double xr = currentX;
 			for(unsigned j=0;j<children[i]->getNumberOfNuclearFamilies();j++){
 				if(j % 2 == 0){
@@ -1035,7 +1045,6 @@ void NuclearFamily::draw(Individual* startIndividual,DrawingCanvas& dc,double st
 						
 					}
 				}else{
-					
 					xl -= children[i]->getNuclearFamily(j)->getRightWidth() * horizontalInterval;
 					if(children[i]->getId() != children[i]->getNuclearFamily(j)->getMother()->getId())
 						spouse = children[i]->getNuclearFamily(j)->getMother();
@@ -1047,7 +1056,6 @@ void NuclearFamily::draw(Individual* startIndividual,DrawingCanvas& dc,double st
 						//std::cout << "This spouse has already been drawn!!! " << spouse->getId() << std::endl;
 						continue;
 					}
-					
 					children[i]->getNuclearFamily(j)->draw(spouse,dc,xl,currentY+verticalDrop2+iconDiameter/2,classicalOrder);
 					xl -= (children[i]->getNuclearFamily(j)->getLeftWidth())  * horizontalInterval;
 				}
@@ -1102,10 +1110,13 @@ void NuclearFamily::draw(Individual* startIndividual,DrawingCanvas& dc,double st
 							currentX += children[i+1]->getLeftWidth() * horizontalInterval;
 						}else{
 							// For cases where all the NFs are not drawn with the male
-							if(children[i+1]->getLeftWidth() == 1)
+							if(children[i+1]->getLeftWidth() == 1){
 								currentX += children[i]->getNuclearFamily((unsigned)0)->getRightWidth() * horizontalInterval + iconInterval;
-							else
+							}else{
+								
 								currentX += (children[i]->getNuclearFamily((unsigned)0)->getRightWidth()+children[i+1]->getLeftWidth()) * horizontalInterval;
+								
+							}
 						}
 					}else{
 						// Both the Current && Next child have 1 NF

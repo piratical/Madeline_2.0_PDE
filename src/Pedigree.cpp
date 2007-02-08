@@ -641,7 +641,6 @@ void Pedigree::_determineConnectorIndividuals(){
 					cnt--;
 					++it;
 				}*/
-
 				const std::set<Individual*,Individual::compareIndividual> * pspouses = startIndividual->getSpouses();
 				std::set<Individual*,compareIndividual>::iterator it = (*pspouses).begin();
 				while(it != (*pspouses).end()){
@@ -686,7 +685,11 @@ void Pedigree::_determineConnectorIndividuals(){
 	//}
 	//std::cout << "End of determine Connector Ind :" << _descentTrees.size() << std::endl;
 	
-	if(_descentTrees.size() == 1) return;
+	if(_descentTrees.size() == 1){
+		_markConsanguinousIndividuals();
+		return;
+	}
+	
 	// Return when there is only one UNCONNECTED individual in a pedigree
 	if(_descentTrees.size() == 0) return;
 	
@@ -812,8 +815,8 @@ void Pedigree::_markConnectorIndividuals(Individual* individual,unsigned& loopNu
 					//std::cout << "CONSANGUINITY FOUND: Internal connection between " << (*spouseIt)->getId() << " and " << individual->getId() << " LOOP " << loopNumber << std::endl;
 					//std::cout << "RIGHT LOOP " << loopNumber << " : " << (*spouseIt)->getId() << std::endl;
 					//std::cout << "LEFT LOOP " << loopNumber << " : " << individual->getId() << std::endl;
-					_markLeftLoopFlags(individual,loopNumber);
-					_markRightLoopFlags(*spouseIt,loopNumber);
+					//_markLeftLoopFlags(individual,loopNumber);
+					//_markRightLoopFlags(*spouseIt,loopNumber);
 					individual->setIsConsanguinous(true);
 					(*spouseIt)->setIsConsanguinous(true);
 				}
@@ -833,6 +836,10 @@ void Pedigree::_markConnectorIndividuals(Individual* individual,unsigned& loopNu
 						(*spouseIt)->setIsConsanguinous(true);
 						individual->setIsConsanguinous(true);
 						std::string pairIds;
+						// Note: Consang pairs are inserted in a set as it is possible that with 
+						// multiple descent trees both the spouses with multiple mates could have
+						// consanguinous flags set but the relationship with a specific mate may be external
+						// This scenario cannot occure with single descent trees
 						if(individual->getGender().getEnum() == Gender::MALE){
 							pairIds = individual->getId().get()+(*spouseIt)->getId().get();
 							_consangPairIds.insert(pairIds);
@@ -897,7 +904,12 @@ void Pedigree::_markConsanguinousIndividuals(){
 					std::vector<Individual*> children;
 					std::vector<Individual*> sortedChildren;
 					startIndividual->getChildrenWithSpouse((*it),children);
-					_sortSibsBasedOnExternalConnections(children,sortedChildren);
+					_sortSibsBasedOnConsanguinousConnections(children,sortedChildren);
+					if(_descentTrees.size() > 1){
+						children.swap(sortedChildren);
+						sortedChildren.clear();
+						_sortSibsBasedOnExternalConnections(children,sortedChildren);
+					}
 					unsigned childCnt = 0;
 					while(childCnt < sortedChildren.size()){
 						if(sortedChildren[childCnt]->getNumberOfSpouses() > 0){
@@ -944,16 +956,22 @@ void Pedigree::_markConsanguinousFlags(Individual* individual,unsigned& loopNumb
 			continue;
 		}
 		if((*spouseIt)->isConsanguinous()){
-			//std::cout << " LSL " << individual->getId() << " RSL " << (*spouseIt)->getId() << std::endl;
 			loopNumber++;
-			// Check if this pair is consanguinous
-			std::string pairId;
-			if((*spouseIt)->getGender().getEnum() == Gender::MALE) pairId = (*spouseIt)->getId().get()+individual->getId().get();
-			else pairId = individual->getId().get()+(*spouseIt)->getId().get();
-			std::set<std::string>::iterator pairIt = _consangPairIds.find(pairId);
-			if(pairIt != _consangPairIds.end()){
+			if(_descentTrees.size() == 1 && individual->isConsanguinous()){
+				std::cout << " left loop " << individual->getId() << " right loop " << (*spouseIt)->getId() << std::endl;
 				_markLeftLoopFlags(individual,loopNumber);
 				_markRightLoopFlags(*spouseIt,loopNumber);
+			}else{
+				// Check if this pair is consanguinous
+				std::string pairId;
+				if((*spouseIt)->getGender().getEnum() == Gender::MALE) pairId = (*spouseIt)->getId().get()+individual->getId().get();
+				else pairId = individual->getId().get()+(*spouseIt)->getId().get();
+				std::set<std::string>::iterator pairIt = _consangPairIds.find(pairId);
+				if(pairIt != _consangPairIds.end()){
+					//std::cout << " left loop " << individual->getId() << " right loop " << (*spouseIt)->getId() << std::endl;
+					_markLeftLoopFlags(individual,loopNumber);
+					_markRightLoopFlags(*spouseIt,loopNumber);
+				}
 			}
 		}
 		(*spouseIt)->setVisited(true);
@@ -965,7 +983,12 @@ void Pedigree::_markConsanguinousFlags(Individual* individual,unsigned& loopNumb
 		std::vector<Individual*> children;
 		std::vector<Individual*> sortedChildren;
 		individual->getChildrenWithSpouse((*spouseIt),children);
-		_sortSibsBasedOnExternalConnections(children,sortedChildren);
+		_sortSibsBasedOnConsanguinousConnections(children,sortedChildren);
+		if(_descentTrees.size() > 1){
+			children.swap(sortedChildren);
+			sortedChildren.clear();
+			_sortSibsBasedOnExternalConnections(children,sortedChildren);
+		}
 		unsigned childCnt = 0;
 		while(childCnt < sortedChildren.size()){
 			if(sortedChildren[childCnt]->getNumberOfSpouses() > 0){
@@ -1277,14 +1300,51 @@ bool Pedigree::_hasIndividualAtPosition(Individual* start,Individual* end){
 	}
 	xstart += horizontalInterval;
 	int ystarti=int(ystart);
-	if(xstart >= xend) return true;
+	if(xstart >= xend){ return true; }
 	while(xstart < xend){
 		Individual* found = _individualGrid.find(int(xstart),ystarti);
-		if(found){ return true; }
+		if(found){ if(found->getId() == end->getId()) return false; return true; }
 		xstart+= horizontalInterval;
 		
 	}
 	return false;
+	
+}
+
+//
+// _sortSibsBasedOnConsanguinousConnections:
+//
+void Pedigree::_sortSibsBasedOnConsanguinousConnections(const std::vector<Individual*>& sibs,std::vector<Individual*>& sortedSibs){
+	
+	std::deque<Individual*> consang;
+	std::deque<Individual*> initial;
+	
+	// If there is only one sib return:
+	if(sibs.size() == 1){
+		sortedSibs.push_back(sibs.front());
+		return;
+	}
+	// push all the consanguinous individuals in the consang queue
+	for(unsigned i=0;i<sibs.size();i++){
+		if(sibs[i]->isConsanguinous()) consang.push_back(sibs[i]);
+		else initial.push_back(sibs[i]);
+	}
+	if(!consang.size()|| consang.size() == sibs.size()){
+		sortedSibs.insert(sortedSibs.begin(),sibs.begin(),sibs.end());
+		return;
+	}
+	// Alternately, push the consanguinous to the front and back of the remaining individuals
+	for(unsigned j=0;j<consang.size();j++){
+		if(j%2 == 0) initial.push_front(consang[j]);
+		else initial.push_back(consang[j]);
+	}
+	// Copy the result into sortedChildren vector:
+	while(!initial.empty()){
+		sortedSibs.push_back(initial.front());
+		initial.pop_front();
+	}
+	//std::cout << "Result of sorting sibs: Consang size" << consang.size() <<  std::endl;
+	//for(unsigned j=0;j<sortedSibs.size();j++) std::cout << sortedSibs[j]->getId() << std::endl;
 	
 }
 
@@ -1325,17 +1385,14 @@ void Pedigree::_sortSibsBasedOnExternalConnections(const std::vector<Individual*
 		}
 		if(flag){ initial.push_front(right.back()); right.pop_back(); }
 	}
-	std::vector<std::string> idsSortedByExternalConnection;
 	while(!initial.empty()){
 		sortedSibs.push_back(initial.front());
-		idsSortedByExternalConnection.push_back(initial.front()->getId().get());
 		initial.pop_front();
 	}
 	// Set this sorting on the parents:
 	Individual* father = sortedSibs.front()->getFather();
 	Individual* mother = sortedSibs.front()->getMother();
 	std::string parentPair = father->getId().get()+mother->getId().get();
-	//mother->setChildrenIdsSortedByExternalConnections(parentPair,idsSortedByExternalConnection);
 	mother->setChildrenIdsSortedByExternalConnections(parentPair,sortedSibs);
 	
 }

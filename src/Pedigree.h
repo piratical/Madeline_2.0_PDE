@@ -104,6 +104,8 @@ private:
 	
 	bool _hasIndividualAtPosition(Individual* start,Individual* end);
 	void _sortSibsBasedOnExternalConnections(const std::vector<Individual*>& sibs,std::vector<Individual*>& sortedSibs);
+
+	void _sortSibsBasedOnConsanguinousConnections(const std::vector<Individual*>& sibs,std::vector<Individual*>& sortedSibs);
 	
 	unsigned _getPrimaryDescentTreeIndex(std::set<unsigned>& dt,Individual* individual,bool increment);
 	

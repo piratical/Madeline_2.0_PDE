@@ -392,7 +392,18 @@ void Individual::sortSpouses(){
 	
 	// Check if the individual is a male and consanguinous
 	// In such cases the first spouse should be one that has no loop flags set
-	if(_gender.get() == "M" && _isConsanguinous && _spouses.size() > 2){
+	if(_gender.get() == "M" && _isConsanguinous && _spouses.size() >= 2){
+		if(_spouses.size() == 2){
+			if(initial.size()==1){
+				//std::cout << " MUL SPOUSE CNT 2 " << std::endl;
+				if(leftLoopIndividuals.size() && _isConsanguinous && _leftSideOfLoop > 0 && leftLoopIndividuals.front()->isConsanguinous()){
+					result.push_back(leftLoopIndividuals.front());
+					leftLoopIndividuals.pop_back();
+					result.push_back(initial.front());
+					initial.pop_front();
+				}
+			}
+		}else
 		if(initial.size()){
 			result.push_back(initial.front());
 			initial.pop_front();
