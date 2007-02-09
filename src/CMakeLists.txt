@@ -231,12 +231,12 @@ CONFIGURE_FILE(${CMAKE_CURRENT_SOURCE_DIR}/config.h.cmake ${CMAKE_CURRENT_BINARY
 #
 # Executables:
 #
-ADD_EXECUTABLE(minimadeline ${SOURCES} )
+ADD_EXECUTABLE(madeline2 ${SOURCES} )
 
 #
 # Link target:
 #
-TARGET_LINK_LIBRARIES(minimadeline 
+TARGET_LINK_LIBRARIES(madeline2 
 	${requiredLibs} 
 	${libssl} 
 	unzip 
@@ -258,5 +258,5 @@ MESSAGE(STATUS "=== NOTA BENE: === Madeline will be installed in ${CMAKE_INSTALL
 #
 # Installable items:
 #
-INSTALL_TARGETS( /bin minimadeline )
+INSTALL_TARGETS( /bin madeline2 )
 
