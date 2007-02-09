@@ -958,7 +958,7 @@ void Pedigree::_markConsanguinousFlags(Individual* individual,unsigned& loopNumb
 		if((*spouseIt)->isConsanguinous()){
 			loopNumber++;
 			if(_descentTrees.size() == 1 && individual->isConsanguinous()){
-				std::cout << " left loop " << individual->getId() << " right loop " << (*spouseIt)->getId() << std::endl;
+				//std::cout << " left loop " << individual->getId() << " right loop " << (*spouseIt)->getId() << std::endl;
 				_markLeftLoopFlags(individual,loopNumber);
 				_markRightLoopFlags(*spouseIt,loopNumber);
 			}else{

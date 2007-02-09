@@ -498,9 +498,28 @@ void NuclearFamily::sortChildrenInClassicalOrder(bool consanguinousLoop,bool mul
 				if(rightLoopIndividuals.front()->getRightFlag(consanguinousLoop) == leftLoopIndividuals.front()->getLeftFlag(consanguinousLoop) && leftLoopIndividuals.front()->getId() != rightLoopIndividuals.front()->getId()){
 					// Check to see if the individual is already in the result
 					if(!_hasIndividualInDeque(rightLoopIndividuals.front(),initial)){
-						initial.push_front(rightLoopIndividuals.front());
-						initial.push_front(leftLoopIndividuals.front());
+						unsigned rightFlag = rightLoopIndividuals.front()->getRightFlag(consanguinousLoop);
+						std::deque<Individual*> tempPair;
+						tempPair.push_back(rightLoopIndividuals.front());
+						tempPair.push_back(leftLoopIndividuals.front());
+						//initial.push_front(rightLoopIndividuals.front());
+						//initial.push_front(leftLoopIndividuals.front());
 						rightLoopIndividuals.pop_front();
+						// Check if there exists an individual in the right queue with loop number < the one pushed onto the q
+						
+						while(rightLoopIndividuals.size()){
+							if(!_hasIndividualInDeque(rightLoopIndividuals.back(),initial) && !_hasIndividualInDeque(rightLoopIndividuals.back(),tempPair)){
+								if(rightLoopIndividuals.back()->getRightFlag(consanguinousLoop) <= rightFlag){
+									initial.push_front(rightLoopIndividuals.back());
+									rightLoopIndividuals.pop_back();
+								}
+							}else rightLoopIndividuals.pop_back();
+							if(rightLoopIndividuals.size() && rightLoopIndividuals.back()->getRightFlag(consanguinousLoop) > rightFlag) break;
+						}
+						initial.push_front(tempPair.front());
+						tempPair.pop_front();
+						initial.push_front(tempPair.front());
+						tempPair.pop_front();
 					}else initial.push_back(leftLoopIndividuals.front());
 				}else
 					initial.push_back(leftLoopIndividuals.front());
