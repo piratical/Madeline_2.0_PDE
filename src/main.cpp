@@ -33,7 +33,7 @@ int main( int argc, char *argv[] ){
 	// RSTUVWXYZ:
 	clp.addSwitch("--sort","-s","Field based on which siblings are sorted",1);
 	clp.addSwitch("--version","-v","Print version and exit");
-	clp.addUsage("minimadeline [option]... [file]...\n If input file is remote, specify the file name starting with 'http://'. To retrieve the data from a mysql database use 'mysql://[host:port/]username:passwd@database:table'");
+	clp.addUsage("madeline2 [option]... [file]...\n\nIf input file is remote, specify the file\nname starting with 'http://' or 'https://'.\nTo retrieve the data from a mysql database use\n'mysql://[host:port/]username:passwd@database:table'");
 	
 	if(clp.parse(argc,argv)){
 		// No error, process the switches
