@@ -184,7 +184,7 @@ TEST_CLP_OBJECTS=\
     Debug.o
     
 TEST_DATE_OBJECTS= \
-    Data.o Date.o DigitConverter.o \
+    Data.o Date.o Debug.o DigitConverter.o \
     Number.o \
     Warning.o
 

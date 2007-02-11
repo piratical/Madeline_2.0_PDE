@@ -67,6 +67,7 @@ const Date Date::MISSING;
 std::set<std::string> Date::_dateMissingValue;
 
 bool Date::_displayRangeMeans=false;
+bool Date::_displayDelimiters=false;
 
 //////////////////////////
 //
@@ -1544,16 +1545,23 @@ void Date::set(const std::string &dateString){
 const std::string Date::get( void ) const {
 	
 	std::ostringstream oss;
+	
+	//
+	// Conditionally add opening delimiter:
+	//
+	if(_displayDelimiters) oss << "{";
+	
 	if( _isMissing ){
 		
-		oss << "{.}";
+		oss << ".";
 		
 	}else if(_calendarDisplayType==HIJRI && _julian< _IHIJRIJULIAN){
 		
 		Warning("Date::get()",
 		        "The *display* of Islamic proleptic dates (i.e., before 0622.07.16 C.E.) has not been implemented."
 		);
-		oss << "{.}";
+		
+		oss << ".";
 		
 	}else{
 		int yyyy=0,mm=0,dd=0;
@@ -1572,38 +1580,43 @@ const std::string Date::get( void ) const {
 			_getYearMonthDay((_julian + _highEndJulian)/2,&meanYY,&meanMM,&meanDD);
 			
 			if(_displayRangeMeans){
-				oss << "x̄={"
+				oss << "x̄="
 				    << std::setfill('0') << std::setw(4) << meanYY 
 				    << '.' 
 				    << std::setw(2) << meanMM
 				    << '.' 
 				    << std::setw(2) << meanDD
-				    << "} : ";
+				    << " : ";
 			}
 			
-			oss << '{'
-			    << std::setfill('0') << std::setw(4) << yyyy 
+			//oss << '{'
+			oss << std::setfill('0') << std::setw(4) << yyyy 
 			    << '.' 
 			    << std::setw(2) << mm 
 			    << '.' 
 			    << std::setw(2) << dd 
-			    << " → " 
+			    << "→" 
 			    << std::setfill('0') << std::setw(4) << highYY
 			    << '.'
 			    << std::setw(2) << highMM
 			    << '.'
-			    << std::setw(2) << highDD
-			    << '}';
+			    << std::setw(2) << highDD;
+			//    << '}';
 		}else{
-			oss << '{' 
-			    << std::setfill('0') << std::setw(4) << yyyy 
+			//oss << '{' 
+			oss << std::setfill('0') << std::setw(4) << yyyy 
 			    << '.' 
 			    << std::setw(2) << mm 
 			    << '.' 
-			    << std::setw(2) << dd 
-			    << '}' ;
+			    << std::setw(2) << dd;
+			//    << '}' ;
 		}
 	}
+	
+	//
+	// Conditionally add closing delimiter:
+	//
+	if(_displayDelimiters) oss << "}";
 	
 	return (const std::string) oss.str();
 	
@@ -2245,6 +2258,13 @@ bool Date::isA(const std::string& s){
 //
 void Date::displayRangeMeans(bool displayThem){
 	_displayRangeMeans = displayThem;
+}
+
+//
+// static method displayDelimiters()
+//
+void Date::displayDelimiters(bool displayThem){
+	_displayDelimiters = displayThem;
 }
 
 

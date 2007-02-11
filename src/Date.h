@@ -84,6 +84,7 @@ private:
 	const static int _daysInMonth[12];
 	
 	static bool _displayRangeMeans;
+	static bool _displayDelimiters;
 	
 	// Private constants needed by algorithms:
 	const static long _IGREG=(15+31L*(10+12L*1582)); // Gregorian calendar adopted Oct. 15, 1582 
@@ -301,7 +302,9 @@ public:
 	static double getDaysInYear(void) { return _DAYSINYEAR; }
 	
 	// ADDED on 2006.11.30:
-	static void displayRangeMeans(bool displayThem); 
+	static void displayRangeMeans(bool displayThem);
+	// ADDED on 2007.02.10:
+	static void displayDelimiters(bool displayThem); 
 };
 
 //
