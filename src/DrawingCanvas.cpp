@@ -163,10 +163,10 @@ void DrawingCanvas::_setCSS(){
 	_header << "}\n\n";
 	
 	//
-	// Rectangle style definition:
+	// Rectangle style definition: Needed for legend -- do not comment out
 	//
 	_header << "rect{\n";
-	_header << "	fill:#fff;\n";
+	//_header << "	fill:#fff;\n";
 	_header << "	stroke:#000;\n";
 	_header << "	stroke-width:" << DrawingMetrics::getLineWidth() << DrawingMetrics::getLineWidthUnit() << ";\n";
 	_header << "	stroke-linejoin:miter;\n";
@@ -176,26 +176,26 @@ void DrawingCanvas::_setCSS(){
 	//
 	// Circle style definition:
 	//
-	_header << "circle{\n";
-	_header << "	fill:#fff;\n";
-	_header << "	stroke:#000;\n";
-	_header << "	stroke-width:" << DrawingMetrics::getLineWidth() << DrawingMetrics::getLineWidthUnit() << ";\n";
-	_header << "}\n\n";
+	//_header << "circle{\n";
+	//_header << "	fill:#fff;\n";
+	//_header << "	stroke:#000;\n";
+	//_header << "	stroke-width:" << DrawingMetrics::getLineWidth() << DrawingMetrics::getLineWidthUnit() << ";\n";
+	//_header << "}\n\n";
 	
 	//
 	// Polyline style definition:
 	//
-	_header << "polyline{\n";
-	_header << "	fill:#fff;\n";
-	_header << "	stroke:#000;\n";
-	_header << "	stroke-width:" << DrawingMetrics::getLineWidth() << DrawingMetrics::getLineWidthUnit() << ";\n";
-	_header << "}\n\n";
+	//_header << "polyline{\n";
+	//_header << "	fill:#fff;\n";
+	//_header << "	stroke:#000;\n";
+	//_header << "	stroke-width:" << DrawingMetrics::getLineWidth() << DrawingMetrics::getLineWidthUnit() << ";\n";
+	//_header << "}\n\n";
 	
 	//
-	// ellipse
+	// ellipse : Used for encircled numbers on birth order
 	//
 	_header << "ellipse{\n";
-	_header << "	fill: #fff;\n";
+	//_header << "	fill: #fff;\n";
 	_header << "	stroke: #000;\n";
 	_header << "	stroke-width:" << 0.5*DrawingMetrics::getLineWidth() << DrawingMetrics::getLineWidthUnit() << ";\n";
 	_header << "}\n\n";
@@ -255,24 +255,24 @@ void DrawingCanvas::_setCSS(){
 	//
 	// .affected:
 	//
-	_header << ".affected{\n";
-	_header << "	fill:#98afc7;\n";
-	_header << "}\n\n";
+	//_header << ".affected{\n";
+	//_header << "	fill:#98afc7;\n";
+	//_header << "}\n\n";
 	
 	//
 	// .notSampled:
 	//
-	_header << ".notSampled{\n";
-	_header << "	stroke:#808080;\n";
-	_header << "}\n\n";
+	//_header << ".notSampled{\n";
+	//_header << "	stroke:#808080;\n";
+	//_header << "}\n\n";
 	
 	//
 	// .affectedNotSampled:
 	//
-	_header << ".affectedNotSampled{\n";
-	_header << "	stroke:#808080;\n";
-	_header << "	fill:#98afc7;\n";
-	_header << "}\n\n";
+	//_header << ".affectedNotSampled{\n";
+	//_header << "	stroke:#808080;\n";
+	//_header << "	fill:#98afc7;\n";
+	//_header << "}\n\n";
 	
 	//
 	// .birthOrder:
@@ -290,7 +290,7 @@ void DrawingCanvas::_setCSS(){
 	_header << "}\n\n";
 	
 	//
-	// Rectangle style definition:
+	// keyBox (legend) style definition:
 	//
 	_header << ".keyBox{\n";
 	_header << "	fill:#e5e5e5;\n";
@@ -313,9 +313,20 @@ void DrawingCanvas::_setCSS(){
 	//
 	_header << ".selectedIndividual{\n";
 	_header << "	stroke-width:" << highlightWidth << DrawingMetrics::getLineWidthUnit() << ";\n";
+	_header << "	stroke-linecap:square;\n";
+	_header << "	stroke-linejoin:miter;\n";
 	_header << "	stroke:#d00;\n";
+	_header << "    fill:none;\n";
 	_header << "}\n\n";
 	
+	//
+	// .selectedIndividual:hover
+	//
+	_header << ".selectedIndividual:hover{\n";
+	_header << "	stroke:#d00;\n";
+	_header << "	fill:#ffbbbb;\n";
+	_header << "	fill-opacity:0.70;\n";
+	_header << "}\n\n";
 	////////////////
 	//
 	// New classes:
@@ -372,20 +383,21 @@ void DrawingCanvas::_setCSS(){
 	//
 	// whiteInkLetter:
 	//
-	_header << ".whiteInkLetter_1{\n";
-	_header << "	font-size: " << DrawingMetrics::getFontSize() << DrawingMetrics::getFontSizeUnit() << ";\n";
-	_header << "	fill: #fff;\n";
-	_header << "}\n\n";
+
+	//_header << ".whiteInkLetter_1{\n";
+	//_header << "	font-size: " << DrawingMetrics::getFontSize() << DrawingMetrics::getFontSizeUnit() << ";\n";
+	//_header << "	fill: #fff;\n";
+	//_header << "}\n\n";
 	
-	_header << ".whiteInkLetter_2{\n";
-	_header << "	font-size: " << DrawingMetrics::getFontSize()-2 << DrawingMetrics::getFontSizeUnit() << ";\n";
-	_header << "	fill: #fff;\n";
-	_header << "}\n\n";
+	//_header << ".whiteInkLetter_2{\n";
+	//_header << "	font-size: " << DrawingMetrics::getFontSize()-2 << DrawingMetrics::getFontSizeUnit() << ";\n";
+	//_header << "	fill: #fff;\n";
+	//_header << "}\n\n";
 	
-	_header << ".whiteInkLetter_3{\n";
-	_header << "	font-size: " << DrawingMetrics::getFontSize()-4 << DrawingMetrics::getFontSizeUnit() << ";\n";
-	_header << "	fill: #fff;\n";
-	_header << "}\n\n";
+	//_header << ".whiteInkLetter_3{\n";
+	//_header << "	font-size: " << DrawingMetrics::getFontSize()-4 << DrawingMetrics::getFontSizeUnit() << ";\n";
+	//_header << "	fill: #fff;\n";
+	//_header << "}\n\n";
 	
 	_header << ".whiteInkLetter{\n";
 	_header << "	font-size: " << 2*DrawingMetrics::getFontSize()/3 << DrawingMetrics::getFontSizeUnit() << ";\n";
@@ -395,20 +407,22 @@ void DrawingCanvas::_setCSS(){
 	//
 	// blackInkLetter:
 	//
-	_header << ".blackInkLetter_1{\n";
-	_header << "	font-size: " << DrawingMetrics::getFontSize() << DrawingMetrics::getFontSizeUnit() << ";\n";
-	_header << "}\n\n";
+
+	//_header << ".blackInkLetter_1{\n";
+	//_header << "	font-size: " << DrawingMetrics::getFontSize() << DrawingMetrics::getFontSizeUnit() << ";\n";
+	//_header << "}\n\n";
 	
-	_header << ".blackInkLetter_2{\n";
-	_header << "	font-size: " << DrawingMetrics::getFontSize()-2 << DrawingMetrics::getFontSizeUnit() << ";\n";
-	_header << "}\n\n";
+	//_header << ".blackInkLetter_2{\n";
+	//_header << "	font-size: " << DrawingMetrics::getFontSize()-2 << DrawingMetrics::getFontSizeUnit() << ";\n";
+	//_header << "}\n\n";
 	
-	_header << ".blackInkLetter_3{\n";
-	_header << "	font-size: " << DrawingMetrics::getFontSize()-4 << DrawingMetrics::getFontSizeUnit() << ";\n";
-	_header << "}\n\n";
+	//_header << ".blackInkLetter_3{\n";
+	//_header << "	font-size: " << DrawingMetrics::getFontSize()-4 << DrawingMetrics::getFontSizeUnit() << ";\n";
+	//_header << "}\n\n";
 	
 	_header << ".blackInkLetter{\n";
 	_header << "	font-size: " << 2*DrawingMetrics::getFontSize()/3 << DrawingMetrics::getFontSizeUnit() << ";\n";
+	_header << "	fill: #000;\n";
 	_header << "}\n\n";
 	
 	//
