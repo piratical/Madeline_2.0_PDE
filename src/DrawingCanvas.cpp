@@ -722,8 +722,8 @@ void DrawingCanvas::drawVerticalLine(double x, double y1, double y2,const std::s
 	if(id        != std::string("") ) *output << "id=\""    << id    <<"\" ";
 	*output << "x1=\"" << x << "\" y1=\"" << y1 << "\" x2=\"" << x << "\" y2=\"" << y2 << "\" />\n";
 	*/
-	if(!_layerFlag) _svg.drawVerticalLine(_body,x,y1,y2);
-	else            _svg.drawVerticalLine(_layer,x,y1,y2);
+	if(!_layerFlag) _svg.drawVerticalLine(_body,x,y1,y2,className,id);
+	else            _svg.drawVerticalLine(_layer,x,y1,y2,className,id);
 	
 }
 
