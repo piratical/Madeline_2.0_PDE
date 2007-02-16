@@ -166,7 +166,6 @@ void DrawingCanvas::_setCSS(){
 	// Rectangle style definition: Needed for legend -- do not comment out
 	//
 	_header << "rect{\n";
-	//_header << "	fill:#fff;\n";
 	_header << "	stroke:#000;\n";
 	_header << "	stroke-width:" << DrawingMetrics::getLineWidth() << DrawingMetrics::getLineWidthUnit() << ";\n";
 	_header << "	stroke-linejoin:miter;\n";
@@ -174,29 +173,11 @@ void DrawingCanvas::_setCSS(){
 	_header << "}\n\n";
 	
 	//
-	// Circle style definition:
-	//
-	//_header << "circle{\n";
-	//_header << "	fill:#fff;\n";
-	//_header << "	stroke:#000;\n";
-	//_header << "	stroke-width:" << DrawingMetrics::getLineWidth() << DrawingMetrics::getLineWidthUnit() << ";\n";
-	//_header << "}\n\n";
-	
-	//
-	// Polyline style definition:
-	//
-	//_header << "polyline{\n";
-	//_header << "	fill:#fff;\n";
-	//_header << "	stroke:#000;\n";
-	//_header << "	stroke-width:" << DrawingMetrics::getLineWidth() << DrawingMetrics::getLineWidthUnit() << ";\n";
-	//_header << "}\n\n";
-	
-	//
 	// ellipse : Used for encircled numbers on birth order
 	//
 	_header << "ellipse{\n";
-	//_header << "	fill: #fff;\n";
 	_header << "	stroke: #000;\n";
+	_header << "    fill: #fff;\n";
 	_header << "	stroke-width:" << 0.5*DrawingMetrics::getLineWidth() << DrawingMetrics::getLineWidthUnit() << ";\n";
 	_header << "}\n\n";
 	
@@ -205,20 +186,6 @@ void DrawingCanvas::_setCSS(){
 	//
 	double highlightWidth = 2.0*DrawingMetrics::getLineWidth();
 	
-	//_header << "rect:hover{\n";
-	//_header << "	fill:#ffb787;\n";
-	//_header << "	stroke-width:" << highlightWidth << DrawingMetrics::getLineWidthUnit() << ";\n";
-	//_header << "}\n\n";
-	
-	//_header << "circle:hover{\n";
-	//_header << "	fill:#ffb787;\n";
-	//_header << "	stroke-width:" << highlightWidth << DrawingMetrics::getLineWidthUnit() << ";\n";
-	//_header << "}\n\n";
-	
-	//_header << "polyline:hover{\n";
-	//_header << "	fill:#ffb787;\n";
-	//_header << "	stroke-width:" << highlightWidth << DrawingMetrics::getLineWidthUnit() << ";\n";
-	//_header << "}\n\n";
 	
 	//
 	// Text: defaults for labels
@@ -277,7 +244,7 @@ void DrawingCanvas::_setCSS(){
 	//
 	// .birthOrder:
 	//
-	_header << ".birthOrder{\n";
+	_header << ".birthOrder,.unknownTwins{\n";
 	_header << "	font-size: " << 2*DrawingMetrics::getFontSize()/3 << DrawingMetrics::getFontSizeUnit() << ";\n";
 	_header << "}\n\n";
 	
@@ -384,20 +351,20 @@ void DrawingCanvas::_setCSS(){
 	// whiteInkLetter:
 	//
 
-	//_header << ".whiteInkLetter_1{\n";
-	//_header << "	font-size: " << DrawingMetrics::getFontSize() << DrawingMetrics::getFontSizeUnit() << ";\n";
-	//_header << "	fill: #fff;\n";
-	//_header << "}\n\n";
+	_header << ".whiteInkLetter_1{\n";
+	_header << "	font-size: " << DrawingMetrics::getFontSize() << DrawingMetrics::getFontSizeUnit() << ";\n";
+	_header << "	fill: #fff;\n";
+	_header << "}\n\n";
 	
-	//_header << ".whiteInkLetter_2{\n";
-	//_header << "	font-size: " << DrawingMetrics::getFontSize()-2 << DrawingMetrics::getFontSizeUnit() << ";\n";
-	//_header << "	fill: #fff;\n";
-	//_header << "}\n\n";
+	_header << ".whiteInkLetter_2{\n";
+	_header << "	font-size: " << DrawingMetrics::getFontSize()-2 << DrawingMetrics::getFontSizeUnit() << ";\n";
+	_header << "	fill: #fff;\n";
+	_header << "}\n\n";
 	
-	//_header << ".whiteInkLetter_3{\n";
-	//_header << "	font-size: " << DrawingMetrics::getFontSize()-4 << DrawingMetrics::getFontSizeUnit() << ";\n";
-	//_header << "	fill: #fff;\n";
-	//_header << "}\n\n";
+	_header << ".whiteInkLetter_3{\n";
+	_header << "	font-size: " << DrawingMetrics::getFontSize()-4 << DrawingMetrics::getFontSizeUnit() << ";\n";
+	_header << "	fill: #fff;\n";
+	_header << "}\n\n";
 	
 	_header << ".whiteInkLetter{\n";
 	_header << "	font-size: " << 2*DrawingMetrics::getFontSize()/3 << DrawingMetrics::getFontSizeUnit() << ";\n";
@@ -408,17 +375,17 @@ void DrawingCanvas::_setCSS(){
 	// blackInkLetter:
 	//
 
-	//_header << ".blackInkLetter_1{\n";
-	//_header << "	font-size: " << DrawingMetrics::getFontSize() << DrawingMetrics::getFontSizeUnit() << ";\n";
-	//_header << "}\n\n";
+	_header << ".blackInkLetter_1{\n";
+	_header << "	font-size: " << DrawingMetrics::getFontSize() << DrawingMetrics::getFontSizeUnit() << ";\n";
+	_header << "}\n\n";
 	
-	//_header << ".blackInkLetter_2{\n";
-	//_header << "	font-size: " << DrawingMetrics::getFontSize()-2 << DrawingMetrics::getFontSizeUnit() << ";\n";
-	//_header << "}\n\n";
+	_header << ".blackInkLetter_2{\n";
+	_header << "	font-size: " << DrawingMetrics::getFontSize()-2 << DrawingMetrics::getFontSizeUnit() << ";\n";
+	_header << "}\n\n";
 	
-	//_header << ".blackInkLetter_3{\n";
-	//_header << "	font-size: " << DrawingMetrics::getFontSize()-4 << DrawingMetrics::getFontSizeUnit() << ";\n";
-	//_header << "}\n\n";
+	_header << ".blackInkLetter_3{\n";
+	_header << "	font-size: " << DrawingMetrics::getFontSize()-4 << DrawingMetrics::getFontSizeUnit() << ";\n";
+	_header << "}\n\n";
 	
 	_header << ".blackInkLetter{\n";
 	_header << "	font-size: " << 2*DrawingMetrics::getFontSize()/3 << DrawingMetrics::getFontSizeUnit() << ";\n";
@@ -570,7 +537,6 @@ DrawingCanvas::DrawingCanvas(const LabelSet *labelSet,const std::string name="a4
 	//
 	// the labelManager automagically sets the correct line height:
 	//
-	// // _labelManager = DrawingLabelManager(labelSet);
 	//
 	_labelManager.setLabelSet(labelSet);
 	
@@ -670,8 +636,6 @@ void DrawingCanvas::drawTitle(const std::string title){
 //
 void DrawingCanvas::drawLine(double x1,double y1,double x2,double y2){
 	
-	//if(_layerFlag) _layer << "  <line x1=\"" << x1 << "\" y1=\"" << y1 << "\" x2=\"" << x2 << "\" y2=\"" << y2 << "\" />\n";
-	//else           _body  << "  <line x1=\"" << x1 << "\" y1=\"" << y1 << "\" x2=\"" << x2 << "\" y2=\"" << y2 << "\" />\n";
 	if(!_layerFlag) _svg.drawLine(_body,x1,y1,x2,y2);
 	else            _svg.drawLine(_layer,x1,y1,x2,y2);
 	
@@ -682,14 +646,6 @@ void DrawingCanvas::drawLine(double x1,double y1,double x2,double y2){
 //
 void DrawingCanvas::drawPolyline(const std::string points,const std::string& id,const std::string& cssClass){
 	
-	/*std::ostringstream *output;
-	if(_layerFlag) output = &(_layer);
-	else           output = &(_body );
-	*output << "  <polyline points=\"" << points << "\" ";
-	if(id        != std::string("") ) *output << "id=\""    << id    <<"\" ";
-	if(myclass     != std::string("") ) *output << "class=\""    << myclass    <<"\" ";
-	*output << " />\n";
-	*/
 	if(!_layerFlag) _svg.drawPolyline(_body,points,id,cssClass);
 	else            _svg.drawPolyline(_layer,points,id,cssClass);
 	
@@ -700,8 +656,6 @@ void DrawingCanvas::drawPolyline(const std::string points,const std::string& id,
 //
 void DrawingCanvas::drawHorizontalLine(double y, double x1, double x2){
 	
-	//if(_layerFlag) _layer << "  <line x1=\"" << x1 << "\" y1=\"" << y << "\" x2=\"" << x2 << "\" y2=\"" << y << "\" />\n";
-	//else           _body  << "  <line x1=\"" << x1 << "\" y1=\"" << y << "\" x2=\"" << x2 << "\" y2=\"" << y << "\" />\n";
 	if(!_layerFlag) _svg.drawHorizontalLine(_body,y,x1,x2);
 	else            _svg.drawHorizontalLine(_layer,y,x1,x2);
 	
@@ -712,16 +666,6 @@ void DrawingCanvas::drawHorizontalLine(double y, double x1, double x2){
 //
 void DrawingCanvas::drawVerticalLine(double x, double y1, double y2,const std::string & className, const std::string & id){
 	
-	/*std::ostringstream *output;
-	if(_layerFlag) output = &(_layer);
-	else           output = &(_body );
-	
-	
-	*output << "  <line ";
-	if(className != std::string("") ) *output << "class=\"" << className <<"\" ";
-	if(id        != std::string("") ) *output << "id=\""    << id    <<"\" ";
-	*output << "x1=\"" << x << "\" y1=\"" << y1 << "\" x2=\"" << x << "\" y2=\"" << y2 << "\" />\n";
-	*/
 	if(!_layerFlag) _svg.drawVerticalLine(_body,x,y1,y2,className,id);
 	else            _svg.drawVerticalLine(_layer,x,y1,y2,className,id);
 	
@@ -1023,7 +967,7 @@ double DrawingCanvas::getXMinimum(){
 //
 double DrawingCanvas::getYMinimum(){
 	
-	// In this here, "VerticalDrop2" is an arbitrary margin distance:
+	// NOTE: "VerticalDrop2" is an arbitrary margin distance:
 	return _yMinimum - DrawingMetrics::getIconRadius() - DrawingMetrics::getVerticalDrop2();
 	
 }
@@ -1144,8 +1088,6 @@ void DrawingCanvas::arc( double x, double y, double r, double startAngle, double
 	double x3 = x;
 	double y3 = y;
 	if(isMale){
-		//x3 = x3 + 0.1445*r*cos(startAngle+delta/2);
-		//y3 = y3 + 0.1445*r*sin(startAngle+delta/2);
 		x3 -= cos(startAngle+delta/2) * 0.4 * r;
 		y3 -= sin(startAngle+delta/2) * 0.4 * r;
 		
@@ -1154,10 +1096,6 @@ void DrawingCanvas::arc( double x, double y, double r, double startAngle, double
 		y3 -= sin(startAngle+delta/2) * r * 0.5;
 	}
 	
-	//
-	// if(arcLabel != std::string(".")) y3 += DrawingMetrics::getYMaximum()*0.5;
-	// *DrawingMetrics::getScalingFactor();
-	//
 	if(arcLabel != std::string(".")){
 		_doc.get_dimensions(arcLabel,&lineSpacing,&xAdvance,&yMinimum,&yMaximum);
 		 y3+= 0.5*(yMaximum-yMinimum);
@@ -1292,12 +1230,12 @@ void DrawingCanvas::iconPie( double x, double y, Individual *pIndividual ){
 		if(!pCS->reversedSeriesUseBlackInkAtLevel(level)) arcClass="whiteInkLetter";
 		
 		//
-		// What is the point of "arcClass_n" ? I don't get it ...
+		// If the number of sections is small, use a larger font size
 		//
-		//if(sections == 1)      arcClass += "_1";
-		//else if(sections == 2) arcClass += "_2";
-		//else if(sections == 3) arcClass += "_3";
 		
+		if(sections == 1)      arcClass += "_1";
+		else if(sections == 2) arcClass += "_2";
+		else if(sections == 3) arcClass += "_3";
 		arc(x,y,radius,startAngle,endAngle,(reversed?pCS->reversedSeriesGetColorAtLevel(level):pCS->getColorAtLevel(level)),label,arcClass,isMale);
 		startAngle+=arcAngle;
 		endAngle+=arcAngle;

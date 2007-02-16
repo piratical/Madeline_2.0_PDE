@@ -53,6 +53,7 @@ private:
 	
 	inline void _init(void);
 	void _checkForSpecialIndividualTypes(void);
+	void _rearrangeMultipleSpouses(std::deque<Individual*>& initial,std::deque<Individual*>& left,std::deque<Individual*>& right,std::deque<Individual*>& result);
 	
 public:
 	//
@@ -263,10 +264,7 @@ public:
 	bool getLeftSpouseConnector(void) { return _leftSpouseConnector; }
 	
 	// Getters of Individual connections:
-	std::vector<std::string> getSpouseIds();
-	std::vector<std::string> getChildrenIds();
 	std::vector<std::string> getChildrenIds(Individual* spouse);
-	std::vector<std::string> getChildrenIdsSortedByExternalConnections(Individual* spouse);
 	
 	const std::set<Individual*,compareIndividual> *const getSpouses(void) const;
 	const std::set<Individual*,compareIndividual> *const getChildren(void) const;
@@ -291,8 +289,7 @@ public:
 	}
 	
 	// Other Methods:
-	void sortSpouses(void);
-	void sortSpousesOld(void);
+	void sortSpouses(bool externalFlag=false);
 	void addSpouse(Individual* spouse) { _spouses.insert(spouse); }
 	void addChild(Individual* child) { _children.insert(child); }
 	void addDescentTree(unsigned descentTreeId) { _descentTrees.insert(descentTreeId); }

@@ -211,11 +211,11 @@ void PedigreeSet::addPedigreesFromDataTable(const DataTable * p_pedigreeTable, u
 	}
 	if(!sortFieldPresent){
 		if(dobPresent){
-			std::cout << "Siblings are order by DOB" << std::endl;
+			std::cout << "Siblings are ordered by DOB." << std::endl;
 			_computeWidths(pedigreeTable.labels.DOBField,true);
 			DrawingMetrics::setDisplayBirthOrder(true);
 		}else{    
-			std::cout << "Default ordering of siblings" << std::endl;
+			std::cout << "Default ordering of siblings." << std::endl;
 			_computeWidths(std::string(""));
 		}
 	}
@@ -238,7 +238,7 @@ void PedigreeSet::draw(const DataTable *const pedigreeTable){
 	// Instantiate a LabelSet object for a pedigree set:
 	//
 	LabelSet labelSet(pedigreeTable);
-	std::cout << "No of labels" << labelSet.getNumberOfLabels() << std::endl;
+	std::cout << "No of labels: " << labelSet.getNumberOfLabels() << std::endl;
 	
 	//
 	// Iterate over the pedigrees and draw them:

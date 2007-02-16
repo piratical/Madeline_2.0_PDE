@@ -31,6 +31,7 @@
 
 #include "Width.h"
 #include "utility.h"
+#include "Date.h"
 #include <deque>
 
 class DrawingCanvas;
@@ -75,7 +76,7 @@ public:
 	void drawSpouseConnectors(Individual* individual,const double horizontalInterval,const double iconInterval,const double iconDiameter,DrawingCanvas& dc);
 	void sortChildrenInClassicalOrder(bool consanguinousFlag,bool mutipleDT=false);
 	void sortChildrenBasedOnDataField(const std::string& name,bool dobSortOrder);
-	
+	void findTwinsByDOB();	
 	//
 	// Setters:
 	//
@@ -96,7 +97,6 @@ public:
 	unsigned getNumberOfChildren() { return _sortedChildren.size(); }
 	bool getLeftConnectionShiftFlag() { return _leftConnectionShiftFlag; }
 	Individual* getChildInClassicalOrder(unsigned index);
-	//std::vector<std::string> getChildrenIds();
 	
 	bool isConsanguinous(void){ 
 		// True if both the mother and father are consanguinous:

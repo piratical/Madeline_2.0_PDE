@@ -136,6 +136,7 @@ void Pedigree::_setIndividualTwinField(const DataColumn* twinColumn,char type){
 		twinIterators.pop_back();
 	}
 	
+	
 	// DEBUG: Print out all the twins:
 	/*if(_twinMarkers.size() >= 1){
 		std::cout << "The twins are " << std::endl;
@@ -145,8 +146,8 @@ void Pedigree::_setIndividualTwinField(const DataColumn* twinColumn,char type){
 			std::cout << "Twin:    " << mit->second[i]->getId() << " Marker :" << mit->second[i]->getTwinMarker().get() << " Type: " << mit->second[i]->getTwinMarker().getTwinType() << std::endl;
 			++mit;
 		}
-	}
-	*/
+	}*/
+	
 }
 
 //
@@ -155,6 +156,44 @@ void Pedigree::_setIndividualTwinField(const DataColumn* twinColumn,char type){
 void Pedigree::_addDescentTree(unsigned id) {
 	
 	_descentTrees.push_back(new DescentTree(id));
+	
+}
+
+//
+// _checkMarkedTwinsDOB: issue warning messages if the DOB of twins in a twin group do not match
+//
+void Pedigree::_checkMarkedTwinsDOB(){
+	
+	// get all the Individuals with the same marker from the map
+	std::map<std::string,std::vector<Individual*> >::iterator mit = _twinMarkers.begin();
+	while(mit != _twinMarkers.end()){
+		// return if there is no dob field present
+		if(mit->second[0]->getDOB() == 0) return;
+		std::vector<Data*> dates;
+		unsigned missingCount=0;
+		for(unsigned i=0;i<mit->second.size();i++){
+			if(mit->second[i]->getDOB()->isMissing()){
+				missingCount++;
+			}else{
+				dates.push_back(mit->second[i]->getDOB());
+			}
+		}
+		
+		if(missingCount == mit->second.size());
+		else if(missingCount && missingCount < mit->second.size()){
+			Warning("Pedigree::_checkMarkedTwinsDOB()","DOB is missing for some twins in the twin group with marker '%s'.",mit->first.substr(0,1).c_str());
+		}else{
+			bool unique=true;
+			Data* initial = dates[0];
+			for(unsigned i=1;i<dates.size();i++){
+				if(*initial == *dates[i]);
+				else { unique = false; break; }
+			}
+			if(!unique) Warning("Pedigree::_checkMarkedTwinsDOB","DOB of twins in the twin group with marker '%s' is not the same.",mit->first.substr(0,1).c_str());
+			
+		}
+		++mit;
+	}
 	
 }
 
@@ -200,6 +239,7 @@ void Pedigree::_addNuclearFamily(Individual* mother, Individual* father){
 							throw Exception("addNuclearFamily()","More than one Nuclear Family has the same Twin marker %s",mit->first.c_str());
 						}
 						for(unsigned i=0;i<mit->second.size();i++){
+							
 							if(!(*pit.first)->hasChild(mit->second[i])){
 								(*pit.first)->addChild(mit->second[i]);
 							}
@@ -213,6 +253,10 @@ void Pedigree::_addNuclearFamily(Individual* mother, Individual* father){
 		if(twinGroupCount > 0){
 			(*pit.first)->setTwinGroupCount(twinGroupCount);
 		}
+		
+		
+		(*pit.first)->findTwinsByDOB();
+		
 		// Add the nuclearFamily to the individual
 		mother->addNuclearFamily(*pit.first);
 		father->addNuclearFamily(*pit.first);
@@ -308,15 +352,14 @@ void Pedigree::_getSpouses(std::set<Individual*,compareIndividual>& foundingGrou
 }
 
 //
-// _markLeftLoopFlags:
+// _markLeftLoopFlags: Recursively traverses up the descent tree from a consanguinous individual
+// and marks the left consanguinous flags
 //
 void Pedigree::_markLeftLoopFlags(Individual* individual,unsigned loopNumber){
 	
 	// Assign the loopNumber to the Individual
-	// get parents of the Individual
-	// NOTE: Not required to set the flags for ordinaryFounders.
 	individual->setLeftSideOfLoop(loopNumber);
-	//std::cout << "Individual: " << individual->getId() << "LEFT LOOP: " << individual->getLeftSideOfLoop() << std::endl;
+	// get parents of the Individual
 	Individual* father = individual->getFather();
 	if(father->isOriginalFounder()) {
 		father->setLeftSideOfLoop(loopNumber);
@@ -324,6 +367,7 @@ void Pedigree::_markLeftLoopFlags(Individual* individual,unsigned loopNumber){
 		mother->setLeftSideOfLoop(loopNumber);
 		return;
 	}
+	// NOTE: Not required to set the flags for ordinaryFounders.
 	if(!father->isOrdinaryFounder()){
 		// assign the loopNumber to the Father
 		father->setLeftSideOfLoop(loopNumber);
@@ -347,15 +391,14 @@ void Pedigree::_markLeftLoopFlags(Individual* individual,unsigned loopNumber){
 }
 
 //
-// _markRightLoopFlags:
+// _markRightLoopFlags: Recursively traverses up the descent tree from a consanguinous individual
+// and marks the right consanguinous flags
 //
 void Pedigree::_markRightLoopFlags(Individual* individual,unsigned loopNumber){
 	
 	// Assign the loopNumber to the Individual
-	// get parents of the Individual
-	// NOTE: Not required to set the flags for ordinaryFounders.
 	individual->setRightSideOfLoop(loopNumber);
-	//std::cout << "Individual: " << individual->getId() << "RIGHT LOOP: " << individual->getRightSideOfLoop() << std::endl;
+	// get parents of the Individual
 	Individual* father = individual->getFather();
 	if(father->isOriginalFounder()){
 		father->setRightSideOfLoop(loopNumber);
@@ -370,7 +413,6 @@ void Pedigree::_markRightLoopFlags(Individual* individual,unsigned loopNumber){
 			Individual* mother = individual->getMother();
 			mother->setRightSideOfLoop(loopNumber);
 		}
-
 		// Recurse up the tree
 		_markRightLoopFlags(father,loopNumber);
 	}
@@ -388,15 +430,15 @@ void Pedigree::_markRightLoopFlags(Individual* individual,unsigned loopNumber){
 
 
 //
-// _markLeftExternalConnectionFlags:
+// _markLeftExternalConnectionFlags:Recursively traverses up the descent tree from an individual with an external connection
+// and marks the left external connection flags
 //
 void Pedigree::_markLeftExternalConnectionFlags(Individual* individual,unsigned connectionNumber){
 	
 	// Assign the connectionNumber to the Individual
-	// get parents of the Individual
-	// NOTE: Not required to set the flags for ordinaryFounders.
 	individual->setLeftSideOfExternalConnection(connectionNumber);
-	//std::cout << "Individual: " << individual->getId() << "LEFT EXT #: " << individual->getLeftSideOfExternalConnection() << std::endl;
+	
+	// get parents of the Individual
 	Individual* father = individual->getFather();
 	if(father->isOriginalFounder()) {
 		father->setLeftSideOfExternalConnection(connectionNumber);
@@ -407,27 +449,34 @@ void Pedigree::_markLeftExternalConnectionFlags(Individual* individual,unsigned 
 	if(!father->isOrdinaryFounder()){
 		// assign the connectionNumber to the Father
 		father->setLeftSideOfExternalConnection(connectionNumber);
+		if(father->getNumberOfSpouses() > 1){
+			Individual* mother = individual->getMother();
+			mother->setLeftSideOfExternalConnection(connectionNumber);
+		}
 		// recurse up the tree
 		_markLeftExternalConnectionFlags(father,connectionNumber);
 	}
 	Individual* mother = individual->getMother();
 	if(!mother->isOrdinaryFounder()){
 		mother->setLeftSideOfExternalConnection(connectionNumber);
+		if(mother->getNumberOfSpouses() > 1){
+			Individual* father = individual->getFather();
+			father->setLeftSideOfExternalConnection(connectionNumber);
+		}
 		_markLeftExternalConnectionFlags(mother,connectionNumber);
 	}
 	
 }
 
 //
-// _markRightExternalConnectionFlags:
+// _markRightExternalConnectionFlags:Recursively traverses up the descent tree from an individual with external connection
+// and marks the right external connection flags
 //
 void Pedigree::_markRightExternalConnectionFlags(Individual* individual,unsigned connectionNumber){
 	
-	// assign the connectionNumber to the Individual
-	// get parents of the Individual
-	// NOTE: Not required to set the flags for ordinaryFounders.
+	// Assign the connectionNumber to the Individual
 	individual->setRightSideOfExternalConnection(connectionNumber);
-	//std::cout << "Individual: " << individual->getId() << " RIGHT EXT #: " << individual->getRightSideOfExternalConnection() << std::endl;
+	// get parents of the Individual
 	Individual* father = individual->getFather();
 	if(father->isOriginalFounder()) {
 		father->setRightSideOfExternalConnection(connectionNumber);
@@ -438,12 +487,20 @@ void Pedigree::_markRightExternalConnectionFlags(Individual* individual,unsigned
 	if(!father->isOrdinaryFounder()){
 		// Assign the connectionNumber to the Father
 		father->setRightSideOfExternalConnection(connectionNumber);
+		if(father->getNumberOfSpouses() > 1){
+			Individual* mother = individual->getMother();
+			mother->setRightSideOfExternalConnection(connectionNumber);
+		}
 		// Recurse up the tree
 		_markRightExternalConnectionFlags(father,connectionNumber);
 	}
 	Individual* mother = individual->getMother();
 	if(!mother->isOrdinaryFounder()){
 		mother->setRightSideOfExternalConnection(connectionNumber);
+		if(mother->getNumberOfSpouses() > 1){
+			Individual* father = individual->getFather();
+			father->setRightSideOfExternalConnection(connectionNumber);
+		}
 		_markRightExternalConnectionFlags(mother,connectionNumber);
 	}
 	
@@ -591,7 +648,6 @@ void Pedigree::_addDescentTreesConnectedTo(unsigned dtIndex,std::deque<DescentTr
 			// Check if the DT is not already in the deque
 			for(unsigned i=0;i<orderedDescentTrees.size();i++)
 				if(orderedDescentTrees[i]->getId() == _descentTrees[j]->getId()) {
-					
 					flag = false; break; 
 				}
 			if(flag){
@@ -606,7 +662,7 @@ void Pedigree::_addDescentTreesConnectedTo(unsigned dtIndex,std::deque<DescentTr
 }
 
 //
-// _determineConnectorIndividuals(): This is a rewrite of determineConnectorIndividualsOld
+// _determineConnectorIndividuals():
 //    Instead of looping through the list of individuals a depth-first search approach is used
 //    to mark the connector flags. 
 //
@@ -627,20 +683,6 @@ void Pedigree::_determineConnectorIndividuals(){
 		while(cnt > 0){
 			cnt--;
 			if(cnt > 0){
-				/*const std::set<Individual*,Individual::compareIndividual> * pspouses = startIndividual->getSpouses();
-				std::set<Individual*,compareIndividual>::iterator it = (*pspouses).begin();
-				while(it != (*pspouses).end()){
-					(*it)->setVisited(true);
-					const std::set<Individual*,Individual::compareIndividual> * pchildren = startIndividual->getChildren();
-					std::set<Individual*,compareIndividual>::iterator childIt = (*pchildren).begin();
-					while(childIt != (*pchildren).end()){
-						std::cout << " Child is  " << (*childIt)->getId() << std::endl;
-						_markConnectorIndividuals((*childIt),loopNumber);
-						++childIt;
-					}
-					cnt--;
-					++it;
-				}*/
 				const std::set<Individual*,Individual::compareIndividual> * pspouses = startIndividual->getSpouses();
 				std::set<Individual*,compareIndividual>::iterator it = (*pspouses).begin();
 				while(it != (*pspouses).end()){
@@ -649,7 +691,6 @@ void Pedigree::_determineConnectorIndividuals(){
 					startIndividual->getChildrenWithSpouse((*it),children);
 					unsigned childCnt = 0;
 					while(childCnt < children.size()){
-						//std::cout << " New child is " << children[childCnt]->getId() << std::endl;
 						_markConnectorIndividuals(children[childCnt++],loopNumber);
 					}
 					cnt--;
@@ -677,13 +718,11 @@ void Pedigree::_determineConnectorIndividuals(){
 	
 	// DEBUG:
 	//for(unsigned i=0;i<_descentTrees.size();i++){
-	//	std::cout << "For Descent TREE with Id" << _descentTrees[i]->getId() << std::endl;
 	//	for(unsigned j=0;j<_descentTrees.size();j++){
 	//		if(j==i) continue;
 	//		std::cout << " # of connections with " << _descentTrees[j]->getId() << " is " << _descentTrees[i]->getNumberOfConnectionsWithDT(_descentTrees[j]->getId()) << std::endl;
 	//	}
 	//}
-	//std::cout << "End of determine Connector Ind :" << _descentTrees.size() << std::endl;
 	
 	if(_descentTrees.size() == 1){
 		_markConsanguinousIndividuals();
@@ -743,20 +782,7 @@ void Pedigree::_reorderDescentTreesBasedOnExternalConnections(){
 	if(leftDTIndex != rightDTIndex && rightDTIndex != complexDTIndex) orderedDescentTrees.push_back(_descentTrees[rightDTIndex]);
 	orderedDescentTrees.push_front(_descentTrees[leftDTIndex]);
 	
-	/* unsigned rightDTIndex=0,leftDTIndex=0;
-	for(unsigned j=0;j<_descentTrees.size();j++){
-		if(j==complexDTIndex) continue;
-		if(_descentTrees[complexDTIndex]->getNumberOfConnectionsWithDT(_descentTrees[j]->getId()) >= max){
-			leftDTIndex = rightDTIndex;
-			max = _descentTrees[complexDTIndex]->getNumberOfConnectionsWithDT(_descentTrees[j]->getId());
-			rightDTIndex = j;
-		}
-	}
-	if(leftDTIndex != rightDTIndex && leftDTIndex != complexDTIndex) orderedDescentTrees.push_front(_descentTrees[leftDTIndex]);
-	orderedDescentTrees.push_back(_descentTrees[rightDTIndex]);
-	*/
 	// Find all other DTs not included in the deque yet
-	
 	// First find all the DTs related to the left DT tree
 	if(orderedDescentTrees.size() < _descentTrees.size())
 	_addDescentTreesConnectedTo(leftDTIndex,orderedDescentTrees,true);
@@ -778,12 +804,11 @@ void Pedigree::_reorderDescentTreesBasedOnExternalConnections(){
 			orderedDescentTrees.push_back(_descentTrees[i]);
 	}
 	// DEBUG:
-	//std::cout << " THE REORDERED DT vector IS " << std::endl;
-	
+	//std::cout << " The Reordered Descent Tree vector: " << std::endl;
 	_descentTrees.clear();
 	for(unsigned i=0;i<orderedDescentTrees.size();i++){
 		_descentTrees.push_back(orderedDescentTrees[i]);
-		//std::cout << " DT SI " << orderedDescentTrees[i]->getStartIndividual()->getId() << std::endl;
+		//std::cout << " Descent Tress Start Individual: " << orderedDescentTrees[i]->getStartIndividual()->getId() << std::endl;
 	}
 	
 	
@@ -791,7 +816,6 @@ void Pedigree::_reorderDescentTreesBasedOnExternalConnections(){
 
 //
 // _markConnectorIndividuals: This function marks all the individuals that are consanguinous or have an external connection.
-// If there is a single DT, all the consanguinous pair flags are propagated upwards in the descent tree
 //
 void Pedigree::_markConnectorIndividuals(Individual* individual,unsigned& loopNumber){
 	
@@ -807,16 +831,12 @@ void Pedigree::_markConnectorIndividuals(Individual* individual,unsigned& loopNu
 			
 			}else
 			if(_descentTrees.size() == 1){
-				// Assign the flags:
+				// Mark the consanguinous individuals:
 				if(individual->isConsanguinous() == false || (*spouseIt)->isConsanguinous() == false){
 					loopNumber++;
 					_descentTrees[0]->setConsanguinity();
 					// DEBUG:
 					//std::cout << "CONSANGUINITY FOUND: Internal connection between " << (*spouseIt)->getId() << " and " << individual->getId() << " LOOP " << loopNumber << std::endl;
-					//std::cout << "RIGHT LOOP " << loopNumber << " : " << (*spouseIt)->getId() << std::endl;
-					//std::cout << "LEFT LOOP " << loopNumber << " : " << individual->getId() << std::endl;
-					//_markLeftLoopFlags(individual,loopNumber);
-					//_markRightLoopFlags(*spouseIt,loopNumber);
 					individual->setIsConsanguinous(true);
 					(*spouseIt)->setIsConsanguinous(true);
 				}
@@ -839,7 +859,7 @@ void Pedigree::_markConnectorIndividuals(Individual* individual,unsigned& loopNu
 						// Note: Consang pairs are inserted in a set as it is possible that with 
 						// multiple descent trees both the spouses with multiple mates could have
 						// consanguinous flags set but the relationship with a specific mate may be external
-						// This scenario cannot occure with single descent trees
+						// This scenario cannot occur with single descent trees
 						if(individual->getGender().getEnum() == Gender::MALE){
 							pairIds = individual->getId().get()+(*spouseIt)->getId().get();
 							_consangPairIds.insert(pairIds);
@@ -881,8 +901,7 @@ void Pedigree::_markConnectorIndividuals(Individual* individual,unsigned& loopNu
 }
 
 //
-// _markConsanguinousIndividuals: This function is called only when there are multiple DTs with consanguinity.
-// This function marks all the individuals that are consanguinous.
+// _markConsanguinousIndividuals: This function marks all the individuals that are consanguinous.
 //
 void Pedigree::_markConsanguinousIndividuals(){
 	
@@ -942,8 +961,7 @@ void Pedigree::_markConsanguinousIndividuals(){
 }
 
 //
-// _markConsanguinousFlags: This function is called only when there are multiple DTs with consanguinity.
-// This function gets all the individuals with consanguinity and propagates the flags up in the descent tree
+// _markConsanguinousFlags: This function gets all the individuals with consanguinity and propagates the flags up in the descent tree
 // These flags determine the sibling sorting order of the NF
 //
 void Pedigree::_markConsanguinousFlags(Individual* individual,unsigned& loopNumber){
@@ -958,7 +976,7 @@ void Pedigree::_markConsanguinousFlags(Individual* individual,unsigned& loopNumb
 		if((*spouseIt)->isConsanguinous()){
 			loopNumber++;
 			if(_descentTrees.size() == 1 && individual->isConsanguinous()){
-				//std::cout << " left loop " << individual->getId() << " right loop " << (*spouseIt)->getId() << std::endl;
+				//std::cout << " Left loop individual: " << individual->getId() << " Right loop individual: " << (*spouseIt)->getId() << std::endl;
 				_markLeftLoopFlags(individual,loopNumber);
 				_markRightLoopFlags(*spouseIt,loopNumber);
 			}else{
@@ -968,7 +986,7 @@ void Pedigree::_markConsanguinousFlags(Individual* individual,unsigned& loopNumb
 				else pairId = individual->getId().get()+(*spouseIt)->getId().get();
 				std::set<std::string>::iterator pairIt = _consangPairIds.find(pairId);
 				if(pairIt != _consangPairIds.end()){
-					//std::cout << " left loop " << individual->getId() << " right loop " << (*spouseIt)->getId() << std::endl;
+					//std::cout << " Left loop individual: " << individual->getId() << " Right loop individual: " << (*spouseIt)->getId() << std::endl;
 					_markLeftLoopFlags(individual,loopNumber);
 					_markRightLoopFlags(*spouseIt,loopNumber);
 				}
@@ -1024,6 +1042,7 @@ void Pedigree::_establishNuclearFamilies(){
 		}
 		++individualIt;
 	}
+	
 	// DEBUG: Display all the nuclear families
 	//	(*nfIt)->sortChildren();
 	//	++nfIt;
@@ -1040,7 +1059,8 @@ void Pedigree::_sortIndividualNuclearFamilies(){
 	while(it != _individuals.end()){
 		if((*it)->isOrdinaryFounder()) { ++it; continue; }
 		if((*it)->getNumberOfSpouses() > 1){ 
-			(*it)->sortSpouses();
+			if(_descentTrees.size() > 1 && !_dtsHaveConsanguinity) (*it)->sortSpouses(true);
+			else (*it)->sortSpouses();
 		}
 		++it;
 	}
@@ -1098,13 +1118,10 @@ void Pedigree::_calculateDescentTreeWidth(){
 		// After the loop flags are marked and the nuclear families are determined 
 		// it might be required that the nuclear families be sorted on individuals
 		// with multiple spouses
-		
-		
 		_sortIndividualNuclearFamilies();
 		
 		// Sort the siblings within each nuclear family based on the loop flags set
 		_sortNuclearFamilies(true);
-		
 		classicalOrdering = true;
 	}else{
 		if(_descentTrees.size() > 1){
@@ -1120,7 +1137,7 @@ void Pedigree::_calculateDescentTreeWidth(){
 		Individual* startIndividual = _descentTrees[cnt]->getStartIndividual();
 		_calculateWidth(startIndividual,classicalOrdering,cnt);
 		
-		// Check if there exists any FG member who has > 1 NF 
+		// Check if there exists any Founding Group member who has > 1 NF 
 		for(unsigned i=0;i<_descentTrees[cnt]->getNumberOfFoundingGroupIndividuals();i++){
 			Individual* fgIndividual = _descentTrees[cnt]->getFoundingGroupIndividual(i);
 			if(fgIndividual->getId() == startIndividual->getId()) continue;
@@ -1128,7 +1145,7 @@ void Pedigree::_calculateDescentTreeWidth(){
 				// Get each NF and check if it has been processed
 				for(unsigned j=0;j<fgIndividual->getNumberOfNuclearFamilies();j++){
 					if(fgIndividual->getNuclearFamily(j)->getTotalWidth() == 0){
-						std::cout << " This FG member " << fgIndividual->getId() << " needs to be processed further" << std::endl;
+						std::cout << " This Founding Group member " << fgIndividual->getId() << " needs to be processed further" << std::endl;
 						fgIndividual->getNuclearFamily(j)->calculateWidth(classicalOrdering);
 						_nfOfOrdinaryFounders.push_back(fgIndividual->getNuclearFamily(j));
 					}
@@ -1140,27 +1157,33 @@ void Pedigree::_calculateDescentTreeWidth(){
 }
 
 //
-// _setLeftShifConnectionFlags():
+// _setLeftShifConnectionFlags(): Confirms the Left Connectors and change left and right widths of their parent NFs if required
 //
 void Pedigree::_setLeftShiftConnectionFlags(){
 	
-	// Need to confirm the Left Connectors and change left and right widths of their parent NFs
+	// Sometimes when a child in a NF has a left connector set it may be required to add an extra
+	// width of horizontalInterval on the NF which is done by the draw method of NF.
+	// This method sets the left shift connection flag for such cases.
+	
 	std::set<Individual*,compareIndividual>::iterator individualIt = _individuals.begin();
 	while(individualIt != _individuals.end()){
 		if((*individualIt)->getLeftSpouseConnector()){
-			//std::cout << " This individual has left spouse connector " << (*individualIt)->getId() << std::endl;
+			
 			NuclearFamily* lcnf = (*individualIt)->getNuclearFamily((unsigned)0);
-			Individual* spouse = lcnf->getFather();
-			Individual* spouseFather = lcnf->getFather()->getFather();
-			Individual* spouseMother = lcnf->getFather()->getMother();
-			NuclearFamily *spouseParentNF;
+			Individual* father = (*individualIt)->getFather();
+			Individual* mother = (*individualIt)->getMother();
 			// Check if any one of the parent has multiple mates:
 			// Reset the left spouse connector flag in such cases
-			if((!spouseFather->isOrdinaryFounder() && spouseFather->getNumberOfSpouses() > 1) || (!spouseMother->isOrdinaryFounder() && spouseMother->getNumberOfSpouses() > 1)){
+			if((!father->isOrdinaryFounder() && father->getNumberOfSpouses() > 1) || (!mother->isOrdinaryFounder() && mother->getNumberOfSpouses() > 1)){
 				(*individualIt)->setLeftSpouseConnector(false);
 				++individualIt;
 				continue;
 			}
+			
+			Individual* spouse = lcnf->getFather();
+			Individual* spouseFather = lcnf->getFather()->getFather();
+			Individual* spouseMother = lcnf->getFather()->getMother();
+			NuclearFamily *spouseParentNF;
 			unsigned j=0;
 			while(j < spouseFather->getNumberOfSpouses()){
 				spouseParentNF = spouseFather->getNuclearFamily(j);
@@ -1172,7 +1195,6 @@ void Pedigree::_setLeftShiftConnectionFlags(){
 			// Determine if the father is the last child in his parent's NF
 			if(spouseParentNF->getChildInClassicalOrder(spouseParentNF->getNumberOfChildren()-1)->getId() == spouse->getId()){
 				// Father is the last child in his parent's NF
-				//unsigned leftWidth,rightWidth;
 				Individual* father;
 				if(lcnf->getTotalWidth() == 4 || lcnf->getNumberOfChildren() == 1){
 					// set the left connection shift flag on the parents NF
@@ -1191,10 +1213,9 @@ void Pedigree::_setLeftShiftConnectionFlags(){
 			}else{
 				// 
 				// Father is not the last child in his parent's NF. 
-				// The left connector flag is not reset now but will be checked again by NF
+				// The left connector flag is not reset but will be checked again by Nuclear Family's draw method
 				// If the individual's parentNF is consanguinous there might be a need for shifting.
-				// Same case holds when the individual's NF itself is consanguinous
-				// INCOMPLETE: This has only been tested for c2.txt. It has to be thoroughly tested.
+				//
 				Individual* father = (*individualIt)->getFather();
 				Individual* mother;
 				j = 0;
@@ -1219,9 +1240,10 @@ void Pedigree::_setLeftShiftConnectionFlags(){
 }
 
 //
-// _calculateWidth:
+// _calculateWidth: calculates the width of a descent tree
 //
 void Pedigree::_calculateWidth(Individual* individual,bool classicalOrdering,unsigned descentTreeIndex){
+	
 	
 	unsigned sumLeftWidth = 0,sumRightWidth=0;
 	// For each nuclear family of the start individual calculate width
@@ -1238,9 +1260,6 @@ void Pedigree::_calculateWidth(Individual* individual,bool classicalOrdering,uns
 			sumLeftWidth += individual->getNuclearFamily(j)->getTotalWidth();
 		}
 	}
-	//std::cout << "LEFT Width of the START Individual is " << sumLeftWidth << std::endl;
-	//std::cout << "RIGHT Width of the START Individual is " << sumRightWidth << std::endl;
-	
 	//
 	// The total ,left and right widths have to be stored in the start Individual
 	// only if the startIndividual has more than one NF
@@ -1250,15 +1269,12 @@ void Pedigree::_calculateWidth(Individual* individual,bool classicalOrdering,uns
 	_descentTrees[descentTreeIndex]->setRightWidth(sumRightWidth);
 	_descentTrees[descentTreeIndex]->setTotalWidth(sumLeftWidth+sumRightWidth);
 	
-	//std::cout << "****************************" << std::endl;
-	//std::cout << "END OF WIDTH CALCULATION" << std::endl;
-	//std::cout << "****************************" << std::endl;
 	return;
 	
 }
 
 //
-// _populateIndividualGrid
+// _populateIndividualGrid: Initialize the grid with the x and y positions of the individuals on the canvas
 //
 void Pedigree::_populateIndividualGrid(){
 	
@@ -1274,7 +1290,7 @@ void Pedigree::_populateIndividualGrid(){
 }
 
 //
-// _hasIndividualAtPosition
+// _hasIndividualAtPosition: Check if an individual exists in the given range on the grid
 //
 bool Pedigree::_hasIndividualAtPosition(Individual* start,Individual* end){
 	
@@ -1283,23 +1299,20 @@ bool Pedigree::_hasIndividualAtPosition(Individual* start,Individual* end){
 	double xend   = end->getX();
 	double yend   = end->getY();
 	double horizontalInterval = DrawingMetrics::getHorizontalInterval();
-	if(ystart != yend) { 
-		std::cout << " Trying a new approach " << start->getId() << " and " << end->getId() << std::endl;
-                xstart += horizontalInterval;
-                int ystarti = int(ystart);
-                xend -= horizontalInterval;
-                if(xstart >= xend) return true;
-                while(xstart < xend){
-                        Individual* found = _individualGrid.find(int(xstart),ystarti);
-                        if(found){ return true; }
-                        xstart+= horizontalInterval;
-                }
-		return false;
-		//return true; 
-		
-	}
 	xstart += horizontalInterval;
-	int ystarti=int(ystart);
+	int ystarti = int(ystart);
+	if(ystart != yend) { 
+		// if female with a left spouse connector is on the right, we need to subtract iconinterval
+		if(end->getLeftSpouseConnector()){ xend -= horizontalInterval; }
+		xend -= horizontalInterval;
+		if(xstart >= xend) return true;
+		while(xstart < xend){
+			Individual* found = _individualGrid.find(int(xstart),ystarti);
+			if(found){ return true; }
+			xstart+= horizontalInterval;
+		}
+		return false;
+	}
 	if(xstart >= xend){ return true; }
 	while(xstart < xend){
 		Individual* found = _individualGrid.find(int(xstart),ystarti);
@@ -1343,8 +1356,6 @@ void Pedigree::_sortSibsBasedOnConsanguinousConnections(const std::vector<Indivi
 		sortedSibs.push_back(initial.front());
 		initial.pop_front();
 	}
-	//std::cout << "Result of sorting sibs: Consang size" << consang.size() <<  std::endl;
-	//for(unsigned j=0;j<sortedSibs.size();j++) std::cout << sortedSibs[j]->getId() << std::endl;
 	
 }
 
@@ -1439,46 +1450,42 @@ void Pedigree::_drawHorizontalConnectorLine(double y,double x1,double x2,bool is
 //
 // _drawVerticalConnectorLine:
 //
-void Pedigree::_drawVerticalConnectorLine(double motherY,double fatherY,double motherX,double fatherX,bool isConsanguinous,DrawingCanvas& dc,double multipleSpouseOffset,bool singleChild){
+void Pedigree::_drawVerticalConnectorLine(double startY,double endY,double startX,double endX,bool isConsanguinous,DrawingCanvas& dc,double multipleSpouseOffset,bool singleChild){
 	
 	double verticalTick = DrawingMetrics::getVerticalTick();
 	double radius = DrawingMetrics::getIconRadius();
-	double motherOffset,fatherOffset;
-	motherOffset = fatherOffset = -1*verticalTick;
+	double startOffset,endOffset;
+	startOffset = endOffset = -1*verticalTick;
 	double extension;
 
 	if(isConsanguinous){
-		motherY += verticalTick/2;
-		fatherY += verticalTick/2;
+		startY += verticalTick/2;
+		endY += verticalTick/2;
 	}
-	if(fatherX > motherX){ 
-		//extension = DrawingMetrics::getHorizontalInterval()*-1;
-		//extension = (DrawingMetrics::getHorizontalInterval()+DrawingMetrics::getHorizontalInterval()/4)*-1;
+	if(endX > startX){ 
 		extension = (DrawingMetrics::getHorizontalInterval() - radius - verticalTick) * -1;
-		if(fatherY > motherY){ extension += -verticalTick; motherOffset*=-1;fatherOffset*=-1;} 
+		if(endY > startY){ extension += -verticalTick; startOffset*=-1;endOffset*=-1;} 
 		if(multipleSpouseOffset) multipleSpouseOffset = multipleSpouseOffset + extension; 
 	}else{
-		//extension = DrawingMetrics::getHorizontalInterval() - verticalTick;
-		//extension = DrawingMetrics::getHorizontalInterval()+DrawingMetrics::getHorizontalInterval()/4;
 		extension = DrawingMetrics::getHorizontalInterval() - radius - verticalTick; 
 		if(singleChild){
 			extension += DrawingMetrics::getHorizontalInterval();
 		}
-		if(fatherY > motherY){ 
+		if(endY > startY){ 
 			extension += verticalTick; 
 		}else { 
-			fatherOffset *= -1; motherOffset *= -1;
+			endOffset *= -1; startOffset *= -1;
 		}
 		if(multipleSpouseOffset) multipleSpouseOffset = multipleSpouseOffset + extension; 
 	}
 	
-	dc.drawHorizontalLine(motherY,motherX,fatherX+extension-multipleSpouseOffset);
-	dc.drawHorizontalLine(fatherY,fatherX,fatherX+extension-multipleSpouseOffset);
-	dc.drawVerticalLine(fatherX+extension-multipleSpouseOffset,motherY,fatherY);
+	dc.drawHorizontalLine(startY,startX,endX+extension-multipleSpouseOffset);
+	dc.drawHorizontalLine(endY,endX,endX+extension-multipleSpouseOffset);
+	dc.drawVerticalLine(endX+extension-multipleSpouseOffset,startY,endY);
 	if(isConsanguinous){
-		dc.drawHorizontalLine(motherY-verticalTick,motherX,fatherX+extension-multipleSpouseOffset+motherOffset);
-		dc.drawHorizontalLine(fatherY-verticalTick,fatherX,fatherX+extension-multipleSpouseOffset+fatherOffset);
-		dc.drawVerticalLine(fatherX+extension-multipleSpouseOffset+fatherOffset,motherY-verticalTick,fatherY-verticalTick);
+		dc.drawHorizontalLine(startY-verticalTick,startX,endX+extension-multipleSpouseOffset+startOffset);
+		dc.drawHorizontalLine(endY-verticalTick,endX,endX+extension-multipleSpouseOffset+endOffset);
+		dc.drawVerticalLine(endX+extension-multipleSpouseOffset+endOffset,startY-verticalTick,endY-verticalTick);
 	}
 	
 }
@@ -1489,9 +1496,8 @@ void Pedigree::_drawVerticalConnectorLine(double motherY,double fatherY,double m
 void Pedigree::_drawConsanguinousConnectors(DrawingCanvas& dc){
 	
 	std::set<NuclearFamily*,compareNuclearFamily>::iterator nfIt = _nuclearFamilies.begin();
-	//double fatherX,motherX;
 	Individual* mother,*father;
-	// Note: All the connectors are drawn on a different layer
+	// NOTE: All the connectors are drawn on a different layer
 	// However all the dashed individuals go into the body
 	char consanguinityLetter='A';
 	// For each individual with consanguinity and multiple spouses we assign
@@ -1509,12 +1515,6 @@ void Pedigree::_drawConsanguinousConnectors(DrawingCanvas& dc){
 			// Check for different conditions
 			father = (*nfIt)->getFather();
 			mother = (*nfIt)->getMother();
-			
-			//DEBUG:
-			//std::cout << "FOUND A CONSANG NF" << std::endl;
-			//std::cout << "Mother " << mother->getId() << " x " << mother->getX() << std::endl;
-			//std::cout << "Father " << father->getId() << " x " << father->getX() << std::endl;
-			//std::cout << "NF LCSF " << (*nfIt)->getLeftConnectionShiftFlag() << std::endl;
 			if((*nfIt)->getMother()->getNumberOfSpouses() == 1){
 				// Father is to the Left of Mother
 				if(mother->getLeftSpouseConnector()){
@@ -1531,18 +1531,23 @@ void Pedigree::_drawConsanguinousConnectors(DrawingCanvas& dc){
 							_drawVerticalConnectorLine(mother->getY(),father->getY(),mother->getX()-iconInterval+radius,father->getX()+radius,(*nfIt)->isConsanguinous(),dc,0.0,singleChild);
 						}
 					}else{
-						// std::cout << "LEFT connector: Draw dashed individual" << std::endl;
-						if(mother->getY() != father->getY() || _hasIndividualAtPosition(father,mother)){
-							//dc.drawDashedIndividual(father,mother->getX()-iconInterval,mother->getY(),iconDiameter);
+						if(_hasIndividualAtPosition(father,mother)){
 							dc.drawIndividual(father,mother->getX()-iconInterval,mother->getY(),true);
 							_drawConsanguinityLetter(mother,father,consanguinityLetter,iconInterval,iconDiameter,individualConsanguinityLetter,dc,0,true);
 						}else{
-							_drawHorizontalConnectorLine(mother->getY(),father->getX()+radius,mother->getX()-radius,(*nfIt)->isConsanguinous(),dc);
+							if(mother->getY() == father->getY()){
+								_drawHorizontalConnectorLine(mother->getY(),father->getX()+radius,mother->getX()-radius,(*nfIt)->isConsanguinous(),dc);
+							}else{
+								// Check if father is the only child
+								bool singleChild=false;
+								std::vector<std::string> temp = father->getMother()->getChildrenIds(father->getFather());
+								if(temp.size() == 1) singleChild = true;
+								_drawVerticalConnectorLine(father->getY(),mother->getY(),father->getX()+radius,mother->getX()-iconInterval+radius,(*nfIt)->isConsanguinous(),dc,0.0,singleChild);
+							}
 						}
 					}
 				}else
 				if(father->getX() < mother->getX()){
-					//dc.drawDashedIndividual(father,mother->getX()+iconInterval,mother->getY(),iconDiameter);
 					dc.drawIndividual(father,mother->getX()+iconInterval,mother->getY(),true);
 					_drawConsanguinityLetter(mother,father,consanguinityLetter,iconInterval,iconDiameter,individualConsanguinityLetter,dc);
 				}else
@@ -1588,7 +1593,6 @@ void Pedigree::_drawConsanguinousConnectors(DrawingCanvas& dc){
 						}
 					}else{
 						if(_hasIndividualAtPosition(mother,father)){
-							//dc.drawDashedIndividual(father,mother->getX()+iconInterval,mother->getY(),iconDiameter);
 							dc.drawIndividual(father,mother->getX()+iconInterval,mother->getY(),true);
 							_drawConsanguinityLetter(mother,father,consanguinityLetter,iconInterval,iconDiameter,individualConsanguinityLetter,dc);
 						}else{
@@ -1642,11 +1646,9 @@ void Pedigree::_drawConsanguinousConnectors(DrawingCanvas& dc){
 						}
 					}else{
 						if(i==0){
-							//dc.drawDashedIndividual(father,mother->getX()+iconInterval,mother->getY(),iconDiameter);
 							dc.drawIndividual(father,mother->getX()+iconInterval,mother->getY(),true);
 							_drawConsanguinityLetter(mother,father,consanguinityLetter,iconInterval,iconDiameter,individualConsanguinityLetter,dc);
 						}else{
-							//dc.drawDashedIndividual(father,mother->getX()+rw*horizontalInterval+iconInterval,mother->getY(),iconDiameter);
 							dc.drawIndividual(father,mother->getX()+rw*horizontalInterval+iconInterval,mother->getY(),true);
 							_drawConsanguinityLetter(mother,father,consanguinityLetter,iconInterval,iconDiameter,individualConsanguinityLetter,dc,rw*horizontalInterval+iconInterval);
 						}
@@ -1664,7 +1666,6 @@ void Pedigree::_drawConsanguinousConnectors(DrawingCanvas& dc){
 					
 					}else{
 						if(mother->getY() != father->getY() || _hasIndividualAtPosition(father,mother)){
-							//dc.drawDashedIndividual(father,mother->getX()-lw*horizontalInterval,mother->getY(),iconDiameter);
 							dc.drawIndividual(father,mother->getX()-lw*horizontalInterval,mother->getY(),true);
 							_drawConsanguinityLetter(mother,father,consanguinityLetter,iconInterval,iconDiameter,individualConsanguinityLetter,dc,lw*horizontalInterval*(-1.0));
 						}else{
@@ -1854,7 +1855,7 @@ void Pedigree::determineFoundingGroups(){
 	// for warnings:
 	const char *methodName="Pedigree::determineFoundingGroups()";
 	
-std::set<Individual*,compareIndividual>::iterator individualIt = _individuals.begin();
+	std::set<Individual*,compareIndividual>::iterator individualIt = _individuals.begin();
 	
 	// Determine the number of Descent Trees and founding groups:
 	std::vector<Individual*> ordinaryFounders;
@@ -1926,19 +1927,18 @@ std::set<Individual*,compareIndividual>::iterator individualIt = _individuals.be
 	/*individualIt = _individuals.begin();
 	while(individualIt != _individuals.end()){
 		if((*individualIt)->isOrdinaryFounder() == true){ 
-			std::cout << "ORD " << (*individualIt)->getId() << std::endl;
+			std::cout << "Ordinary Founder: " << (*individualIt)->getId() << std::endl;
 		}
 		if((*individualIt)->isOriginalFounder() == true){ 
-			std::cout << "ORG*** " << (*individualIt)->getId() << std::endl;
+			std::cout << "Original Founder: " << (*individualIt)->getId() << std::endl;
 		}
 		++individualIt;
 	}
 	
 	// DEBUG: Print all the descent tree ids:
-	std::cout << "DESCENT TREES " << _descentTrees.size() << std::endl;
-	
+	std::cout << "# of Descent Trees " << _descentTrees.size() << std::endl;
 	for(unsigned cnt =0;cnt < _descentTrees.size();cnt++){
-		std::cout << _descentTrees[cnt]->getId() << std::endl;
+		std::cout << "id: " << _descentTrees[cnt]->getId() << std::endl;
 		_descentTrees[cnt]->displayFoundingGroup();
 	}
 	*/
@@ -1953,11 +1953,9 @@ void Pedigree::computePedigreeWidth(const std::string& sortField,bool dobSortOrd
 	
 	// Determine external and internal connectors:
 	_determineConnectorIndividuals();
-	
-	//determineConnectorIndividualsOld();
 	// Establish nuclear families for width calculation:
 	_establishNuclearFamilies();
-	
+	_checkMarkedTwinsDOB();
 	if(sortField != std::string("")){
 		_sortNuclearFamiliesBasedOnDataField(sortField,dobSortOrder);
 	}
@@ -2266,185 +2264,3 @@ void Pedigree::display() const{
 	}
 	
 }
-
-
-
-
-
-
-
-
-
-
-
-//
-// determineConnectorIndividualsOld: Original Version
-//
-void Pedigree::determineConnectorIndividualsOld(){
-	
-	// Determine external and internal connectors:
-	unsigned loopNumber = 0;
-	std::set<Individual*,compareIndividual>::iterator it;
-	if(_descentTrees.size() > 1)
-		// Assign descent trees to individuals only if there is more than one descent tree
-		// If there is only one descent tree the connectors can only be consanguinous.
-		_assignDescentTrees();
-	// Mark consanguinous individuals and individuals that have external connections:
-	it = _individuals.begin();
-	while(it != _individuals.end()){
-		if((*it)->isOriginalFounder()== true || (*it)->isOrdinaryFounder()== true) { ++it; continue;}
-		if((*it)->getNumberOfSpouses() > 0){
-			std::vector<std::string> spouses = (*it)->getSpouseIds();
-			std::set<Individual*,compareIndividual>::iterator spouseIt;
-			unsigned i=0;
-			while(i < spouses.size()){
-				
-				Individual* tempIndividual = new Individual(spouses[i]);
-				//spouseIt = _individuals.find(new Individual(spouses[i]));
-				spouseIt = _individuals.find(tempIndividual);
-				delete tempIndividual;
-				if(spouseIt != _individuals.end()){
-					if((*spouseIt)->isOriginalFounder() == true || (*spouseIt)->isOrdinaryFounder() == true) { i++; continue; }
-					if(_descentTrees.size() == 1){
-						// NOTE: INCOMPLETE TEST to see if the below condition is enough to determine all unique set of consanguinous pairs.
-						if((*it)->isConsanguinous() == false || (*spouseIt)->isConsanguinous() == false){
-							loopNumber++;
-							_descentTrees[0]->setConsanguinity();
-							//std::cout << "CONSANGUINITY FOUND: Internal connection between " << (*spouseIt)->getId() << " and " << (*it)->getId() << " LOOP " << loopNumber << std::endl;
-							//std::cout << "LEFT LOOP " << loopNumber << std::endl;
-							_markLeftLoopFlags(*it,loopNumber);
-							//std::cout << "RIGHT LOOP " << loopNumber << std::endl;
-							_markRightLoopFlags(*spouseIt,loopNumber);
-							(*it)->setIsConsanguinous(true);
-							(*spouseIt)->setIsConsanguinous(true);
-						}
-					}else{
-						//std::cout << "Find intersection of " << (*spouseIt)->getId() << " and " << (*it)->getId() << std::endl;
-						std::set<unsigned> dt1 = (*it)->getDescentTrees(); 
-						std::set<unsigned> dt2 = (*spouseIt)->getDescentTrees();
-						std::set<unsigned> result;
-						//Create an insert_iterator for result
-						std::insert_iterator<std::set<unsigned> > res_ins(result, result.begin());
-						set_intersection(dt1.begin(),dt1.end(),dt2.begin(),dt2.end(),res_ins);
-						//std::cout << "Result size is " << result.size() << std::endl;
-						if(result.size() > 0){
-							if((*it)->isConsanguinous() == false || (*spouseIt)->isConsanguinous() == false){
-								loopNumber++;
-								//
-								//std::cout << "CONSANGUINITY found between :" << (*spouseIt)->getId() << " and " << (*it)->getId() << std::endl;
-								// NOTE: NEED TO SET WHICH DT has consanguinity
-								// This can be done using the _getPrimaryDescentTree below:
-								loopNumber++;
-								_markLeftLoopFlags(*it,loopNumber);
-								//std::cout << "RIGHT LOOP " << loopNumber << std::endl;
-								_markRightLoopFlags(*spouseIt,loopNumber);
-								(*spouseIt)->setIsConsanguinous(true);
-								(*it)->setIsConsanguinous(true);
-								unsigned dtIndex = _getPrimaryDescentTreeIndex(dt1,(*it),false);
-								//std::cout << " The DTS CONSANG are " << _descentTrees[dtIndex]->getId() << std::endl;
-								_descentTrees[dtIndex]->setConsanguinity();
-							}
-						}else{
-							//std::cout << "EXTERNAL connection between: " << (*spouseIt)->getId() << " and " << (*it)->getId() << std::endl;
-							//(*spouseIt)->setExternalConnection(true);
-							//(*it)->setExternalConnection(true);
-							
-							// NOTE: ADDED on 2006-04-20 to sort the descent trees based on
-							// complexity. For this we need to know how many external connections
-							// are there is each DT and with which DT they have maximum connections:
-							unsigned dtIndex = _getPrimaryDescentTreeIndex(dt1,(*it),true);
-							unsigned spouseDTIndex = _getPrimaryDescentTreeIndex(dt2,(*spouseIt),false);
-							_descentTrees[dtIndex]->addExternalConnectorPair((*it),(*spouseIt));
-							_descentTrees[dtIndex]->incrementConnectionsWithDT(_descentTrees[spouseDTIndex]->getId());
-							
-						}
-					}
-				}
-				i++;
-			}
-		}
-		++it;
-	}
-	
-	// DEBUG:
-	//for(unsigned i=0;i<_descentTrees.size();i++){
-	//	std::cout << "For Descent TREE with Id" << _descentTrees[i]->getId() << std::endl;
-	//	for(unsigned j=0;j<_descentTrees.size();j++){
-	//		if(j==i) continue;
-	//		std::cout << " # of connections with " << _descentTrees[j]->getId() << " is " << _descentTrees[i]->getNumberOfConnectionsWithDT(_descentTrees[j]->getId()) << std::endl;
-	//	}
-	//}
-	//std::cout << "End of determine Connector Ind :" << _descentTrees.size() << std::endl;
-	if(_descentTrees.size() == 1) return;
-	// NOTE: Added on 2006-07-01 This case could occur when there is only 1 individual
-	// in a pedigree and is UNCONNECTED
-	if(_descentTrees.size() == 0) return;
-	// If there is more than 1 DT in the pedigree find the optimal ordering of the DTs
-	// The most complex tree is in the center; 2 of the remaining trees which have max connections with it flank it on either side 
-	unsigned max= 0,complexDTIndex=0;
-	for(unsigned i=0;i<_descentTrees.size();i++){
-		if(_descentTrees[i]->getNumberOfExternalConnections() > max){
-			max = _descentTrees[i]->getNumberOfExternalConnections();
-			complexDTIndex = i;
-		}
-	}
-	std::cout << " Most complex descent Tree is " << _descentTrees[complexDTIndex]->getId() << std::endl;
-	std::deque<DescentTree*> orderedDescentTrees;
-	orderedDescentTrees.push_back(_descentTrees[complexDTIndex]);
-	
-	// Find the two DTs which have most number of connections with this tree:
-	max=0;
-	
-	unsigned rightDTIndex=0,leftDTIndex=0;
-	for(unsigned j=0;j<_descentTrees.size();j++){
-		if(j==complexDTIndex) continue;
-		if(_descentTrees[complexDTIndex]->getNumberOfConnectionsWithDT(_descentTrees[j]->getId()) >= max){
-			leftDTIndex = rightDTIndex;
-			max = _descentTrees[complexDTIndex]->getNumberOfConnectionsWithDT(_descentTrees[j]->getId());
-			rightDTIndex = j;
-		}
-	}
-	if(leftDTIndex != rightDTIndex && leftDTIndex != complexDTIndex) orderedDescentTrees.push_front(_descentTrees[leftDTIndex]);
-	orderedDescentTrees.push_back(_descentTrees[rightDTIndex]);
-	//std::cout << " THE DESCENT TREE DEQUE IS " << std::endl;
-	//for(unsigned i=0;i<orderedDescentTrees.size();i++)
-	//std::cout << orderedDescentTrees[i]->getId() << std::endl;
-	
-	
-	// Find all other DTs not included in the deque yet
-	
-	// First find all the DTs related to the left DT tree
-	if(orderedDescentTrees.size() < _descentTrees.size())
-	_addDescentTreesConnectedTo(leftDTIndex,orderedDescentTrees,true);
-	if(orderedDescentTrees.size() < _descentTrees.size())
-	_addDescentTreesConnectedTo(rightDTIndex,orderedDescentTrees,false);
-	if(orderedDescentTrees.size() < _descentTrees.size())
-	_addDescentTreesConnectedTo(complexDTIndex,orderedDescentTrees,false);
-	
-	std::vector<DescentTree*>::iterator vit;
-	for(unsigned i=0;i<orderedDescentTrees.size();i++){
-		vit = find(_descentTrees.begin(),_descentTrees.end(),orderedDescentTrees[i]);
-		if(vit != _descentTrees.end()) _descentTrees.erase(vit);
-	}
-	//std::cout << " DT SIZE NOW IS " << _descentTrees.size() << std::endl;
-	
-	// There might be DTs which are not connected to any other DT
-	// The options are to ignore such DT or just draw them unconnected
-	// The second option is the default
-	if(_descentTrees.size() != 0){
-		//std::cout << " OOPS ! missed out on some tree";
-		for(unsigned i=0;i<_descentTrees.size();i++)
-			orderedDescentTrees.push_back(_descentTrees[i]);
-	}
-	
-	//std::cout << " THE REORDERED DT vector IS " << std::endl;
-	_descentTrees.clear();
-	for(unsigned i=0;i<orderedDescentTrees.size();i++){
-		_descentTrees.push_back(orderedDescentTrees[i]);
-	}
-	
-	_markExternalConnectionFlags();
-	
-}
-
-

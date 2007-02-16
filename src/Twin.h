@@ -57,12 +57,16 @@ public:
 	//
 	void set(const char *twinMarker,TWIN_TYPE twinType){ 
 		
-		if(_validateTwinMarker(twinMarker)){
-			std::string temp = twinMarker;
-			// To distinguish between twin types with the same marker a twin type character is appended to the  markers
-			temp+= getTwinType();
-			 String::set(temp);
+		if(twinType == Twin::ZYGOSITY_UNKNOWN_TWIN || twinType == Twin::MISSING_TWIN || _validateTwinMarker(twinMarker)){
 			 _twinType = twinType; 
+			// To distinguish between twin types with the same marker a twin type character is appended to the  markers
+			std::string temp = twinMarker;
+			if(twinMarker == ".");
+			else{
+				temp+= getTwinType();
+				 String::set(temp);
+				 _isMissing = false;
+			}
 		}else{
 			_isMissing=true;
 			_value = ".";
@@ -76,7 +80,7 @@ public:
 	
 	void set(const std::string &twinMarker, TWIN_TYPE twinType){ 
 		
-		if(_validateTwinMarker(twinMarker)){
+		if(twinType == Twin::ZYGOSITY_UNKNOWN_TWIN || twinType == Twin::MISSING_TWIN || _validateTwinMarker(twinMarker)){
 			std::string temp = twinMarker;
 			
 			_twinType = twinType; 

@@ -2220,7 +2220,6 @@ bool Date::operator<(const Data& b) const{
 /// operator ==
 ///
 bool Date::operator==(const Data& b) const{
-	
 	Date* pb = dynamic_cast<Date*>(const_cast<Data* const>(&b));
 	if(pb){
 		if( _isMissing && pb->_isMissing ) return true;

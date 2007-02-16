@@ -88,13 +88,6 @@ Individual* DescentTree::getStartIndividual(void){
 //
 void DescentTree::incrementConnectionsWithDT(unsigned dtId){
 	
-	//std::map<unsigned,unsigned>::iterator mit = _connectionsWithDT.find(dtId);
-	//if(mit != _connectionsWithDT.end()){
-	//	unsigned count = mit->second + 1;
-	//	_connectionsWithDT.insert(std::map<unsigned,unsigned>::value_type(dtId,count));
-	//}else{
-	//	_connectionsWithDT.insert(std::map<unsigned,unsigned>::value_type(dtId,1));
-	//}
 	++_connectionsWithDT[dtId];
 	
 }

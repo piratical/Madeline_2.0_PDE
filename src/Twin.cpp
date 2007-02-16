@@ -33,7 +33,6 @@
 //
 const std::string Twin::getTwinType( void ) const { 
 	
-	if(_isMissing) return ".";
 	switch(_twinType){
 		case MONOZYGOTIC_TWIN: return "M";
 		case DIZYGOTIC_TWIN:   return "D";

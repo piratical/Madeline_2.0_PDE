@@ -110,6 +110,66 @@ void Individual::_checkForSpecialIndividualTypes(void){
 	
 }
 
+void Individual::_rearrangeMultipleSpouses(std::deque<Individual*>& initial,std::deque<Individual*>& left,std::deque<Individual*>& right,std::deque<Individual*>& result){
+	
+	// Push all individuals with no flags set into result
+	while(!initial.empty()){
+		if((left.empty() && !right.empty()) || (!left.empty() && right.empty())){
+			if(result.size() % 2 == 0){
+				if(!right.empty()){
+					result.push_back(right.back());
+					right.pop_back();
+				}
+			}else{
+				if(!left.empty()){
+					result.push_back(left.back());
+					left.pop_back();
+				}
+			}
+		}
+		result.push_back(initial.front());
+		initial.pop_front();
+	}
+	
+	// Push individuals in the left and right qs alternately:
+	while(left.size() > 0 && right.size() > 0){
+		if(result.size() % 2 == 0){
+			result.push_back(right.back());
+			result.push_back(left.front());
+			left.pop_front();
+			right.pop_back();
+		}else{
+			result.push_back(right.back());
+			result.push_back(left.front());
+			left.pop_front();
+			right.pop_back();
+		}
+	}
+	bool even = (result.size() % 2 == 0);
+	// Push remaining individuals in the left q
+	while(!left.empty()){
+		if(even){
+			result.push_back(left.front());
+			left.pop_front();
+		}else{
+			result.push_back(left.back());
+			left.pop_back();
+		}
+	}
+	// Push remaining individuals in the right q
+	
+	while(!right.empty()){
+		if(even){
+			result.push_back(right.back());
+			right.pop_back();
+		}else{
+			result.push_back(right.front());
+			right.pop_front();
+		}
+	}
+	
+}
+
 //
 // Individual()
 //
@@ -205,19 +265,6 @@ std::string Individual::getRandomId() {
 	
 }
 
-//
-// getSpouseIds:
-//
-std::vector<std::string> Individual::getSpouseIds(){
-	
-	std::vector<std::string> temp;
-	std::set<Individual*,compareIndividual>::iterator spouseIt = _spouses.begin();
-	while(spouseIt != _spouses.end()){
-		temp.push_back((*spouseIt)->getId().get());
-		++spouseIt;
-	}
-	return temp;
-}
 
 //
 // getSpouses:
@@ -228,19 +275,6 @@ const std::set<Individual*,Individual::compareIndividual> *const Individual::get
 	
 }
 
-//
-// getChildrenIds:
-//
-std::vector<std::string> Individual::getChildrenIds(){
-	
-	std::vector<std::string> temp;
-	std::set<Individual*,compareIndividual>::iterator childrenIt = _children.begin();
-	while(childrenIt != _children.end()){
-		temp.push_back((*childrenIt)->getId().get());
-		++childrenIt;
-	}
-	return temp;
-}
 
 //
 // getChildren:
@@ -273,6 +307,9 @@ std::vector<std::string> Individual::getChildrenIds(Individual* spouse){
 	
 }
 
+//
+// getChildrenWithSpouse: 
+//
 void Individual::getChildrenWithSpouse(Individual* spouse,std::vector<Individual*>& children){
 	
 	std::set<Individual*,compareIndividual>::iterator childrenIt = _children.begin();
@@ -288,7 +325,9 @@ void Individual::getChildrenWithSpouse(Individual* spouse,std::vector<Individual
 	
 }
 
-
+//
+// getChildrenSortedByExternalConnection:
+//
 void Individual::getChildrenSortedByExternalConnections(Individual* spouse,std::vector<Individual*>& children){
 	
 	// If there are multiple DTs the default ordering of the children is altered based on the external flags
@@ -310,34 +349,6 @@ void Individual::getChildrenSortedByExternalConnections(Individual* spouse,std::
 	
 }
 
-
-//
-// getChildrenIdsSortedByExternalConnections: with a given spouse
-//
-std::vector<std::string> Individual::getChildrenIdsSortedByExternalConnections(Individual* spouse){
-	
-	// If there are multiple DTs the default ordering of the children is altered based on the external flags
-	if(_childrenIdsSortedByExternalConnections.size()){
-		
-		std::string parentPair;
-		if(_gender.getEnum() == Gender::MALE) parentPair = _id.get()+spouse->getId().get();
-		else parentPair = spouse->getId().get()+_id.get();
-		std::map<std::string,std::vector<Individual*> >::iterator mit = _childrenIdsSortedByExternalConnections.find(parentPair);
-		if(mit != _childrenIdsSortedByExternalConnections.end()){
-			std::vector<std::string> temp;
-			std::vector<Individual*>::iterator it = (mit->second).begin();
-			while(it != (mit->second).end()){
-				temp.push_back((*it)->getId().get());
-				++it;
-			}
-			//return mit->second;
-			return temp;
-		}
-	}
-	return getChildrenIds(spouse);
-	
-}
-
 //
 // getFirstSpouse: for cases with missing mother or father id in the input pedigree data table
 //
@@ -352,7 +363,7 @@ Individual* Individual::getFirstSpouse(){
 //
 // sortSpouses: If the DT has consanguinity find the optimal ordering of the spouses
 //
-void Individual::sortSpouses(){
+void Individual::sortSpouses(bool externalFlag){
 	
 	std::deque<Individual*> leftLoopIndividuals;
 	std::deque<Individual*> rightLoopIndividuals;
@@ -365,37 +376,24 @@ void Individual::sortSpouses(){
 	// Read all the spouses into a temporary vector
 	std::set<Individual*,compareIndividual>::iterator spouseIt = _spouses.begin();
 	
-	// Unused variables:
-	// unsigned left,right;
-	
 	while(spouseIt != _spouses.end()){
 		spouses.push_back((*spouseIt));
 		++spouseIt;
 	}
 	
 	bool consanguinousLoop = true;
+	// If there are multiple descent trees with no consanguinity sort the spouses by external connection flags
+	if(externalFlag) consanguinousLoop = false;
 	
 	// classify the spouses based on the consanguinous flags
 	groupIndividualsBasedOn(consanguinousLoop,spouses,initial,leftLoopIndividuals,rightLoopIndividuals,true);
-	
-	// DEBUG: Display the vectors
-	/*std::cout << "MULTIPLE SPOUSE LEFT" << std::endl;
-	for(unsigned i=0;i<leftLoopIndividuals.size();i++)
-		std::cout << leftLoopIndividuals[i]->getId() << " : " << leftLoopIndividuals[i]->getLeftSideOfLoop() << std::endl;
-	std::cout << "MULTIPLE SPOUSE RIGHT " << std::endl;
-	for(unsigned i=0;i<rightLoopIndividuals.size();i++)
-		std::cout << rightLoopIndividuals[i]->getId() << " : " << rightLoopIndividuals[i]->getRightSideOfLoop() << std::endl;
-	std::cout << "MULTIPLE SPOUSE INITIAL" << std::endl;
-	for(unsigned i=0;i<initial.size();i++)
-		std::cout << initial[i]->getId() << std::endl;
-	*/
-	
+	if(externalFlag) _rearrangeMultipleSpouses(initial,rightLoopIndividuals,leftLoopIndividuals,result);
+	else             _rearrangeMultipleSpouses(initial,leftLoopIndividuals,rightLoopIndividuals,result);
 	// Check if the individual is a male and consanguinous
 	// In such cases the first spouse should be one that has no loop flags set
 	if(_gender.get() == "M" && _isConsanguinous && _spouses.size() >= 2){
 		if(_spouses.size() == 2){
 			if(initial.size()==1){
-				//std::cout << " MUL SPOUSE CNT 2 " << std::endl;
 				if(leftLoopIndividuals.size() && _isConsanguinous && _leftSideOfLoop > 0 && leftLoopIndividuals.front()->isConsanguinous()){
 					result.push_back(leftLoopIndividuals.front());
 					leftLoopIndividuals.pop_back();
@@ -415,7 +413,6 @@ void Individual::sortSpouses(){
 	if(leftLoopIndividuals.back()->getLeftFlag(consanguinousLoop) == rightLoopIndividuals.front()->getRightFlag(consanguinousLoop)){
 		
 		while(leftLoopIndividuals.size() > 0 && rightLoopIndividuals.size() > 0 && leftLoopIndividuals.back()->getId() == rightLoopIndividuals.front()->getId()){
-			std::cout << " IN THE MULTIPLE SPOUSE WHILE " << std::endl;
 			if(rightLoopIndividuals.size() > 1 && leftLoopIndividuals.size() > 1){
 				result.push_back(leftLoopIndividuals.back());
 				rightLoopIndividuals.pop_front();
@@ -454,66 +451,6 @@ void Individual::sortSpouses(){
 		}
 	}
 	
-	// Push all individuals with no flags set into result
-	while(!initial.empty()){
-		if((leftLoopIndividuals.empty() && !rightLoopIndividuals.empty()) || (!leftLoopIndividuals.empty() && rightLoopIndividuals.empty())){
-			if(result.size() % 2 == 0){
-				if(!rightLoopIndividuals.empty()){
-					result.push_back(rightLoopIndividuals.back());
-					rightLoopIndividuals.pop_back();
-				}
-			}else{
-				if(!leftLoopIndividuals.empty()){
-					result.push_back(leftLoopIndividuals.back());
-					leftLoopIndividuals.pop_back();
-				}
-			}
-		}
-		result.push_back(initial.front());
-		initial.pop_front();
-	}
-	// Push individuals in the left and right qs alternately:
-	while(leftLoopIndividuals.size() > 0 && rightLoopIndividuals.size() > 0){
-		if(result.size() % 2 == 0){
-			result.push_back(rightLoopIndividuals.back());
-			result.push_back(leftLoopIndividuals.front());
-			leftLoopIndividuals.pop_front();
-			rightLoopIndividuals.pop_back();
-		}else{
-			result.push_back(rightLoopIndividuals.back());
-			result.push_back(leftLoopIndividuals.front());
-			leftLoopIndividuals.pop_front();
-			rightLoopIndividuals.pop_back();
-		}
-	}
-	bool even = (result.size() % 2 == 0);
-	// Push remaining individuals in the left q
-	while(!leftLoopIndividuals.empty()){
-		if(even){
-			result.push_back(leftLoopIndividuals.front());
-			leftLoopIndividuals.pop_front();
-		}else{
-			result.push_back(leftLoopIndividuals.back());
-			leftLoopIndividuals.pop_back();
-		}
-	}
-	// Push remaining individuals in the right q
-	
-	while(!rightLoopIndividuals.empty()){
-		if(even){
-			result.push_back(rightLoopIndividuals.back());
-			rightLoopIndividuals.pop_back();
-		}else{
-			result.push_back(rightLoopIndividuals.front());
-			rightLoopIndividuals.pop_front();
-		}
-	}
-	
-	// DEBUG:
-	/*std::cout << " RESULT MUL SPOUSE VECTOR IS " << std::endl;
-	for(unsigned j=0;j<result.size();j++)
-		std::cout << result[j]->getId() << std::endl;
-	*/
 	//
 	// The reordered spouses are now in the result q.
 	// Sort the NFs of the individual based on this new spouse ordering
@@ -575,21 +512,25 @@ unsigned Individual::getRightFlag(bool consanguinousLoop){
 //
 // setChildrenIdsSortedByExternalConnections: assign children Ids vector which is reordered based on external flags to a parentpair
 //
-//void Individual::setChildrenIdsSortedByExternalConnections(std::string parentPair,std::vector<std::string>  children){
 void Individual::setChildrenIdsSortedByExternalConnections(std::string parentPair,std::vector<Individual*>  children){
 	std::map<std::string, std::vector<Individual*> >::iterator mit = _childrenIdsSortedByExternalConnections.find(parentPair);
 	if(mit != _childrenIdsSortedByExternalConnections.end()){
-		//std::cout << "ERROR: setChildrenIdsSortedByExternalConnections: There already exists such a parent pair " << parentPair << std::endl;
 	}else{
 		_childrenIdsSortedByExternalConnections.insert(std::map<std::string,std::vector<Individual*> >::value_type(parentPair,children));
 	}
 	
 }
 
+//
+// setSampledColumnPresent:
+//
 void Individual::setSampledColumnPresent(){
 	_sampledColumnPresent = true;
 }
 
+//
+// getSampledColumnPresent:
+//
 bool Individual::getSampledColumnPresent(){
 	return _sampledColumnPresent;
 }
@@ -620,7 +561,6 @@ void Individual::groupIndividualsBasedOn(bool consanguinousLoop,const std::vecto
 					if(left.front()->getLeftFlag(consanguinousLoop) > individuals[i]->getLeftFlag(consanguinousLoop)){
 						left.push_front(individuals[i]);
 					}else{
-						// *** ADDED NOW
 						// Make additional check for twin cases:
 						if(left.back()->getLeftFlag(consanguinousLoop) > individuals[i]->getLeftFlag(consanguinousLoop) && left.back()->getTwinMarker().get() != ".")
 							left.push_front(individuals[i]);
@@ -649,23 +589,19 @@ void Individual::groupIndividualsBasedOn(bool consanguinousLoop,const std::vecto
 	}
 	
 	// DEBUG:
-	
-	/*std::cout << "Sorting the  Inds :" << consanguinousLoop << std::endl;
-	std::cout << " %%%%%%%%%%%%%START " << std::endl;
-	std::cout << " INITIAL INITIAL " << std::endl;
+	/*std::cout << "Sorting the  Individuals based on :" << consanguinousLoop << std::endl;
+	std::cout << " Initial deque " << std::endl;
 	for(unsigned i=0;i<initial.size();i++){
 		std::cout << initial[i]->getId() << std::endl;
 	}
-	
-	std::cout << "INITIAL LEFT" << std::endl;
+	std::cout << "Left deque " << std::endl;
 	for(unsigned i=0;i<left.size();i++){
 		std::cout << left[i]->getId() << " and " << left[i]->getLeftFlag(consanguinousLoop) << std::endl;
 	}
-	std::cout << "INITIAL RIGHT " << std::endl;
+	std::cout << "Right deque " << std::endl;
 	for(unsigned i=0;i<right.size();i++){
 		std::cout << right[i]->getId() << " and " << right[i]->getRightFlag(consanguinousLoop) << std::endl;
 	}
-	std::cout << "%%%%%%%%%%%% END " << std::endl;
 	*/
 	
 	
@@ -706,8 +642,6 @@ std::vector<Individual*> Individual::sortIndividualsBasedOnDataField(const std::
 	std::map<Data*,std::vector<Individual*>,compareData>::iterator mit = dataMap.begin();
 	while(mit != dataMap.end()){
 		for(unsigned i=0;i<mit->second.size();i++){
-			//std::cout << "Ind:    " << mit->second[i]->getId() << " Data :" << mit->first->get() <<  std::endl;
-			
 			individualsSorted.push_back(mit->second[i]);
 			// If the sort field is DOB store the birthOrder on each individual:
 			if(dobSortOrder){
@@ -718,14 +652,9 @@ std::vector<Individual*> Individual::sortIndividualsBasedOnDataField(const std::
 		++mit;
 	}
 	
-	
 	// Merge the vectors:
 	for(unsigned i = 0;i<individualsWithMissingData.size();i++)
 		individualsSorted.push_back(individualsWithMissingData[i]);
-	
-	// DEBUG:
-	//std::vector<Individual*>::iterator it;
-	//for(it=individualsSorted.begin();it<individualsSorted.end();it++) std::cout <<  (*it)->getId() << std::endl;
 	
 	return individualsSorted;
 	
@@ -783,244 +712,6 @@ void Individual::displayNuclearFamilies(){
 void Individual::display(){
 	
 	std::cout << " IND ID is" << _id << std::endl;
-	//std::cout << " DOB" << getData("dob")->get() << std::endl; 
+	
 }
 
-//
-// sortSpouses: Old method of sorting spouses:
-//
-void Individual::sortSpousesOld(void){
-	
-	std::set<Individual*,compareIndividual>::iterator spouseIt = _spouses.begin();
-	std::vector<Individual*> leftLoopIndividuals;
-	std::vector<Individual*> rightLoopIndividuals;
-	std::vector<Individual*> initial;
-	std::vector<Individual*> result;
-	
-	std::vector<NuclearFamily*> temp;
-	
-	unsigned left,right;
-	//
-	// Determine if any loop flags are set on the spouses
-	//
-	while(spouseIt != _spouses.end()){
-		
-		left = (*spouseIt)->getLeftSideOfLoop();
-		right = (*spouseIt)->getRightSideOfLoop();
-		if(left == 0 && right == 0) { initial.push_back(*spouseIt); ++spouseIt; continue; } 
-		if(left && right){
-			if(left > right){
-				if(leftLoopIndividuals.size() > 0){
-					if(leftLoopIndividuals.front()->getLeftSideOfLoop() > left){
-						leftLoopIndividuals.insert(leftLoopIndividuals.begin(),*spouseIt);
-					}else{
-						leftLoopIndividuals.push_back(*spouseIt);
-					}
-				}else{
-					leftLoopIndividuals.push_back(*spouseIt);
-				}
-			}else{
-				if(rightLoopIndividuals.size() > 0){
-					if(rightLoopIndividuals.front()->getRightSideOfLoop() > right){
-						rightLoopIndividuals.insert(rightLoopIndividuals.begin(),*spouseIt);
-					}else{
-						rightLoopIndividuals.push_back(*spouseIt);
-					}
-				}else{
-					rightLoopIndividuals.push_back(*spouseIt);
-				}
-			}
-		}else
-		if(left){
-			if(leftLoopIndividuals.size() > 0){
-				if(leftLoopIndividuals.front()->getLeftSideOfLoop() > left){
-					leftLoopIndividuals.insert(leftLoopIndividuals.begin(),*spouseIt);
-				}else{
-					leftLoopIndividuals.push_back(*spouseIt);
-				}
-			}else{
-				leftLoopIndividuals.push_back(*spouseIt);
-			}
-		}else
-		if(right){
-			if(rightLoopIndividuals.size() > 0){
-				if(rightLoopIndividuals.front()->getRightSideOfLoop() > right){
-					rightLoopIndividuals.insert(rightLoopIndividuals.begin(),*spouseIt);
-				}else{
-					rightLoopIndividuals.push_back(*spouseIt);
-				}
-			}else{
-				rightLoopIndividuals.push_back(*spouseIt);
-			}
-		}
-		++spouseIt;
-	}
-	
-	// DEBUG: Display the vectors
-	/*std::cout << "MULTIPLE SPOUSE LEFT" << std::endl;
-	for(unsigned i=0;i<leftLoopIndividuals.size();i++)
-		std::cout << leftLoopIndividuals[i]->getId() << " : " << leftLoopIndividuals[i]->getLeftSideOfLoop() << std::endl;
-	std::cout << "MULTIPLE SPOUSE RIGHT " << std::endl;
-	for(unsigned i=0;i<rightLoopIndividuals.size();i++)
-		std::cout << rightLoopIndividuals[i]->getId() << " : " << rightLoopIndividuals[i]->getRightSideOfLoop() << std::endl;
-	std::cout << "MULTIPLE SPOUSE INITIAL" << std::endl;
-	for(unsigned i=0;i<initial.size();i++)
-		std::cout << initial[i]->getId() << std::endl;
-	*/
-	
-	//
-	// Merge the left and right vectors if they exist
-	//
-	unsigned j;
-	// Only left vector exists
-	if(!rightLoopIndividuals.size()){
-		// NOTE: ADDED the below if on 2006-04-27 for poag465
-		// hasnt been tested to see if this placement is optimal
-		if(!leftLoopIndividuals.empty() && leftLoopIndividuals.size() < 2){
-			// If the spouse's left loop = individual's right loop, push the spouse towards the left
-			if(leftLoopIndividuals[0]->getLeftSideOfLoop() == _rightSideOfLoop){
-				unsigned limit = (initial.size() % 2 == 0)? initial.size()-1:initial.size();
-				for(j=0;j<limit;j++) result.push_back(initial[j]);
-				result.push_back(leftLoopIndividuals[0]);
-				if(limit < initial.size()) result.push_back(initial[limit]); 
-			}else{
-				
-				// Push all the ones in initial to the result
-				// Push the leftLoopIndividual as the last even spouse so that it is drawn the right most
-				unsigned limit = (initial.size() % 2 == 0)? initial.size():initial.size()-1;
-				for(j=0;j<limit;j++) result.push_back(initial[j]);
-				result.push_back(leftLoopIndividuals[0]);
-				if(limit < initial.size()) result.push_back(initial[limit]); 
-			}
-		}else{
-			// Merge initial to the right of left Loop Individuals
-			for(j=0;j<initial.size();j++) leftLoopIndividuals.push_back(initial[j]);
-			//  Determine the resulting order
-			unsigned mid = leftLoopIndividuals.size()/2;
-			result.push_back(leftLoopIndividuals[mid]);
-			unsigned leftMid, rightMid;
-			leftMid = mid - 1; rightMid = mid+1;
-			while(result.size() < leftLoopIndividuals.size()){
-				if(leftMid < 0 && rightMid >= leftLoopIndividuals.size()) break;
-				if(leftMid >= 0) result.push_back(leftLoopIndividuals[leftMid]);
-				leftMid--;
-				if(rightMid < leftLoopIndividuals.size()) result.push_back(leftLoopIndividuals[rightMid]);
-				rightMid++;
-			}
-		}
-	}else
-	if(!leftLoopIndividuals.size()){ // Only right vector exists
-		if(!rightLoopIndividuals.empty() && rightLoopIndividuals.size() < 2){
-			// If the spouse's rigth loop = individual's left loop push the spouse towards the right
-			if(rightLoopIndividuals[0]->getRightSideOfLoop() == _leftSideOfLoop){
-				unsigned limit = (initial.size() % 2 == 0)? initial.size():initial.size()-1;
-				for(j=0;j<limit;j++) result.push_back(initial[j]);
-				result.push_back(rightLoopIndividuals[0]);
-				if(limit < initial.size()) result.push_back(initial[limit]); 
-			}else{
-				// Push all the ones in initial to the result
-				// Push the rightLoopIndividual as the last odd spouse so that it is drawn the left most
-				unsigned limit = (initial.size() % 2 == 0)? initial.size()-1:initial.size();
-				for(j=0;j<limit;j++) result.push_back(initial[j]);
-				result.push_back(rightLoopIndividuals[0]);
-				if(limit < initial.size()) result.push_back(initial[limit]); 
-			}
-		}else{
-			// Merge initial to the left of right Loop Individuals
-			for(j=0;j<rightLoopIndividuals.size();j++) initial.push_back(rightLoopIndividuals[j]);
-			//  Determine the resulting order
-			unsigned mid = initial.size()/2;
-			result.push_back(initial[mid]);
-			unsigned leftMid, rightMid;
-			leftMid = mid - 1; rightMid = mid+1;
-			while(result.size() < initial.size()){
-				if(leftMid < 0 && rightMid >= initial.size()) break;
-				if(rightMid < initial.size()) result.push_back(initial[rightMid]);
-				rightMid++;
-				if(leftMid >= 0) result.push_back(initial[leftMid]);
-				leftMid--;
-			}
-		}
-	}else{
-		// Both left and right exist merge the two
-		// Merge the left and right Loop Individuals 
-		for(j=0;j<rightLoopIndividuals.size();j++) leftLoopIndividuals.push_back(rightLoopIndividuals[j]);
-		//  Determine the resulting order
-		unsigned mid = leftLoopIndividuals.size()/2;
-		result.push_back(leftLoopIndividuals[mid]);
-		
-		unsigned leftMid, rightMid;
-		leftMid = mid - 1; rightMid = mid+1;
-		while(result.size() < leftLoopIndividuals.size()){
-			if(leftMid < 0 && rightMid >= leftLoopIndividuals.size()) break;
-			if(leftMid >= 0){ result.push_back(leftLoopIndividuals[leftMid]); }
-			leftMid--;
-			if(rightMid < leftLoopIndividuals.size()) result.push_back(leftLoopIndividuals[rightMid]);
-			rightMid++;
-		}
-		// Then add initial 
-		for(j=0;j<initial.size();j++){ result.push_back(initial[j]);  }
-		
-		// NOTE: ALTERNATIVE  on 2006-04-03 just to see the results of an alternative approach
-		// This approach seems to work best when the CONSANG loops connect to external NFs
-		// and not the NFs belonging to the multiple spouses
-		// Merge the initial to the left
-		//for(j=0;j<initial.size();j++) leftLoopIndividuals.push_back(initial[j]);
-		// Merge the right to the left
-		//for(j=0;j<rightLoopIndividuals.size();j++) leftLoopIndividuals.push_back(rightLoopIndividuals[j]);
-		//unsigned mid = leftLoopIndividuals.size()/2;
-		//result.push_back(leftLoopIndividuals[mid]);
-		//unsigned leftMid, rightMid;
-		//leftMid = mid - 1; rightMid = mid+1;
-		//while(result.size() < leftLoopIndividuals.size()){
-		//	if(leftMid < 0 && rightMid >= leftLoopIndividuals.size()) break;
-		//	if(leftMid >= 0){ std::cout << "leftMid " << leftMid << std::endl; result.push_back(leftLoopIndividuals[leftMid]); }
-		//	leftMid--;
-		//	std::cout << "rightMid " << rightMid <<   std::endl;
-		//	if(rightMid < leftLoopIndividuals.size()) result.push_back(leftLoopIndividuals[rightMid]);
-		//	rightMid++;
-		//}
-		//std::cout << "NEW RESULT is" << std::endl;
-		//for(j=0;j<result.size();j++) std::cout << result[j]->getId() << std::endl; 
-	}
-	
-	if(Debug::DEBUG){
-		std::cout << "SPOUSE SORTING NEW RESULT is" << std::endl;
-		for(j=0;j<result.size();j++) std::cout << result[j]->getId() << std::endl; 
-	}
-	
-	//
-	// Sort the NFs of the individual based on the spouse ordering
-	//
-	NuclearFamily* nf;
-	for(j=0;j<result.size();j++){
-		// Get the first NF of the spouse
-		nf = result[j]->getNuclearFamily((unsigned)0);
-		if(_gender.getEnum() == Gender::MALE){
-			if(nf->getFather()->getId() == _id) temp.push_back(nf);
-			else{
-				//std::cout << "This spouse has more than 1 NF" << std::endl;
-				for(unsigned i=1;i<result[j]->getNumberOfNuclearFamilies();i++){
-					if(result[j]->getNuclearFamily(i)->getFather()->getId() == _id){
-						temp.push_back(result[j]->getNuclearFamily(i));
-						break;
-					}
-				}
-			}
-		}else{
-			if(nf->getMother()->getId() == _id) temp.push_back(nf);
-			else{
-				//std::cout << "This spouse has > 1 NF " << std::endl;
-				for(unsigned i=1;i<result[j]->getNumberOfNuclearFamilies();i++){
-					if(result[j]->getNuclearFamily(i)->getMother()->getId() == _id){
-						temp.push_back(result[j]->getNuclearFamily(i));
-						break;
-					}
-				}
-			}
-		}
-	}
-	// Exchange the two vectors:
-	_nuclearFamilies.swap(temp);
-	
-}

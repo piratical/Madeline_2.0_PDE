@@ -48,16 +48,6 @@ void NuclearFamily::_orderTwins(Individual* pivotIndividual,std::deque<Individua
 	
 	std::deque<Individual*>::iterator dit;
 	
-	/*std::cout << "###DEBUG" << std::endl;
-	std::cout << "DST" << std::endl;
-	for(unsigned i=0;i<dstLoopIndividuals.size();i++) std::cout << dstLoopIndividuals[i]->getId() << std::endl;
-	std::cout << "SRC" << std::endl;
-	for(unsigned i=0;i<srcLoopIndividuals.size();i++) std::cout << srcLoopIndividuals[i]->getId() << std::endl;
-	std::cout << "IND" << std::endl;
-	for(unsigned i=0;i<indices.size();i++) std::cout << indices[i] << std::endl;
-	std::cout << "pivot" << pivotIndividual->getId() << std::endl;
-	*/
-	
 	// If the pivotIndividual exists in the dst, assign a pointer to the pivotIndividual
 	unsigned insertStartIndex=0,insertEndIndex=0;
 	bool hasPivotIndividual=false;
@@ -78,10 +68,6 @@ void NuclearFamily::_orderTwins(Individual* pivotIndividual,std::deque<Individua
 		if(hasPivotIndividual){ dstLoopIndividuals.insert(dit,dtemp); insertEndIndex=dstLoopIndividuals.size();}
 		else if(front){ dstLoopIndividuals.push_front(dtemp); insertStartIndex=1; insertEndIndex=dstLoopIndividuals.size(); }
 		else { dstLoopIndividuals.push_back(dtemp); insertStartIndex = 0;insertEndIndex = dstLoopIndividuals.size()-1; }
-		//for(unsigned k=insertStartIndex;k<insertEndIndex;k++){
-		//	if(dstLoopIndividuals[k]->getId() == dtemp->getId()) 
-		//		std::cout << "DEBUG: THERE is a DUPLICATE ENTRY in the deque. Please delete it. " << dtemp->getId() << std::endl;
-		//}
 		cnt++;
 	}
 	
@@ -325,6 +311,9 @@ void NuclearFamily::_drawTwinConnectors(DrawingCanvas& dc,bool classicalOrder){
 				                     );
 				                     
 			}
+			if(firstTwin->getTwinMarker().getTwinTypeEnum() == Twin::ZYGOSITY_UNKNOWN_TWIN){
+				dc.drawEncircledText("?",firstTwin->getX()+(lastTwin->getX()-firstTwin->getX())/2,y + 4*verticalTick,6,6,"unknownTwins");
+			}
 			i=j-1;
 			
 		}
@@ -339,6 +328,9 @@ void NuclearFamily::_drawTwinConnectors(DrawingCanvas& dc,bool classicalOrder){
 	 
 }
 
+//
+// _hasIndividualInDeque:
+//
 bool NuclearFamily::_hasIndividualInDeque(Individual* individual,const std::deque<Individual*>& individualQ){
 	
 	
@@ -413,10 +405,9 @@ void NuclearFamily::sortChildrenInClassicalOrder(bool consanguinousLoop,bool mul
 	if(leftLoopIndividuals.back()->getLeftFlag(consanguinousLoop) == rightLoopIndividuals.front()->getRightFlag(consanguinousLoop)){
 		
 		//
-		// NOTE: If was changed to while as there could be repeated individuals on both left and right qs
+		// A while loop is used as there could be repeated individuals on both left and right qs
 		// Check that they are infact different individuals
 		//
-		//if(leftLoopIndividuals.back()->getId() == rightLoopIndividuals.front()->getId()){
 		while(leftLoopIndividuals.size() > 0 && rightLoopIndividuals.size() > 0 && leftLoopIndividuals.back()->getId() == rightLoopIndividuals.front()->getId()){
 			
 			if(rightLoopIndividuals.size() > 1 && leftLoopIndividuals.size() > 1){
@@ -595,28 +586,7 @@ void NuclearFamily::calculateWidth(bool classicalOrder){
 						// Further checks are performed in the draw code
 						//
 						// Set left spouse connector flag
-						// NOTE: Currently, left connections are handled for a male spouse that has only 1 NF or
-						// a male spouse that has all consanguinous and/or external connection relationships
-						//
-						/*Individual* childFather = children[i]->getNuclearFamily(j)->getFather();
-						unsigned cntFatherNF = childFather->getNumberOfNuclearFamilies();
-						unsigned currentNFCnt = 0;
-						bool fatherCEFlag = true; // flag that indicates if all spouse connections are consanguinous or external
-						while(currentNFCnt < cntFatherNF){
-							if(childFather->getNuclearFamily(currentNFCnt)->isConsanguinous() || childFather->getNuclearFamily(currentNFCnt)->hasExternalConnection()){
-								currentNFCnt++;
-							}else{
-								fatherCEFlag = false;
-								break;
-							}
-						}
-						*/
-						// Make sure the  spouse has 1 NF or fatherCEFlag is set
-						//if(childFather->getNumberOfSpouses() <= 2 || fatherCEFlag == true){
-							children[i]->setLeftSpouseConnector(true);
-							//std::cout << "*** SET LEFT SPOUSE *** connector for " << children[i]->getId() << std::endl;
-						//}
-						
+						children[i]->setLeftSpouseConnector(true);
 					}
 					
 				}
@@ -865,8 +835,6 @@ void NuclearFamily::draw(Individual* startIndividual,DrawingCanvas& dc,double st
 	
 	// If the left connection shift flag is set adjust the currentX
 	if(_leftConnectionShiftFlag && !_isMaleWithLoopFlags(startIndividual,0)){
-		//std::cout << "LCSF SET" << std::endl;
-		//display();
 		currentX += horizontalInterval;
 	}
 	
@@ -924,16 +892,12 @@ void NuclearFamily::draw(Individual* startIndividual,DrawingCanvas& dc,double st
 	
 	//
 	// Draw the verticalDrop1
-	//
-	// 2006.09.13.ET: ADDENDUM: ADD CLASS and ID to vertical drop line:
-	//
+	// Add class and id attribute to the vertical drop line for javascript manipulation:
 	std::string dropLineId= _mother->getId().get() + std::string(":") + _father->getId().get();
 	if(isConsanguinous()) dc.drawVerticalLine(currentX,currentY+verticalTick/2,currentY-verticalTick/2+verticalDrop1,std::string("mating"),dropLineId);
 	else                  dc.drawVerticalLine(currentX,currentY,currentY+verticalDrop1,std::string("mating"),dropLineId);
 	
 	if(_leftConnectionShiftFlag){
-		//std::cout << " LEFT SHIFT Connn set " << std::endl;
-		
 		currentX -= horizontalInterval;
 	}
 	
@@ -964,7 +928,7 @@ void NuclearFamily::draw(Individual* startIndividual,DrawingCanvas& dc,double st
 		// so that he gets drawn just under the first parent instead of the center
 		if(children.size() == 1 ){
 			if((!children[0]->isConsanguinous() && !children[0]->hasExternalConnection()) || children[0]->getGender().getEnum()==Gender::FEMALE){
-					currentX -= horizontalInterval;
+				currentX -= horizontalInterval;
 			}
 		}else{
 			if(_isMaleWithLoopFlags(children[0],0)){
@@ -991,7 +955,6 @@ void NuclearFamily::draw(Individual* startIndividual,DrawingCanvas& dc,double st
 	//
 	while(i < children.size()){
 		
-		//std::cout << "Child #  " << children[i]->getId() << std::endl;
 		//**************
 		// Child has 1 or more nuclear families:
 		//**************
@@ -999,7 +962,6 @@ void NuclearFamily::draw(Individual* startIndividual,DrawingCanvas& dc,double st
 			
 			// Check if the child has the left spouse connector flag set:
 			if(children[i]->getLeftSpouseConnector()){
-				//std::cout << " Child " << children[i]->getId() << " has Left spouse connector !!! " << std::endl;
 				// Even though the leftSpouseConnector is set we need to verify that the male spouse is
 				// actually the last to be drawn on his NF. If not we reset the leftconnector flag
 				NuclearFamily* lcnf = children[i]->getNuclearFamily(0);
@@ -1014,7 +976,6 @@ void NuclearFamily::draw(Individual* startIndividual,DrawingCanvas& dc,double st
 					}else{
 						dc.drawVerticalLine(currentX,currentY,currentY+verticalDrop2);
 					}
-					//std::cout << " RESET the LEFT SPOUSE CONNECTOR FOR " <<  children[i]->getId() << std::endl;
 					children[i]->setLeftSpouseConnector(false);
 				}else{
 					// Draw verticalDrop2 for the child
@@ -1072,7 +1033,6 @@ void NuclearFamily::draw(Individual* startIndividual,DrawingCanvas& dc,double st
 					if(spouse->getGender().getEnum() == Gender::FEMALE)
 					// If the spouse is a female and the NF has a loop flag set continue:
 					if((spouse->hasBeenDrawn()  || children[i]->getNuclearFamily(j)->isConsanguinous() || children[i]->getNuclearFamily(j)->hasExternalConnection()) && spouse->getGender().getEnum() == Gender::FEMALE){
-						//std::cout << "This spouse has already been drawn!!! " << spouse->getId() << std::endl;
 						continue;
 					}
 					children[i]->getNuclearFamily(j)->draw(spouse,dc,xl,currentY+verticalDrop2+iconDiameter/2,classicalOrder);
@@ -1147,7 +1107,6 @@ void NuclearFamily::draw(Individual* startIndividual,DrawingCanvas& dc,double st
 						}else{
 							if(_isMaleWithLoopFlags(children[i+1],0)){
 								currentX += children[i]->getNuclearFamily((unsigned)0)->getRightWidth() * horizontalInterval + iconInterval;
-								//if((children[i]->getNuclearFamily((unsigned)0)->getRightWidth() % 2) == 0) currentX += horizontalInterval;
 							}else{
 								currentX += (children[i]->getNuclearFamily((unsigned)0)->getRightWidth()+children[i+1]->getNuclearFamily((unsigned)0)->getLeftWidth()) * horizontalInterval;
 								
@@ -1209,7 +1168,7 @@ void NuclearFamily::draw(Individual* startIndividual,DrawingCanvas& dc,double st
 				if(children[i+1]->getNumberOfNuclearFamilies() > 1){
 					// Next child has > 1 NF
 					if(children[i+1]->getLeftWidth() == 1){
-						// The child has CONSANG
+						// The child has consangunity
 						currentX += iconInterval;
 					}else
 						currentX += (children[i+1]->getLeftWidth() * horizontalInterval);
@@ -1222,7 +1181,7 @@ void NuclearFamily::draw(Individual* startIndividual,DrawingCanvas& dc,double st
 					}
 				}
 			}else{
-				// Next child is also isolate ie does not have a NF
+				// Next child is also isolate i.e. does not have a NF
 				currentX += iconInterval;
 			}
 		}
@@ -1241,8 +1200,6 @@ void NuclearFamily::draw(Individual* startIndividual,DrawingCanvas& dc,double st
 		if(children[0]->getLeftSpouseConnector()){
 			dc.drawHorizontalLine(children[0]->getY()-verticalDrop2-iconDiameter/2,children[0]->getX(),children[0]->getX()-horizontalInterval);
 		}else{
-		// *** COMMENTED NOW
-		//	if(_isMaleWithLoopFlags(children[0],0) || children[0]->getNuclearFamily((unsigned)0)->getLeftConnectionShiftFlag() || (children[0]->getNumberOfNuclearFamilies() > 1 && children[0]->getGender().getEnum() == Gender::MALE));
 			if(_isMaleWithLoopFlags(children[0],0) || children[0]->getNuclearFamily((unsigned)0)->getLeftConnectionShiftFlag());
 			else dc.drawHorizontalLine(children[0]->getY()-verticalDrop2-iconDiameter/2,children[0]->getX(),children[0]->getX()+horizontalInterval);
 		}
@@ -1374,6 +1331,84 @@ void NuclearFamily::sortChildrenBasedOnDataField(const std::string& name,bool do
 }
 
 //
+// findTwinsByDOB:
+//
+void NuclearFamily::findTwinsByDOB(){
+	
+	static char twinMarker='a';
+	// If the DOB column is not present return
+	if(_sortedChildren.size() && _sortedChildren[0]->getDOB() == 0) return;
+	std::vector<Individual*> tempa;
+	std::vector<Individual*> tempb;
+	std::map<unsigned,std::vector<Individual*> > twinGroups;
+	unsigned twinGroupCount =0;
+	// Push all the siblings with a DOB and a missing twin marker into a vector
+	for(unsigned i=0;i<_sortedChildren.size();i++){
+		if(_sortedChildren[i]->getDOB()->get() != std::string(".") && _sortedChildren[i]->getTwinMarker().get() == std::string(".")){
+			tempa.push_back(_sortedChildren[i]);
+		}
+	}
+	if(!tempa.size()) return;
+	
+	// Find other sibs with the same DOB; repeat this process to find all groups of twins
+	Data* initial;
+	bool newGroup=true;
+	std::string marker="";
+	while(tempa.size() > 1){
+		initial = tempa[0]->getDOB();
+		
+		for(unsigned i=1;i<tempa.size();i++){
+			if(*initial == *tempa[i]->getDOB()){
+				if(newGroup){
+					// Found a potential twin group
+					twinGroupCount++;
+					std::vector<Individual*> tempvec;
+					marker=twinMarker;
+					twinMarker++;
+					// set the twin type to unknown zygosity
+					Message("NuclearFamily.cpp::findTwinsByDOB()","Found siblings with the same DOB not indicated as twins. They will be considered as a twin group with unknown zygosity.");
+					Message("NuclearFamily.cpp::findTwinsByDOB()","Individual %s will be treated as part of this twin group",tempa[0]->getId().get().c_str());
+					Message("NuclearFamily.cpp::findTwinsByDOB()","Individual %s will be treated as part of this twin group",tempa[i]->getId().get().c_str());
+					tempa[0]->setTwin(marker,Twin::ZYGOSITY_UNKNOWN_TWIN);
+					tempa[i]->setTwin(marker,Twin::ZYGOSITY_UNKNOWN_TWIN);
+					// insert the new twin group in a map
+					tempvec.push_back(tempa[0]);
+					tempvec.push_back(tempa[i]);
+					twinGroups.insert(std::map<unsigned,std::vector<Individual*> >::value_type(twinGroupCount,tempvec));
+					newGroup = false;
+				}else{
+					// additional twins of the same twin group
+					std::map<unsigned,std::vector<Individual*> >::iterator mit = twinGroups.find(twinGroupCount);
+					if(mit != twinGroups.end()){
+						mit->second.push_back(tempa[i]);
+					}
+					Message("NuclearFamily.cpp::findTwinsByDOB()","Individual %s will be treated as part of this twin group",tempa[i]->getId().get().c_str());
+					tempa[i]->setTwin(marker,Twin::ZYGOSITY_UNKNOWN_TWIN);
+				}
+			}else tempb.push_back(tempa[i]);
+		}
+		tempa = tempb;
+		tempb.clear();
+		newGroup = true;
+		marker="";
+		if(tempa.size() <= 1) break;
+	}
+	_twinGroupCount += twinGroups.size();
+	std::map<unsigned,std::vector<Individual*> >::iterator mit;
+	// Display the twin groups
+	/*if(twinGroups.size() >= 1){
+		std::cout << "The twins are " << std::endl;
+		mit = twinGroups.begin();
+		while(mit != twinGroups.end()){
+			for(unsigned i=0;i<mit->second.size();i++)
+			std::cout << "Twin:    " << mit->second[i]->getId() << " Marker :" << mit->second[i]->getTwinMarker().get() << " Type: " << mit->second[i]->getTwinMarker().getTwinType() << std::endl;
+			++mit;
+		}
+	}*/
+	
+}
+
+//
 // DEBUG:
 //
 void NuclearFamily::display(){
@@ -1387,27 +1422,4 @@ void NuclearFamily::display(){
 	std::cout << "END OF NUCLEAR FAMILY " << std::endl;
 	
 }
-
-// NOTE: CURRENTLY NOT USED
-// getChildrenIds:
-//
-/*std::vector<std::string> NuclearFamily::getChildrenIds(){
-	
-	// Check to see if the childrenInClassicalOrder vector is empty. 
-	// If it is empty we are dealing with a simple case without consanguinity or external connection.
-	// NOTE: currently the children are sorted by Id. But it can be extended to sort by any other field and
-	// return the children vector.
-	std::vector<std::string> temp;
-	if(!_childrenInClassicalOrder.size()){
-		for(unsigned i=0;i<_sortedChildren.size();i++){
-			temp.push_back(_sortedChildren[i]->getId().get());
-		}
-	}else{
-		for(unsigned i=0;i<_childrenInClassicalOrder.size();i++){
-			temp.push_back(_childrenInClassicalOrder[i]->getId().get());
-		}
-	}
-	return temp;
-}
-*/
 

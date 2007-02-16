@@ -72,6 +72,7 @@ private:
 	void _addDescentTreesConnectedTo(unsigned dtIndex,std::deque<DescentTree*>& orderedDescentTrees,bool left);
 	void _calculateDescentTreeWidth();
 	void _checkParentsGender(Individual* individual);
+	void _checkMarkedTwinsDOB();
 	void _calculateWidth(Individual* individual,bool classicalOrder,unsigned descentTreeIndex);
 	void _populateIndividualGrid();
 	void _sortNuclearFamilies(bool consanguinousFlag);
@@ -99,7 +100,7 @@ private:
 	void _drawConsanguinousConnectors(DrawingCanvas& dc);
 	void _drawConsanguinityLetter(Individual* mother,Individual* father,char& consanguinityLetter,double iconInterval,double iconDiameter, std::map<std::string,std::string>& individualConsanguinityLetter,DrawingCanvas& dc,double multipleSpouseOffset=0,bool leftConnector=false);
 	void _drawHorizontalConnectorLine(double y,double x1,double x2,bool isConsanguinous,DrawingCanvas& dc);
-	void _drawVerticalConnectorLine(double motherY,double fatherY,double motherX,double fatherX,bool isConsanguinous,DrawingCanvas& dc,double multipleSpouseOffset=0.0,bool singleChild=false);
+	void _drawVerticalConnectorLine(double startY,double endY,double startX,double endX,bool isConsanguinous,DrawingCanvas& dc,double multipleSpouseOffset=0.0,bool singleChild=false);
 	void _getSpouses(std::set<Individual*,compareIndividual>& foundingGroup,Individual* individual) ;
 	
 	bool _hasIndividualAtPosition(Individual* start,Individual* end);
