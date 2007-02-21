@@ -216,7 +216,7 @@ void DrawingCanvas::_setCSS(){
 	// .layer line:
 	//
 	_header << ".layer line{\n";
-	_header << "	stroke:#6d7b8d;\n";
+	_header << "	stroke:#000;\n";
 	_header << "}\n\n";
 	
 	//
