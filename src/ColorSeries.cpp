@@ -20,13 +20,13 @@
 // 
 /////////////////////////////////////////////////////////
 
-//
-// ColorSeries.cpp 2006.12.01.ET
-//
-// The color series class creates 
-// both monochromatic and
-// bichromatic color series
-//
+// 2006.12.01.ET
+/// ColorSeries.cpp 
+///
+/// The color series class creates 
+/// both monochromatic and
+/// bichromatic color series
+///
 
 #include "ColorSeries.h"
 
@@ -59,6 +59,9 @@ double *ColorSeries::_saturations[]={
 	_fiveSaturations
 };
 
+//
+// Constructor:
+//
 ColorSeries::ColorSeries(unsigned levels,const DrawingColor &endColor,const DrawingColor &startColor){
 	
 	_levels   = levels;
@@ -137,7 +140,7 @@ ColorSeries::ColorSeries(unsigned levels,const DrawingColor &endColor,const Draw
 }
 
 //
-// get
+// get():
 //
 DrawingColor ColorSeries::get(unsigned level) const{
 	
@@ -146,7 +149,7 @@ DrawingColor ColorSeries::get(unsigned level) const{
 }
 
 //
-// getColorAtLevel
+// getColorAtLevel():
 //
 std::string ColorSeries::getColorAtLevel(unsigned level) const{
 	
@@ -155,7 +158,7 @@ std::string ColorSeries::getColorAtLevel(unsigned level) const{
 }
 
 //
-// useBlackInkAtLevel
+// useBlackInkAtLevel():
 //
 bool ColorSeries::useBlackInkAtLevel(unsigned level) const{
 	
@@ -164,7 +167,7 @@ bool ColorSeries::useBlackInkAtLevel(unsigned level) const{
 }
 
 //
-// reversedSeriesGetColorAtLevel
+// reversedSeriesGetColorAtLevel():
 //
 std::string ColorSeries::reversedSeriesGetColorAtLevel(unsigned level) const{
 	
@@ -174,7 +177,7 @@ std::string ColorSeries::reversedSeriesGetColorAtLevel(unsigned level) const{
 }
 
 //
-// reversedSeriesUseBlackInkAtLevel
+// reversedSeriesUseBlackInkAtLevel():
 //
 bool ColorSeries::reversedSeriesUseBlackInkAtLevel(unsigned level) const{
 	

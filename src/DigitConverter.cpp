@@ -78,7 +78,7 @@ DigitConverter::DigitConverter(const char *p,int stt,int end){
 }
 
 //
-//! set method tailored for use by the MadelineTable class
+//! set(): method tailored for use by the MadelineTable class
 //
 void DigitConverter::set(const char *p,int stt,int end){
 	
@@ -102,7 +102,7 @@ DigitConverter::DigitConverter(const char *p){
 }
 
 //
-//! set method taking const char *
+//! set(): method taking const char *
 //
 void DigitConverter::set(const char *p){
 	
@@ -125,7 +125,7 @@ DigitConverter::DigitConverter(const std::string &input){
 }
 
 //
-//! set method taking const reference to a standard string
+//! set(): method taking const reference to a standard string
 //
 void DigitConverter::set(const std::string &input){
 	
@@ -135,10 +135,10 @@ void DigitConverter::set(const std::string &input){
 	
 }
 
-//
-// Tests the high bits in a UTF-8 string to see if there are
-// characters outside the ASCII range or not.
-//
+///
+/// _isASCII(): Tests the high bits in a UTF-8 string to see if there are
+/// characters outside the ASCII range or not.
+///
 bool DigitConverter::_isASCII( void ){
 	
 	// Test high bit for non-ASCII:

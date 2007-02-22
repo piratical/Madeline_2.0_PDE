@@ -1,4 +1,4 @@
-/////////////////////////////////////////////////////////
+ /////////////////////////////////////////////////////////
 //
 // This file is part of the MADELINE 2 program 
 // written by Edward H. Trager, Adrian Marrs and Ritu Khanna
@@ -150,27 +150,7 @@ void DelimitedTableParser::readString(const std::string &inString){
 	
 	// int i = 0;
 	// Read in str body of information
-	/*while(!str.eof())
-	{
-		total = "";
-		//seeker = '\t';
-		do
-		{
-			
-			if(seeker == ' ') total += ' ';
-			str >> temp;
-			
-			total += temp;
-			seeker = str.peek();
-			if(str.eof()) break; 
-			
-		}while(seeker != '\t' && seeker != '\n');
-		if(str.eof()) break; 
-		_element.push_back(total);
-		
-	}*/
-	// NOTE: CHANGED the above section on 2006-09-28 to allow
-	// for tab delimited files that do not have a ' ' character for null values
+	// This allows for tab delimited files that do not have a ' ' character for null values.
 	char linestr[SMALL_STRING_BUFFER_SIZE];
 	char columnstr[LARGE_STRING_BUFFER_SIZE];
 	while(!str.eof()){

@@ -75,10 +75,10 @@ bool Date::_displayDelimiters=false;
 //
 //////////////////////////
 
-//
-// Converts Gregorian civil year yyyy, month mm, day dd 
-// to Julian day number:
-//
+///
+/// _yearMonthDayToJulian(): Converts Gregorian civil year yyyy, month mm, day dd 
+/// to Julian day number:
+///
 long Date::_yearMonthDayToJulian(int yyyy,int mm, int dd){
 	
 	int ja,jy,jm;
@@ -107,9 +107,9 @@ long Date::_yearMonthDayToJulian(int yyyy,int mm, int dd){
 	
 }
 
-//
-// Determines if a Gregorian calendar year is a leap year: 
-//
+///
+/// _isLeapYear(): Determines if a Gregorian calendar year is a leap year.
+///
 bool Date::_isLeapYear(int year){
 	
 	
@@ -117,11 +117,9 @@ bool Date::_isLeapYear(int year){
 	
 }
 
-//
-// _getLastDayOfMonth()
-//
-//   Returns the last day of the month of the given year:
-//
+///
+/// _getLastDayOfMonth(): Returns the last day of the month of the given year.
+///
 int Date::_getLastDayOfMonth(int year, int month ){
 	
 	//
@@ -140,11 +138,9 @@ int Date::_getLastDayOfMonth(int year, int month ){
 	
 }
 
-//
-// _getYearMonthDay()
-//
-//   Obtain the year, month, and day integers from a julian day number:
-//
+///
+/// _getYearMonthDay(): Obtain the year, month, and day integers from a julian day number.
+///
 void Date::_getYearMonthDay(const long julian, int *yyyy, int *mm, int *dd) const {
 	
 	long ja,jalpha,jb,jc,jd,je;
@@ -186,11 +182,9 @@ void Date::_getYearMonthDay(const long julian, int *yyyy, int *mm, int *dd) cons
 	
 }
 
-//
-// _islamicYearMonthDayToJulian()
-//
-//   Obtain the Julian day number from an Islamic Hijri date:
-//
+///
+/// _islamicYearMonthDayToJulian(): Obtain the Julian day number from an Islamic Hijri date:
+///
 long Date::_islamicYearMonthDayToJulian( int yyyy, int mm, int dd) const {
 	
 	return ( 
@@ -204,22 +198,18 @@ long Date::_islamicYearMonthDayToJulian( int yyyy, int mm, int dd) const {
 	       
 }
 
-// 
-// _isIslamicLeapYear()
-//
-//   Returns true if it is an Islamic Hijri leap year:
-//
+/// 
+/// _isIslamicLeapYear(): Returns true if it is an Islamic Hijri leap year:
+///
 bool Date::_isIslamicLeapYear(int year) const {
 	
 	return ((((11 * year) + 14) % 30) < 11);
 	
 }
 
-//
-// _lastDayOfIslamicMonth()
-//
-//   Returns the number of days in the Islamic month:
-//
+///
+/// _lastDayOfIslamicMonth(): Returns the number of days in the Islamic month.
+///
 int Date::_lastDayOfIslamicMonth(int year, int month) const {
 	
 	if(((month % 2) == 1) || ((month == 12) && _isIslamicLeapYear(year))){
@@ -229,11 +219,10 @@ int Date::_lastDayOfIslamicMonth(int year, int month) const {
 	}
 }
 
-//
-// _getIslamicYearMonthDay
-//
-// --> Only use if date is > _IHIJRIJULIAN (start of Islamic calendar)
-//
+///
+/// _getIslamicYearMonthDay():
+/// --> Only use if date is > _IHIJRIJULIAN (start of Islamic calendar)
+///
 void Date::_getIslamicYearMonthDay(const long julian, int *yyyy, int *mm, int *dd) const {
 	
 	int year, month, day;
@@ -259,6 +248,9 @@ void Date::_getIslamicYearMonthDay(const long julian, int *yyyy, int *mm, int *d
 	
 }
 
+//
+// _intersectionIsNotNull(): 
+//
 bool Date::_intersectionIsNotNull(const Date& b) const{
 	
 	if( _isMissing || b._isMissing ) return false;
@@ -295,15 +287,15 @@ bool Date::_intersectionIsNotNull(const Date& b) const{
 //
 //////////////////////////////////////////////////////
 
-//
-// _hasASCIIDateDelimiter()
-//
-//    If the string pointed to by "*position" starts with
-//    ".", "/", or "-", then the
-//    string pointer is incremented to point to the next character
-//    and true is returned.  Otherwise, the pointer is not
-//    incremented and false is returned.
-//
+///
+/// _hasASCIIDateDelimiter()
+///
+///    If the string pointed to by "*position" starts with
+///    ".", "/", or "-", then the
+///    string pointer is incremented to point to the next character
+///    and true is returned.  Otherwise, the pointer is not
+///    incremented and false is returned.
+///
 bool Date::_hasASCIIDateDelimiter(const char **position){
 	
 	register const char *s=*position;
@@ -320,15 +312,15 @@ bool Date::_hasASCIIDateDelimiter(const char **position){
 	
 }
 
-//
-// _hasApproximationIndicator()
-//
-//    If the string pointed to by "*position" starts with
-//    "~", then the string pointer is incremented 
-//    to point to the next character
-//    and true is returned.  Otherwise, the pointer is not
-//    incremented and false is returned.
-//
+///
+/// _hasApproximationIndicator()
+///
+///    If the string pointed to by "*position" starts with
+///   "~", then the string pointer is incremented 
+///    to point to the next character
+///   and true is returned.  Otherwise, the pointer is not
+///    incremented and false is returned.
+///
 bool Date::_hasApproximationIndicator(const char **position){
 	
 	register const char *s=*position;
@@ -345,17 +337,17 @@ bool Date::_hasApproximationIndicator(const char **position){
 	
 }
 
-//
-// _hasCJKCharacterForYear(const char **position):
-//
-//    If the string pointed to by "*position" starts with
-//    the CJKCharacter for year (年 in UTF8 format), then the
-//    string pointer is incremented to point to the next character
-//    and true is returned.  Otherwise, the pointer is not
-//    incremented and false is returned.
-//    
-//    : e5 b9 b4
-// 
+///
+/// _hasCJKCharacterForYear(const char **position):
+///
+///   If the string pointed to by "*position" starts with
+///    the CJKCharacter for year (年 in UTF8 format), then the
+///    string pointer is incremented to point to the next character
+///    and true is returned.  Otherwise, the pointer is not
+///    incremented and false is returned.
+///    
+///    : e5 b9 b4
+///
 bool Date::_hasCJKCharacterForYear(const char **position){
 	
 	register const char *s=*position;
@@ -374,17 +366,17 @@ bool Date::_hasCJKCharacterForYear(const char **position){
 	
 }
 
-//
-// _hasCJKCharacterForMonth(const char **position):
-//
-//    If the string pointed to by "*position" starts with
-//    the CJKCharacter for month (月 in UTF8 format), then the
-//    string pointer is incremented to point to the next character
-//    and true is returned.  Otherwise, the pointer is not
-//    incremented and false is returned.
-//    
-//    : e5 b9 b4
-// 
+///
+/// _hasCJKCharacterForMonth(const char **position):
+///
+///    If the string pointed to by "*position" starts with
+///    the CJKCharacter for month (月 in UTF8 format), then the
+///    string pointer is incremented to point to the next character
+///    and true is returned.  Otherwise, the pointer is not
+///   incremented and false is returned.
+///    
+///    : e5 b9 b4
+/// 
 bool Date::_hasCJKCharacterForMonth(const char **position){
 	
 	register const char *s=*position;
@@ -403,17 +395,17 @@ bool Date::_hasCJKCharacterForMonth(const char **position){
 	
 }
 
-//
-// _hasCJKCharacterForDay(const char **position):
-//
-//    If the string pointed to by "*position" starts with
-//    the CJKCharacter for day (日 in UTF8 format), then the
-//    string pointer is incremented to point to the next character
-//    and true is returned.  Otherwise, the pointer is not
-//    incremented and false is returned.
-//    
-//    : e6 97 a5
-// 
+///
+/// _hasCJKCharacterForDay(const char **position):
+///
+///    If the string pointed to by "*position" starts with
+///    the CJKCharacter for day (日 in UTF8 format), then the
+///    string pointer is incremented to point to the next character
+///    and true is returned.  Otherwise, the pointer is not
+///    incremented and false is returned.
+///    
+///    : e6 97 a5
+/// 
 bool Date::_hasCJKCharacterForDay(const char **position){
 	
 	register const char *s=*position;
@@ -668,17 +660,17 @@ bool Date::_hasKoreanHangulForYear(const char **position){
 	
 }
 
-//
-// _hasKoreanHangulForMonth(const char **position):
-//
-//    If the string pointed to by "*position" starts with
-//    the CJKCharacter for year (월 in UTF8 format), then the
-//    string pointer is incremented to point to the next character
-//    and true is returned.  Otherwise, the pointer is not
-//    incremented and false is returned.
-//    
-//    : ec 9b 94
-// 
+///
+/// _hasKoreanHangulForMonth(const char **position):
+///
+///    If the string pointed to by "*position" starts with
+///    the CJKCharacter for year (월 in UTF8 format), then the
+///    string pointer is incremented to point to the next character
+///    and true is returned.  Otherwise, the pointer is not
+///    incremented and false is returned.
+///    
+///    : ec 9b 94
+/// 
 bool Date::_hasKoreanHangulForMonth(const char **position){
 	
 	register const char *s=*position;
@@ -697,17 +689,17 @@ bool Date::_hasKoreanHangulForMonth(const char **position){
 	
 }
 
-//
-// _hasKoreanHangulForDay(const char **position):
-//
-//    If the string pointed to by "*position" starts with
-//    the CJKCharacter for year (일 in UTF8 format), then the
-//    string pointer is incremented to point to the next character
-//    and true is returned.  Otherwise, the pointer is not
-//    incremented and false is returned.
-//    
-//    : ec 9d bc
-// 
+///
+/// _hasKoreanHangulForDay(const char **position):
+///
+///    If the string pointed to by "*position" starts with
+///    the CJKCharacter for year (일 in UTF8 format), then the
+///    string pointer is incremented to point to the next character
+///    and true is returned.  Otherwise, the pointer is not
+///    incremented and false is returned.
+///    
+///    : ec 9d bc
+/// 
 bool Date::_hasKoreanHangulForDay(const char **position){
 	
 	register const char *s=*position;
@@ -726,15 +718,15 @@ bool Date::_hasKoreanHangulForDay(const char **position){
 	
 }
 
-//
-// _hasUTF8Character:
-//
-//    If the string pointed to by "*position" starts with
-//    the character in UTF8Character, then the
-//    string pointer is incremented to point to the next character
-//    and true is returned.  Otherwise, the pointer is not
-//    incremented and false is returned.
-//
+///
+/// _hasUTF8Character:
+///
+///    If the string pointed to by "*position" starts with
+///    the character in UTF8Character, then the
+///    string pointer is incremented to point to the next character
+///    and true is returned.  Otherwise, the pointer is not
+///    incremented and false is returned.
+///
 bool Date::_hasUTF8Character(const char **position,const char *UTF8Character){
 	
 	register const char *s=*position;
@@ -761,15 +753,15 @@ bool Date::_hasUTF8Character(const char **position,const char *UTF8Character){
 //
 //////////////////////////////////////////////////////
 
-//
-// _hasRangeDelimiter(const char **position,bool startBracketFound):
-//
-//    If the string pointed to by "*position" starts with
-//    a valid range delimiter (" - ","r", "R", "", or "", then the
-//    string pointer is incremented to point to the next character
-//    and true is returned.  Otherwise, the pointer is not
-//    incremented and false is returned.
-//    
+///
+/// _hasRangeDelimiter(const char **position,bool startBracketFound):
+///
+///    If the string pointed to by "*position" starts with
+///    a valid range delimiter (" - ","r", "R", "", or "", then the
+///    string pointer is incremented to point to the next character
+///    and true is returned.  Otherwise, the pointer is not
+///    incremented and false is returned.
+///    
 bool Date::_hasRangeDelimiter(const char **position,bool startBracketFound){
 	
 	register const char *s=*position;
@@ -948,12 +940,12 @@ bool Date::_hasClosingBracket(const char **position){
 	
 }
 
-//
-// _getValue()
-//
-//    Converts a string of digits, optionally prefixed by a '+' or '-',
-//    into an integer value:
-//
+///
+/// _getValue()
+///
+///    Converts a string of digits, optionally prefixed by a '+' or '-',
+///    into an integer value:
+///
 int Date::_getValue(const char **position){
 	
 	int VALUESTRINGSIZE=5;
@@ -2129,7 +2121,6 @@ Number Date::operator-(const Date &d) const{
 
 ///
 ///  operator <
-///  ADDED: on 2005-07-19
 ///
 ///  NOTA BENE: This is used for SORTING only
 ///

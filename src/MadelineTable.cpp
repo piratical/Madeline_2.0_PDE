@@ -441,18 +441,18 @@ char *MadelineTable::_readAndNullTerminateColumnName(char *beginning,const char 
 	return end;
 }
 
-//                                                           
-// _readColumnType() : sets the declared type
-//                                                           
-// Allowed field types are: C -- character                   
-//                          N -- numeric                     
-//                          D -- date                        
-//                          G -- genotype                    
-//                          A -- allele                      
-//                          X -- character-type gender field 
-// enum COLUMNTYPE{ ALLELE, DATE, GENDER, GENOTYPE, HAPLOTYPE, MISSING, NUMBER, STRING, UNCLASSIFIED };
-//
-//
+///                                                           
+/// _readColumnType() : sets the declared type
+///                                                           
+/// Allowed field types are: C -- character                   
+///                          N -- numeric                     
+///                          D -- date                        
+///                          G -- genotype                    
+///                          A -- allele                      
+///                          X -- character-type gender field 
+/// enum COLUMNTYPE{ ALLELE, DATE, GENDER, GENOTYPE, HAPLOTYPE, MISSING, NUMBER, STRING, UNCLASSIFIED };
+///
+///
 char *MadelineTable::_readColumnType(char *beginning,const char *headerEnd, ColumnOffset &columnOffset ){
 	
 	register char a;
@@ -512,92 +512,6 @@ void MadelineTable::_parseHeader( void ){
 	// UNFINISHED: WHAT IF ONLY ONE BLOCK? HOW DO WE DEAL WITH COLUMN NAMES?
 	
 }
-
-//
-// _classifyColumns: This set the discoveredType()
-//
-// NOTA BENE: This is now handled downstream by DataTable
-//
-//void MadelineTable::_classifyColumns( void ){
-//	
-//	RandomGenerator randomGenerator(RandomGenerator::PSEUDO_RANDOM);
-//	ColumnClassifier columnClassifier;
-//	const char *randomLine;
-//	
-//	// Run through the columns:
-//	for(unsigned column=0; column< _dataColumns; column++){
-//		
-//		// Reset counters before scanning a new column:
-//		columnClassifier.resetCounters();
-//		
-//		for(unsigned j=0;j< GENERAL_RANDOM_SAMPLE_SIZE;j++){
-//			// Draw a row randomly:
-//			unsigned randomDrawRow = randomGenerator.getIntegerInRange(_firstDataRow,_lastDataRow);
-//			// Scan the data:
-//			randomLine=_lineInfo[randomDrawRow].getLine();
-//			columnClassifier.scan( randomLine , _columnOffset[column].getStart(),_columnOffset[column].getEnd() );
-//		}
-//		// Now classify the column:
-//		_columnOffset[column].setDiscoveredType(columnClassifier.classify());
-//		//
-//		// If the column could not be classified from the small random draws, then
-//		// we read the *entire* column looking for the non-missing entries:
-//		// 
-//		if(_columnOffset[column].getDiscoveredType()==MISSING){
-//			columnClassifier.resetCounters();
-//			
-//			for(unsigned row=_firstDataRow;row<=_lastDataRow;row++){
-//				// Scan the data:
-//				columnClassifier.scan( _lineInfo[row].getLine(), _columnOffset[column].getStart(),_columnOffset[column].getEnd() );
-//			}
-//			// Try classifying the column again:
-//			_columnOffset[column].setDiscoveredType(columnClassifier.classify());
-//			// UNFINISHED: There should be a warning message if it is still
-//			// not classified:
-//			if(_columnOffset[column].getDiscoveredType()==MISSING){
-//				
-//				Warning("MadelineTable::_classifyColumns(): Column %i. %s appears to be completely missing.",column+1,_columnOffset[column].getName());
-//				
-//			}
-//		}
-//		
-//	}
-//}
-
-//
-// _resolveDeclaredVersusDiscoveredColumnTypes:
-//
-//void MadelineTable::_resolveDeclaredVersusDiscoveredColumnTypes( void ){
-//	
-//	for(unsigned column=0;column< _dataColumns;column++){
-//		
-//		//
-//		// Deal with MISSING:
-//		//
-//		if(_columnOffset[column].getDiscoveredType()==MISSING){
-//			// Declaration here could also be missing:
-//			_columnOffset[column].setTypeFromDeclaration();
-//			
-//		}
-//		// Allow casting a column to "C" only from a "N" or "D" type:
-//		if( ( _columnOffset[column].getDiscoveredType()==NUMBER ||
-//		      _columnOffset[column].getDiscoveredType()==DATE )  &&
-//		      _columnOffset[column].getDeclaredType()  =='C' ){
-//			_columnOffset[column].setTypeFromDeclaration();
-//		}
-//		
-//		//
-//		// If declared is still missing but discovered is not,
-//		// then set declared based on discovered:
-//		//
-//		if( _columnOffset[column].getDeclaredType()  =='\0'    &&
-//		    _columnOffset[column].getDiscoveredType()!=MISSING ){
-//			
-//			_columnOffset[column].setDeclaredTypeFromDiscovery();
-//			
-//		}
-//	}
-//}
 
 
 ///////////////////////////////////

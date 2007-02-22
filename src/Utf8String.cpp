@@ -48,19 +48,19 @@ UTF8String::UTF8String(): std::string(){}
 UTF8String::UTF8String(const std::string &s): std::string(s){}
 UTF8String::UTF8String(const UTF8String &s): std::string(s){}
 
-//
-// unicodeValueCount()
-//
-// This function tells you the "length" of
-// a UTF8 string in terms of the number of 
-// Unicode code points (values) encoded in the
-// UTF-8 string.  Since all UTF-8 continuation
-// bytes have the pattern "10xxxxxx"
-// (hence the mask 0x00C0), counting
-// only those bytes that are not continuation
-// bytes (hence "!=0x0080) directly provides 
-// the number of encoded code points:
-//
+///
+/// unicodeValueCount()
+///
+/// This function tells you the "length" of
+/// a UTF8 string in terms of the number of 
+/// Unicode code points (values) encoded in the
+/// UTF-8 string.  Since all UTF-8 continuation
+/// bytes have the pattern "10xxxxxx"
+/// (hence the mask 0x00C0), counting
+/// only those bytes that are not continuation
+/// bytes (hence "!=0x0080) directly provides 
+/// the number of encoded code points:
+///
 unsigned int UTF8String::unicodeValueCount() const {
 	
 	unsigned int i;
@@ -144,14 +144,14 @@ UTF8String UTF8String::operator[](unsigned int pos) const {
 	
 }
 
-//
-// unicodeValueAtPosition():
-//
-// Note: The code in this method was inspired by a UTF8ToUTF32 method
-// in the GPL'ed swunicod.cpp (c) 1998 by the CrossWire Bible Society 
-// (http://www.crosswire.org).  It differs a bit from the method presented
-// by the Unicode Consortium which relies on some static lookup-tables.
-//
+///
+/// unicodeValueAtPosition():
+///
+/// Note: The code in this method was inspired by a UTF8ToUTF32 method
+/// in the GPL'ed swunicod.cpp (c) 1998 by the CrossWire Bible Society 
+/// (http://www.crosswire.org).  It differs a bit from the method presented
+/// by the Unicode Consortium which relies on some static lookup-tables.
+///
 UTF32 UTF8String::unicodeValueAtPosition(unsigned int pos) const {
 	
 	if(!pos) return 0;
@@ -201,12 +201,12 @@ UTF32 UTF8String::unicodeValueAtPosition(unsigned int pos) const {
 	
 }
 
-//
-// isRTL()
-//
-// Returns true if the string starts with a Unicode character
-// from a script that is written right-to-left.
-//
+///
+/// isRTL()
+///
+/// Returns true if the string starts with a Unicode character
+/// from a script that is written right-to-left.
+///
 bool UTF8String::isRTL(void) const {
 	
 	UTF32 testValue = this->unicodeValueAtPosition(1);
@@ -235,9 +235,9 @@ bool UTF8String::isRTL(void) const {
 	
 }
 
-//
-// UTF32String(): Converts a UTF8String to a UTF32String
-//
+///
+/// UTF32String(): Converts a UTF8String to a UTF32String
+///
 std::basic_string<UTF32> UTF8String::UTF32String() const {
 	
 	std::basic_string<UTF32> utf32String;
@@ -315,12 +315,12 @@ std::basic_string<UTF32> UTF8String::UTF32String() const {
 }
 
 
-//
-// isIndic()
-//
-// Returns true if the string starts with a Unicode character
-// from an Indic or Indic-derived script
-//
+///
+/// isIndic()
+///
+/// Returns true if the string starts with a Unicode character
+/// from an Indic or Indic-derived script
+///
 bool UTF8String::isIndic(void) const {
 	
 	UTF32 testValue = this->unicodeValueAtPosition(1);
@@ -360,12 +360,12 @@ bool UTF8String::isIndic(void) const {
 	
 }
 
-//
-// isArabic()
-//
-// Returns true if the string starts with a Unicode character
-// from Arabic
-//
+///
+/// isArabic()
+///
+/// Returns true if the string starts with a Unicode character
+/// from Arabic
+///
 bool UTF8String::isArabic(void) const {
 	
 	UTF32 testValue = this->unicodeValueAtPosition(1);
@@ -387,10 +387,10 @@ bool UTF8String::isArabic(void) const {
 	
 }
 
-//
-// getScriptCode(): Returns a script code based on the
-//                  first character in the string:
-//
+///
+/// getScriptCode(): Returns a script code based on the
+///                  first character in the string:
+///
 SCRIPTCODE UTF8String::getScriptCode(void){
 
 	UTF32 testValue = this->unicodeValueAtPosition(1);

@@ -56,6 +56,9 @@ void Sampled::addLookupTableEntry(std::string label, bool value ){
 //
 ///////////////////////////////////
 
+//
+// set(): from char*
+//
 void Sampled::set(const char *value){
 	
 	_isMissing = true;
@@ -67,12 +70,18 @@ void Sampled::set(const char *value){
 	
 }
 
+//
+// set(): from string
+//
 void Sampled::set(const std::string &value){
 	
 	set( value.c_str() );
 	
 }
 
+//
+// set(): from Enum
+//
 void Sampled::set(SAMPLED sampled){
 	
 	if(sampled==Sampled::MISSING) _isMissing=true; 

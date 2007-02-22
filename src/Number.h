@@ -203,11 +203,9 @@ public:
 	bool operator!=(const Number& b) const;
 	bool operator>(const Number& b) const;
 	
-	// ADDED: on 2005-07-15
 	const DATATYPE getDataType( void ) const { return NUMBER; }
 	virtual Number* clone() const;
 	
-	// ADDED: on 2005-09-09
 	// Determines whether a string is a valid Number string
 	static bool isA(const std::string& s);
 	

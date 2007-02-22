@@ -113,10 +113,10 @@ std::string XMLTagManager::getFormatName() const {
 	
 }
 
-//
-// getId(): Returns the "id" used to classify an XML format.
-//          Normally this public method won't be used.
-//
+///
+/// getId(): Returns the "id" used to classify an XML format.
+///          Normally this public method won't be used.
+///
 std::string XMLTagManager::getId() const {
 	
 	if( _formatId < 0 ) return (std::string) ".";
@@ -124,9 +124,9 @@ std::string XMLTagManager::getId() const {
 	
 }
 
-//
-// getCellTag(): Returns the XML "cell" tag for the current format:
-//
+///
+/// getCellTag(): Returns the XML "cell" tag for the current format:
+///
 std::string XMLTagManager::getCellTagName() const {
 	
 	if( _formatId < 0 ) return (std::string) ".";
@@ -134,9 +134,9 @@ std::string XMLTagManager::getCellTagName() const {
 	
 }
 
-//
-// getTableTag(): Returns the XML "table" tag for the current format:
-//
+///
+/// getTableTag(): Returns the XML "table" tag for the current format:
+///
 std::string XMLTagManager::getTableTagName() const {
 	
 	if( _formatId < 0 ) return (std::string) ".";
@@ -144,9 +144,9 @@ std::string XMLTagManager::getTableTagName() const {
 	
 }
 
-//
-// getRowTag(): Returns the XML "row" tag for the current format:
-//
+///
+/// getRowTag(): Returns the XML "row" tag for the current format:
+///
 std::string XMLTagManager::getRowTagName() const {
 	
 	if( _formatId < 0 ) return (std::string) ".";
@@ -154,11 +154,11 @@ std::string XMLTagManager::getRowTagName() const {
 	
 }
 
-//
-// getColumnTag(): Returns the XML "column" tag for the current format:
-//                 Note that most XML table formats are row-first and
-//                 don't use a column tag.
-//
+///
+/// getColumnTag(): Returns the XML "column" tag for the current format:
+///                 Note that most XML table formats are row-first and
+///                 don't use a column tag.
+///
 std::string XMLTagManager::getColumnTagName() const {
 	
 	if( _formatId < 0 ) return (std::string) ".";
@@ -166,11 +166,11 @@ std::string XMLTagManager::getColumnTagName() const {
 	
 }
 
-//
-// getTextTag(): Returns the XML "text" tag for the current format.
-//               Note that some XML table formats don't use a text tag
-//               but rather have data directly inside the cell tags.
-//
+///
+/// getTextTag(): Returns the XML "text" tag for the current format.
+///               Note that some XML table formats don't use a text tag
+///               but rather have data directly inside the cell tags.
+///
 std::string XMLTagManager::getTextTagName() const {
 	
 	if( _formatId < 0 ) return (std::string) ".";
@@ -189,11 +189,11 @@ std::string XMLTagManager::getRepeatAttributeName() const {
 	
 }
 
-//
-// cellHasChildXMLNode(): Returns true if the XML format is one that uses
-//                        a child XML node to store the cell data instead of
-//                        storing the data directly in the cell node.
-//
+///
+/// cellHasChildXMLNode(): Returns true if the XML format is one that uses
+///                        a child XML node to store the cell data instead of
+///                        storing the data directly in the cell node.
+///
 bool XMLTagManager::cellHasChildXMLNode() const {
 	
 	if( _formatId < 0 ) return false;

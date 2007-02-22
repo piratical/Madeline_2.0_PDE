@@ -73,10 +73,10 @@ std::vector<UTF8String> LabelSet::getLabelSet(Individual* individual) const{
 	
 }
 
-//
-// getLabelSubsetByType: Get the subset of labels that are "on" which are 
-//                       of a specific DATATYPE such as Genotype or String.
-//                       
+///
+/// getLabelSubsetByType: Get the subset of labels that are "on" which are 
+///                       of a specific DATATYPE such as Genotype or String.
+///                       
 //
 // 2006.08.04.ET addendum
 //

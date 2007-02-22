@@ -40,9 +40,9 @@ std::set<std::string> Genotype::_genotypeMissingValue;
 //
 ///////////////////////////////////
 
-//
-// _orderAlleles(): The normal convention is to have the lesser allele shown first:
-//
+///
+/// _orderAlleles(): The normal convention is to have the lesser allele shown first:
+///
 void Genotype::_orderAlleles( void ){
 	if( _allele1 > _allele2 ){
 		unsigned int temp= _allele1;
@@ -51,9 +51,9 @@ void Genotype::_orderAlleles( void ){
 	}
 }
 
-//
-// _setNormalizedStringRepresentation(): Convert genotype to the normalized form d{1,}/d{1,} or [ACGT]/[ACGT]
-//
+///
+/// _setNormalizedStringRepresentation(): Convert genotype to the normalized form d{1,}/d{1,} or [ACGT]/[ACGT]
+///
 void Genotype::_setNormalizedStringRepresentation( void ){
 	
 	if(_isMissing) return;
@@ -72,9 +72,9 @@ void Genotype::_setNormalizedStringRepresentation( void ){
 	
 }
 
-//
-// _snpOrdinalToCString(): Convert unsigned int to a SNP ordinal.
-//
+///
+/// _snpOrdinalToCString(): Convert unsigned int to a SNP ordinal.
+///
 const char *Genotype::_snpOrdinalToCString( unsigned int allele ){
 	
 	if(allele==SNP_A_ORDINAL) return "A";
@@ -96,9 +96,9 @@ const char *Genotype::_itoa( unsigned int i ) const{
 	
 }
 
-//
-// _setAllele(): set an allele from a char* input
-//
+///
+/// _setAllele(): set an allele from a char* input
+///
 const char* Genotype::_setAllele(const char* s, unsigned &value, bool &snp){
 	
 	char *d;
@@ -567,9 +567,9 @@ Genotype* Genotype::clone() const {
 	
 }
 
-
-// ADDED: on 2005-09-09
-// Determines whether a string is a valid Genotype string
+///
+/// isA(): Determines whether a string is a valid Genotype string
+///
 bool Genotype::isA(const std::string& s){
 	
 	Genotype test(s);

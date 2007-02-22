@@ -76,12 +76,12 @@ std::set<std::string> Number::_numberMissingValue;
 //
 ///////////////////////////////////
 
-//
-//
-// Only call on ranges where there is a possibility
-// of the low value > high value as the result of a
-// mathematical operation:
-//
+
+///
+/// _checkSwapLowAndHighValue(): Only call on ranges where there is a possibility
+/// of the low value > high value as the result of a
+/// mathematical operation:
+///
 void Number::_checkSwapLowAndHighValue( void ) {
 	
 	if( _value > _highEndValue){
@@ -2165,7 +2165,7 @@ std::ostream& operator<<(std::ostream& s, const Number& n){
 }
 
 ///
-/// virtual copy constructor:
+/// clone(): virtual copy constructor:
 ///
 Number* Number::clone() const {
 	
@@ -2174,7 +2174,7 @@ Number* Number::clone() const {
 }
 
 ///
-/// This is a static method: Determines whether an input string
+/// isA(): This is a static method: Determines whether an input string
 /// fits the pattern for a Number.
 ///
 bool Number::isA(const std::string& s){

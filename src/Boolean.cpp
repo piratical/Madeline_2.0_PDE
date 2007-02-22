@@ -55,6 +55,9 @@ void Boolean::addLookupTableEntry(std::string label, bool value ){
 //
 ///////////////////////////////////
 
+//
+// set():
+//
 void Boolean::set(const char *value){
 	
 	_isMissing = true;
@@ -66,13 +69,18 @@ void Boolean::set(const char *value){
 	
 }
 
+//
+// set():
+//
 void Boolean::set(const std::string &value){
 	
 	set( value.c_str() );
 	
 }
 
-
+//
+// operator<<
+//
 std::ostream& operator<<(std::ostream& s, const Boolean& b){
 	
 	return s << b.get();
@@ -117,6 +125,8 @@ bool Boolean::operator<(const Data& b) const{
 	
 }
 
+//
+// clone():
 //
 Boolean* Boolean::clone() const{
 	

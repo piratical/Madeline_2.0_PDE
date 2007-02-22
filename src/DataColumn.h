@@ -71,7 +71,6 @@ private:
 	DATATYPE _columnType;             // Type of data
 	
 	unsigned long _rows;               // Number of values (i.e., rows) in the column
-	//CHANGED: on 2005-20-21
 	std::vector<Data*> _data;
 	
 	bool _showOnPedigree;             // Flag indicating that the column should appear on the pedigree.

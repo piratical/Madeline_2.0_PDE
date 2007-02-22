@@ -40,7 +40,7 @@ UniqueList::UniqueList(const std::string & name){
 }
 
 //
-// insert
+// insert():
 //
 void UniqueList::insert(const Data *dp){
 	
@@ -160,6 +160,9 @@ void UniqueList::printResults(void) const{
 	}
 }
 
+//
+// getLabels():
+//
 std::vector<std::string> UniqueList::getLabels(void) const{
 	
 	std::vector<std::string> labels;

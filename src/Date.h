@@ -286,24 +286,17 @@ public:
 	Date operator+( const Number & b ) const;
 	Date operator-( const Number & b ) const;
 	Number operator-( const Date & b ) const;
-	//
-	// ADDED: on 2005-07-19
-	// 
 	bool operator<(const Data& b) const;
 	bool operator==(const Data& b) const;
-	// ADDED: on 2005-07-15
 	bool isApproximate( void ) const { return _isApproximate; }
 	const DATATYPE getDataType( void ) const { return DATE; } 
 	virtual Date* clone() const;
 	
-	// ADDED: on 2005-09-09
 	// Determines whether a string is a valid Date string
 	static bool isA(const std::string& s);
 	static double getDaysInYear(void) { return _DAYSINYEAR; }
 	
-	// ADDED on 2006.11.30:
 	static void displayRangeMeans(bool displayThem);
-	// ADDED on 2007.02.10:
 	static void displayDelimiters(bool displayThem); 
 };
 

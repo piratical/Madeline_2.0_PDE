@@ -44,6 +44,12 @@ DataMissingValueLoader DataMissingValueLoader::dataMissingValueLoader;
 // STATIC METHODS:
 //
 ///////////////////////////////////
+
+///
+/// addGlobalMissingValue: The default missing value is "." for all data types. The user can specify an alternative missing value
+/// by calling this static method. 
+/// 
+///
 void Data::addGlobalMissingValue(std::string value){
 	
 	_missingValue.insert(value);
@@ -68,16 +74,14 @@ bool Data::isGlobalMissingValue(std::string value){
 	
 }
 
-//
-// NOTE BENE: trim takes a non-const *reference* to a string
-//            and modifies the original string, and returns a
-//            reference to the original string:
-//
-// Also note that the default "drop" string in Data.h contains
-// numerous Unicode space characters like ZWSP, NBSP, ZWNBSP, 
-// N SPACE, M SPACE, etc.:
-//
-
+///
+/// trim(): Trim takes a non-const *reference* to a string
+///            and modifies the original string, and returns a
+///            reference to the original string:
+/// Also note that the default "drop" string in Data.h contains
+/// numerous Unicode space characters like ZWSP, NBSP, ZWNBSP, 
+/// N SPACE, M SPACE, etc.:
+///
 std::string & Data::trim(std::string& s,const std::string& drop){
 	
 	// Trim left side:

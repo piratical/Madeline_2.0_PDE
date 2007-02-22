@@ -44,9 +44,9 @@ const double RandomGenerator::EPS = defined_EPS;
 const double RandomGenerator::RNMX = defined_RNMX;
 const double RandomGenerator::AM   = 1.0/RandomGenerator::IM1;
 
-//
-// Private method to gather entropy:
-//
+///
+/// _gatherEntropy():
+///
 void RandomGenerator::_gatherEntropy( void ){
 	
 	std::ifstream entropySource;
@@ -80,9 +80,9 @@ void RandomGenerator::_gatherEntropy( void ){
 	
 }
 
-//
-// Private method to initialize the random number generator:
-//
+///
+/// _initialize(): the random number generator.
+///
 void RandomGenerator::_initialize( void ){
 	
 	//
@@ -129,10 +129,10 @@ RandomGenerator::RandomGenerator( ENTROPY_TYPE seedSource ){
 	
 }
 
-//
-// setEntropySource() is used in the case that the constructor
-// for the object had seedSource=UNSPECIFIED_RANDOM:
-//
+///
+/// setEntropySource() is used in the case that the constructor
+/// for the object had seedSource=UNSPECIFIED_RANDOM:
+///
 void RandomGenerator::setEntropySource(ENTROPY_TYPE seedSource){
 	
 	if( seedSource == UNSPECIFIED_RANDOM ){
@@ -163,12 +163,11 @@ void RandomGenerator::reset( void ){
 	
 }
 
-//
-// getDeviate()
-//
-// Returns a number greater than or equal to 0.0
-// and less than 1.0 (*not* less than or equal):
-// 
+///
+/// getDeviate():
+/// Returns a number greater than or equal to 0.0
+/// and less than 1.0 (*not* less than or equal):
+/// 
 double RandomGenerator::getDeviate( void ){
 	
 	k = _idum/IQ1;                              // Start here when not initializing
@@ -186,11 +185,10 @@ double RandomGenerator::getDeviate( void ){
 	
 }
 
-//
-// getIntegerInRange
-//
-// Returns an integer in the range from low *inclusive*
-// to high *inclusive*.  
+///
+/// getIntegerInRange(): Returns an integer in the range from low *inclusive*
+/// to high *inclusive*.  
+///
 int RandomGenerator::getIntegerInRange( int low, int high){
 	
 	//

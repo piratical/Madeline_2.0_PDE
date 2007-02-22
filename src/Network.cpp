@@ -216,9 +216,9 @@ void Network::_constructRequestHeader(std::string& request,const char* addressSt
 //
 ////////////////////////////////////////
 
-//
-// getNetworkFile:
-//
+///
+/// getNetworkFile: Request the file from the specified URL using 'netxx' library methods.
+///
 std::string Network::getNetworkFile(const char* url){
 	
 	if(strncmp(url,"https://",8)==0){

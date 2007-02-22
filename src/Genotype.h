@@ -115,14 +115,11 @@ public:
 	
 	//
 	// Operators:
-	// ADDED: on 2005-07-19
 	bool operator<( const Data& b) const;
 	bool operator==( const Data& b) const;
-	// ADDED: on 2005-07-15
 	const DATATYPE getDataType( void ) const { return GENOTYPE; }
 	virtual Genotype* clone() const;
 	
-	// ADDED: on 2005-09-09
 	/// Determines whether a string is a valid Genotype string
 	static bool isA(const std::string& s);
 	

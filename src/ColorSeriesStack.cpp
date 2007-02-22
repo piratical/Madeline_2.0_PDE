@@ -64,9 +64,9 @@ ColorSeriesStack::~ColorSeriesStack(){
 	}
 }
 
-//
-// add() : Add a ColorSeries with "levels" levels to the stack
-//
+///
+/// add() : Add a ColorSeries with "levels" levels to the stack.
+///
 void ColorSeriesStack::add(unsigned levels){
 	
 	

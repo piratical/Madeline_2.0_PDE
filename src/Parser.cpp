@@ -61,9 +61,9 @@ Parser::~Parser()
 }
 
 
-//
-// readFile: Reads a local file on disk
-//
+///
+/// readFile: Reads a local file on disk
+///
 void Parser::readFile(const std::string &fileName){
 	
 	_fileName = fileName;
@@ -171,9 +171,9 @@ void Parser::readFile(const std::string &fileName){
 }
 
 
-//
-// readNetworkFile(): Reads a file across the network
-//
+///
+/// readNetworkFile(): Reads a file across the network
+///
 void Parser::readNetworkFile(const std::string &url)
 {
 	

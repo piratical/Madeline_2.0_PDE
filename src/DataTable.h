@@ -210,10 +210,6 @@ public:
 	//
 	unsigned getIconColumnCount(void) const;
 	//
-	// getLabelColumnCount
-	//
-	unsigned getLabelColumnCount(void) const;
-	//
 	// getIconColumnIndex
 	//
 	unsigned getIconColumnIndex(unsigned nth) const;

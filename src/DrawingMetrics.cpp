@@ -136,12 +136,12 @@ double DrawingMetrics::getVerticalDrop2(){
 	
 }
 
-//
-// getLineWidth(): Returns line width -- not scaled.  Be sure
-//                 to call getLineWidthUnit() to find out the units.
-//                 This is designed intentionally to work directly with
-//                 setting up CSS output.
-//
+///
+/// getLineWidth(): Returns line width -- not scaled.  Be sure
+///                 to call getLineWidthUnit() to find out the units.
+///                 This is designed intentionally to work directly with
+///                 setting up CSS output.
+///
 double DrawingMetrics::getLineWidth(){
 	
 	return _lineWidth; 
@@ -157,11 +157,11 @@ std::string DrawingMetrics::getLineWidthUnit(){
 	
 }
 
-//
-// setLineWidth(double lineWidth): It is suggested to use "mm" for
-//                                 CSS and Postscript compatability.
-//                                 "px" is also OK for CSS at least.
-//
+///
+/// setLineWidth(double lineWidth): It is suggested to use "mm" for
+///                                 CSS and Postscript compatability.
+///                                 "px" is also OK for CSS at least.
+///
 void DrawingMetrics::setLineWidth(double lineWidth){
 	
 	_lineWidth=lineWidth; 
@@ -312,11 +312,11 @@ void DrawingMetrics::setFontSizeUnit(const std::string &fontSizeUnit){
 	
 }
 
-//
-// setLineMetrics(): Accepts parameters in "points" (1/72nds of an inch
-//                   from LASi) and sets DrawingMetric's private members
-//                   in millimeters:
-//
+///
+/// setLineMetrics(): Accepts parameters in "points" (1/72nds of an inch
+///                   from LASi) and sets DrawingMetric's private members
+///                   in millimeters:
+///
 void DrawingMetrics::setLineMetrics(double lineHeight,double yMaximum,double yMinimum, unsigned labelCount ){
 	
 	_lineHeight = lineHeight * _pointsToMmConversionFactor;

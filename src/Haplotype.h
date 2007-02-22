@@ -72,10 +72,8 @@ public:
 	
 	//
 	// Operators:
-	// ADDED: on 2005-07-19
 	bool operator<( const Data& b) const;
 	bool operator==( const Data& b) const;
-	// ADDED: on 2005-07-15
 	const DATATYPE getDataType( void ) const { return HAPLOTYPE; }
 	virtual Haplotype* clone() const;
 	

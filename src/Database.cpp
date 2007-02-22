@@ -33,9 +33,9 @@
 //
 ///////////////////////////////////
 
-//
-// readTable:
-//
+///
+/// readTable: Executes a mysql select query to read a data table from the database and stores the result in a vector.
+///
 void Database::readTable(const char* sqlQuery){
 	
 	if(!_connected) return;
@@ -90,9 +90,9 @@ void Database::readTable(const char* sqlQuery){
 	
 }
 
-//
-// query:
-//
+///
+/// query: Executes any database query and displays the results. 
+///
 void Database::query(const char* sql){
 	
 	if(!_connected) return;
@@ -103,14 +103,13 @@ void Database::query(const char* sql){
 		if(strncasecmp(sql,"select",6)==0 || strncasecmp(sql,"desc",4) == 0 || strncasecmp(sql,"show",4) == 0){
 			query.reset();
 			query << sql;
-			std::cout << "Query: " << query.preview() << std::endl;
+			//std::cout << "Query: " << query.preview() << std::endl;
 			mysqlpp::Result res = query.store();
-			std::cout << "Records Found: " << res.size() <<  std::endl;
+			//std::cout << "Records Found: " << res.size() <<  std::endl;
 			// std::cout << "Columns : " << res.num_fields() <<  std::endl;
 			//
 			// Iterate through the query results:
 			//
-
 			mysqlpp::Row row;
 			mysqlpp::Result::iterator i;
 			// Display the column labels for a select query:
@@ -121,11 +120,11 @@ void Database::query(const char* sql){
 				std::cout << std::endl;
 			}
 			for (i = res.begin(); i != res.end(); ++i) {
-					row = *i;
-					for (int counter = 0; counter < res.num_fields(); counter++) {
-						std::cout << row[counter] << "\t";
-					}
-					std::cout << std::endl;
+				row = *i;
+				for (int counter = 0; counter < res.num_fields(); counter++) {
+					std::cout << row[counter] << "\t";
+				}
+				std::cout << std::endl;
 			}
 		}else if(strncasecmp(sql,"delete",6) == 0 || strncasecmp(sql,"update",6) == 0 || strncasecmp(sql,"insert",6) == 0){
 			query.reset();
@@ -135,8 +134,9 @@ void Database::query(const char* sql){
 			const char* temp = sql+4;
 			_con.select_db(temp);
 			
-		}else
+		}else{
 			std::cout << "Warning: Query not supported" << std::endl;
+		}
 	}
 	catch(mysqlpp::BadQuery& er){
 		std::cerr << "Error:" << er.what() << std::endl;

@@ -42,11 +42,11 @@ public:
 	void setSwitch(void) { _isSet = true; }
 	void addSwitchArgument(std::string argument) { _switchArguments.push_back(argument); }
 	void resetSwitch() { _isSet = false; }
-	std::string getSwitchArgument(unsigned index);
 	unsigned getNumberOfSwitchArguments(void) { return _numberOfSwitchArguments; }
-	bool isSet();
-	const std::string getDescription(void);
-	const std::string getShortName(void);
+	bool isSet(void){ return _isSet; }
+	std::string getSwitchArgument(unsigned index){ return _switchArguments[index]; }
+	const std::string getDescription(void){ return _description; }
+	const std::string getShortName(void){ return _shortName; }
 };
 
 class CLP{

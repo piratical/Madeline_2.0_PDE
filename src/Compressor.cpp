@@ -45,11 +45,10 @@
 //
 //////////////////////////////////////
 
-//
-// _decompressPKZIP:
-//
-// NOTA BENE: "contents" will normally be "content.xml" for an OASIS PKZIP'd file.
-//
+///
+/// _decompressPKZIP():
+/// NOTA BENE: "contents" will normally be "content.xml" for an OASIS PKZIP'd file.
+///
 std::string Compressor::_decompressPKZIP(const std::string& file, const std::string& contents)
 {
 	int bytesRead;
@@ -224,13 +223,12 @@ std::string Compressor::_decompressBZIP2(const std::string& file)
 //////////////////////////////////////
 
 //
-// decompress:
-//
-// NOTA BENE:
-//
-// 1. contents defaults to "content.xml" which only applies to OASIS format
-// 2. DECOMPRESSORTYPE defaults to "INFILE"
-//
+/// decompress():
+/// NOTA BENE:
+///
+/// 1. contents defaults to "content.xml" which only applies to OASIS format
+/// 2. DECOMPRESSORTYPE defaults to "INFILE"
+///
 std::string Compressor::decompress(const std::string& file, const std::string& contents, Compressor::DECOMPRESSORTYPE type)
 {
 	std::string result;

@@ -270,10 +270,10 @@ void DataTable::_setDeclaredTypesFromParser(const std::vector<char> *pDeclaredTy
 	
 }
 
-//
-// _determineTableType: This method determines the type of the data table.
-//	This method also classifies the column types of known core columns
-//
+///
+/// _determineTableType: This method determines the type of the data table.
+///	This method also classifies the column types of known core columns
+///
 void DataTable::_determineTableType(const std::vector<std::string> *pTitles) {
 	
 	
@@ -604,12 +604,11 @@ void DataTable::addColumn( DataColumn *column){
 	
 }
 
-//
-// getColumnOrdinal(): returns the columns physical position:
-//
+///
+/// getColumnOrdinal(): Returns the columns physical position.
+///
 unsigned DataTable::getColumnOrdinal ( const char *name ) const{
 	
-	//CHANGED: on 2005-10-20
 	std::set<DataColumn *,ltstr>::const_iterator p=_columnSet.find(new DataColumn(name));
 	if(p!=_columnSet.end()){
 		return (*p)->getOrdinal();
@@ -619,9 +618,9 @@ unsigned DataTable::getColumnOrdinal ( const char *name ) const{
 	
 }
 
-//
-// getColumnName(): returns the name of the column at physical position 'ordinal':
-//
+///
+/// getColumnName(): Returns the name of the column at physical position 'ordinal'.
+///
 std::string DataTable::getColumnName ( unsigned ordinal ) const{
 	
 	
@@ -635,18 +634,18 @@ std::string DataTable::getColumnName ( unsigned ordinal ) const{
 	 
 }
 
-//
-// getNumberOfColumns(): Returns the number of columns in the table.
-//
+///
+/// getNumberOfColumns(): Returns the number of columns in the table.
+///
 unsigned DataTable::getNumberOfColumns( void ) const {
 	
 	return _columnSet.size(); 
 	
 }
 
-//
-// get a column by index/ordinal:
-//
+///
+/// getColumn(): Get a column by index/ordinal.
+///
 DataColumn *DataTable::getColumn( unsigned ordinal ) const{
 	
 	if( ordinal >= _columnSet.size() ){
@@ -659,9 +658,9 @@ DataColumn *DataTable::getColumn( unsigned ordinal ) const{
 	 
 }
 
-//
-// get a column by name:
-//
+///
+/// getColumn(): Get a column by name.
+///
 DataColumn *DataTable::getColumn(const std::string &name ) const{
 	
 	DataColumn* tempdc = new DataColumn(stringToUpper(name));
@@ -688,9 +687,9 @@ void DataTable::deleteFrontColumn() {
 	
 }
 
-//
-// columnExists:
-//
+///
+/// columnExists(): Check if a column exists in a data table by searching the table header.
+///
 bool DataTable::columnExists(const std::string &name) const{
 	
 	DataColumn* tempdc = new DataColumn(stringToUpper(name));
@@ -704,9 +703,10 @@ bool DataTable::columnExists(const std::string &name) const{
 }
 
 
-//
-// toggleColumnsForPedigree:
-//
+///
+/// toggleColumnsForPedigree(): User can specify any number of columns to be displayed on the pedigree.
+/// Mark all such columns for output display, if they exist.
+///
 void DataTable::toggleColumnsForPedigree(const std::vector<std::string> &columns){
 	
 	// Since the labels are specified by the user clear the vector  that contains
@@ -722,9 +722,9 @@ void DataTable::toggleColumnsForPedigree(const std::vector<std::string> &columns
 	
 }
 
-//
-// getNumberOfShowOnPedigreeColumns:
-//
+///
+/// getNumberOfShowOnPedigreeColumns(): Get number of data columns that will be displayed on the pedigree output.
+///
 unsigned DataTable::getNumberOfShowOnPedigreeColumns() const{
 	
 	return _labelColumns.size();
@@ -802,18 +802,12 @@ std::string DataTable::getTableTypeAsString(void) const {
 	
 }
 
-//
-// getIconColumnCount
-//
+///
+/// getIconColumnCount(): Get a count of number of data fields that will be displayed on the icon.
+/// By default all the fields that have 'Affected' as the prefix will be used to display on the icon.
+///
 unsigned DataTable::getIconColumnCount(void) const{
 	return _iconColumns.size();
-}
-
-//
-// getLabelColumnCount
-//
-unsigned DataTable::getLabelColumnCount(void) const{
-	return _labelColumns.size();
 }
 
 //
@@ -830,18 +824,18 @@ unsigned DataTable::getLabelColumnIndex(unsigned nth) const{
 	return _labelColumns[nth];
 }
 
-//
-// getIconColumnVector(): Return a pointer to the _iconColumns vector
-//
+///
+/// getIconColumnVector(): Return a pointer to the _iconColumns vector.
+///
 const std::vector<unsigned> * DataTable::getIconColumnVector(void) const{
 	
 	return & _iconColumns;
 	
 }
 
-//
-// getlabelColumnVector(): Return a pointer to the _labelColumns vector
-//
+///
+/// getlabelColumnVector(): Return a pointer to the _labelColumns vector.
+///
 const std::vector<unsigned> * DataTable::getLabelColumnVector(void) const{
 	
 	return & _labelColumns;

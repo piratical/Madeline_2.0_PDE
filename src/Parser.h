@@ -94,7 +94,7 @@ public:
 	
 	DataTable * getTable(unsigned i) { return _tables[i];}      /// returns a specific datatable
 	
-	// ADDED: on 2005-10-20
+
 	const int getNumberOfTables( void ) const { return _tables.size(); };
 	
 	std::string getName(void) const { return _fileName; };

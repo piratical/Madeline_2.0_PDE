@@ -331,9 +331,10 @@ const std::vector<std::string>& CLP::getMysqlArguments(){
 	
 }
 
-//
-// getSwitchArgument:
-//
+///
+/// getSwitchArgument: Some of the command line switches require arguments.
+/// This method returns the index'th argument specified by the user for a switch.
+///
 std::string CLP::getSwitchArgument(std::string name,unsigned index){
 	
 	std::string switchName=name;
@@ -343,7 +344,7 @@ std::string CLP::getSwitchArgument(std::string name,unsigned index){
 	std::string temp=".";
 	if(mit != _switches.end()){
 		if(index > mit->second.getNumberOfSwitchArguments() || index <= 0){
-			std::cout << "Warning: No such arguments with index " << index << std::endl;
+			Warning("CLP::getSwitchArgument()","No command line argument exists for '%s' with index %d.",switchName.c_str(),index);
 			return temp;
 		}
 		return mit->second.getSwitchArgument(index-1);
@@ -377,17 +378,4 @@ CLS::CLS(std::string name,std::string shortName,std::string description,unsigned
 	_isSet = false;
 }
 
-std::string CLS::getSwitchArgument(unsigned index){
-	return _switchArguments[index];
-}
-
-bool CLS::isSet(void) { return _isSet; }
-
-const std::string CLS::getDescription(void){
-	return _description;
-}
-
-const std::string CLS::getShortName(void){
-	return _shortName;
-}
 

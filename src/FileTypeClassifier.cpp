@@ -41,7 +41,7 @@
 ///////////////////
 
 //
-// Private method _readHeaderIntoBuffer
+// _readHeaderIntoBuffer():
 //
 bool FileTypeClassifier::_readHeaderIntoBuffer(const char *fileName){
 	
@@ -138,9 +138,9 @@ FileTypeClassifier::FileTypeClassifier( const char *fileName ){
 	if( fileName != 0 ) _readHeaderIntoBuffer(fileName);
 }
 
-//
-// classify(): returns an enumerated value for the file type:
-//
+///
+/// classify(): returns an enumerated value for the file type:
+///
 enum FileTypeClassifier::FILE_TYPE FileTypeClassifier::classify( void ){
 	
 	//
@@ -160,9 +160,9 @@ enum FileTypeClassifier::FILE_TYPE FileTypeClassifier::classify( void ){
 	
 }
 
-//
-// classifyByName(): returns a string representation of the file type:
-//
+///
+/// classifyByName(): returns a string representation of the file type:
+///
 const char * FileTypeClassifier::classifyByName( void ){
 	
 	classify();

@@ -56,6 +56,9 @@ void Gender::addLookupTableEntry(std::string label, bool value ){
 //
 ///////////////////////////////////
 
+//
+// set(): from char*
+//
 void Gender::set(const char *value){
 	
 	_isMissing = true;
@@ -67,12 +70,18 @@ void Gender::set(const char *value){
 	
 }
 
+//
+// set(): from string
+//
 void Gender::set(const std::string &value){
 	
 	set( value.c_str() );
 	
 }
 
+//
+// set(): from Enum
+//
 void Gender::set(GENDER gender){
 	
 	if(gender==Gender::MISSING) _isMissing=true; 
@@ -84,7 +93,9 @@ void Gender::set(GENDER gender){
 	 
 }
 
-
+//
+// isA():
+//
 bool Gender::isA(std::string test)
 {
 	bool result = false;

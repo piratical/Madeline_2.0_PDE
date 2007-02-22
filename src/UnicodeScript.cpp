@@ -48,18 +48,27 @@ UnicodeScript::UnicodeScript(SCRIPTCODE scriptCode,const std::string englishName
 	
 }
 
+//
+// getSample():
+//
 std::string UnicodeScript::getSample(void) const {
 	
 	return _sampleFontMetricsString;
 	
 }
 
+//
+// getEnglishName():
+//
 std::string UnicodeScript::getEnglishName(void) const {
 	
 	return _englishName;
 	
 }
 
+//
+// getNativeName():
+//
 std::string UnicodeScript::getNativeName(void) const {
 	
 	return _nativeName;

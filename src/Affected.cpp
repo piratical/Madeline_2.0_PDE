@@ -107,8 +107,7 @@ void Affected::addAffectedBooleanMapping(std::string affectedValue,std::string b
 //
 // isa:
 //
-bool isa(std::string inString)
-{
+bool isa(std::string inString){
 	Affected t;
 	t.set(inString);
 	return !t.isMissing();

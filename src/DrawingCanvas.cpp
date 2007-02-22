@@ -681,9 +681,10 @@ void DrawingCanvas::drawText(double x,double y,std::string text,std::string cssC
 	
 }
 
-//
-// drawIndividual:
-//
+///
+/// drawIndividual: Draws the individual icon, accompanying labelset and icon slices.
+/// This method also draws indicators for individuals who are sampled, deceased, etc.
+///
 void DrawingCanvas::drawIndividual(Individual* pIndividual,double x,double y,bool isDashed){
 	
 	std::string id = pIndividual->getId().get();
@@ -897,9 +898,9 @@ void DrawingCanvas::drawLabelSet(Individual* pIndividual){
 	
 }
 
-//
-// show:
-//
+///
+/// show(): Generates the SVG drawing output file for each pedigree.
+///
 void DrawingCanvas::show(const char* filename){
 	
 	
@@ -1020,9 +1021,9 @@ void DrawingCanvas::drawRectangle(double x,double y,double width,double height){
 }
 
 
-//
-// drawEncircledText:
-//
+///
+/// drawEncircledText(): Draws a circle around a given text string. This is used to display birth order.
+///
 void DrawingCanvas::drawEncircledText(std::string text,double x,double y,double xradius,double yradius,const std::string& myclass){
 	
 	_body << "  <ellipse cx=\"" << x << "\" cy=\"" << y << "\" rx=\"" << xradius << "\" ry=\"" << yradius << "\" />\n"; 
@@ -1031,9 +1032,9 @@ void DrawingCanvas::drawEncircledText(std::string text,double x,double y,double 
 }
 
 
-//
-// arc
-//
+///
+/// arc(): Draws the arc and displays the text in the center.
+///
 void DrawingCanvas::arc( double x, double y, double r, double startAngle, double endAngle,const std::string &color ,const std::string &arcLabel,const std::string &arcClass,bool isMale){
 	
 	double delta   = endAngle - startAngle;
@@ -1104,9 +1105,10 @@ void DrawingCanvas::arc( double x, double y, double r, double startAngle, double
 	
 }
 
-//
-// iconPie
-//
+///
+/// iconPie(): Draws a pie with a given color on the individual icon. Each pie corresponds to one 
+/// categorical variable. The color corresponds to the level in that variable. 
+///
 void DrawingCanvas::iconPie( double x, double y, Individual *pIndividual ){
 	
 	//
@@ -1253,9 +1255,9 @@ void DrawingCanvas::iconPie( double x, double y, Individual *pIndividual ){
 }
 
 
-//
-// setClipPath() : Sets the clipping path for a MALE icon
-//
+///
+/// setClipPath() : Sets the clipping path for a MALE icon
+///
 void DrawingCanvas::setClipPath(double x, double y, const std::string &id){
 	
 	double d = DrawingMetrics::getIconDiameter();

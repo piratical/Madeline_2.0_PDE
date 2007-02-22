@@ -402,11 +402,11 @@ std::string DrawingColor::getComplement(void) const{
 
 
 
-//
-// useBlackInk(): Should a label printed
-// with this color as a background be printed
-// using black ink or white ink?
-//
+///
+/// useBlackInk(): Should a label printed
+/// with this color as a background be printed
+/// using black ink or white ink?
+///
 bool DrawingColor::useBlackInk(void) const{
 	
 	//
