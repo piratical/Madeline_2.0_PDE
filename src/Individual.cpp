@@ -110,6 +110,9 @@ void Individual::_checkForSpecialIndividualTypes(void){
 	
 }
 
+//
+// _rearrangeMultipleSpouses:
+//
 void Individual::_rearrangeMultipleSpouses(std::deque<Individual*>& initial,std::deque<Individual*>& left,std::deque<Individual*>& right,std::deque<Individual*>& result){
 	
 	// Push all individuals with no flags set into result
@@ -247,9 +250,9 @@ NuclearFamily* Individual::getNuclearFamily(unsigned index){
 	
 }
 
-//
-// getRandomId: for virtual Individuals
-//
+///
+/// getRandomId: Generates a random id for virtual Individuals.
+///
 std::string Individual::getRandomId() {
 	
 	srand((unsigned)time(0));
@@ -286,9 +289,9 @@ const std::set<Individual*,Individual::compareIndividual> *const Individual::get
 }
 
 
-//
-// getChildrenIds: with a given spouse
-//
+///
+/// getChildrenIds: with a given spouse
+///
 std::vector<std::string> Individual::getChildrenIds(Individual* spouse){
 	
 	// Return the children Ids based on default ordering
@@ -349,9 +352,9 @@ void Individual::getChildrenSortedByExternalConnections(Individual* spouse,std::
 	
 }
 
-//
-// getFirstSpouse: for cases with missing mother or father id in the input pedigree data table
-//
+///
+/// getFirstSpouse: Used in cases with missing mother or father id in the input pedigree data table.
+///
 Individual* Individual::getFirstSpouse(){
 	
 	std::set<Individual*,compareIndividual>::iterator spouseIt = _spouses.begin();
@@ -360,9 +363,9 @@ Individual* Individual::getFirstSpouse(){
 }
 
 
-//
-// sortSpouses: If the DT has consanguinity find the optimal ordering of the spouses
-//
+///
+/// sortSpouses: If the descent tree has consanguinity/external connections find the optimal ordering of the spouses.
+///
 void Individual::sortSpouses(bool externalFlag){
 	
 	std::deque<Individual*> leftLoopIndividuals;
@@ -489,9 +492,9 @@ void Individual::sortSpouses(bool externalFlag){
 	
 }
 
-//
-// getLeftFlag: Get the consanguinity or external left flag 
-//
+///
+/// getLeftFlag: Get the consanguinity or external left flag 
+///
 unsigned Individual::getLeftFlag(bool consanguinousLoop){
 	
 	if(consanguinousLoop) return _leftSideOfLoop;
@@ -499,9 +502,9 @@ unsigned Individual::getLeftFlag(bool consanguinousLoop){
 	
 }
 
-//
-// getRightFlag: Get the consanguinity or external right flag
-//
+///
+/// getRightFlag: Get the consanguinity or external right flag
+///
 unsigned Individual::getRightFlag(bool consanguinousLoop){
 	
 	if(consanguinousLoop) return _rightSideOfLoop;
@@ -535,9 +538,11 @@ bool Individual::getSampledColumnPresent(){
 	return _sampledColumnPresent;
 }
 
-//
-// groupIndividualsBasedOn:
-//
+///
+/// groupIndividualsBasedOn: Splits individuals into three queues left, right and initial based on the consanguinous/external flags.
+/// Individuals with left flag set are pushed onto the left queue in increasing order of the left flags.
+/// Individuals with right flag set are  pushed onto the right queue in descending  order of the right flags.
+///
 void Individual::groupIndividualsBasedOn(bool consanguinousLoop,const std::vector<Individual*>& individuals,std::deque<Individual*>& initial,std::deque<Individual*>& left,std::deque<Individual*>& right,bool unique){
 	
 	unsigned count = individuals.size();

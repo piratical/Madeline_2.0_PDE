@@ -57,6 +57,9 @@ std::string CLP::_getShortSwitchNameMapping(const std::string& shortName){
 	
 }
 
+//
+// _shortNameExists:
+//
 bool CLP::_shortNameExists(const std::string& shortName){
 	
 	std::map<std::string,std::string>::iterator it = _shortSwitchMapping.find(shortName);
@@ -65,9 +68,9 @@ bool CLP::_shortNameExists(const std::string& shortName){
 	
 }
 
-//
-// _setSwitchArguments: Some of the switches require arguments. This method saves the arguments passed to a switch in a map.
-//
+///
+/// _setSwitchArguments: Some of the switches require arguments. This method saves the arguments passed to a switch in a map.
+///
 void CLP::_setSwitchArguments(std::string currentSwitch,int argc,char* argv[],int& currentIndex, CLS& cls){
 	
 	std::vector<std::string> tempArgs;
@@ -231,9 +234,9 @@ bool CLP::hasSwitchSet(std::string name){
 	
 }
 
-//
-// parse:
-//
+///
+/// parse: Parses the command line arguments. Returns false if there was an error encountered. 
+///
 bool CLP::parse(int argc,char* argv[]){
 	
 	if(argc < 2){

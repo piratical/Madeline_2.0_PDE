@@ -349,9 +349,9 @@ bool NuclearFamily::_hasIndividualInDeque(Individual* individual,const std::dequ
 //
 ////////////////////////////////////////
 
-//
-// sortChildrenInClassicalOrder: 
-//
+///
+/// sortChildrenInClassicalOrder: Sorts the children of a nuclear family based on consanguinous loop flags or external connection flags.
+///
 void NuclearFamily::sortChildrenInClassicalOrder(bool consanguinousLoop,bool multipleDT){
 	
 	std::deque<Individual*> leftLoopIndividuals;
@@ -546,9 +546,10 @@ Individual* NuclearFamily::getChildInClassicalOrder(unsigned index){
 	
 }
 
-//
-// calculateWidth:
-//
+///
+/// calculateWidth: Calculates the width of a nuclear family. For individuals with multiple
+///   mates, the sum of the widths of all the nuclear families is stored on the individual. 
+///
 void NuclearFamily::calculateWidth(bool classicalOrder){
 	
 	unsigned i=0,j;
@@ -806,9 +807,9 @@ void NuclearFamily::calculateWidth(bool classicalOrder){
 	
 }
 
-//
-// draw: draws the NuclearFamily
-//
+///
+/// draw: Draws the NuclearFamily
+///
 void NuclearFamily::draw(Individual* startIndividual,DrawingCanvas& dc,double startX, double startY,bool classicalOrder,bool dashedOriginalFounder){
 	
 	// NOTE: The children are always drawn with the mother
@@ -1209,9 +1210,9 @@ void NuclearFamily::draw(Individual* startIndividual,DrawingCanvas& dc,double st
 	
 }
 
-//
-// drawSpouseConnectors: draws the spouse connections for an individual with > 1 spouse
-//
+///
+/// drawSpouseConnectors: Draws the spouse connections for an individual with more than one spouse.
+///
 void NuclearFamily::drawSpouseConnectors(Individual* individual,const double horizontalInterval,const double iconInterval,const double iconDiameter,DrawingCanvas& dc){
 	
 	double xr,yr;
@@ -1325,6 +1326,9 @@ void NuclearFamily::drawSpouseConnectors(Individual* individual,const double hor
 //
 void NuclearFamily::sortChildrenBasedOnDataField(const std::string& name,bool dobSortOrder){
 	
+	// INCOMPLETE: If twin groups are present in the Nuclear family the siblings are not 
+	// sorted by data field. This will be incorporated in a future release.
+	if(_twinGroupCount) { return; }
 	std::vector<Individual*> temp = Individual::sortIndividualsBasedOnDataField(name,_sortedChildren,dobSortOrder);
 	_sortedChildren.swap(temp);
 	

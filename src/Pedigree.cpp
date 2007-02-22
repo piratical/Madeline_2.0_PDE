@@ -159,9 +159,9 @@ void Pedigree::_addDescentTree(unsigned id) {
 	
 }
 
-//
-// _checkMarkedTwinsDOB: issue warning messages if the DOB of twins in a twin group do not match
-//
+///
+/// _checkMarkedTwinsDOB: Issue warning messages if the DOB of twins in a twin group do not match.
+///
 void Pedigree::_checkMarkedTwinsDOB(){
 	
 	// get all the Individuals with the same marker from the map
@@ -266,9 +266,9 @@ void Pedigree::_addNuclearFamily(Individual* mother, Individual* father){
 }
 
 
-//
-// _checkParentsGender: checks the consistency of the pedigree input data table
-//
+///
+/// _checkParentsGender: Checks the consistency of the pedigree input data table.
+///
 void Pedigree::_checkParentsGender(Individual* individual){
 	
 	// for warnings:
@@ -351,10 +351,10 @@ void Pedigree::_getSpouses(std::set<Individual*,compareIndividual>& foundingGrou
 	
 }
 
-//
-// _markLeftLoopFlags: Recursively traverses up the descent tree from a consanguinous individual
-// and marks the left consanguinous flags
-//
+///
+/// _markLeftLoopFlags: Recursively traverses up the descent tree from a consanguinous individual
+/// and marks the left consanguinous flags
+///
 void Pedigree::_markLeftLoopFlags(Individual* individual,unsigned loopNumber){
 	
 	// Assign the loopNumber to the Individual
@@ -390,10 +390,10 @@ void Pedigree::_markLeftLoopFlags(Individual* individual,unsigned loopNumber){
 	
 }
 
-//
-// _markRightLoopFlags: Recursively traverses up the descent tree from a consanguinous individual
-// and marks the right consanguinous flags
-//
+///
+/// _markRightLoopFlags: Recursively traverses up the descent tree from a consanguinous individual
+/// and marks the right consanguinous flags
+///
 void Pedigree::_markRightLoopFlags(Individual* individual,unsigned loopNumber){
 	
 	// Assign the loopNumber to the Individual
@@ -429,10 +429,10 @@ void Pedigree::_markRightLoopFlags(Individual* individual,unsigned loopNumber){
 }
 
 
-//
-// _markLeftExternalConnectionFlags:Recursively traverses up the descent tree from an individual with an external connection
-// and marks the left external connection flags
-//
+///
+/// _markLeftExternalConnectionFlags:Recursively traverses up the descent tree from an individual with an external connection
+/// and marks the left external connection flags
+///
 void Pedigree::_markLeftExternalConnectionFlags(Individual* individual,unsigned connectionNumber){
 	
 	// Assign the connectionNumber to the Individual
@@ -468,10 +468,10 @@ void Pedigree::_markLeftExternalConnectionFlags(Individual* individual,unsigned 
 	
 }
 
-//
-// _markRightExternalConnectionFlags:Recursively traverses up the descent tree from an individual with external connection
-// and marks the right external connection flags
-//
+///
+/// _markRightExternalConnectionFlags:Recursively traverses up the descent tree from an individual with external connection
+/// and marks the right external connection flags
+///
 void Pedigree::_markRightExternalConnectionFlags(Individual* individual,unsigned connectionNumber){
 	
 	// Assign the connectionNumber to the Individual
@@ -507,9 +507,9 @@ void Pedigree::_markRightExternalConnectionFlags(Individual* individual,unsigned
 }
 
 
-//
-// _markExternalConnectionFlags:
-//
+///
+/// _markExternalConnectionFlags:
+///
 void Pedigree::_markExternalConnectionFlags(){
 	
 	unsigned index=0;
@@ -594,10 +594,9 @@ void Pedigree::_assignChildrenDescentTree(Individual* individual,unsigned descen
 }
 
 
-//
-// _getPrimaryDescentTreeIndex: Get the DT index of the individual.
-// For cases where the individual belongs to more than 1 DT trace his parents and their ancestors till one DT index is obtained
-//
+///
+/// _getPrimaryDescentTreeIndex: Get the descent tree index of the individual.
+///
 unsigned Pedigree::_getPrimaryDescentTreeIndex(std::set<unsigned>& dt,Individual* individual,bool increment){ 
 	
 	std::set<unsigned>::iterator sit;
@@ -606,6 +605,7 @@ unsigned Pedigree::_getPrimaryDescentTreeIndex(std::set<unsigned>& dt,Individual
 		sit = dt.begin();
 	}else{
 		// Try to find the single DT to which the individual's parent or his/her ancestors belong:
+		// For cases where the individual belongs to more than 1 descent tree trace his parents and their ancestors till one descent tree index is obtained.
 		Individual* ancestorIndividual = individual->getMother();
 		// If the mother is an ordinary founder the DT is not set on her:
 		if(ancestorIndividual->getNumberOfDescentTrees() == 0) ancestorIndividual = individual->getFather();
@@ -633,10 +633,9 @@ unsigned Pedigree::_getPrimaryDescentTreeIndex(std::set<unsigned>& dt,Individual
 	
 }
 
-//
-// _addDescentTreesConnectedTo: In cases with > 1 DT to find the most complex tree it is essential to know
-// for each DT which are the other DTs that have connectors to it.
-//
+///
+/// _addDescentTreesConnectedTo: For each descent tree determine which are the other descent trees that have connectors to it.
+///
 void Pedigree::_addDescentTreesConnectedTo(unsigned dtIndex,std::deque<DescentTree*>& orderedDescentTrees,bool left){
 	
 	unsigned max=0;
@@ -661,11 +660,10 @@ void Pedigree::_addDescentTreesConnectedTo(unsigned dtIndex,std::deque<DescentTr
 	
 }
 
-//
-// _determineConnectorIndividuals():
-//    Instead of looping through the list of individuals a depth-first search approach is used
-//    to mark the connector flags. 
-//
+///
+/// _determineConnectorIndividuals(): 
+///    A depth-first search approach is used to mark individuals who are consanguinous or have mates who are part of a different descent tree.
+///
 void Pedigree::_determineConnectorIndividuals(){
 	
 	// Determine external and internal connectors:
@@ -743,9 +741,9 @@ void Pedigree::_determineConnectorIndividuals(){
 	
 }
 
-//
-// _reorderDescentTreesBasedOnExternalConnections:
-//
+///
+/// _reorderDescentTreesBasedOnExternalConnections: Rearrange the descent trees based on the external connections.
+///
 void Pedigree::_reorderDescentTreesBasedOnExternalConnections(){
 	
 	// The most complex tree is in the center; 2 of the remaining trees which have max connections with it flank it on either side 
@@ -814,9 +812,9 @@ void Pedigree::_reorderDescentTreesBasedOnExternalConnections(){
 	
 }
 
-//
-// _markConnectorIndividuals: This function marks all the individuals that are consanguinous or have an external connection.
-//
+///
+/// _markConnectorIndividuals: This function marks all the individuals that are consanguinous or have an external connection.
+///
 void Pedigree::_markConnectorIndividuals(Individual* individual,unsigned& loopNumber){
 	
 	// Mark consanguinous individuals and individuals that have external connections:
@@ -900,9 +898,9 @@ void Pedigree::_markConnectorIndividuals(Individual* individual,unsigned& loopNu
 	
 }
 
-//
-// _markConsanguinousIndividuals: This function marks all the individuals that are consanguinous.
-//
+///
+/// _markConsanguinousIndividuals: This function marks all the individuals that are consanguinous.
+///
 void Pedigree::_markConsanguinousIndividuals(){
 	
 	unsigned cnt, cnt1;
@@ -960,10 +958,10 @@ void Pedigree::_markConsanguinousIndividuals(){
 	
 }
 
-//
-// _markConsanguinousFlags: This function gets all the individuals with consanguinity and propagates the flags up in the descent tree
-// These flags determine the sibling sorting order of the NF
-//
+///
+/// _markConsanguinousFlags: This function gets all the individuals with consanguinity and propagates the flags up in the descent tree
+/// These flags determine the sibling sorting order of the Nuclear Family.
+///
 void Pedigree::_markConsanguinousFlags(Individual* individual,unsigned& loopNumber){
 	
 	const std::set<Individual*,Individual::compareIndividual> * pspouses = individual->getSpouses();
@@ -1021,9 +1019,9 @@ void Pedigree::_markConsanguinousFlags(Individual* individual,unsigned& loopNumb
 	
 }
 
-//
-// _establishNuclearFamilies:  Determine the nuclear families of the pedigree and store them in a set.
-//
+///
+/// _establishNuclearFamilies:  Determine the nuclear families of a pedigree.
+///
 void Pedigree::_establishNuclearFamilies(){
 	
 	std::set<Individual*,compareIndividual>::iterator individualIt = _individuals.begin();
@@ -1050,9 +1048,9 @@ void Pedigree::_establishNuclearFamilies(){
 	
 }
 
-// 
-// _sortIndividualNuclearFamilies: sort individuals with multiple spouses for cases with consanguinity/external connections:
-//
+/// 
+/// _sortIndividualNuclearFamilies: Sort individuals with multiple spouses for cases with consanguinity/external connections:
+///
 void Pedigree::_sortIndividualNuclearFamilies(){
 	
 	std::set<Individual*,compareIndividual>::const_iterator it = _individuals.begin();
@@ -1072,8 +1070,8 @@ void Pedigree::_sortIndividualNuclearFamilies(){
 //
 void Pedigree::_sortNuclearFamilies(bool consanguinousFlag){
 	
-	// Sort all the nuclear families based on optimal/classical ordering of children
-	// when consanguinity or external connection is found in the descent tree
+	/// Sort all the nuclear families based on optimal/classical ordering of children
+	/// when consanguinity or external connection is found in the descent tree
 	
 	std::set<NuclearFamily*,compareNuclearFamily>::iterator nfIt = _nuclearFamilies.begin();
 	
@@ -1089,9 +1087,9 @@ void Pedigree::_sortNuclearFamilies(bool consanguinousFlag){
 	 
 }
 
-//
-// _sortNuclearFamiliesBasedOnDataField:
-//
+///
+/// _sortNuclearFamiliesBasedOnDataField: If the user specifies a sorting field, the siblings are sorted based on that data field.
+///
 void Pedigree::_sortNuclearFamiliesBasedOnDataField(const std::string& name,bool dobSortOrder){
 	
 	std::set<NuclearFamily*,compareNuclearFamily>::iterator nfIt = _nuclearFamilies.begin();
@@ -1104,10 +1102,10 @@ void Pedigree::_sortNuclearFamiliesBasedOnDataField(const std::string& name,bool
 	
 }
 
-//
-// _calculateDescentTreeWidth:
-//
-void Pedigree::_calculateDescentTreeWidth(){
+///
+/// _sortAndCalculateDescentTreeWidth: Sorts the nuclear families based on consanguinous connections and calculates the descent tree width.
+///
+void Pedigree::_sortAndCalculateDescentTreeWidth(){
 	
 	bool classicalOrdering = false;
 	// 
@@ -1157,7 +1155,7 @@ void Pedigree::_calculateDescentTreeWidth(){
 }
 
 //
-// _setLeftShifConnectionFlags(): Confirms the Left Connectors and change left and right widths of their parent NFs if required
+// _setLeftShifConnectionFlags(): Confirms the Left Connectors and changes left and right widths of their parent NFs if required.
 //
 void Pedigree::_setLeftShiftConnectionFlags(){
 	
@@ -1239,9 +1237,9 @@ void Pedigree::_setLeftShiftConnectionFlags(){
 	
 }
 
-//
-// _calculateWidth: calculates the width of a descent tree
-//
+///
+/// _calculateWidth: Calculates the width of a descent tree.
+///
 void Pedigree::_calculateWidth(Individual* individual,bool classicalOrdering,unsigned descentTreeIndex){
 	
 	
@@ -1273,9 +1271,9 @@ void Pedigree::_calculateWidth(Individual* individual,bool classicalOrdering,uns
 	
 }
 
-//
-// _populateIndividualGrid: Initialize the grid with the x and y positions of the individuals on the canvas
-//
+///
+/// _populateIndividualGrid: Initialize the grid with the x and y positions of the individuals on the canvas.
+///
 void Pedigree::_populateIndividualGrid(){
 	
 	std::set<Individual*,compareIndividual>::iterator individualIt = _individuals.begin();
@@ -1289,9 +1287,9 @@ void Pedigree::_populateIndividualGrid(){
 	
 }
 
-//
-// _hasIndividualAtPosition: Check if an individual exists in the given range on the grid
-//
+///
+/// _hasIndividualAtPosition: Checks if an individual exists between two given individuals on the grid.
+///
 bool Pedigree::_hasIndividualAtPosition(Individual* start,Individual* end){
 	
 	double xstart = start->getX();
@@ -1408,10 +1406,9 @@ void Pedigree::_sortSibsBasedOnExternalConnections(const std::vector<Individual*
 	
 }
 
-//
-// _drawConsanguinityLetter: For dashed individuals drawn for consanguinous and external connections
-// assign a unique label to each unique individual
-//
+///
+/// _drawConsanguinityLetter: Assign a unique label to each unique individual who is repeated for consanguinity and external connections.
+///
 void Pedigree::_drawConsanguinityLetter(Individual* mother,Individual* father,char& consanguinityLetter,double iconInterval,double iconDiameter, std::map<std::string,std::string>& individualConsanguinityLetter,DrawingCanvas& dc,double multipleSpouseOffset,bool leftConnector){
 	
 	double yOffset = DrawingMetrics::getIconRadius()  +
@@ -1434,9 +1431,9 @@ void Pedigree::_drawConsanguinityLetter(Individual* mother,Individual* father,ch
 	
 }
 
-//
-// _drawHorizontalConnectorLine:
-//
+///
+/// _drawHorizontalConnectorLine: Draws horizontal consanguinous and external connections.
+///
 void Pedigree::_drawHorizontalConnectorLine(double y,double x1,double x2,bool isConsanguinous,DrawingCanvas& dc){
 	
 	double verticalTick = DrawingMetrics::getVerticalTick();
@@ -1447,9 +1444,9 @@ void Pedigree::_drawHorizontalConnectorLine(double y,double x1,double x2,bool is
 	
 }
 
-//
-// _drawVerticalConnectorLine:
-//
+///
+/// _drawVerticalConnectorLine: Draws vertical consanguinous and external connections.
+///
 void Pedigree::_drawVerticalConnectorLine(double startY,double endY,double startX,double endX,bool isConsanguinous,DrawingCanvas& dc,double multipleSpouseOffset,bool singleChild){
 	
 	double verticalTick = DrawingMetrics::getVerticalTick();
@@ -1737,9 +1734,9 @@ void Pedigree::addIndividual(const std::string ind,std::string mother,std::strin
 	
 }
 
-//
-// setCoreOptionalFields:
-//
+///
+/// setCoreOptionalFields: Sets core optional fields (if present) like deceased, proband, affected on the individual.
+///
 void Pedigree::setCoreOptionalFields(const DataTable* pedigreeTable){
 	
 	bool hasDOBColumn = false;
@@ -1813,9 +1810,9 @@ void Pedigree::setCoreOptionalFields(const DataTable* pedigreeTable){
 	
 }
 
-//
-// checkParentChildDOB:
-//
+///
+/// checkParentChildDOB: Checks if the parents age is comparable to the ages of their children.
+///
 void Pedigree::checkParentChildDOB(){
 	
 	// for warnings:
@@ -1847,9 +1844,9 @@ void Pedigree::checkParentChildDOB(){
 	
 }
 
-//
-// determineFoundingGroups:
-//
+/// 
+/// determineFoundingGroups: Determine the original founding groups in a pedigree.
+///
 void Pedigree::determineFoundingGroups(){
 	
 	// for warnings:
@@ -1959,17 +1956,17 @@ void Pedigree::computePedigreeWidth(const std::string& sortField,bool dobSortOrd
 	if(sortField != std::string("")){
 		_sortNuclearFamiliesBasedOnDataField(sortField,dobSortOrder);
 	}
-	
 	// Calculate descent tree width
-	_calculateDescentTreeWidth();
+	_sortAndCalculateDescentTreeWidth();
 	// set left spouse connections flags
 	_setLeftShiftConnectionFlags();
 	
 }
 
-//
-// draw:
-//
+///
+/// draw: Draws a pedigree for each family on a separate SVG canvas and outputs them to separate files.
+/// The output file names correspond to the family ids.
+///
 void Pedigree::draw(const LabelSet* labelSet){
 	
 	
@@ -2109,9 +2106,9 @@ void Pedigree::draw(const LabelSet* labelSet){
 	
 }
 
-//
-// establishIndividualConnections: establish parent/child and spouse connections:
-//
+///
+/// establishIndividualConnections: Establish parent/child and spouse connections:
+///
 void Pedigree::establishIndividualConnections(){
 	
 	// for warnings:

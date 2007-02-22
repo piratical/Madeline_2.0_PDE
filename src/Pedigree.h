@@ -70,7 +70,7 @@ private:
 	void _assignDescentTrees();
 	void _addDescentTree(unsigned id) ;
 	void _addDescentTreesConnectedTo(unsigned dtIndex,std::deque<DescentTree*>& orderedDescentTrees,bool left);
-	void _calculateDescentTreeWidth();
+	void _sortAndCalculateDescentTreeWidth();
 	void _checkParentsGender(Individual* individual);
 	void _checkMarkedTwinsDOB();
 	void _calculateWidth(Individual* individual,bool classicalOrder,unsigned descentTreeIndex);

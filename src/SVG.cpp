@@ -113,9 +113,6 @@ void SVG::endGroup(std::ostringstream& os){
 	
 }
 
-
-
-
 //
 // drawMaleIcon()
 //

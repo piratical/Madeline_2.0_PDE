@@ -63,9 +63,9 @@ unsigned DescentTree::getNumberOfConnectionsWithDT(unsigned dtId){
 	
 }
 
-//
-// getStartIndividual():
-//
+///
+/// getStartIndividual(): Returns start individual of a founding group.
+///
 Individual* DescentTree::getStartIndividual(void){
 	
 	if(_startIndividual) { return _startIndividual; }
