@@ -48,7 +48,7 @@ private:
 	
 	void _rearrangeIndividualsBasedOnTwins(const bool consanguinousLoop,std::deque<Individual*>& initial,std::deque<Individual*>& leftLoopIndividuals,std::deque<Individual*>& rightLoopIndividuals);
 	void _orderTwins(Individual* pivotIndividual,std::deque<Individual*>& srcLoopIndividuals, std::deque<Individual*>& dstLoopIndividuals,const std::deque<unsigned>& indices,bool front=false );
-	void _drawTwinConnectors(DrawingCanvas& dc,bool classicalOrder);
+	void _drawTwinConnectors(DrawingCanvas& dc,bool classicalOrder,double verticalDropY);
 	inline bool _isMaleWithLoopFlags(Individual* individual,unsigned nuclearFamilyIndex);
 	bool _hasIndividualInDeque(Individual* individual,const std::deque<Individual*>& individualQ);	
 public:

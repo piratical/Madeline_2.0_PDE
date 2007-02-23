@@ -246,7 +246,7 @@ inline bool NuclearFamily::_isMaleWithLoopFlags(Individual* individual,unsigned 
 //
 // _drawTwinConnectors:
 //
-void NuclearFamily::_drawTwinConnectors(DrawingCanvas& dc,bool classicalOrder){
+void NuclearFamily::_drawTwinConnectors(DrawingCanvas& dc,bool classicalOrder,double verticalDropX){
 	
 	//
 	// Determine which ordering of children to use
@@ -318,14 +318,20 @@ void NuclearFamily::_drawTwinConnectors(DrawingCanvas& dc,bool classicalOrder){
 			
 		}
 	}
-	if(twinOnTheLeft && twinOnTheRight)
-		dc.drawHorizontalLine(y,startX,endX);
-	else if(twinOnTheLeft)
+	
+	if(twinOnTheLeft && twinOnTheRight){
+		if(startX != endX){
+			dc.drawHorizontalLine(y,startX,endX);
+		}else{
+			// Cases where only twins are present in the family, draw a conneting line to the parents drop line.
+			dc.drawHorizontalLine(y,startX,verticalDropX);
+		}
+	}else if(twinOnTheLeft)
 		dc.drawHorizontalLine(y,startX,children[children.size()-1]->getX());
 	else if(twinOnTheRight)
 		dc.drawHorizontalLine(y,children[0]->getX(),endX);
 	else dc.drawHorizontalLine(y,children[0]->getX(),children[children.size()-1]->getX());
-	 
+	
 }
 
 //
@@ -897,6 +903,7 @@ void NuclearFamily::draw(Individual* startIndividual,DrawingCanvas& dc,double st
 	std::string dropLineId= _mother->getId().get() + std::string(":") + _father->getId().get();
 	if(isConsanguinous()) dc.drawVerticalLine(currentX,currentY+verticalTick/2,currentY-verticalTick/2+verticalDrop1,std::string("mating"),dropLineId);
 	else                  dc.drawVerticalLine(currentX,currentY,currentY+verticalDrop1,std::string("mating"),dropLineId);
+	double verticalDropX = currentX;
 	
 	if(_leftConnectionShiftFlag){
 		currentX -= horizontalInterval;
@@ -1195,7 +1202,7 @@ void NuclearFamily::draw(Individual* startIndividual,DrawingCanvas& dc,double st
 	// 
 	
 	//Draw the line for the twinGroups
-	if(_twinGroupCount) _drawTwinConnectors(dc,classicalOrder);
+	if(_twinGroupCount) _drawTwinConnectors(dc,classicalOrder,verticalDropX);
 	else
 	if(children.size() == 1 && children[0]->getNumberOfNuclearFamilies()){
 		if(children[0]->getLeftSpouseConnector()){
