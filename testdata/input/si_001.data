@@ -1,0 +1,18 @@
+FamilyId
+IndividualId
+Gender
+Father
+Mother
+Deceased
+Proband
+DOB
+MZTwin
+DZTwin
+Sampled
+Affected
+
+si_001 S00102 M S00100 S00101 . . 1937.07    . . Y U     
+si_001 S00103 F S00100 S00101 . Y 1939.02.25 . . Y A     
+si_001 S00104 F S00100 S00101 . . 1942.04.15 . . Y U     
+si_001 S00105 F S00100 S00101 . . 1943       . . Y A     
+si_001 U00106 . S00100 S00101 . . 1944.06.07 . . . U     

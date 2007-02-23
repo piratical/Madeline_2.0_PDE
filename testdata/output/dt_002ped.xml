@@ -1,0 +1,245 @@
+<?xml version="1.0" standalone="no"?>
+ <svg version="1.1"  id="svgDC" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"  width="1096.2" height="341.01"  onload="init()" >
+ <defs>
+  <style type="text/css"><![CDATA[
+
+line{
+	stroke-linejoin:miter;
+	stroke:#000;
+	stroke-width:0.5mm;
+	stroke-linejoin:miter;
+	stroke-linecap:square;
+}
+
+rect{
+	fill:#fff;
+	stroke:#000;
+	stroke-width:0.5mm;
+	stroke-linejoin:miter;
+	stroke-linecap:square;
+}
+
+circle{
+	fill:#fff;
+	stroke:#000;
+	stroke-width:0.5mm;
+}
+
+polyline{
+	fill:#fff;
+	stroke:#000;
+	stroke-width:0.5mm;
+}
+
+ellipse{
+	fill: #fff;
+	stroke: #000;
+	stroke-width:0.25mm;
+}
+
+text{
+	font-family:"Bitstream Vera Sans",sans-serif;
+	font-size:12px;
+}
+
+.layer text{
+	fill:#930;
+}
+
+.layer line{
+	stroke:#6d7b8d;
+}
+
+.affected{
+	fill:#98afc7;
+}
+
+.notSampled{
+	stroke:#808080;
+}
+
+.affectedNotSampled{
+	stroke:#808080;
+	fill:#98afc7;
+}
+
+.birthOrder{
+	font-size: 8px;
+}
+
+.header{
+	font-size:18px;
+	font-weight:bold;
+}
+
+.keyBox{
+	fill:#e5e5e5;
+	stroke:#000;
+	stroke-width:0.5mm;
+	stroke-linejoin:miter;
+	stroke-linecap:square;
+}
+
+.mating:hover{
+	stroke-width:1mm;
+	stroke:#d56300;
+}
+
+.selectedIndividual{
+	stroke-width:1mm;
+	stroke:#d00;
+}
+
+.solid{
+	stroke-width:0.5mm;
+	stroke-linecap:square;
+	stroke-linejoin:miter;
+	stroke:#000;
+	fill:none;
+}
+
+.dashed{
+	stroke-width:0.5mm;
+	stroke-linecap:square;
+	stroke-linejoin:miter;
+	stroke:#98afc7;
+	stroke-dasharray:2mm,1mm;
+	stroke-dashoffset:1.0mm;
+	fill:none;
+}
+
+.solid:hover{
+	fill:#ffb787;
+	fill-opacity:0.70;
+	stroke:#d56300;
+	stroke-width:1mm;
+}
+
+.dashed:hover{
+	fill:#ffb787;
+	fill-opacity:0.70;
+	stroke:#d56300;
+	stroke-width:1mm;
+}
+
+.thinLine{
+	fill:none;
+	stroke: #000;
+	stroke-width:0.25mm;
+}
+
+.whiteInkLetter_1{
+	font-size: 12px;
+	fill: #fff;
+}
+
+.whiteInkLetter_2{
+	font-size: 10px;
+	fill: #fff;
+}
+
+.whiteInkLetter_3{
+	font-size: 8px;
+	fill: #fff;
+}
+
+.whiteInkLetter{
+	font-size: 8px;
+	fill: #fff;
+}
+
+.blackInkLetter_1{
+	font-size: 12px;
+}
+
+.blackInkLetter_2{
+	font-size: 10px;
+}
+
+.blackInkLetter_3{
+	font-size: 8px;
+}
+
+.blackInkLetter{
+	font-size: 8px;
+}
+
+]]></style>
+ <script type="text/javascript" xlink:href="javascript/madeline.js"></script>
+ <marker id="endArrow" viewBox="0 0 10 10" refX="1" refY="5" markerUnits="strokeWidth" orient="auto" markerWidth="5" markerHeight="4">  <polyline points="0,0 10,5 0,10 1,5" fill="#000" /> </marker>
+ </defs>
+ <g class="pedigree" transform="translate(-41.58)">
+
+ <g id="layer0" class="layer" >
+  <line x1="827.82" y1="150.44" x2="737.1" y2="150.44" />
+  <line x1="351.54" y1="150.44" x2="442.26" y2="150.44" />
+ </g>
+
+  <g class="drawing">
+  <text x="512" y="30" text-anchor="middle"  class="header" >dt_002</text>
+  <rect x="124.74" y="38.66" width="22.68" height="22.68" id="m109" class="solid"/>
+  <text x="136.08" y="88.1989" text-anchor="middle" >m109</text>
+  <line x1="147.42" y1="50" x2="215.46" y2="50" />
+<circle cx="226.8" cy="50" r="11.34" id="m110" class="solid"/>
+  <text x="226.8" y="88.1989" text-anchor="middle" >m110</text>
+  <line x1="181.44" y1="50" x2="181.44" y2="110.75" />
+  <line x1="90.72" y1="110.75" x2="90.72" y2="139.1" />
+<circle cx="90.72" cy="150.44" r="11.34" id="m112" class="solid"/>
+  <text x="90.72" y="188.639" text-anchor="middle" >m112</text>
+  <line x1="181.44" y1="110.75" x2="181.44" y2="139.1" />
+<circle cx="181.44" cy="150.44" r="11.34" id="m113" class="solid"/>
+  <text x="181.44" y="188.639" text-anchor="middle" >m113</text>
+  <line x1="272.16" y1="110.75" x2="272.16" y2="139.1" />
+<circle cx="272.16" cy="150.44" r="11.34" id="m111" class="solid"/>
+  <text x="272.16" y="188.639" text-anchor="middle" >m111</text>
+  <line x1="283.5" y1="150.44" x2="351.54" y2="150.44" />
+  <line x1="317.52" y1="150.44" x2="317.52" y2="211.19" />
+  <line x1="317.52" y1="211.19" x2="317.52" y2="239.54" />
+  <rect x="306.18" y="239.54" width="22.68" height="22.68" id="m115" class="solid"/>
+  <text x="317.52" y="289.079" text-anchor="middle" >m115</text>
+  <line x1="90.72" y1="110.75" x2="272.16" y2="110.75" />
+  <rect x="532.98" y="38.66" width="22.68" height="22.68" id="m105" class="solid"/>
+  <text x="544.32" y="88.1989" text-anchor="middle" >m105</text>
+  <line x1="555.66" y1="50" x2="623.7" y2="50" />
+<circle cx="635.04" cy="50" r="11.34" id="m116" class="solid"/>
+  <text x="635.04" y="88.1989" text-anchor="middle" >m116</text>
+  <line x1="589.68" y1="50" x2="589.68" y2="110.75" />
+  <line x1="453.6" y1="110.75" x2="453.6" y2="139.1" />
+  <rect x="442.26" y="139.1" width="22.68" height="22.68" id="m108" class="solid"/>
+  <text x="453.6" y="188.639" text-anchor="middle" >m108</text>
+  <line x1="544.32" y1="110.75" x2="544.32" y2="139.1" />
+<circle cx="544.32" cy="150.44" r="11.34" id="m106" class="solid"/>
+  <text x="544.32" y="188.639" text-anchor="middle" >m106</text>
+  <line x1="635.04" y1="110.75" x2="635.04" y2="139.1" />
+<circle cx="635.04" cy="150.44" r="11.34" id="m117" class="solid"/>
+  <text x="635.04" y="188.639" text-anchor="middle" >m117</text>
+  <line x1="725.76" y1="110.75" x2="725.76" y2="139.1" />
+  <rect x="714.42" y="139.1" width="22.68" height="22.68" id="m107" class="solid"/>
+  <text x="725.76" y="188.639" text-anchor="middle" >m107</text>
+  <line x1="453.6" y1="110.75" x2="725.76" y2="110.75" />
+  <rect x="941.22" y="38.66" width="22.68" height="22.68" id="m100" class="solid"/>
+  <text x="952.56" y="88.1989" text-anchor="middle" >m100</text>
+  <line x1="963.9" y1="50" x2="1031.94" y2="50" />
+<circle cx="1043.28" cy="50" r="11.34" id="m101" class="solid"/>
+  <text x="1043.28" y="88.1989" text-anchor="middle" >m101</text>
+  <line x1="997.92" y1="50" x2="997.92" y2="110.75" />
+  <line x1="907.2" y1="110.75" x2="907.2" y2="139.1" />
+<circle cx="907.2" cy="150.44" r="11.34" id="m104" class="solid"/>
+  <text x="907.2" y="188.639" text-anchor="middle" >m104</text>
+  <line x1="827.82" y1="150.44" x2="895.86" y2="150.44" />
+  <line x1="861.84" y1="150.44" x2="861.84" y2="211.19" />
+  <line x1="861.84" y1="211.19" x2="861.84" y2="239.54" />
+<circle cx="861.84" cy="250.88" r="11.34" id="m114" class="solid"/>
+  <text x="861.84" y="289.079" text-anchor="middle" >m114</text>
+  <line x1="997.92" y1="110.75" x2="997.92" y2="139.1" />
+  <rect x="986.58" y="139.1" width="22.68" height="22.68" id="m102" class="solid"/>
+  <text x="997.92" y="188.639" text-anchor="middle" >m102</text>
+  <line x1="1088.64" y1="110.75" x2="1088.64" y2="139.1" />
+  <rect x="1077.3" y="139.1" width="22.68" height="22.68" id="m103" class="solid"/>
+  <text x="1088.64" y="188.639" text-anchor="middle" >m103</text>
+  <line x1="907.2" y1="110.75" x2="1088.64" y2="110.75" />
+  </g>
+
+ </g>
+ </svg>
+

@@ -1,0 +1,258 @@
+<?xml version="1.0" standalone="no"?>
+ <svg version="1.1"  id="svgDC" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"  width="551.88" height="296.37"  onload="init()" >
+ <defs>
+  <style type="text/css"><![CDATA[
+
+line{
+	stroke-linejoin:miter;
+	stroke:#000;
+	stroke-width:0.5mm;
+	stroke-linejoin:miter;
+	stroke-linecap:square;
+}
+
+rect{
+	fill:#fff;
+	stroke:#000;
+	stroke-width:0.5mm;
+	stroke-linejoin:miter;
+	stroke-linecap:square;
+}
+
+circle{
+	fill:#fff;
+	stroke:#000;
+	stroke-width:0.5mm;
+}
+
+polyline{
+	fill:#fff;
+	stroke:#000;
+	stroke-width:0.5mm;
+}
+
+ellipse{
+	fill: #fff;
+	stroke: #000;
+	stroke-width:0.25mm;
+}
+
+text{
+	font-family:"Bitstream Vera Sans",sans-serif;
+	font-size:12px;
+}
+
+.layer text{
+	fill:#930;
+}
+
+.layer line{
+	stroke:#6d7b8d;
+}
+
+.affected{
+	fill:#98afc7;
+}
+
+.notSampled{
+	stroke:#808080;
+}
+
+.affectedNotSampled{
+	stroke:#808080;
+	fill:#98afc7;
+}
+
+.birthOrder{
+	font-size: 8px;
+}
+
+.header{
+	font-size:18px;
+	font-weight:bold;
+}
+
+.keyBox{
+	fill:#e5e5e5;
+	stroke:#000;
+	stroke-width:0.5mm;
+	stroke-linejoin:miter;
+	stroke-linecap:square;
+}
+
+.mating:hover{
+	stroke-width:1mm;
+	stroke:#d56300;
+}
+
+.selectedIndividual{
+	stroke-width:1mm;
+	stroke:#d00;
+}
+
+.solid{
+	stroke-width:0.5mm;
+	stroke-linecap:square;
+	stroke-linejoin:miter;
+	stroke:#000;
+	fill:none;
+}
+
+.dashed{
+	stroke-width:0.5mm;
+	stroke-linecap:square;
+	stroke-linejoin:miter;
+	stroke:#98afc7;
+	stroke-dasharray:2mm,1mm;
+	stroke-dashoffset:1.0mm;
+	fill:none;
+}
+
+.solid:hover{
+	fill:#ffb787;
+	fill-opacity:0.70;
+	stroke:#d56300;
+	stroke-width:1mm;
+}
+
+.dashed:hover{
+	fill:#ffb787;
+	fill-opacity:0.70;
+	stroke:#d56300;
+	stroke-width:1mm;
+}
+
+.thinLine{
+	fill:none;
+	stroke: #000;
+	stroke-width:0.25mm;
+}
+
+.whiteInkLetter_1{
+	font-size: 12px;
+	fill: #fff;
+}
+
+.whiteInkLetter_2{
+	font-size: 10px;
+	fill: #fff;
+}
+
+.whiteInkLetter_3{
+	font-size: 8px;
+	fill: #fff;
+}
+
+.whiteInkLetter{
+	font-size: 8px;
+	fill: #fff;
+}
+
+.blackInkLetter_1{
+	font-size: 12px;
+}
+
+.blackInkLetter_2{
+	font-size: 10px;
+}
+
+.blackInkLetter_3{
+	font-size: 8px;
+}
+
+.blackInkLetter{
+	font-size: 8px;
+}
+
+]]></style>
+ <script type="text/javascript" xlink:href="javascript/madeline.js"></script>
+ <marker id="endArrow" viewBox="0 0 10 10" refX="1" refY="5" markerUnits="strokeWidth" orient="auto" markerWidth="5" markerHeight="4">  <polyline points="0,0 10,5 0,10 1,5" fill="#000" /> </marker>
+ </defs>
+ <g class="pedigree" transform="translate(-236.06)">
+
+ <g id="layer0" class="layer" >
+ </g>
+
+  <g class="drawing">
+  <text x="557.36" y="30" text-anchor="middle"  class="header" >si_001</text>
+  <rect x="500.66" y="38.66" width="22.68" height="22.68" id="S00100" class="dashed"/>
+  <line x1="523.34" y1="50" x2="591.38" y2="50" />
+<circle cx="602.72" cy="50" r="11.34" id="S00101" class="dashed"/>
+  <line x1="557.36" y1="50" x2="557.36" y2="138.65" />
+  <line x1="375.92" y1="138.65" x2="375.92" y2="167" />
+  <clipPath id="S00102_clipPath">
+   <rect x="364.58" y="167" width="22.68" height="22.68" />
+  </clipPath>
+<g clip-path="url(#S00102_clipPath)">
+<circle cx="375.92" cy="178.34" r="16.0372" style="fill:#ffffff;stroke:none;"/>
+  <text x="375.92" y="181.688" text-anchor="middle"  class="blackInkLetter" >U</text>
+</g>
+  <line x1="351.35" y1="171.725" x2="360.8" y2="171.725" />
+  <line x1="356.075" y1="167" x2="356.075" y2="176.45" />
+  <rect x="364.58" y="167" width="22.68" height="22.68" id="S00102" class="solid"/>
+  <ellipse cx="375.92" cy="216.539" rx="6" ry="6" />
+  <text x="375.92" y="219.035" text-anchor="middle"  class="birthOrder" >1</text>
+  <text x="375.92" y="239.618" text-anchor="middle" >S00102</text>
+  <text x="375.92" y="253.568" text-anchor="middle" >1937.07....</text>
+  <line x1="466.64" y1="138.65" x2="466.64" y2="167" />
+<g>
+<circle cx="466.64" cy="178.34" r="11.34" style="fill:#000000;stroke:none;"/>
+  <text x="466.64" y="181.624" text-anchor="middle"  class="whiteInkLetter" >A</text>
+</g>
+  <line x1="442.07" y1="171.725" x2="451.52" y2="171.725" />
+  <line x1="446.795" y1="167" x2="446.795" y2="176.45" />
+<circle cx="466.64" cy="178.34" r="11.34" id="S00103" class="solid"/>
+<path d="M 453.41 191.57 l -8.7318 3.7422 l 1.8711 1.8711 l -3.1185 3.1185 l 1.2474 1.2474 l 3.1185 -3.1185 l 1.8711 1.8711 z" />
+  <text x="437.534" y="203.666" text-anchor="middle" >P</text>
+  <ellipse cx="466.64" cy="216.539" rx="6" ry="6" />
+  <text x="466.64" y="219.035" text-anchor="middle"  class="birthOrder" >2</text>
+  <text x="466.64" y="239.618" text-anchor="middle" >S00103</text>
+  <text x="466.64" y="253.568" text-anchor="middle" >1939.02.25</text>
+  <line x1="557.36" y1="138.65" x2="557.36" y2="167" />
+<g>
+<circle cx="557.36" cy="178.34" r="11.34" style="fill:#ffffff;stroke:none;"/>
+  <text x="557.36" y="181.688" text-anchor="middle"  class="blackInkLetter" >U</text>
+</g>
+  <line x1="532.79" y1="171.725" x2="542.24" y2="171.725" />
+  <line x1="537.515" y1="167" x2="537.515" y2="176.45" />
+<circle cx="557.36" cy="178.34" r="11.34" id="S00104" class="solid"/>
+  <ellipse cx="557.36" cy="216.539" rx="6" ry="6" />
+  <text x="557.36" y="219.035" text-anchor="middle"  class="birthOrder" >3</text>
+  <text x="557.36" y="239.618" text-anchor="middle" >S00104</text>
+  <text x="557.36" y="253.568" text-anchor="middle" >1942.04.15</text>
+  <line x1="648.08" y1="138.65" x2="648.08" y2="167" />
+<g>
+<circle cx="648.08" cy="178.34" r="11.34" style="fill:#000000;stroke:none;"/>
+  <text x="648.08" y="181.624" text-anchor="middle"  class="whiteInkLetter" >A</text>
+</g>
+  <line x1="623.51" y1="171.725" x2="632.96" y2="171.725" />
+  <line x1="628.235" y1="167" x2="628.235" y2="176.45" />
+<circle cx="648.08" cy="178.34" r="11.34" id="S00105" class="solid"/>
+  <ellipse cx="648.08" cy="216.539" rx="6" ry="6" />
+  <text x="648.08" y="219.035" text-anchor="middle"  class="birthOrder" >4</text>
+  <text x="648.08" y="239.618" text-anchor="middle" >S00105</text>
+  <text x="648.08" y="253.568" text-anchor="middle" >1943.01....</text>
+  <line x1="738.8" y1="138.65" x2="738.8" y2="157.606" />
+<path d="M 738.8 157.606 l -16.0372 16.0372 16.0372 16.0372 16.0372 -16.0372 z" id="U00106" class="solid"/>
+  <ellipse cx="738.8" cy="216.539" rx="6" ry="6" />
+  <text x="738.8" y="219.035" text-anchor="middle"  class="birthOrder" >5</text>
+  <text x="738.8" y="239.618" text-anchor="middle" >U00106</text>
+  <text x="738.8" y="253.568" text-anchor="middle" >1944.06.07</text>
+  <line x1="375.92" y1="138.65" x2="738.8" y2="138.65" />
+  </g>
+  <g class="legend">
+  <text x="285.2" y="50" text-anchor="middle" >Affected</text>
+  <rect  x="243.62" y="53.78" width="83.16" height="13.95" style="fill:#000000;"  />
+  <text x="285.2" y="65.3195" text-anchor="middle"  class="whiteInkLetter_1" >A</text>
+  <rect  x="243.62" y="67.73" width="83.16" height="13.95" style="fill:#ffffff;"  />
+  <text x="285.2" y="79.2695" text-anchor="middle"  class="blackInkLetter_1" >U</text>
+  </g>
+  <g class="legend">
+  <rect  x="243.62" y="99.41" width="83.16" height="35.46" class="keyBox"  />
+  <text x="285.2" y="113.36" text-anchor="middle" >IndividualId</text>
+  <text x="285.2" y="127.31" text-anchor="middle" >DOB</text>
+  </g>
+
+ </g>
+ </svg>
+

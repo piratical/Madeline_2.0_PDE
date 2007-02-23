@@ -1,0 +1,281 @@
+<?xml version="1.0" standalone="no"?>
+ <svg version="1.1"  id="svgDC" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"  width="370.44" height="726.03"  onload="init()" >
+ <defs>
+  <style type="text/css"><![CDATA[
+
+line{
+	stroke-linejoin:miter;
+	stroke:#000;
+	stroke-width:0.5mm;
+	stroke-linejoin:miter;
+	stroke-linecap:square;
+}
+
+rect{
+	stroke:#000;
+	stroke-width:0.5mm;
+	stroke-linejoin:miter;
+	stroke-linecap:square;
+}
+
+ellipse{
+	stroke: #000;
+    fill: #fff;
+	stroke-width:0.25mm;
+}
+
+text{
+	font-family:"Bitstream Vera Sans",sans-serif;
+	font-size:12px;
+}
+
+.layer text{
+	fill:#930;
+}
+
+.layer line{
+	stroke:#000;
+}
+
+.birthOrder,.unknownTwins{
+	font-size: 8px;
+}
+
+.header{
+	font-size:18px;
+	font-weight:bold;
+}
+
+.keyBox{
+	fill:#e5e5e5;
+	stroke:#000;
+	stroke-width:0.5mm;
+	stroke-linejoin:miter;
+	stroke-linecap:square;
+}
+
+.mating:hover{
+	stroke-width:1mm;
+	stroke:#d56300;
+}
+
+.selectedIndividual{
+	stroke-width:1mm;
+	stroke-linecap:square;
+	stroke-linejoin:miter;
+	stroke:#d00;
+    fill:none;
+}
+
+.selectedIndividual:hover{
+	stroke:#d00;
+	fill:#ffbbbb;
+	fill-opacity:0.70;
+}
+
+.solid{
+	stroke-width:0.5mm;
+	stroke-linecap:square;
+	stroke-linejoin:miter;
+	stroke:#000;
+	fill:none;
+}
+
+.dashed{
+	stroke-width:0.5mm;
+	stroke-linecap:square;
+	stroke-linejoin:miter;
+	stroke:#98afc7;
+	stroke-dasharray:2mm,1mm;
+	stroke-dashoffset:1.0mm;
+	fill:none;
+}
+
+.solid:hover{
+	fill:#ffb787;
+	fill-opacity:0.70;
+	stroke:#d56300;
+	stroke-width:1mm;
+}
+
+.dashed:hover{
+	fill:#ffb787;
+	fill-opacity:0.70;
+	stroke:#d56300;
+	stroke-width:1mm;
+}
+
+.thinLine{
+	fill:none;
+	stroke: #000;
+	stroke-width:0.25mm;
+}
+
+.whiteInkLetter_1{
+	font-size: 12px;
+	fill: #fff;
+}
+
+.whiteInkLetter_2{
+	font-size: 10px;
+	fill: #fff;
+}
+
+.whiteInkLetter_3{
+	font-size: 8px;
+	fill: #fff;
+}
+
+.whiteInkLetter{
+	font-size: 8px;
+	fill: #fff;
+}
+
+.blackInkLetter_1{
+	font-size: 12px;
+}
+
+.blackInkLetter_2{
+	font-size: 10px;
+}
+
+.blackInkLetter_3{
+	font-size: 8px;
+}
+
+.blackInkLetter{
+	font-size: 8px;
+	fill: #000;
+}
+
+]]></style>
+ <script type="text/javascript" xlink:href="javascript/madeline.js"></script>
+ <marker id="endArrow" viewBox="0 0 10 10" refX="1" refY="5" markerUnits="strokeWidth" orient="auto" markerWidth="5" markerHeight="4">  <polyline points="0,0 10,5 0,10 1,5" fill="#000" /> </marker>
+ </defs>
+ <g class="pedigree" transform="translate(-417.5)">
+
+ <g id="layer0" class="layer" >
+ </g>
+
+  <g class="drawing">
+  <text x="557.36" y="30" text-anchor="middle"  class="header" >si_003</text>
+  <clipPath id="P00121_clipPath">
+   <rect x="500.66" y="38.66" width="22.68" height="22.68" />
+  </clipPath>
+<g clip-path="url(#P00121_clipPath)">
+</g>
+  <rect x="500.66" y="38.66" width="22.68" height="22.68" id="P00121" class="solid"/>
+  <text x="512" y="88.1989" text-anchor="middle" >P00121</text>
+  <line x1="523.34" y1="50" x2="591.38" y2="50" />
+<g>
+</g>
+<circle cx="602.72" cy="50" r="11.34" id="P00122" class="solid"/>
+  <text x="602.72" y="88.1989" text-anchor="middle" >P00122</text>
+  <line class="mating" id="P00122:P00121" x1="557.36" y1="50" x2="557.36" y2="124.7" />
+  <line x1="512" y1="124.7" x2="512" y2="153.05" />
+  <clipPath id="P00123_clipPath">
+   <rect x="500.66" y="153.05" width="22.68" height="22.68" />
+  </clipPath>
+<g clip-path="url(#P00123_clipPath)">
+</g>
+  <rect x="500.66" y="153.05" width="22.68" height="22.68" id="P00123" class="solid"/>
+  <text x="512" y="202.589" text-anchor="middle" >P00123</text>
+  <line x1="523.34" y1="164.39" x2="591.38" y2="164.39" />
+<g>
+</g>
+<circle cx="602.72" cy="164.39" r="11.34" id="P00124" class="solid"/>
+  <text x="602.72" y="202.589" text-anchor="middle" >P00124</text>
+  <line class="mating" id="P00124:P00123" x1="557.36" y1="164.39" x2="557.36" y2="239.09" />
+  <line x1="512" y1="239.09" x2="512" y2="267.44" />
+<g>
+</g>
+<circle cx="512" cy="278.78" r="11.34" id="P00125" class="solid"/>
+  <text x="512" y="316.979" text-anchor="middle" >P00125</text>
+  <line x1="523.34" y1="278.78" x2="591.38" y2="278.78" />
+  <clipPath id="P00126_clipPath">
+   <rect x="591.38" y="267.44" width="22.68" height="22.68" />
+  </clipPath>
+<g clip-path="url(#P00126_clipPath)">
+</g>
+  <rect x="591.38" y="267.44" width="22.68" height="22.68" id="P00126" class="solid"/>
+  <text x="602.72" y="316.979" text-anchor="middle" >P00126</text>
+  <line class="mating" id="P00125:P00126" x1="557.36" y1="278.78" x2="557.36" y2="353.48" />
+  <line x1="466.64" y1="353.48" x2="466.64" y2="381.83" />
+  <clipPath id="P00127_clipPath">
+   <rect x="455.3" y="381.83" width="22.68" height="22.68" />
+  </clipPath>
+<g clip-path="url(#P00127_clipPath)">
+</g>
+  <rect x="455.3" y="381.83" width="22.68" height="22.68" id="P00127" class="solid"/>
+  <text x="466.64" y="431.369" text-anchor="middle" >P00127</text>
+  <line x1="477.98" y1="393.17" x2="546.02" y2="393.17" />
+<g>
+</g>
+<circle cx="557.36" cy="393.17" r="11.34" id="P00129" class="solid"/>
+  <text x="557.36" y="431.369" text-anchor="middle" >P00129</text>
+  <line class="mating" id="P00129:P00127" x1="512" y1="393.17" x2="512" y2="467.87" />
+  <line x1="466.64" y1="467.87" x2="466.64" y2="496.22" />
+<g>
+</g>
+<circle cx="466.64" cy="507.56" r="11.34" id="P00130" class="solid"/>
+  <text x="466.64" y="545.759" text-anchor="middle" >P00130</text>
+  <line x1="477.98" y1="507.56" x2="546.02" y2="507.56" />
+  <clipPath id="P00133_clipPath">
+   <rect x="546.02" y="496.22" width="22.68" height="22.68" />
+  </clipPath>
+<g clip-path="url(#P00133_clipPath)">
+</g>
+  <rect x="546.02" y="496.22" width="22.68" height="22.68" id="P00133" class="solid"/>
+  <text x="557.36" y="545.759" text-anchor="middle" >P00133</text>
+  <line class="mating" id="P00130:P00133" x1="512" y1="507.56" x2="512" y2="582.26" />
+  <line x1="512" y1="582.26" x2="512" y2="610.61" />
+  <clipPath id="P00134_clipPath">
+   <rect x="500.66" y="610.61" width="22.68" height="22.68" />
+  </clipPath>
+<g clip-path="url(#P00134_clipPath)">
+</g>
+  <rect x="500.66" y="610.61" width="22.68" height="22.68" id="P00134" class="solid"/>
+  <text x="512" y="660.149" text-anchor="middle" >P00134</text>
+  <line x1="466.64" y1="467.87" x2="512" y2="467.87" />
+  <line x1="648.08" y1="353.48" x2="648.08" y2="381.83" />
+<g>
+</g>
+<circle cx="648.08" cy="393.17" r="11.34" id="P00128" class="solid"/>
+  <text x="648.08" y="431.369" text-anchor="middle" >P00128</text>
+  <line x1="659.42" y1="393.17" x2="727.46" y2="393.17" />
+  <clipPath id="P00131_clipPath">
+   <rect x="727.46" y="381.83" width="22.68" height="22.68" />
+  </clipPath>
+<g clip-path="url(#P00131_clipPath)">
+</g>
+  <rect x="727.46" y="381.83" width="22.68" height="22.68" id="P00131" class="solid"/>
+  <text x="738.8" y="431.369" text-anchor="middle" >P00131</text>
+  <line class="mating" id="P00128:P00131" x1="693.44" y1="393.17" x2="693.44" y2="467.87" />
+  <line x1="648.08" y1="467.87" x2="648.08" y2="496.22" />
+  <clipPath id="P00132_clipPath">
+   <rect x="636.74" y="496.22" width="22.68" height="22.68" />
+  </clipPath>
+<g clip-path="url(#P00132_clipPath)">
+</g>
+  <rect x="636.74" y="496.22" width="22.68" height="22.68" id="P00132" class="solid"/>
+  <text x="648.08" y="545.759" text-anchor="middle" >P00132</text>
+  <line x1="659.42" y1="507.56" x2="727.46" y2="507.56" />
+<g>
+</g>
+<circle cx="738.8" cy="507.56" r="11.34" id="P00137" class="solid"/>
+  <text x="738.8" y="545.759" text-anchor="middle" >P00137</text>
+  <line class="mating" id="P00137:P00132" x1="693.44" y1="507.56" x2="693.44" y2="582.26" />
+  <line x1="693.44" y1="582.26" x2="693.44" y2="610.61" />
+<g>
+</g>
+<circle cx="693.44" cy="621.95" r="11.34" id="P00138" class="solid"/>
+  <text x="693.44" y="660.149" text-anchor="middle" >P00138</text>
+  <line x1="648.08" y1="467.87" x2="693.44" y2="467.87" />
+  <line x1="466.64" y1="353.48" x2="648.08" y2="353.48" />
+  <line x1="512" y1="239.09" x2="557.36" y2="239.09" />
+  <line x1="512" y1="124.7" x2="557.36" y2="124.7" />
+  </g>
+
+ </g>
+ </svg>
+

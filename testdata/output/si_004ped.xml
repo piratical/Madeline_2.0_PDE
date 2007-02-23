@@ -1,0 +1,368 @@
+<?xml version="1.0" standalone="no"?>
+ <svg version="1.1"  id="svgDC" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"  width="824.04" height="704.194"  onload="init()" >
+ <defs>
+  <style type="text/css"><![CDATA[
+
+line{
+	stroke-linejoin:miter;
+	stroke:#000;
+	stroke-width:0.5mm;
+	stroke-linejoin:miter;
+	stroke-linecap:square;
+}
+
+rect{
+	stroke:#000;
+	stroke-width:0.5mm;
+	stroke-linejoin:miter;
+	stroke-linecap:square;
+}
+
+ellipse{
+	stroke: #000;
+    fill: #fff;
+	stroke-width:0.25mm;
+}
+
+text{
+	font-family:"Bitstream Vera Sans",sans-serif;
+	font-size:12px;
+}
+
+.layer text{
+	fill:#930;
+}
+
+.layer line{
+	stroke:#000;
+}
+
+.birthOrder,.unknownTwins{
+	font-size: 8px;
+}
+
+.header{
+	font-size:18px;
+	font-weight:bold;
+}
+
+.keyBox{
+	fill:#e5e5e5;
+	stroke:#000;
+	stroke-width:0.5mm;
+	stroke-linejoin:miter;
+	stroke-linecap:square;
+}
+
+.mating:hover{
+	stroke-width:1mm;
+	stroke:#d56300;
+}
+
+.selectedIndividual{
+	stroke-width:1mm;
+	stroke-linecap:square;
+	stroke-linejoin:miter;
+	stroke:#d00;
+    fill:none;
+}
+
+.selectedIndividual:hover{
+	stroke:#d00;
+	fill:#ffbbbb;
+	fill-opacity:0.70;
+}
+
+.solid{
+	stroke-width:0.5mm;
+	stroke-linecap:square;
+	stroke-linejoin:miter;
+	stroke:#000;
+	fill:none;
+}
+
+.dashed{
+	stroke-width:0.5mm;
+	stroke-linecap:square;
+	stroke-linejoin:miter;
+	stroke:#98afc7;
+	stroke-dasharray:2mm,1mm;
+	stroke-dashoffset:1.0mm;
+	fill:none;
+}
+
+.solid:hover{
+	fill:#ffb787;
+	fill-opacity:0.70;
+	stroke:#d56300;
+	stroke-width:1mm;
+}
+
+.dashed:hover{
+	fill:#ffb787;
+	fill-opacity:0.70;
+	stroke:#d56300;
+	stroke-width:1mm;
+}
+
+.thinLine{
+	fill:none;
+	stroke: #000;
+	stroke-width:0.25mm;
+}
+
+.whiteInkLetter_1{
+	font-size: 12px;
+	fill: #fff;
+}
+
+.whiteInkLetter_2{
+	font-size: 10px;
+	fill: #fff;
+}
+
+.whiteInkLetter_3{
+	font-size: 8px;
+	fill: #fff;
+}
+
+.whiteInkLetter{
+	font-size: 8px;
+	fill: #fff;
+}
+
+.blackInkLetter_1{
+	font-size: 12px;
+}
+
+.blackInkLetter_2{
+	font-size: 10px;
+}
+
+.blackInkLetter_3{
+	font-size: 8px;
+}
+
+.blackInkLetter{
+	font-size: 8px;
+	fill: #000;
+}
+
+]]></style>
+ <script type="text/javascript" xlink:href="javascript/madeline.js"></script>
+ <marker id="endArrow" viewBox="0 0 10 10" refX="1" refY="5" markerUnits="strokeWidth" orient="auto" markerWidth="5" markerHeight="4">  <polyline points="0,0 10,5 0,10 1,5" fill="#000" /> </marker>
+ </defs>
+ <g class="pedigree" transform="translate(-145.34)">
+
+ <g id="layer0" class="layer" >
+ </g>
+
+  <g class="drawing">
+  <text x="557.36" y="30" text-anchor="middle"  class="header" >si_004</text>
+  <clipPath id="K00226_clipPath">
+   <rect x="500.66" y="38.66" width="22.68" height="22.68" />
+  </clipPath>
+<g clip-path="url(#K00226_clipPath)">
+<circle cx="512" cy="50" r="16.0372" style="fill:#ffffff;stroke:none;"/>
+  <text x="512" y="50" text-anchor="middle"  class="blackInkLetter_1" >.</text>
+</g>
+  <rect x="500.66" y="38.66" width="22.68" height="22.68" id="K00226" class="solid"/>
+  <line x1="496.88" y1="65.12" x2="527.12" y2="34.88" />
+  <text x="512" y="124.977" text-anchor="middle" >K00226</text>
+  <text x="512" y="142.9" text-anchor="middle" >.</text>
+  <text x="512" y="160.822" text-anchor="middle" >丁宏佩</text>
+  <line x1="523.34" y1="50" x2="591.38" y2="50" />
+<g>
+<circle cx="602.72" cy="50" r="11.34" style="fill:#ffffff;stroke:none;"/>
+  <text x="602.72" y="50" text-anchor="middle"  class="blackInkLetter_1" >.</text>
+</g>
+<circle cx="602.72" cy="50" r="11.34" id="K00227" class="solid"/>
+  <text x="602.72" y="124.977" text-anchor="middle" >K00227</text>
+  <text x="602.72" y="142.9" text-anchor="middle" >.</text>
+  <text x="602.72" y="160.822" text-anchor="middle" >马翠柳</text>
+  <line class="mating" id="K00227:K00226" x1="557.36" y1="50" x2="557.36" y2="176.436" />
+  <line x1="285.2" y1="176.436" x2="285.2" y2="204.786" />
+<g>
+<circle cx="285.2" cy="216.126" r="11.34" style="fill:#ffffff;stroke:none;"/>
+  <text x="285.2" y="216.126" text-anchor="middle"  class="blackInkLetter_1" >.</text>
+</g>
+<circle cx="285.2" cy="216.126" r="11.34" id="K00230" class="solid"/>
+  <ellipse cx="285.2" cy="261.174" rx="6" ry="6" />
+  <text x="285.2" y="264.104" text-anchor="middle"  class="birthOrder" >1</text>
+  <text x="285.2" y="291.103" text-anchor="middle" >K00230</text>
+  <text x="285.2" y="309.026" text-anchor="middle" >1950.11.12</text>
+  <text x="285.2" y="326.948" text-anchor="middle" >丁梅</text>
+  <line x1="375.92" y1="176.436" x2="375.92" y2="204.786" />
+  <clipPath id="K00229_clipPath">
+   <rect x="364.58" y="204.786" width="22.68" height="22.68" />
+  </clipPath>
+<g clip-path="url(#K00229_clipPath)">
+<circle cx="375.92" cy="216.126" r="16.0372" style="fill:#000000;stroke:none;"/>
+  <text x="375.92" y="219.41" text-anchor="middle"  class="whiteInkLetter_1" >A</text>
+</g>
+  <rect x="364.58" y="204.786" width="22.68" height="22.68" id="K00229" class="solid"/>
+  <ellipse cx="375.92" cy="261.174" rx="6" ry="6" />
+  <text x="375.92" y="264.104" text-anchor="middle"  class="birthOrder" >2</text>
+  <text x="375.92" y="291.103" text-anchor="middle" >K00229</text>
+  <text x="375.92" y="309.026" text-anchor="middle" >1952.03.01</text>
+  <text x="375.92" y="326.948" text-anchor="middle" >丁荣福</text>
+  <line x1="387.26" y1="216.126" x2="455.3" y2="216.126" />
+<g>
+<circle cx="466.64" cy="216.126" r="11.34" style="fill:#ffffff;stroke:none;"/>
+  <text x="466.64" y="216.126" text-anchor="middle"  class="blackInkLetter_1" >.</text>
+</g>
+<circle cx="466.64" cy="216.126" r="11.34" id="K00232" class="solid"/>
+  <text x="466.64" y="291.103" text-anchor="middle" >K00232</text>
+  <text x="466.64" y="309.026" text-anchor="middle" >.</text>
+  <text x="466.64" y="326.948" text-anchor="middle" >周爽丽</text>
+  <line class="mating" id="K00232:K00229" x1="421.28" y1="216.126" x2="421.28" y2="342.562" />
+  <line x1="375.92" y1="342.562" x2="375.92" y2="370.912" />
+  <clipPath id="K00233_clipPath">
+   <rect x="364.58" y="370.912" width="22.68" height="22.68" />
+  </clipPath>
+<g clip-path="url(#K00233_clipPath)">
+<circle cx="375.92" cy="382.252" r="16.0372" style="fill:#ffffff;stroke:none;"/>
+  <text x="375.92" y="382.252" text-anchor="middle"  class="blackInkLetter_1" >.</text>
+</g>
+  <rect x="364.58" y="370.912" width="22.68" height="22.68" id="K00233" class="solid"/>
+  <ellipse cx="375.92" cy="427.3" rx="6" ry="6" />
+  <text x="375.92" y="430.23" text-anchor="middle"  class="birthOrder" >1</text>
+  <text x="375.92" y="457.229" text-anchor="middle" >K00233</text>
+  <text x="375.92" y="475.152" text-anchor="middle" >1972.01.04</text>
+  <text x="375.92" y="493.074" text-anchor="middle" >丁文志</text>
+  <line x1="512" y1="342.562" x2="512" y2="370.912" />
+<g>
+<circle cx="512" cy="382.252" r="11.34" style="fill:#ffffff;stroke:none;"/>
+  <text x="512" y="382.252" text-anchor="middle"  class="blackInkLetter_1" >.</text>
+</g>
+<circle cx="512" cy="382.252" r="11.34" id="K00234" class="solid"/>
+  <ellipse cx="512" cy="427.3" rx="6" ry="6" />
+  <text x="512" y="430.23" text-anchor="middle"  class="birthOrder" >2</text>
+  <text x="512" y="457.229" text-anchor="middle" >K00234</text>
+  <text x="512" y="475.152" text-anchor="middle" >1975.12.25</text>
+  <text x="512" y="493.074" text-anchor="middle" >丁秋葉</text>
+  <line x1="523.34" y1="382.252" x2="591.38" y2="382.252" />
+  <clipPath id="K00237_clipPath">
+   <rect x="591.38" y="370.912" width="22.68" height="22.68" />
+  </clipPath>
+<g clip-path="url(#K00237_clipPath)">
+<circle cx="602.72" cy="382.252" r="16.0372" style="fill:#ffffff;stroke:none;"/>
+  <text x="602.72" y="382.252" text-anchor="middle"  class="blackInkLetter_1" >.</text>
+</g>
+  <rect x="591.38" y="370.912" width="22.68" height="22.68" id="K00237" class="solid"/>
+  <text x="602.72" y="457.229" text-anchor="middle" >K00237</text>
+  <text x="602.72" y="475.152" text-anchor="middle" >1975.06.15</text>
+  <text x="602.72" y="493.074" text-anchor="middle" >吴潜善</text>
+  <line class="mating" id="K00234:K00237" x1="557.36" y1="382.252" x2="557.36" y2="508.688" />
+  <line x1="466.64" y1="508.688" x2="466.64" y2="537.038" />
+  <clipPath id="K00240_clipPath">
+   <rect x="455.3" y="537.038" width="22.68" height="22.68" />
+  </clipPath>
+<g clip-path="url(#K00240_clipPath)">
+<circle cx="466.64" cy="548.378" r="16.0372" style="fill:#ffffff;stroke:none;"/>
+  <text x="466.64" y="548.378" text-anchor="middle"  class="blackInkLetter_1" >.</text>
+</g>
+  <rect x="455.3" y="537.038" width="22.68" height="22.68" id="K00240" class="solid"/>
+  <ellipse cx="466.64" cy="593.426" rx="6" ry="6" />
+  <text x="466.64" y="596.356" text-anchor="middle"  class="birthOrder" >1</text>
+  <text x="466.64" y="623.355" text-anchor="middle" >K00240</text>
+  <text x="466.64" y="641.278" text-anchor="middle" >1995.12.10</text>
+  <text x="466.64" y="659.2" text-anchor="middle" >吴强国</text>
+  <line x1="557.36" y1="508.688" x2="557.36" y2="537.038" />
+<g>
+<circle cx="557.36" cy="548.378" r="11.34" style="fill:#000000;stroke:none;"/>
+  <text x="557.36" y="551.662" text-anchor="middle"  class="whiteInkLetter_1" >A</text>
+</g>
+<circle cx="557.36" cy="548.378" r="11.34" id="K00239" class="solid"/>
+  <ellipse cx="557.36" cy="593.426" rx="6" ry="6" />
+  <text x="557.36" y="596.356" text-anchor="middle"  class="birthOrder" >2</text>
+  <text x="557.36" y="623.355" text-anchor="middle" >K00239</text>
+  <text x="557.36" y="641.278" text-anchor="middle" >1997.08.27</text>
+  <text x="557.36" y="659.2" text-anchor="middle" >吴懰鵝</text>
+  <line x1="648.08" y1="508.688" x2="648.08" y2="537.038" />
+  <clipPath id="K00238_clipPath">
+   <rect x="636.74" y="537.038" width="22.68" height="22.68" />
+  </clipPath>
+<g clip-path="url(#K00238_clipPath)">
+<circle cx="648.08" cy="548.378" r="16.0372" style="fill:#ffffff;stroke:none;"/>
+  <text x="648.08" y="548.378" text-anchor="middle"  class="blackInkLetter_1" >.</text>
+</g>
+  <rect x="636.74" y="537.038" width="22.68" height="22.68" id="K00238" class="solid"/>
+  <ellipse cx="648.08" cy="593.426" rx="6" ry="6" />
+  <text x="648.08" y="596.356" text-anchor="middle"  class="birthOrder" >3</text>
+  <text x="648.08" y="623.355" text-anchor="middle" >K00238</text>
+  <text x="648.08" y="641.278" text-anchor="middle" >1999.04.10</text>
+  <text x="648.08" y="659.2" text-anchor="middle" >吴杲健</text>
+  <line x1="466.64" y1="508.688" x2="648.08" y2="508.688" />
+  <line x1="375.92" y1="342.562" x2="512" y2="342.562" />
+  <line x1="738.8" y1="176.436" x2="738.8" y2="204.786" />
+  <clipPath id="K00228_clipPath">
+   <rect x="727.46" y="204.786" width="22.68" height="22.68" />
+  </clipPath>
+<g clip-path="url(#K00228_clipPath)">
+<circle cx="738.8" cy="216.126" r="16.0372" style="fill:#ffffff;stroke:none;"/>
+  <text x="738.8" y="216.126" text-anchor="middle"  class="blackInkLetter_1" >.</text>
+</g>
+  <rect x="727.46" y="204.786" width="22.68" height="22.68" id="K00228" class="solid"/>
+  <ellipse cx="738.8" cy="261.174" rx="6" ry="6" />
+  <text x="738.8" y="264.104" text-anchor="middle"  class="birthOrder" >3</text>
+  <text x="738.8" y="291.103" text-anchor="middle" >K00228</text>
+  <text x="738.8" y="309.026" text-anchor="middle" >1954.07.19</text>
+  <text x="738.8" y="326.948" text-anchor="middle" >丁克用</text>
+  <line x1="829.52" y1="176.436" x2="829.52" y2="204.786" />
+<g>
+<circle cx="829.52" cy="216.126" r="11.34" style="fill:#ffffff;stroke:none;"/>
+  <text x="829.52" y="216.126" text-anchor="middle"  class="blackInkLetter_1" >.</text>
+</g>
+<circle cx="829.52" cy="216.126" r="11.34" id="K00231" class="solid"/>
+  <ellipse cx="829.52" cy="261.174" rx="6" ry="6" />
+  <text x="829.52" y="264.104" text-anchor="middle"  class="birthOrder" >4</text>
+  <text x="829.52" y="291.103" text-anchor="middle" >K00231</text>
+  <text x="829.52" y="309.026" text-anchor="middle" >1955.08.30</text>
+  <text x="829.52" y="326.948" text-anchor="middle" >丁榴志</text>
+  <line x1="840.86" y1="216.126" x2="908.9" y2="216.126" />
+  <clipPath id="K00235_clipPath">
+   <rect x="908.9" y="204.786" width="22.68" height="22.68" />
+  </clipPath>
+<g clip-path="url(#K00235_clipPath)">
+<circle cx="920.24" cy="216.126" r="16.0372" style="fill:#ffffff;stroke:none;"/>
+  <text x="920.24" y="216.126" text-anchor="middle"  class="blackInkLetter_1" >.</text>
+</g>
+  <rect x="908.9" y="204.786" width="22.68" height="22.68" id="K00235" class="solid"/>
+  <text x="920.24" y="291.103" text-anchor="middle" >K00235</text>
+  <text x="920.24" y="309.026" text-anchor="middle" >.</text>
+  <text x="920.24" y="326.948" text-anchor="middle" >黄春</text>
+  <line class="mating" id="K00231:K00235" x1="874.88" y1="216.126" x2="874.88" y2="342.562" />
+  <line x1="874.88" y1="342.562" x2="874.88" y2="370.912" />
+  <clipPath id="K00236_clipPath">
+   <rect x="863.54" y="370.912" width="22.68" height="22.68" />
+  </clipPath>
+<g clip-path="url(#K00236_clipPath)">
+<circle cx="874.88" cy="382.252" r="16.0372" style="fill:#000000;stroke:none;"/>
+  <text x="874.88" y="385.536" text-anchor="middle"  class="whiteInkLetter_1" >A</text>
+</g>
+  <rect x="863.54" y="370.912" width="22.68" height="22.68" id="K00236" class="solid"/>
+  <ellipse cx="874.88" cy="427.3" rx="6" ry="6" />
+  <text x="874.88" y="430.23" text-anchor="middle"  class="birthOrder" >1</text>
+  <text x="874.88" y="457.229" text-anchor="middle" >K00236</text>
+  <text x="874.88" y="475.152" text-anchor="middle" >1974.02.01</text>
+  <text x="874.88" y="493.074" text-anchor="middle" >黄元达</text>
+  <line x1="285.2" y1="176.436" x2="829.52" y2="176.436" />
+  </g>
+  <g class="legend">
+  <text x="194.48" y="50" text-anchor="middle" >Affected</text>
+  <rect  x="152.9" y="53.78" width="83.16" height="17.9227" style="fill:#000000;"  />
+  <text x="194.48" y="68.7443" text-anchor="middle"  class="whiteInkLetter_1" >A</text>
+  <rect  x="152.9" y="71.7027" width="83.16" height="17.9227" style="fill:#ffffff;"  />
+  <text x="194.48" y="80.664" text-anchor="middle"  class="blackInkLetter_1" >.</text>
+  </g>
+  <g class="legend">
+  <rect  x="152.9" y="111.328" width="83.16" height="61.328" class="keyBox"  />
+  <text x="194.48" y="129.251" text-anchor="middle" >IndividualId</text>
+  <text x="194.48" y="147.173" text-anchor="middle" >DOB</text>
+  <text x="194.48" y="165.096" text-anchor="middle" >姓名</text>
+  </g>
+
+ </g>
+ </svg>
+

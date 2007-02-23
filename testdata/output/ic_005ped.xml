@@ -1,0 +1,567 @@
+<?xml version="1.0" standalone="no"?>
+ <svg version="1.1"  id="svgDC" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"  width="1050.84" height="611.64"  onload="init()" >
+ <defs>
+  <style type="text/css"><![CDATA[
+
+line{
+	stroke-linejoin:miter;
+	stroke:#000;
+	stroke-width:0.5mm;
+	stroke-linejoin:miter;
+	stroke-linecap:square;
+}
+
+rect{
+	fill:#fff;
+	stroke:#000;
+	stroke-width:0.5mm;
+	stroke-linejoin:miter;
+	stroke-linecap:square;
+}
+
+circle{
+	fill:#fff;
+	stroke:#000;
+	stroke-width:0.5mm;
+}
+
+polyline{
+	fill:#fff;
+	stroke:#000;
+	stroke-width:0.5mm;
+}
+
+ellipse{
+	fill: #fff;
+	stroke: #000;
+	stroke-width:0.25mm;
+}
+
+text{
+	font-family:"Bitstream Vera Sans",sans-serif;
+	font-size:12px;
+}
+
+.layer text{
+	fill:#930;
+}
+
+.layer line{
+	stroke:#6d7b8d;
+}
+
+.affected{
+	fill:#98afc7;
+}
+
+.notSampled{
+	stroke:#808080;
+}
+
+.affectedNotSampled{
+	stroke:#808080;
+	fill:#98afc7;
+}
+
+.birthOrder{
+	font-size: 8px;
+}
+
+.header{
+	font-size:18px;
+	font-weight:bold;
+}
+
+.keyBox{
+	fill:#e5e5e5;
+	stroke:#000;
+	stroke-width:0.5mm;
+	stroke-linejoin:miter;
+	stroke-linecap:square;
+}
+
+.mating:hover{
+	stroke-width:1mm;
+	stroke:#d56300;
+}
+
+.selectedIndividual{
+	stroke-width:1mm;
+	stroke:#d00;
+}
+
+.solid{
+	stroke-width:0.5mm;
+	stroke-linecap:square;
+	stroke-linejoin:miter;
+	stroke:#000;
+	fill:none;
+}
+
+.dashed{
+	stroke-width:0.5mm;
+	stroke-linecap:square;
+	stroke-linejoin:miter;
+	stroke:#98afc7;
+	stroke-dasharray:2mm,1mm;
+	stroke-dashoffset:1.0mm;
+	fill:none;
+}
+
+.solid:hover{
+	fill:#ffb787;
+	fill-opacity:0.70;
+	stroke:#d56300;
+	stroke-width:1mm;
+}
+
+.dashed:hover{
+	fill:#ffb787;
+	fill-opacity:0.70;
+	stroke:#d56300;
+	stroke-width:1mm;
+}
+
+.thinLine{
+	fill:none;
+	stroke: #000;
+	stroke-width:0.25mm;
+}
+
+.whiteInkLetter_1{
+	font-size: 12px;
+	fill: #fff;
+}
+
+.whiteInkLetter_2{
+	font-size: 10px;
+	fill: #fff;
+}
+
+.whiteInkLetter_3{
+	font-size: 8px;
+	fill: #fff;
+}
+
+.whiteInkLetter{
+	font-size: 8px;
+	fill: #fff;
+}
+
+.blackInkLetter_1{
+	font-size: 12px;
+}
+
+.blackInkLetter_2{
+	font-size: 10px;
+}
+
+.blackInkLetter_3{
+	font-size: 8px;
+}
+
+.blackInkLetter{
+	font-size: 8px;
+}
+
+]]></style>
+ <script type="text/javascript" xlink:href="javascript/madeline.js"></script>
+ <marker id="endArrow" viewBox="0 0 10 10" refX="1" refY="5" markerUnits="strokeWidth" orient="auto" markerWidth="5" markerHeight="4">  <polyline points="0,0 10,5 0,10 1,5" fill="#000" /> </marker>
+ </defs>
+ <g class="pedigree" transform="translate(-54.62)">
+
+ <g id="layer0" class="layer" >
+  <line x1="477.98" y1="166.28" x2="421.28" y2="166.28" />
+  <line x1="387.26" y1="280.67" x2="421.28" y2="280.67" />
+  <line x1="421.28" y1="166.28" x2="421.28" y2="280.67" />
+  <line x1="477.98" y1="162.5" x2="417.5" y2="162.5" />
+  <line x1="387.26" y1="276.89" x2="417.5" y2="276.89" />
+  <line x1="417.5" y1="162.5" x2="417.5" y2="276.89" />
+  <line x1="614.06" y1="395.06" x2="553.58" y2="395.06" />
+  <line x1="523.34" y1="280.67" x2="553.58" y2="280.67" />
+  <line x1="553.58" y1="395.06" x2="553.58" y2="280.67" />
+  <line x1="614.06" y1="391.28" x2="557.36" y2="391.28" />
+  <line x1="523.34" y1="276.89" x2="557.36" y2="276.89" />
+  <line x1="557.36" y1="391.28" x2="557.36" y2="276.89" />
+ </g>
+
+  <g class="drawing">
+  <text x="557.36" y="30" text-anchor="middle"  class="header" >ic_005</text>
+<g>
+<path d="M 557.36 50 L 546.575 46.4957 A 11.34 11.34 0 0 1 557.36 38.66 z" style="fill:#ffd702;stroke:none;"/>
+  <text x="554.027" y="45.4129" text-anchor="middle"  class="blackInkLetter" >.</text>
+<path d="M 557.36 50 L 557.36 38.66 A 11.34 11.34 0 0 1 568.145 46.4957 z" style="fill:#870000;stroke:none;"/>
+  <text x="560.693" y="48.697" text-anchor="middle"  class="whiteInkLetter" >A</text>
+<path d="M 557.36 50 L 568.145 46.4957 A 11.34 11.34 0 0 1 564.025 59.1743 z" style="fill:#ffcca1;stroke:none;"/>
+  <text x="562.752" y="51.7521" text-anchor="middle"  class="blackInkLetter" >.</text>
+<path d="M 557.36 50 L 564.025 59.1743 A 11.34 11.34 0 0 1 550.695 59.1743 z" style="fill:#ffccff;stroke:none;"/>
+  <text x="557.36" y="55.67" text-anchor="middle"  class="blackInkLetter" >.</text>
+<path d="M 557.36 50 L 550.695 59.1743 A 11.34 11.34 0 0 1 546.575 46.4957 z" style="fill:#51ffff;stroke:none;"/>
+  <text x="551.968" y="51.7521" text-anchor="middle"  class="blackInkLetter" >.</text>
+</g>
+<circle cx="557.36" cy="50" r="11.34" id="M100" class="solid"/>
+  <text x="557.36" y="88.1989" text-anchor="middle" >M100</text>
+  <line x1="568.7" y1="50" x2="636.74" y2="50" />
+  <clipPath id="M101_clipPath">
+   <rect x="636.74" y="38.66" width="22.68" height="22.68" />
+  </clipPath>
+<g clip-path="url(#M101_clipPath)">
+<path d="M 648.08 50 L 632.828 45.0442 A 16.0372 16.0372 0 0 1 648.08 33.9628 z" style="fill:#ffd702;stroke:none;"/>
+  <text x="644.309" y="44.8103" text-anchor="middle"  class="blackInkLetter" >.</text>
+<path d="M 648.08 50 L 648.08 33.9628 A 16.0372 16.0372 0 0 1 663.332 45.0442 z" style="fill:#c3803e;stroke:none;"/>
+  <text x="651.851" y="48.1585" text-anchor="middle"  class="blackInkLetter" >U</text>
+<path d="M 648.08 50 L 663.332 45.0442 A 16.0372 16.0372 0 0 1 657.506 62.9744 z" style="fill:#ffcca1;stroke:none;"/>
+  <text x="654.181" y="51.9823" text-anchor="middle"  class="blackInkLetter" >.</text>
+<path d="M 648.08 50 L 657.506 62.9744 A 16.0372 16.0372 0 0 1 638.654 62.9744 z" style="fill:#ffccff;stroke:none;"/>
+  <text x="648.08" y="56.4149" text-anchor="middle"  class="blackInkLetter" >.</text>
+<path d="M 648.08 50 L 638.654 62.9744 A 16.0372 16.0372 0 0 1 632.828 45.0442 z" style="fill:#51ffff;stroke:none;"/>
+  <text x="641.979" y="51.9823" text-anchor="middle"  class="blackInkLetter" >.</text>
+</g>
+  <rect x="636.74" y="38.66" width="22.68" height="22.68" id="M101" class="solid"/>
+  <text x="648.08" y="88.1989" text-anchor="middle" >M101</text>
+  <line x1="602.72" y1="50" x2="602.72" y2="124.7" />
+  <line x1="239.84" y1="124.7" x2="239.84" y2="153.05" />
+  <clipPath id="M102_clipPath">
+   <rect x="228.5" y="153.05" width="22.68" height="22.68" />
+  </clipPath>
+<g clip-path="url(#M102_clipPath)">
+<path d="M 239.84 164.39 L 224.588 159.434 A 16.0372 16.0372 0 0 1 239.84 148.353 z" style="fill:#ffd702;stroke:none;"/>
+  <text x="236.069" y="159.2" text-anchor="middle"  class="blackInkLetter" >.</text>
+<path d="M 239.84 164.39 L 239.84 148.353 A 16.0372 16.0372 0 0 1 255.092 159.434 z" style="fill:#ffffa1;stroke:none;"/>
+  <text x="243.611" y="159.2" text-anchor="middle"  class="blackInkLetter" >.</text>
+<path d="M 239.84 164.39 L 255.092 159.434 A 16.0372 16.0372 0 0 1 249.266 177.364 z" style="fill:#ffcca1;stroke:none;"/>
+  <text x="245.941" y="166.372" text-anchor="middle"  class="blackInkLetter" >.</text>
+<path d="M 239.84 164.39 L 249.266 177.364 A 16.0372 16.0372 0 0 1 230.414 177.364 z" style="fill:#768cff;stroke:none;"/>
+  <text x="239.84" y="174.089" text-anchor="middle"  class="blackInkLetter" >A</text>
+<path d="M 239.84 164.39 L 230.414 177.364 A 16.0372 16.0372 0 0 1 224.588 159.434 z" style="fill:#51ffff;stroke:none;"/>
+  <text x="233.739" y="166.372" text-anchor="middle"  class="blackInkLetter" >.</text>
+</g>
+  <rect x="228.5" y="153.05" width="22.68" height="22.68" id="M102" class="solid"/>
+  <text x="239.84" y="202.589" text-anchor="middle" >M102</text>
+  <line x1="251.18" y1="164.39" x2="319.22" y2="164.39" />
+<g>
+<path d="M 330.56 164.39 L 319.775 160.886 A 11.34 11.34 0 0 1 330.56 153.05 z" style="fill:#ffd702;stroke:none;"/>
+  <text x="327.227" y="159.803" text-anchor="middle"  class="blackInkLetter" >.</text>
+<path d="M 330.56 164.39 L 330.56 153.05 A 11.34 11.34 0 0 1 341.345 160.886 z" style="fill:#c3803e;stroke:none;"/>
+  <text x="333.893" y="163.151" text-anchor="middle"  class="blackInkLetter" >U</text>
+<path d="M 330.56 164.39 L 341.345 160.886 A 11.34 11.34 0 0 1 337.225 173.564 z" style="fill:#ffcca1;stroke:none;"/>
+  <text x="335.952" y="166.142" text-anchor="middle"  class="blackInkLetter" >.</text>
+<path d="M 330.56 164.39 L 337.225 173.564 A 11.34 11.34 0 0 1 323.895 173.564 z" style="fill:#ffccff;stroke:none;"/>
+  <text x="330.56" y="170.06" text-anchor="middle"  class="blackInkLetter" >.</text>
+<path d="M 330.56 164.39 L 323.895 173.564 A 11.34 11.34 0 0 1 319.775 160.886 z" style="fill:#51ffff;stroke:none;"/>
+  <text x="325.168" y="166.142" text-anchor="middle"  class="blackInkLetter" >.</text>
+</g>
+<circle cx="330.56" cy="164.39" r="11.34" id="M111" class="solid"/>
+  <text x="330.56" y="202.589" text-anchor="middle" >M111</text>
+  <line x1="285.2" y1="164.39" x2="285.2" y2="239.09" />
+  <line x1="194.48" y1="239.09" x2="194.48" y2="267.44" />
+  <clipPath id="M112_clipPath">
+   <rect x="183.14" y="267.44" width="22.68" height="22.68" />
+  </clipPath>
+<g clip-path="url(#M112_clipPath)">
+<path d="M 194.48 278.78 L 179.228 273.824 A 16.0372 16.0372 0 0 1 194.48 262.743 z" style="fill:#00009f;stroke:none;"/>
+  <text x="190.709" y="276.874" text-anchor="middle"  class="whiteInkLetter" >A</text>
+<path d="M 194.48 278.78 L 194.48 262.743 A 16.0372 16.0372 0 0 1 209.732 273.824 z" style="fill:#ffffa1;stroke:none;"/>
+  <text x="198.251" y="273.59" text-anchor="middle"  class="blackInkLetter" >.</text>
+<path d="M 194.48 278.78 L 209.732 273.824 A 16.0372 16.0372 0 0 1 203.906 291.754 z" style="fill:#ffcca1;stroke:none;"/>
+  <text x="200.581" y="280.762" text-anchor="middle"  class="blackInkLetter" >.</text>
+<path d="M 194.48 278.78 L 203.906 291.754 A 16.0372 16.0372 0 0 1 185.054 291.754 z" style="fill:#dfafff;stroke:none;"/>
+  <text x="194.48" y="288.543" text-anchor="middle"  class="blackInkLetter" >U</text>
+<path d="M 194.48 278.78 L 185.054 291.754 A 16.0372 16.0372 0 0 1 179.228 273.824 z" style="fill:#c8c815;stroke:none;"/>
+  <text x="188.379" y="284.045" text-anchor="middle"  class="blackInkLetter" >I</text>
+</g>
+  <rect x="183.14" y="267.44" width="22.68" height="22.68" id="M112" class="solid"/>
+  <text x="194.48" y="316.979" text-anchor="middle" >M112</text>
+  <line x1="285.2" y1="239.09" x2="285.2" y2="267.44" />
+  <clipPath id="M113_clipPath">
+   <rect x="273.86" y="267.44" width="22.68" height="22.68" />
+  </clipPath>
+<g clip-path="url(#M113_clipPath)">
+<path d="M 285.2 278.78 L 269.948 273.824 A 16.0372 16.0372 0 0 1 285.2 262.743 z" style="fill:#00009f;stroke:none;"/>
+  <text x="281.429" y="276.874" text-anchor="middle"  class="whiteInkLetter" >A</text>
+<path d="M 285.2 278.78 L 285.2 262.743 A 16.0372 16.0372 0 0 1 300.452 273.824 z" style="fill:#ffffa1;stroke:none;"/>
+  <text x="288.971" y="273.59" text-anchor="middle"  class="blackInkLetter" >.</text>
+<path d="M 285.2 278.78 L 300.452 273.824 A 16.0372 16.0372 0 0 1 294.626 291.754 z" style="fill:#ffcca1;stroke:none;"/>
+  <text x="291.301" y="280.762" text-anchor="middle"  class="blackInkLetter" >.</text>
+<path d="M 285.2 278.78 L 294.626 291.754 A 16.0372 16.0372 0 0 1 275.774 291.754 z" style="fill:#768cff;stroke:none;"/>
+  <text x="285.2" y="288.479" text-anchor="middle"  class="blackInkLetter" >A</text>
+<path d="M 285.2 278.78 L 275.774 291.754 A 16.0372 16.0372 0 0 1 269.948 273.824 z" style="fill:#30e330;stroke:none;"/>
+  <text x="279.099" y="284.111" text-anchor="middle"  class="blackInkLetter" >U</text>
+</g>
+  <rect x="273.86" y="267.44" width="22.68" height="22.68" id="M113" class="solid"/>
+  <text x="285.2" y="316.979" text-anchor="middle" >M113</text>
+  <line x1="375.92" y1="239.09" x2="375.92" y2="267.44" />
+  <clipPath id="M108_clipPath">
+   <rect x="364.58" y="267.44" width="22.68" height="22.68" />
+  </clipPath>
+<g clip-path="url(#M108_clipPath)">
+<path d="M 375.92 278.78 L 360.668 273.824 A 16.0372 16.0372 0 0 1 375.92 262.743 z" style="fill:#ffd702;stroke:none;"/>
+  <text x="372.149" y="273.59" text-anchor="middle"  class="blackInkLetter" >.</text>
+<path d="M 375.92 278.78 L 375.92 262.743 A 16.0372 16.0372 0 0 1 391.172 273.824 z" style="fill:#ffffa1;stroke:none;"/>
+  <text x="379.691" y="273.59" text-anchor="middle"  class="blackInkLetter" >.</text>
+<path d="M 375.92 278.78 L 391.172 273.824 A 16.0372 16.0372 0 0 1 385.346 291.754 z" style="fill:#ffcca1;stroke:none;"/>
+  <text x="382.021" y="280.762" text-anchor="middle"  class="blackInkLetter" >.</text>
+<path d="M 375.92 278.78 L 385.346 291.754 A 16.0372 16.0372 0 0 1 366.494 291.754 z" style="fill:#aa92ff;stroke:none;"/>
+  <text x="375.92" y="288.477" text-anchor="middle"  class="blackInkLetter" >I</text>
+<path d="M 375.92 278.78 L 366.494 291.754 A 16.0372 16.0372 0 0 1 360.668 273.824 z" style="fill:#ad0000;stroke:none;"/>
+  <text x="369.819" y="284.046" text-anchor="middle"  class="whiteInkLetter" >A</text>
+</g>
+  <rect x="364.58" y="267.44" width="22.68" height="22.68" id="M108" class="solid"/>
+  <text x="375.92" y="316.979" text-anchor="middle" >M108</text>
+  <line x1="194.48" y1="239.09" x2="375.92" y2="239.09" />
+  <line x1="557.36" y1="124.7" x2="557.36" y2="153.05" />
+<g>
+<path d="M 557.36 164.39 L 546.575 160.886 A 11.34 11.34 0 0 1 557.36 153.05 z" style="fill:#ffd702;stroke:none;"/>
+  <text x="554.027" y="159.803" text-anchor="middle"  class="blackInkLetter" >.</text>
+<path d="M 557.36 164.39 L 557.36 153.05 A 11.34 11.34 0 0 1 568.145 160.886 z" style="fill:#c3803e;stroke:none;"/>
+  <text x="560.693" y="163.151" text-anchor="middle"  class="blackInkLetter" >U</text>
+<path d="M 557.36 164.39 L 568.145 160.886 A 11.34 11.34 0 0 1 564.025 173.564 z" style="fill:#ffcca1;stroke:none;"/>
+  <text x="562.752" y="166.142" text-anchor="middle"  class="blackInkLetter" >.</text>
+<path d="M 557.36 164.39 L 564.025 173.564 A 11.34 11.34 0 0 1 550.695 173.564 z" style="fill:#ffccff;stroke:none;"/>
+  <text x="557.36" y="170.06" text-anchor="middle"  class="blackInkLetter" >.</text>
+<path d="M 557.36 164.39 L 550.695 173.564 A 11.34 11.34 0 0 1 546.575 160.886 z" style="fill:#51ffff;stroke:none;"/>
+  <text x="551.968" y="166.142" text-anchor="middle"  class="blackInkLetter" >.</text>
+</g>
+<circle cx="557.36" cy="164.39" r="11.34" id="M114" class="solid"/>
+  <text x="557.36" y="202.589" text-anchor="middle" >M114</text>
+  <line x1="477.98" y1="166.28" x2="546.02" y2="166.28" />
+  <line x1="477.98" y1="162.5" x2="546.02" y2="162.5" />
+  <line x1="512" y1="166.28" x2="512" y2="237.2" />
+  <line x1="512" y1="239.09" x2="512" y2="267.44" />
+  <clipPath id="M124_clipPath">
+   <rect x="500.66" y="267.44" width="22.68" height="22.68" />
+  </clipPath>
+<g clip-path="url(#M124_clipPath)">
+<path d="M 512 278.78 L 496.748 273.824 A 16.0372 16.0372 0 0 1 512 262.743 z" style="fill:#ffd702;stroke:none;"/>
+  <text x="508.229" y="273.59" text-anchor="middle"  class="blackInkLetter" >.</text>
+<path d="M 512 278.78 L 512 262.743 A 16.0372 16.0372 0 0 1 527.252 273.824 z" style="fill:#ffffa1;stroke:none;"/>
+  <text x="515.771" y="273.59" text-anchor="middle"  class="blackInkLetter" >.</text>
+<path d="M 512 278.78 L 527.252 273.824 A 16.0372 16.0372 0 0 1 521.426 291.754 z" style="fill:#ffcca1;stroke:none;"/>
+  <text x="518.101" y="280.762" text-anchor="middle"  class="blackInkLetter" >.</text>
+<path d="M 512 278.78 L 521.426 291.754 A 16.0372 16.0372 0 0 1 502.574 291.754 z" style="fill:#ffccff;stroke:none;"/>
+  <text x="512" y="285.195" text-anchor="middle"  class="blackInkLetter" >.</text>
+<path d="M 512 278.78 L 502.574 291.754 A 16.0372 16.0372 0 0 1 496.748 273.824 z" style="fill:#51ffff;stroke:none;"/>
+  <text x="505.899" y="280.762" text-anchor="middle"  class="blackInkLetter" >.</text>
+</g>
+  <rect x="500.66" y="267.44" width="22.68" height="22.68" id="M124" class="solid"/>
+  <text x="512" y="316.979" text-anchor="middle" >M124</text>
+  <line x1="920.24" y1="124.7" x2="920.24" y2="153.05" />
+<g>
+<path d="M 920.24 164.39 L 909.455 160.886 A 11.34 11.34 0 0 1 920.24 153.05 z" style="fill:#00009f;stroke:none;"/>
+  <text x="916.907" y="163.087" text-anchor="middle"  class="whiteInkLetter" >A</text>
+<path d="M 920.24 164.39 L 920.24 153.05 A 11.34 11.34 0 0 1 931.025 160.886 z" style="fill:#870000;stroke:none;"/>
+  <text x="923.573" y="163.087" text-anchor="middle"  class="whiteInkLetter" >A</text>
+<path d="M 920.24 164.39 L 931.025 160.886 A 11.34 11.34 0 0 1 926.905 173.564 z" style="fill:#003f00;stroke:none;"/>
+  <text x="925.632" y="169.426" text-anchor="middle"  class="whiteInkLetter" >A</text>
+<path d="M 920.24 164.39 L 926.905 173.564 A 11.34 11.34 0 0 1 913.575 173.564 z" style="fill:#ffccff;stroke:none;"/>
+  <text x="920.24" y="170.06" text-anchor="middle"  class="blackInkLetter" >.</text>
+<path d="M 920.24 164.39 L 913.575 173.564 A 11.34 11.34 0 0 1 909.455 160.886 z" style="fill:#30e330;stroke:none;"/>
+  <text x="914.848" y="169.49" text-anchor="middle"  class="blackInkLetter" >U</text>
+</g>
+<circle cx="920.24" cy="164.39" r="11.34" id="M103" class="solid"/>
+  <text x="920.24" y="202.589" text-anchor="middle" >M103</text>
+  <line x1="931.58" y1="164.39" x2="999.62" y2="164.39" />
+  <clipPath id="M104_clipPath">
+   <rect x="999.62" y="153.05" width="22.68" height="22.68" />
+  </clipPath>
+<g clip-path="url(#M104_clipPath)">
+<path d="M 1010.96 164.39 L 995.708 159.434 A 16.0372 16.0372 0 0 1 1010.96 148.353 z" style="fill:#ffd702;stroke:none;"/>
+  <text x="1007.19" y="159.2" text-anchor="middle"  class="blackInkLetter" >.</text>
+<path d="M 1010.96 164.39 L 1010.96 148.353 A 16.0372 16.0372 0 0 1 1026.21 159.434 z" style="fill:#ffffa1;stroke:none;"/>
+  <text x="1014.73" y="159.2" text-anchor="middle"  class="blackInkLetter" >.</text>
+<path d="M 1010.96 164.39 L 1026.21 159.434 A 16.0372 16.0372 0 0 1 1020.39 177.364 z" style="fill:#ffcca1;stroke:none;"/>
+  <text x="1017.06" y="166.372" text-anchor="middle"  class="blackInkLetter" >.</text>
+<path d="M 1010.96 164.39 L 1020.39 177.364 A 16.0372 16.0372 0 0 1 1001.53 177.364 z" style="fill:#768cff;stroke:none;"/>
+  <text x="1010.96" y="174.089" text-anchor="middle"  class="blackInkLetter" >A</text>
+<path d="M 1010.96 164.39 L 1001.53 177.364 A 16.0372 16.0372 0 0 1 995.708 159.434 z" style="fill:#c8c815;stroke:none;"/>
+  <text x="1004.86" y="169.655" text-anchor="middle"  class="blackInkLetter" >I</text>
+</g>
+  <rect x="999.62" y="153.05" width="22.68" height="22.68" id="M104" class="solid"/>
+  <text x="1010.96" y="202.589" text-anchor="middle" >M104</text>
+  <line x1="965.6" y1="164.39" x2="965.6" y2="239.09" />
+  <line x1="874.88" y1="239.09" x2="874.88" y2="267.44" />
+<g>
+<path d="M 874.88 278.78 L 864.095 275.276 A 11.34 11.34 0 0 1 874.88 267.44 z" style="fill:#ffd702;stroke:none;"/>
+  <text x="871.547" y="274.193" text-anchor="middle"  class="blackInkLetter" >.</text>
+<path d="M 874.88 278.78 L 874.88 267.44 A 11.34 11.34 0 0 1 885.665 275.276 z" style="fill:#ffffa1;stroke:none;"/>
+  <text x="878.213" y="274.193" text-anchor="middle"  class="blackInkLetter" >.</text>
+<path d="M 874.88 278.78 L 885.665 275.276 A 11.34 11.34 0 0 1 881.545 287.954 z" style="fill:#ffcca1;stroke:none;"/>
+  <text x="880.272" y="280.532" text-anchor="middle"  class="blackInkLetter" >.</text>
+<path d="M 874.88 278.78 L 881.545 287.954 A 11.34 11.34 0 0 1 868.215 287.954 z" style="fill:#dfafff;stroke:none;"/>
+  <text x="874.88" y="287.798" text-anchor="middle"  class="blackInkLetter" >U</text>
+<path d="M 874.88 278.78 L 868.215 287.954 A 11.34 11.34 0 0 1 864.095 275.276 z" style="fill:#c8c815;stroke:none;"/>
+  <text x="869.488" y="283.814" text-anchor="middle"  class="blackInkLetter" >I</text>
+</g>
+<circle cx="874.88" cy="278.78" r="11.34" id="M106" class="solid"/>
+  <text x="874.88" y="316.979" text-anchor="middle" >M106</text>
+  <line x1="886.22" y1="278.78" x2="954.26" y2="278.78" />
+  <clipPath id="M107_clipPath">
+   <rect x="954.26" y="267.44" width="22.68" height="22.68" />
+  </clipPath>
+<g clip-path="url(#M107_clipPath)">
+<path d="M 965.6 278.78 L 950.348 273.824 A 16.0372 16.0372 0 0 1 965.6 262.743 z" style="fill:#ffd702;stroke:none;"/>
+  <text x="961.829" y="273.59" text-anchor="middle"  class="blackInkLetter" >.</text>
+<path d="M 965.6 278.78 L 965.6 262.743 A 16.0372 16.0372 0 0 1 980.852 273.824 z" style="fill:#870000;stroke:none;"/>
+  <text x="969.371" y="276.874" text-anchor="middle"  class="whiteInkLetter" >A</text>
+<path d="M 965.6 278.78 L 980.852 273.824 A 16.0372 16.0372 0 0 1 975.026 291.754 z" style="fill:#003f00;stroke:none;"/>
+  <text x="971.701" y="284.046" text-anchor="middle"  class="whiteInkLetter" >A</text>
+<path d="M 965.6 278.78 L 975.026 291.754 A 16.0372 16.0372 0 0 1 956.174 291.754 z" style="fill:#ffccff;stroke:none;"/>
+  <text x="965.6" y="285.195" text-anchor="middle"  class="blackInkLetter" >.</text>
+<path d="M 965.6 278.78 L 956.174 291.754 A 16.0372 16.0372 0 0 1 950.348 273.824 z" style="fill:#ad0000;stroke:none;"/>
+  <text x="959.499" y="284.046" text-anchor="middle"  class="whiteInkLetter" >A</text>
+</g>
+  <rect x="954.26" y="267.44" width="22.68" height="22.68" id="M107" class="solid"/>
+  <text x="965.6" y="316.979" text-anchor="middle" >M107</text>
+  <line x1="920.24" y1="278.78" x2="920.24" y2="353.48" />
+  <line x1="784.16" y1="353.48" x2="784.16" y2="381.83" />
+<g>
+<path d="M 784.16 393.17 L 773.375 389.666 A 11.34 11.34 0 0 1 784.16 381.83 z" style="fill:#01cf58;stroke:none;"/>
+  <text x="780.827" y="391.931" text-anchor="middle"  class="blackInkLetter" >U</text>
+<path d="M 784.16 393.17 L 784.16 381.83 A 11.34 11.34 0 0 1 794.945 389.666 z" style="fill:#c3803e;stroke:none;"/>
+  <text x="787.493" y="391.931" text-anchor="middle"  class="blackInkLetter" >U</text>
+<path d="M 784.16 393.17 L 794.945 389.666 A 11.34 11.34 0 0 1 790.825 402.344 z" style="fill:#ffcca1;stroke:none;"/>
+  <text x="789.552" y="394.922" text-anchor="middle"  class="blackInkLetter" >.</text>
+<path d="M 784.16 393.17 L 790.825 402.344 A 11.34 11.34 0 0 1 777.495 402.344 z" style="fill:#aa92ff;stroke:none;"/>
+  <text x="784.16" y="402.122" text-anchor="middle"  class="blackInkLetter" >I</text>
+<path d="M 784.16 393.17 L 777.495 402.344 A 11.34 11.34 0 0 1 773.375 389.666 z" style="fill:#51ffff;stroke:none;"/>
+  <text x="778.768" y="394.922" text-anchor="middle"  class="blackInkLetter" >.</text>
+</g>
+<circle cx="784.16" cy="393.17" r="11.34" id="M109" class="solid"/>
+  <text x="784.16" y="431.369" text-anchor="middle" >M109</text>
+  <line x1="795.5" y1="393.17" x2="863.54" y2="393.17" />
+  <clipPath id="M115_clipPath">
+   <rect x="863.54" y="381.83" width="22.68" height="22.68" />
+  </clipPath>
+<g clip-path="url(#M115_clipPath)">
+<path d="M 874.88 393.17 L 859.628 388.214 A 16.0372 16.0372 0 0 1 874.88 377.133 z" style="fill:#01cf58;stroke:none;"/>
+  <text x="871.109" y="391.328" text-anchor="middle"  class="blackInkLetter" >U</text>
+<path d="M 874.88 393.17 L 874.88 377.133 A 16.0372 16.0372 0 0 1 890.132 388.214 z" style="fill:#c3803e;stroke:none;"/>
+  <text x="878.651" y="391.328" text-anchor="middle"  class="blackInkLetter" >U</text>
+<path d="M 874.88 393.17 L 890.132 388.214 A 16.0372 16.0372 0 0 1 884.306 406.144 z" style="fill:#ffcca1;stroke:none;"/>
+  <text x="880.981" y="395.152" text-anchor="middle"  class="blackInkLetter" >.</text>
+<path d="M 874.88 393.17 L 884.306 406.144 A 16.0372 16.0372 0 0 1 865.454 406.144 z" style="fill:#ffccff;stroke:none;"/>
+  <text x="874.88" y="399.585" text-anchor="middle"  class="blackInkLetter" >.</text>
+<path d="M 874.88 393.17 L 865.454 406.144 A 16.0372 16.0372 0 0 1 859.628 388.214 z" style="fill:#51ffff;stroke:none;"/>
+  <text x="868.779" y="395.152" text-anchor="middle"  class="blackInkLetter" >.</text>
+</g>
+  <rect x="863.54" y="381.83" width="22.68" height="22.68" id="M115" class="solid"/>
+  <text x="874.88" y="431.369" text-anchor="middle" >M115</text>
+  <line x1="829.52" y1="393.17" x2="829.52" y2="467.87" />
+  <line x1="829.52" y1="467.87" x2="829.52" y2="496.22" />
+<g>
+<path d="M 829.52 507.56 L 818.735 504.056 A 11.34 11.34 0 0 1 829.52 496.22 z" style="fill:#ffd702;stroke:none;"/>
+  <text x="826.187" y="502.973" text-anchor="middle"  class="blackInkLetter" >.</text>
+<path d="M 829.52 507.56 L 829.52 496.22 A 11.34 11.34 0 0 1 840.305 504.056 z" style="fill:#870000;stroke:none;"/>
+  <text x="832.853" y="506.257" text-anchor="middle"  class="whiteInkLetter" >A</text>
+<path d="M 829.52 507.56 L 840.305 504.056 A 11.34 11.34 0 0 1 836.185 516.734 z" style="fill:#003f00;stroke:none;"/>
+  <text x="834.912" y="512.596" text-anchor="middle"  class="whiteInkLetter" >A</text>
+<path d="M 829.52 507.56 L 836.185 516.734 A 11.34 11.34 0 0 1 822.855 516.734 z" style="fill:#aa92ff;stroke:none;"/>
+  <text x="829.52" y="516.512" text-anchor="middle"  class="blackInkLetter" >I</text>
+<path d="M 829.52 507.56 L 822.855 516.734 A 11.34 11.34 0 0 1 818.735 504.056 z" style="fill:#51ffff;stroke:none;"/>
+  <text x="824.128" y="509.312" text-anchor="middle"  class="blackInkLetter" >.</text>
+</g>
+<circle cx="829.52" cy="507.56" r="11.34" id="M116" class="solid"/>
+  <text x="829.52" y="545.759" text-anchor="middle" >M116</text>
+  <line x1="614.06" y1="395.06" x2="682.1" y2="395.06" />
+  <line x1="614.06" y1="391.28" x2="682.1" y2="391.28" />
+  <line x1="648.08" y1="395.06" x2="648.08" y2="465.98" />
+  <line x1="648.08" y1="467.87" x2="648.08" y2="496.22" />
+  <clipPath id="M118_clipPath">
+   <rect x="636.74" y="496.22" width="22.68" height="22.68" />
+  </clipPath>
+<g clip-path="url(#M118_clipPath)">
+<path d="M 648.08 507.56 L 632.828 502.604 A 16.0372 16.0372 0 0 1 648.08 491.523 z" style="fill:#ffd702;stroke:none;"/>
+  <text x="644.309" y="502.37" text-anchor="middle"  class="blackInkLetter" >.</text>
+<path d="M 648.08 507.56 L 648.08 491.523 A 16.0372 16.0372 0 0 1 663.332 502.604 z" style="fill:#c3803e;stroke:none;"/>
+  <text x="651.851" y="505.718" text-anchor="middle"  class="blackInkLetter" >U</text>
+<path d="M 648.08 507.56 L 663.332 502.604 A 16.0372 16.0372 0 0 1 657.506 520.534 z" style="fill:#ffcca1;stroke:none;"/>
+  <text x="654.181" y="509.542" text-anchor="middle"  class="blackInkLetter" >.</text>
+<path d="M 648.08 507.56 L 657.506 520.534 A 16.0372 16.0372 0 0 1 638.654 520.534 z" style="fill:#ffccff;stroke:none;"/>
+  <text x="648.08" y="513.975" text-anchor="middle"  class="blackInkLetter" >.</text>
+<path d="M 648.08 507.56 L 638.654 520.534 A 16.0372 16.0372 0 0 1 632.828 502.604 z" style="fill:#51ffff;stroke:none;"/>
+  <text x="641.979" y="509.542" text-anchor="middle"  class="blackInkLetter" >.</text>
+</g>
+  <rect x="636.74" y="496.22" width="22.68" height="22.68" id="M118" class="solid"/>
+  <text x="648.08" y="545.759" text-anchor="middle" >M118</text>
+  <line x1="772.82" y1="395.06" x2="682.1" y2="395.06" />
+  <line x1="772.82" y1="391.28" x2="682.1" y2="391.28" />
+  <line x1="965.6" y1="353.48" x2="965.6" y2="381.83" />
+<g>
+<path d="M 965.6 393.17 L 954.815 389.666 A 11.34 11.34 0 0 1 965.6 381.83 z" style="fill:#01cf58;stroke:none;"/>
+  <text x="962.267" y="391.931" text-anchor="middle"  class="blackInkLetter" >U</text>
+<path d="M 965.6 393.17 L 965.6 381.83 A 11.34 11.34 0 0 1 976.385 389.666 z" style="fill:#c3803e;stroke:none;"/>
+  <text x="968.933" y="391.931" text-anchor="middle"  class="blackInkLetter" >U</text>
+<path d="M 965.6 393.17 L 976.385 389.666 A 11.34 11.34 0 0 1 972.265 402.344 z" style="fill:#ffcca1;stroke:none;"/>
+  <text x="970.992" y="394.922" text-anchor="middle"  class="blackInkLetter" >.</text>
+<path d="M 965.6 393.17 L 972.265 402.344 A 11.34 11.34 0 0 1 958.935 402.344 z" style="fill:#aa92ff;stroke:none;"/>
+  <text x="965.6" y="402.122" text-anchor="middle"  class="blackInkLetter" >I</text>
+<path d="M 965.6 393.17 L 958.935 402.344 A 11.34 11.34 0 0 1 954.815 389.666 z" style="fill:#c8c815;stroke:none;"/>
+  <text x="960.208" y="398.204" text-anchor="middle"  class="blackInkLetter" >I</text>
+</g>
+<circle cx="965.6" cy="393.17" r="11.34" id="M110" class="solid"/>
+  <text x="965.6" y="431.369" text-anchor="middle" >M110</text>
+  <line x1="784.16" y1="353.48" x2="965.6" y2="353.48" />
+  <line x1="1056.32" y1="239.09" x2="1056.32" y2="267.44" />
+  <clipPath id="M105_clipPath">
+   <rect x="1044.98" y="267.44" width="22.68" height="22.68" />
+  </clipPath>
+<g clip-path="url(#M105_clipPath)">
+<path d="M 1056.32 278.78 L 1041.07 273.824 A 16.0372 16.0372 0 0 1 1056.32 262.743 z" style="fill:#00009f;stroke:none;"/>
+  <text x="1052.55" y="276.874" text-anchor="middle"  class="whiteInkLetter" >A</text>
+<path d="M 1056.32 278.78 L 1056.32 262.743 A 16.0372 16.0372 0 0 1 1071.57 273.824 z" style="fill:#870000;stroke:none;"/>
+  <text x="1060.09" y="276.874" text-anchor="middle"  class="whiteInkLetter" >A</text>
+<path d="M 1056.32 278.78 L 1071.57 273.824 A 16.0372 16.0372 0 0 1 1065.75 291.754 z" style="fill:#003f00;stroke:none;"/>
+  <text x="1062.42" y="284.046" text-anchor="middle"  class="whiteInkLetter" >A</text>
+<path d="M 1056.32 278.78 L 1065.75 291.754 A 16.0372 16.0372 0 0 1 1046.89 291.754 z" style="fill:#ffccff;stroke:none;"/>
+  <text x="1056.32" y="285.195" text-anchor="middle"  class="blackInkLetter" >.</text>
+<path d="M 1056.32 278.78 L 1046.89 291.754 A 16.0372 16.0372 0 0 1 1041.07 273.824 z" style="fill:#51ffff;stroke:none;"/>
+  <text x="1050.22" y="280.762" text-anchor="middle"  class="blackInkLetter" >.</text>
+</g>
+  <rect x="1044.98" y="267.44" width="22.68" height="22.68" id="M105" class="solid"/>
+  <text x="1056.32" y="316.979" text-anchor="middle" >M105</text>
+  <line x1="874.88" y1="239.09" x2="1056.32" y2="239.09" />
+  <line x1="239.84" y1="124.7" x2="920.24" y2="124.7" />
+  </g>
+  <g class="legend">
+  <text x="103.76" y="50" text-anchor="middle" >Affected</text>
+  <rect  x="62.18" y="53.78" width="83.16" height="13.95" style="fill:#00009f;"  />
+  <text x="103.76" y="65.3195" text-anchor="middle"  class="whiteInkLetter_1" >A</text>
+  <rect  x="62.18" y="67.73" width="83.16" height="13.95" style="fill:#01cf58;"  />
+  <text x="103.76" y="79.2695" text-anchor="middle"  class="blackInkLetter_1" >U</text>
+  <rect  x="62.18" y="81.68" width="83.16" height="13.95" style="fill:#ffd702;"  />
+  <text x="103.76" y="88.655" text-anchor="middle"  class="blackInkLetter_1" >.</text>
+  <text x="103.76" y="109.58" text-anchor="middle" >Affected_...</text>
+  <rect  x="62.18" y="113.36" width="83.16" height="13.95" style="fill:#870000;"  />
+  <text x="103.76" y="124.899" text-anchor="middle"  class="whiteInkLetter_1" >A</text>
+  <rect  x="62.18" y="127.31" width="83.16" height="13.95" style="fill:#c3803e;"  />
+  <text x="103.76" y="138.849" text-anchor="middle"  class="blackInkLetter_1" >U</text>
+  <rect  x="62.18" y="141.26" width="83.16" height="13.95" style="fill:#ffffa1;"  />
+  <text x="103.76" y="148.235" text-anchor="middle"  class="blackInkLetter_1" >.</text>
+  <text x="103.76" y="169.16" text-anchor="middle" >Affected_NEO</text>
+  <rect  x="62.18" y="172.94" width="83.16" height="13.95" style="fill:#003f00;"  />
+  <text x="103.76" y="184.479" text-anchor="middle"  class="whiteInkLetter_1" >A</text>
+  <rect  x="62.18" y="186.89" width="83.16" height="13.95" style="fill:#ffcca1;"  />
+  <text x="103.76" y="193.865" text-anchor="middle"  class="blackInkLetter_1" >.</text>
+  <text x="103.76" y="214.79" text-anchor="middle" >Affected_...</text>
+  <rect  x="62.18" y="218.57" width="83.16" height="13.95" style="fill:#768cff;"  />
+  <text x="103.76" y="230.109" text-anchor="middle"  class="blackInkLetter_1" >A</text>
+  <rect  x="62.18" y="232.52" width="83.16" height="13.95" style="fill:#aa92ff;"  />
+  <text x="103.76" y="244.059" text-anchor="middle"  class="blackInkLetter_1" >I</text>
+  <rect  x="62.18" y="246.47" width="83.16" height="13.95" style="fill:#dfafff;"  />
+  <text x="103.76" y="258.009" text-anchor="middle"  class="blackInkLetter_1" >U</text>
+  <rect  x="62.18" y="260.42" width="83.16" height="13.95" style="fill:#ffccff;"  />
+  <text x="103.76" y="267.395" text-anchor="middle"  class="blackInkLetter_1" >.</text>
+  <text x="103.76" y="288.32" text-anchor="middle" >Affected_...</text>
+  <rect  x="62.18" y="292.1" width="83.16" height="13.95" style="fill:#ad0000;"  />
+  <text x="103.76" y="303.639" text-anchor="middle"  class="whiteInkLetter_1" >A</text>
+  <rect  x="62.18" y="306.05" width="83.16" height="13.95" style="fill:#c8c815;"  />
+  <text x="103.76" y="317.589" text-anchor="middle"  class="blackInkLetter_1" >I</text>
+  <rect  x="62.18" y="320" width="83.16" height="13.95" style="fill:#30e330;"  />
+  <text x="103.76" y="331.539" text-anchor="middle"  class="blackInkLetter_1" >U</text>
+  <rect  x="62.18" y="333.95" width="83.16" height="13.95" style="fill:#51ffff;"  />
+  <text x="103.76" y="340.925" text-anchor="middle"  class="blackInkLetter_1" >.</text>
+  </g>
+
+ </g>
+ </svg>
+

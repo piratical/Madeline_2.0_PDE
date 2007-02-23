@@ -1,0 +1,454 @@
+<?xml version="1.0" standalone="no"?>
+ <svg version="1.1"  id="svgDC" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"  width="1368.36" height="681.39"  onload="init()" >
+ <defs>
+  <style type="text/css"><![CDATA[
+
+line{
+	stroke-linejoin:miter;
+	stroke:#000;
+	stroke-width:0.5mm;
+	stroke-linejoin:miter;
+	stroke-linecap:square;
+}
+
+rect{
+	stroke:#000;
+	stroke-width:0.5mm;
+	stroke-linejoin:miter;
+	stroke-linecap:square;
+}
+
+ellipse{
+	stroke: #000;
+    fill: #fff;
+	stroke-width:0.25mm;
+}
+
+text{
+	font-family:"Bitstream Vera Sans",sans-serif;
+	font-size:12px;
+}
+
+.layer text{
+	fill:#930;
+}
+
+.layer line{
+	stroke:#000;
+}
+
+.birthOrder,.unknownTwins{
+	font-size: 8px;
+}
+
+.header{
+	font-size:18px;
+	font-weight:bold;
+}
+
+.keyBox{
+	fill:#e5e5e5;
+	stroke:#000;
+	stroke-width:0.5mm;
+	stroke-linejoin:miter;
+	stroke-linecap:square;
+}
+
+.mating:hover{
+	stroke-width:1mm;
+	stroke:#d56300;
+}
+
+.selectedIndividual{
+	stroke-width:1mm;
+	stroke-linecap:square;
+	stroke-linejoin:miter;
+	stroke:#d00;
+    fill:none;
+}
+
+.selectedIndividual:hover{
+	stroke:#d00;
+	fill:#ffbbbb;
+	fill-opacity:0.70;
+}
+
+.solid{
+	stroke-width:0.5mm;
+	stroke-linecap:square;
+	stroke-linejoin:miter;
+	stroke:#000;
+	fill:none;
+}
+
+.dashed{
+	stroke-width:0.5mm;
+	stroke-linecap:square;
+	stroke-linejoin:miter;
+	stroke:#98afc7;
+	stroke-dasharray:2mm,1mm;
+	stroke-dashoffset:1.0mm;
+	fill:none;
+}
+
+.solid:hover{
+	fill:#ffb787;
+	fill-opacity:0.70;
+	stroke:#d56300;
+	stroke-width:1mm;
+}
+
+.dashed:hover{
+	fill:#ffb787;
+	fill-opacity:0.70;
+	stroke:#d56300;
+	stroke-width:1mm;
+}
+
+.thinLine{
+	fill:none;
+	stroke: #000;
+	stroke-width:0.25mm;
+}
+
+.whiteInkLetter_1{
+	font-size: 12px;
+	fill: #fff;
+}
+
+.whiteInkLetter_2{
+	font-size: 10px;
+	fill: #fff;
+}
+
+.whiteInkLetter_3{
+	font-size: 8px;
+	fill: #fff;
+}
+
+.whiteInkLetter{
+	font-size: 8px;
+	fill: #fff;
+}
+
+.blackInkLetter_1{
+	font-size: 12px;
+}
+
+.blackInkLetter_2{
+	font-size: 10px;
+}
+
+.blackInkLetter_3{
+	font-size: 8px;
+}
+
+.blackInkLetter{
+	font-size: 8px;
+	fill: #000;
+}
+
+]]></style>
+ <script type="text/javascript" xlink:href="javascript/madeline.js"></script>
+ <marker id="endArrow" viewBox="0 0 10 10" refX="1" refY="5" markerUnits="strokeWidth" orient="auto" markerWidth="5" markerHeight="4">  <polyline points="0,0 10,5 0,10 1,5" fill="#000" /> </marker>
+ </defs>
+ <g class="pedigree" transform="translate(172.18)">
+
+ <g id="layer0" class="layer" >
+  <line x1="160.46" y1="308.57" x2="99.98" y2="308.57" />
+  <line x1="69.74" y1="180.23" x2="99.98" y2="180.23" />
+  <line x1="99.98" y1="308.57" x2="99.98" y2="180.23" />
+  <line x1="160.46" y1="304.79" x2="103.76" y2="304.79" />
+  <line x1="69.74" y1="176.45" x2="103.76" y2="176.45" />
+  <line x1="103.76" y1="304.79" x2="103.76" y2="176.45" />
+  <line x1="908.9" y1="308.57" x2="1014.74" y2="308.57" />
+  <line x1="1044.98" y1="180.23" x2="1014.74" y2="180.23" />
+  <line x1="1014.74" y1="308.57" x2="1014.74" y2="180.23" />
+  <line x1="908.9" y1="304.79" x2="1010.96" y2="304.79" />
+  <line x1="1044.98" y1="176.45" x2="1010.96" y2="176.45" />
+  <line x1="1010.96" y1="304.79" x2="1010.96" y2="176.45" />
+  <text x="512" y="330.929" text-anchor="middle" >A</text>
+  <text x="-32.32" y="202.589" text-anchor="middle" >A</text>
+  <line x1="319.22" y1="436.91" x2="379.7" y2="436.91" />
+  <line x1="409.94" y1="308.57" x2="379.7" y2="308.57" />
+  <line x1="379.7" y1="436.91" x2="379.7" y2="308.57" />
+  <line x1="319.22" y1="433.13" x2="375.92" y2="433.13" />
+  <line x1="409.94" y1="304.79" x2="375.92" y2="304.79" />
+  <line x1="375.92" y1="433.13" x2="375.92" y2="304.79" />
+ </g>
+
+  <g class="drawing">
+  <text x="557.36" y="30" text-anchor="middle"  class="header" >cs_010</text>
+  <clipPath id="U00_clipPath">
+   <rect x="500.66" y="38.66" width="22.68" height="22.68" />
+  </clipPath>
+<g clip-path="url(#U00_clipPath)">
+<circle cx="512" cy="50" r="16.0372" style="fill:#ffffff;stroke:none;"/>
+  <text x="512" y="50" text-anchor="middle"  class="blackInkLetter_1" >.</text>
+</g>
+  <rect x="500.66" y="38.66" width="22.68" height="22.68" id="U00" class="solid"/>
+  <line x1="496.88" y1="65.12" x2="527.12" y2="34.88" />
+  <text x="512" y="111.278" text-anchor="middle" >U00</text>
+  <text x="512" y="125.228" text-anchor="middle" >.</text>
+  <line x1="523.34" y1="50" x2="591.38" y2="50" />
+<g>
+<circle cx="602.72" cy="50" r="11.34" style="fill:#ffffff;stroke:none;"/>
+  <text x="602.72" y="50" text-anchor="middle"  class="blackInkLetter_1" >.</text>
+</g>
+<circle cx="602.72" cy="50" r="11.34" id="U01" class="solid"/>
+  <line x1="587.6" y1="65.12" x2="617.84" y2="34.88" />
+  <text x="602.72" y="111.278" text-anchor="middle" >U01</text>
+  <text x="602.72" y="125.228" text-anchor="middle" >.</text>
+  <line class="mating" id="U01:U00" x1="557.36" y1="50" x2="557.36" y2="138.65" />
+  <line x1="-32.32" y1="138.65" x2="-32.32" y2="167" />
+  <clipPath id="T04_clipPath">
+   <rect x="-43.66" y="167" width="22.68" height="22.68" />
+  </clipPath>
+<g clip-path="url(#T04_clipPath)">
+<circle cx="-32.32" cy="178.34" r="16.0372" style="fill:#ffffff;stroke:none;"/>
+  <text x="-32.32" y="178.34" text-anchor="middle"  class="blackInkLetter_1" >.</text>
+</g>
+  <rect x="-43.66" y="167" width="22.68" height="22.68" id="T04" class="solid"/>
+  <ellipse cx="-32.32" cy="216.539" rx="6" ry="6" />
+  <text x="-32.32" y="219.035" text-anchor="middle"  class="birthOrder" >4</text>
+  <text x="-32.32" y="239.618" text-anchor="middle" >T04</text>
+  <text x="-32.32" y="253.568" text-anchor="middle" >1942.01.04</text>
+  <line x1="58.4" y1="138.65" x2="58.4" y2="167" />
+  <clipPath id="T02_clipPath">
+   <rect x="47.06" y="167" width="22.68" height="22.68" />
+  </clipPath>
+<g clip-path="url(#T02_clipPath)">
+<circle cx="58.4" cy="178.34" r="16.0372" style="fill:#000000;stroke:none;"/>
+  <text x="58.4" y="181.624" text-anchor="middle"  class="whiteInkLetter_1" >A</text>
+</g>
+  <rect x="47.06" y="167" width="22.68" height="22.68" id="T02" class="solid"/>
+<path d="M 45.17 191.57 l -8.7318 3.7422 l 1.8711 1.8711 l -3.1185 3.1185 l 1.2474 1.2474 l 3.1185 -3.1185 l 1.8711 1.8711 z" />
+  <text x="29.294" y="203.666" text-anchor="middle" >P</text>
+  <ellipse cx="58.4" cy="216.539" rx="6" ry="6" />
+  <text x="58.4" y="219.035" text-anchor="middle"  class="birthOrder" >1</text>
+  <text x="58.4" y="239.618" text-anchor="middle" >T02</text>
+  <text x="58.4" y="253.568" text-anchor="middle" >1937.10.08</text>
+  <line x1="421.28" y1="138.65" x2="421.28" y2="167" />
+<g>
+<circle cx="421.28" cy="178.34" r="11.34" style="fill:#ffffff;stroke:none;"/>
+  <text x="421.28" y="178.34" text-anchor="middle"  class="blackInkLetter_1" >.</text>
+</g>
+<circle cx="421.28" cy="178.34" r="11.34" id="T06" class="solid"/>
+  <ellipse cx="421.28" cy="216.539" rx="6" ry="6" />
+  <text x="421.28" y="219.035" text-anchor="middle"  class="birthOrder" >3</text>
+  <text x="421.28" y="239.618" text-anchor="middle" >T06</text>
+  <text x="421.28" y="253.568" text-anchor="middle" >1940.05.12</text>
+  <line x1="432.62" y1="178.34" x2="500.66" y2="178.34" />
+  <clipPath id="T07_clipPath">
+   <rect x="500.66" y="167" width="22.68" height="22.68" />
+  </clipPath>
+<g clip-path="url(#T07_clipPath)">
+<circle cx="512" cy="178.34" r="16.0372" style="fill:#ffffff;stroke:none;"/>
+  <text x="512" y="178.34" text-anchor="middle"  class="blackInkLetter_1" >.</text>
+</g>
+  <rect x="500.66" y="167" width="22.68" height="22.68" id="T07" class="solid"/>
+  <text x="512" y="239.618" text-anchor="middle" >T07</text>
+  <text x="512" y="253.568" text-anchor="middle" >1941.08.09</text>
+  <line class="mating" id="T06:T07" x1="466.64" y1="178.34" x2="466.64" y2="266.99" />
+  <line x1="239.84" y1="266.99" x2="239.84" y2="295.34" />
+<g>
+<circle cx="239.84" cy="306.68" r="11.34" style="fill:#ffffff;stroke:none;"/>
+  <text x="239.84" y="306.68" text-anchor="middle"  class="blackInkLetter_1" >.</text>
+</g>
+<circle cx="239.84" cy="306.68" r="11.34" id="T10" class="solid"/>
+  <ellipse cx="239.84" cy="344.879" rx="6" ry="6" />
+  <text x="239.84" y="347.375" text-anchor="middle"  class="birthOrder" >4</text>
+  <text x="239.84" y="367.958" text-anchor="middle" >T10</text>
+  <text x="239.84" y="381.908" text-anchor="middle" >1966.02.19</text>
+  <line x1="160.46" y1="308.57" x2="228.5" y2="308.57" />
+  <line x1="160.46" y1="304.79" x2="228.5" y2="304.79" />
+  <line class="mating" id="T10:T02" x1="194.48" y1="308.57" x2="194.48" y2="393.44" />
+  <line x1="149.12" y1="395.33" x2="149.12" y2="423.68" />
+  <clipPath id="T13_clipPath">
+   <rect x="137.78" y="423.68" width="22.68" height="22.68" />
+  </clipPath>
+<g clip-path="url(#T13_clipPath)">
+<circle cx="149.12" cy="435.02" r="16.0372" style="fill:#ffffff;stroke:none;"/>
+  <text x="149.12" y="435.02" text-anchor="middle"  class="blackInkLetter_1" >.</text>
+</g>
+  <rect x="137.78" y="423.68" width="22.68" height="22.68" id="T13" class="solid"/>
+  <ellipse cx="149.12" cy="473.219" rx="6" ry="6" />
+  <text x="149.12" y="475.715" text-anchor="middle"  class="birthOrder" >2</text>
+  <text x="149.12" y="496.298" text-anchor="middle" >T13</text>
+  <text x="149.12" y="510.248" text-anchor="middle" >1989.05.07</text>
+  <line x1="239.84" y1="395.33" x2="239.84" y2="423.68" />
+<g>
+<circle cx="239.84" cy="435.02" r="11.34" style="fill:#ffffff;stroke:none;"/>
+  <text x="239.84" y="435.02" text-anchor="middle"  class="blackInkLetter_1" >.</text>
+</g>
+<circle cx="239.84" cy="435.02" r="11.34" id="T14" class="solid"/>
+  <ellipse cx="239.84" cy="473.219" rx="6" ry="6" />
+  <text x="239.84" y="475.715" text-anchor="middle"  class="birthOrder" >1</text>
+  <text x="239.84" y="496.298" text-anchor="middle" >T14</text>
+  <text x="239.84" y="510.248" text-anchor="middle" >1986.08.10</text>
+  <line x1="251.18" y1="436.91" x2="319.22" y2="436.91" />
+  <line x1="251.18" y1="433.13" x2="319.22" y2="433.13" />
+  <line class="mating" id="T14:T08" x1="285.2" y1="436.91" x2="285.2" y2="521.78" />
+  <line x1="285.2" y1="523.67" x2="285.2" y2="552.02" />
+<g>
+<circle cx="285.2" cy="563.36" r="11.34" style="fill:#000000;stroke:none;"/>
+  <text x="285.2" y="566.644" text-anchor="middle"  class="whiteInkLetter_1" >A</text>
+</g>
+<circle cx="285.2" cy="563.36" r="11.34" id="T16" class="solid"/>
+  <ellipse cx="285.2" cy="601.559" rx="6" ry="6" />
+  <text x="285.2" y="604.055" text-anchor="middle"  class="birthOrder" >1</text>
+  <text x="285.2" y="624.638" text-anchor="middle" >T16</text>
+  <text x="285.2" y="638.588" text-anchor="middle" >2004.03.12</text>
+  <line x1="149.12" y1="395.33" x2="239.84" y2="395.33" />
+  <line x1="421.28" y1="266.99" x2="421.28" y2="295.34" />
+  <clipPath id="T08_clipPath">
+   <rect x="409.94" y="295.34" width="22.68" height="22.68" />
+  </clipPath>
+<g clip-path="url(#T08_clipPath)">
+<circle cx="421.28" cy="306.68" r="16.0372" style="fill:#ffffff;stroke:none;"/>
+  <text x="421.28" y="306.68" text-anchor="middle"  class="blackInkLetter_1" >.</text>
+</g>
+  <rect x="409.94" y="295.34" width="22.68" height="22.68" id="T08" class="solid"/>
+  <ellipse cx="421.28" cy="344.879" rx="6" ry="6" />
+  <text x="421.28" y="347.375" text-anchor="middle"  class="birthOrder" >5</text>
+  <text x="421.28" y="367.958" text-anchor="middle" >T08</text>
+  <text x="421.28" y="381.908" text-anchor="middle" >1968.06.11</text>
+  <line x1="602.72" y1="266.99" x2="602.72" y2="295.34" />
+<g>
+<circle cx="602.72" cy="306.68" r="11.34" style="fill:#ffffff;stroke:none;"/>
+  <text x="602.72" y="306.68" text-anchor="middle"  class="blackInkLetter_1" >.</text>
+</g>
+<circle cx="602.72" cy="306.68" r="11.34" id="T11" class="solid"/>
+  <ellipse cx="602.72" cy="344.879" rx="6" ry="6" />
+  <text x="602.72" y="347.375" text-anchor="middle"  class="birthOrder" >1</text>
+  <text x="602.72" y="367.958" text-anchor="middle" >T11</text>
+  <text x="602.72" y="381.908" text-anchor="middle" >1963.04.15</text>
+  <line x1="523.34" y1="308.57" x2="591.38" y2="308.57" />
+  <line x1="523.34" y1="304.79" x2="591.38" y2="304.79" />
+  <line class="mating" id="T11:T04" x1="557.36" y1="308.57" x2="557.36" y2="393.44" />
+  <line x1="512" y1="395.33" x2="512" y2="423.68" />
+  <clipPath id="U18_clipPath">
+   <rect x="500.66" y="423.68" width="22.68" height="22.68" />
+  </clipPath>
+<g clip-path="url(#U18_clipPath)">
+<circle cx="512" cy="435.02" r="16.0372" style="fill:#ffffff;stroke:none;"/>
+  <text x="512" y="435.02" text-anchor="middle"  class="blackInkLetter_1" >.</text>
+</g>
+  <rect x="500.66" y="423.68" width="22.68" height="22.68" id="U18" class="solid"/>
+  <text x="512" y="496.298" text-anchor="middle" >U18</text>
+  <text x="512" y="510.248" text-anchor="middle" >.</text>
+  <line x1="602.72" y1="395.33" x2="602.72" y2="423.68" />
+  <clipPath id="U19_clipPath">
+   <rect x="591.38" y="423.68" width="22.68" height="22.68" />
+  </clipPath>
+<g clip-path="url(#U19_clipPath)">
+<circle cx="602.72" cy="435.02" r="16.0372" style="fill:#ffffff;stroke:none;"/>
+  <text x="602.72" y="435.02" text-anchor="middle"  class="blackInkLetter_1" >.</text>
+</g>
+  <rect x="591.38" y="423.68" width="22.68" height="22.68" id="U19" class="solid"/>
+  <text x="602.72" y="496.298" text-anchor="middle" >U19</text>
+  <text x="602.72" y="510.248" text-anchor="middle" >.</text>
+  <line x1="512" y1="395.33" x2="602.72" y2="395.33" />
+  <line x1="693.44" y1="266.99" x2="693.44" y2="295.34" />
+<g>
+<circle cx="693.44" cy="306.68" r="11.34" style="fill:#ffffff;stroke:none;"/>
+  <text x="693.44" y="306.68" text-anchor="middle"  class="blackInkLetter_1" >.</text>
+</g>
+<circle cx="693.44" cy="306.68" r="11.34" id="T09" class="solid"/>
+  <ellipse cx="693.44" cy="344.879" rx="6" ry="6" />
+  <text x="693.44" y="347.375" text-anchor="middle"  class="birthOrder" >2</text>
+  <text x="693.44" y="367.958" text-anchor="middle" >T09</text>
+  <text x="693.44" y="381.908" text-anchor="middle" >1964.07.13</text>
+  <line x1="829.52" y1="266.99" x2="829.52" y2="295.34" />
+<g>
+<circle cx="829.52" cy="306.68" r="11.34" style="fill:#ffffff;stroke:none;"/>
+  <text x="829.52" y="306.68" text-anchor="middle"  class="blackInkLetter_1" >.</text>
+</g>
+<circle cx="829.52" cy="306.68" r="11.34" id="T12" class="solid"/>
+  <ellipse cx="829.52" cy="344.879" rx="6" ry="6" />
+  <text x="829.52" y="347.375" text-anchor="middle"  class="birthOrder" >3</text>
+  <text x="829.52" y="367.958" text-anchor="middle" >T12</text>
+  <text x="829.52" y="381.908" text-anchor="middle" >1965.01.10</text>
+  <line x1="840.86" y1="308.57" x2="908.9" y2="308.57" />
+  <line x1="840.86" y1="304.79" x2="908.9" y2="304.79" />
+  <line class="mating" id="T12:T03" x1="874.88" y1="308.57" x2="874.88" y2="393.44" />
+  <line x1="784.16" y1="395.33" x2="784.16" y2="423.68" />
+<g>
+<circle cx="784.16" cy="435.02" r="11.34" style="fill:#ffffff;stroke:none;"/>
+  <text x="784.16" y="435.02" text-anchor="middle"  class="blackInkLetter_1" >.</text>
+</g>
+<circle cx="784.16" cy="435.02" r="11.34" id="T20" class="solid"/>
+  <ellipse cx="784.16" cy="473.219" rx="6" ry="6" />
+  <text x="784.16" y="475.715" text-anchor="middle"  class="birthOrder" >1</text>
+  <text x="784.16" y="496.298" text-anchor="middle" >T20</text>
+  <text x="784.16" y="510.248" text-anchor="middle" >1989.04.02</text>
+  <line x1="874.88" y1="395.33" x2="874.88" y2="423.68" />
+  <clipPath id="T21_clipPath">
+   <rect x="863.54" y="423.68" width="22.68" height="22.68" />
+  </clipPath>
+<g clip-path="url(#T21_clipPath)">
+<circle cx="874.88" cy="435.02" r="16.0372" style="fill:#000000;stroke:none;"/>
+  <text x="874.88" y="438.304" text-anchor="middle"  class="whiteInkLetter_1" >A</text>
+</g>
+  <rect x="863.54" y="423.68" width="22.68" height="22.68" id="T21" class="solid"/>
+  <ellipse cx="874.88" cy="473.219" rx="6" ry="6" />
+  <text x="874.88" y="475.715" text-anchor="middle"  class="birthOrder" >2</text>
+  <text x="874.88" y="496.298" text-anchor="middle" >T21</text>
+  <text x="874.88" y="510.248" text-anchor="middle" >1990.11.19</text>
+  <line x1="965.6" y1="395.33" x2="965.6" y2="423.68" />
+<g>
+<circle cx="965.6" cy="435.02" r="11.34" style="fill:#ffffff;stroke:none;"/>
+  <text x="965.6" y="435.02" text-anchor="middle"  class="blackInkLetter_1" >.</text>
+</g>
+<circle cx="965.6" cy="435.02" r="11.34" id="T22" class="solid"/>
+  <ellipse cx="965.6" cy="473.219" rx="6" ry="6" />
+  <text x="965.6" y="475.715" text-anchor="middle"  class="birthOrder" >3</text>
+  <text x="965.6" y="496.298" text-anchor="middle" >T22</text>
+  <text x="965.6" y="510.248" text-anchor="middle" >1992.08.17</text>
+  <line x1="784.16" y1="395.33" x2="965.6" y2="395.33" />
+  <line x1="239.84" y1="266.99" x2="829.52" y2="266.99" />
+  <line x1="1056.32" y1="138.65" x2="1056.32" y2="167" />
+  <clipPath id="T03_clipPath">
+   <rect x="1044.98" y="167" width="22.68" height="22.68" />
+  </clipPath>
+<g clip-path="url(#T03_clipPath)">
+<circle cx="1056.32" cy="178.34" r="16.0372" style="fill:#ffffff;stroke:none;"/>
+  <text x="1056.32" y="178.34" text-anchor="middle"  class="blackInkLetter_1" >.</text>
+</g>
+  <rect x="1044.98" y="167" width="22.68" height="22.68" id="T03" class="solid"/>
+  <ellipse cx="1056.32" cy="216.539" rx="6" ry="6" />
+  <text x="1056.32" y="219.035" text-anchor="middle"  class="birthOrder" >2</text>
+  <text x="1056.32" y="239.618" text-anchor="middle" >T03</text>
+  <text x="1056.32" y="253.568" text-anchor="middle" >1939.03.02</text>
+  <line x1="1147.04" y1="138.65" x2="1147.04" y2="167" />
+  <clipPath id="T05_clipPath">
+   <rect x="1135.7" y="167" width="22.68" height="22.68" />
+  </clipPath>
+<g clip-path="url(#T05_clipPath)">
+<circle cx="1147.04" cy="178.34" r="16.0372" style="fill:#ffffff;stroke:none;"/>
+  <text x="1147.04" y="178.34" text-anchor="middle"  class="blackInkLetter_1" >.</text>
+</g>
+  <rect x="1135.7" y="167" width="22.68" height="22.68" id="T05" class="solid"/>
+  <ellipse cx="1147.04" cy="216.539" rx="6" ry="6" />
+  <text x="1147.04" y="219.035" text-anchor="middle"  class="birthOrder" >5</text>
+  <text x="1147.04" y="239.618" text-anchor="middle" >T05</text>
+  <text x="1147.04" y="253.568" text-anchor="middle" >1943.02.28</text>
+  <line x1="-32.32" y1="138.65" x2="1147.04" y2="138.65" />
+  </g>
+  <rect x="500.66" y="295.34" width="22.68" height="22.68" id="T04" class="dashed"/>
+  <g class="legend">
+  <text x="-123.04" y="50" text-anchor="middle" >Affected</text>
+  <rect  x="-164.62" y="53.78" width="83.16" height="13.95" style="fill:#000000;"  />
+  <text x="-123.04" y="65.3195" text-anchor="middle"  class="whiteInkLetter_1" >A</text>
+  <rect  x="-164.62" y="67.73" width="83.16" height="13.95" style="fill:#ffffff;"  />
+  <text x="-123.04" y="74.705" text-anchor="middle"  class="blackInkLetter_1" >.</text>
+  </g>
+  <g class="legend">
+  <rect  x="-164.62" y="99.41" width="83.16" height="35.46" class="keyBox"  />
+  <text x="-123.04" y="113.36" text-anchor="middle" >IndividualId</text>
+  <text x="-123.04" y="127.31" text-anchor="middle" >DOB</text>
+  </g>
+
+ </g>
+ </svg>
+

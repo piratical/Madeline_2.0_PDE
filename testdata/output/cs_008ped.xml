@@ -1,0 +1,352 @@
+<?xml version="1.0" standalone="no"?>
+ <svg version="1.1"  id="svgDC" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"  width="1096.2" height="611.64"  onload="init()" >
+ <defs>
+  <style type="text/css"><![CDATA[
+
+line{
+	stroke-linejoin:miter;
+	stroke:#000;
+	stroke-width:0.5mm;
+	stroke-linejoin:miter;
+	stroke-linecap:square;
+}
+
+rect{
+	stroke:#000;
+	stroke-width:0.5mm;
+	stroke-linejoin:miter;
+	stroke-linecap:square;
+}
+
+ellipse{
+	stroke: #000;
+	stroke-width:0.25mm;
+}
+
+text{
+	font-family:"Bitstream Vera Sans",sans-serif;
+	font-size:12px;
+}
+
+.layer text{
+	fill:#930;
+}
+
+.layer line{
+	stroke:#6d7b8d;
+}
+
+.birthOrder{
+	font-size: 8px;
+}
+
+.header{
+	font-size:18px;
+	font-weight:bold;
+}
+
+.keyBox{
+	fill:#e5e5e5;
+	stroke:#000;
+	stroke-width:0.5mm;
+	stroke-linejoin:miter;
+	stroke-linecap:square;
+}
+
+.mating:hover{
+	stroke-width:1mm;
+	stroke:#d56300;
+}
+
+.selectedIndividual{
+	stroke-width:1mm;
+	stroke-linecap:square;
+	stroke-linejoin:miter;
+	stroke:#d00;
+    fill:none;
+}
+
+.selectedIndividual:hover{
+	stroke:#d00;
+	fill:#ffbbbb;
+	fill-opacity:0.70;
+}
+
+.solid{
+	stroke-width:0.5mm;
+	stroke-linecap:square;
+	stroke-linejoin:miter;
+	stroke:#000;
+	fill:none;
+}
+
+.dashed{
+	stroke-width:0.5mm;
+	stroke-linecap:square;
+	stroke-linejoin:miter;
+	stroke:#98afc7;
+	stroke-dasharray:2mm,1mm;
+	stroke-dashoffset:1.0mm;
+	fill:none;
+}
+
+.solid:hover{
+	fill:#ffb787;
+	fill-opacity:0.70;
+	stroke:#d56300;
+	stroke-width:1mm;
+}
+
+.dashed:hover{
+	fill:#ffb787;
+	fill-opacity:0.70;
+	stroke:#d56300;
+	stroke-width:1mm;
+}
+
+.thinLine{
+	fill:none;
+	stroke: #000;
+	stroke-width:0.25mm;
+}
+
+.whiteInkLetter{
+	font-size: 8px;
+	fill: #fff;
+}
+
+.blackInkLetter{
+	font-size: 8px;
+	fill: #000;
+}
+
+]]></style>
+ <script type="text/javascript" xlink:href="javascript/madeline.js"></script>
+ <marker id="endArrow" viewBox="0 0 10 10" refX="1" refY="5" markerUnits="strokeWidth" orient="auto" markerWidth="5" markerHeight="4">  <polyline points="0,0 10,5 0,10 1,5" fill="#000" /> </marker>
+ </defs>
+ <g class="pedigree" transform="translate(36.1)">
+
+ <g id="layer0" class="layer" >
+  <line x1="477.98" y1="395.06" x2="387.26" y2="395.06" />
+  <line x1="477.98" y1="391.28" x2="387.26" y2="391.28" />
+ </g>
+
+  <g class="drawing">
+  <text x="557.36" y="30" text-anchor="middle"  class="header" >cs_008</text>
+  <clipPath id="i00045_clipPath">
+   <rect x="500.66" y="38.66" width="22.68" height="22.68" />
+  </clipPath>
+<g clip-path="url(#i00045_clipPath)">
+<circle cx="512" cy="50" r="16.0372" style="fill:#ffffff;stroke:none;"/>
+  <text x="512" y="50" text-anchor="middle"  class="blackInkLetter" >.</text>
+</g>
+  <rect x="500.66" y="38.66" width="22.68" height="22.68" id="i00045" class="solid"/>
+  <text x="512" y="88.1989" text-anchor="middle" >i00045</text>
+  <line x1="523.34" y1="50" x2="591.38" y2="50" />
+<g>
+<circle cx="602.72" cy="50" r="11.34" style="fill:#ffffff;stroke:none;"/>
+  <text x="602.72" y="50" text-anchor="middle"  class="blackInkLetter" >.</text>
+</g>
+<circle cx="602.72" cy="50" r="11.34" id="i00046" class="solid"/>
+  <text x="602.72" y="88.1989" text-anchor="middle" >i00046</text>
+  <line class="mating" id="i00046:i00045" x1="557.36" y1="50" x2="557.36" y2="124.7" />
+  <line x1="103.76" y1="124.7" x2="103.76" y2="153.05" />
+  <clipPath id="i00047_clipPath">
+   <rect x="92.42" y="153.05" width="22.68" height="22.68" />
+  </clipPath>
+<g clip-path="url(#i00047_clipPath)">
+<circle cx="103.76" cy="164.39" r="16.0372" style="fill:#ffffff;stroke:none;"/>
+  <text x="103.76" y="164.39" text-anchor="middle"  class="blackInkLetter" >.</text>
+</g>
+  <rect x="92.42" y="153.05" width="22.68" height="22.68" id="i00047" class="solid"/>
+  <text x="103.76" y="202.589" text-anchor="middle" >i00047</text>
+  <line x1="115.1" y1="164.39" x2="183.14" y2="164.39" />
+<g>
+<circle cx="194.48" cy="164.39" r="11.34" style="fill:#ffffff;stroke:none;"/>
+  <text x="194.48" y="164.39" text-anchor="middle"  class="blackInkLetter" >.</text>
+</g>
+<circle cx="194.48" cy="164.39" r="11.34" id="i00051" class="solid"/>
+  <text x="194.48" y="202.589" text-anchor="middle" >i00051</text>
+  <line class="mating" id="i00051:i00047" x1="149.12" y1="164.39" x2="149.12" y2="239.09" />
+  <line x1="103.76" y1="239.09" x2="103.76" y2="267.44" />
+<g>
+<circle cx="103.76" cy="278.78" r="11.34" style="fill:#ffffff;stroke:none;"/>
+  <text x="103.76" y="278.78" text-anchor="middle"  class="blackInkLetter" >.</text>
+</g>
+<circle cx="103.76" cy="278.78" r="11.34" id="i00053" class="solid"/>
+  <text x="103.76" y="316.979" text-anchor="middle" >i00053</text>
+  <line x1="239.84" y1="239.09" x2="239.84" y2="267.44" />
+<g>
+<circle cx="239.84" cy="278.78" r="11.34" style="fill:#ffffff;stroke:none;"/>
+  <text x="239.84" y="278.78" text-anchor="middle"  class="blackInkLetter" >.</text>
+</g>
+<circle cx="239.84" cy="278.78" r="11.34" id="i00052" class="solid"/>
+  <text x="239.84" y="316.979" text-anchor="middle" >i00052</text>
+  <line x1="251.18" y1="278.78" x2="319.22" y2="278.78" />
+  <clipPath id="i00058_clipPath">
+   <rect x="319.22" y="267.44" width="22.68" height="22.68" />
+  </clipPath>
+<g clip-path="url(#i00058_clipPath)">
+<circle cx="330.56" cy="278.78" r="16.0372" style="fill:#ffffff;stroke:none;"/>
+  <text x="330.56" y="278.78" text-anchor="middle"  class="blackInkLetter" >.</text>
+</g>
+  <rect x="319.22" y="267.44" width="22.68" height="22.68" id="i00058" class="solid"/>
+  <text x="330.56" y="316.979" text-anchor="middle" >i00058</text>
+  <line class="mating" id="i00052:i00058" x1="285.2" y1="278.78" x2="285.2" y2="353.48" />
+  <line x1="194.48" y1="353.48" x2="194.48" y2="381.83" />
+  <clipPath id="i00059_clipPath">
+   <rect x="183.14" y="381.83" width="22.68" height="22.68" />
+  </clipPath>
+<g clip-path="url(#i00059_clipPath)">
+<circle cx="194.48" cy="393.17" r="16.0372" style="fill:#ffffff;stroke:none;"/>
+  <text x="194.48" y="393.17" text-anchor="middle"  class="blackInkLetter" >.</text>
+</g>
+  <rect x="183.14" y="381.83" width="22.68" height="22.68" id="i00059" class="solid"/>
+  <text x="194.48" y="431.369" text-anchor="middle" >i00059</text>
+  <line x1="285.2" y1="353.48" x2="285.2" y2="381.83" />
+<g>
+<circle cx="285.2" cy="393.17" r="11.34" style="fill:#000000;stroke:none;"/>
+  <text x="285.2" y="396.454" text-anchor="middle"  class="whiteInkLetter" >A</text>
+</g>
+<circle cx="285.2" cy="393.17" r="11.34" id="i00061" class="solid"/>
+<path d="M 271.97 406.4 l -8.7318 3.7422 l 1.8711 1.8711 l -3.1185 3.1185 l 1.2474 1.2474 l 3.1185 -3.1185 l 1.8711 1.8711 z" />
+  <text x="256.094" y="418.496" text-anchor="middle" >P</text>
+  <text x="285.2" y="431.369" text-anchor="middle" >i00061</text>
+  <line x1="375.92" y1="353.48" x2="375.92" y2="381.83" />
+  <clipPath id="i00060_clipPath">
+   <rect x="364.58" y="381.83" width="22.68" height="22.68" />
+  </clipPath>
+<g clip-path="url(#i00060_clipPath)">
+<circle cx="375.92" cy="393.17" r="16.0372" style="fill:#ffffff;stroke:none;"/>
+  <text x="375.92" y="393.17" text-anchor="middle"  class="blackInkLetter" >.</text>
+</g>
+  <rect x="364.58" y="381.83" width="22.68" height="22.68" id="i00060" class="solid"/>
+  <text x="375.92" y="431.369" text-anchor="middle" >i00060</text>
+  <line x1="194.48" y1="353.48" x2="375.92" y2="353.48" />
+  <line x1="103.76" y1="239.09" x2="239.84" y2="239.09" />
+  <line x1="648.08" y1="124.7" x2="648.08" y2="153.05" />
+<g>
+<circle cx="648.08" cy="164.39" r="11.34" style="fill:#ffffff;stroke:none;"/>
+  <text x="648.08" y="164.39" text-anchor="middle"  class="blackInkLetter" >.</text>
+</g>
+<circle cx="648.08" cy="164.39" r="11.34" id="i00049" class="solid"/>
+  <text x="648.08" y="202.589" text-anchor="middle" >i00049</text>
+  <line x1="659.42" y1="164.39" x2="727.46" y2="164.39" />
+  <clipPath id="i00054_clipPath">
+   <rect x="727.46" y="153.05" width="22.68" height="22.68" />
+  </clipPath>
+<g clip-path="url(#i00054_clipPath)">
+<circle cx="738.8" cy="164.39" r="16.0372" style="fill:#ffffff;stroke:none;"/>
+  <text x="738.8" y="164.39" text-anchor="middle"  class="blackInkLetter" >.</text>
+</g>
+  <rect x="727.46" y="153.05" width="22.68" height="22.68" id="i00054" class="solid"/>
+  <text x="738.8" y="202.589" text-anchor="middle" >i00054</text>
+  <line class="mating" id="i00049:i00054" x1="693.44" y1="164.39" x2="693.44" y2="239.09" />
+  <line x1="557.36" y1="239.09" x2="557.36" y2="267.44" />
+  <clipPath id="i00056_clipPath">
+   <rect x="546.02" y="267.44" width="22.68" height="22.68" />
+  </clipPath>
+<g clip-path="url(#i00056_clipPath)">
+<circle cx="557.36" cy="278.78" r="16.0372" style="fill:#ffffff;stroke:none;"/>
+  <text x="557.36" y="278.78" text-anchor="middle"  class="blackInkLetter" >.</text>
+</g>
+  <rect x="546.02" y="267.44" width="22.68" height="22.68" id="i00056" class="solid"/>
+  <text x="557.36" y="316.979" text-anchor="middle" >i00056</text>
+  <line x1="568.7" y1="278.78" x2="636.74" y2="278.78" />
+<g>
+<circle cx="648.08" cy="278.78" r="11.34" style="fill:#000000;stroke:none;"/>
+  <text x="648.08" y="282.064" text-anchor="middle"  class="whiteInkLetter" >A</text>
+</g>
+<circle cx="648.08" cy="278.78" r="11.34" id="i00062" class="solid"/>
+  <text x="648.08" y="316.979" text-anchor="middle" >i00062</text>
+  <line class="mating" id="i00062:i00056" x1="602.72" y1="278.78" x2="602.72" y2="353.48" />
+  <line x1="557.36" y1="353.48" x2="557.36" y2="381.83" />
+<g>
+<circle cx="557.36" cy="393.17" r="11.34" style="fill:#ffffff;stroke:none;"/>
+  <text x="557.36" y="393.17" text-anchor="middle"  class="blackInkLetter" >.</text>
+</g>
+<circle cx="557.36" cy="393.17" r="11.34" id="i00064" class="solid"/>
+  <text x="557.36" y="431.369" text-anchor="middle" >i00064</text>
+  <line x1="477.98" y1="395.06" x2="546.02" y2="395.06" />
+  <line x1="477.98" y1="391.28" x2="546.02" y2="391.28" />
+  <line class="mating" id="i00064:i00060" x1="512" y1="395.06" x2="512" y2="465.98" />
+  <line x1="466.64" y1="467.87" x2="466.64" y2="496.22" />
+  <clipPath id="i00066_clipPath">
+   <rect x="455.3" y="496.22" width="22.68" height="22.68" />
+  </clipPath>
+<g clip-path="url(#i00066_clipPath)">
+<circle cx="466.64" cy="507.56" r="16.0372" style="fill:#ffffff;stroke:none;"/>
+  <text x="466.64" y="507.56" text-anchor="middle"  class="blackInkLetter" >.</text>
+</g>
+  <rect x="455.3" y="496.22" width="22.68" height="22.68" id="i00066" class="solid"/>
+  <text x="466.64" y="545.759" text-anchor="middle" >i00066</text>
+  <line x1="557.36" y1="467.87" x2="557.36" y2="496.22" />
+<g>
+<circle cx="557.36" cy="507.56" r="11.34" style="fill:#000000;stroke:none;"/>
+  <text x="557.36" y="510.844" text-anchor="middle"  class="whiteInkLetter" >A</text>
+</g>
+<circle cx="557.36" cy="507.56" r="11.34" id="i00067" class="solid"/>
+  <text x="557.36" y="545.759" text-anchor="middle" >i00067</text>
+  <line x1="466.64" y1="467.87" x2="557.36" y2="467.87" />
+  <line x1="648.08" y1="353.48" x2="648.08" y2="381.83" />
+  <clipPath id="i00063_clipPath">
+   <rect x="636.74" y="381.83" width="22.68" height="22.68" />
+  </clipPath>
+<g clip-path="url(#i00063_clipPath)">
+<circle cx="648.08" cy="393.17" r="16.0372" style="fill:#ffffff;stroke:none;"/>
+  <text x="648.08" y="393.17" text-anchor="middle"  class="blackInkLetter" >.</text>
+</g>
+  <rect x="636.74" y="381.83" width="22.68" height="22.68" id="i00063" class="solid"/>
+  <text x="648.08" y="431.369" text-anchor="middle" >i00063</text>
+  <line x1="557.36" y1="353.48" x2="648.08" y2="353.48" />
+  <line x1="738.8" y1="239.09" x2="738.8" y2="267.44" />
+  <clipPath id="i00055_clipPath">
+   <rect x="727.46" y="267.44" width="22.68" height="22.68" />
+  </clipPath>
+<g clip-path="url(#i00055_clipPath)">
+<circle cx="738.8" cy="278.78" r="16.0372" style="fill:#ffffff;stroke:none;"/>
+  <text x="738.8" y="278.78" text-anchor="middle"  class="blackInkLetter" >.</text>
+</g>
+  <rect x="727.46" y="267.44" width="22.68" height="22.68" id="i00055" class="solid"/>
+  <text x="738.8" y="316.979" text-anchor="middle" >i00055</text>
+  <line x1="829.52" y1="239.09" x2="829.52" y2="267.44" />
+  <clipPath id="i00057_clipPath">
+   <rect x="818.18" y="267.44" width="22.68" height="22.68" />
+  </clipPath>
+<g clip-path="url(#i00057_clipPath)">
+<circle cx="829.52" cy="278.78" r="16.0372" style="fill:#ffffff;stroke:none;"/>
+  <text x="829.52" y="278.78" text-anchor="middle"  class="blackInkLetter" >.</text>
+</g>
+  <rect x="818.18" y="267.44" width="22.68" height="22.68" id="i00057" class="solid"/>
+  <text x="829.52" y="316.979" text-anchor="middle" >i00057</text>
+  <line x1="557.36" y1="239.09" x2="829.52" y2="239.09" />
+  <line x1="920.24" y1="124.7" x2="920.24" y2="153.05" />
+<g>
+<circle cx="920.24" cy="164.39" r="11.34" style="fill:#ffffff;stroke:none;"/>
+  <text x="920.24" y="164.39" text-anchor="middle"  class="blackInkLetter" >.</text>
+</g>
+<circle cx="920.24" cy="164.39" r="11.34" id="i00050" class="solid"/>
+  <text x="920.24" y="202.589" text-anchor="middle" >i00050</text>
+  <line x1="1010.96" y1="124.7" x2="1010.96" y2="153.05" />
+  <clipPath id="i00048_clipPath">
+   <rect x="999.62" y="153.05" width="22.68" height="22.68" />
+  </clipPath>
+<g clip-path="url(#i00048_clipPath)">
+<circle cx="1010.96" cy="164.39" r="16.0372" style="fill:#ffffff;stroke:none;"/>
+  <text x="1010.96" y="164.39" text-anchor="middle"  class="blackInkLetter" >.</text>
+</g>
+  <rect x="999.62" y="153.05" width="22.68" height="22.68" id="i00048" class="solid"/>
+  <text x="1010.96" y="202.589" text-anchor="middle" >i00048</text>
+  <line x1="103.76" y1="124.7" x2="1010.96" y2="124.7" />
+  </g>
+  <g class="legend">
+  <text x="13.04" y="50" text-anchor="middle" >Affected</text>
+  <rect  x="-28.54" y="53.78" width="83.16" height="13.95" style="fill:#000000;"  />
+  <text x="13.04" y="65.3195" text-anchor="middle"  class="whiteInkLetter_1" >A</text>
+  <rect  x="-28.54" y="67.73" width="83.16" height="13.95" style="fill:#ffffff;"  />
+  <text x="13.04" y="74.705" text-anchor="middle"  class="blackInkLetter_1" >.</text>
+  </g>
+
+ </g>
+ </svg>
+
