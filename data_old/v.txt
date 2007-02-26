@@ -1,7 +1,0 @@
-Marker	Individualid	Familyid	Mother	Father	Gender	Marker	MZTwin	MZTwin	Deceased
-22/22	m100	F017	.	.	m	22/24	.	.	.
-21/24	m101	F017	.	.	f	24/24	.	.	Y
-24/24	m102	F017	m101	m100	m	23/23	A	B	.
-25/27	m103	F017	m101	m100	m	24/26	A	.	.
-22/26	m104	F017	m101	m100	m	23/23	.	B	.
-22/22	m105	F017	m101	m100	f	24/26	A	.	.

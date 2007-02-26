@@ -3,20 +3,17 @@ Notes on Compiling Madeline
 Required Tools
 ==============
 
-The following software tools may be required before you can
+The following software tools are required before you can
 build Madeline:
 
 1. SVN: http://subversion.tigris.org/ 
 
 You may need an SVN client in order to checkout the latest code
-from our code repository.  You must use svn+ssh to access 
-our repository:
+from our code repository.  Please review the instructions on
+Sourceforge for information on how to checkout the code from
+SVN:
 
-~> svn co svn+ssh://retina.ophthy.med.umich.edu/SVN/madeline2/trunk madeline2
 
-The first time you check out the code, SVN may ask you for your 
-password as many as three times.  After that, SVN will normally ask
-you for your password only once.
 
 2. CMake: http://cmake.org/
 
@@ -40,16 +37,56 @@ Required Libraries
 
 1. LibXML2
 
+   This is the XML C parser and toolkit developed for the Gnome project.
+   If you are using Linux, this will probably be already installed
+   on your system.  If not, download from:
+   
+   http://xmlsoft.org/
+
 2. Pango
+   
+   Pango is a library for laying out and rendering internationalized text.
+   It is used as part of Gnome, so it may already be available on your system
+   if you have Gnome or GTK+-based software such as the Gimp installed.
+   Pango itself depends on GTK+'s GLIB library.  Be sure to build Pango
+   with FreeType2 support.  FreeType 2 should already be on your system.
+   
+   http://www.pango.org/
+   http://ftp.gnome.org/pub/GNOME/sources/pango/
 
 3. LASi
+
+   The LASi library provides a C++ stream output interface for creating 
+   Postscript documents that can contain characters from any of the scripts 
+   and symbol blocks supported in Unicode  and by the Pango layout engine:
+   
+   http://unifont.org/lasi/
+   http://sourceforge.net/projects/lasi
+   
+   Note that LASi now also uses the CMake build system.
+   
+   Check out the latest code from the Sourceforge SVN repository.  The
+   latest code and build system now automatically deals with the FreeType 2
+   API changes for you so you no longer have to worry about which version
+   of FreeType 2 you have.  In general, FreeType 2 should already be on
+   your system unless you are building on a platform like Windows or Mac OS
+   X.  
+
+   Detailed information about building LASi on different platforms is
+   provided on the http://unifont.org/lasi website.  These instructions
+   should also help you succeed in building Madeline on various platforms.
 
 
 GCC Compiler
 ============
 
 By default, the CMake build system will look for a working GCC
-compiler.
+compiler.  Development takes place using GCC v. 4.0.2 or newer.
+The code should compile using somewhat older versions as well, but
+if you encounter troubles we recommend upgrading to a recent
+version of GCC.
+
+   http://gcc.gnu.org/
 
 
 Intel ICC Compiler
@@ -67,3 +104,97 @@ have to specify the full path in /opt/intel/... :
 
 ~> CC=/usr/bin/icc CXX=/usr/bin/icpc cmake .
 
+
+  http://www.intel.com/cd/software/products/asmo-na/eng/compilers/ 
+
+
+============================
+*** IF YOU HAVE PROBLEMS ***
+============================
+
+
+SVN PROBLEMS
+============
+
+We have on occasion experienced problems with SVN when attempting
+to check out or commit code on certain platforms (such as OS X) or 
+when using certain terminals (such as mlterm).  Exporting the
+following environmental variables normally fixes the problems:
+
+export TERM=vt100
+export LANG=en_US.UTF-8
+
+In the first line above, we set the terminal type (TERM) to 
+vt100.  When committing code, SVN by default calls the vi editor
+so the user can write a comment about the commit.  It is fairly
+safe to assume that most versions of vi will know about "vt100"
+terminal capabilities even if they don't know about more esoteric
+terminals like mlterm.
+
+In the second line above, we set the LANG locale variable to
+an American English UTF-8 locale.  Actually *any* UTF-8 locale
+will do.  It does not have to be English.  But it does have to
+be a UTF-8 Unicode encoding.
+
+
+COMPILATION PROBLEMS
+====================
+
+If you have problems, a good approach is to build a "clean" set of
+all of the dependent libraries from source and install them in an 
+isolated directory, for example:
+
+     /opt/madeline2
+     
+In this case "dependent libraries" may include Pango's and FreeType's
+dependencies.  The whole list of dependencies is:
+
+  * FontConfig
+  * GLib
+  * FreeType2
+  * Pango
+  * libXML2
+  * LASi
+  
+For libraries using the AUTOCONF build system, the usual procedure
+for specifying a non-default prefix is to run ./configure like this:
+
+  ./configure --prefix=/opt/madeline2
+  
+LASi and Madeline use the CMAKE build system.  One way to specify 
+the install prefix is to run "ccmake ." from the top-level directory
+and then change the CMAKE_INSTALL_PREFIX interactively. The curses-based 
+CMAKE configuration client will display a screen something like the 
+following:
+
+-----------------------------------------------------------------  
+ CMAKE_BUILD_TYPE                                                      
+ CMAKE_INSTALL_PREFIX             /usr/local <== ***
+ EXECUTABLE_OUTPUT_PATH                                                
+ GETTEXT_MSGFMT_EXECUTABLE        /usr/bin/msgfmt                      
+ GETTEXT_MSGMERGE_EXECUTABLE      /usr/bin/msgmerge                    
+ LIBRARY_OUTPUT_PATH                                                   
+ WITH_MYSQLPP_SUPPORT             OFF                                  
+ libcrypto                        /usr/lib64/libcrypto.so              
+ libssl                           /usr/lib64/libssl.so                 
+-----------------------------------------------------------------
+
+In this example, simply change the entry for CMAKE_INSTALL_PREFIX
+from "/usr/local" to "/opt/madeline2" (or your choice of installation
+path).
+
+In order to guarantee that the AUTOCONF or CMAKE build systems find
+the right paths, be sure to export the following environment variables
+*before* running ./configure or ./cmake . :
+
+export PKG_CONFIG_PATH=/opt/madeline2/lib/pkgconfig
+export LD_LIBRARY_PATH=/opt/madeline2/lib
+
+This insures that the build systems find the libraries that have 
+been newly-installed in "/opt/madeline2" first (rather than finding
+potentially incompatible older libraries already present on the system).
+
+
+- 2007.02.26.ET
+               
+                              ***

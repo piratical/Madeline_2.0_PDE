@@ -1,2 +1,0 @@
-IndividualId	FamilyId	Gender	Mother	Father
-M100	MF200	M	.	.
