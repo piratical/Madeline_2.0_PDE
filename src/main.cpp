@@ -29,6 +29,7 @@ int main( int argc, char *argv[] ){
 	// IJKLMNOP:
 	clp.addSwitch("--labels","-l","Path to the file that has a list of labels to be displayed on the Pedigree",1);
 	clp.addSwitch("--Labels","-L","Specify labels to be displayed on the Pedigree using a single string containing space-delimited labels",1);
+	clp.addSwitch("--noiconlabels","-n","Prevent the printing of affection status labels on the icons");
 	clp.addSwitch("--outputprefix","-o","Specify output file name prefix",1);
 	// RSTUVWXYZ:
 	clp.addSwitch("--sort","-s","Field based on which siblings are sorted",1);
@@ -111,16 +112,22 @@ int main( int argc, char *argv[] ){
 		}
 		
 		//
-		// Handle specification of a file name prefix:
+		// Handle the black and white override flag:
 		//
 		if(clp.hasSwitchSet("--bw")){
 			DrawingMetrics::setBlackAndWhite(true);
 		}
 		//
-		// Handle specification of a file name prefix:
+		// Handle the color override flag:
 		//
 		if(clp.hasSwitchSet("--color")){
 			DrawingMetrics::setColor(true);
+		}
+		//
+		// Handle the noiconlabels override flag:
+		//
+		if(clp.hasSwitchSet("--noiconlabels")){
+			DrawingMetrics::setNoIconLabels(true);
 		}
 		
 		///////////////////////

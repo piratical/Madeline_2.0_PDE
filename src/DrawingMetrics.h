@@ -144,6 +144,7 @@ private:
 	static bool _displayBirthOrder;
 	static bool _blackAndWhite;
 	static bool _color;
+	static bool _noIconLabels;
 	
 	//
 	// Output File naming prefix
@@ -203,6 +204,7 @@ public:
 	
 	static bool getColor();
 	static bool getBlackAndWhite();
+	static bool getNoIconLabels();
 	
 	//
 	// Setters:
@@ -227,6 +229,8 @@ public:
 	
 	static void setColor(bool value);
 	static void setBlackAndWhite(bool value);
+	static void setNoIconLabels(bool value);
+	
 };
 
 ///////////////////////////////////
@@ -290,6 +294,14 @@ public:
 		//
 		DrawingMetrics::_blackAndWhite=false;
 		DrawingMetrics::_color=false;
+		
+		//
+		// Icon labels are on by default
+		// because this seems the better choice
+		// for lab work (but is not the choice
+		// for publication):
+		// 
+		DrawingMetrics::_noIconLabels=false;
 		
 		//
 		// This is the default scaling factor used for SVG drawing output to a screen.

@@ -1049,13 +1049,17 @@ void DrawingCanvas::arc( double x, double y, double r, double startAngle, double
 		//
 		_body << "<circle cx=\"" << x << "\" cy=\"" << y << "\" r=\"" << r << "\"";
 		_body << " style=\"fill:" << color << ";stroke:none;\"/>\n";
+		//
 		// Draw the label:
-		if(arcLabel != std::string(".")){
-			// y += DrawingMetrics::getYMaximum()/2;
-			_doc.get_dimensions(arcLabel,&lineSpacing,&xAdvance,&yMinimum,&yMaximum);
-			 y+= 0.5*(yMaximum-yMinimum);
+		//
+		if(!DrawingMetrics::getNoIconLabels()){
+			if(arcLabel != std::string(".")){
+				// y += DrawingMetrics::getYMaximum()/2;
+				_doc.get_dimensions(arcLabel,&lineSpacing,&xAdvance,&yMinimum,&yMaximum);
+				 y+= 0.5*(yMaximum-yMinimum);
+			}
+			drawText(x,y ,arcLabel,arcClass);
 		}
-		drawText(x,y ,arcLabel,arcClass);
 		return;
 	}
 	
@@ -1086,23 +1090,24 @@ void DrawingCanvas::arc( double x, double y, double r, double startAngle, double
 	//
 	// Draw the label:
 	//
-	double x3 = x;
-	double y3 = y;
-	if(isMale){
-		x3 -= cos(startAngle+delta/2) * 0.4 * r;
-		y3 -= sin(startAngle+delta/2) * 0.4 * r;
+	if(!DrawingMetrics::getNoIconLabels()){
+		double x3 = x;
+		double y3 = y;
+		if(isMale){
+			x3 -= cos(startAngle+delta/2) * 0.4 * r;
+			y3 -= sin(startAngle+delta/2) * 0.4 * r;
+			
+		}else {
+			x3 -= cos(startAngle+delta/2) * r * 0.5;
+			y3 -= sin(startAngle+delta/2) * r * 0.5;
+		}
 		
-	}else {
-		x3 -= cos(startAngle+delta/2) * r * 0.5;
-		y3 -= sin(startAngle+delta/2) * r * 0.5;
+		if(arcLabel != std::string(".")){
+			_doc.get_dimensions(arcLabel,&lineSpacing,&xAdvance,&yMinimum,&yMaximum);
+			 y3+= 0.5*(yMaximum-yMinimum);
+		}
+		drawText(x3,y3,arcLabel,arcClass);
 	}
-	
-	if(arcLabel != std::string(".")){
-		_doc.get_dimensions(arcLabel,&lineSpacing,&xAdvance,&yMinimum,&yMaximum);
-		 y3+= 0.5*(yMaximum-yMinimum);
-	}
-	drawText(x3,y3,arcLabel,arcClass);
-	
 }
 
 ///

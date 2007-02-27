@@ -76,6 +76,7 @@ bool DrawingMetrics::_hasOnlyOnePedigree;
 
 bool DrawingMetrics::_blackAndWhite;
 bool DrawingMetrics::_color;
+bool DrawingMetrics::_noIconLabels;
 
 ///////////////////////////////////
 //
@@ -452,6 +453,13 @@ bool DrawingMetrics::getBlackAndWhite(){
 }
 
 //
+// getNoIconLabels(): Get the NoIconLabels flag
+//
+bool DrawingMetrics::getNoIconLabels(){
+	return _noIconLabels;
+}
+
+//
 // setColor(): Set the color override flag
 //
 void DrawingMetrics::setColor(bool value){
@@ -464,6 +472,15 @@ void DrawingMetrics::setColor(bool value){
 void DrawingMetrics::setBlackAndWhite(bool value){ 
 	_blackAndWhite=value;
 }
+
+
+//
+// setNoIconLabels(): Set the noIconLabels flag
+//
+void DrawingMetrics::setNoIconLabels(bool value){ 
+	_noIconLabels=value;
+}
+
 
 ////////////////////////////////
 //
