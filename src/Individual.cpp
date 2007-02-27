@@ -390,8 +390,8 @@ void Individual::sortSpouses(bool externalFlag){
 	
 	// classify the spouses based on the consanguinous flags
 	groupIndividualsBasedOn(consanguinousLoop,spouses,initial,leftLoopIndividuals,rightLoopIndividuals,true);
-	if(externalFlag) _rearrangeMultipleSpouses(initial,rightLoopIndividuals,leftLoopIndividuals,result);
-	else             _rearrangeMultipleSpouses(initial,leftLoopIndividuals,rightLoopIndividuals,result);
+	
+	
 	// Check if the individual is a male and consanguinous
 	// In such cases the first spouse should be one that has no loop flags set
 	if(_gender.get() == "M" && _isConsanguinous && _spouses.size() >= 2){
@@ -453,6 +453,9 @@ void Individual::sortSpouses(bool externalFlag){
 			
 		}
 	}
+	
+	if(externalFlag) _rearrangeMultipleSpouses(initial,rightLoopIndividuals,leftLoopIndividuals,result);
+	else             _rearrangeMultipleSpouses(initial,leftLoopIndividuals,rightLoopIndividuals,result);
 	
 	//
 	// The reordered spouses are now in the result q.

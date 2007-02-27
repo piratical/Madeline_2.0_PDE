@@ -1020,7 +1020,9 @@ void NuclearFamily::draw(Individual* startIndividual,DrawingCanvas& dc,double st
 			
 			double xl = currentX - (children[i]->getNuclearFamily((unsigned)0)->getLeftWidth()) * horizontalInterval;
 			// If the child has multiple spouses with rightWidth=0, adjust for the individual width
-			if(children[i]->getRightWidth() == 0) xl = currentX - iconInterval;
+			if(children[i]->getRightWidth() == 0){
+				xl = currentX - iconInterval;
+			}
 			double xr = currentX;
 			for(unsigned j=0;j<children[i]->getNumberOfNuclearFamilies();j++){
 				if(j % 2 == 0){
@@ -1070,6 +1072,7 @@ void NuclearFamily::draw(Individual* startIndividual,DrawingCanvas& dc,double st
 						// For cases where all the NFs are not drawn with the male
 						if(children[i+1]->getLeftWidth() == 1)
 							currentX += horizontalInterval;
+						if(children[i]->getRightWidth() == 1) currentX -= horizontalInterval;
 					}else{
 						// The next child has 1 NF
 						if(_isMaleWithLoopFlags(children[i+1],0)){
