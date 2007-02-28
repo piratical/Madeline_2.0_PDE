@@ -1,4 +1,0 @@
-#!/bin/sh
-#Dependencies: mysqlclient mysqlpp
-
-g++ -g -o test `xml2-config --libs --cflags` ../3rdParty/netxx/*.cpp Network.cpp Database.cpp testCompressor.cpp Compressor.cpp XMLTableParser.cpp DelimitedTableParser.cpp MadelineTable.cpp RandomGenerator.cpp ColumnClassifier.cpp DigitConverter.cpp DataTable.cpp DataColumn.cpp Date.cpp Number.cpp Gender.cpp Genotype.cpp String.cpp Parser.cpp ../3rdParty/src/unzip/unzip.o ../3rdParty/bzip2-1.0.1/blocksort.o ../3rdParty/bzip2-1.0.1/bzlib.o ../3rdParty/bzip2-1.0.1/compress.o ../3rdParty/bzip2-1.0.1/crctable.o ../3rdParty/bzip2-1.0.1/decompress.o ../3rdParty/bzip2-1.0.1/huffman.o ../3rdParty/bzip2-1.0.1/randtable.o -L/opt/mysql-4.1.7/lib/mysql/ -lmysqlclient -L/opt/mysql++-1.7.28/lib/ -lmysqlpp  -I/opt/mysql-4.1.7/include/mysql/ -I/opt/mysql++-1.7.28/include/ -lssl
