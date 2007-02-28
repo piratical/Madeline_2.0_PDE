@@ -1,0 +1,56 @@
+
+Coding Conventions
+==================
+
+(1) Use an editor capable of handling UTF-8 Unicode
+    correctly.  Be careful! -- We have some code files
+    that contain UTF-8-encoded strings directly in the
+    code.  These might be code comments, ANSI C "char *"
+    strings, std::strings or some derived string class.
+
+(2) Object-oriented C++ Code: In general, all new code
+    added to Madeline 2 should be in the form of C++ classes.
+        
+(3) Private member variables and methods should start
+    with an underscore.  This makes it very easy to
+    distinguish between local variables and variables that
+    are private within the class.  It also makes it
+    easier to spot the private methods when you are
+    browsing through the code.  For example, in the 
+    Data class, getDataType(void) is a public method
+    while _displayNativeDigitsInDates is a private 
+    static boolean variable.  
+
+(4) Use pointers to large objects to avoid unnecessary
+    and expensive copies.
+
+(5) C++ Compiler: When compiling new classes and code,
+    *always* use "-Wall" in order to see all warnings
+    and errors.  Be sure to remove all warnings before
+    committing code.
+    
+(6) Test on more than one compiler: If possible, test 
+    compiling the code on more than just the GCC compiler.
+    For example, the Intel ICC compiler gives different
+    warnings than GCC -- This helps us produce tighter
+    code.
+    
+(7) Use Valgrind: Always use valgrind to check new code
+    and new classes.  By using Valgrind at the time that
+    new classes are first created, it is possible to
+    catch most problems very early on before they become
+    serious hidden bugs.
+
+(8) Test Cases:  Always write test cases for new classes.
+    Note that there is a "Manual-Makefile" present in the
+    "src" directory that can be used for creating test
+    targets.  Please examine this file to see how previous
+    test targets and test programs have been created.
+    
+    In the future we will probably move toward using a
+    modern automated testing protocol like CMake's CTEST
+    system.  In the meantime, please create and use test
+    targets in "Manual-Makefile".
+    
+
+
