@@ -43,11 +43,6 @@
 #include "SVG.h"
 #include "utility.h"
 
-//
-// For font metrics
-// and Postscript output:
-// 
-#include <LASi.h>
 #include "DrawingLabelManager.h"
 
 class DrawingCanvas{
@@ -66,7 +61,7 @@ private:
 	//
 	// For font metrics and postscript:
 	//
-	LASi::PostscriptDocument _doc;
+	LASiWrapper _lasiWrapper;
 	
 	//
 	// DrawingLabelManager:

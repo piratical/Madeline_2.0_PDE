@@ -60,11 +60,13 @@ SET( SOURCES
 	Haplotype.cpp 
 	Haplotype.h 
 
-	IconLegend.h	
+	IconLegend.h
 	Individual.cpp
 
-	LabelLegend.h	
+	LabelLegend.h
 	LabelSet.cpp 
+	LASiWrapper.h
+	LASiWrapper.cpp
 	Legend.h
 	LineInformation.h 
 	LivingDead.cpp
@@ -96,7 +98,7 @@ SET( SOURCES
 	String.h 
 	SVG.cpp
 
-	TableParser.h	
+	TableParser.h
 	Twin.cpp
 	
 	UnicodeScript.cpp
@@ -156,6 +158,12 @@ IF( WITH_MYSQLPP_SUPPORT )
 ENDIF( WITH_MYSQLPP_SUPPORT )
 
 #
+# Optional LASi support:
+#
+OPTION( WITH_LASi "Build Madeline with LASi support" ON )
+
+IF( WITH_LASi )
+#
 # Check for Pango: Pango and Pangoft2 are combined here.
 #                  Pango is required for Unicode text layout support.
 #                  
@@ -188,6 +196,10 @@ IF(LASI_INCLUDE_DIR)
 ELSE (LASI_INCLUDE_DIR)
 	MESSAGE(FATAL_ERROR "LASi (http://unifont.org/lasi/) is required to build Madeline.")
 ENDIF(LASI_INCLUDE_DIR)
+MESSAGE(STATUS "=== NOTA BENE: === Madeline will be built with LASi support.")
+ADD_DEFINITIONS(-DLASI)
+ENDIF(WITH_LASi)
+
 
 #
 # Check for SSL Library: SSL is required for network support.

@@ -34,7 +34,7 @@
 // For font metrics
 // and Postscript output:
 // 
-#include <LASi.h>
+#include "LASiWrapper.h"
 
 /////////////////////
 //
@@ -51,9 +51,9 @@ public:
 	DrawingLabelManager();
 	
 	//
-	// setPostscriptDocument
+	// setLASiWrapper
 	//
-	void setPostscriptDocument(LASi::PostscriptDocument* doc);
+	void setLASiWrapper(LASiWrapper* plasiWrapper);
 	//
 	// setLabelSet
 	//
@@ -92,7 +92,7 @@ private:
 	
 	unsigned _labelCount;
 	
-	LASi::PostscriptDocument* _doc;
+	LASiWrapper* _pLASiWrapper;
 };
 
 

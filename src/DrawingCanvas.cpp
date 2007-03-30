@@ -530,9 +530,9 @@ DrawingCanvas::DrawingCanvas(const LabelSet *labelSet,const std::string name="a4
 	_xMaximum = _yMaximum = (double) INT_MIN;
 	
 	//
-	// labelManager needs to have a pointer to a valid PostscriptDocument:
+	// labelManager needs to have a pointer to a valid LASiWrapper object:
 	//
-	_labelManager.setPostscriptDocument( & _doc );
+	_labelManager.setLASiWrapper(&_lasiWrapper);
 	
 	//
 	// the labelManager automagically sets the correct line height:
@@ -1054,8 +1054,7 @@ void DrawingCanvas::arc( double x, double y, double r, double startAngle, double
 		//
 		if(!DrawingMetrics::getNoIconLabels()){
 			if(arcLabel != std::string(".")){
-				// y += DrawingMetrics::getYMaximum()/2;
-				_doc.get_dimensions(arcLabel,&lineSpacing,&xAdvance,&yMinimum,&yMaximum);
+				_lasiWrapper.getDimensions(arcLabel,&lineSpacing,&xAdvance,&yMinimum,&yMaximum);
 				 y+= 0.5*(yMaximum-yMinimum);
 			}
 			drawText(x,y ,arcLabel,arcClass);
@@ -1103,7 +1102,7 @@ void DrawingCanvas::arc( double x, double y, double r, double startAngle, double
 		}
 		
 		if(arcLabel != std::string(".")){
-			_doc.get_dimensions(arcLabel,&lineSpacing,&xAdvance,&yMinimum,&yMaximum);
+			_lasiWrapper.getDimensions(arcLabel,&lineSpacing,&xAdvance,&yMinimum,&yMaximum); 
 			 y3+= 0.5*(yMaximum-yMinimum);
 		}
 		drawText(x3,y3,arcLabel,arcClass);

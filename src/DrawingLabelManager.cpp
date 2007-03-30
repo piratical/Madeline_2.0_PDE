@@ -27,8 +27,8 @@
 // Madeline's drawing metrics:
 #include "DrawingMetrics.h"
 #include "Exception.h"
+#include "LASiWrapper.h"
 
-using namespace LASi;
 
 //
 // The _latinBlock is basic Latin (ASCII):
@@ -56,23 +56,22 @@ DrawingLabelManagerLoader DrawingLabelManagerLoader::drawingLabelManagerLoader;
 //
 DrawingLabelManager::DrawingLabelManager(){
 	
-	_doc=0;
+	_pLASiWrapper=0;
 	_hasUnicode=_hasIndicOrArabic=false;
 	_yMaximum=_yMinimum=_lineHeight=_labelCount=0;
 	
 }
 
 //
-// setPostscriptDocument
+// setLASiWrapper
 //
-void DrawingLabelManager::setPostscriptDocument(LASi::PostscriptDocument* doc){
+void DrawingLabelManager::setLASiWrapper(LASiWrapper* pLASiWrapper){
 	
-	if(doc==0) throw Exception("DrawingLabelManager::setPostscriptDocument()","Pointer to doc is NULL.");
+	if(pLASiWrapper==0) throw Exception("DrawingLabelManager::setLASiWrapper()","Pointer to LASiWrapper is NULL.");
 	
-	_doc = doc;
+	_pLASiWrapper = pLASiWrapper;
 	
 }
-
 
 //
 // setLabelSet()
@@ -90,10 +89,10 @@ void DrawingLabelManager::setLabelSet(const LabelSet* labelSet){
 	UTF32 sampleUnicodeValue;
 	
 	// Don't try to dereference a null pointer:
-	if(_doc==0) throw Exception("DrawingLabelManager::setLabelSet()","Pointer to doc is NULL. Was setPostscriptDocument() called?");
+	if(_pLASiWrapper==0) throw Exception("DrawingLabelManager::setLabelSet()","Pointer to LASiWrapper is NULL. Was setPostscriptDocument() called?");
 	
 	//LASi::PostscriptDocument doc;
-	_doc->osBody() << setFont( DrawingMetrics::getFontFamily().c_str() );
+	_pLASiWrapper->setFont(DrawingMetrics::getFontFamily().c_str());
 	
 	std::string fontSizeUnit = DrawingMetrics::getFontSizeUnit();
 	double fontSize          = DrawingMetrics::getFontSize();
@@ -117,12 +116,12 @@ void DrawingLabelManager::setLabelSet(const LabelSet* labelSet){
 	//
 	// If font size is in points already, no conversion or scaling is required:
 	//
-	_doc->osBody() << setFontSize( fontSize );
+	_pLASiWrapper->setFontSize(fontSize);
 	double xAdvance,yMinimum,yMaximum,lineHeight;
 	//
 	// Set lineHeight, yMinimum & yMaximum assuming basic Latin sample first:
 	//
-	_doc->get_dimensions(_latinScript.getSample(),&_lineHeight,&xAdvance,&_yMinimum,&_yMaximum);
+	_pLASiWrapper->getDimensions(_latinScript.getSample(),&_lineHeight,&xAdvance,&_yMinimum,&_yMaximum);
 	
 	SCRIPTCODE script;
 	std::string sampleString;
@@ -146,7 +145,7 @@ void DrawingLabelManager::setLabelSet(const LabelSet* labelSet){
 				//     whose lineHeight dimensions will be presumably greater
 				//     than the basic Latin default:
 				//
-				_doc->get_dimensions(_aggregatedScripts.getSample(),&lineHeight,&xAdvance,&yMinimum,&yMaximum);
+				_pLASiWrapper->getDimensions(_aggregatedScripts.getSample(),&lineHeight,&xAdvance,&yMinimum,&yMaximum);
 				if(lineHeight >_lineHeight){
 					
 					_lineHeight = lineHeight;
@@ -172,7 +171,7 @@ void DrawingLabelManager::setLabelSet(const LabelSet* labelSet){
 				found = _unicodeScripts.find(script);
 				if(found != _unicodeScripts.end() ){
 					sampleString = found->second.getSample();
-					_doc->get_dimensions(sampleString,&lineHeight,&xAdvance,&yMinimum,&yMaximum);
+					_pLASiWrapper->getDimensions(sampleString,&lineHeight,&xAdvance,&yMinimum,&yMaximum);
 					if(lineHeight >_lineHeight){
 						
 						_lineHeight = lineHeight;
@@ -216,7 +215,10 @@ std::string DrawingLabelManager::fitStringToLabelWidth(UTF8String label){
 	//
 	// Get label width (xAdvance):
 	//
-	_doc->get_dimensions(label,&_lineHeight,&xAdvance,&_yMinimum,&_yMaximum);
+	_pLASiWrapper->getDimensions(label,&_lineHeight,&xAdvance,&_yMinimum,&_yMaximum);
+	
+	// NOTE: If the program is compiled with LASi, xAdvance just uses an average width per character which might
+	// not work with all scripts and font sizes. The average value will work for Latin and extended Latin scripts.
 	
 	if(xAdvance > maximumLabelWidth ){
 		
