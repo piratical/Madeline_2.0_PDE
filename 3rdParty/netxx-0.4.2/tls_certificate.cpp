@@ -93,8 +93,11 @@ std::string Netxx::TLS::cert_impl::get_fqdn (void) const
 		CONF_VALUE *nval;
 
 		if ( (meth = X509V3_EXT_get(ext)) == 0) break;
-		val = meth->i2v(meth, meth->d2i(0, &(ext->value->data), ext->value->length), 0);
-
+#ifdef __CYGWIN__
+		val = meth->i2v(meth, meth->d2i(0, (const char **) &(ext->value->data), ext->value->length), 0);
+#else
+		val = meth->i2v(meth, meth->d2i(0,  &(ext->value->data), ext->value->length), 0);
+#endif
 		for (int j=0; j<sk_CONF_VALUE_num(val); ++j) {
 		    nval = sk_CONF_VALUE_value(val, j);
 		    if (std::strcmp(nval->name, const_field_dns) == 0) return std::string(nval->value);
