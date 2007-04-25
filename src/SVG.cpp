@@ -212,4 +212,70 @@ void SVG::drawIconForAbortedPregnancy(std::ostringstream& os,double x, double y,
 	
 }
 
+//
+// drawAdoptedIn: - Draws brackets around an individual like this: [ ]
+//                - Conforms to PSTF (Bennet et al.)
+//
+void SVG::drawAdoptedIn(std::ostringstream& os,double x,double y){
+	
+	double d = DrawingMetrics::getIconDiameter();
+	double r = 0.5 * d;
+	double t = DrawingMetrics::getVerticalTick();
+	double v = d+t+t;
+	
+	x -= r;
+	y -= r;
+	y -= t;
+	
+	os << "<path d=\"M " << x << " " << y;
+	os << " l " << -t << " " << 0;
+	os << " "   <<  0 << " " << v;
+	os << " "   <<  t << " " << 0;
+	os << "\" class=\"solid\" />\n";
+	
+	x += d;
+	
+	os << "<path d=\"M " << x << " " << y;
+	os << " l " <<  t << " " << 0;
+	os << " "   <<  0 << " " << v;
+	os << " "   << -t << " " << 0;
+	os << "\" class=\"solid\" />\n";
+	
+}
+
+//
+// drawAdoptedOut: - Draws brackets around an individual like this: ] [
+//                 - This is intentionally different from the PSTF
+//                   (Bennet et al.) recommendations.
+//
+void SVG::drawAdoptedOut(std::ostringstream& os,double x,double y){
+	
+	double d = DrawingMetrics::getIconDiameter();
+	double r = 0.5 * d;
+	double t = DrawingMetrics::getVerticalTick();
+	double v = d+2*t;
+	
+	x -= r;
+	x -= 2*t;
+	
+	y -= r;
+	y -= t;
+	
+	os << "<path d=\"M " << x << " " << y;
+	os << " l " <<  t << " " << 0;
+	os << " "   <<  0 << " " << v;
+	os << " "   <<  -t << " " << 0;
+	os << "\" class=\"solid\" />\n";
+	
+	x += d;
+	x += 4*t;
+	
+	os << "<path d=\"M " << x << " " << y;
+	os << " l " << -t << " " << 0;
+	os << " "   <<  0 << " " << v;
+	os << " "   <<  t << " " << 0;
+	os << "\"  class=\"solid\" />\n";
+	
+}
+
 

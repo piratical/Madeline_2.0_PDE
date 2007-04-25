@@ -139,6 +139,16 @@ SET(optionalLibs)
 SET(optionalCFlags)
 
 #
+# LibIntl support:
+#
+#FIND_PACKAGE(INTL)
+#IF(INTL_FOUND)
+#	INCLUDE_DIRECTORIES(${INTL_INCLUDE_DIR})
+#	LINK_DIRECTORIES(${INTL_LINK_DIR})
+#	SET(optionalLibs ${optionalLibs} ${INTL_LIBRARY})
+#ENDIF(INTL_FOUND)
+
+#
 # Optional MySQL++ support:
 #
 OPTION( WITH_MYSQLPP_SUPPORT "Build Madeline with MySQL database support" OFF )

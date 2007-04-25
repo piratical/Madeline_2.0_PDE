@@ -1158,8 +1158,14 @@ void NuclearFamily::draw(Individual* startIndividual,DrawingCanvas& dc,double st
 			// Draw verticalDrop2 for the child
 			// Draw a short verticalDrop2 for twins
 			//
-			if(children[i]->isSpecial()) ;
-			else if(_twinGroupCount && children[i]->getTwinMarker().get() != "."){
+			if(children[i]->isIndividualIndicatingNoOffspring()  ||
+			   children[i]->isIndividualIndicatingNonFertility() ||
+			   children[i]->isIndividualIndicatingTerminatedPregnancy()
+			){
+				
+				// Don't draw vertical line at all in these cases ...
+				
+			}else if(_twinGroupCount && children[i]->getTwinMarker().get() != "."){
 				dc.drawVerticalLine(currentX,currentY+verticalDrop2-DrawingMetrics::getVerticalTick(),currentY+verticalDrop2);
 			}else if(children[i]->getGender().get() == "."){
 				dc.drawVerticalLine(currentX,currentY,currentY+verticalDrop2-(M_SQRT2-1)*iconDiameter);

@@ -154,6 +154,8 @@ private:
 	bool _individualIndicatingNoOffspring;
 	bool _individualIndicatingNonFertility;
 	bool _individualIndicatingTerminatedPregnancy;
+	bool _individualAdoptedOut;
+	bool _individualAdoptedIn;
 	bool _isSpecial;
 	
 public:
@@ -308,7 +310,9 @@ public:
 	inline bool isIndividualIndicatingNoOffspring(void){         return _individualIndicatingNoOffspring;         }
 	inline bool isIndividualIndicatingNonFertility(void){        return _individualIndicatingNonFertility;        }
 	inline bool isIndividualIndicatingTerminatedPregnancy(void){ return _individualIndicatingTerminatedPregnancy; }
-	inline bool isSpecial(void)                                { return _isSpecial;                               }
+	inline bool isIndividualAdoptedIn(void){                     return _individualAdoptedIn;                     }
+	inline bool isIndividualAdoptedOut(void){                    return _individualAdoptedOut;                    }
+	inline bool isSpecial(void){                                 return _isSpecial;                               }
 	
 	//
 	// getDataTable:

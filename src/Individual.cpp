@@ -106,6 +106,17 @@ void Individual::_checkForSpecialIndividualTypes(void){
 		_individualIndicatingTerminatedPregnancy=true;
 		_isSpecial=true;
 		break;
+	case '-':
+		// ADOPTED OUT:
+		_individualAdoptedOut=true;
+		_isSpecial=true;
+		break;
+	case '+':
+		// ADOPTED IN:
+		_individualAdoptedIn=true;
+		_isSpecial=true;
+		break;
+		
 	}
 	
 }

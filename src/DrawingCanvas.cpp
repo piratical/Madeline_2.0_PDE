@@ -758,6 +758,17 @@ void DrawingCanvas::drawIndividual(Individual* pIndividual,double x,double y,boo
 			return;
 			
 		}
+		if( pIndividual->isIndividualAdoptedIn()){
+			
+			_svg.drawAdoptedIn(_body,x,y);
+			
+		}
+		if( pIndividual->isIndividualAdoptedOut()){
+			
+			_svg.drawAdoptedOut(_body,x,y);
+			
+		}
+		
 	}
 	
 	/////////////////////////////////////////
