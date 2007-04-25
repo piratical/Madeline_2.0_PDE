@@ -74,6 +74,8 @@ inline void Individual::_init(void){
 	_individualIndicatingNoOffspring=false;
 	_individualIndicatingNonFertility=false;
 	_individualIndicatingTerminatedPregnancy=false;
+	_individualAdoptedOut=false;
+	_individualAdoptedIn =false;
 	_isSpecial=false;
 	
 }

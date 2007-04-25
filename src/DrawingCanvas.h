@@ -103,6 +103,7 @@ private:
 	void _drawNorthEastArrow(double x, double y, double scale);
 	void _drawLegends(void);
 	void _drawSampledIndicator(double x, double y);
+	void _drawSuperScript(const std::string &label,double x, double y);
 	
 public:
 	//
@@ -138,6 +139,7 @@ public:
 	void drawIndividual(Individual* pIndividual,double x,double y,bool isDashed=false);
 	
 	void drawLabelSet(Individual* pIndividual);
+	void drawSuperscriptData(Individual *pIndividual,double x, double y);
 	void drawEncircledText(std::string text,double x,double y,double xradius, double yradius,const std::string& myclass=std::string(""));
 	void show(const char* filename);
 	

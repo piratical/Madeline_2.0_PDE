@@ -70,6 +70,7 @@ FieldLabels::FieldLabels()
 	DeceasedField = "DECEASED";
 	ProbandField = "PROBAND";
 	SampledField = "SAMPLED";
+	SuperscriptField = "SUPERSCRIPT";
 	
 	PEDIGREE_TABLE_CORE_COLUMN_COUNT = 5;
 	GENETIC_TABLE_CORE_COLUMN_MINIMUM = 2;

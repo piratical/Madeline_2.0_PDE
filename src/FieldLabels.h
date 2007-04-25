@@ -46,6 +46,7 @@ class FieldLabels
 	std::string DeceasedField;
 	std::string ProbandField;
 	std::string SampledField;
+	std::string SuperscriptField;
 	
 	int PEDIGREE_TABLE_CORE_COLUMN_COUNT;
 	int GENETIC_TABLE_CORE_COLUMN_MINIMUM;

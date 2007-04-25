@@ -57,8 +57,10 @@ public:
 	void drawIconForInfertility(std::ostringstream& os,double x, double y);
 	void drawIconForAbortedPregnancy(std::ostringstream& os,double x, double y, const std::string &id = std::string(""), const std::string &cssClass = std::string(""));
 	
-	void drawAdoptedIn(std::ostringstream& os,double x,double y);
-	void drawAdoptedOut(std::ostringstream& os,double x,double y);
+	void drawAdoptedIn(std::ostringstream& os,double x,double y,bool widerMargin=false);
+	void drawAdoptedOut(std::ostringstream& os,double x,double y,bool widerMargin=false);
+	void drawMiniMaleIcon(std::ostringstream& os,double x,double y);   // Only used for aborted/terminated pregnancies.
+	void drawMiniFemaleIcon(std::ostringstream& os,double x,double y); // Only used for aborted/terminated pregnancies.
 	
 };
 

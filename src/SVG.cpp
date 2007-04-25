@@ -202,6 +202,8 @@ void SVG::drawIconForAbortedPregnancy(std::ostringstream& os,double x, double y,
 	
 	double r = DrawingMetrics::getIconRadius();
 	y -= r;
+	r*=M_SQRT2;
+	
 	os << "<path d=\"M " << x << " " << y;
 	os << " l " << -r << " " << r;
 	os << " " << 2.0*r << " " << 0;
@@ -216,7 +218,7 @@ void SVG::drawIconForAbortedPregnancy(std::ostringstream& os,double x, double y,
 // drawAdoptedIn: - Draws brackets around an individual like this: [ ]
 //                - Conforms to PSTF (Bennet et al.)
 //
-void SVG::drawAdoptedIn(std::ostringstream& os,double x,double y){
+void SVG::drawAdoptedIn(std::ostringstream& os,double x,double y,bool widerMargin){
 	
 	double d = DrawingMetrics::getIconDiameter();
 	double r = 0.5 * d;
@@ -224,6 +226,7 @@ void SVG::drawAdoptedIn(std::ostringstream& os,double x,double y){
 	double v = d+t+t;
 	
 	x -= r;
+	if(widerMargin) x -= 2*t;
 	y -= r;
 	y -= t;
 	
@@ -234,6 +237,7 @@ void SVG::drawAdoptedIn(std::ostringstream& os,double x,double y){
 	os << "\" class=\"solid\" />\n";
 	
 	x += d;
+	if(widerMargin) x += 4*t;
 	
 	os << "<path d=\"M " << x << " " << y;
 	os << " l " <<  t << " " << 0;
@@ -248,7 +252,7 @@ void SVG::drawAdoptedIn(std::ostringstream& os,double x,double y){
 //                 - This is intentionally different from the PSTF
 //                   (Bennet et al.) recommendations.
 //
-void SVG::drawAdoptedOut(std::ostringstream& os,double x,double y){
+void SVG::drawAdoptedOut(std::ostringstream& os,double x,double y,bool widerMargin){
 	
 	double d = DrawingMetrics::getIconDiameter();
 	double r = 0.5 * d;
@@ -257,6 +261,7 @@ void SVG::drawAdoptedOut(std::ostringstream& os,double x,double y){
 	
 	x -= r;
 	x -= 2*t;
+	if(widerMargin) x -= 2*t;
 	
 	y -= r;
 	y -= t;
@@ -269,12 +274,54 @@ void SVG::drawAdoptedOut(std::ostringstream& os,double x,double y){
 	
 	x += d;
 	x += 4*t;
+	if(widerMargin) x += 4*t;
 	
 	os << "<path d=\"M " << x << " " << y;
 	os << " l " << -t << " " << 0;
 	os << " "   <<  0 << " " << v;
 	os << " "   <<  t << " " << 0;
 	os << "\"  class=\"solid\" />\n";
+	
+}
+
+//
+// drawMiniMaleIcon: - Draws a miniature-sized male icon
+//                     to indicate gender of terminated or aborted pregnancies
+//                     - Not part of PSTF recommendation
+//
+void SVG::drawMiniMaleIcon(std::ostringstream& os,double x,double y){
+	
+	double r  = DrawingMetrics::getIconRadius();
+	double hr = 0.5*r;
+	
+	x -= hr;
+	y += hr;
+	y += DrawingMetrics::getVerticalTick();
+	
+	os << "<path d=\"M " << x << " " << y;
+	os << " l " <<  0 << " " << r;
+	os << " "   <<  r << " " << 0;
+	os << " "   <<  0 << " " << -r;
+	os << " z ";
+	os << "\" class=\"solid\" />\n";
+	
+}
+
+//
+// drawMiniFemaleIcon: - Draws a miniature-sized female icon
+//                       to indicate gender of terminated or aborted pregnancies
+//                     - Not part of PSTF recommendation
+//
+void SVG::drawMiniFemaleIcon(std::ostringstream& os,double x,double y){
+	
+	double r  = DrawingMetrics::getIconRadius();
+	double hr = 0.5*r;
+	
+	y += r;
+	y += DrawingMetrics::getVerticalTick();
+	
+	os << "<circle cx=\"" << x << "\" cy=\"" << y << "\" r=\"" << hr << "\"";
+	os << " class=\"solid\" />\n";
 	
 }
 

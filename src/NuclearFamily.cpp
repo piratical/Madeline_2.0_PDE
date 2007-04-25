@@ -977,45 +977,35 @@ void NuclearFamily::draw(Individual* startIndividual,DrawingCanvas& dc,double st
 				// If the NF has only one child and the father is to the right reset the leftSpouseConnector flag:
 				
 				if((lcnf->getNumberOfChildren() == 1 && lcnf->getFather()->hasBeenDrawn() && lcnf->getFather()->getX() > currentX)){
- 					if(_twinGroupCount && children[i]->getTwinMarker().get() != "."){
-						dc.drawVerticalLine(currentX,currentY+verticalDrop2-verticalTick,currentY+verticalDrop2);
-					}else if(children[i]->getGender().get() == "."){
-						dc.drawVerticalLine(currentX,currentY,currentY+verticalDrop2-(M_SQRT2-1)*iconDiameter);
-					}else{
-						dc.drawVerticalLine(currentX,currentY,currentY+verticalDrop2);
-					}
+					
+					drawVerticalDropToIndividual(dc,children[i],currentX,currentY);
 					children[i]->setLeftSpouseConnector(false);
+					
 				}else{
-					// Draw verticalDrop2 for the child
-					// Draw a short vertical drop for twins
-					if(_twinGroupCount && children[i]->getTwinMarker().get() != "."){
-						dc.drawVerticalLine(currentX+iconInterval,currentY+verticalDrop2-verticalTick,currentY+verticalDrop2);
-					}else if(children[i]->getGender().get() == "."){
-						dc.drawVerticalLine(currentX+iconInterval,currentY,currentY+verticalDrop2-(M_SQRT2-1)*iconDiameter);
-					}else if(children[i]->getNuclearFamily((unsigned)0)->getLeftConnectionShiftFlag() && !_isMaleWithLoopFlags(children[i],0)){
-						dc.drawVerticalLine(currentX+iconInterval+horizontalInterval,currentY,currentY+verticalDrop2);
+					
+					//
+					// THIS CASE DIFFERS -- CHECK AGAIN - 2007.04.25.ET :
+					//
+					if(children[i]->getNuclearFamily((unsigned)0)->getLeftConnectionShiftFlag() && !_isMaleWithLoopFlags(children[i],0)){
+						
+						drawVerticalDropToIndividual(dc,children[i],currentX+iconInterval+horizontalInterval,currentY);
+						
 					}else{
-						dc.drawVerticalLine(currentX+iconInterval,currentY,currentY+verticalDrop2);
+						
+						drawVerticalDropToIndividual(dc,children[i],currentX+iconInterval,currentY);
+						
 					}
+					
 				}
 			}
 			else if(children[i]->getNuclearFamily((unsigned)0)->getLeftConnectionShiftFlag() && !_isMaleWithLoopFlags(children[i],0)){
 				
-				if(_twinGroupCount && children[i]->getTwinMarker().get() != "."){
-					dc.drawVerticalLine(currentX+horizontalInterval,currentY+verticalDrop2-verticalTick,currentY+verticalDrop2);
-				}else if(children[i]->getGender().get() == "."){
-					dc.drawVerticalLine(currentX+horizontalInterval,currentY,currentY+verticalDrop2-(M_SQRT2-1)*iconDiameter);
-				}else{ 
-					dc.drawVerticalLine(currentX+horizontalInterval,currentY,currentY+verticalDrop2);
-				}
-			}else if(_twinGroupCount && children[i]->getTwinMarker().get() != ".")
-				dc.drawVerticalLine(currentX,currentY+verticalDrop2-verticalTick,currentY+verticalDrop2);
-			else{
-				if(children[i]->getGender().get() == "."){
-					dc.drawVerticalLine(currentX,currentY,currentY+verticalDrop2-(M_SQRT2-1)*iconDiameter);
-				}else{ 
-					dc.drawVerticalLine(currentX,currentY,currentY+verticalDrop2);
-				}
+				drawVerticalDropToIndividual(dc,children[i],currentX+horizontalInterval,currentY);
+				
+			}else{
+				
+				drawVerticalDropToIndividual(dc,children[i],currentX,currentY);
+				
 			}
 			
 			double xl = currentX - (children[i]->getNuclearFamily((unsigned)0)->getLeftWidth()) * horizontalInterval;
@@ -1158,20 +1148,8 @@ void NuclearFamily::draw(Individual* startIndividual,DrawingCanvas& dc,double st
 			// Draw verticalDrop2 for the child
 			// Draw a short verticalDrop2 for twins
 			//
-			if(children[i]->isIndividualIndicatingNoOffspring()  ||
-			   children[i]->isIndividualIndicatingNonFertility() ||
-			   children[i]->isIndividualIndicatingTerminatedPregnancy()
-			){
-				
-				// Don't draw vertical line at all in these cases ...
-				
-			}else if(_twinGroupCount && children[i]->getTwinMarker().get() != "."){
-				dc.drawVerticalLine(currentX,currentY+verticalDrop2-DrawingMetrics::getVerticalTick(),currentY+verticalDrop2);
-			}else if(children[i]->getGender().get() == "."){
-				dc.drawVerticalLine(currentX,currentY,currentY+verticalDrop2-(M_SQRT2-1)*iconDiameter);
-			}else{
-				dc.drawVerticalLine(currentX,currentY,currentY+verticalDrop2);
-			}
+			drawVerticalDropToIndividual(dc,children[i],currentX,currentY);
+			
 			//
 			// Draw the child
 			//
@@ -1425,6 +1403,69 @@ void NuclearFamily::findTwinsByDOB(){
 			++mit;
 		}
 	}*/
+	
+}
+
+//
+// drawVerticalDropToIndividual
+//
+void NuclearFamily::drawVerticalDropToIndividual(DrawingCanvas &dc,Individual *pChild,double x,double y){
+	
+	double yEnd = y + DrawingMetrics::getVerticalDrop2();
+	
+	//
+	// Handle cases where there is no vertical line at all:
+	//
+	if( pChild->isIndividualIndicatingNoOffspring() || pChild->isIndividualIndicatingNonFertility() ){
+		
+		return;
+		
+	}
+	
+	//
+	// Terminated pregnancy icons are positioned
+	// with only a short vertical stub:
+	//
+	if( pChild->isIndividualIndicatingTerminatedPregnancy() ){
+		
+		//
+		// Draw the very short vertical stub above a twin individual:
+		//
+		dc.drawVerticalLine( x , y, y + 2*DrawingMetrics::getVerticalTick() );
+		return;
+		
+	}
+	
+	if(_twinGroupCount && pChild->getTwinMarker().get() != "."){
+		
+		//
+		// Draw the very short vertical stub above a twin individual:
+		//
+		dc.drawVerticalLine( x , yEnd - DrawingMetrics::getVerticalTick() , yEnd );
+		return;
+		
+	}
+	
+	//
+	// Non-gendered individual:
+	//
+	if(pChild->getGender().get() == "."){
+		
+		//
+		// The vertical drop here is a tad shorter to accomodate the fact
+		// that the non-gender "diamond" is taller than the normal circle or
+		// square icon:
+		//
+		dc.drawVerticalLine( x , y , yEnd - (M_SQRT2-1)*DrawingMetrics::getIconDiameter() , std::string( pChild->isIndividualAdoptedIn()?"dashed":"solid" ) );
+		return;
+	}
+	
+	//
+	// Get here for normal and adopted in cases
+	// where the icon is a circle or a square:
+	//
+	dc.drawVerticalLine( x , y , yEnd , std::string( pChild->isIndividualAdoptedIn()?"dashed":"solid" ));
+	return;
 	
 }
 

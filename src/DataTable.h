@@ -122,6 +122,7 @@ private:
 	int _mzTwinColumnIndex;
 	int _probandColumnIndex;
 	int _sampledColumnIndex;
+	int _superscriptColumnIndex;
 	
 	//
 	// Private methods:
@@ -204,6 +205,7 @@ public:
 	inline int getMZTwinColumnIndex(void) const { return _mzTwinColumnIndex; }
 	inline int getProbandColumnIndex(void) const { return _probandColumnIndex; }
 	inline int getSampledColumnIndex(void) const { return _sampledColumnIndex; }
+	inline int getSuperscriptColumnIndex(void) const { return _superscriptColumnIndex; }
 	
 	//
 	// getIconColumnCount

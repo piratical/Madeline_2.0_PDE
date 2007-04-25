@@ -199,13 +199,6 @@ void DrawingCanvas::_setCSS(){
 	_header << "}\n\n";
 	
 	//
-	// .dashed:
-	//
-	//_header << ".dashed{\n";
-	//_header << "	stroke:#930;\n";
-	//_header << "}\n\n";
-	
-	//
 	// .layer text:
 	//
 	_header << ".layer text{\n";
@@ -218,28 +211,6 @@ void DrawingCanvas::_setCSS(){
 	_header << ".layer line{\n";
 	_header << "	stroke:#000;\n";
 	_header << "}\n\n";
-	
-	//
-	// .affected:
-	//
-	//_header << ".affected{\n";
-	//_header << "	fill:#98afc7;\n";
-	//_header << "}\n\n";
-	
-	//
-	// .notSampled:
-	//
-	//_header << ".notSampled{\n";
-	//_header << "	stroke:#808080;\n";
-	//_header << "}\n\n";
-	
-	//
-	// .affectedNotSampled:
-	//
-	//_header << ".affectedNotSampled{\n";
-	//_header << "	stroke:#808080;\n";
-	//_header << "	fill:#98afc7;\n";
-	//_header << "}\n\n";
 	
 	//
 	// .birthOrder:
@@ -350,7 +321,7 @@ void DrawingCanvas::_setCSS(){
 	//
 	// whiteInkLetter:
 	//
-
+	
 	_header << ".whiteInkLetter_1{\n";
 	_header << "	font-size: " << DrawingMetrics::getFontSize() << DrawingMetrics::getFontSizeUnit() << ";\n";
 	_header << "	fill: #fff;\n";
@@ -374,7 +345,7 @@ void DrawingCanvas::_setCSS(){
 	//
 	// blackInkLetter:
 	//
-
+	
 	_header << ".blackInkLetter_1{\n";
 	_header << "	font-size: " << DrawingMetrics::getFontSize() << DrawingMetrics::getFontSizeUnit() << ";\n";
 	_header << "}\n\n";
@@ -448,7 +419,6 @@ void DrawingCanvas:: _drawProbandArrow(double x, double y){
 	//
 	// Offset tip of arrow from corner of square icon by half a millimeter:
 	//
-	double diameter = DrawingMetrics::getIconDiameter();
 	double padding = 0.5*DrawingMetrics::getScalingFactor();
 	double ax = x - DrawingMetrics::getIconRadius() - padding;
 	double ay = y + DrawingMetrics::getIconRadius() + padding;
@@ -739,33 +709,77 @@ void DrawingCanvas::drawIndividual(Individual* pIndividual,double x,double y,boo
 	//
 	/////////////////////////////////////////
 	
-	if( pIndividual->isSpecial() ){ 
+	if( pIndividual->isSpecial() ){
+		 
 		if( pIndividual->isIndividualIndicatingNoOffspring()){
 			std::cout<< pIndividual->getId().get() <<" is an indicator of no offspring" << std::endl;
 			_svg.drawIconForNoChildren(_body,x,y-DrawingMetrics::getVerticalDrop2());
+			//
+			// No "real" offspring -- so return:
+			//
 			return;
 			
 		}
+		
 		if( pIndividual->isIndividualIndicatingNonFertility()){
 			
 			_svg.drawIconForInfertility(_body,x,y-DrawingMetrics::getVerticalDrop2());
-			return;
-			
-		}     
-		if( pIndividual->isIndividualIndicatingTerminatedPregnancy()){
-			
-			_svg.drawIconForAbortedPregnancy(_body,x,y-DrawingMetrics::getVerticalDrop2(),pIndividual->getId().get(),cssClass);
+			//
+			// No "real" offspring -- so return:
+			//
 			return;
 			
 		}
+		     
+		if( pIndividual->isIndividualIndicatingTerminatedPregnancy()){
+			//
+			// position the icon 2*VerticalTick distance below the horizontal comb:
+			//
+			double adjustedY = y - DrawingMetrics::getVerticalDrop2()+2*DrawingMetrics::getVerticalTick();
+			_svg.drawIconForAbortedPregnancy(_body,x,adjustedY,pIndividual->getId().get(),cssClass);
+			switch(pIndividual->getGender().getEnum()){
+			case(Gender::MALE):
+				_svg.drawMiniMaleIcon(_body,x,adjustedY);
+				break;
+			case(Gender::FEMALE):
+				_svg.drawMiniFemaleIcon(_body,x,adjustedY);
+				break;
+			case(Gender::MISSING):
+				// Don't draw anything if gender is unknown:
+				break;
+			}
+			
+			//
+			// Draw superscript data, if there is any:
+			//
+			drawSuperscriptData(pIndividual,x,adjustedY);
+			
+			//
+			// Draw deceased line indicating a terminated pregnancy
+			//
+			if(!pIndividual->hasBeenDrawn() && pIndividual->isDeceased()){
+				_drawDeceasedLine(x,adjustedY);
+			}
+			//
+			// ShowId:
+			//
+			adjustedY += DrawingMetrics::getIconRadius()  +
+			             DrawingMetrics::getLabelMargin() + 
+			             DrawingMetrics::getYMaximum()    +
+			             DrawingMetrics::getLineHeight();
+			drawText(x,adjustedY, _labelManager.fitStringToLabelWidth(pIndividual->getId().get()) );
+			return;
+			
+		}
+		
 		if( pIndividual->isIndividualAdoptedIn()){
 			
-			_svg.drawAdoptedIn(_body,x,y);
+			_svg.drawAdoptedIn(_body,x,y,pIndividual->getGender().getEnum()==Gender::MISSING);
 			
 		}
 		if( pIndividual->isIndividualAdoptedOut()){
 			
-			_svg.drawAdoptedOut(_body,x,y);
+			_svg.drawAdoptedOut(_body,x,y,pIndividual->getGender().getEnum()==Gender::MISSING);
 			
 		}
 		
@@ -789,6 +803,11 @@ void DrawingCanvas::drawIndividual(Individual* pIndividual,double x,double y,boo
 	if(pIndividual->isSampled()){
 		_drawSampledIndicator(x,y);
 	}
+	
+	//
+	// Draw superscript data, if there is any:
+	//
+	drawSuperscriptData(pIndividual,x,y);
 	
 	//
 	// Draw icon:
@@ -816,7 +835,14 @@ void DrawingCanvas::drawIndividual(Individual* pIndividual,double x,double y,boo
 	// Draw deceased line:
 	//
 	if(!pIndividual->hasBeenDrawn() && pIndividual->isDeceased()){
-		_drawDeceasedLine(x,y);
+		//
+		// Adjust position for non-gendered individuals:
+		//
+		double adjustedY=y;
+		if(pIndividual->getGender().getEnum()==Gender::MISSING) adjustedY -= (M_SQRT2-1)*DrawingMetrics::getIconRadius();
+		
+		_drawDeceasedLine(x,adjustedY);
+		
 	}
 	
 	//
@@ -833,8 +859,10 @@ void DrawingCanvas::drawIndividual(Individual* pIndividual,double x,double y,boo
 		// drawLabelSet
 		drawLabelSet(pIndividual);
 		
-	}else if(pIndividual->isOriginalFounder() || pIndividual->isOrdinaryFounder()){
+	}else if( pIndividual->isOriginalFounder() || pIndividual->isOrdinaryFounder() ){
+		//
 		// For individuals who have already been drawn -- display only the id 
+		//
 		y+= DrawingMetrics::getIconRadius()  +
 		    DrawingMetrics::getLabelMargin() + 
 		    DrawingMetrics::getYMaximum()    +
@@ -1302,4 +1330,46 @@ void DrawingCanvas:: _drawSampledIndicator(double x, double y){
 	drawVerticalLine   (ax, ay - symbolRadius , ay + symbolRadius );
 	
 }
+
+//
+// drawSuperscriptData():
+//
+void DrawingCanvas::drawSuperscriptData(Individual *pIndividual,double x, double y){
+	//
+	// See if superscript column is non-missing:
+	//
+	if(pIndividual->isVirtual()) return;
+	
+	int superscriptColumn = pIndividual->getDataTable()->getSuperscriptColumnIndex();
+	if(superscriptColumn != DataTable::COLUMN_IS_MISSING){
+		
+		Data *data = pIndividual->getDataTable()->getDataAtIndex(superscriptColumn,pIndividual->getRowIndex());
+		if(!data->isMissing()){
+			_drawSuperScript(data->get(),x,y);
+		}
+	}
+}
+
+
+//
+// _drawSuperScript()
+//
+void DrawingCanvas:: _drawSuperScript(const std::string &label,double x, double y){
+	
+	double baseOffset = DrawingMetrics::getIconRadius();
+	double padding        = 1.0*DrawingMetrics::getScalingFactor();
+	double symbolDiameter = 3.0*DrawingMetrics::getScalingFactor();
+	double symbolRadius   = 0.5*symbolDiameter;
+	
+	double horizontalOffset = 2.7*DrawingMetrics::getScalingFactor();
+	double verticalOffset   = 1.7*DrawingMetrics::getScalingFactor();
+	
+	double ax = x + baseOffset + horizontalOffset;
+	double ay = y - baseOffset + verticalOffset;
+	
+	drawText(ax,ay,label);
+	
+}
+
+
 

@@ -56,13 +56,14 @@ DataTable::DataTable(TableParser &parser){
 	//
 	// set optional core column indices to default:
 	//
-	_affectedColumnIndex = COLUMN_IS_MISSING;
-	_deceasedColumnIndex = COLUMN_IS_MISSING;
-	_dobColumnIndex      = COLUMN_IS_MISSING;
-	_dzTwinColumnIndex   = COLUMN_IS_MISSING;
-	_mzTwinColumnIndex   = COLUMN_IS_MISSING;
-	_probandColumnIndex  = COLUMN_IS_MISSING;
-	_sampledColumnIndex  = COLUMN_IS_MISSING;
+	_affectedColumnIndex    = COLUMN_IS_MISSING;
+	_deceasedColumnIndex    = COLUMN_IS_MISSING;
+	_dobColumnIndex         = COLUMN_IS_MISSING;
+	_dzTwinColumnIndex      = COLUMN_IS_MISSING;
+	_mzTwinColumnIndex      = COLUMN_IS_MISSING;
+	_probandColumnIndex     = COLUMN_IS_MISSING;
+	_sampledColumnIndex     = COLUMN_IS_MISSING;
+	_superscriptColumnIndex = COLUMN_IS_MISSING;
 	
 	//
 	// Set ColorSeriesStack, blackAndWhiteSeriesStack pointer to null
@@ -440,6 +441,13 @@ void DataTable::_determineTableType(const std::vector<std::string> *pTitles) {
 			// Optional core field
 			_finalTypes[i] = SAMPLED;
 			_sampledColumnIndex = i;
+			
+		}
+		else if(tempString == labels.SuperscriptField)
+		{
+			
+			_finalTypes[i] = STRING;
+			_superscriptColumnIndex = i;
 			
 		}
 		else if(tempString == labels.DeceasedField)
