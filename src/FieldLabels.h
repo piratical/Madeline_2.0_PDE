@@ -47,6 +47,8 @@ class FieldLabels
 	std::string ProbandField;
 	std::string SampledField;
 	std::string SuperscriptField;
+	std::string ConsultandField;
+	std::string CarrierField;
 	
 	int PEDIGREE_TABLE_CORE_COLUMN_COUNT;
 	int GENETIC_TABLE_CORE_COLUMN_MINIMUM;

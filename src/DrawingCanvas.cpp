@@ -310,6 +310,17 @@ void DrawingCanvas::_setCSS(){
 	_header << "}\n\n";
 	
 	//
+	// .filled:
+	//
+	_header << ".filled{\n";
+	_header << "	stroke-width:" << DrawingMetrics::getLineWidth() << DrawingMetrics::getLineWidthUnit() << ";\n";
+	_header << "	stroke-linecap:square;\n";
+	_header << "	stroke-linejoin:miter;\n";
+	_header << "	stroke:#000;\n";
+	_header << "	fill:#000;\n";
+	_header << "}\n\n";
+	
+	//
 	// thinLine:
 	//
 	_header << ".thinLine{\n";
@@ -432,6 +443,25 @@ void DrawingCanvas:: _drawProbandArrow(double x, double y){
 	drawText(cx,cy,"P");
 	
 }
+
+//
+// _drawConsultandArrow()
+//
+void DrawingCanvas:: _drawConsultandArrow(double x, double y){
+	
+	//
+	// Offset tip of arrow from corner of square icon by half a millimeter:
+	//
+	double padding = 0.5*DrawingMetrics::getScalingFactor();
+	double ax = x - DrawingMetrics::getIconRadius() - padding;
+	double ay = y + DrawingMetrics::getIconRadius() + padding;
+	//
+	// Scaling of arrow (3rd parameter) is adjusted to look nice:
+	//
+	_drawNorthEastArrow(ax,ay,0.33);
+	
+}
+
 
 //
 // _drawNorthEastArrow
@@ -853,6 +883,13 @@ void DrawingCanvas::drawIndividual(Individual* pIndividual,double x,double y,boo
 	}
 	
 	//
+	// Draw Consultand arrow:
+	//
+	if(!pIndividual->hasBeenDrawn() && pIndividual->isConsultand()){
+		_drawConsultandArrow(x,y);
+	}
+	
+	//
 	// Draw labels:
 	//
 	if(!pIndividual->hasBeenDrawn()){
@@ -1096,7 +1133,7 @@ void DrawingCanvas::arc( double x, double y, double r, double startAngle, double
 				_lasiWrapper.getDimensions(arcLabel,&lineSpacing,&xAdvance,&yMinimum,&yMaximum);
 				 y+= 0.5*(yMaximum-yMinimum);
 			}
-			drawText(x,y ,arcLabel,arcClass);
+			drawIconText(x,y ,arcLabel,arcClass);
 		}
 		return;
 	}
@@ -1357,9 +1394,6 @@ void DrawingCanvas::drawSuperscriptData(Individual *pIndividual,double x, double
 void DrawingCanvas:: _drawSuperScript(const std::string &label,double x, double y){
 	
 	double baseOffset = DrawingMetrics::getIconRadius();
-	double padding        = 1.0*DrawingMetrics::getScalingFactor();
-	double symbolDiameter = 3.0*DrawingMetrics::getScalingFactor();
-	double symbolRadius   = 0.5*symbolDiameter;
 	
 	double horizontalOffset = 2.7*DrawingMetrics::getScalingFactor();
 	double verticalOffset   = 1.7*DrawingMetrics::getScalingFactor();
@@ -1372,4 +1406,18 @@ void DrawingCanvas:: _drawSuperScript(const std::string &label,double x, double 
 }
 
 
-
+//
+// drawIconText:
+//
+void DrawingCanvas::drawIconText(double x,double y,std::string text,std::string cssClass){
+	
+	//
+	// THIS IS INCOMPLETE - 2007.04.26.ET
+	//
+	// Change "." to "×" for missing:
+	// if(text==".") text="×";
+	
+	if(!_layerFlag) _svg.drawText(_body,x,y,text,cssClass);
+	else            _svg.drawText(_layer,x,y,text,cssClass);
+	
+}

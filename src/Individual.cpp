@@ -59,7 +59,10 @@ inline void Individual::_init(void){
 	_deceased = 0;
 	_affected = 0;
 	_proband = 0;
+	_consultand = 0;
+	_carrier = 0;
 	_sampled = 0;
+	
 	_birthOrder=0;
 	
 	_leftWidth = _rightWidth = 1;

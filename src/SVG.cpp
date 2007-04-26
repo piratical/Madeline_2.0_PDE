@@ -325,4 +325,16 @@ void SVG::drawMiniFemaleIcon(std::ostringstream& os,double x,double y){
 	
 }
 
+//
+// drawMiniCircle: - Draws a small filled circle indicating carrier status
+//
+void SVG::drawMiniCircle(std::ostringstream& os,double x,double y){
+	
+	double r  = DrawingMetrics::getIconRadius();
+	double hr = 0.25*r;
+	
+	os << "<circle cx=\"" << x << "\" cy=\"" << y << "\" r=\"" << hr << "\"";
+	os << " class=\"filled\" />\n";
+	
+}
 

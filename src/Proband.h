@@ -88,6 +88,8 @@ public:
 		Proband::_lookupTable["Y"] = true;
 		Proband::_lookupTable["y"] = true;
 		Proband::_lookupTable["n"] = false;
+		Proband::_lookupTable["P"] = true;
+		Proband::_lookupTable["p"] = true;
 	}
 };
 

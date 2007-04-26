@@ -63,14 +63,17 @@ FieldLabels::FieldLabels()
 	AlleleField = "ALLELE";
 
 	// Optional Core Field Labels
-	DOBField = "DOB";
-	MZTwinField = "MZTWIN";
-	DZTwinField = "DZTWIN";
-	AffectedField = "AFFECTED";
-	DeceasedField = "DECEASED";
-	ProbandField = "PROBAND";
-	SampledField = "SAMPLED";
+	DOBField         = "DOB";
+	MZTwinField      = "MZTWIN";
+	DZTwinField      = "DZTWIN";
+	AffectedField    = "AFFECTED";
+	DeceasedField    = "DECEASED";
+	ProbandField     = "PROBAND";
+	SampledField     = "SAMPLED";
 	SuperscriptField = "SUPERSCRIPT";
+	ConsultandField  = "CONSULTAND";
+	CarrierField     = "CARRIER";
+	
 	
 	PEDIGREE_TABLE_CORE_COLUMN_COUNT = 5;
 	GENETIC_TABLE_CORE_COLUMN_MINIMUM = 2;

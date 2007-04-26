@@ -14,6 +14,7 @@ SET( SOURCES
 	Boolean.h 
 	BufferSizes.h 
 	
+	Carrier.cpp
 	CLP.cpp
 	ColorSeries.cpp
 	ColorSeriesStack.cpp
@@ -21,7 +22,8 @@ SET( SOURCES
 	ColumnClassifier.h 
 	ColumnOffset.h 
 	Compressor.cpp 
-	Compressor.h 
+	Compressor.h
+	Consultand.cpp 
 	
 	Data.cpp 
 	Data.h 

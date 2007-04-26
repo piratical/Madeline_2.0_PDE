@@ -1739,17 +1739,21 @@ void Pedigree::addIndividual(const std::string ind,std::string mother,std::strin
 ///
 void Pedigree::setCoreOptionalFields(const DataTable* pedigreeTable){
 	
-	bool hasDOBColumn = false;
-	bool hasDeceasedColumn = false;
-	bool hasSampledColumn = false;
-	bool hasProbandColumn = false;
-	bool hasAffectedColumn = false;
+	bool hasDOBColumn        = false;
+	bool hasDeceasedColumn   = false;
+	bool hasSampledColumn    = false;
+	bool hasProbandColumn    = false;
+	bool hasAffectedColumn   = false;
+	bool hasConsultandColumn = false;
+	bool hasCarrierColumn    = false;
 	
 	DataColumn *dobColumn;
 	DataColumn *deceasedColumn;
 	DataColumn *sampledColumn;
 	DataColumn *probandColumn;
 	DataColumn *affectedColumn;
+	DataColumn *consultandColumn;
+	DataColumn *carrierColumn;
 	
 	// Check if MZTwin column exists in the datatable
 	if(pedigreeTable->getMZTwinColumnIndex() != DataTable::COLUMN_IS_MISSING){
@@ -1788,6 +1792,17 @@ void Pedigree::setCoreOptionalFields(const DataTable* pedigreeTable){
 		hasProbandColumn = true;
 	}
 	
+	// Check if Consultand column exists in the datatable
+	if(pedigreeTable->getConsultandColumnIndex() != DataTable::COLUMN_IS_MISSING){
+		consultandColumn = pedigreeTable->getColumn(pedigreeTable->getConsultandColumnIndex());
+		hasConsultandColumn = true;
+	}
+	// Check if Carrier column exists in the datatable
+	if(pedigreeTable->getCarrierColumnIndex() != DataTable::COLUMN_IS_MISSING){
+		carrierColumn = pedigreeTable->getColumn(pedigreeTable->getCarrierColumnIndex());
+		hasCarrierColumn = true;
+	}
+	
 	// Check if Affected column exists in the datatable
 	if(pedigreeTable->getAffectedColumnIndex() != DataTable::COLUMN_IS_MISSING){
 		affectedColumn = pedigreeTable->getColumn(pedigreeTable->getAffectedColumnIndex());
@@ -1799,11 +1814,14 @@ void Pedigree::setCoreOptionalFields(const DataTable* pedigreeTable){
 	
 	while(individualIt != _individuals.end()){
 		rowIndex = (*individualIt)->getRowIndex();
-		if(hasDOBColumn) (*individualIt)->setDOB(dynamic_cast<Date*>(const_cast<Data* const>(dobColumn->getDataAtIndex(rowIndex))));
-		if(hasDeceasedColumn) (*individualIt)->setDeceasedStatus(dynamic_cast<LivingDead*>(const_cast<Data* const>(deceasedColumn->getDataAtIndex(rowIndex))));
-		if(hasSampledColumn) (*individualIt)->setSampled(dynamic_cast<Sampled*>(const_cast<Data* const>(sampledColumn->getDataAtIndex(rowIndex))));
-		if(hasProbandColumn) (*individualIt)->setProbandStatus(dynamic_cast<Proband*>(const_cast<Data* const>(probandColumn->getDataAtIndex(rowIndex))));
-		if(hasAffectedColumn) (*individualIt)->setAffectionStatus(dynamic_cast<Affected*>(const_cast<Data* const>(affectedColumn->getDataAtIndex(rowIndex))));
+		if(hasDOBColumn)        (*individualIt)->setDOB(dynamic_cast<Date*>(const_cast<Data* const>(dobColumn->getDataAtIndex(rowIndex))));
+		if(hasDeceasedColumn)   (*individualIt)->setDeceasedStatus(dynamic_cast<LivingDead*>(const_cast<Data* const>(deceasedColumn->getDataAtIndex(rowIndex))));
+		if(hasSampledColumn)    (*individualIt)->setSampled(dynamic_cast<Sampled*>(const_cast<Data* const>(sampledColumn->getDataAtIndex(rowIndex))));
+		if(hasProbandColumn)    (*individualIt)->setProbandStatus(dynamic_cast<Proband*>(const_cast<Data* const>(probandColumn->getDataAtIndex(rowIndex))));
+		if(hasAffectedColumn)   (*individualIt)->setAffectionStatus(dynamic_cast<Affected*>(const_cast<Data* const>(affectedColumn->getDataAtIndex(rowIndex))));
+		if(hasConsultandColumn) (*individualIt)->setConsultandStatus(dynamic_cast<Consultand*>(const_cast<Data* const>(consultandColumn->getDataAtIndex(rowIndex))));
+		if(hasCarrierColumn)    (*individualIt)->setCarrierStatus(dynamic_cast<Carrier*>(const_cast<Data* const>(carrierColumn->getDataAtIndex(rowIndex))));
+		
 		++individualIt;
 	}
 	

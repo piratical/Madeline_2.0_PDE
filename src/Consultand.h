@@ -20,41 +20,41 @@
 // 
 /////////////////////////////////////////////////////////
 //
-// 2005.03.07.ET.RK
+// 2007.04.26.ET
 //
 
 //
-// Sampled.h
+// Consultand.h
 //
-#ifndef Sampled_INCLUDED
-#define Sampled_INCLUDED
+#ifndef Consultand_INCLUDED
+#define Consultand_INCLUDED
 
 #include "Boolean.h"
 
-class SampledMapLoader;
-//! Sampled is a data type derived from Boolean.
-/*! Sampled keeps track of the Sampled status of an individual.
+class ConsultandMapLoader;
+//! Consultand is a data type derived from Boolean.
+/*! Consultand keeps track of the Consultand status of an individual.
 */
-class Sampled : public Boolean
+class Consultand : public Boolean
 {
 public:
 	
-	enum SAMPLED{ NOT_SAMPLED, IS_SAMPLED, MISSING }; /*!< Enumeration of sampled values */
+	enum CONSULTAND{ NOT_CONSULTAND, IS_CONSULTAND, MISSING }; /*!< Enumeration of consultand values */
 private:
 	
-	friend class SampledMapLoader;
+	friend class ConsultandMapLoader;
 	static std::map<std::string,bool> _lookupTable;
 public:
 	
 	//
 	// Constructors:
 	//
-	// Note: Boolean value true indicates a Sampled
-	// Boolean value false indicates not a Sampled
+	// Note: Boolean value true indicates a Consultand
+	// Boolean value false indicates not a Consultand
 	// 
-	Sampled() : Boolean() { }
-	Sampled(const char *value){ set(value); }
-	Sampled(const std::string &value){ set( value.c_str() ); }
+	Consultand() : Boolean() { }
+	Consultand(const char *value){ set(value); }
+	Consultand(const std::string &value){ set( value.c_str() ); }
 	//
 	// Static Methods:
 	//
@@ -71,27 +71,25 @@ public:
 	//
 	// Additional Setters/Getters not present in virtual base class:
 	//
-	void set(SAMPLED sampled);
-	const SAMPLED getEnum( void ) const { if(_isMissing) return Sampled::MISSING; if(_value) return Sampled::IS_SAMPLED; else return Sampled::NOT_SAMPLED; }
+	void set(CONSULTAND consultand);
+	const CONSULTAND getEnum( void ) const { if(_isMissing) return Consultand::MISSING; if(_value) return Consultand::IS_CONSULTAND; else return NOT_CONSULTAND; }
 	
 };
 
 //
-// Sampled Friend class that initializes the lookup table:
+// Consultand Friend class that initializes the lookup table:
 //
-class SampledMapLoader
+class ConsultandMapLoader
 {
 public:
-	static SampledMapLoader sampledMapLoader;
-	SampledMapLoader(){
-		Sampled::_lookupTable["N"] = false;
-		Sampled::_lookupTable["Y"] = true;
-		Sampled::_lookupTable["y"] = true;
-		Sampled::_lookupTable["n"] = false;
-		Sampled::_lookupTable["S"] = true;
-		Sampled::_lookupTable["U"] = false;
-		Sampled::_lookupTable["s"] = true;
-		Sampled::_lookupTable["u"] = false;
+	static ConsultandMapLoader consultandMapLoader;
+	ConsultandMapLoader(){
+		Consultand::_lookupTable["N"] = false;
+		Consultand::_lookupTable["Y"] = true;
+		Consultand::_lookupTable["y"] = true;
+		Consultand::_lookupTable["n"] = false;
+		Consultand::_lookupTable["C"] = true;
+		Consultand::_lookupTable["c"] = true;
 	}
 };
 

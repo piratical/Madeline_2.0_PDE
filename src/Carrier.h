@@ -20,41 +20,41 @@
 // 
 /////////////////////////////////////////////////////////
 //
-// 2005.03.07.ET.RK
+// 2007.04.26.ET
 //
 
 //
-// Sampled.h
+// Carrier.h
 //
-#ifndef Sampled_INCLUDED
-#define Sampled_INCLUDED
+#ifndef Carrier_INCLUDED
+#define Carrier_INCLUDED
 
 #include "Boolean.h"
 
-class SampledMapLoader;
-//! Sampled is a data type derived from Boolean.
-/*! Sampled keeps track of the Sampled status of an individual.
+class CarrierMapLoader;
+//! Carrier is a data type derived from Boolean.
+/*! Carrier keeps track of whether an individual is a carrier of a genetic trait.
 */
-class Sampled : public Boolean
+class Carrier : public Boolean
 {
 public:
 	
-	enum SAMPLED{ NOT_SAMPLED, IS_SAMPLED, MISSING }; /*!< Enumeration of sampled values */
+	enum CARRIER{ NOT_CARRIER, IS_CARRIER, MISSING }; /*!< Enumeration of sampled values */
 private:
 	
-	friend class SampledMapLoader;
+	friend class CarrierMapLoader;
 	static std::map<std::string,bool> _lookupTable;
 public:
 	
 	//
 	// Constructors:
 	//
-	// Note: Boolean value true indicates a Sampled
-	// Boolean value false indicates not a Sampled
+	// Note: Boolean value true indicates a Carrier
+	// Boolean value false indicates not a Carrier
 	// 
-	Sampled() : Boolean() { }
-	Sampled(const char *value){ set(value); }
-	Sampled(const std::string &value){ set( value.c_str() ); }
+	Carrier() : Boolean() { }
+	Carrier(const char *value){ set(value); }
+	Carrier(const std::string &value){ set( value.c_str() ); }
 	//
 	// Static Methods:
 	//
@@ -71,27 +71,25 @@ public:
 	//
 	// Additional Setters/Getters not present in virtual base class:
 	//
-	void set(SAMPLED sampled);
-	const SAMPLED getEnum( void ) const { if(_isMissing) return Sampled::MISSING; if(_value) return Sampled::IS_SAMPLED; else return Sampled::NOT_SAMPLED; }
+	void set(CARRIER carrier);
+	const CARRIER getEnum( void ) const { if(_isMissing) return Carrier::MISSING; if(_value) return Carrier::IS_CARRIER; else return Carrier::NOT_CARRIER; }
 	
 };
 
 //
 // Sampled Friend class that initializes the lookup table:
 //
-class SampledMapLoader
+class CarrierMapLoader
 {
 public:
-	static SampledMapLoader sampledMapLoader;
-	SampledMapLoader(){
-		Sampled::_lookupTable["N"] = false;
-		Sampled::_lookupTable["Y"] = true;
-		Sampled::_lookupTable["y"] = true;
-		Sampled::_lookupTable["n"] = false;
-		Sampled::_lookupTable["S"] = true;
-		Sampled::_lookupTable["U"] = false;
-		Sampled::_lookupTable["s"] = true;
-		Sampled::_lookupTable["u"] = false;
+	static CarrierMapLoader carrierMapLoader;
+	CarrierMapLoader(){
+		Carrier::_lookupTable["N"] = false;
+		Carrier::_lookupTable["Y"] = true;
+		Carrier::_lookupTable["y"] = true;
+		Carrier::_lookupTable["n"] = false;
+		Carrier::_lookupTable["C"] = true;
+		Carrier::_lookupTable["c"] = true;
 	}
 };
 

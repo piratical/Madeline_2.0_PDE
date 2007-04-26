@@ -45,7 +45,10 @@ enum DATATYPE {
 	LIVINGDEAD=0x0800,
 	TWIN=0x1000,
 	UNCLASSIFIED=0x2000, // Column has not yet been scanned ...
-	MISSING=0x4000       // Column has been scanned and still found empty/missing ...
+	MISSING=0x4000,      // Column has been scanned and still found empty/missing ...
+	// 2007.04.26.ET: Adding more types here:
+	CONSULTAND=0x8000,
+	CARRIER=0x10000
 };
 
 #endif

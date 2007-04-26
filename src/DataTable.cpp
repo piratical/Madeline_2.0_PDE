@@ -64,6 +64,8 @@ DataTable::DataTable(TableParser &parser){
 	_probandColumnIndex     = COLUMN_IS_MISSING;
 	_sampledColumnIndex     = COLUMN_IS_MISSING;
 	_superscriptColumnIndex = COLUMN_IS_MISSING;
+	_consultandColumnIndex  = COLUMN_IS_MISSING;
+	_carrierColumnIndex     = COLUMN_IS_MISSING;
 	
 	//
 	// Set ColorSeriesStack, blackAndWhiteSeriesStack pointer to null
@@ -464,6 +466,23 @@ void DataTable::_determineTableType(const std::vector<std::string> *pTitles) {
 			// Optional core field
 			_finalTypes[i] = PROBAND;
 			_probandColumnIndex = i;
+			
+		}
+		else if(tempString == labels.ConsultandField)
+		{
+			
+			// Optional core field:
+			// Treat consultand just like proband:
+			_finalTypes[i] = CONSULTAND;
+			_consultandColumnIndex = i;
+			
+		}
+		else if(tempString == labels.CarrierField)
+		{
+			
+			// Optional core field:
+			_finalTypes[i] = CARRIER;
+			_carrierColumnIndex = i;
 			
 		}
 	}

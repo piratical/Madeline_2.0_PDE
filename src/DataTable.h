@@ -123,6 +123,8 @@ private:
 	int _probandColumnIndex;
 	int _sampledColumnIndex;
 	int _superscriptColumnIndex;
+	int _consultandColumnIndex;
+	int _carrierColumnIndex;
 	
 	//
 	// Private methods:
@@ -206,6 +208,8 @@ public:
 	inline int getProbandColumnIndex(void) const { return _probandColumnIndex; }
 	inline int getSampledColumnIndex(void) const { return _sampledColumnIndex; }
 	inline int getSuperscriptColumnIndex(void) const { return _superscriptColumnIndex; }
+	inline int getConsultandColumnIndex(void)  const { return _consultandColumnIndex; }
+	inline int getCarrierColumnIndex(void)     const { return _carrierColumnIndex; }
 	
 	//
 	// getIconColumnCount

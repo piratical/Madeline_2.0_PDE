@@ -100,6 +100,7 @@ private:
 	void _trackMinimaAndMaxima(double x,double y);
 	void _drawDeceasedLine(double x,double y);
 	void _drawProbandArrow(double x,double y);
+	void _drawConsultandArrow(double x, double y);
 	void _drawNorthEastArrow(double x, double y, double scale);
 	void _drawLegends(void);
 	void _drawSampledIndicator(double x, double y);
@@ -134,6 +135,7 @@ public:
 	void drawVerticalLine(double x,double y1,double y2,const std::string & className=std::string(""), const std::string & id=std::string(""));
 	void drawPolyline(const std::string points,const std::string& id=std::string(""),const std::string& myclass=std::string(""));
 	void drawText(double x,double y,std::string text,std::string  myclass="");
+	void drawIconText(double x,double y,std::string text,std::string  myclass="");
 	void drawRectangle(double x,double y,double width,double height);
 	
 	void drawIndividual(Individual* pIndividual,double x,double y,bool isDashed=false);

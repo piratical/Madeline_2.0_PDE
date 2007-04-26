@@ -38,6 +38,8 @@
 #include "Proband.h"
 #include "DataTable.h"
 #include "Sampled.h"
+#include "Consultand.h"
+#include "Carrier.h"
 
 #include <set>
 #include <vector>
@@ -85,6 +87,8 @@ private:
 	Affected*   _affected;    // affection status
 	LivingDead* _deceased;    // deceased or alive - defaults to missing
 	Proband*    _proband;     // true for the proband only, else false; no need for missing
+	Consultand* _consultand;  // true if a consultand, else false.
+	Carrier*    _carrier;     // true if a carrier, else false.
 	Twin        _twinMarker;  // stores the marker of monozygotic or dizygotic twin 
 	Sampled*    _sampled;     // individual is sampled or not
 	
@@ -198,6 +202,8 @@ public:
 	void setTwin(std::string marker,Twin::TWIN_TYPE type) { _twinMarker.set(marker,type); }
 	void setGender(std::string gender) { _gender.set(gender); }
 	void setSampled(Sampled* sampled){ _sampled=sampled; }
+	void setConsultandStatus(Consultand* consultand){ _consultand=consultand; }
+	void setCarrierStatus(Carrier* carrier){ _carrier=carrier; }
 	void setBirthOrder(unsigned birthOrder){ _birthOrder = birthOrder; }
 	
 	// Set drawing attributes:
@@ -234,10 +240,12 @@ public:
 	bool     hasBeenVisited(void)      { return _hasBeenVisited; }
 	bool     hasBeenDrawn(void)        { return _hasBeenDrawn; }
 	bool     isConsanguinous(void)     { return _isConsanguinous; }
-	bool     isAffected(void)          { if(_affected == 0) return false; return _affected->getBoolean(); }
-	bool     isSampled(void)           { if(_sampled == 0) return false; return _sampled->getBoolean(); }
-	bool     isProband(void)           { if(_proband == 0) return false; return _proband->getBoolean();  }
-	bool     isDeceased(void)          { if(_deceased == 0) return false;  return _deceased->getBoolean(); }
+	bool     isAffected(void)          { if(_affected   == 0) return false; return _affected->getBoolean(); }
+	bool     isSampled(void)           { if(_sampled    == 0) return false; return _sampled->getBoolean(); }
+	bool     isProband(void)           { if(_proband    == 0) return false; return _proband->getBoolean();  }
+	bool     isConsultand(void)        { if(_consultand == 0) return false; return _consultand->getBoolean(); }
+	bool     isCarrier(void)           { if(_carrier    == 0) return false; return _carrier->getBoolean(); }
+	bool     isDeceased(void)          { if(_deceased   == 0) return false; return _deceased->getBoolean(); }
 	unsigned getBirthOrder(void)       { return _birthOrder; }
 	unsigned getRowIndex(void)         { return _rowIndex; }
 	Individual* getFather(void)        { return _father; }
