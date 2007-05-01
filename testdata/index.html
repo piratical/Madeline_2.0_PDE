@@ -7,6 +7,7 @@
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
   <title>Madeline-2.0 Suite of Test Data</title>
   <meta name="owner" content="COPYRIGHT (c) 2006 Edward H. Trager, Ann Arbor, Michigan, USA" />
+  <link rel="shortcut icon" href="http://www.kellogg.umich.edu/favicon.ico" />
   <link rel="stylesheet" title="Default Style" href="css/main.css" type="text/css" media="screen" />
 
  </head>
@@ -25,9 +26,15 @@
 
   <div id="content">
 
-  <p><a href="../index.php">Madeline Home</a> &gt;&gt; Test Data</p>
+  <p style="margin-top:1.0cm"><a href="../index.php">Madeline Home</a> &gt;&gt; Test Data</p>
     
   <h1>Madeline 2.0 Pedigree Drawing Engine Test Data</h2>
+
+  <p>
+   <span class="NoteBene">Note:</span> This complete set of test
+   data is also included with the source code distribution
+   in the "<code>testdata</code>" subdirectory.
+  </p>
 
   <table>
 
@@ -238,6 +245,73 @@
     </td>
    </tr>
    <!-- END ENTRY -->
+   <!-- START ENTRY si_005 -->
+   <tr>
+    <td>
+     <h2>si_006</h2>
+     <img class="floatRight" src="images/si_006.png" alt="si_006 image output" />
+     <p>
+      This is a simple pedigree which demonstrates Madeline 2.0 PED's ability
+      to draw special types of individuals.  Special types of "nuclear families"
+      such as marriages without offspring are also shown.  Special types of annotations 
+      are also shown.  
+     </p>
+     <p>
+      Madeline 2.0 uses a superset of the recommendations of the Pedigree Standardization
+      Task Force (<b>PSTF</b>: Benett, RL et al (1995) <i>Am J Hum Genet. 56: 745-752</i>) for drawing
+      special types of individuals and other special situations.
+     </p>
+     <p>
+      Spontaneous abortions (SAB) and terminations of pregnancies (TOP) are
+      designated by prefixing individual IDs with the "<code>@</code>"
+      symbol. Madeline follows the PSTF by drawing a triangular icon, but differs from the
+      PSTF recommendations by also drawing a small square or circle below the triangle to indicate gender
+      iconically when known.
+     </p>
+     <p>
+      Individuals who are adopted out are designated by prefixing
+      individual IDs with "<code>-</code>" minus signs.  Here again Madeline 2.0
+      differs from the PSTF recommendations by making the brackets surrounding the individual
+      face <i>outward</i> in this case.
+      Individuals who are adopted in are designated by prefixing
+      individual IDs with "<code>+</code>" plus signs: brackets in this case face
+      <i>inward</i> (just as in the PSTF recommendations).
+     </p>
+     <p>
+      A marriage with no offspring due to infertility is realized by inserting a
+      "marker" individual into the database with an ID prefixed by "<code>&amp;</code>".
+      A marriage with no offspring for other reasons is realized in a similar way
+      with a marker individual whose ID is prefixed with a "<code>^</code>" instead.
+     </p>
+     <p>
+      Inclusion of a <code>Carrier</code> column in the data table allows individuals
+      such as <code>S00110</code> to be marked as carriers.  Inclusion of a <code>Consultand</code>
+      column in the data table allows individuals such as <code>S00111</code> to be marked
+      as a consultand.
+     </p> 
+     
+     <p>
+      Finally, inclusion of a <code>Superscript</code> column in the data table permits the
+      display of short strings of letters, numerals, or Unicode symbols just off to the right
+      and slightly above the icons.  These superscripts provide a convenient way to annotate
+      pedigree drawings with additional information.  A random assortment of superscripts is
+      shown in the example reproduced here.
+     </p>
+               
+     <p class="clearFloats">
+      View or download <a href="input/si_006.data">si_006.data</a> in Madeline flat-file format.
+     </p>
+     <p>
+      View or download <a href="output/si_006ped.xml">si_006ped.xml</a> output in SVG format.
+      (Note: try viewing using Opera if the superscripted symbols appear as empty rectangles).
+     </p>
+     <p>
+      Command line:
+      <br/><code>~&gt; madeline2 si_006.data</code>
+     </p>
+    </td>
+   </tr>
+   <!-- END ENTRY -->
 
 
 
@@ -429,7 +503,7 @@ Message: NuclearFamily.cpp::findTwinsByDOB(): Found siblings with the same DOB n
      <img class="floatRight" src="images/cs_002.png" alt="cs_002 image output" />
      <p>
       This data set contains a consanguinous pedigree.
-      This data set is used to test the drawing of uncle-neice consanguinous
+      This data set is used to test the drawing of uncle-niece consanguinous
       matings occurring in subsequent generations.
      </p>
      <p class="clearFloats">
@@ -480,7 +554,7 @@ Message: NuclearFamily.cpp::findTwinsByDOB(): Found siblings with the same DOB n
      <h2>cs_004</h2>
      <img class="floatRight" src="images/cs_004.png" alt="cs_004 image output" />
      <p>
-      In this consanguinous pedigree an uncle-neice marriage is followed by
+      In this consanguinous pedigree an uncle-niece marriage is followed by
       a marriage between first cousins in the offspring generation.
      </p>
      <p class="clearFloats">
@@ -538,7 +612,7 @@ Message: NuclearFamily.cpp::findTwinsByDOB(): Found siblings with the same DOB n
      <h2>cs_006</h2>
      <img class="floatRight" src="images/cs_006.png" alt="cs_006 image output" />
      <p>
-      In this consanguinous pedigree, a grand uncle marries a grand neice.  
+      In this consanguinous pedigree, a grand uncle marries a grand niece.  
       This demonstrates that consanguinous matings which skip 
       a generation can be drawn by the program.
      </p>
@@ -561,7 +635,7 @@ Message: NuclearFamily.cpp::findTwinsByDOB(): Found siblings with the same DOB n
      <h2>cs_007</h2>
      <img class="floatRight" src="images/cs_007.png" alt="cs_007 image output" />
      <p>
-      In this consanguinous pedigree a great-grand uncle marries a great-grand neice.
+      In this consanguinous pedigree a great-grand uncle marries a great-grand niece.
       This demonstrates that consanguinous matings which skip 
       two generations can be drawn by the program.
      </p>
@@ -951,7 +1025,7 @@ Message: NuclearFamily.cpp::findTwinsByDOB(): Found siblings with the same DOB n
      <img class="floatRight" src="images/cs_ms_001.png" alt="cs_ms_001 image output" />
      <p>
       This data set has both consanguinous and multiple spouse matings present.
-      Male m103 is married to both a female founder m106 as well as to his own neice m102.
+      Male m103 is married to both a female founder m106 as well as to his own niece m102.
      </p>
      <p class="clearFloats">
       View or download <a href="input/cs_ms_001.data">cs_ms_001.data</a> in Madeline flat file format.
@@ -975,7 +1049,7 @@ Message: NuclearFamily.cpp::findTwinsByDOB(): Found siblings with the same DOB n
      <img class="floatRight" src="images/cs_ms_002.png" alt="cs_ms_002 image output" />
      <p>
       This data set has both consanguinous and multiple spouse matings present.
-      m108 has three wives, one of whom is his neice.
+      m108 has three wives, one of whom is his niece.
      </p>
      <p class="clearFloats">
       View or download <a href="input/cs_ms_002.data">cs_ms_002.data</a> in Madeline flat file format.

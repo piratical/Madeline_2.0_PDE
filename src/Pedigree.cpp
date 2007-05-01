@@ -189,7 +189,7 @@ void Pedigree::_checkMarkedTwinsDOB(){
 				if(*initial == *dates[i]);
 				else { unique = false; break; }
 			}
-			if(!unique) Warning("Pedigree::_checkMarkedTwinsDOB","DOB of twins in the twin group with marker '%s' is not the same.",mit->first.substr(0,1).c_str());
+			if(!unique) Warning("Pedigree::_checkMarkedTwinsDOB","Dates of birth of twins in group '%s' are not identical.",mit->first.substr(0,1).c_str());
 			
 		}
 		++mit;
@@ -1797,6 +1797,7 @@ void Pedigree::setCoreOptionalFields(const DataTable* pedigreeTable){
 		consultandColumn = pedigreeTable->getColumn(pedigreeTable->getConsultandColumnIndex());
 		hasConsultandColumn = true;
 	}
+	
 	// Check if Carrier column exists in the datatable
 	if(pedigreeTable->getCarrierColumnIndex() != DataTable::COLUMN_IS_MISSING){
 		carrierColumn = pedigreeTable->getColumn(pedigreeTable->getCarrierColumnIndex());

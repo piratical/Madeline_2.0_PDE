@@ -63,6 +63,7 @@ SET( SOURCES
 	Haplotype.h 
 
 	IconLegend.h
+	Individual.h
 	Individual.cpp
 
 	LabelLegend.h

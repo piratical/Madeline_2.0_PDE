@@ -742,7 +742,7 @@ void DrawingCanvas::drawIndividual(Individual* pIndividual,double x,double y,boo
 	if( pIndividual->isSpecial() ){
 		 
 		if( pIndividual->isIndividualIndicatingNoOffspring()){
-			std::cout<< pIndividual->getId().get() <<" is an indicator of no offspring" << std::endl;
+			
 			_svg.drawIconForNoChildren(_body,x,y-DrawingMetrics::getVerticalDrop2());
 			//
 			// No "real" offspring -- so return:
@@ -887,6 +887,13 @@ void DrawingCanvas::drawIndividual(Individual* pIndividual,double x,double y,boo
 	//
 	if(!pIndividual->hasBeenDrawn() && pIndividual->isConsultand()){
 		_drawConsultandArrow(x,y);
+	}
+	
+	//
+	// Draw Carrier dot:
+	//
+	if(!pIndividual->hasBeenDrawn() && pIndividual->isCarrier()){
+		_svg.drawMiniCircle(_body,x,y);
 	}
 	
 	//

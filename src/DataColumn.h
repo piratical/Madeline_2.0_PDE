@@ -46,6 +46,8 @@
 #include "LivingDead.h"
 #include "Sampled.h"
 #include "Proband.h"
+#include "Consultand.h"
+#include "Carrier.h"
 #include "Twin.h"
 
 #include "Exception.h"

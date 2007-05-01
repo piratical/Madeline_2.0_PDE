@@ -84,9 +84,9 @@ class ConsultandMapLoader
 public:
 	static ConsultandMapLoader consultandMapLoader;
 	ConsultandMapLoader(){
-		Consultand::_lookupTable["N"] = false;
 		Consultand::_lookupTable["Y"] = true;
 		Consultand::_lookupTable["y"] = true;
+		Consultand::_lookupTable["N"] = false;
 		Consultand::_lookupTable["n"] = false;
 		Consultand::_lookupTable["C"] = true;
 		Consultand::_lookupTable["c"] = true;

@@ -78,6 +78,12 @@ DataColumn::DataColumn(const std::string &name,DATATYPE columnType, unsigned lon
 	case PROBAND:
 		for(unsigned int k=0; k < _rows; k++) _data.push_back(new Proband());
 		break;
+	case CONSULTAND:
+		for(unsigned int k=0; k < _rows; k++) _data.push_back(new Consultand());
+		break;
+	case CARRIER:
+		for(unsigned int k=0; k < _rows; k++) _data.push_back(new Carrier());
+		break;
 	case TWIN:
 		for(unsigned int k=0; k < _rows; k++) _data.push_back(new Twin());
 		break;
