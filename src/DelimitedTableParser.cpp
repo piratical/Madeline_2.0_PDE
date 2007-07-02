@@ -145,7 +145,7 @@ void DelimitedTableParser::readString(const std::string &inString){
 			if(seeker != '\t' && seeker != ' ') break;
 			str.get();
 		}
-		if(seeker == '\n') break;
+		if(seeker == '\n' || seeker == '\r') break;
 	}
 	
 	// int i = 0;
@@ -156,7 +156,7 @@ void DelimitedTableParser::readString(const std::string &inString){
 	while(!str.eof()){
 		if(str.eof()) break;
 		// First obtain a line from the string stream 
-		if(str.peek() == '\n') str.ignore(1);
+		if(str.peek() == '\n' || str.peek() == '\r') str.ignore(1);
 		str.getline(linestr,LARGE_STRING_BUFFER_SIZE);
 		// Check for empty string:
 		if(linestr[0] == '\0') continue;
