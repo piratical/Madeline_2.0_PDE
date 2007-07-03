@@ -77,6 +77,7 @@ bool DrawingMetrics::_hasOnlyOnePedigree;
 bool DrawingMetrics::_blackAndWhite;
 bool DrawingMetrics::_color;
 bool DrawingMetrics::_noIconLabels;
+bool DrawingMetrics::_outputPedTable; // State flag to print pedigree table to a tab-delimited file
 
 ///////////////////////////////////
 //
@@ -419,6 +420,24 @@ bool DrawingMetrics::getHasOnlyOnePedigreeState(){
 	return _hasOnlyOnePedigree;
 	
 }
+
+//
+// setOutputPedTable()
+//
+void DrawingMetrics::setOutputPedTable(bool outputPedTable){
+	
+	_outputPedTable = outputPedTable;
+	
+}
+
+//
+// getHasOutputPedTable
+//
+bool DrawingMetrics::getHasOutputPedTable(){
+	
+	return _outputPedTable;
+}
+
 
 //
 // setDisplayBirthOrder:

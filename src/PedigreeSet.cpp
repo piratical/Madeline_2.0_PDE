@@ -246,8 +246,13 @@ void PedigreeSet::draw(const DataTable *const pedigreeTable){
 	std::set<Pedigree*,comparePedigrees>::const_iterator it = _pedigrees.begin();
 	while(it != _pedigrees.end()){
 		(*it)->draw(&labelSet);
+		//
+		// If --outputpedtable flag is set print the input file as a tab delimited file with the name "FAMILY_ID"input.txt
+		//
+		if(DrawingMetrics::getHasOutputPedTable())  pedigreeTable->printInputTableAsTabDelimited((*it)->getId()+"input.txt");
 		++it;
 	}
+	
 	std::cout << "End of draw" << std::endl;
 	
 }

@@ -800,6 +800,30 @@ void DataTable::display(){
 }
 
 //
+// printInputTableAsTabDelimited:
+//
+void DataTable::printInputTableAsTabDelimited(std::string filename) const{
+	
+	std::ofstream inputfile(filename.c_str());
+	if(inputfile.is_open()){
+		
+		// Print the labels first:
+		unsigned i,j;
+		for(i=0;i<_columns-1;i++){
+			inputfile << (*_columnVector[i])->getName() << "\t";
+		}
+		inputfile << (*_columnVector[i])->getName() << std::endl;
+		// Print the data by rows
+		for(j=0;j<_rows;j++){
+			for(i=0;i<_columns-1;i++){
+				inputfile << (*_columnVector[i])->get(j) << "\t";
+			}
+			inputfile << (*_columnVector[i])->get(j) << std::endl;
+		}
+	}
+}
+
+//
 // getTableTypeAsString()
 //
 std::string DataTable::getTableTypeAsString(void) const {

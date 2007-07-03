@@ -145,7 +145,7 @@ private:
 	static bool _blackAndWhite;
 	static bool _color;
 	static bool _noIconLabels;
-	
+	static bool _outputPedTable;
 	//
 	// Output File naming prefix
 	// (If there is only one pedigree, this 
@@ -205,7 +205,7 @@ public:
 	static bool getColor();
 	static bool getBlackAndWhite();
 	static bool getNoIconLabels();
-	
+	static bool getHasOutputPedTable();
 	//
 	// Setters:
 	//
@@ -230,7 +230,7 @@ public:
 	static void setColor(bool value);
 	static void setBlackAndWhite(bool value);
 	static void setNoIconLabels(bool value);
-	
+	static void setOutputPedTable(bool value);
 };
 
 ///////////////////////////////////
