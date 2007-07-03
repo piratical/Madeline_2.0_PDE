@@ -247,9 +247,13 @@ void PedigreeSet::draw(const DataTable *const pedigreeTable){
 	while(it != _pedigrees.end()){
 		(*it)->draw(&labelSet);
 		//
-		// If --outputpedtable flag is set print the input file as a tab delimited file with the name "FAMILY_ID"input.txt
+		// If --outputpedtable flag is set print the core/non-core fields to a tab delimited file with the name "FAMILY_ID"input.txt
 		//
-		if(DrawingMetrics::getHasOutputPedTable())  pedigreeTable->printInputTableAsTabDelimited((*it)->getId()+"input.txt");
+		if(DrawingMetrics::getHasOutputPedTable())  pedigreeTable->printPedigreeTableAsTabDelimited((*it)->getId()+"input.txt");
+		//
+		// If --outputdatatable flag is set print the input pedigree file as a tab delimited file with the name "FAMILY_ID"data.txt
+		//
+		if(DrawingMetrics::getHasOutputDataTable())  pedigreeTable->printInputTableAsTabDelimited((*it)->getId()+"data.txt");
 		++it;
 	}
 	

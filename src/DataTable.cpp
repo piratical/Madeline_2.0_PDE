@@ -820,8 +820,73 @@ void DataTable::printInputTableAsTabDelimited(std::string filename) const{
 			}
 			inputfile << (*_columnVector[i])->get(j) << std::endl;
 		}
+		inputfile.close();
 	}
+	
+	
 }
+
+
+//
+// printPedigreeTableAsTabDelimited: Prints core and optional non-core columns:
+//
+void DataTable::printPedigreeTableAsTabDelimited(std::string filename) const{
+	
+	// Get the Core Column Indices:
+	unsigned familyColumnIndex = getColumnOrdinal("FamilyId");
+	unsigned individualColumnIndex = getColumnOrdinal("IndividualId");
+	unsigned genderColumnIndex = getColumnOrdinal("Gender");
+	unsigned fatherColumnIndex = getColumnOrdinal("Father");
+	unsigned motherColumnIndex = getColumnOrdinal("Mother");
+	unsigned firstNameColumnIndex = (columnExists("FirstName")?getColumnOrdinal("FirstName"):COLUMN_IS_MISSING);
+	unsigned lastNameColumnIndex = (columnExists("LastName")?getColumnOrdinal("LastName"):COLUMN_IS_MISSING);
+	unsigned j;
+	
+	std::ofstream pedfile(filename.c_str());
+	if(pedfile.is_open()){
+		// Print the header row:
+		pedfile << "FamilyId\t";
+		pedfile << "IndividualId\t";
+		pedfile << "Gender\t";
+		pedfile << "Father\t";
+		pedfile << "Mother\t";
+		pedfile << "Deceased\t";
+		pedfile << "Proband\t";
+		pedfile << "DOB\t";
+		pedfile << "MZTwin\t";
+		pedfile << "DZTwin\t";
+		pedfile << "Affected\t";
+		pedfile << "FirstName\t";
+		pedfile << "LastName\n";
+		// Print the data by rows
+		for(j=0;j<_rows;j++){
+			pedfile << (*_columnVector[familyColumnIndex])->get(j) << "\t";
+			pedfile << (*_columnVector[individualColumnIndex])->get(j) << "\t";
+			pedfile << (*_columnVector[genderColumnIndex])->get(j) << "\t";
+			pedfile << (*_columnVector[fatherColumnIndex])->get(j) << "\t";
+			pedfile << (*_columnVector[motherColumnIndex])->get(j) << "\t";
+			if(_deceasedColumnIndex != COLUMN_IS_MISSING) pedfile << (*_columnVector[_deceasedColumnIndex])->get(j) << "\t";
+			else pedfile << "." << "\t";
+			if(_probandColumnIndex != COLUMN_IS_MISSING) pedfile << (*_columnVector[_probandColumnIndex])->get(j) << "\t";
+			else pedfile << "." << "\t";
+			if(_dobColumnIndex != COLUMN_IS_MISSING) pedfile << (*_columnVector[_dobColumnIndex])->get(j) << "\t";
+			else pedfile << "." << "\t";
+			if(_mzTwinColumnIndex != COLUMN_IS_MISSING) pedfile << (*_columnVector[_mzTwinColumnIndex])->get(j) << "\t";
+			else pedfile << "." << "\t";
+			if(_dzTwinColumnIndex != COLUMN_IS_MISSING) pedfile << (*_columnVector[_dzTwinColumnIndex])->get(j) << "\t";
+			else pedfile << "." << "\t";
+			if(_affectedColumnIndex != COLUMN_IS_MISSING) pedfile << (*_columnVector[_affectedColumnIndex])->get(j) << "\t";
+			else pedfile << "." << "\t";
+			if(firstNameColumnIndex != COLUMN_IS_MISSING) pedfile << (*_columnVector[firstNameColumnIndex])->get(j) << "\t";
+			else pedfile << "." << "\t";
+			if(lastNameColumnIndex != COLUMN_IS_MISSING) pedfile << (*_columnVector[lastNameColumnIndex])->get(j) << "\n";
+			else pedfile << "." << "\n";
+		}
+		pedfile.close();
+	}
+	
+}
+
 
 //
 // getTableTypeAsString()

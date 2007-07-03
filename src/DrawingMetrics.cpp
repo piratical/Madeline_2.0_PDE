@@ -77,7 +77,8 @@ bool DrawingMetrics::_hasOnlyOnePedigree;
 bool DrawingMetrics::_blackAndWhite;
 bool DrawingMetrics::_color;
 bool DrawingMetrics::_noIconLabels;
-bool DrawingMetrics::_outputPedTable; // State flag to print pedigree table to a tab-delimited file
+bool DrawingMetrics::_outputPedTable; // State flag to print pedigree core/non-core fields to a tab-delimited file
+bool DrawingMetrics::_outputDataTable; // State flag to print input pedigree table (input order preserved) to a tab-delimited file
 
 ///////////////////////////////////
 //
@@ -438,6 +439,22 @@ bool DrawingMetrics::getHasOutputPedTable(){
 	return _outputPedTable;
 }
 
+//
+// setOutputDataTable()
+//
+void DrawingMetrics::setOutputDataTable(bool outputDataTable){
+	
+	_outputDataTable = outputDataTable;
+	
+}
+
+//
+// getHasOutputDataTable
+//
+bool DrawingMetrics::getHasOutputDataTable(){
+	
+	return _outputDataTable;
+}
 
 //
 // setDisplayBirthOrder:

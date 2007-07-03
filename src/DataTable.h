@@ -182,6 +182,7 @@ public:
 	void deleteFrontColumn();
 	void display();
 	void printInputTableAsTabDelimited(std::string filename) const;
+	void printPedigreeTableAsTabDelimited(std::string filename) const;
 	
 	// get the Table type
 	const TableType getTableType( void ) const { return _tabletype; };
