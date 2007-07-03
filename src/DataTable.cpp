@@ -838,8 +838,8 @@ void DataTable::printPedigreeTableAsTabDelimited(std::string filename) const{
 	unsigned genderColumnIndex = getColumnOrdinal("Gender");
 	unsigned fatherColumnIndex = getColumnOrdinal("Father");
 	unsigned motherColumnIndex = getColumnOrdinal("Mother");
-	unsigned firstNameColumnIndex = (columnExists("FirstName")?getColumnOrdinal("FirstName"):COLUMN_IS_MISSING);
-	unsigned lastNameColumnIndex = (columnExists("LastName")?getColumnOrdinal("LastName"):COLUMN_IS_MISSING);
+	int firstNameColumnIndex = (columnExists("FirstName")?(int)getColumnOrdinal("FirstName"):COLUMN_IS_MISSING);
+	int lastNameColumnIndex = (columnExists("LastName")?(int)getColumnOrdinal("LastName"):COLUMN_IS_MISSING);
 	unsigned j;
 	
 	std::ofstream pedfile(filename.c_str());
