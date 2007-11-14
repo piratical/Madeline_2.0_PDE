@@ -144,12 +144,11 @@ SET(optionalCFlags)
 #
 # LibIntl support:
 #
-#FIND_PACKAGE(INTL)
-#IF(INTL_FOUND)
-#	INCLUDE_DIRECTORIES(${INTL_INCLUDE_DIR})
-#	LINK_DIRECTORIES(${INTL_LINK_DIR})
-#	SET(optionalLibs ${optionalLibs} ${INTL_LIBRARY})
-#ENDIF(INTL_FOUND)
+INCLUDE( FindLibintl )
+IF( LIBINTL_FOUND )
+	INCLUDE_DIRECTORIES(${LIBINTL_INCLUDE_DIR})
+	SET(optionalLibs ${optionalLibs} ${LIBINTL_LIBRARIES})
+ENDIF( LIBINTL_FOUND )
 
 #
 # Optional MySQL++ support:
