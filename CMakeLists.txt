@@ -9,6 +9,10 @@ PROJECT(MADELINE)
 CMAKE_MINIMUM_REQUIRED(VERSION 2.4.2)
 MARK_AS_ADVANCED(CMAKE_BACKWARDS_COMPATIBILITY)
 
+if(COMMAND cmake_policy)
+	cmake_policy(SET CMP0003 NEW)
+endif(COMMAND cmake_policy)
+
 #
 # The Madeline2 version number:
 # 
