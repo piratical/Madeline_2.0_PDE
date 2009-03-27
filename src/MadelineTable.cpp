@@ -31,6 +31,7 @@
 
 #include "ColumnClassifier.h"
 #include "utility.h"
+#include <string.h>
 
 ///////////////////////////////////
 //

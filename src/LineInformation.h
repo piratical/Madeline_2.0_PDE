@@ -1,6 +1,6 @@
 
-#include "string.h"
-#include "ctype.h"
+#include <string.h>
+#include <ctype.h>
 
 class LineInformation{
 	
