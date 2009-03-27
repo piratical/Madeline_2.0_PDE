@@ -32,8 +32,8 @@
 #include "Number.h"
 #include "DigitConverter.h"
 #include "Warning.h"
-#include "stdlib.h"
-#include "string.h"
+#include <stdlib.h>
+#include <string.h>
 
 
 #include <iostream>
