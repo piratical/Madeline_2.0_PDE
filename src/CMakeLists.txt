@@ -125,27 +125,16 @@ SET( SOURCES
 # Where to look first for cmake modules, before ${CMAKE_ROOT}/Modules/ is checked:
 # 
 SET(CMAKE_MODULE_PATH "${MADELINE_SOURCE_DIR}/cmake/modules")
+
 #
 # Include FindPkgConfig.cmake
 #
-INCLUDE( FindPkgConfig )
+INCLUDE( UsePkgConfig )
 FIND_PACKAGE( LibXml2 REQUIRED )
 IF( LIBXML2_FOUND )
 	INCLUDE_DIRECTORIES(${LIBXML2_INCLUDE_DIR})
 	ADD_DEFINITIONS(${LIBXML2_DEFINITIONS})
 ENDIF( LIBXML2_FOUND )
-
-#INCLUDE( ${CMAKE_SOURCE_DIR}/FindPkgConfig.cmake )
-#INCLUDE( FindPkgConfig)
-#PKGCONFIG("glib-2.0 >= 2.2.0")
-#IF(PKGCONFIG_FOUND)
-#  IF(CMAKE_PKGCONFIG_C_FLAGS)
-#    SET(CMAKE_C_FLAGS "${CMAKE_PKGCONFIG_C_FLAGS} ${CMAKE_C_FLAGS}")
-    #do something with ${PKGCONFIG_LIBRARIES}
-#  ENDIF(CMAKE_PKGCONFIG_C_FLAGS)
-#ELSE(PKGCONFIG_FOUND)
-#  MESSAGE("Cannot find glib2 version 2.2.0 or above")
-#ENDIF(PKGCONFIG_FOUND)
 
 
 SET(requiredLibs)

@@ -1,0 +1,11 @@
+#!/bin/sh
+
+if [ ! -x cmake ]; then
+	
+	echo "You need CMAKE to build this project."
+	echo "Get it from: http://www.cmake.org"
+	exit
+
+fi
+cmake .
+
