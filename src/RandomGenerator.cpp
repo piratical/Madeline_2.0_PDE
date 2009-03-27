@@ -50,11 +50,11 @@ const double RandomGenerator::AM   = 1.0/RandomGenerator::IM1;
 void RandomGenerator::_gatherEntropy( void ){
 	
 	std::ifstream entropySource;
-	char *device;
+	const char *device;
 	int temp;
 	
-	if     ( _seedSource == TRUE_RANDOM   ) device = "/dev/random";
-	else if( _seedSource == PSEUDO_RANDOM ) device = "/dev/urandom";
+	if     ( _seedSource == TRUE_RANDOM   ) device = (const char *) "/dev/random";
+	else if( _seedSource == PSEUDO_RANDOM ) device = (const char *) "/dev/urandom";
 	else {
 		
 		std::cerr << "RandomGenerator::_gatherEntropy(): The entropy source has not been specified\n";

@@ -35,7 +35,7 @@
 #include <dirent.h>
 #include <fstream>
 #include <sstream>
-
+#include <string.h>
 
 
 //const char* XMLTableParser::XMLFILENAME="content.xml";

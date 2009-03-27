@@ -28,6 +28,7 @@
 #include "FileTypeClassifier.h"
 
 
+
 #include <fstream>
 #include <stdio.h>
 #include <iostream>
@@ -37,7 +38,7 @@
 #include <zlib.h>
 #include "../3rdParty/bzip2-1.0.1/bzlib.h"
 #include "Exception.h"
-
+#include <string.h>
 
 //////////////////////////////////////
 //

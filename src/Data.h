@@ -102,6 +102,7 @@ public:
 	virtual bool operator<(const Data&) const =0;
 	
 };
+
 //
 // Friend class: initializes global missing values
 //

@@ -25,190 +25,13 @@
 //
 
 #include "Network.h"
-#include <stdio.h>
-#include <stdlib.h>
 
+#include <stdlib.h>
+#include <string.h>
 //
 // This is required on some platforms:
 //
 #include <unistd.h>
-
-////////////////////////////////////////
-//
-// PRIVATE METHODS:
-//
-////////////////////////////////////////
-
-//
-// _requestServerResource:
-//
-void Network::_requestServerResource(const char* url){
-
-	Netxx::Address addr(url, 80 );
-	Netxx::Stream client(addr, Netxx::Timeout(10));
-	//
-	// Construct the GET Request header
-	//
-	std::string request("GET ");
-	if (addr.get_path()) {
-	    request += addr.get_path();
-	} else {
-	    request += "/";
-	}
-	_constructRequestHeader(request,addr.get_name());
-	// Send the request to the server
-	client.write(request.c_str(), request.size());
-	
-	unsigned int headerOffset,currentSize;
-	bool headerFlag = false;
-	char *start,*end,buffer[1024],tempBuffer[1024];
-  
-	char sfn[15] = "";
-	FILE *sfp;
-	int fd = -1;
-	strcpy(sfn, "/tmp/netXXXXXX");
-	if ((fd = mkstemp(sfn)) == -1 || (sfp = fdopen(fd, "w+")) == NULL)
-	{
-		if (fd != -1) {
-		unlink(sfn);
-		close(fd);
-		}
-	}
-	_fileName = sfn;
-	Netxx::signed_size_type length;
-	
-	while ( (length = client.read(buffer, sizeof(buffer))) > 0){
-		
-		if(!headerFlag){
-			//
-			// Determine the location of the SERVER response header
-			// in bytes. 
-			// 
-			start = buffer;
-			headerFlag=true;
-			// The server response header terminates with an empty line.
-			end = strstr(buffer,"\r\n\r\n");
-			end+=4;
-			headerOffset = (end - start);
-			//
-			// Copy the stream that follows after the header into a file.
-			//
-			memcpy(tempBuffer,end,length-headerOffset);
-			
-			fwrite (tempBuffer , 1 , length-headerOffset , sfp);
-			_networkFileString.assign(tempBuffer,length-headerOffset);
-			currentSize = length-headerOffset;
-			
-			// Copy the server response header:
-			_serverResponseHeader.assign(buffer,headerOffset);
-		}else{
-			fwrite (buffer , 1 , length , sfp);
-			_networkFileString.append(buffer,length);
-			currentSize+=length;
-		}
-	}
-	fclose(sfp);
-	// Set the file size:
-	_fileSize = currentSize;
-	
-}
-
-//
-// _requestSecureServerResource:
-//
-void Network::_requestSecureServerResource(const char* url){
-	Netxx::Address addr(url, 443);
-	Netxx::TLS::Context context;
-	Netxx::TLS::Stream client(context, addr, Netxx::Timeout(10));
-	
-	//
-	// Construct the GET Request header
-	//
-	std::string request("GET ");
-	if (addr.get_path()) {
-	    request += addr.get_path();
-	} else {
-	    request += "/";
-	}
-	
-	_constructRequestHeader(request,addr.get_name());
-	
-	// send the request
-	client.write(request.c_str(), request.size());
-	
-	char buffer[1024],tempBuffer[1024];
-	unsigned int headerOffset,currentSize;
-	bool headerFlag = false;
-	char *start,*end;
-	
-	char sfn[15] = "";
-	FILE *sfp;
-	int fd = -1;
-	strcpy(sfn, "/tmp/netXXXXXX");
-	if ((fd = mkstemp(sfn)) == -1 || (sfp = fdopen(fd, "w+")) == NULL)
-	{
-		if (fd != -1) {
-			unlink(sfn);
-			close(fd);
-		}
-	}
-	_fileName = sfn;
-	
-	Netxx::signed_size_type length;
-	
-	while ( (length = client.read(buffer, sizeof(buffer))) > 0){
-		
-		if(!headerFlag){
-			//
-			// Determine the location of the SERVER response header
-			// in bytes. 
-			// 
-			
-			start  = buffer;
-			headerFlag=true;
-			// The server response header terminates with an empty line.
-			end = strstr(buffer,"\r\n\r\n");
-			end+=4;
-			headerOffset = (end - start);
-			
-			memcpy(tempBuffer,end,length-headerOffset);
-			
-			//
-			// Copy the stream that follows after the header into a file.
-			//
-			fwrite (tempBuffer , 1 , length-headerOffset , sfp);
-			_networkFileString.assign(tempBuffer,length-headerOffset);
-			currentSize = length-headerOffset;
-			// Copy the server response header:
-			_serverResponseHeader.assign(buffer,headerOffset);
-		}else{
-			_networkFileString.append(buffer,length);
-			currentSize+=length;
-			fwrite (buffer , 1 , length , sfp);
-		}
-	}
-	fclose(sfp);
-	// Set the file size:
-	_fileSize = currentSize;
-	return;
-	
-}
-
-//
-// _constructRequestHeader:
-//
-void Network::_constructRequestHeader(std::string& request,const char* addressString){
-	
-	// setup the request line and headers
-	request += " HTTP/1.0\r\n";
-	
-	// add the Host header
-	request += "Host: ";
-	request += addressString;
-	request += "\r\n";
-	request += "Connection: close\r\n\r\n";
-	
-}
 
 ////////////////////////////////////////
 //
@@ -217,15 +40,36 @@ void Network::_constructRequestHeader(std::string& request,const char* addressSt
 ////////////////////////////////////////
 
 ///
-/// getNetworkFile: Request the file from the specified URL using 'netxx' library methods.
+/// getNetworkFile: Request the file from the specified URL using 'libcurl' library methods.
 ///
 std::string Network::getNetworkFile(const char* url){
-	
+	char tempname[15] = "";
+        int filedescriptor = -1;
+        FILE *tempfile;
+	strcpy(tempname, "/tmp/netXXXXXX");
+        if ((filedescriptor = mkstemp(tempname)) == -1 || (tempfile = fdopen(filedescriptor, "w+")) == NULL){
+                if (filedescriptor != -1) {
+                        unlink(tempname);
+                        close(filedescriptor);
+                }
+        }
+        _fileName = tempname;
+	curl_global_init(CURL_GLOBAL_ALL);
+	_curl = curl_easy_init();
+	curl_easy_setopt(_curl, CURLOPT_URL, url);
+	curl_easy_setopt(_curl, CURLOPT_NOPROGRESS, 1);
+	curl_easy_setopt(_curl, CURLOPT_WRITEFUNCTION, write_data);
+	curl_easy_setopt(_curl, CURLOPT_WRITEDATA, tempfile);
 	if(strncmp(url,"https://",8)==0){
-		_requestSecureServerResource(url);
-	}else{
-		_requestServerResource(url);
+		#ifdef SKIP_PEER_VERIFICATION
+		curl_easy_setopt(curl, CURLOPT_SSL_VERIFYPEER, 0);
+		#endif
+		#ifdef SKIP_HOSTNAME_VERFICATION
+		curl_easy_setopt(curl, CURLOPT_SSL_VERIFYHOST, 0);
+		#endif
 	}
-	return _networkFileString;
-	
+        curl_easy_perform(_curl);
+        curl_easy_cleanup(_curl);
+	fclose(tempfile);	
+	return _fileName;
 }

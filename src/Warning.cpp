@@ -29,6 +29,7 @@
 
 #include "Warning.h"
 #include "Debug.h"
+#include <string.h>
 
 bool Warning::_suppressWarnings=false;
 const char *Warning::_warningSalutation="Warning";

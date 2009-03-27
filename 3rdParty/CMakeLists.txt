@@ -1,2 +1,2 @@
 
-SUBDIRS( bzip2 unzip netxx )
+SUBDIRS( bzip2 unzip )

@@ -29,6 +29,8 @@
 #include "DrawingColor.h"
 #include <math.h>
 #include <iomanip>
+#include <string.h>
+#include <stdlib.h>
 
 //
 // Original table:

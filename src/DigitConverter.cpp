@@ -22,6 +22,7 @@
 
 
 #include "DigitConverter.h"
+#include <string.h>
 
 // For DEBUG:
 #include <iostream>

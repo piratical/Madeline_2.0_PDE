@@ -28,6 +28,7 @@
 // Genotype.cpp
 //
 #include <stdlib.h>
+#include <string.h>
 #include "Genotype.h"
 #include "Warning.h"
 #include "DigitConverter.h"

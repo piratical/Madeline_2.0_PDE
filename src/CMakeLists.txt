@@ -151,6 +151,15 @@ IF( LIBINTL_FOUND )
 ENDIF( LIBINTL_FOUND )
 
 #
+# Libcurl support:
+#
+INCLUDE( FindLibcurl )
+IF( LIBCURL_FOUND )
+	INCLUDE_DIRECTORIES(${LIBCURL_INCLUDE_DIR})
+	SET(requiredLibs ${requiredLibs} ${LIBCURL_LIBRARIES})
+ENDIF( LIBCURL_FOUND )
+
+#
 # Optional MySQL++ support:
 #
 OPTION( WITH_MYSQLPP_SUPPORT "Build Madeline with MySQL database support" OFF )
@@ -172,7 +181,7 @@ ENDIF( WITH_MYSQLPP_SUPPORT )
 #
 # Optional LASi support:
 #
-OPTION( WITH_LASi "Build Madeline with LASi support" ON )
+OPTION( WITH_LASi "Build Madeline with LASi support" OFF )
 
 IF( WITH_LASi )
 #
@@ -265,7 +274,6 @@ TARGET_LINK_LIBRARIES(madeline2
 	${requiredLibs} 
 	${libssl} 
 	unzip 
-	netxx 
 	bzip2
 	${PANGO_LINK_FLAGS}
 	${PANGOFT2_LINK_FLAGS} 

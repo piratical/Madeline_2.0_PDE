@@ -31,6 +31,7 @@
 
 #include <string>
 #include <sstream>
+#include <strings.h>
 
 //////////////////////
 //
