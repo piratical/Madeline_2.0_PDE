@@ -40,7 +40,9 @@ SET( SOURCES
 	DescentTree.cpp
 	DigitConverter.cpp 
 	DigitConverter.h 
-        DrawingColor.cpp
+	Divorced.cpp
+	Divorced.h
+	DrawingColor.cpp
 	DrawingLabelManager.cpp
 	DrawingMetrics.cpp
 	DrawingCanvas.cpp

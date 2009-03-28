@@ -20,6 +20,7 @@ public:
 	//
 	std::string getNetworkFile(const char*);
 	std::string getFileName() {return _fileName;}
+	
 };
 
 static size_t write_data(void *ptr, size_t size, size_t nmemb, void *stream){

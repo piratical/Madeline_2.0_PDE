@@ -66,6 +66,7 @@ DataTable::DataTable(TableParser &parser){
 	_superscriptColumnIndex = COLUMN_IS_MISSING;
 	_consultandColumnIndex  = COLUMN_IS_MISSING;
 	_carrierColumnIndex     = COLUMN_IS_MISSING;
+	_divorcedColumnIndex    = COLUMN_IS_MISSING;
 	
 	//
 	// Set ColorSeriesStack, blackAndWhiteSeriesStack pointer to null
@@ -483,6 +484,14 @@ void DataTable::_determineTableType(const std::vector<std::string> *pTitles) {
 			// Optional core field:
 			_finalTypes[i] = CARRIER;
 			_carrierColumnIndex = i;
+			
+		}
+		else if(tempString == labels.DivorcedField)
+		{
+			
+			// Optional core field:
+			_finalTypes[i] = DIVORCED;
+			_divorcedColumnIndex = i;
 			
 		}
 	}

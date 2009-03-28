@@ -40,6 +40,7 @@
 #include "Sampled.h"
 #include "Consultand.h"
 #include "Carrier.h"
+#include "Divorced.h"
 
 #include <set>
 #include <vector>
@@ -89,6 +90,7 @@ private:
 	Proband*    _proband;     // true for the proband only, else false; no need for missing
 	Consultand* _consultand;  // true if a consultand, else false.
 	Carrier*    _carrier;     // true if a carrier, else false.
+	Divorced*   _divorced;    // true if divorced - requires that a mated pair are *both* so marked for display of divorce ...
 	Twin        _twinMarker;  // stores the marker of monozygotic or dizygotic twin 
 	Sampled*    _sampled;     // individual is sampled or not
 	
@@ -204,6 +206,7 @@ public:
 	void setSampled(Sampled* sampled){ _sampled=sampled; }
 	void setConsultandStatus(Consultand* consultand){ _consultand=consultand; }
 	void setCarrierStatus(Carrier* carrier){ _carrier=carrier; }
+	void setDivorcedStatus(Divorced* divorced){ _divorced=divorced; }
 	void setBirthOrder(unsigned birthOrder){ _birthOrder = birthOrder; }
 	
 	// Set drawing attributes:
@@ -245,6 +248,7 @@ public:
 	bool     isProband(void)           { if(_proband    == 0) return false; return _proband->getBoolean();  }
 	bool     isConsultand(void)        { if(_consultand == 0) return false; return _consultand->getBoolean(); }
 	bool     isCarrier(void)           { if(_carrier    == 0) return false; return _carrier->getBoolean(); }
+	bool     isDivorced(void)          { if(_divorced   == 0) return false; return _divorced->getBoolean(); }
 	bool     isDeceased(void)          { if(_deceased   == 0) return false; return _deceased->getBoolean(); }
 	unsigned getBirthOrder(void)       { return _birthOrder; }
 	unsigned getRowIndex(void)         { return _rowIndex; }

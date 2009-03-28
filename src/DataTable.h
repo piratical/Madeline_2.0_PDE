@@ -125,6 +125,7 @@ private:
 	int _superscriptColumnIndex;
 	int _consultandColumnIndex;
 	int _carrierColumnIndex;
+	int _divorcedColumnIndex;
 	
 	//
 	// Private methods:

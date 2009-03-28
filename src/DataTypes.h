@@ -30,6 +30,7 @@
 #define DATAYTYPES_INCLUDED
 
 enum DATATYPE {
+	
 	ANY=0x0000,
 	BOOLEAN=0x0001,
 	DATE=0x0002,
@@ -48,7 +49,9 @@ enum DATATYPE {
 	MISSING=0x4000,      // Column has been scanned and still found empty/missing ...
 	// 2007.04.26.ET: Adding more types here:
 	CONSULTAND=0x8000,
-	CARRIER=0x10000
+	CARRIER=0x10000,
+	DIVORCED=0x20000
+	
 };
 
 #endif
