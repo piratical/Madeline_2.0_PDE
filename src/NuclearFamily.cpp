@@ -903,6 +903,27 @@ void NuclearFamily::draw(Individual* startIndividual,DrawingCanvas& dc,double st
 	std::string dropLineId= _mother->getId().get() + std::string(":") + _father->getId().get();
 	if(isConsanguinous()) dc.drawVerticalLine(currentX,currentY+verticalTick/2,currentY-verticalTick/2+verticalDrop1,std::string("mating"),dropLineId);
 	else                  dc.drawVerticalLine(currentX,currentY,currentY+verticalDrop1,std::string("mating"),dropLineId);
+	
+	//////////////////////////////
+	//
+	// 2009.03.29.ET
+	// DRAW DIVORCED IF NECESSARY:
+	//
+	//////////////////////////////
+	
+	// std::cerr << "*** MOTHER " << _mother->getId() << " DSTATE=" << _mother->isDivorced() << std::endl;
+	// std::cerr << "*** FATHER " << _father->getId() << " DSTATE=" << _father->isDivorced() << std::endl;
+	
+	if( _mother->isDivorced() && _father->isDivorced() ){
+		
+		//std::cerr << "*** MOM " << _mother->getId() << " and DAD " << _father->getId() << " are divorced ..." << std::endl;
+		
+		double yPos = currentY;
+		if(isConsanguinous()) yPos+=verticalTick/2;
+		dc.drawDivorcedLine(currentX,yPos);
+		
+	}
+	
 	double verticalDropX = currentX;
 	
 	if(_leftConnectionShiftFlag){

@@ -84,6 +84,9 @@ DataColumn::DataColumn(const std::string &name,DATATYPE columnType, unsigned lon
 	case CARRIER:
 		for(unsigned int k=0; k < _rows; k++) _data.push_back(new Carrier());
 		break;
+	case DIVORCED:
+		for(unsigned int k=0; k < _rows; k++) _data.push_back(new Divorced());
+		break;
 	case TWIN:
 		for(unsigned int k=0; k < _rows; k++) _data.push_back(new Twin());
 		break;

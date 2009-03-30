@@ -140,6 +140,9 @@ public:
 	
 	void drawIndividual(Individual* pIndividual,double x,double y,bool isDashed=false);
 	
+	// 2009.03.29.ET ADDENDUM:
+	void drawDivorcedLine(double x,double y);
+	
 	void drawLabelSet(Individual* pIndividual);
 	void drawSuperscriptData(Individual *pIndividual,double x, double y);
 	void drawEncircledText(std::string text,double x,double y,double xradius, double yradius,const std::string& myclass=std::string(""));

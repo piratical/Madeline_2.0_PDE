@@ -88,7 +88,7 @@ void Divorced::set(DIVORCED divorced){
 	else{
 		_isMissing = false;
 		if(divorced==Divorced::IS_DIVORCED) _value = true;
-		else                             _value = false; 
+		else                                _value = false; 
 	}
 	
 }

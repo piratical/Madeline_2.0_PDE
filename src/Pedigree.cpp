@@ -1746,6 +1746,7 @@ void Pedigree::setCoreOptionalFields(const DataTable* pedigreeTable){
 	bool hasAffectedColumn   = false;
 	bool hasConsultandColumn = false;
 	bool hasCarrierColumn    = false;
+	bool hasDivorcedColumn   = false;
 	
 	DataColumn *dobColumn;
 	DataColumn *deceasedColumn;
@@ -1754,6 +1755,7 @@ void Pedigree::setCoreOptionalFields(const DataTable* pedigreeTable){
 	DataColumn *affectedColumn;
 	DataColumn *consultandColumn;
 	DataColumn *carrierColumn;
+	DataColumn *divorcedColumn;
 	
 	// Check if MZTwin column exists in the datatable
 	if(pedigreeTable->getMZTwinColumnIndex() != DataTable::COLUMN_IS_MISSING){
@@ -1804,6 +1806,12 @@ void Pedigree::setCoreOptionalFields(const DataTable* pedigreeTable){
 		hasCarrierColumn = true;
 	}
 	
+	// Check if Divorced column exists in the datatable:
+	if(pedigreeTable->getDivorcedColumnIndex() != DataTable::COLUMN_IS_MISSING){
+		divorcedColumn = pedigreeTable->getColumn(pedigreeTable->getDivorcedColumnIndex());
+		hasDivorcedColumn = true;
+	}
+	
 	// Check if Affected column exists in the datatable
 	if(pedigreeTable->getAffectedColumnIndex() != DataTable::COLUMN_IS_MISSING){
 		affectedColumn = pedigreeTable->getColumn(pedigreeTable->getAffectedColumnIndex());
@@ -1814,6 +1822,7 @@ void Pedigree::setCoreOptionalFields(const DataTable* pedigreeTable){
 	std::set<Individual*,compareIndividual>::iterator individualIt = _individuals.begin();
 	
 	while(individualIt != _individuals.end()){
+		
 		rowIndex = (*individualIt)->getRowIndex();
 		if(hasDOBColumn)        (*individualIt)->setDOB(dynamic_cast<Date*>(const_cast<Data* const>(dobColumn->getDataAtIndex(rowIndex))));
 		if(hasDeceasedColumn)   (*individualIt)->setDeceasedStatus(dynamic_cast<LivingDead*>(const_cast<Data* const>(deceasedColumn->getDataAtIndex(rowIndex))));
@@ -1822,6 +1831,7 @@ void Pedigree::setCoreOptionalFields(const DataTable* pedigreeTable){
 		if(hasAffectedColumn)   (*individualIt)->setAffectionStatus(dynamic_cast<Affected*>(const_cast<Data* const>(affectedColumn->getDataAtIndex(rowIndex))));
 		if(hasConsultandColumn) (*individualIt)->setConsultandStatus(dynamic_cast<Consultand*>(const_cast<Data* const>(consultandColumn->getDataAtIndex(rowIndex))));
 		if(hasCarrierColumn)    (*individualIt)->setCarrierStatus(dynamic_cast<Carrier*>(const_cast<Data* const>(carrierColumn->getDataAtIndex(rowIndex))));
+		if(hasDivorcedColumn)   (*individualIt)->setDivorcedStatus(dynamic_cast<Divorced*>(const_cast<Data* const>(divorcedColumn->getDataAtIndex(rowIndex))));
 		
 		++individualIt;
 	}

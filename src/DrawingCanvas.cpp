@@ -1428,3 +1428,18 @@ void DrawingCanvas::drawIconText(double x,double y,std::string text,std::string 
 	else            _svg.drawText(_layer,x,y,text,cssClass);
 	
 }
+
+//
+// drawDivorcedLine  -- 2009.03.29.ET ADDENDUM
+//
+void DrawingCanvas::drawDivorcedLine(double x,double y){
+	
+	//
+	// Same as drawing a deceased line, just in
+	// a different location:
+	//
+	_drawDeceasedLine(x,y);
+	
+}
+
+

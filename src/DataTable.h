@@ -213,6 +213,7 @@ public:
 	inline int getSuperscriptColumnIndex(void) const { return _superscriptColumnIndex; }
 	inline int getConsultandColumnIndex(void)  const { return _consultandColumnIndex; }
 	inline int getCarrierColumnIndex(void)     const { return _carrierColumnIndex; }
+	inline int getDivorcedColumnIndex(void)    const { return _divorcedColumnIndex; }
 	
 	//
 	// getIconColumnCount
