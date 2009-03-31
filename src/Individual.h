@@ -236,6 +236,10 @@ public:
 	String   getFatherId( void )       { return _fatherId; }
 	Gender   getGender(void)           { return _gender;   }
 	Date*    getDOB(void)              { return _dob;      }
+	
+	//
+	// Getters that return Boolean:
+	//
 	bool     isOrdinaryFounder(void)   { return _isOrdinaryFounder; }
 	bool     isOriginalFounder(void)   { return _isOriginalFounder; } 
 	bool     isVirtual(void)           { return _isVirtual; }
@@ -250,6 +254,10 @@ public:
 	bool     isCarrier(void)           { if(_carrier    == 0) return false; return _carrier->getBoolean(); }
 	bool     isDivorced(void)          { if(_divorced   == 0) return false; return _divorced->getBoolean(); }
 	bool     isDeceased(void)          { if(_deceased   == 0) return false; return _deceased->getBoolean(); }
+	
+	//
+	// More getters:
+	//
 	unsigned getBirthOrder(void)       { return _birthOrder; }
 	unsigned getRowIndex(void)         { return _rowIndex; }
 	Individual* getFather(void)        { return _father; }
