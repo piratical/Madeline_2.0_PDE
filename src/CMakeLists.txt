@@ -139,12 +139,6 @@ IF( LIBXML2_FOUND )
 ENDIF( LIBXML2_FOUND )
 
 
-SET(requiredLibs)
-SET(requiredCFlags)
-
-SET(optionalLibs)
-SET(optionalCFlags)
-
 #
 # LibIntl support:
 #
@@ -278,7 +272,6 @@ TARGET_LINK_LIBRARIES(madeline2
 	${requiredLibs} 
 	${libssl} 
 	unzip 
-	bzip2
 	${PANGO_LINK_FLAGS}
 	${PANGOFT2_LINK_FLAGS} 
 	${LASI_LINK_FLAGS}

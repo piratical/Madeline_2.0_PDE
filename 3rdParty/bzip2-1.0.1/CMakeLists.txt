@@ -13,4 +13,4 @@ SET(SOURCES
 )
 
 ADD_LIBRARY(bzip2 STATIC ${SOURCES} )
-
+SET(requiredLibs ${requiredLibs} bzip2)

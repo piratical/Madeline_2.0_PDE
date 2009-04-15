@@ -26,9 +26,26 @@ SET(MADELINE_VERSION "${MINIMADELINE_VERSION_MAJOR}.${MINIMADELINE_VERSION_MINOR
 ENABLE_TESTING()
 
 #
+# Check if there exists a system-provided BZip2
+#
+INCLUDE(FindBZip2)
+IF(BZIP2_FOUND)
+        INCLUDE_DIRECTORIES(${BZIP2_INCLUDE_DIR})
+        ADD_DEFINITIONS(${BZIP2_DEFINITIONS})
+        SET(requiredLibs ${requiredLibs} ${BZIP2_LIBRARIES})
+ELSE(BZIP2_FOUND)
+	#Add bzip2 built from local copy to the requiredLibs
+        SET(requiredLibs ${requiredLibs} bzip2 )
+ENDIF(BZIP2_FOUND)
+
+
+#
 # Recurse subdirectories:
 #
-SUBDIRS(3rdParty po doxygen src)
+ADD_SUBDIRECTORY(3rdParty)
+ADD_SUBDIRECTORY(po)
+ADD_SUBDIRECTORY(doxygen)
+ADD_SUBDIRECTORY(src)
 
 INCLUDE_DIRECTORIES(${MADELINE_SOURCE_DIR} ${MADELINE_BINARY_DIR})
 INCLUDE(${CMAKE_ROOT}/Modules/FindDoxygen.cmake)
