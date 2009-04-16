@@ -36,7 +36,7 @@
 #include "../3rdParty/unzip/unzip.h"
 //#include "../3rdParty/zlib-1.2.2/zlib.h"
 #include <zlib.h>
-#include "../3rdParty/bzip2-1.0.1/bzlib.h"
+#include <bzlib.h>
 #include "Exception.h"
 #include <string.h>
 

@@ -35,6 +35,7 @@ IF(BZIP2_FOUND)
         SET(requiredLibs ${requiredLibs} ${BZIP2_LIBRARIES})
 ELSE(BZIP2_FOUND)
 	#Add bzip2 built from local copy to the requiredLibs
+	INCLUDE_DIRECTORIES(${CMAKE_SOURCE_DIR}/3rdParty/bzip2)
         SET(requiredLibs ${requiredLibs} bzip2 )
 ENDIF(BZIP2_FOUND)
 
