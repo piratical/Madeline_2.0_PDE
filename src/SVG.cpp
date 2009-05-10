@@ -338,3 +338,48 @@ void SVG::drawMiniCircle(std::ostringstream& os,double x,double y){
 	
 }
 
+//
+// drawHeart
+//
+void SVG::drawHeart(std::ostringstream& os,double x,double y){
+	
+	double  sc=4;
+	std::string sp=" ";
+	
+	y+=7;
+	
+	os << "<path class=\"specialIcons\"";
+	os << " d=\"M" << x << sp << y << sp;
+	os << "c" << -0.7*sc << sp << -0.3*sc << sp <<   -2*sc << sp << -1.5*sc << sp << -2*sc << sp << -2.5*sc << sp;
+	os << "c" <<    0*sc << sp << -0.5*sc << sp <<  0.5*sc << sp <<   -1*sc << sp <<  1*sc << sp <<   -1*sc << sp;
+	os << "c" <<  0.5*sc << sp <<    0*sc << sp <<    1*sc << sp <<  0.4*sc << sp <<  1*sc << sp <<    1*sc << sp;
+	os << "c" <<    0*sc << sp << -0.6*sc << sp <<  0.5*sc << sp <<   -1*sc << sp <<  1*sc << sp <<   -1*sc << sp;
+	os << "c" <<  0.5*sc << sp <<    0*sc << sp <<    1*sc << sp <<  0.5*sc << sp <<  1*sc << sp <<    1*sc << sp;
+	os << "c" <<    0*sc << sp <<    1*sc << sp << -1.3*sc << sp <<  2.2*sc << sp << -2*sc << sp <<  2.5*sc << sp;
+	os << "z\" />\n";
+
+}
+
+//
+// drawSquiggle
+//
+void SVG::drawSquiggle(std::ostringstream& os,double x,double y){
+	
+	double sc=1.25;
+	std::string sp=" ";
+	
+	x-=10;
+	y+=14;
+	
+	os << "<path class=\"specialLines\"";
+	os << " d=\"M" << x << sp << y << sp;
+	for(int i=0;i<4;i++){
+		os << "c" <<  1.25*sc << sp <<   -1.25*sc << sp << -1.25*sc << sp << -3.75*sc << sp << 0*sc << sp << -5*sc << sp;
+		os << "c" <<  1.25*sc << sp <<   -1.25*sc << sp <<  3.75*sc << sp <<  1.25*sc << sp << 5*sc << sp <<  0*sc << sp;
+	}
+	os << "\" />\n";
+	
+}
+
+
+

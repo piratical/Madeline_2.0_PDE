@@ -155,7 +155,6 @@ void DrawingCanvas::_setCSS(){
 	// Line Style definition:
 	//
 	_header << "line{\n";
-	_header << "	stroke-linejoin:miter;\n";
 	_header << "	stroke:#000;\n";
 	_header << "	stroke-width:" << DrawingMetrics::getLineWidth() << DrawingMetrics::getLineWidthUnit() << ";\n";
 	_header << "	stroke-linejoin:miter;\n";
@@ -318,6 +317,28 @@ void DrawingCanvas::_setCSS(){
 	_header << "	stroke-linejoin:miter;\n";
 	_header << "	stroke:#000;\n";
 	_header << "	fill:#000;\n";
+	_header << "}\n\n";
+	
+	//
+	// .specialIcons:
+	//
+	_header << ".specialIcons{\n";
+	_header << "	stroke-width:" << 0.5*DrawingMetrics::getLineWidth() << DrawingMetrics::getLineWidthUnit() << ";\n";
+	_header << "	stroke-linecap:round;\n";
+	_header << "	stroke-linejoin:miter;\n";
+	_header << "	stroke:#000;\n";
+	_header << "	fill:#fff;\n";
+	_header << "}\n\n";
+	
+	//
+	// .specialLines:
+	//
+	_header << ".specialLines{\n";
+	_header << "	stroke-linecap:square;\n";
+	_header << "	stroke-linejoin:miter;\n";
+	_header << "	stroke:#000;\n";
+	_header << "	stroke-width:" << DrawingMetrics::getLineWidth() << DrawingMetrics::getLineWidthUnit() << ";\n";
+	_header << "	fill:none;\n";
 	_header << "}\n\n";
 	
 	//
@@ -1439,6 +1460,16 @@ void DrawingCanvas::drawDivorcedLine(double x,double y){
 	// a different location:
 	//
 	_drawDeceasedLine(x,y);
+	
+	//
+	// 2009.05.10: ET testing graphics for "casual relationship" ...
+	//
+	
+	//if(!_layerFlag) _svg.drawHeart(_body,x,y);
+	//else            _svg.drawHeart(_layer,x,y);
+	
+	//if(!_layerFlag) _svg.drawSquiggle(_body,x,y);
+	//else            _svg.drawSquiggle(_layer,x,y);
 	
 }
 
