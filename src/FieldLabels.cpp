@@ -73,7 +73,7 @@ FieldLabels::FieldLabels()
 	SuperscriptField = "SUPERSCRIPT";
 	ConsultandField  = "CONSULTAND";
 	CarrierField     = "CARRIER";
-	DivorcedField    = "DIVORCED";
+	RelationshipEndedField = "RELATIONSHIPENDED";
 	
 	
 	PEDIGREE_TABLE_CORE_COLUMN_COUNT = 5;

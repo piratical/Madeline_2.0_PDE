@@ -64,7 +64,7 @@ inline void Individual::_init(void){
 	_carrier    = 0;
 	_consultand = 0;
 	_deceased   = 0;
-	_divorced   = 0; // 2009.03.31.ET addendum ...
+	_relationshipEnded = 0; // 2009.05.11.ET addendum ...
 	_dob        = 0;
 	_proband    = 0;
 	_sampled    = 0;

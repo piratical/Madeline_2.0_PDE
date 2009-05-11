@@ -40,7 +40,7 @@
 #include "Sampled.h"
 #include "Consultand.h"
 #include "Carrier.h"
-#include "Divorced.h"
+#include "RelationshipEnded.h"
 
 #include <set>
 #include <vector>
@@ -90,7 +90,7 @@ private:
 	Proband*    _proband;     // true for the proband only, else false; no need for missing
 	Consultand* _consultand;  // true if a consultand, else false.
 	Carrier*    _carrier;     // true if a carrier, else false.
-	Divorced*   _divorced;    // true if divorced - requires that a mated pair are *both* so marked for display of divorce ...
+	RelationshipEnded*   _relationshipEnded; // true if relationship ended (divorced,separated,reason unknown) - requires that a mated pair are *both* so marked for display ...
 	Twin        _twinMarker;  // stores the marker of monozygotic or dizygotic twin 
 	Sampled*    _sampled;     // individual is sampled or not
 	
@@ -206,7 +206,7 @@ public:
 	void setSampled(Sampled* sampled){ _sampled=sampled; }
 	void setConsultandStatus(Consultand* consultand){ _consultand=consultand; }
 	void setCarrierStatus(Carrier* carrier){ _carrier=carrier; }
-	void setDivorcedStatus(Divorced* divorced){ _divorced=divorced; }
+	void setRelationshipEndedStatus(RelationshipEnded* relationshipEnded){ _relationshipEnded=relationshipEnded; }
 	void setBirthOrder(unsigned birthOrder){ _birthOrder = birthOrder; }
 	
 	// Set drawing attributes:
@@ -247,13 +247,21 @@ public:
 	bool     hasBeenVisited(void)      { return _hasBeenVisited; }
 	bool     hasBeenDrawn(void)        { return _hasBeenDrawn; }
 	bool     isConsanguinous(void)     { return _isConsanguinous; }
+	// For these, if the pointer is NULL, then we have no information, so return false
+	// Else, if the pointer is not NULL, then getBoolean() returns the state information:
 	bool     isAffected(void)          { if(_affected   == 0) return false; return _affected->getBoolean(); }
 	bool     isSampled(void)           { if(_sampled    == 0) return false; return _sampled->getBoolean(); }
 	bool     isProband(void)           { if(_proband    == 0) return false; return _proband->getBoolean();  }
 	bool     isConsultand(void)        { if(_consultand == 0) return false; return _consultand->getBoolean(); }
 	bool     isCarrier(void)           { if(_carrier    == 0) return false; return _carrier->getBoolean(); }
-	bool     isDivorced(void)          { if(_divorced   == 0) return false; return _divorced->getBoolean(); }
+	// 2009.05.11.ET Addendum:
+	bool     relationshipHasEnded(void){ if(_relationshipEnded == 0) return false; return _relationshipEnded->getBoolean(); }
 	bool     isDeceased(void)          { if(_deceased   == 0) return false; return _deceased->getBoolean(); }
+	
+	// 2009.05.11.ET Addendum:
+	// get RelationshipEnded type:
+	//
+	RelationshipEnded::TYPE getRelationshipEndedType(void){if(_relationshipEnded == 0) return RelationshipEnded::RELATIONSHIP_ENDED_MISSING_TYPE; return _relationshipEnded->getType(); }
 	
 	//
 	// More getters:

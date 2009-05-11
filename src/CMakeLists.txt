@@ -40,8 +40,6 @@ SET( SOURCES
 	DescentTree.cpp
 	DigitConverter.cpp 
 	DigitConverter.h 
-	Divorced.cpp
-	Divorced.h
 	DrawingColor.cpp
 	DrawingLabelManager.cpp
 	DrawingMetrics.cpp
@@ -96,13 +94,15 @@ SET( SOURCES
 	RandomSampleSizes.h 
 	RandomGenerator.cpp 
 	RandomGenerator.h 
-
+	RelationshipEnded.h
+	RelationshipEnded.cpp
+	
 	Sampled.cpp
 	ScriptCodes.h 
 	String.cpp 
 	String.h 
 	SVG.cpp
-
+	
 	TableParser.h
 	Twin.cpp
 	

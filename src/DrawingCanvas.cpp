@@ -1451,9 +1451,26 @@ void DrawingCanvas::drawIconText(double x,double y,std::string text,std::string 
 }
 
 //
-// drawDivorcedLine  -- 2009.03.29.ET ADDENDUM
+// drawDivorcedLine  -- 2009.05.11.ET ADDENDUM
 //
 void DrawingCanvas::drawDivorcedLine(double x,double y){
+	
+	//
+	// Same as drawing a deceased line:
+	// Draw two lines so they look like 
+	// railroad tracks:
+	//
+	x-=3;
+	_drawDeceasedLine(x,y);
+	x+=6;
+	_drawDeceasedLine(x,y);
+	
+}
+
+//
+// drawSeparatedLine  -- 2009.05.11.ET ADDENDUM
+//
+void DrawingCanvas::drawSeparatedLine(double x,double y){
 	
 	//
 	// Same as drawing a deceased line, just in
@@ -1461,16 +1478,20 @@ void DrawingCanvas::drawDivorcedLine(double x,double y){
 	//
 	_drawDeceasedLine(x,y);
 	
-	//
-	// 2009.05.10: ET testing graphics for "casual relationship" ...
-	//
+}
+
+//
+// drawRelationshipEndedLine  -- 2009.05.11.ET ADDENDUM
+//
+void DrawingCanvas::drawRelationshipEndedLine(double x,double y){
 	
-	//if(!_layerFlag) _svg.drawHeart(_body,x,y);
-	//else            _svg.drawHeart(_layer,x,y);
-	
-	//if(!_layerFlag) _svg.drawSquiggle(_body,x,y);
-	//else            _svg.drawSquiggle(_layer,x,y);
+	//
+	// This should only occur on the "_body" layer:
+	//
+	_svg.drawSquiggle(_body,x,y);
 	
 }
+
+
 
 

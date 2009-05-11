@@ -140,8 +140,10 @@ public:
 	
 	void drawIndividual(Individual* pIndividual,double x,double y,bool isDashed=false);
 	
-	// 2009.03.29.ET ADDENDUM:
+	// 2009.05.11.ET ADDENDUM:
 	void drawDivorcedLine(double x,double y);
+	void drawSeparatedLine(double x,double y);
+	void drawRelationshipEndedLine(double x,double y);
 	
 	void drawLabelSet(Individual* pIndividual);
 	void drawSuperscriptData(Individual *pIndividual,double x, double y);

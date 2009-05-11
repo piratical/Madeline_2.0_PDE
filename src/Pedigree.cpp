@@ -1746,7 +1746,7 @@ void Pedigree::setCoreOptionalFields(const DataTable* pedigreeTable){
 	bool hasAffectedColumn   = false;
 	bool hasConsultandColumn = false;
 	bool hasCarrierColumn    = false;
-	bool hasDivorcedColumn   = false;
+	bool hasRelationshipEndedColumn = false; // 2009.05.11.ET
 	
 	DataColumn *dobColumn;
 	DataColumn *deceasedColumn;
@@ -1755,7 +1755,7 @@ void Pedigree::setCoreOptionalFields(const DataTable* pedigreeTable){
 	DataColumn *affectedColumn;
 	DataColumn *consultandColumn;
 	DataColumn *carrierColumn;
-	DataColumn *divorcedColumn;
+	DataColumn *relationshipEndedColumn;
 	
 	// Check if MZTwin column exists in the datatable
 	if(pedigreeTable->getMZTwinColumnIndex() != DataTable::COLUMN_IS_MISSING){
@@ -1806,10 +1806,10 @@ void Pedigree::setCoreOptionalFields(const DataTable* pedigreeTable){
 		hasCarrierColumn = true;
 	}
 	
-	// Check if Divorced column exists in the datatable:
-	if(pedigreeTable->getDivorcedColumnIndex() != DataTable::COLUMN_IS_MISSING){
-		divorcedColumn = pedigreeTable->getColumn(pedigreeTable->getDivorcedColumnIndex());
-		hasDivorcedColumn = true;
+	// Check if RelationshipEnded column exists in the datatable:
+	if(pedigreeTable->getRelationshipEndedColumnIndex() != DataTable::COLUMN_IS_MISSING){
+		relationshipEndedColumn = pedigreeTable->getColumn(pedigreeTable->getRelationshipEndedColumnIndex());
+		hasRelationshipEndedColumn = true;
 	}
 	
 	// Check if Affected column exists in the datatable
@@ -1831,7 +1831,7 @@ void Pedigree::setCoreOptionalFields(const DataTable* pedigreeTable){
 		if(hasAffectedColumn)   (*individualIt)->setAffectionStatus(dynamic_cast<Affected*>(const_cast<Data* const>(affectedColumn->getDataAtIndex(rowIndex))));
 		if(hasConsultandColumn) (*individualIt)->setConsultandStatus(dynamic_cast<Consultand*>(const_cast<Data* const>(consultandColumn->getDataAtIndex(rowIndex))));
 		if(hasCarrierColumn)    (*individualIt)->setCarrierStatus(dynamic_cast<Carrier*>(const_cast<Data* const>(carrierColumn->getDataAtIndex(rowIndex))));
-		if(hasDivorcedColumn)   (*individualIt)->setDivorcedStatus(dynamic_cast<Divorced*>(const_cast<Data* const>(divorcedColumn->getDataAtIndex(rowIndex))));
+		if(hasRelationshipEndedColumn)   (*individualIt)->setRelationshipEndedStatus(dynamic_cast<RelationshipEnded*>(const_cast<Data* const>(relationshipEndedColumn->getDataAtIndex(rowIndex))));
 		
 		++individualIt;
 	}

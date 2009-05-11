@@ -914,14 +914,22 @@ void NuclearFamily::draw(Individual* startIndividual,DrawingCanvas& dc,double st
 	// std::cerr << "*** MOTHER " << _mother->getId() << " DSTATE=" << _mother->isDivorced() << std::endl;
 	// std::cerr << "*** FATHER " << _father->getId() << " DSTATE=" << _father->isDivorced() << std::endl;
 	
-	if( _mother->isDivorced() && _father->isDivorced() ){
-		
-		//std::cerr << "*** MOM " << _mother->getId() << " and DAD " << _father->getId() << " are divorced ..." << std::endl;
+	if( _mother->relationshipHasEnded() && _father->relationshipHasEnded() ){
 		
 		double yPos = currentY;
 		if(isConsanguinous()) yPos+=verticalTick/2;
-		dc.drawDivorcedLine(currentX,yPos);
 		
+		RelationshipEnded::TYPE mothers_reason = _mother->getRelationshipEndedType();
+		RelationshipEnded::TYPE fathers_reason = _father->getRelationshipEndedType();
+		
+		if(mothers_reason==RelationshipEnded::DIVORCE || fathers_reason==RelationshipEnded::DIVORCE){
+			dc.drawDivorcedLine(currentX,yPos);
+		}else if(mothers_reason==RelationshipEnded::SEPARATION || fathers_reason==RelationshipEnded::SEPARATION){
+			dc.drawSeparatedLine(currentX,yPos);
+		}else{
+			// Reason unknown:
+			dc.drawRelationshipEndedLine(currentX,yPos);
+		}
 	}
 	
 	double verticalDropX = currentX;

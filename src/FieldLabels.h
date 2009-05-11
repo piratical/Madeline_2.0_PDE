@@ -49,7 +49,7 @@ class FieldLabels
 	std::string SuperscriptField;
 	std::string ConsultandField;
 	std::string CarrierField;
-	std::string DivorcedField;
+	std::string RelationshipEndedField;
 	
 	int PEDIGREE_TABLE_CORE_COLUMN_COUNT;
 	int GENETIC_TABLE_CORE_COLUMN_MINIMUM;

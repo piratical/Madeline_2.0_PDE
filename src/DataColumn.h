@@ -48,7 +48,7 @@
 #include "Proband.h"
 #include "Consultand.h"
 #include "Carrier.h"
-#include "Divorced.h"
+#include "RelationshipEnded.h"
 #include "Twin.h"
 
 #include "Exception.h"

@@ -66,7 +66,7 @@ DataTable::DataTable(TableParser &parser){
 	_superscriptColumnIndex = COLUMN_IS_MISSING;
 	_consultandColumnIndex  = COLUMN_IS_MISSING;
 	_carrierColumnIndex     = COLUMN_IS_MISSING;
-	_divorcedColumnIndex    = COLUMN_IS_MISSING;
+	_relationshipEndedColumnIndex = COLUMN_IS_MISSING;
 	
 	//
 	// Set ColorSeriesStack, blackAndWhiteSeriesStack pointer to null
@@ -486,12 +486,12 @@ void DataTable::_determineTableType(const std::vector<std::string> *pTitles) {
 			_carrierColumnIndex = i;
 			
 		}
-		else if(tempString == labels.DivorcedField)
+		else if(tempString == labels.RelationshipEndedField)
 		{
 			
 			// Optional core field:
-			_finalTypes[i] = DIVORCED;
-			_divorcedColumnIndex = i;
+			_finalTypes[i] = RELATIONSHIPENDED;
+			_relationshipEndedColumnIndex = i;
 			
 		}
 	}
