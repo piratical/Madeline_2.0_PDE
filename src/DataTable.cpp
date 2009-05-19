@@ -494,6 +494,22 @@ void DataTable::_determineTableType(const std::vector<std::string> *pTitles) {
 			_relationshipEndedColumnIndex = i;
 			
 		}
+		else if(tempString == labels.InfertilityField)
+		{
+			
+			// Optional core field:
+			_finalTypes[i] = INFERTILITY;
+			_infertilityColumnIndex = i;
+			
+		}
+		else if(tempString == labels.SterilityField)
+		{
+			
+			// Optional core field:
+			_finalTypes[i] = STERILITY;
+			_sterilityColumnIndex = i;
+			
+		}
 	}
 	
 	

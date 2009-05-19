@@ -74,7 +74,8 @@ FieldLabels::FieldLabels()
 	ConsultandField  = "CONSULTAND";
 	CarrierField     = "CARRIER";
 	RelationshipEndedField = "RELATIONSHIPENDED";
-	
+	InfertilityField  = "INFERTILITY";
+	SterilityField    = "STERILITY";
 	
 	PEDIGREE_TABLE_CORE_COLUMN_COUNT = 5;
 	GENETIC_TABLE_CORE_COLUMN_MINIMUM = 2;

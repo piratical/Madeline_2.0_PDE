@@ -1747,6 +1747,8 @@ void Pedigree::setCoreOptionalFields(const DataTable* pedigreeTable){
 	bool hasConsultandColumn = false;
 	bool hasCarrierColumn    = false;
 	bool hasRelationshipEndedColumn = false; // 2009.05.11.ET
+	bool hasInfertilityColumn= false; // 2009.05.19.ET
+	bool hasSterilityColumn  = false; // 2009.05.19.ET
 	
 	DataColumn *dobColumn;
 	DataColumn *deceasedColumn;
@@ -1756,6 +1758,8 @@ void Pedigree::setCoreOptionalFields(const DataTable* pedigreeTable){
 	DataColumn *consultandColumn;
 	DataColumn *carrierColumn;
 	DataColumn *relationshipEndedColumn;
+	DataColumn *infertilityColumn;
+	DataColumn *sterilityColumn;
 	
 	// Check if MZTwin column exists in the datatable
 	if(pedigreeTable->getMZTwinColumnIndex() != DataTable::COLUMN_IS_MISSING){
@@ -1812,6 +1816,20 @@ void Pedigree::setCoreOptionalFields(const DataTable* pedigreeTable){
 		hasRelationshipEndedColumn = true;
 	}
 	
+	// 2009.05.19.ET Addendum:
+	// Check if Infertility column exists in the datatable:
+	if(pedigreeTable->getInfertilityColumnIndex() != DataTable::COLUMN_IS_MISSING){
+		infertilityColumn    = pedigreeTable->getColumn(pedigreeTable->getInfertilityColumnIndex());
+		hasInfertilityColumn = true;
+	}
+	
+	// 2009.05.19.ET Addendum:
+	// Check if Sterility column exists in the datatable:
+	if(pedigreeTable->getSterilityColumnIndex() != DataTable::COLUMN_IS_MISSING){
+		sterilityColumn    = pedigreeTable->getColumn(pedigreeTable->getSterilityColumnIndex());
+		hasSterilityColumn = true;
+	}
+	
 	// Check if Affected column exists in the datatable
 	if(pedigreeTable->getAffectedColumnIndex() != DataTable::COLUMN_IS_MISSING){
 		affectedColumn = pedigreeTable->getColumn(pedigreeTable->getAffectedColumnIndex());
@@ -1832,6 +1850,8 @@ void Pedigree::setCoreOptionalFields(const DataTable* pedigreeTable){
 		if(hasConsultandColumn) (*individualIt)->setConsultandStatus(dynamic_cast<Consultand*>(const_cast<Data* const>(consultandColumn->getDataAtIndex(rowIndex))));
 		if(hasCarrierColumn)    (*individualIt)->setCarrierStatus(dynamic_cast<Carrier*>(const_cast<Data* const>(carrierColumn->getDataAtIndex(rowIndex))));
 		if(hasRelationshipEndedColumn)   (*individualIt)->setRelationshipEndedStatus(dynamic_cast<RelationshipEnded*>(const_cast<Data* const>(relationshipEndedColumn->getDataAtIndex(rowIndex))));
+		if(hasInfertilityColumn) (*individualIt)->setInfertilityStatus(dynamic_cast<Infertility*>(const_cast<Data* const>(infertilityColumn->getDataAtIndex(rowIndex))));
+		if(hasSterilityColumn)   (*individualIt)->setSterilityStatus(dynamic_cast<Sterility*>(const_cast<Data* const>(sterilityColumn->getDataAtIndex(rowIndex))));
 		
 		++individualIt;
 	}

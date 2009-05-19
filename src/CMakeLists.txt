@@ -65,6 +65,8 @@ SET( SOURCES
 	IconLegend.h
 	Individual.h
 	Individual.cpp
+	Infertility.h
+	Infertility.cpp
 
 	LabelLegend.h
 	LabelSet.cpp 
@@ -99,6 +101,8 @@ SET( SOURCES
 	
 	Sampled.cpp
 	ScriptCodes.h 
+	Sterility.h
+	Sterility.cpp
 	String.cpp 
 	String.h 
 	SVG.cpp

@@ -198,6 +198,18 @@ void DrawingCanvas::_setCSS(){
 	_header << "}\n\n";
 	
 	//
+	// smallText: defaults for small labels
+	//
+	_header << ".smallText{\n";
+	_header << "	font-family:\"";
+	// User-selected plus default "sans-serif" fallback font definitions:
+	_header << DrawingMetrics::getFontFamily() << "\",sans-serif;\n";
+	// Font size:
+	_header << "	font-size:" << (0.75*DrawingMetrics::getFontSize()) << DrawingMetrics::getFontSizeUnit() << ";\n";
+	_header << "	fill:#444;\n";
+	_header << "}\n\n";
+	
+	//
 	// .layer text:
 	//
 	_header << ".layer text{\n";
@@ -761,7 +773,11 @@ void DrawingCanvas::drawIndividual(Individual* pIndividual,double x,double y,boo
 	/////////////////////////////////////////
 	
 	if( pIndividual->isSpecial() ){
-		 
+		
+		//
+		// This is not a "real" individual, but rather a marker for 
+		// the condition of a married couple with no children:
+		//
 		if( pIndividual->isIndividualIndicatingNoOffspring()){
 			
 			_svg.drawIconForNoChildren(_body,x,y-DrawingMetrics::getVerticalDrop2());
@@ -772,6 +788,10 @@ void DrawingCanvas::drawIndividual(Individual* pIndividual,double x,double y,boo
 			
 		}
 		
+		//
+		// This too is not a "real" individual, but rather a marker for
+		// the condition of a married couple with non-fertility:
+		//
 		if( pIndividual->isIndividualIndicatingNonFertility()){
 			
 			_svg.drawIconForInfertility(_body,x,y-DrawingMetrics::getVerticalDrop2());
@@ -845,8 +865,9 @@ void DrawingCanvas::drawIndividual(Individual* pIndividual,double x,double y,boo
 	//
 	// Draw the icon shading first:
 	//
-	if(!pIndividual->hasBeenDrawn() && pIndividual->getGender().getEnum() != Gender::MISSING) 
+	if(!pIndividual->hasBeenDrawn() && pIndividual->getGender().getEnum() != Gender::MISSING){
 		iconPie(x,y,pIndividual);
+	}
 	
 	//
 	// Indicate sampled individuals:
@@ -908,6 +929,32 @@ void DrawingCanvas::drawIndividual(Individual* pIndividual,double x,double y,boo
 	//
 	if(!pIndividual->hasBeenDrawn() && pIndividual->isConsultand()){
 		_drawConsultandArrow(x,y);
+	}
+	
+	/////////////// 2009.05.19.ET ADDENDUM ///////////////////
+	//
+	// Draw Infertility or Sterility indicator on individual:
+	//
+	//////////////////////////////////////////////////////////
+	if(!pIndividual->hasBeenDrawn() && (pIndividual->isInfertile() || pIndividual->isSterile()) ){
+		
+		double v1 = y  +   DrawingMetrics::getIconRadius();
+		double v2 = v1 + 2*DrawingMetrics::getVerticalTick();
+		double v3 = v2 +   DrawingMetrics::getIconRadius();
+		double v4 = v3;
+		
+		_svg.drawVerticalLine(_body,x,v1,v2);
+		
+		if(pIndividual->isInfertile()){
+			
+			_svg.drawIconForInfertility(_body,x,v3);
+			_svg.drawText(_body,x,v4,pIndividual->getInfertilityLabel(),"smallText");
+		}else{
+			
+			_svg.drawIconForNoChildren (_body,x,v3);
+			_svg.drawText(_body,x,v4,pIndividual->getSterilityLabel(),"smallText");
+			
+		}
 	}
 	
 	//

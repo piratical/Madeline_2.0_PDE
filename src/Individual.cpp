@@ -65,6 +65,8 @@ inline void Individual::_init(void){
 	_consultand = 0;
 	_deceased   = 0;
 	_relationshipEnded = 0; // 2009.05.11.ET addendum ...
+	_infertility= 0;
+	_sterility  = 0;
 	_dob        = 0;
 	_proband    = 0;
 	_sampled    = 0;

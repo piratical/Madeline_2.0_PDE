@@ -87,6 +87,13 @@ DataColumn::DataColumn(const std::string &name,DATATYPE columnType, unsigned lon
 	case RELATIONSHIPENDED:
 		for(unsigned int k=0; k < _rows; k++) _data.push_back(new RelationshipEnded());
 		break;
+	case INFERTILITY:
+		for(unsigned int k=0; k < _rows; k++) _data.push_back(new Infertility());
+		break;
+	case STERILITY:
+		for(unsigned int k=0; k < _rows; k++) _data.push_back(new Sterility());
+		break;
+		
 	case TWIN:
 		for(unsigned int k=0; k < _rows; k++) _data.push_back(new Twin());
 		break;

@@ -49,6 +49,8 @@
 #include "Consultand.h"
 #include "Carrier.h"
 #include "RelationshipEnded.h"
+#include "Sterility.h"
+#include "Infertility.h"
 #include "Twin.h"
 
 #include "Exception.h"

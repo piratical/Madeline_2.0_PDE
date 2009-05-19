@@ -20,23 +20,23 @@
 // 
 /////////////////////////////////////////////////////////
 //
-// 2009.05.11.ET
+// 2009.05.19.ET
 //
 
 //
-// RelationshipEnded.cpp
+// Infertility.cpp
 //
-#include "RelationshipEnded.h"
+#include "Infertility.h"
 
-std::map<std::string,std::string> RelationshipEnded::_lookupTable;
-std::map<std::string,RelationshipEnded::TYPE> RelationshipEnded::_lookupTypeTable;
+std::map<std::string,std::string> Infertility::_lookupTable;
+std::map<std::string,Infertility::TYPE> Infertility::_lookupTypeTable;
 
-RelationshipEndedMapLoader RelationshipEndedMapLoader::relationshipEndedMapLoader;
+InfertilityMapLoader InfertilityMapLoader::infertilityMapLoader;
 
 //
-// RelationshipEnded::set() base method:
+// Infertility::set() base method:
 //
-void RelationshipEnded::set(const char *value){
+void Infertility::set(const char *value){
 	
 	// Set the string:
 	String::set(value);
@@ -48,41 +48,41 @@ void RelationshipEnded::set(const char *value){
 	// If the value is not either a global
 	// or local missing value indicator for the
 	// String class, then check whether it maps
-	// to one of the RELATIONSHIP_ENDED states:
+	// to one of the Infertility states:
 	//
 	
 	if( !_isMissing ){
 		
 		//
-		// Any non-missing value indicates the relationship ended:
+		// Any non-missing value indicates infertility:
 		//
-		_booleanValue = BOOLEAN_RELATIONSHIP_ENDED;
+		_booleanValue = IS_INFERTILE;
 		
-		std::map<std::string,RelationshipEnded::TYPE>::const_iterator iter = _lookupTypeTable.find(_value);
+		std::map<std::string,Infertility::TYPE>::const_iterator iter = _lookupTypeTable.find(_value);
 		if(iter != _lookupTypeTable.end()){
 			_type = iter->second;
 		}
 		
 	}else{
 		
-		_type=RELATIONSHIP_ENDED_MISSING_TYPE;
+		_type=UNKNOWN_INFERTILITY_TYPE;
 		
 	}
 }
 
 //
-// RelationshipEnded::getBoolean
+// Infertility::getBoolean
 //
-const bool RelationshipEnded::getBoolean( void ) const{
+const bool Infertility::getBoolean( void ) const{
 	
 	return _booleanValue.getBoolean();
 	
 }
 
 //
-// RelationshipEnded::getBooleanAsChar
+// Infertility::getBooleanAsChar
 //
-char RelationshipEnded::getBooleanAsChar( void ) const{
+char Infertility::getBooleanAsChar( void ) const{
 	
 	return _booleanValue.getAsChar();
 	
@@ -91,7 +91,7 @@ char RelationshipEnded::getBooleanAsChar( void ) const{
 //
 // getType
 //
-const RelationshipEnded::TYPE RelationshipEnded::getType(void) const{
+const Infertility::TYPE Infertility::getType(void) const{
 	
 	return _type;
 	
@@ -100,7 +100,7 @@ const RelationshipEnded::TYPE RelationshipEnded::getType(void) const{
 //
 // set( std::string )
 //
-void RelationshipEnded::set(const std::string value){
+void Infertility::set(const std::string value){
 	
 	set( value.c_str() );
 	
@@ -109,26 +109,26 @@ void RelationshipEnded::set(const std::string value){
 //
 // Free function: ostream operator <<
 //
-std::ostream& operator<<(std::ostream& s, const RelationshipEnded& n){
+std::ostream& operator<<(std::ostream& s, const Infertility& n){
 	
 	return s << n.get();
 	
 }
 
 //
-// addRelationshipEndedBooleanMapping
+// addInfertilityBooleanMapping
 //
-void RelationshipEnded::addRelationshipEndedBooleanMapping(std::string affectedValue,std::string booleanMapping){ 
+void Infertility::addInfertilityBooleanMapping(std::string affectedValue,std::string booleanMapping){ 
 	
-	RelationshipEnded::_lookupTable[ affectedValue ] = booleanMapping;
+	Infertility::_lookupTable[ affectedValue ] = booleanMapping;
 	
 }
 
 //
 // isa:
 //
-//bool RelationshipEnded::isa(std::string inString){
-//	RelationshipEnded t;
+//bool Infertility::isa(std::string inString){
+//	Infertility t;
 //	t.set(inString);
 //	return !t.isMissing();
 //}

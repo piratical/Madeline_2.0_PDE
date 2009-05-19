@@ -206,7 +206,7 @@ public:
 	static bool getColor();
 	static bool getBlackAndWhite();
 	static bool getNoIconLabels();
-	static bool getHasOutputPedTable();		
+	static bool getHasOutputPedTable();
 	static bool getHasOutputDataTable();
 	//
 	// Setters:

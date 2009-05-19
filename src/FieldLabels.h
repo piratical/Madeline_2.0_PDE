@@ -50,6 +50,8 @@ class FieldLabels
 	std::string ConsultandField;
 	std::string CarrierField;
 	std::string RelationshipEndedField;
+	std::string SterilityField;
+	std::string InfertilityField;
 	
 	int PEDIGREE_TABLE_CORE_COLUMN_COUNT;
 	int GENETIC_TABLE_CORE_COLUMN_MINIMUM;

@@ -126,6 +126,8 @@ private:
 	int _consultandColumnIndex;
 	int _carrierColumnIndex;
 	int _relationshipEndedColumnIndex;
+	int _infertilityColumnIndex;
+	int _sterilityColumnIndex;
 	
 	//
 	// Private methods:
@@ -214,6 +216,8 @@ public:
 	inline int getConsultandColumnIndex(void)  const { return _consultandColumnIndex; }
 	inline int getCarrierColumnIndex(void)     const { return _carrierColumnIndex; }
 	inline int getRelationshipEndedColumnIndex(void) const { return _relationshipEndedColumnIndex; }
+	inline int getInfertilityColumnIndex(void) const { return _infertilityColumnIndex; }
+	inline int getSterilityColumnIndex(void) const { return _sterilityColumnIndex; }
 	
 	//
 	// getIconColumnCount
