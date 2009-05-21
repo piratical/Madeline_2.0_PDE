@@ -1970,7 +1970,8 @@ void Pedigree::determineFoundingGroups(){
 	}
 	
 	// DEBUG: Print the original and ordinary founders:
-	/*individualIt = _individuals.begin();
+	/* 
+	individualIt = _individuals.begin();
 	while(individualIt != _individuals.end()){
 		if((*individualIt)->isOrdinaryFounder() == true){ 
 			std::cout << "Ordinary Founder: " << (*individualIt)->getId() << std::endl;
@@ -1980,8 +1981,9 @@ void Pedigree::determineFoundingGroups(){
 		}
 		++individualIt;
 	}
-	
+	/*
 	// DEBUG: Print all the descent tree ids:
+	/*
 	std::cout << "# of Descent Trees " << _descentTrees.size() << std::endl;
 	for(unsigned cnt =0;cnt < _descentTrees.size();cnt++){
 		std::cout << "id: " << _descentTrees[cnt]->getId() << std::endl;

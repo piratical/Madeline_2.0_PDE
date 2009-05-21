@@ -62,8 +62,9 @@ public:
 	void drawMiniMaleIcon(std::ostringstream& os,double x,double y);   // Only used for aborted/terminated pregnancies.
 	void drawMiniFemaleIcon(std::ostringstream& os,double x,double y); // Only used for aborted/terminated pregnancies.
 	void drawMiniCircle(std::ostringstream& os,double x,double y); // Used to show carrier status
-	void drawHeart(std::ostringstream& os,double x,double y);
-	void drawSquiggle(std::ostringstream& os,double x,double y);
+	void drawHeart(std::ostringstream& os,double x,double y); 
+	void drawSquiggle(std::ostringstream& os,double x,double y); // Used for RelationshipEnded ...
+	void drawCurve(std::ostringstream& os, double x1, double y1, double x2, double y2);
 	 
 };
 

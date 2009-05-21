@@ -67,6 +67,8 @@ DataTable::DataTable(TableParser &parser){
 	_consultandColumnIndex  = COLUMN_IS_MISSING;
 	_carrierColumnIndex     = COLUMN_IS_MISSING;
 	_relationshipEndedColumnIndex = COLUMN_IS_MISSING;
+	_infertilityColumnIndex = COLUMN_IS_MISSING;
+	_sterilityColumnIndex   = COLUMN_IS_MISSING;
 	
 	//
 	// Set ColorSeriesStack, blackAndWhiteSeriesStack pointer to null
@@ -677,6 +679,7 @@ std::string DataTable::getColumnName ( unsigned ordinal ) const{
 	
 	
 	if( ordinal >= _columnSet.size() ){
+		//std::cerr << "Ordinal=" << ordinal << " but columnSet.size=" << _columnSet.size() << std::endl;
 		throw Exception("dataTable::getColumnName()","Ordinal is out of range");
 	}
 	
@@ -701,6 +704,7 @@ unsigned DataTable::getNumberOfColumns( void ) const {
 DataColumn *DataTable::getColumn( unsigned ordinal ) const{
 	
 	if( ordinal >= _columnSet.size() ){
+		//std::cerr << "Ordinal=" << ordinal << " but columnSet.size=" << _columnSet.size() << std::endl;
 		throw Exception("DataTable::getColumn()","Ordinal is out of range");
 	}
 	

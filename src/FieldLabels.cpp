@@ -34,18 +34,18 @@
 
 FieldLabels::FieldLabels()
 {
-	FamilyIdField = "FAMILYID";			// Shared with Decomposed Table
-	IndividualIdField = "INDIVIDUALID";	// Shared with Decomposed Table
-	FatherIdField = "FATHER";
-	MotherIdField = "MOTHER";
-	GenderField = /*"SEX"*/"GENDER";
+	FamilyIdField     = "FAMILYID";     // Shared with Decomposed Table
+	IndividualIdField = "INDIVIDUALID"; // Shared with Decomposed Table
+	FatherIdField     = "FATHER";
+	MotherIdField     = "MOTHER";
+	GenderField       = "GENDER";
 
 	//Genetic Map Table Labels
-	ChromosomeField = "CHROMOSOME";
-	MarkerNameField = "MARKERNAME";		// Shared with Decomposed Table and Allele Frequency Table
-	PositionField = "POSITION";			// Shared with Results Table
+	ChromosomeField     = "CHROMOSOME";
+	MarkerNameField     = "MARKERNAME";  // Shared with Decomposed Table and Allele Frequency Table
+	PositionField       = "POSITION";    // Shared with Results Table
 	PositionFemaleField = "POSITION_FEMALE";
-	PositionMaleField = "POSITION_MALE";
+	PositionMaleField   = "POSITION_MALE";
 
 	//Decomposed Table Labels
 	Allele1Field = "ALLELE1";

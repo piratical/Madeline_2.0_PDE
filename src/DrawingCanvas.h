@@ -52,6 +52,7 @@ private:
 	std::ostringstream _body;
 	std::ostringstream _footer;
 	std::ostringstream _layer;
+	std::ostringstream _bottomLayer; // For curved connectors ...
 	
 	bool _layerFlag;
 	DrawingMedia _media;

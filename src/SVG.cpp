@@ -382,4 +382,42 @@ void SVG::drawSquiggle(std::ostringstream& os,double x,double y){
 }
 
 
+//
+// drawCurve -- For showing curved connectors in the background -- NEEDS WORK !
+// 2009.05.21.ET ADDENDUM
+//
+void SVG::drawCurve(std::ostringstream& os, double x1, double y1, double x2, double y2){
+	
+	if(x2<x1){
+		double xx = x1;
+		x1=x2;
+		x2=xx;
+	}
+	
+	if(y2<y1){
+		double yy = y1;
+		y1=y2;
+		y2=yy;
+	}
+	
+	std::string sp=" ";
+	double xd = 0.5*(x2-x1);
+	double yd = 0.5*(y2-y1);
+	if(yd==0) yd = xd;
+	if(xd==0) xd = yd;
+	double xh = x1 + xd;
+	double yh = y1 + yd;
+	
+	bool above=false;
+	
+	os << "<path class=\"curvedConnector\"";
+	os << " d=\"M" << x1 << sp << y1 << sp;
+	if(above){
+		os << "C" <<  xh << sp << y1 << sp << x2 << sp << yh << sp << x2 << sp << y2 << sp;
+	}else{
+		os << "C" <<  x1 << sp << yh << sp << xh << sp << y2+yd << sp << x2 << sp << y2 << sp;
+	}
+	os << "\" />\n";
+	
+}
 

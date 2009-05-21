@@ -363,6 +363,19 @@ void DrawingCanvas::_setCSS(){
 	_header << "}\n\n";
 	
 	//
+	// .curvedConnector:
+	//
+	_header << ".curvedConnector{\n";
+	_header << "	stroke-linecap:square;\n";
+	_header << "	stroke-linejoin:miter;\n";
+	_header << "	stroke:#98afc7;\n";
+	_header << "	stroke-width:" << DrawingMetrics::getLineWidth() << DrawingMetrics::getLineWidthUnit() << ";\n";
+	_header << "	stroke-dasharray:2mm,1mm;\n";
+	_header << "	stroke-dashoffset:1.0mm;\n";
+	_header << "	fill:none;\n";
+	_header << "}\n\n";
+	
+	//
 	// whiteInkLetter:
 	//
 	
@@ -745,8 +758,23 @@ void DrawingCanvas::drawIndividual(Individual* pIndividual,double x,double y,boo
 	// Store x and y : Currently absolute positions:
 	//
 	if(!pIndividual->hasBeenDrawn()){
+		
 		pIndividual->setX(x);
 		pIndividual->setY(y);
+		
+	}else{
+		
+		///////////////////////////////////////////
+		//
+		// 2009.05.21.ET : Draw curved connectors 
+		// on bottommost layer:
+		//
+		///////////////////////////////////////////
+		//std::cerr << pIndividual->getId() << ": New Pos      (x,y)=>(" << x << "," << y << ")\n";
+		//std::cerr << pIndividual->getId() << ": Original Pos (x,y)=>(" << pIndividual->getX() << "," << pIndividual->getY() << ")\n";
+		
+		_svg.drawCurve(_bottomLayer,pIndividual->getX(),pIndividual->getY(),x,y);
+		
 	}
 	//
 	// track the minima and maxima on the drawing so we 
@@ -1054,16 +1082,6 @@ void DrawingCanvas::drawLabelSet(Individual* pIndividual){
 ///
 void DrawingCanvas::show(const char* filename){
 	
-	
-	// DEBUG:
-	//std::cout << _header << std::endl;
-	// Show the layers before the body
-	//for(unsigned i=0;i<_layers.size();i++)
-	//	std::cout << _layers[i] << std::endl;
-	//std::cout << _body << std::endl;
-	//std::cout << _footer << std::endl;
-	// Write to file with name : pedigree_id+".xml"
-	
 	// If label and/or icon legends are present
 	// readjust the x and y extents:
 	if(_labelSet->getNumberOfLabels() != 0 || _iconLegendFlag){ 
@@ -1087,6 +1105,17 @@ void DrawingCanvas::show(const char* filename){
 	std::ofstream svgfile(filename);
 	if(svgfile.is_open()){
 		svgfile << _header.str() << std::endl;
+		
+		/////////////////////////////////////////////////////
+		//
+		// 2009.05.21.ET:
+		// Dump the bottommost layer (for curved connectors)
+		//
+		/////////////////////////////////////////////////////
+		svgfile << " <g id=\"bottomLayer" << "\" class=\"layer\" >\n";
+		svgfile << _bottomLayer.str() << std::endl;
+		svgfile << " </g>\n";
+		
 		
 		for(unsigned i=0;i<_layers.size();i++){
 			

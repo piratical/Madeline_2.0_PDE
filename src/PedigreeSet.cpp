@@ -146,16 +146,17 @@ void PedigreeSet::addPedigreesFromDataTable(const DataTable * p_pedigreeTable, u
 	const DataTable & pedigreeTable = (*p_pedigreeTable);
 	
 	std::cout << "Start of addPedigreesFromDataTable" << std::endl;
+	
 	//
 	// Get all the core columns from the datatable:
 	//
-	DataColumn *familyIdColumn = pedigreeTable.getColumn(pedigreeTable.labels.FamilyIdField);
+	DataColumn *familyIdColumn = pedigreeTable.getColumn( pedigreeTable.labels.FamilyIdField );
 	//familyIdColumn->printData();
-	DataColumn *individualIdColumn = pedigreeTable.getColumn(pedigreeTable.labels.IndividualIdField);
+	DataColumn *individualIdColumn = pedigreeTable.getColumn( pedigreeTable.labels.IndividualIdField );
 	//individualIdColumn->printData();
-	DataColumn *motherIdColumn = pedigreeTable.getColumn(pedigreeTable.labels.MotherIdField);
-	DataColumn *fatherIdColumn = pedigreeTable.getColumn(pedigreeTable.labels.FatherIdField);
-	DataColumn *genderColumn   = pedigreeTable.getColumn(pedigreeTable.labels.GenderField);
+	DataColumn *motherIdColumn = pedigreeTable.getColumn( pedigreeTable.labels.MotherIdField );
+	DataColumn *fatherIdColumn = pedigreeTable.getColumn( pedigreeTable.labels.FatherIdField );
+	DataColumn *genderColumn   = pedigreeTable.getColumn( pedigreeTable.labels.GenderField );
 	//
 	// Insert the Pedigrees in a set:
 	//
