@@ -773,8 +773,6 @@ void DrawingCanvas::drawIndividual(Individual* pIndividual,double x,double y,boo
 		//std::cerr << pIndividual->getId() << ": New Pos      (x,y)=>(" << x << "," << y << ")\n";
 		//std::cerr << pIndividual->getId() << ": Original Pos (x,y)=>(" << pIndividual->getX() << "," << pIndividual->getY() << ")\n";
 		
-		//double dxc = DrawingMetrics::getIconDiameter();
-		//double dyc = dxc;
 		_svg.drawCurve(_bottomLayer,pIndividual->getX(),pIndividual->getY(),x,y);
 		
 	}
@@ -877,10 +875,23 @@ void DrawingCanvas::drawIndividual(Individual* pIndividual,double x,double y,boo
 			
 			_svg.drawAdoptedIn(_body,x,y,pIndividual->getGender().getEnum()==Gender::MISSING);
 			
+			Individual *adoptedComplement = pIndividual->getAdoptedComplement();
+			if( adoptedComplement->hasBeenDrawn() ){
+				
+				_svg.drawCurve( _bottomLayer , x , y , adoptedComplement->getX() , adoptedComplement->getY() );
+				
+			}
 		}
 		if( pIndividual->isIndividualAdoptedOut()){
 			
 			_svg.drawAdoptedOut(_body,x,y,pIndividual->getGender().getEnum()==Gender::MISSING);
+			
+			Individual *adoptedComplement = pIndividual->getAdoptedComplement();
+			if( adoptedComplement->hasBeenDrawn() ){
+				
+				_svg.drawCurve( _bottomLayer , x , y , adoptedComplement->getX() , adoptedComplement->getY() );
+				
+			}
 			
 		}
 		

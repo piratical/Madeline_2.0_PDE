@@ -89,6 +89,9 @@ inline void Individual::_init(void){
 	_individualAdoptedIn =false;
 	_isSpecial=false;
 	
+	// 2009.05.22.ET :: Prophylactic setting of pointer to zero:
+	_adoptedComplement = 0;
+	
 }
 
 //

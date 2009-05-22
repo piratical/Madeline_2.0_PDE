@@ -2230,6 +2230,38 @@ void Pedigree::establishIndividualConnections(){
 			delete tempIndividual;
 			delete tempIndividual1;
 		}
+		
+		///////////////////////////////////////////////////////////
+		//
+		// 2009.05.22.ET
+		//
+		// Code to connect adopted in/out complement individuals:
+		//
+		///////////////////////////////////////////////////////////
+		
+		std::string id        = (*individualIt)->getId().get();
+		const char first_char = id[0];
+		if(first_char=='+' || first_char=='-'){
+			
+			//std::cerr << ">>>>> START SEARCH FOR ADOPTED COMPLEMENT OF " << id << "\n";
+			
+			//
+			// Flip the adopted "in" and "out" flags 
+			// so we can search for the complement:
+			//
+			if     (id[0]=='+') id[0]='-';
+			else if(id[0]=='-') id[0]='+';
+			Individual* complementIndividual = new Individual( id );
+			std::set<Individual*,compareIndividual>::iterator adoptedComplementIt = _individuals.find(complementIndividual);
+			if(adoptedComplementIt != _individuals.end()){
+				
+				(*individualIt)->setAdoptedComplement( (*adoptedComplementIt) );
+				
+				//std::cerr << ">>>>> FOUND : COMPLEMENT OF " << (*individualIt)->getId().get() << " IS " << (*adoptedComplementIt)->getId().get() << "\n";
+				
+			}
+		}
+		
 		++individualIt;
 	}
 	

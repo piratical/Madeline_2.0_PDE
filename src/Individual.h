@@ -101,6 +101,7 @@ private:
 	Individual *_father;  // Pointer to the father -- defaults to NULL (0)
 	Individual *_mother;  // Pointer to the mother -- defaults to NULL (0)
 	
+	Individual *_adoptedComplement; // Pointer to adopted complement -- defaults to NULL (0);
 	
 	//
 	// Constructed attributes:
@@ -198,6 +199,7 @@ public:
 	void setIsConsanguinous(bool value) { _isConsanguinous = value; }
 	void setMother(Individual* mother) { _mother = mother; }
 	void setFather(Individual* father) { _father = father; }
+	void setAdoptedComplement(Individual* adoptedComplement) { _adoptedComplement = adoptedComplement; }
 	void setDOB(Date* dob) { _dob = dob; }
 	void setAffectionStatus(Affected* affected) { _affected = affected; }
 	void setProbandStatus(Proband* proband) { _proband = proband; }
@@ -288,6 +290,7 @@ public:
 	unsigned getRowIndex(void)         { return _rowIndex; }
 	Individual* getFather(void)        { return _father; }
 	Individual* getMother(void)        { return _mother; }
+	Individual* getAdoptedComplement(void) { return _adoptedComplement; }
 	Individual* getFirstSpouse(void);
 	Twin getTwinMarker(void)           { return _twinMarker; }
 	unsigned getNumberOfSpouses(void)  { return _spouses.size(); }
