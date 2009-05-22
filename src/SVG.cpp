@@ -386,37 +386,58 @@ void SVG::drawSquiggle(std::ostringstream& os,double x,double y){
 // drawCurve -- For showing curved connectors in the background -- NEEDS WORK !
 // 2009.05.21.ET ADDENDUM
 //
+// dxc, dyc specify a *relative* offset from the first end point.  The
+// second control point will then be a symmetric reflected control point from the
+// second end point.
+//
 void SVG::drawCurve(std::ostringstream& os, double x1, double y1, double x2, double y2){
 	
-	if(x2<x1){
-		double xx = x1;
-		x1=x2;
-		x2=xx;
-	}
+	//if(x2<x1){
+	//	double xx = x1;
+	//	x1=x2;
+	//	x2=xx;
+	//}
 	
-	if(y2<y1){
-		double yy = y1;
-		y1=y2;
-		y2=yy;
-	}
+	//if(y2<y1){
+	//	double yy = y1;
+	//	y1=y2;
+	//	y2=yy;
+	//}
 	
 	std::string sp=" ";
-	double xd = 0.5*(x2-x1);
-	double yd = 0.5*(y2-y1);
-	if(yd==0) yd = xd;
-	if(xd==0) xd = yd;
-	double xh = x1 + xd;
-	double yh = y1 + yd;
 	
-	bool above=false;
+	double dx = x2-x1;
+	double dy = y2-y1;
+	
+	double h = sqrt(dx*dx + dy*dy);
+	
+	//
+	// Calculate relative displacement for
+	// control points dxc, dyc:
+	//
+	double dxc = 0.25*h;   // a quarter of distance h seems about right ...
+	double dyc = 5*DrawingMetrics::getIconDiameter(); // This just seems about right ...
+	
+	
+	// Control point #1 (when p1 is translated to the origin):
+	double c1x = (dxc*dx-dyc*dy)/h;
+	double c1y = (dxc*dy+dyc*dx)/h;
+	
+	// Translate:
+	c1x += x1; 
+	c1y += y1;
+	
+	// Control point #2 (when p1 is translated to the origin):
+	double c2x = ((h-dxc)*dx-dyc*dy)/h;
+	double c2y = ((h-dxc)*dy+dyc*dx)/h;
+	
+	// Translate:
+	c2x += x1; 
+	c2y += y1;
 	
 	os << "<path class=\"curvedConnector\"";
 	os << " d=\"M" << x1 << sp << y1 << sp;
-	if(above){
-		os << "C" <<  xh << sp << y1 << sp << x2 << sp << yh << sp << x2 << sp << y2 << sp;
-	}else{
-		os << "C" <<  x1 << sp << yh << sp << xh << sp << y2+yd << sp << x2 << sp << y2 << sp;
-	}
+	os << "C" <<  c1x << sp << c1y << sp << c2x << sp << c2y << sp << x2 << sp << y2 << sp;
 	os << "\" />\n";
 	
 }
