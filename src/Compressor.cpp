@@ -34,7 +34,6 @@
 #include <iostream>
 #include <vector>
 #include "../3rdParty/unzip/unzip.h"
-//#include "../3rdParty/zlib-1.2.2/zlib.h"
 #include <zlib.h>
 #include <bzlib.h>
 #include "Exception.h"

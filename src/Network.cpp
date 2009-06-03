@@ -26,12 +26,17 @@
 
 #include "Network.h"
 
+#include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 //
-// This is required on some platforms:
+// This is required on some "legacy" platforms:
 //
+#ifndef WIN32
 #include <unistd.h>
+#endif
+
+#include "Exception.h"
 
 ////////////////////////////////////////
 //
@@ -44,25 +49,64 @@
 ///
 std::string Network::getNetworkFile(const char* url){
 	
-	char tempname[15] = "";
-	int filedescriptor = -1;
-	FILE *tempfile;
-	strcpy(tempname, "/tmp/netXXXXXX");
+	/////////////////////////////////////////////////////////////////////////
+	//
+	// Code for temp file creation is based on CERT's recommendations.  See:
+	// https://www.securecoding.cert.org/confluence/display/seccode/VOID+FI039-C.+Create+temporary+files+securely
+	//
+	/////////////////////////////////////////////////////////////////////////
 	
-	if ((filedescriptor = mkstemp(tempname)) == -1 || (tempfile = fdopen(filedescriptor, "w+")) == NULL){
-		if (filedescriptor != -1) {
-			unlink(tempname);
-			close(filedescriptor);
+	FILE *sfp=0; // Pointer to a secure temporary file
+	
+#ifdef WIN32
+	
+	//
+	// WIN32 SYSTEMS:
+	//
+	
+	//
+	// Get a temp file name using tmpnam_s():
+	//
+	char tfname[L_tmpnam_s];
+	errno_t err = tmpnam_s( tfname , L_tmpnam_s );
+	if(err) throw Exception("Network::getNetworkFile()","Unable to create temporary file name");
+	
+	sfp = fopen(tfname,"w+");
+	
+	if(!sfp) throw Exception("Network::getNetworkFile()","Unable to open temporary file %s",tfname);
+	
+#else
+	
+	//
+	// POSIX SYSTEMS:
+	//
+	
+	char tfname[19] = "/tmp/m2_net.XXXXXX";
+	int fd = -1;
+	if ((fd = mkstemp(tfname)) == -1 || (sfp = fdopen(fd, "w+")) == NULL) {
+		if (fd != -1) {
+			unlink(tfname);
+			close(fd);
 		}
+		
+		throw Exception("Network::getNetworkFile()","Unable to create or open temporary file %s",tfname);
+		
 	}
 	
-	_fileName = tempname;
+#endif
+	
+	_fileName = tfname;
+	//
+	// CURL NETWORK CODE:
+	//
+	
+	_fileName = tfname;
 	curl_global_init(CURL_GLOBAL_ALL);
 	_curl = curl_easy_init();
 	curl_easy_setopt(_curl, CURLOPT_URL, url);
 	curl_easy_setopt(_curl, CURLOPT_NOPROGRESS, 1);
 	curl_easy_setopt(_curl, CURLOPT_WRITEFUNCTION, write_data);
-	curl_easy_setopt(_curl, CURLOPT_WRITEDATA, tempfile);
+	curl_easy_setopt(_curl, CURLOPT_WRITEDATA, sfp );
 	
 	if(strncmp(url,"https://",8)==0){
 		#ifdef SKIP_PEER_VERIFICATION
@@ -76,6 +120,7 @@ std::string Network::getNetworkFile(const char* url){
 	curl_easy_perform(_curl);
 	curl_easy_cleanup(_curl);
 	
-	fclose(tempfile);
+	fclose( sfp );
 	return _fileName;
+	
 }
