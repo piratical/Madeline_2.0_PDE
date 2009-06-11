@@ -281,7 +281,7 @@ void Pedigree::_checkParentsGender(Individual* individual){
 		 return;
 		}else{
 			const std::set<Individual*,Individual::compareIndividual> * pspouses = father->getSpouses();
-			std::set<Individual*,Individual::compareIndividual>::iterator it = (*pspouses).begin();
+			std::set<Individual*,Individual::compareIndividual>::const_iterator it = (*pspouses).begin();
 			unsigned cnt = 0;
 			unsigned numberOfSpouses = father->getNumberOfSpouses();
 			while(cnt < numberOfSpouses){
@@ -314,7 +314,7 @@ void Pedigree::_checkParentsGender(Individual* individual){
 			// Check all the spouses to see if they are males:
 			//
 			const std::set<Individual*,Individual::compareIndividual> * pspouses = mother->getSpouses();
-			std::set<Individual*,compareIndividual>::iterator it = (*pspouses).begin();
+			std::set<Individual*,Individual::compareIndividual>::const_iterator it = (*pspouses).begin();
 			unsigned cnt = 0;
 			unsigned numberOfSpouses = mother->getNumberOfSpouses();
 			while(cnt < numberOfSpouses){
@@ -341,10 +341,10 @@ void Pedigree::_checkParentsGender(Individual* individual){
 void Pedigree::_getSpouses(std::set<Individual*,compareIndividual>& foundingGroup, Individual* individual) {
 	
 	const std::set<Individual*,Individual::compareIndividual> * pspouses = individual->getSpouses();
-	std::set<Individual*,compareIndividual>::iterator it = (*pspouses).begin();
+	std::set<Individual*,Individual::compareIndividual>::const_iterator it = (*pspouses).begin();
 	
 	while(it != (*pspouses).end()){
-		std::pair<std::set<Individual*,compareIndividual>::iterator,bool> pit = foundingGroup.insert(*it);
+		std::pair<std::set<Individual*,compareIndividual>::const_iterator,bool> pit = foundingGroup.insert(*it);
 		if(pit.second) _getSpouses(foundingGroup,*it);
 		++it;
 	}
@@ -555,7 +555,7 @@ void Pedigree::_assignDescentTrees(){
 			if(cnt > 0){
 				// Assign descentTreeId to all the spouses of the startIndividual:
 				const std::set<Individual*,Individual::compareIndividual> * pspouses = startIndividual->getSpouses();
-				std::set<Individual*,Individual::compareIndividual>::iterator it = (*pspouses).begin();
+				std::set<Individual*,Individual::compareIndividual>::const_iterator it = (*pspouses).begin();
 				while(it != (*pspouses).end()){
 					(*it)->addDescentTree(descentTreeId);
 					cnt--;
@@ -584,7 +584,7 @@ void Pedigree::_assignDescentTrees(){
 void Pedigree::_assignChildrenDescentTree(Individual* individual,unsigned descentTreeId){
 	
 	const std::set<Individual*,Individual::compareIndividual> * pchildren = individual->getChildren();
-	std::set<Individual*,Individual::compareIndividual>::iterator it = (*pchildren).begin();
+	std::set<Individual*,Individual::compareIndividual>::const_iterator it = (*pchildren).begin();
 	while(it != (*pchildren).end()){
 		(*it)->addDescentTree(descentTreeId);
 		_assignChildrenDescentTree(*it,descentTreeId);
@@ -682,7 +682,7 @@ void Pedigree::_determineConnectorIndividuals(){
 			cnt--;
 			if(cnt > 0){
 				const std::set<Individual*,Individual::compareIndividual> * pspouses = startIndividual->getSpouses();
-				std::set<Individual*,compareIndividual>::iterator it = (*pspouses).begin();
+				std::set<Individual*,Individual::compareIndividual>::const_iterator it = (*pspouses).begin();
 				while(it != (*pspouses).end()){
 					(*it)->setVisited(true);
 					std::vector<Individual*> children;
@@ -823,7 +823,7 @@ void Pedigree::_markConnectorIndividuals(Individual* individual,unsigned& loopNu
 	if(individual->getNumberOfSpouses() > 0){
 		
 		const std::set<Individual*,Individual::compareIndividual> * pspouses = individual->getSpouses();
-		std::set<Individual*,compareIndividual>::iterator spouseIt = (*pspouses).begin();
+		std::set<Individual*,Individual::compareIndividual>::const_iterator spouseIt = (*pspouses).begin();
 		while(spouseIt != (*pspouses).end()){
 			if((*spouseIt)->isOriginalFounder() == true || (*spouseIt)->isOrdinaryFounder() == true){
 			
@@ -887,7 +887,7 @@ void Pedigree::_markConnectorIndividuals(Individual* individual,unsigned& loopNu
 			//************
 			
 			const std::set<Individual*,Individual::compareIndividual> * pchildren = individual->getChildren();
-			std::set<Individual*,Individual::compareIndividual>::iterator childIt = (*pchildren).begin();
+			std::set<Individual*,Individual::compareIndividual>::const_iterator childIt = (*pchildren).begin();
 			while(childIt != (*pchildren).end()){
 				_markConnectorIndividuals((*childIt),loopNumber);
 				++childIt;
@@ -915,7 +915,7 @@ void Pedigree::_markConsanguinousIndividuals(){
 			cnt--;
 			if(cnt > 0){
 				const std::set<Individual*,Individual::compareIndividual> * pspouses = startIndividual->getSpouses();
-				std::set<Individual*,compareIndividual>::iterator it = (*pspouses).begin();
+				std::set<Individual*,Individual::compareIndividual>::const_iterator it = (*pspouses).begin();
 				while(it != (*pspouses).end()){
 					(*it)->setVisited(true);
 					std::vector<Individual*> children;
@@ -965,7 +965,7 @@ void Pedigree::_markConsanguinousIndividuals(){
 void Pedigree::_markConsanguinousFlags(Individual* individual,unsigned& loopNumber){
 	
 	const std::set<Individual*,Individual::compareIndividual> * pspouses = individual->getSpouses();
-	std::set<Individual*,compareIndividual>::iterator spouseIt = (*pspouses).begin();
+	std::set<Individual*,Individual::compareIndividual>::const_iterator spouseIt = (*pspouses).begin();
 	while(spouseIt != (*pspouses).end()){
 		if(individual->hasBeenVisited() && (*spouseIt)->hasBeenVisited()){
 			++spouseIt;
@@ -1029,7 +1029,7 @@ void Pedigree::_establishNuclearFamilies(){
 		if(!(*individualIt)->getNumberOfSpouses()) { ++individualIt; continue; }
 		// Get the spouses
 		const std::set<Individual*,Individual::compareIndividual> * pspouses = (*individualIt)->getSpouses();
-		std::set<Individual*,Individual::compareIndividual>::iterator it = (*pspouses).begin();
+		std::set<Individual*,Individual::compareIndividual>::const_iterator it = (*pspouses).begin();
 		while(it != (*pspouses).end()){ 
 			if((*individualIt)->getGender().getEnum() == Gender::FEMALE){
 				_addNuclearFamily(*individualIt,*it);
@@ -1053,7 +1053,7 @@ void Pedigree::_establishNuclearFamilies(){
 ///
 void Pedigree::_sortIndividualNuclearFamilies(){
 	
-	std::set<Individual*,compareIndividual>::const_iterator it = _individuals.begin();
+	std::set<Individual*,compareIndividual>::iterator it = _individuals.begin();
 	while(it != _individuals.end()){
 		if((*it)->isOrdinaryFounder()) { ++it; continue; }
 		if((*it)->getNumberOfSpouses() > 1){ 
@@ -1702,7 +1702,7 @@ void Pedigree::addIndividual(const std::string ind,std::string mother,std::strin
 		// else change the gender of one of the parent to missing
 		//
 		Individual* tempIndividual = new Individual(mother);
-		std::set<Individual*,compareIndividual>::const_iterator it = _individuals.find(tempIndividual);
+		std::set<Individual*,compareIndividual>::iterator it = _individuals.find(tempIndividual);
 		delete tempIndividual;
 		if(it != _individuals.end()){
 			if((*it)->getGender().getEnum() == Gender::MALE){
@@ -2334,7 +2334,7 @@ void Pedigree::establishIndividualConnections(){
 void Pedigree::display() const{
 	
 	std::cout << "Number of Individuals in Pedigree :" << _id << " = " << _individuals.size() << std::endl;
-	std::set<Individual*>::const_iterator it = _individuals.begin();
+	std::set<Individual*,compareIndividual>::const_iterator it = _individuals.begin();
 	while(it != _individuals.end()){
 		std::cout << (*it)->getId().get() << std::endl;
 		//(*it)->display();
