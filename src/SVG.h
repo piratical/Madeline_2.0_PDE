@@ -23,6 +23,8 @@
 #ifndef SVG_INCLUDED
 #define SVG_INCLUDED
 
+#define _USE_MATH_DEFINES
+
 #include "DrawingMetrics.h"
 #include <cmath>
 #include <sstream>
