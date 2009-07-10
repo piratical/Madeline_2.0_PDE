@@ -39,6 +39,9 @@
 
 #include <fstream>
 
+// DEBUG:
+#include <iostream>
+
 Parser::Parser(){};
 
 //
@@ -284,7 +287,50 @@ std::string Parser::_stringify(std::string fileName)
 	dtdreader.read (buffer,length);
 	dtdreader.close();
 	buffer[length] = '\0';
-	temp += buffer;
+	
+	char *p;
+	char *end;
+	//
+	// Loop to copy buffer and normalize all End-of-line characters:
+	//
+	for(p=buffer,end=buffer+length;p<end;p++){
+		
+		if (*p == '\r'){
+			
+			if(p<end-1 && *(p+1) == '\n'){
+				//
+				// DOS case : normalize to a single '\n':
+				//
+				temp += '\n';
+				//
+				// skip over the 2nd DOS "EOL" character:
+				//
+				p++;
+			}else{
+				//
+				// Old MAC case : normalize to '\n':
+				//
+				temp += '\n';
+			}
+			
+		}else if(*p == (char) 0xE2 && p<end-2 && *(p+1)== (char) 0x80 && *(p+2)== (char) 0xA9){
+			//
+			// Unicode U+2029 Paragraph Separator in UTF-8 case: normalize to '\n':
+			//
+			temp += '\n';
+			//
+			// Skip over remaining bytes of the UTF-8-encoded paragraph separator:
+			//
+			p+=2;
+			
+		}else{
+			//
+			// Default case: just copy byte by byte:
+			//
+			temp += *p;
+		}
+	}
+	
 	delete [] buffer;                                                                    
 	
 	return temp;
@@ -315,16 +361,15 @@ int Parser::_determineNumberOfBlocks( std::string inString)
 		i++;
 	}
 	
-	
 	for(; i < inString.length() && inString[i] != '\n'; i++);
 	
 	if(i == inString.length()) return 1;
 	else i++;
-
+	
 	// skip first block
 	while(!breakFound)
 	{
-		if(i == inString.length()) return 1;
+		if(i >= inString.length()) return 1;
 		if(!(inString[i] == '\t' || inString[i] == ' ' || inString[i] == '\n')) 
 		{
 			for(; i < inString.length() && inString[i] != '\n'; i++);
@@ -334,7 +379,6 @@ int Parser::_determineNumberOfBlocks( std::string inString)
 		{
 			breakFound = true;
 		}
-		
 		i++;
 	}
 	

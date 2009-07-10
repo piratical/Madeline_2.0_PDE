@@ -1,3 +1,6 @@
+#ifndef Pedigree_INCLUDED
+#define Pedigree_INCLUDED
+
 #include <iostream>
 #include "Individual.h"
 #include "NuclearFamily.h"
@@ -50,7 +53,8 @@ public:
 	void draw(const LabelSet* labelSet);
 	// Debug:
 	void display() const;                          // Prints out all pedigrees that have been read in
-	
+	static void setDrawingFileExtension(const std::string& ext);
+
 private:
 	
 	std::string _id;    // Pedigree Id
@@ -111,4 +115,6 @@ private:
 	unsigned _getPrimaryDescentTreeIndex(std::set<unsigned>& dt,Individual* individual,bool increment);
 	
 };
+
+#endif // Pedigree_INCLUDED
 

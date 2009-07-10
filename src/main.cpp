@@ -8,6 +8,7 @@
 #include "Debug.h"
 #include "Parser.h"
 #include "DataTable.h"
+#include "Pedigree.h"
 #include "PedigreeSet.h"
 #include "Data.h"
 #include "DrawingMetrics.h"
@@ -33,6 +34,7 @@ int main( int argc, char *argv[] ){
 	clp.addSwitch("--outputpedtable","-i","Output the pedigree core/non-core fields as a tab-delimited file with name 'FAMILY_IDinput.txt'");
 	clp.addSwitch("--outputdatatable","-I","Output the pedigree input data file (column order preserved) as a tab-delimited file with name 'FAMILY_IDinput.txt'");
 	clp.addSwitch("--outputprefix","-o","Specify output file name prefix",1);
+	clp.addSwitch("--outputext","-x","Specify output file name extension",1);
 	// RSTUVWXYZ:
 	clp.addSwitch("--sort","-s","Field based on which siblings are sorted",1);
 	clp.addSwitch("--version","-v","Print version and exit");
@@ -111,6 +113,13 @@ int main( int argc, char *argv[] ){
 		//
 		if(clp.hasSwitchSet("--outputprefix")){
 			DrawingMetrics::setDrawingFileNamePrefix( clp.getSwitchArgument("--outputprefix",1) );
+		}
+
+		//
+		// Handle specification of special file name extension:
+		//
+		if(clp.hasSwitchSet("--outputext")){
+			Pedigree::setDrawingFileExtension( clp.getSwitchArgument("--outputext",1) );
 		}
 		
 		//
