@@ -282,7 +282,6 @@ NuclearFamily* Individual::getNuclearFamily(unsigned index){
 ///
 std::string Individual::getRandomId() {
 	
-	srand((unsigned)time(0));
 	char ch;
 	std::string temp;
 	temp = "!";
