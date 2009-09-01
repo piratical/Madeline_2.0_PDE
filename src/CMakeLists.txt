@@ -61,7 +61,9 @@ SET( SOURCES
 	
 	Haplotype.cpp 
 	Haplotype.h 
-
+	HexavigesimalConverter.h
+	HexavigesimalConverter.cpp
+	
 	IconLegend.h
 	Individual.h
 	Individual.cpp

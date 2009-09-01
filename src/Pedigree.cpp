@@ -31,6 +31,7 @@
 #include "Number.h"
 #include "DrawingCanvas.h"
 #include "Grid.h"
+#include "HexavigesimalConverter.h"
 
 #include <algorithm>
 #include <map>
@@ -1414,7 +1415,7 @@ void Pedigree::_sortSibsBasedOnExternalConnections(const std::vector<Individual*
 ///
 /// _drawConsanguinityLetter: Assign a unique label to each unique individual who is repeated for consanguinity and external connections.
 ///
-void Pedigree::_drawConsanguinityLetter(Individual* mother,Individual* father,char& consanguinityLetter,double iconInterval,double iconDiameter, std::map<std::string,std::string>& individualConsanguinityLetter,DrawingCanvas& dc,double multipleSpouseOffset,bool leftConnector){
+void Pedigree::_drawConsanguinityLetter(Individual* mother,Individual* father,unsigned int &uniqueId,double iconInterval,double iconDiameter, std::map<std::string,std::string>& individualConsanguinityLetter,DrawingCanvas& dc,double multipleSpouseOffset,bool leftConnector){
 	
 	double yOffset = DrawingMetrics::getIconRadius()  +
 	                 DrawingMetrics::getLabelMargin() + 
@@ -1427,11 +1428,13 @@ void Pedigree::_drawConsanguinityLetter(Individual* mother,Individual* father,ch
 		dc.drawText(mother->getX()+offset,mother->getY()+yOffset,it->second);
 	else{
 		std::stringstream buf;
-		buf << consanguinityLetter;
+		HexavigesimalConverter hxc;
+		buf << hxc.itoa(uniqueId);
 		individualConsanguinityLetter.insert(std::map<std::string,std::string>::value_type(father->getId().get(),buf.str()));
 		dc.drawText(mother->getX()+offset,mother->getY()+yOffset,buf.str());
 		dc.drawText(father->getX(),father->getY()+yOffset,buf.str());
-		consanguinityLetter++;
+		
+		uniqueId++;
 	}
 	
 }
@@ -1501,7 +1504,13 @@ void Pedigree::_drawConsanguinousConnectors(DrawingCanvas& dc){
 	Individual* mother,*father;
 	// NOTE: All the connectors are drawn on a different layer
 	// However all the dashed individuals go into the body
-	char consanguinityLetter='A';
+	
+	//
+	// This 'uniqueId' will be displayed as a 
+	// hexavigesimal bijective number : 
+	// A-Z,AA-ZZ,AAA-ZZZ, etc.
+	//
+	unsigned int uniqueId=1; 
 	// For each individual with consanguinity and multiple spouses we assign
 	// a unique letter which is displayed below each dashed icon of the individual
 	// This map stores the individualId and the letter associated 
@@ -1535,7 +1544,7 @@ void Pedigree::_drawConsanguinousConnectors(DrawingCanvas& dc){
 					}else{
 						if(_hasIndividualAtPosition(father,mother)){
 							dc.drawIndividual(father,mother->getX()-iconInterval,mother->getY(),true);
-							_drawConsanguinityLetter(mother,father,consanguinityLetter,iconInterval,iconDiameter,individualConsanguinityLetter,dc,0,true);
+							_drawConsanguinityLetter(mother,father,uniqueId,iconInterval,iconDiameter,individualConsanguinityLetter,dc,0,true);
 						}else{
 							if(mother->getY() == father->getY()){
 								_drawHorizontalConnectorLine(mother->getY(),father->getX()+radius,mother->getX()-radius,(*nfIt)->isConsanguinous(),dc);
@@ -1551,7 +1560,7 @@ void Pedigree::_drawConsanguinousConnectors(DrawingCanvas& dc){
 				}else
 				if(father->getX() < mother->getX()){
 					dc.drawIndividual(father,mother->getX()+iconInterval,mother->getY(),true);
-					_drawConsanguinityLetter(mother,father,consanguinityLetter,iconInterval,iconDiameter,individualConsanguinityLetter,dc);
+					_drawConsanguinityLetter(mother,father,uniqueId,iconInterval,iconDiameter,individualConsanguinityLetter,dc);
 				}else
 				if((fabs((mother->getX()+(*nfIt)->getRightWidth()*horizontalInterval+iconInterval)-father->getX()) < Number::MINIMUM_DIFFERENCE) || 
 				   ((*nfIt)->getLeftConnectionShiftFlag() && fabs((mother->getX()+(*nfIt)->getRightWidth()*horizontalInterval+horizontalInterval)-father->getX()) < Number::MINIMUM_DIFFERENCE)){
@@ -1596,7 +1605,7 @@ void Pedigree::_drawConsanguinousConnectors(DrawingCanvas& dc){
 					}else{
 						if(_hasIndividualAtPosition(mother,father)){
 							dc.drawIndividual(father,mother->getX()+iconInterval,mother->getY(),true);
-							_drawConsanguinityLetter(mother,father,consanguinityLetter,iconInterval,iconDiameter,individualConsanguinityLetter,dc);
+							_drawConsanguinityLetter(mother,father,uniqueId,iconInterval,iconDiameter,individualConsanguinityLetter,dc);
 						}else{
 							if(mother->getY() == father->getY()){
 								_drawHorizontalConnectorLine(mother->getY(),mother->getX()+iconInterval-radius,father->getX()-radius,(*nfIt)->isConsanguinous(),dc); 
@@ -1649,10 +1658,10 @@ void Pedigree::_drawConsanguinousConnectors(DrawingCanvas& dc){
 					}else{
 						if(i==0){
 							dc.drawIndividual(father,mother->getX()+iconInterval,mother->getY(),true);
-							_drawConsanguinityLetter(mother,father,consanguinityLetter,iconInterval,iconDiameter,individualConsanguinityLetter,dc);
+							_drawConsanguinityLetter(mother,father,uniqueId,iconInterval,iconDiameter,individualConsanguinityLetter,dc);
 						}else{
 							dc.drawIndividual(father,mother->getX()+rw*horizontalInterval+iconInterval,mother->getY(),true);
-							_drawConsanguinityLetter(mother,father,consanguinityLetter,iconInterval,iconDiameter,individualConsanguinityLetter,dc,rw*horizontalInterval+iconInterval);
+							_drawConsanguinityLetter(mother,father,uniqueId,iconInterval,iconDiameter,individualConsanguinityLetter,dc,rw*horizontalInterval+iconInterval);
 						}
 					}
 				}else{
@@ -1669,7 +1678,7 @@ void Pedigree::_drawConsanguinousConnectors(DrawingCanvas& dc){
 					}else{
 						if(mother->getY() != father->getY() || _hasIndividualAtPosition(father,mother)){
 							dc.drawIndividual(father,mother->getX()-lw*horizontalInterval,mother->getY(),true);
-							_drawConsanguinityLetter(mother,father,consanguinityLetter,iconInterval,iconDiameter,individualConsanguinityLetter,dc,lw*horizontalInterval*(-1.0));
+							_drawConsanguinityLetter(mother,father,uniqueId,iconInterval,iconDiameter,individualConsanguinityLetter,dc,lw*horizontalInterval*(-1.0));
 						}else{
 							_drawHorizontalConnectorLine(mother->getY(),mother->getX()-(lw+lastlw)*horizontalInterval,mother->getX()-(lw+lastlw-2)*horizontalInterval+radius,(*nfIt)->isConsanguinous(),dc);
 						}

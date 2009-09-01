@@ -281,9 +281,11 @@ public:
 		//
 		// FontSize has its own unit variable ... :
 		// 
-		// NOTE BENE:  ...but only "mm","px", and "pt" are recognized:
+		// NOTA BENE:  ...but only "mm","px", and "pt" are recognized:
 		//
-		DrawingMetrics::_fontFamily = "Bitstream Vera Sans";
+		// 2009.09.01.ET: Changed default font to DejaVu Sans
+		// 
+		DrawingMetrics::_fontFamily = "DejaVu Sans";
 		DrawingMetrics::_fontSize = 12;
 		DrawingMetrics::_headerFontSize = 18;
 		DrawingMetrics::_fontSizeUnit = "px";

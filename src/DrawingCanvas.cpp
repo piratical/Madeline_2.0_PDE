@@ -376,6 +376,13 @@ void DrawingCanvas::_setCSS(){
 	_header << "}\n\n";
 	
 	//
+	// .curvedConnector:hover
+	//
+	_header << ".curvedConnector:hover{\n";
+	_header << "	stroke:#d56300;\n";
+	_header << "}\n\n";
+	
+	//
 	// whiteInkLetter:
 	//
 	

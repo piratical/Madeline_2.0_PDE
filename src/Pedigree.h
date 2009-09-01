@@ -102,7 +102,7 @@ private:
 	
 	// Drawing Methods:
 	void _drawConsanguinousConnectors(DrawingCanvas& dc);
-	void _drawConsanguinityLetter(Individual* mother,Individual* father,char& consanguinityLetter,double iconInterval,double iconDiameter, std::map<std::string,std::string>& individualConsanguinityLetter,DrawingCanvas& dc,double multipleSpouseOffset=0,bool leftConnector=false);
+	void _drawConsanguinityLetter(Individual* mother,Individual* father,unsigned int &uniqueId,double iconInterval,double iconDiameter, std::map<std::string,std::string>& individualConsanguinityLetter,DrawingCanvas& dc,double multipleSpouseOffset=0,bool leftConnector=false);
 	void _drawHorizontalConnectorLine(double y,double x1,double x2,bool isConsanguinous,DrawingCanvas& dc);
 	void _drawVerticalConnectorLine(double startY,double endY,double startX,double endX,bool isConsanguinous,DrawingCanvas& dc,double multipleSpouseOffset=0.0,bool singleChild=false);
 	void _getSpouses(std::set<Individual*,compareIndividual>& foundingGroup,Individual* individual) ;
