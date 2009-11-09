@@ -883,7 +883,7 @@ void DrawingCanvas::drawIndividual(Individual* pIndividual,double x,double y,boo
 			_svg.drawAdoptedIn(_body,x,y,pIndividual->getGender().getEnum()==Gender::MISSING);
 			
 			Individual *adoptedComplement = pIndividual->getAdoptedComplement();
-			if( adoptedComplement->hasBeenDrawn() ){
+			if( adoptedComplement && adoptedComplement->hasBeenDrawn() ){
 				
 				_svg.drawCurve( _bottomLayer , x , y , adoptedComplement->getX() , adoptedComplement->getY() );
 				
@@ -894,7 +894,7 @@ void DrawingCanvas::drawIndividual(Individual* pIndividual,double x,double y,boo
 			_svg.drawAdoptedOut(_body,x,y,pIndividual->getGender().getEnum()==Gender::MISSING);
 			
 			Individual *adoptedComplement = pIndividual->getAdoptedComplement();
-			if( adoptedComplement->hasBeenDrawn() ){
+			if( adoptedComplement && adoptedComplement->hasBeenDrawn() ){
 				
 				_svg.drawCurve( _bottomLayer , x , y , adoptedComplement->getX() , adoptedComplement->getY() );
 				
