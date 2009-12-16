@@ -34,6 +34,7 @@
 #include <iostream>
 #include <libintl.h>
 #include <locale.h>
+#include <stdio.h>
 #include <stdarg.h>
 #include "BufferSizes.h"
 #include <string>
