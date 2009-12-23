@@ -1702,13 +1702,17 @@ void Pedigree::_drawConsanguinousConnectors(DrawingCanvas& dc){
 // addIndividual:
 //
 void Pedigree::addIndividual(const std::string ind,std::string mother,std::string father, std::string gender, int rowIndex, int tableIndex ,const DataTable& pedigreeTable) {
-	
+	//
 	// for warnings:
+	//
 	const char *methodName="Pedigree::addIndiidual()";
 	if(ind == "."){
 		Warning(methodName,"Id is missing for individual with father %s and mother %s. This individual will be ignored.",father.c_str(),mother.c_str());
 		return;
 	}
+	//
+	// Check for mother/father IDs being identical:
+	//
 	if(mother != "." && mother != ind && mother == father){
 		//
 		// check if the mother/father is already in the pedigree
@@ -1730,8 +1734,10 @@ void Pedigree::addIndividual(const std::string ind,std::string mother,std::strin
 			throw Exception("addIndividual()","Both mother and father of %s have the same id. For founders use '.' as the id.",ind.c_str());
 		}
 	}else if(ind == mother || ind == father){
+		//
 		// If the mother/father id is the same as the individual
 		// set the conflicting parent to missing
+		//
 		if(ind == mother){
 			Warning(methodName,"Mother and Individual Ids for %s are the same. Set Mother to MISSING.",mother.c_str());
 			mother = ".";
@@ -1741,11 +1747,30 @@ void Pedigree::addIndividual(const std::string ind,std::string mother,std::strin
 			father = ".";
 		}
 	}
-	std::pair<std::set<Individual*,compareIndividual>::iterator,bool> iit;
-	iit =  _individuals.insert(new Individual(ind,mother,father,gender,rowIndex,tableIndex)); 
-	if(iit.second)
-		(*iit.first)->setPedigreeDataTable(&pedigreeTable);
-	
+	//
+	// new candidate individual:
+	//
+	Individual *newCandidateIndividual = new Individual(ind,mother,father,gender,rowIndex,tableIndex);
+	//
+	// Check wheter individual already exists in pedigree:
+	//
+	std::set<Individual*,compareIndividual>::iterator it = _individuals.find(newCandidateIndividual);
+	if(it==_individuals.end()){
+		//
+		// Add new individual to pedigree
+		//
+		std::pair<std::set<Individual*,compareIndividual>::iterator,bool> iit;
+		iit =  _individuals.insert(new Individual(ind,mother,father,gender,rowIndex,tableIndex)); 
+		if(iit.second){
+			(*iit.first)->setPedigreeDataTable(&pedigreeTable);
+		}
+	}else{
+		//
+		// Report replicated individual:
+		//
+		Warning(methodName,"Individual %1$s already exists in pedigree %2$s: Ignoring replicated individual from data file.",ind.c_str(),_id.c_str());
+	}
+	delete newCandidateIndividual;
 }
 
 ///

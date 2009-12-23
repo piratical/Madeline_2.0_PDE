@@ -197,6 +197,7 @@ void PedigreeSet::addPedigreesFromDataTable(const DataTable * p_pedigreeTable, u
 		dobPresent = true;
 	}
 	_determineFoundingGroups();
+	
 	bool sortFieldPresent = false;
 	if(sortField != std::string("") && sortField != pedigreeTable.labels.DOBField){
 		// Check to see if the field actually exists in the data table
@@ -218,6 +219,7 @@ void PedigreeSet::addPedigreesFromDataTable(const DataTable * p_pedigreeTable, u
 		}else{    
 			std::cout << "Default ordering of siblings." << std::endl;
 			_computeWidths(std::string(""));
+			
 		}
 	}
 	std::cout << "End of addPedigreesFromDataTable" << std::endl;
