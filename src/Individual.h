@@ -341,7 +341,7 @@ public:
 	
 	// Other Methods:
 	void sortSpouses(bool externalFlag=false);
-	void addSpouse(Individual* spouse) { _spouses.insert(spouse); }
+	void addSpouse(Individual* spouse);
 	void addChild(Individual* child) { _children.insert(child); }
 	void addDescentTree(unsigned descentTreeId) { _descentTrees.insert(descentTreeId); }
 	void addNuclearFamily(NuclearFamily* nuclearFamily){ _nuclearFamilies.push_back(nuclearFamily); }

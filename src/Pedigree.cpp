@@ -824,7 +824,9 @@ void Pedigree::_reorderDescentTreesBasedOnExternalConnections(){
 void Pedigree::_markConnectorIndividuals(Individual* individual,unsigned& loopNumber){
 	
 	// Mark consanguinous individuals and individuals that have external connections:
-	if(individual->isOrdinaryFounder() == true || individual->isOriginalFounder() == true) { return;}
+	if(individual->isOrdinaryFounder() == true || individual->isOriginalFounder() == true){ 
+		return;
+	}
 	
 	if(individual->getNumberOfSpouses() > 0){
 		

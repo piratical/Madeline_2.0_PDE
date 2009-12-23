@@ -749,3 +749,19 @@ void Individual::display(){
 	
 }
 
+//
+// addSpouse:
+//
+void Individual::addSpouse(Individual* spouse){
+	
+	if(_gender.getEnum()==Gender::MALE && spouse->getId()==_motherId){
+		throw Exception("Individual::addSpouse()","%1$s's spouse %2$s is also his mother: Program currently cannot handle mother-son matings.",_id.get().c_str(),_motherId.get().c_str());
+	}else
+	if(_gender.getEnum()==Gender::FEMALE && spouse->getId()==_fatherId){
+		throw Exception("Individual::addSpouse()","%1$s's spouse %2$s is also her father: Program currently cannot handle father-daughter matings.",_id.get().c_str(),_fatherId.get().c_str());
+	}else{
+		_spouses.insert(spouse);
+	}
+}
+
+
