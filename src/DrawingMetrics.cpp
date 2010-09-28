@@ -76,6 +76,7 @@ bool DrawingMetrics::_hasOnlyOnePedigree;
 
 bool DrawingMetrics::_blackAndWhite;
 bool DrawingMetrics::_color;
+bool DrawingMetrics::_useQuadrantShadingMethod;
 bool DrawingMetrics::_noIconLabels;
 bool DrawingMetrics::_outputPedTable; // State flag to print pedigree core/non-core fields to a tab-delimited file
 bool DrawingMetrics::_outputDataTable; // State flag to print input pedigree table (input order preserved) to a tab-delimited file
@@ -489,6 +490,13 @@ bool DrawingMetrics::getBlackAndWhite(){
 }
 
 //
+// getQuadrantShading(): Get the flag which indicates quadrant shading
+//
+bool DrawingMetrics::getQuadrantShading(){
+	return _useQuadrantShadingMethod;
+}
+
+//
 // getNoIconLabels(): Get the NoIconLabels flag
 //
 bool DrawingMetrics::getNoIconLabels(){
@@ -509,6 +517,12 @@ void DrawingMetrics::setBlackAndWhite(bool value){
 	_blackAndWhite=value;
 }
 
+//
+// setQuadrantShading(): Set the quadrant shading override flag
+//
+void DrawingMetrics::setQuadrantShading(bool value){ 
+	_useQuadrantShadingMethod=value;
+}
 
 //
 // setNoIconLabels(): Set the noIconLabels flag

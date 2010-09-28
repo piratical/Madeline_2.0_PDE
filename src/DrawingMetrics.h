@@ -144,6 +144,7 @@ private:
 	static bool _displayBirthOrder;
 	static bool _blackAndWhite;
 	static bool _color;
+	static bool _useQuadrantShadingMethod;
 	static bool _noIconLabels;
 	static bool _outputPedTable;
 	static bool _outputDataTable;
@@ -205,6 +206,7 @@ public:
 	
 	static bool getColor();
 	static bool getBlackAndWhite();
+	static bool getQuadrantShading();
 	static bool getNoIconLabels();
 	static bool getHasOutputPedTable();
 	static bool getHasOutputDataTable();
@@ -231,6 +233,7 @@ public:
 	
 	static void setColor(bool value);
 	static void setBlackAndWhite(bool value);
+	static void setQuadrantShading(bool value);
 	static void setNoIconLabels(bool value);
 	static void setOutputPedTable(bool value);
 	static void setOutputDataTable(bool value);
@@ -300,7 +303,11 @@ public:
 		//
 		DrawingMetrics::_blackAndWhite=false;
 		DrawingMetrics::_color=false;
-		
+		//
+		// 2010.09.28.ET addendum:
+		// The quadrant shading method is off by default:
+		//
+		DrawingMetrics::_useQuadrantShadingMethod=false;
 		//
 		// Icon labels are on by default
 		// because this seems the better choice

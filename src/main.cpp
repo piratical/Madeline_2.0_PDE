@@ -35,7 +35,8 @@ int main( int argc, char *argv[] ){
 	clp.addSwitch("--outputdatatable","-I","Output the pedigree input data file (column order preserved) as a tab-delimited file with name 'FAMILY_IDinput.txt'");
 	clp.addSwitch("--outputprefix","-o","Specify output file name prefix",1);
 	clp.addSwitch("--outputext","-x","Specify output file name extension",1);
-	// RSTUVWXYZ:
+	// QRSTUVWXYZ:
+	clp.addSwitch("--quadrantshading","-q","Use the quadrant shading method to indicate categorical levels on icons",1);
 	clp.addSwitch("--sort","-s","Field based on which siblings are sorted",1);
 	clp.addSwitch("--version","-v","Print version and exit");
 	clp.addUsage("madeline2 [option]... [file]...\n\nIf input file is remote, specify the file\nname starting with 'http://' or 'https://'.\nTo retrieve the data from a mysql database use\n'mysql://[host:port/]username:passwd@database:table'");
@@ -133,6 +134,12 @@ int main( int argc, char *argv[] ){
 		//
 		if(clp.hasSwitchSet("--color")){
 			DrawingMetrics::setColor(true);
+		}
+		//
+		// Handle the quadrant shading method override flag:
+		//
+		if(clp.hasSwitchSet("--quadrantshading")){
+			DrawingMetrics::setQuadrantShading(true);
 		}
 		//
 		// Handle the noiconlabels override flag:
