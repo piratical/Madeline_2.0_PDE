@@ -1659,14 +1659,15 @@ void DrawingCanvas::iconQuadrantFill( double x, double y, Individual *pIndividua
 	}
 	
 	//
-	// The quadrant fill method looks only at the first iconColumn
-	// and ignores any additional icon columns:
-	
+	// NOTA BENE: The quadrant fill method looks only at the 
+	// FIRST iconColumn and ignores any additional icon columns:
+	//
 	const DataTable *pDT = pIndividual->getDataTable();
 	//
 	// Get the data column of the first icon column:
 	//
 	DataColumn * pDC = pDT->getColumn( pDT->getIconColumnIndex(0) );
+	
 	//
 	// Get the UniqueList for this column:
 	//
@@ -1675,48 +1676,73 @@ void DrawingCanvas::iconQuadrantFill( double x, double y, Individual *pIndividua
 	// Only process if there are some non-missing levels
 	// present:
 	//
-	if(!pUL->getLevels()) return;
+	if(!pUL->getLevels()){
+		_body << "</g>\n";
+		return;
+	}
 	
 	//
 	// What is the level and label in the UniqueList corresponding to the data value
 	// for this individual?
 	//
-	unsigned level;
+	//unsigned level;
+	//std::string label;
+	//pUL->getOrdinalAndLabelForKey( pDC->getDataAtIndex( pIndividual->getRowIndex() ),label,level );
+	//
+	
+	Data* data = pDC->getDataAtIndex( pIndividual->getRowIndex());
+	//
+	// Draw a dot for missing values:
+	//
+	if(data->isMissing()){
+		drawText(x,y,".","blackInkLetter_1");
+		_body << "</g>\n";
+		return;
+	}
 	std::string label;
-	pUL->getOrdinalAndLabelForKey( pDC->getDataAtIndex( pIndividual->getRowIndex() ),label,level );
-	//
-	// UniqueList ordinals are 1-offset, so we should only get zero back
-	// if the key was not found, which should never happen:
-	//
-	if(level==0) throw Exception("DrawingCanvas::iconQuadrantFill()","UniqueList returned ordinal 0.");
-	//
-	// Level is 1-offset, so subtract:
-	//
-	level--;
+	std::string svalue = data->get();
+	std::istringstream i(svalue);
+	int level;
+	bool converted = (i>>level);
+	if(!converted || level<0 || level>15 ){
+		//
+		// (1) Unable to convert data string to integer, or
+		// (2) integer value is out of range
+		//
+		double lineSpacing,xAdvance,yMinimum,yMaximum;
+		_lasiWrapper.getDimensions(svalue,&lineSpacing,&xAdvance,&yMinimum,&yMaximum);
+		y+= 0.5*(yMaximum-yMinimum);
+		drawIconText(x,y,svalue,"blackInkLetter_1");
+		_body << "</g>\n";
+		return;
+	}
 	
 	//
 	// Fill arc for each quadrant based on level:
+	// Note: Madeline's "arc()" method doesn't use the standard counter-clockwise quadrants
+	// starting at 0, so the order of the 4 "if" statements below may appear mixed up but 
+	// this actually results in shading of the quadrants according to standard notation:
 	//
-	if(level & 0x01 ){
+	if(level & 0x02 ){
 		arc(x,y,radius,0,0.5*Number::PI,"#000",label,"whiteInkLetter",isMale);
 	}
-	if(level & 0x02 ){
+	if(level & 0x01 ){
 		arc(x,y,radius,0.5*Number::PI,Number::PI,"#000",label,"whiteInkLetter",isMale);
 	}
-	if(level & 0x04 ){
+	if(level & 0x08 ){
 		arc(x,y,radius,Number::PI,1.5*Number::PI,"#000",label,"whiteInkLetter",isMale);
 	}
-	if(level & 0x08 ){
+	if(level & 0x04 ){
 		arc(x,y,radius,1.5*Number::PI,2.0*Number::PI,"#000",label,"whiteInkLetter",isMale);
 	}
 	
 	//
 	// For the first time draw the icon legend too:
 	//
-	if(!_iconLegendFlag){
-		_iconLegendFlag = true;
-		_iconLegend.setPedigreeTable(pDT);
-	}
+	//if(!_iconLegendFlag){
+	//	_iconLegendFlag = true;
+	//	_iconLegend.setPedigreeTable(pDT);
+	//}
 	
 	_body << "</g>\n";
 	return;
