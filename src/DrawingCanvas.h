@@ -162,6 +162,8 @@ public:
 	void arc( double x, double y, double r, double startAngle, double endAngle,const std::string &color,const std::string &arcLabel,const std::string &arcClass,bool isMale);
 	void setClipPath(double x, double y, const std::string &id);           
 	void iconPie( double x, double y, Individual *pIndividual );
+	void iconQuadrantFill( double x, double y, Individual *pIndividual );
+	
 };
 
 #endif

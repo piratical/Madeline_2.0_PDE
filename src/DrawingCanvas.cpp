@@ -914,7 +914,20 @@ void DrawingCanvas::drawIndividual(Individual* pIndividual,double x,double y,boo
 	// Draw the icon shading first:
 	//
 	if(!pIndividual->hasBeenDrawn() && pIndividual->getGender().getEnum() != Gender::MISSING){
-		iconPie(x,y,pIndividual);
+		if(DrawingMetrics::getQuadrantShading()){
+			//
+			// Use quadrant fill method of shading:
+			// NOTA BENE: This uses only the first "Affected" column:
+			// any additional "Affected" columns are ignored:
+			//
+			iconQuadrantFill(x,y,pIndividual);
+		}else{
+			//
+			// Use color shading method where icon is automatically divided into
+			// pie slices depending on the number of "Affected" columns present:
+			//
+			iconPie(x,y,pIndividual);
+		}
 	}
 	
 	//
@@ -1588,6 +1601,127 @@ void DrawingCanvas::drawRelationshipEndedLine(double x,double y){
 	
 }
 
+///
+/// iconQuadrantFill(): Shade quadrants of the icon to indicate specific levels.
+///                     This method has a limit of 16 distinct levels.
+///
+void DrawingCanvas::iconQuadrantFill( double x, double y, Individual *pIndividual ){
+	
+	//
+	// Handle virtual individuals:
+	//
+	if(pIndividual->isVirtual()){
+		
+		return;
+		
+	}
+	//
+	// Get here if non-virtual:
+	//
+	
+	//
+	// How many sections are there?
+	//
+	unsigned sections = pIndividual->getDataTable()->getIconColumnCount();
+	if(!sections){
+		//
+		// No affected fields : Draw a small circle in the middle:
+		// (Nice for debugging -- otherwise comment out )
+		//
+		//_body << "<circle cx=\"" << x << "\" cy=\"" << y << "\" r=\"" << 0.5*DrawingMetrics::getScalingFactor() << "\"";
+		//_body << " class=\"thinLine\"";
+		//_body << "/>\n";
+		return;
+	}
+	
+	//
+	// Setup clipping Id, if needed:
+	//
+	double radius=DrawingMetrics::getIconRadius();
+	bool isMale = false;
+	if( pIndividual->getGender().getEnum()==Gender::MALE ){
+		
+		std::string clipId = pIndividual->getId().get() + "_clipPath";
+		setClipPath(x,y,clipId);
+		//
+		// Increase radius for clipping:
+		//
+		radius*=Number::SQRT_TWO;
+		isMale = true;
+		_body << "<g clip-path=\"url(#" << clipId << ")\">\n";
+		
+	}else{
+		//
+		// Empty g with no clipping for female:
+		//
+		_body << "<g>\n";
+		
+	}
+	
+	//
+	// The quadrant fill method looks only at the first iconColumn
+	// and ignores any additional icon columns:
+	
+	const DataTable *pDT = pIndividual->getDataTable();
+	//
+	// Get the data column of the first icon column:
+	//
+	DataColumn * pDC = pDT->getColumn( pDT->getIconColumnIndex(0) );
+	//
+	// Get the UniqueList for this column:
+	//
+	const UniqueList * pUL = pDC->getUniqueList();
+	//
+	// Only process if there are some non-missing levels
+	// present:
+	//
+	if(!pUL->getLevels()) return;
+	
+	//
+	// What is the level and label in the UniqueList corresponding to the data value
+	// for this individual?
+	//
+	unsigned level;
+	std::string label;
+	pUL->getOrdinalAndLabelForKey( pDC->getDataAtIndex( pIndividual->getRowIndex() ),label,level );
+	//
+	// UniqueList ordinals are 1-offset, so we should only get zero back
+	// if the key was not found, which should never happen:
+	//
+	if(level==0) throw Exception("DrawingCanvas::iconQuadrantFill()","UniqueList returned ordinal 0.");
+	//
+	// Level is 1-offset, so subtract:
+	//
+	level--;
+	
+	//
+	// Fill arc for each quadrant based on level:
+	//
+	if(level & 0x01 ){
+		arc(x,y,radius,0,0.5*Number::PI,"#000",label,"whiteInkLetter",isMale);
+	}
+	if(level & 0x02 ){
+		arc(x,y,radius,0.5*Number::PI,Number::PI,"#000",label,"whiteInkLetter",isMale);
+	}
+	if(level & 0x04 ){
+		arc(x,y,radius,Number::PI,1.5*Number::PI,"#000",label,"whiteInkLetter",isMale);
+	}
+	if(level & 0x08 ){
+		arc(x,y,radius,1.5*Number::PI,2.0*Number::PI,"#000",label,"whiteInkLetter",isMale);
+	}
+	
+	//
+	// For the first time draw the icon legend too:
+	//
+	if(!_iconLegendFlag){
+		_iconLegendFlag = true;
+		_iconLegend.setPedigreeTable(pDT);
+	}
+	
+	_body << "</g>\n";
+	return;
+	
+}
 
 
 

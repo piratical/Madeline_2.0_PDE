@@ -36,7 +36,7 @@ int main( int argc, char *argv[] ){
 	clp.addSwitch("--outputprefix","-o","Specify output file name prefix",1);
 	clp.addSwitch("--outputext","-x","Specify output file name extension",1);
 	// QRSTUVWXYZ:
-	clp.addSwitch("--quadrantshading","-q","Use the quadrant shading method to indicate categorical levels on icons",1);
+	clp.addSwitch("--quadrantshading","-q","Use the quadrant shading method to indicate categorical levels on icons");
 	clp.addSwitch("--sort","-s","Field based on which siblings are sorted",1);
 	clp.addSwitch("--version","-v","Print version and exit");
 	clp.addUsage("madeline2 [option]... [file]...\n\nIf input file is remote, specify the file\nname starting with 'http://' or 'https://'.\nTo retrieve the data from a mysql database use\n'mysql://[host:port/]username:passwd@database:table'");
@@ -140,6 +140,11 @@ int main( int argc, char *argv[] ){
 		//
 		if(clp.hasSwitchSet("--quadrantshading")){
 			DrawingMetrics::setQuadrantShading(true);
+			//
+			// When quadrant shading is turned on,
+			// we need to turn icon labeling off:
+			//
+			DrawingMetrics::setNoIconLabels(true);
 		}
 		//
 		// Handle the noiconlabels override flag:
