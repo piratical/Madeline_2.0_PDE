@@ -53,6 +53,7 @@ inline void Individual::_init(void){
 	_isConsanguinous = false;
 	_isUnconnected = false;
 	_hasBeenVisited = false;
+	_visitCount = 0;
 	_hasBeenDrawn = false;
 	_hasExternalConnection = false;
 	
@@ -91,6 +92,8 @@ inline void Individual::_init(void){
 	
 	// 2009.05.22.ET :: Prophylactic setting of pointer to zero:
 	_adoptedComplement = 0;
+	// 2011.03.16.ET :: Apparently the same is necessary for mom & dad too:
+	_father = _mother = 0;
 	
 }
 

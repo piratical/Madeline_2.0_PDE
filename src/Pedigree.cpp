@@ -2306,6 +2306,11 @@ void Pedigree::establishIndividualConnections(){
 		++individualIt;
 	}
 	
+	/////////////////////////////////////////////////////
+	//
+	// Fix up cases where a single parent is missing:
+	//
+	/////////////////////////////////////////////////////
 	unsigned cnt =0;
 	Individual* individual;
 	while(cnt < individualsMissingParentInformation.size()){
@@ -2366,6 +2371,30 @@ void Pedigree::establishIndividualConnections(){
 		cnt++;
 	}
 	
+	///////////////////////////////////////////////////////////////////////////////
+	//
+	// Prophylactically check for individuals who are there own ancestors - Yikes!
+	//
+	// => This is an insidious type of data error that can send the program into an
+	//    infinite loop: not good!
+	//
+	///////////////////////////////////////////////////////////////////////////////
+	for(individualIt = _individuals.begin();individualIt != _individuals.end();individualIt++){
+		
+		_anomolous.clear(); // clear list of visited individuals who might be problematic
+		clearVisitCounts();
+		
+		//std::cerr << "checking ancestors of " << (*individualIt)->getId() << std::endl;
+		if((*individualIt)->getFather()){
+			//std::cerr << "calling check on FATHER..." << std::endl;
+			checkForAncestorDescendantAnomoly((*individualIt)->getFather());
+		}
+		if((*individualIt)->getMother()){
+			//std::cerr << "calling check on MOTHER..." << std::endl;
+			checkForAncestorDescendantAnomoly((*individualIt)->getMother());
+		}
+		
+	}
 }
 
 
@@ -2392,5 +2421,91 @@ void Pedigree::display() const{
 void Pedigree::setDrawingFileExtension(const std::string& ext) {
 	drawingFileExt = ext;
 }
+
+
+//
+// clearVisitCounts
+//
+void Pedigree::clearVisitCounts(){
+	
+	std::set<Individual*,compareIndividual>::iterator it;
+	
+	for(it=_individuals.begin(); it != _individuals.end(); it++ ){
+		(*it)->resetVisitCount();
+	}
+	
+}
+
+//
+// checkForAncestorDescendantAnomoly
+//
+void Pedigree::checkForAncestorDescendantAnomoly(Individual *ancestor){
+	
+	//
+	// Return if NULL pointer - This case is prophylactic and should not occur:
+	//
+	if(!ancestor){
+		return;
+	}
+	
+	// 
+	// Return if individual is a founder because only individuals with both ancestors
+	// and descendants can be part of such anomolous ancestor-is-also-descendant error cases:
+	//
+	if( !(ancestor->getFather() && ancestor->getMother()) ){
+		return;
+	}
+	
+	//std::cerr << "checking FATHER " << ancestor->getFatherId() << " ptr is " << ancestor->getFather() << std::endl;
+	//std::cerr << "checking MOTHER " << ancestor->getMotherId() << " ptr is " << ancestor->getMother() << std::endl;
+	
+	//
+	// If the ancestor has already been counted at least once, then
+	// we know we have either:
+	// 
+	//    (1) Entered an anomolous ancestor-is-also-descendant loop.
+	// or (2) Passed an ancestor in a consanguineous loop.
+	//
+	if( ancestor->getVisitCount() ){
+		if( ancestor->getVisitCount()>1 ){
+			//
+			// Stop if this is the second time around the loop:
+			//
+			std::vector<Individual *>::const_iterator an_it;
+			
+			for(an_it = _anomolous.begin();an_it!=_anomolous.end();an_it++){
+				Warning("Pedigree::checkForAncestorDescendantAnomoly()","Individual %s is part of an impossible ancestor-descendant loop!",(*an_it)->getId().get().c_str() );
+			}
+			throw Exception("Pedigree::checkForAncestorDescendantAnomoly()","An impossible ancestor-is-also-descendant loop exists in the data file.");
+		}else{
+			//
+			// Keep tabs on all participants who may be in an anomalous ancestor-is-also-descendant loop.
+			// However, because it is possible to visit an ancestor more than once when a valid consanguineous
+			// loop exists, we don't issue immediate warnings; but rather, as shown here, we
+			// save the list and, if it turns out to truly be an error loop, then we issue the warnings
+			// immediately before throwing an exception,
+			//
+			_anomolous.push_back(ancestor);
+			
+		}
+	}
+	
+	//
+	// Here is the tracking key: incrementing the visit counter
+	//
+	ancestor->incrementVisitCount();
+	
+	//
+	// Recurse up ancestors on both dad's and mom's sides:
+	//
+	if(ancestor->getFather()){
+		checkForAncestorDescendantAnomoly(ancestor->getFather());
+	}
+	if(ancestor->getMother()){
+		checkForAncestorDescendantAnomoly(ancestor->getMother());
+	}
+	
+}
+
 
 

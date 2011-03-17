@@ -125,6 +125,7 @@ private:
 	double   _x;              // drawing x position 
 	double   _y;              // drawing y position
 	bool     _hasBeenVisited; // true if the individual has been visited
+	int      _visitCount;     // counter for times visited
 	bool     _hasBeenDrawn;   // true if the individual has been drawn
 	
 	// Loop flags:
@@ -367,6 +368,14 @@ public:
 	// getDataTable:
 	//
 	const DataTable * getDataTable(void) const { return _pedigreeTable; }
+	
+	//
+	// 2011.03.17.ET Addendum:
+	//
+	int getVisitCount()          { return _visitCount; }
+	void resetVisitCount()       { _visitCount = 0;    }
+	void incrementVisitCount()   { _visitCount++;      }
+	
 };
 
 #endif

@@ -36,7 +36,7 @@ class Pedigree{
 public:
 	
 	// Constructors:
-	Pedigree(){_dtsHaveConsanguinity=false; }
+	Pedigree(){ _dtsHaveConsanguinity=false; }
 	Pedigree(const std::string id, const unsigned tableId) : _id(id),_tableId(tableId),_dtsHaveConsanguinity(false) { }
 	~Pedigree();
 	
@@ -48,6 +48,11 @@ public:
 	void setCoreOptionalFields(const DataTable* pedigreeTable);
 	void determineFoundingGroups();
 	void establishIndividualConnections();
+	
+	// 2011.03.17.ET Addenda:
+	void checkForAncestorDescendantAnomoly(Individual *ancestor);
+	void clearVisitCounts();
+	
 	void checkParentChildDOB();
 	void computePedigreeWidth(const std::string& sortField,bool dobSortOrder);
 	void draw(const LabelSet* labelSet);
@@ -68,6 +73,9 @@ private:
 	std::map<std::string, std::vector<Individual*> > _twinMarkers; // twin groups with their marker
 	std::set<std::string> _consangPairIds; //  used with multiple DTs ; a list of all the consanguinous pairs 
 	Grid<int,Individual* > _individualGrid; // Grid that keeps track of the individuals and their (x,y) positions
+	
+	// 2011.03.17.ET addendum:
+	std::vector<Individual *> _anomolous;
 	
 	void _setIndividualTwinField(const DataColumn * twinDataColumn,char type);
 	void _assignChildrenDescentTree(Individual* individual,unsigned descentTreeId);	
