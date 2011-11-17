@@ -96,6 +96,10 @@ public:
 		Gender::_lookupTable["男"] = BOOLEAN_MALE;
 		Gender::_lookupTable["雌"] = BOOLEAN_FEMALE;
 		Gender::_lookupTable["雄"] = BOOLEAN_MALE;
+		Gender::_lookupTable["male"] = BOOLEAN_MALE;
+		Gender::_lookupTable["female"] = BOOLEAN_FEMALE;
+		Gender::_lookupTable["MALE"] = BOOLEAN_MALE;
+		Gender::_lookupTable["FEMALE"] = BOOLEAN_FEMALE;
 	}
 };
 

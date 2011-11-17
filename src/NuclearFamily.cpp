@@ -792,7 +792,7 @@ void NuclearFamily::calculateWidth(bool classicalOrder){
 			}
 		}
 	}
-
+	
 	if(leftWidth == 0 && rightWidth == 0) leftWidth = rightWidth = totalWidth/2;
 	if(rightWidth == 0 && leftWidth != 0) rightWidth = totalWidth - leftWidth;
 	
