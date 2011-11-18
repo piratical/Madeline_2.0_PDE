@@ -22,6 +22,8 @@
 //
 // 2007.04.26.ET
 //
+// Last updated 2011.11.18.ET
+//
 
 //
 // Consultand.h
@@ -88,8 +90,17 @@ public:
 		Consultand::_lookupTable["y"] = true;
 		Consultand::_lookupTable["N"] = false;
 		Consultand::_lookupTable["n"] = false;
+		Consultand::_lookupTable["yes"] = true;
+		Consultand::_lookupTable["no" ] = false;
+		Consultand::_lookupTable["Yes"] = true;
+		Consultand::_lookupTable["No" ] = false;
+		Consultand::_lookupTable["YES"] = true;
+		Consultand::_lookupTable["NO" ] = false;
 		Consultand::_lookupTable["C"] = true;
 		Consultand::_lookupTable["c"] = true;
+		Consultand::_lookupTable["consultand"] = true;
+		Consultand::_lookupTable["Consultand"] = true;
+		Consultand::_lookupTable["CONSULTAND"] = true;
 	}
 };
 

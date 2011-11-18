@@ -22,6 +22,8 @@
 //
 // 2005.03.07.ET.RK
 //
+// Last updated 2011.11.18.ET
+//
 
 //
 // Gender.h
@@ -90,16 +92,18 @@ public:
 		Gender::_lookupTable["m"]  = BOOLEAN_MALE;
 		Gender::_lookupTable["F"]  = BOOLEAN_FEMALE;
 		Gender::_lookupTable["M"]  = BOOLEAN_MALE;
+		Gender::_lookupTable["male"  ] = BOOLEAN_MALE;
+		Gender::_lookupTable["female"] = BOOLEAN_FEMALE;
+		Gender::_lookupTable["Male"  ] = BOOLEAN_MALE;
+		Gender::_lookupTable["Female"] = BOOLEAN_FEMALE;
+		Gender::_lookupTable["MALE"  ] = BOOLEAN_MALE;
+		Gender::_lookupTable["FEMALE"] = BOOLEAN_FEMALE;
 		Gender::_lookupTable["♀"]  = BOOLEAN_FEMALE; 
 		Gender::_lookupTable["♂"]  = BOOLEAN_MALE;
 		Gender::_lookupTable["女"] = BOOLEAN_FEMALE;
 		Gender::_lookupTable["男"] = BOOLEAN_MALE;
 		Gender::_lookupTable["雌"] = BOOLEAN_FEMALE;
 		Gender::_lookupTable["雄"] = BOOLEAN_MALE;
-		Gender::_lookupTable["male"] = BOOLEAN_MALE;
-		Gender::_lookupTable["female"] = BOOLEAN_FEMALE;
-		Gender::_lookupTable["MALE"] = BOOLEAN_MALE;
-		Gender::_lookupTable["FEMALE"] = BOOLEAN_FEMALE;
 	}
 };
 

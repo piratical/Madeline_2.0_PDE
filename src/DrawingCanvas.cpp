@@ -22,6 +22,8 @@
 //
 // 2006.08.10.ET: Revised
 //
+// Last updated 2011.11.18.ET
+//
 
 //
 // DrawingCanvas.cpp

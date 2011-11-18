@@ -148,6 +148,8 @@ private:
 	static bool _noIconLabels;
 	static bool _outputPedTable;
 	static bool _outputDataTable;
+	
+	static bool _noLabelTruncation;
 	//
 	// Output File naming prefix
 	// (If there is only one pedigree, this 
@@ -238,6 +240,12 @@ public:
 	static void setOutputPedTable(bool value);
 	static void setOutputDataTable(bool value);
 	
+	//
+	// 2011.11.18.ET Addenda:
+	//
+	static bool getNoLabelTruncation();
+	static void setNoLabelTruncation(bool value);
+	
 };
 
 ///////////////////////////////////
@@ -315,6 +323,12 @@ public:
 		// for publication):
 		// 
 		DrawingMetrics::_noIconLabels=false;
+		
+		//
+		// By default labels are truncated to fit
+		// within column widths:
+		//
+		DrawingMetrics::_noLabelTruncation=false;
 		
 		//
 		// This is the default scaling factor used for SVG drawing output to a screen.

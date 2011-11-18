@@ -21,6 +21,9 @@
 /////////////////////////////////////////////////////////
 //
 // 2006.12.29.RK
+//
+// Last updated 2011.11.18.ET
+//
 
 //
 // SVG.cpp
@@ -125,8 +128,16 @@ void SVG::drawMaleIcon(std::ostringstream& os,double x, double y, const std::str
 	os << "  <rect x=\"" << x << "\" y=\"" << y << "\" width=\"" << d << "\" height=\"" << d << "\"";
 	if(id.size()   ) os << " id=\"" << id << "\"";
 	if(cssClass.size()) os << " class=\"" << cssClass << "\"";
-	os << "/>\n";
 	
+	if(id.size()){
+		os << ">\n";
+		os << "\t<title>" << id << "</title>\n";
+		os << "</rect>\n";
+	}else{
+		
+		os << "/>\n";
+		
+	}
 	
 }
 
@@ -138,7 +149,16 @@ void SVG::drawFemaleIcon(std::ostringstream& os,double x, double y, const std::s
 	os << "<circle cx=\"" << x << "\" cy=\"" << y << "\" r=\"" << DrawingMetrics::getIconRadius() << "\"";
 	if(id.size()   ) os << " id=\"" << id << "\"";
 	if(cssClass.size()) os << " class=\"" << cssClass << "\"";
-	os << "/>\n";
+	
+	if(id.size()){
+		os << ">\n";
+		os << "\t<title>" << id << "</title>\n";
+		os << "</circle>\n";
+	}else{
+		
+		os << "/>\n";
+		
+	}
 	
 }
 
@@ -158,7 +178,16 @@ void SVG::drawGenderUnknownIcon(std::ostringstream& os,double x, double y, const
 	os << " z\"";
 	if(id.size()   ) os << " id=\"" << id << "\"";
 	if(cssClass.size()) os << " class=\"" << cssClass << "\"";
-	os << "/>\n";
+	
+	if(id.size()){
+		os << ">\n";
+		os << "\t<title>" << id << "</title>\n";
+		os << "</path>\n";
+	}else{
+		
+		os << "/>\n";
+		
+	}
 	
 }
 
@@ -210,7 +239,16 @@ void SVG::drawIconForAbortedPregnancy(std::ostringstream& os,double x, double y,
 	os << " z\"";
 	if(id.size()   ) os << " id=\"" << id << "\"";
 	if(cssClass.size()) os << " class=\"" << cssClass << "\"";
-	os << "/>\n";
+	
+	if(id.size()){
+		os << ">\n";
+		os << "\t<title>" << id << "</title>\n";
+		os << "</path>\n";
+	}else{
+		
+		os << "/>\n";
+		
+	}
 	
 }
 

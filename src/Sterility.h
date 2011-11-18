@@ -22,6 +22,8 @@
 //
 // 2009.05.19.ET
 //
+// Last updated 2011.11.18.ET
+//
 
 //
 // Sterility.h
@@ -97,10 +99,22 @@ public:
 		Sterility::_lookupTable["vasectomy"     ] = IS_STERILE;
 		Sterility::_lookupTable["tubal"         ] = IS_STERILE;
 		Sterility::_lookupTable["tubal ligation"] = IS_STERILE;
+		Sterility::_lookupTable["Vasectomy"     ] = IS_STERILE;
+		Sterility::_lookupTable["Tubal"         ] = IS_STERILE;
+		Sterility::_lookupTable["Tubal Ligation"] = IS_STERILE;
+		Sterility::_lookupTable["VASECTOMY"     ] = IS_STERILE;
+		Sterility::_lookupTable["TUBAL"         ] = IS_STERILE;
+		Sterility::_lookupTable["TUBAL LIGATION"] = IS_STERILE;
 		
 		Sterility::_lookupTypeTable["vasectomy"      ] = Sterility::MALE_STERILITY;
 		Sterility::_lookupTypeTable["tubal"          ] = Sterility::FEMALE_STERILITY;
 		Sterility::_lookupTypeTable["tubal ligation" ] = Sterility::FEMALE_STERILITY; 
+		Sterility::_lookupTypeTable["Vasectomy"      ] = Sterility::MALE_STERILITY;
+		Sterility::_lookupTypeTable["Tubal"          ] = Sterility::FEMALE_STERILITY;
+		Sterility::_lookupTypeTable["Tubal Ligation" ] = Sterility::FEMALE_STERILITY; 
+		Sterility::_lookupTypeTable["VASECTOMY"      ] = Sterility::MALE_STERILITY;
+		Sterility::_lookupTypeTable["TUBAL"          ] = Sterility::FEMALE_STERILITY;
+		Sterility::_lookupTypeTable["TUBAL LIGATION" ] = Sterility::FEMALE_STERILITY; 
 		
 	}
 };

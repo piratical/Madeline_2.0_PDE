@@ -22,6 +22,8 @@
 //
 // 2007.04.26.ET
 //
+// Last updated 2011.11.18.ET
+// 
 
 //
 // Carrier.h
@@ -88,8 +90,17 @@ public:
 		Carrier::_lookupTable["Y"] = true;
 		Carrier::_lookupTable["y"] = true;
 		Carrier::_lookupTable["n"] = false;
-		Carrier::_lookupTable["C"] = true;
+		Carrier::_lookupTable["yes"] = true;
+		Carrier::_lookupTable["no" ] = false;
+		Carrier::_lookupTable["Yes"] = true;
+		Carrier::_lookupTable["No" ] = false;
+		Carrier::_lookupTable["YES"] = true;
+		Carrier::_lookupTable["NO" ] = false;
 		Carrier::_lookupTable["c"] = true;
+		Carrier::_lookupTable["C"] = true;
+		Carrier::_lookupTable["carrier"] = true;
+		Carrier::_lookupTable["Carrier"] = true;
+		Carrier::_lookupTable["CARRIER"] = true;
 	}
 };
 

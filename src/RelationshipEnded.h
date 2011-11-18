@@ -101,9 +101,23 @@ public:
 		RelationshipEnded::_lookupTable["y"        ]  = BOOLEAN_RELATIONSHIP_ENDED; // Ended; reason unspecified
 		RelationshipEnded::_lookupTable["Y"        ]  = BOOLEAN_RELATIONSHIP_ENDED; // Ended; reason unspecified
 		RelationshipEnded::_lookupTable["yes"      ]  = BOOLEAN_RELATIONSHIP_ENDED; // Ended; reason unspecified
-		RelationshipEnded::_lookupTable["divorced" ]  = BOOLEAN_RELATIONSHIP_ENDED;
-		RelationshipEnded::_lookupTable["separated"]  = BOOLEAN_RELATIONSHIP_ENDED;
-		RelationshipEnded::_lookupTable["ended"    ]  = BOOLEAN_RELATIONSHIP_ENDED;     // Ended; reason unspecified
+		RelationshipEnded::_lookupTable["Yes"      ]  = BOOLEAN_RELATIONSHIP_ENDED; // Ended; reason unspecified
+		RelationshipEnded::_lookupTable["YES"      ]  = BOOLEAN_RELATIONSHIP_ENDED; // Ended; reason unspecified
+		RelationshipEnded::_lookupTable["divorced"  ]  = BOOLEAN_RELATIONSHIP_ENDED;
+		RelationshipEnded::_lookupTable["separated" ]  = BOOLEAN_RELATIONSHIP_ENDED;
+		RelationshipEnded::_lookupTable["ended"     ]  = BOOLEAN_RELATIONSHIP_ENDED;     // Ended; reason unspecified
+		RelationshipEnded::_lookupTable["divorce"   ]  = BOOLEAN_RELATIONSHIP_ENDED;
+		RelationshipEnded::_lookupTable["separation"]  = BOOLEAN_RELATIONSHIP_ENDED;
+		RelationshipEnded::_lookupTable["Divorced"  ]  = BOOLEAN_RELATIONSHIP_ENDED;
+		RelationshipEnded::_lookupTable["Separated" ]  = BOOLEAN_RELATIONSHIP_ENDED;
+		RelationshipEnded::_lookupTable["Ended"     ]  = BOOLEAN_RELATIONSHIP_ENDED;     // Ended; reason unspecified
+		RelationshipEnded::_lookupTable["Divorce"   ]  = BOOLEAN_RELATIONSHIP_ENDED;
+		RelationshipEnded::_lookupTable["Separation"]  = BOOLEAN_RELATIONSHIP_ENDED;
+		RelationshipEnded::_lookupTable["DIVORCED"  ]  = BOOLEAN_RELATIONSHIP_ENDED;
+		RelationshipEnded::_lookupTable["SEPARATED" ]  = BOOLEAN_RELATIONSHIP_ENDED;
+		RelationshipEnded::_lookupTable["ENDED"     ]  = BOOLEAN_RELATIONSHIP_ENDED;     // Ended; reason unspecified
+		RelationshipEnded::_lookupTable["DIVORCE"   ]  = BOOLEAN_RELATIONSHIP_ENDED;
+		RelationshipEnded::_lookupTable["SEPARATION"]  = BOOLEAN_RELATIONSHIP_ENDED;
 		
 		RelationshipEnded::_lookupTypeTable["d"        ]  = RelationshipEnded::DIVORCE; // Divorced
 		RelationshipEnded::_lookupTypeTable["s"        ]  = RelationshipEnded::SEPARATION; // Separated
@@ -114,9 +128,23 @@ public:
 		RelationshipEnded::_lookupTypeTable["y"        ]  = RelationshipEnded::RELATIONSHIP_ENDED_OTHER_TYPE; // Ended; reason unspecified
 		RelationshipEnded::_lookupTypeTable["Y"        ]  = RelationshipEnded::RELATIONSHIP_ENDED_OTHER_TYPE; // Ended; reason unspecified
 		RelationshipEnded::_lookupTypeTable["yes"      ]  = RelationshipEnded::RELATIONSHIP_ENDED_OTHER_TYPE; // Ended; reason unspecified
-		RelationshipEnded::_lookupTypeTable["divorced" ]  = RelationshipEnded::DIVORCE;
-		RelationshipEnded::_lookupTypeTable["separated"]  = RelationshipEnded::SEPARATION;
-		RelationshipEnded::_lookupTypeTable["ended"    ]  = RelationshipEnded::RELATIONSHIP_ENDED_OTHER_TYPE;     // Ended; reason unspecified
+		RelationshipEnded::_lookupTypeTable["Yes"      ]  = RelationshipEnded::RELATIONSHIP_ENDED_OTHER_TYPE; // Ended; reason unspecified
+		RelationshipEnded::_lookupTypeTable["YES"      ]  = RelationshipEnded::RELATIONSHIP_ENDED_OTHER_TYPE; // Ended; reason unspecified
+		RelationshipEnded::_lookupTypeTable["divorced"  ]  = RelationshipEnded::DIVORCE;
+		RelationshipEnded::_lookupTypeTable["separated" ]  = RelationshipEnded::SEPARATION;
+		RelationshipEnded::_lookupTypeTable["ended"     ]  = RelationshipEnded::RELATIONSHIP_ENDED_OTHER_TYPE;     // Ended; reason unspecified
+		RelationshipEnded::_lookupTypeTable["divorce"   ]  = RelationshipEnded::DIVORCE;
+		RelationshipEnded::_lookupTypeTable["separation"]  = RelationshipEnded::SEPARATION;
+		RelationshipEnded::_lookupTypeTable["Divorced"  ]  = RelationshipEnded::DIVORCE;
+		RelationshipEnded::_lookupTypeTable["Separated" ]  = RelationshipEnded::SEPARATION;
+		RelationshipEnded::_lookupTypeTable["Ended"     ]  = RelationshipEnded::RELATIONSHIP_ENDED_OTHER_TYPE;     // Ended; reason unspecified
+		RelationshipEnded::_lookupTypeTable["Divorce"   ]  = RelationshipEnded::DIVORCE;
+		RelationshipEnded::_lookupTypeTable["Separation"]  = RelationshipEnded::SEPARATION;
+		RelationshipEnded::_lookupTypeTable["DIVORCED"  ]  = RelationshipEnded::DIVORCE;
+		RelationshipEnded::_lookupTypeTable["SEPARATED" ]  = RelationshipEnded::SEPARATION;
+		RelationshipEnded::_lookupTypeTable["ENDED"     ]  = RelationshipEnded::RELATIONSHIP_ENDED_OTHER_TYPE;     // Ended; reason unspecified
+		RelationshipEnded::_lookupTypeTable["DIVORCE"   ]  = RelationshipEnded::DIVORCE;
+		RelationshipEnded::_lookupTypeTable["SEPARATION"]  = RelationshipEnded::SEPARATION;
 	}
 };
 

@@ -88,6 +88,24 @@ public:
 		LivingDead::_lookupTable["Y"] = true;
 		LivingDead::_lookupTable["y"] = true;
 		LivingDead::_lookupTable["n"] = false;
+		LivingDead::_lookupTable["yes"] = true;
+		LivingDead::_lookupTable["no" ] = false;
+		LivingDead::_lookupTable["Yes"] = true;
+		LivingDead::_lookupTable["No" ] = false;
+		LivingDead::_lookupTable["YES"] = true;
+		LivingDead::_lookupTable["NO" ] = false;
+		LivingDead::_lookupTable["dead"    ] = true;
+		LivingDead::_lookupTable["alive"   ] = false;
+		LivingDead::_lookupTable["deceased"] = true;
+		LivingDead::_lookupTable["living"  ] = false;
+		LivingDead::_lookupTable["Dead"    ] = true;
+		LivingDead::_lookupTable["Alive"   ] = false;
+		LivingDead::_lookupTable["Deceased"] = true;
+		LivingDead::_lookupTable["Living"  ] = false;
+		LivingDead::_lookupTable["DEAD"    ] = true;
+		LivingDead::_lookupTable["ALIVE"   ] = false;
+		LivingDead::_lookupTable["DECEASED"] = true;
+		LivingDead::_lookupTable["LIVING"  ] = false;
 	}
 };
 

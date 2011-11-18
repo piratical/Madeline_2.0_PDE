@@ -197,6 +197,14 @@ void DrawingLabelManager::setLabelSet(const LabelSet* labelSet){
 //
 std::string DrawingLabelManager::fitStringToLabelWidth(UTF8String label){
 	
+	if(DrawingMetrics::getNoLabelTruncation()){
+		//
+		// Don't truncate: so just return ...
+		//
+		return label;
+	}
+	
+	
 	double xAdvance;
 	//
 	// This retrieves the scaled width:
@@ -217,8 +225,9 @@ std::string DrawingLabelManager::fitStringToLabelWidth(UTF8String label){
 	//
 	_pLASiWrapper->getDimensions(label,&_lineHeight,&xAdvance,&_yMinimum,&_yMaximum);
 	
-	// NOTE: If the program is compiled with LASi, xAdvance just uses an average width per character which might
-	// not work with all scripts and font sizes. The average value will work for Latin and extended Latin scripts.
+	// NOTE: If the program is compiled with LASi, xAdvance just uses an average width 
+	// per character which might not work with all scripts and font sizes. The average 
+	// value will work for Latin and extended Latin scripts.
 	
 	if(xAdvance > maximumLabelWidth ){
 		

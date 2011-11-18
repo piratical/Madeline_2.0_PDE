@@ -88,10 +88,22 @@ public:
 		Sampled::_lookupTable["Y"] = true;
 		Sampled::_lookupTable["y"] = true;
 		Sampled::_lookupTable["n"] = false;
-		Sampled::_lookupTable["S"] = true;
-		Sampled::_lookupTable["U"] = false;
+		Sampled::_lookupTable["yes"] = true;
+		Sampled::_lookupTable["no" ] = false;
+		Sampled::_lookupTable["Yes"] = true;
+		Sampled::_lookupTable["No" ] = false;
+		Sampled::_lookupTable["YES"] = true;
+		Sampled::_lookupTable["NO" ] = false;
 		Sampled::_lookupTable["s"] = true;
 		Sampled::_lookupTable["u"] = false;
+		Sampled::_lookupTable["S"] = true;
+		Sampled::_lookupTable["U"] = false;
+		Sampled::_lookupTable["sampled"  ] = true;
+		Sampled::_lookupTable["unsampled"] = false;
+		Sampled::_lookupTable["Sampled"  ] = true;
+		Sampled::_lookupTable["Unsampled"] = false;
+		Sampled::_lookupTable["SAMPLED"  ] = true;
+		Sampled::_lookupTable["UNSAMPLED"] = false;
 	}
 };
 

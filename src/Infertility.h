@@ -22,6 +22,8 @@
 //
 // 2009.05.19.ET
 //
+// Last updated 2011.11.18.ET
+//
 
 //
 // Infertility.h
@@ -96,9 +98,17 @@ public:
 		
 		Infertility::_lookupTable["azoospermia"   ] = IS_INFERTILE;
 		Infertility::_lookupTable["endometriosis" ] = IS_INFERTILE;
+		Infertility::_lookupTable["Azoospermia"   ] = IS_INFERTILE;
+		Infertility::_lookupTable["Endometriosis" ] = IS_INFERTILE;
+		Infertility::_lookupTable["AZOOSPERMIA"   ] = IS_INFERTILE;
+		Infertility::_lookupTable["ENDOMETRIOSIS" ] = IS_INFERTILE;
 		
-		Infertility::_lookupTypeTable["azoosperima"   ] = Infertility::MALE_INFERTILITY;
+		Infertility::_lookupTypeTable["azoospermia"   ] = Infertility::MALE_INFERTILITY;
 		Infertility::_lookupTypeTable["endometriosis" ] = Infertility::FEMALE_INFERTILITY;
+		Infertility::_lookupTypeTable["Azoospermia"   ] = Infertility::MALE_INFERTILITY;
+		Infertility::_lookupTypeTable["Endometriosis" ] = Infertility::FEMALE_INFERTILITY;
+		Infertility::_lookupTypeTable["AZOOSPERMIA"   ] = Infertility::MALE_INFERTILITY;
+		Infertility::_lookupTypeTable["ENDOMETRIOSIS" ] = Infertility::FEMALE_INFERTILITY;
 		
 	}
 };

@@ -22,6 +22,8 @@
 //
 // 2005.08.31.ET
 //
+// Last updated 2011.11.18.ET
+// 
 
 //
 // Affected.h
@@ -86,6 +88,12 @@ public:
 		Affected::_lookupTable["u"]  = BOOLEAN_UNAFFECTED;
 		Affected::_lookupTable["A"]  = BOOLEAN_AFFECTED;
 		Affected::_lookupTable["U"]  = BOOLEAN_UNAFFECTED;
+		Affected::_lookupTable["affected"  ]  = BOOLEAN_AFFECTED;
+		Affected::_lookupTable["unaffected"]  = BOOLEAN_UNAFFECTED;
+		Affected::_lookupTable["Affected"  ]  = BOOLEAN_AFFECTED;
+		Affected::_lookupTable["Unaffected"]  = BOOLEAN_UNAFFECTED;
+		Affected::_lookupTable["AFFECTED"  ]  = BOOLEAN_AFFECTED;
+		Affected::_lookupTable["UNAFFECTED"]  = BOOLEAN_UNAFFECTED;
 	}
 };
 

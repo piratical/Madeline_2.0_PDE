@@ -78,6 +78,7 @@ bool DrawingMetrics::_blackAndWhite;
 bool DrawingMetrics::_color;
 bool DrawingMetrics::_useQuadrantShadingMethod;
 bool DrawingMetrics::_noIconLabels;
+bool DrawingMetrics::_noLabelTruncation;
 bool DrawingMetrics::_outputPedTable; // State flag to print pedigree core/non-core fields to a tab-delimited file
 bool DrawingMetrics::_outputDataTable; // State flag to print input pedigree table (input order preserved) to a tab-delimited file
 
@@ -504,6 +505,15 @@ bool DrawingMetrics::getNoIconLabels(){
 }
 
 //
+// getLabelTruncationState()
+//
+// 2011.11.18.ET Addenda:
+//
+bool DrawingMetrics::getNoLabelTruncation(){
+	return _noLabelTruncation;
+}
+
+//
 // setColor(): Set the color override flag
 //
 void DrawingMetrics::setColor(bool value){
@@ -529,6 +539,15 @@ void DrawingMetrics::setQuadrantShading(bool value){
 //
 void DrawingMetrics::setNoIconLabels(bool value){ 
 	_noIconLabels=value;
+}
+
+//
+// setLabelTruncationState(): Set whether labels are truncated to width
+//
+// 2011.11.18.ET Addendum
+//
+void DrawingMetrics::setNoLabelTruncation(bool value){
+	_noLabelTruncation = value;
 }
 
 

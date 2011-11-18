@@ -22,6 +22,8 @@
 //
 // 2005.03.07.ET.RK
 //
+// Last updated 2011.11.18.ET
+//
 
 //
 // Boolean.h
@@ -96,6 +98,12 @@ public:
 		Boolean::_lookupTable["t"] = true;
 		Boolean::_lookupTable["F"] = false;
 		Boolean::_lookupTable["T"] = true;
+		Boolean::_lookupTable["false"] = false;
+		Boolean::_lookupTable["true" ] = true;
+		Boolean::_lookupTable["False"] = false;
+		Boolean::_lookupTable["True" ] = true;
+		Boolean::_lookupTable["FALSE"] = false;
+		Boolean::_lookupTable["TRUE" ] = true;
 		Boolean::_lookupTable["假"] = false;
 		Boolean::_lookupTable["真"] = true;
 	}

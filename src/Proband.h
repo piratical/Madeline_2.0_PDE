@@ -22,6 +22,8 @@
 //
 // 2005.03.07.ET.RK
 //
+// Last updated 2011.11.18.ET
+//
 
 //
 // Proband.h
@@ -88,8 +90,17 @@ public:
 		Proband::_lookupTable["Y"] = true;
 		Proband::_lookupTable["y"] = true;
 		Proband::_lookupTable["n"] = false;
-		Proband::_lookupTable["P"] = true;
-		Proband::_lookupTable["p"] = true;
+		Proband::_lookupTable["yes"] = true;
+		Proband::_lookupTable["no" ] = false;
+		Proband::_lookupTable["Yes"] = true;
+		Proband::_lookupTable["No" ] = false;
+		Proband::_lookupTable["YES"] = true;
+		Proband::_lookupTable["NO" ] = false;
+		Proband::_lookupTable["p"      ] = true;
+		Proband::_lookupTable["P"      ] = true;
+		Proband::_lookupTable["proband"] = true;
+		Proband::_lookupTable["Proband"] = true;
+		Proband::_lookupTable["PROBAND"] = true;
 	}
 };
 
