@@ -100,7 +100,7 @@ const Sterility::TYPE Sterility::getType(void) const{
 //
 // set( std::string )
 //
-void Sterility::set(const std::string value){
+void Sterility::set(const std::string &value){
 	
 	set( value.c_str() );
 	

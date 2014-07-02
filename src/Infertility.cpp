@@ -100,7 +100,7 @@ const Infertility::TYPE Infertility::getType(void) const{
 //
 // set( std::string )
 //
-void Infertility::set(const std::string value){
+void Infertility::set(const std::string &value){
 	
 	set( value.c_str() );
 	

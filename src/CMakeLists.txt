@@ -93,6 +93,7 @@ SET( SOURCES
 	Parser.h
 	PedigreeSet.cpp
 	Pedigree.cpp
+	Pregnancy.cpp
 	Proband.cpp
 	
 	RandomSampleSizes.h 

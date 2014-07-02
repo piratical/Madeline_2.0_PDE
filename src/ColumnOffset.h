@@ -22,7 +22,7 @@ public:
 		_start=0;
 		_end=0;
 		_width=0;
-		_name='\0';
+		_name=(const char *)'\0';
 		// The discovered type becomes the official type.
 		// In some cases, the _discoveredType will be set
 		// according to _declaredType (see setTypeFromDeclaration() ):

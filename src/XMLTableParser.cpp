@@ -202,8 +202,15 @@ void XMLTableParser::_parse(xmlNode *node)
 			currentCol = 0;
 		
 		}
-		else if( _pXMLTagManager->cellHasChildXMLNode() &&  _tagNameMatches( currentNode->name , _pXMLTagManager->getTextTagName() )
-		         || !_pXMLTagManager->cellHasChildXMLNode() &&  _tagNameMatches( currentNode->parent->name , _pXMLTagManager->getCellTagName() )
+		else if( ( _pXMLTagManager->cellHasChildXMLNode() 
+		           &&  
+		           _tagNameMatches( currentNode->name , _pXMLTagManager->getTextTagName() ) 
+		         )
+		         || 
+		         ( !_pXMLTagManager->cellHasChildXMLNode() 
+		           &&  
+		           _tagNameMatches( currentNode->parent->name , _pXMLTagManager->getCellTagName() )
+		         )
 		){
 			
 			///////////////////////////

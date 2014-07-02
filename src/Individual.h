@@ -43,6 +43,7 @@
 #include "RelationshipEnded.h"
 #include "Infertility.h"
 #include "Sterility.h"
+#include "Pregnancy.h"
 
 #include <set>
 #include <vector>
@@ -91,6 +92,7 @@ private:
 	LivingDead* _deceased;    // deceased or alive - defaults to missing
 	Proband*    _proband;     // true for the proband only, else false; no need for missing
 	Consultand* _consultand;  // true if a consultand, else false.
+	Pregnancy*  _pregnancy;   // true if this is a pregnancy
 	Carrier*    _carrier;     // true if a carrier, else false.
 	RelationshipEnded* _relationshipEnded; // true if relationship ended (divorced,separated,reason unknown) - requires that a mated pair are *both* so marked for display ...
 	Sterility*         _sterility;         // 2009.05.19.ET ADDENDUM
@@ -215,6 +217,7 @@ public:
 	void setCarrierStatus(Carrier* carrier){ _carrier=carrier; }
 	// 2009.05....ET Newly added columns:
 	void setRelationshipEndedStatus(RelationshipEnded* relationshipEnded){ _relationshipEnded=relationshipEnded; }
+	void setPregnancyStatus(Pregnancy* pregnancy){ _pregnancy=pregnancy; }
 	void setInfertilityStatus      (Infertility* infertility            ){ _infertility      =infertility;       }
 	void setSterilityStatus        (Sterility* sterility                ){ _sterility        =sterility;         }
 	
@@ -264,12 +267,13 @@ public:
 	bool     isSampled(void)           { if(_sampled    == 0) return false; return _sampled->getBoolean(); }
 	bool     isProband(void)           { if(_proband    == 0) return false; return _proband->getBoolean();  }
 	bool     isConsultand(void)        { if(_consultand == 0) return false; return _consultand->getBoolean(); }
+	bool     isPregnancy(void)         { if(_pregnancy  == 0) return false; return _pregnancy->getBoolean(); }
 	bool     isCarrier(void)           { if(_carrier    == 0) return false; return _carrier->getBoolean(); }
 	// 2009.05.11.ET Addendum:
 	bool     relationshipHasEnded(void){ if(_relationshipEnded == 0) return false; return _relationshipEnded->getBoolean(); }
 	// 2009.05.19.ET Addenda:
-	bool     isInfertile(void){ if(_infertility == 0) return false; return _infertility->getBoolean(); }
-	bool     isSterile(void)  { if(_sterility   == 0) return false; return _sterility->getBoolean(); }
+	bool     isInfertile(void)         { if(_infertility == 0) return false; return _infertility->getBoolean(); }
+	bool     isSterile(void)           { if(_sterility   == 0) return false; return _sterility->getBoolean(); }
 	
 	bool     isDeceased(void)          { if(_deceased   == 0) return false; return _deceased->getBoolean(); }
 	

@@ -47,6 +47,7 @@
 #include "Sampled.h"
 #include "Proband.h"
 #include "Consultand.h"
+#include "Pregnancy.h"
 #include "Carrier.h"
 #include "RelationshipEnded.h"
 #include "Sterility.h"

@@ -1234,7 +1234,13 @@ void Pedigree::_setLeftShiftConnectionFlags(){
 				if(parentNF->getNumberOfChildren() > 1 && (parentNF->isConsanguinous() || parentNF->hasExternalConnection())){
 					parentNF->setLeftConnectionShiftFlag(true);
 				}else{
-					if(spouseParentNF->hasChild(father) || spouseParentNF->hasChild(mother) && parentNF->getNumberOfChildren() <= 2){
+					if( (
+					      spouseParentNF->hasChild(father) 
+					      || 
+					      spouseParentNF->hasChild(mother)
+					    )
+					    && parentNF->getNumberOfChildren() <= 2
+					  ){
 						parentNF->setLeftConnectionShiftFlag(true);
 					}
 				}
@@ -2022,9 +2028,9 @@ void Pedigree::determineFoundingGroups(){
 		}
 		++individualIt;
 	}
-	/*
+	//
 	// DEBUG: Print all the descent tree ids:
-	/*
+	//
 	std::cout << "# of Descent Trees " << _descentTrees.size() << std::endl;
 	for(unsigned cnt =0;cnt < _descentTrees.size();cnt++){
 		std::cout << "id: " << _descentTrees[cnt]->getId() << std::endl;

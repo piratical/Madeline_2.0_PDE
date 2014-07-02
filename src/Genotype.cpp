@@ -326,7 +326,7 @@ void Genotype::setAllele1( const char* allele1){
 	//
 	// Check whether a SNP allele is assigned a SNP ordinal.
 	//
-	if(_isSNP && !snp || !_isSNP && snp){
+	if( (_isSNP && !snp) || (!_isSNP && snp) ){
 		setMissing();
 		Warning(methodName,"%s does not match the given genotype and has been set to missing.",allele1);
 		return;
@@ -362,7 +362,7 @@ void Genotype::setAllele2( const char* allele2){
 	//
 	// Check whether a SNP allele is assigned a SNP ordinal.
 	//
-	if(_isSNP && !snp || !_isSNP && snp){
+	if( (_isSNP && !snp) || (!_isSNP && snp) ){
 		setMissing();
 		Warning(methodName,"%s does not match the given genotype and has been set to missing.",allele2);
 		return;

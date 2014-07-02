@@ -279,7 +279,11 @@ void Number::set(const char *value){
 	s=buffer;
 	
 	// SKIP INITIAL WHITE SPACE:
-	for(;*s && *s==' ';s++); if(!*s){ setMissing(); return; }
+	for(;*s && *s==' ';s++); 
+	if(!*s){ 
+		setMissing(); 
+		return; 
+	}
 	
 	///////////////////////////////////////////
 	// Check for "~" indicating approximation:
@@ -289,7 +293,11 @@ void Number::set(const char *value){
 		s++;
 	}
 	// SKIP ANY ADDITIONAL WHITE SPACE:
-	for(;*s && *s==' ';s++); if(!*s){ setMissing(); return; }
+	for(;*s && *s==' ';s++); 
+	if(!*s){ 
+		setMissing();
+		return;
+	}
 	
 	///////////////////////////////////////////
 	// Check for square starting bracket:
@@ -300,7 +308,11 @@ void Number::set(const char *value){
 		s++;
 	}
 	// SKIP ANY ADDITIONAL WHITE SPACE:
-	for(;*s && *s==' ';s++); if(!*s){ setMissing(); return; }
+	for(;*s && *s==' ';s++);
+	if(!*s){ 
+		setMissing();
+		return;
+	}
 	
 	//
 	// Should be at the beginning of the FIRST NUMBER:

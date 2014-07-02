@@ -62,7 +62,7 @@ public:
 	// Set methods:
 	//
 	void set(const char *value);
-	void set(const std::string value);
+	void set(const std::string &value);
 	
 	//
 	// Get methods not present in base "String" class:

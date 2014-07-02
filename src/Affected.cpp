@@ -80,7 +80,7 @@ char Affected::getBooleanAsChar( void ) const{
 //
 // set( std::string )
 //
-void Affected::set(const std::string value){
+void Affected::set(const std::string &value){
 	
 	set( value.c_str() );
 	

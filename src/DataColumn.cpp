@@ -81,6 +81,9 @@ DataColumn::DataColumn(const std::string &name,DATATYPE columnType, unsigned lon
 	case CONSULTAND:
 		for(unsigned int k=0; k < _rows; k++) _data.push_back(new Consultand());
 		break;
+	case PREGNANCY:
+		for(unsigned int k=0; k < _rows; k++) _data.push_back(new Pregnancy());
+		break;
 	case CARRIER:
 		for(unsigned int k=0; k < _rows; k++) _data.push_back(new Carrier());
 		break;
@@ -327,12 +330,6 @@ std::string DataColumn::getColumnTypeAsString(void) const{
 	case AFFECTED:
 		type="AFFECTED";
 		break;
-	case UNCLASSIFIED:
-		type="UNCLASSIFIED";
-		break;
-	case MISSING:
-		type="MISSING";
-		break;
 	case SAMPLED:
 		type="SAMPLED";
 		break;
@@ -344,6 +341,30 @@ std::string DataColumn::getColumnTypeAsString(void) const{
 		break;
 	case TWIN:
 		type="TWIN";
+		break;
+	case UNCLASSIFIED:
+		type="UNCLASSIFIED";
+		break;
+	case MISSING:
+		type="MISSING";
+		break;
+	case CONSULTAND:
+		type="CONSULTAND";
+		break;
+	case CARRIER:
+		type="CARRIER";
+		break;
+	case RELATIONSHIPENDED:
+		type="RELATIONSHIPENDED";
+		break;
+	case INFERTILITY:
+		type="INFERTILITY";
+		break;
+	case STERILITY:
+		type="STERILITY";
+		break;
+	case PREGNANCY:
+		type="PREGNANCY";
 		break;
 	default:
 		type="UNRECOGNIZED_TYPE";

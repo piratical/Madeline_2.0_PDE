@@ -61,7 +61,7 @@ public:
 			 _twinType = twinType; 
 			// To distinguish between twin types with the same marker a twin type character is appended to the  markers
 			std::string temp = twinMarker;
-			if(twinMarker == ".");
+			if(twinMarker == std::string("."));
 			else{
 				temp+= getTwinType();
 				 String::set(temp);
@@ -103,6 +103,16 @@ public:
 		}
 		
 	}
+	
+	// These are required to satisfy the virtual functions of the base class:
+	void set(const std::string &twinMarker){
+		set(twinMarker,ZYGOSITY_UNKNOWN_TWIN);
+	}
+	
+	void set(const char*twinMarker){
+		set(twinMarker,ZYGOSITY_UNKNOWN_TWIN);
+	}
+	
 	
 	// get():  Returns the original marker set by the user
 	const std::string get(void) const { 
