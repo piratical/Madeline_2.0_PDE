@@ -69,6 +69,7 @@ DataTable::DataTable(TableParser &parser){
 	_relationshipEndedColumnIndex = COLUMN_IS_MISSING;
 	_infertilityColumnIndex = COLUMN_IS_MISSING;
 	_sterilityColumnIndex   = COLUMN_IS_MISSING;
+	_pregnancyColumnIndex   = COLUMN_IS_MISSING;
 	
 	//
 	// Set ColorSeriesStack, blackAndWhiteSeriesStack pointer to null
@@ -511,6 +512,13 @@ void DataTable::_determineTableType(const std::vector<std::string> *pTitles) {
 			_finalTypes[i] = STERILITY;
 			_sterilityColumnIndex = i;
 			
+		}
+		else if(tempString == labels.PregnancyField)
+		{
+			
+			// Optional core field:
+			_finalTypes[i] = PREGNANCY;
+			_pregnancyColumnIndex = i;
 		}
 	}
 	

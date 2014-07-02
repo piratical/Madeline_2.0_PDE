@@ -124,6 +124,7 @@ private:
 	int _sampledColumnIndex;
 	int _superscriptColumnIndex;
 	int _consultandColumnIndex;
+	int _pregnancyColumnIndex;
 	int _carrierColumnIndex;
 	int _relationshipEndedColumnIndex;
 	int _infertilityColumnIndex;
