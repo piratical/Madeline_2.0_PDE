@@ -104,16 +104,6 @@ public:
 		
 	}
 	
-	// These are required to satisfy the virtual functions of the base class:
-	void set(const std::string &twinMarker){
-		set(twinMarker,ZYGOSITY_UNKNOWN_TWIN);
-	}
-	
-	void set(const char*twinMarker){
-		set(twinMarker,ZYGOSITY_UNKNOWN_TWIN);
-	}
-	
-	
 	// get():  Returns the original marker set by the user
 	const std::string get(void) const { 
 		
