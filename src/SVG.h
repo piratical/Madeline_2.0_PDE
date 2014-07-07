@@ -1,4 +1,4 @@
- /////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////
 //
 // This file is part of the MADELINE 2 program 
 // written by Edward H. Trager and Ritu Khanna
@@ -68,6 +68,9 @@ public:
 	void drawSquiggle(std::ostringstream& os,double x,double y); // Used for RelationshipEnded ...
 	void drawCurve(std::ostringstream& os, double x1, double y1, double x2, double y2);
 	 
+	void drawPregnancyLetterP(std::ostringstream& os,double x,double y);   // Double-struck P to indicate a pregnancy
+	void drawPregnancyFetalP(std::ostringstream& os,double x,double y);    // Fetal "P" to indicate a pregnancy
+
 };
 
 #endif
