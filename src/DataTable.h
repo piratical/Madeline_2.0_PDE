@@ -215,6 +215,7 @@ public:
 	inline int getSampledColumnIndex(void) const { return _sampledColumnIndex; }
 	inline int getSuperscriptColumnIndex(void) const { return _superscriptColumnIndex; }
 	inline int getConsultandColumnIndex(void)  const { return _consultandColumnIndex; }
+	inline int getPregnancyColumnIndex(void)   const { return _pregnancyColumnIndex; }
 	inline int getCarrierColumnIndex(void)     const { return _carrierColumnIndex; }
 	inline int getRelationshipEndedColumnIndex(void) const { return _relationshipEndedColumnIndex; }
 	inline int getInfertilityColumnIndex(void) const { return _infertilityColumnIndex; }

@@ -1021,10 +1021,23 @@ void DrawingCanvas::drawIndividual(Individual* pIndividual,double x,double y,boo
 	}
 	
 	//
+	// Nota bene: there is really no provision made for the potential situation
+	// where, for example, the user wants to show an individual as being both a carrier
+	// and a pregnancy at one and the same time ...
+	// 
+
+	//
 	// Draw Carrier dot:
 	//
 	if(!pIndividual->hasBeenDrawn() && pIndividual->isCarrier()){
 		_svg.drawMiniCircle(_body,x,y);
+	}
+	
+	//
+	// Draw Pregnancy symbol:
+	//
+	if(!pIndividual->hasBeenDrawn() && pIndividual->isPregnancy()){
+		_svg.drawPregnancyLetterP(_body,x,y);
 	}
 	
 	//

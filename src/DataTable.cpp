@@ -65,6 +65,7 @@ DataTable::DataTable(TableParser &parser){
 	_sampledColumnIndex     = COLUMN_IS_MISSING;
 	_superscriptColumnIndex = COLUMN_IS_MISSING;
 	_consultandColumnIndex  = COLUMN_IS_MISSING;
+	_pregnancyColumnIndex   = COLUMN_IS_MISSING;
 	_carrierColumnIndex     = COLUMN_IS_MISSING;
 	_relationshipEndedColumnIndex = COLUMN_IS_MISSING;
 	_infertilityColumnIndex = COLUMN_IS_MISSING;

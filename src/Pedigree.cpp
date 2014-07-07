@@ -1,4 +1,4 @@
-/////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////
 //
 // This file is part of the MADELINE 2 program 
 // written by Edward H. Trager and Ritu Khanna
@@ -1792,6 +1792,7 @@ void Pedigree::setCoreOptionalFields(const DataTable* pedigreeTable){
 	bool hasProbandColumn    = false;
 	bool hasAffectedColumn   = false;
 	bool hasConsultandColumn = false;
+	bool hasPregnancyColumn  = false;
 	bool hasCarrierColumn    = false;
 	bool hasRelationshipEndedColumn = false; // 2009.05.11.ET
 	bool hasInfertilityColumn= false; // 2009.05.19.ET
@@ -1803,6 +1804,7 @@ void Pedigree::setCoreOptionalFields(const DataTable* pedigreeTable){
 	DataColumn *probandColumn;
 	DataColumn *affectedColumn;
 	DataColumn *consultandColumn;
+	DataColumn *pregnancyColumn;
 	DataColumn *carrierColumn;
 	DataColumn *relationshipEndedColumn;
 	DataColumn *infertilityColumn;
@@ -1851,6 +1853,12 @@ void Pedigree::setCoreOptionalFields(const DataTable* pedigreeTable){
 		hasConsultandColumn = true;
 	}
 	
+	// Check if Pregnancy column exists in the datatable
+	if(pedigreeTable->getPregnancyColumnIndex() != DataTable::COLUMN_IS_MISSING){
+		pregnancyColumn = pedigreeTable->getColumn(pedigreeTable->getPregnancyColumnIndex());
+		hasPregnancyColumn = true;
+	}
+	
 	// Check if Carrier column exists in the datatable
 	if(pedigreeTable->getCarrierColumnIndex() != DataTable::COLUMN_IS_MISSING){
 		carrierColumn = pedigreeTable->getColumn(pedigreeTable->getCarrierColumnIndex());
@@ -1895,6 +1903,7 @@ void Pedigree::setCoreOptionalFields(const DataTable* pedigreeTable){
 		if(hasProbandColumn)    (*individualIt)->setProbandStatus(dynamic_cast<Proband*>(const_cast<Data* const>(probandColumn->getDataAtIndex(rowIndex))));
 		if(hasAffectedColumn)   (*individualIt)->setAffectionStatus(dynamic_cast<Affected*>(const_cast<Data* const>(affectedColumn->getDataAtIndex(rowIndex))));
 		if(hasConsultandColumn) (*individualIt)->setConsultandStatus(dynamic_cast<Consultand*>(const_cast<Data* const>(consultandColumn->getDataAtIndex(rowIndex))));
+		if(hasPregnancyColumn)  (*individualIt)->setPregnancyStatus(dynamic_cast<Pregnancy*>(const_cast<Data* const>(pregnancyColumn->getDataAtIndex(rowIndex))));
 		if(hasCarrierColumn)    (*individualIt)->setCarrierStatus(dynamic_cast<Carrier*>(const_cast<Data* const>(carrierColumn->getDataAtIndex(rowIndex))));
 		if(hasRelationshipEndedColumn)   (*individualIt)->setRelationshipEndedStatus(dynamic_cast<RelationshipEnded*>(const_cast<Data* const>(relationshipEndedColumn->getDataAtIndex(rowIndex))));
 		if(hasInfertilityColumn) (*individualIt)->setInfertilityStatus(dynamic_cast<Infertility*>(const_cast<Data* const>(infertilityColumn->getDataAtIndex(rowIndex))));

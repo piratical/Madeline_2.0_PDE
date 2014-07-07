@@ -33,7 +33,7 @@
 
 class PregnancyMapLoader;
 //! Pregnancy is a data type derived from Boolean.
-/*! Pregnancy keeps track of the Consultand status of an individual.
+/*! Pregnancy keeps track of pregnancies where the individual is not yet born 
 */
 class Pregnancy : public Boolean
 {
