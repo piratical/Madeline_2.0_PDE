@@ -164,6 +164,11 @@ public:
 	void iconPie( double x, double y, Individual *pIndividual );
 	void iconQuadrantFill( double x, double y, Individual *pIndividual );
 	
+	//
+	// 2014.07.08.ET Addendum: useWhiteInk()
+	//
+	bool useWhiteInk(Individual *pIndividual);
+	
 };
 
 #endif

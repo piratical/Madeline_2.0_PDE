@@ -428,7 +428,16 @@ void DrawingCanvas::_setCSS(){
 	_header << "	font-size: " << 2*DrawingMetrics::getFontSize()/3 << DrawingMetrics::getFontSizeUnit() << ";\n";
 	_header << "	fill: #000;\n";
 	_header << "}\n\n";
+	//
+	// black and white ink:
+	//
+	_header << ".blackInk{\n";
+	_header << "	fill: #000;\n";
+	_header << "}\n\n";
 	
+	_header << ".whiteInk{\n";
+	_header << "	fill: #fff;\n";
+	_header << "}\n\n";
 	//
 	// End style CDATA section:
 	//
@@ -1037,7 +1046,7 @@ void DrawingCanvas::drawIndividual(Individual* pIndividual,double x,double y,boo
 	// Draw Pregnancy symbol:
 	//
 	if(!pIndividual->hasBeenDrawn() && pIndividual->isPregnancy()){
-		_svg.drawPregnancyLetterP(_body,x,y);
+		_svg.drawPregnancyLetterP(_body,x,y,(useWhiteInk(pIndividual)?"blackInk":"whiteInk"));
 	}
 	
 	//
@@ -1764,5 +1773,65 @@ void DrawingCanvas::iconQuadrantFill( double x, double y, Individual *pIndividua
 	
 }
 
-
+///
+/// DrawingCanvas::useWhiteInk()
+///
+///
+///
+bool DrawingCanvas::useWhiteInk(Individual *pIndividual){
+	//
+	// How many sections are there?
+	//
+	unsigned sections = pIndividual->getDataTable()->getIconColumnCount();
+	if(!sections){
+		return false;
+	}else{
+		const DataTable  * pDT = pIndividual->getDataTable();
+		//
+		// Well, we are only going to look at the first section of the pie
+		// even if there are multiple sections ...
+		//
+		DataColumn * pDC = pDT->getColumn( pDT->getIconColumnIndex(0) );
+		const UniqueList * pUL = pDC->getUniqueList();
+		//
+		// Only process if there are some non-missing levels present:
+		//
+		if(!pUL->getLevels()){
+			
+			return false;
+			
+		}else{
+			//
+			// What is the level and label in the UniqueList corresponding to the data value
+			// for this individual?
+			//
+			unsigned level;
+			std::string label;
+			pUL->getOrdinalAndLabelForKey( pDC->getDataAtIndex( pIndividual->getRowIndex() ),label,level );
+			//
+			// UniqueList ordinals are 1-offset, so we should only get zero back
+			// if the key was not found, which should never happen:
+			//
+			if(level==0) throw Exception("DrawingCanvas::useWhiteInk()","UniqueList returned ordinal 0.");
+			//
+			// Level is 1-offset, so subtract:
+			//
+			level--;
+			//
+			// Get the color series corresponding to this icon column:
+			//
+			ColorSeries *pCS;
+			if(DrawingMetrics::getColor()){
+				pCS = pDT->getColorSeriesFromStack(0);
+			}else{
+				pCS = pDT->getBlackAndWhiteSeriesFromStack(0);
+			}
+			if(pCS->useBlackInkAtLevel(level)){
+				return false;
+			}else{
+				return true;
+			}
+		}
+	}
+}
 

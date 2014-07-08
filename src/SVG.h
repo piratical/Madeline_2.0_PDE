@@ -68,8 +68,7 @@ public:
 	void drawSquiggle(std::ostringstream& os,double x,double y); // Used for RelationshipEnded ...
 	void drawCurve(std::ostringstream& os, double x1, double y1, double x2, double y2);
 	 
-	void drawPregnancyLetterP(std::ostringstream& os,double x,double y);   // Double-struck P to indicate a pregnancy
-	void drawPregnancyFetalP(std::ostringstream& os,double x,double y);    // Fetal "P" to indicate a pregnancy
+	void drawPregnancyLetterP(std::ostringstream& os,double x,double y, const std::string & inkClass="blackInk");   // Double-struck P to indicate a pregnancy
 
 };
 
