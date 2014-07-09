@@ -86,19 +86,19 @@ private:
 	Gender   _gender;     // male, female, or missing
 	
 	// Attributes not present in FieldLabels:
-	Date*       _dob;         // date of birth
-	Date*       _dod;         // date of death
-	Affected*   _affected;    // affection status
-	LivingDead* _deceased;    // deceased or alive - defaults to missing
-	Proband*    _proband;     // true for the proband only, else false; no need for missing
-	Consultand* _consultand;  // true if a consultand, else false.
-	Pregnancy*  _pregnancy;   // true if this is a pregnancy
-	Carrier*    _carrier;     // true if a carrier, else false.
+	Date*              _dob;               // date of birth
+	// <currently not used> Date*              _dod;               // date of death
+	Affected*          _affected;          // affection status
+	LivingDead*        _deceased;          // deceased or alive - defaults to missing
+	Proband*           _proband;           // true for the proband only, else false; no need for missing
+	Consultand*        _consultand;        // true if a consultand, else false.
+	Pregnancy*         _pregnancy;         // true if this is a pregnancy
+	Carrier*           _carrier;           // true if a carrier, else false.
 	RelationshipEnded* _relationshipEnded; // true if relationship ended (divorced,separated,reason unknown) - requires that a mated pair are *both* so marked for display ...
 	Sterility*         _sterility;         // 2009.05.19.ET ADDENDUM
 	Infertility*       _infertility;       // 2009.05.19.ET ADDENDUM
-	Twin        _twinMarker;  // stores the marker of monozygotic or dizygotic twin 
-	Sampled*    _sampled;     // individual is sampled or not
+	Twin               _twinMarker;        // stores the marker of monozygotic or dizygotic twin 
+	Sampled*           _sampled;           // true if individual has been sampled
 	
 	Individual *_father;  // Pointer to the father -- defaults to NULL (0)
 	Individual *_mother;  // Pointer to the mother -- defaults to NULL (0)
@@ -261,6 +261,11 @@ public:
 	bool     hasBeenVisited(void)      { return _hasBeenVisited; }
 	bool     hasBeenDrawn(void)        { return _hasBeenDrawn; }
 	bool     isConsanguinous(void)     { return _isConsanguinous; }
+	//
+	// 2014.07.09.ET ADDENDA: hasChildren() and hasSpouses()
+	inline bool     hasChildren(void)          { return !_children.empty(); } // returns true if individual has one or more child
+	inline bool     hasSpouses(void)           { return !_spouses.empty();  } // returns true if individual has one or more spouses
+	inline bool     pregnancyStateInvalid(void){ return isPregnancy() && (hasChildren() || hasSpouses()); } // returns true if the individual cannot represent a pregnancy
 	// For these, if the pointer is NULL, then we have no information, so return false
 	// Else, if the pointer is not NULL, then getBoolean() returns the state information:
 	bool     isAffected(void)          { if(_affected   == 0) return false; return _affected->getBoolean(); }
