@@ -54,6 +54,7 @@ public:
 	void clearVisitCounts();
 	
 	void checkParentChildDOB();
+	void checkPregnancyStateValidity();
 	void computePedigreeWidth(const std::string& sortField,bool dobSortOrder);
 	void draw(const LabelSet* labelSet);
 	// Debug:

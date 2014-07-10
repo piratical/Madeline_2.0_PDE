@@ -1949,6 +1949,25 @@ void Pedigree::checkParentChildDOB(){
 	
 }
 
+//
+// checkPregnancyStateValidity()
+//
+void Pedigree::checkPregnancyStateValidity(){
+	
+	// for warnings:
+	const char *methodName="Pedigree::checkPregnancyStateValidity()";
+	
+	std::set<Individual*,compareIndividual>::iterator individualIt = _individuals.begin();
+	
+	while(individualIt != _individuals.end()){
+		if( (*individualIt)->pregnancyStateInvalid() ){
+			(*individualIt)->removePregnancyFlag();
+			Warning(methodName,"Pregnancy flag removed from individual %s because of the presence of a spouse or children.",(*individualIt)->getId().get().c_str() );
+		}
+		++individualIt;
+	}
+}
+
 /// 
 /// determineFoundingGroups: Determine the original founding groups in a pedigree.
 ///

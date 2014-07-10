@@ -72,6 +72,19 @@ void PedigreeSet::_checkParentChildDOB(){
 }
 
 //
+// _checkPregnancyStateValidity()
+//
+void PedigreeSet::_checkPregnancyStateValidity(){
+	
+	std::set<Pedigree*,comparePedigrees>::const_iterator it = _pedigrees.begin();
+	while(it != _pedigrees.end()){
+		(*it)->checkPregnancyStateValidity();
+		++it;
+	}
+	
+}
+
+//
 // _computeWidths():
 //
 void PedigreeSet::_computeWidths(const std::string& sortField,bool dobSortOrder ){
@@ -196,6 +209,11 @@ void PedigreeSet::addPedigreesFromDataTable(const DataTable * p_pedigreeTable, u
 		_checkParentChildDOB();
 		dobPresent = true;
 	}
+	
+	if(pedigreeTable.getPregnancyColumnIndex() != DataTable::COLUMN_IS_MISSING){
+		_checkPregnancyStateValidity();
+	}
+
 	_determineFoundingGroups();
 	
 	bool sortFieldPresent = false;

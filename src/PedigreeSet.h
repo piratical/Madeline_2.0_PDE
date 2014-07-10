@@ -44,6 +44,7 @@ private:
 	std::set<Pedigree*,comparePedigrees> _pedigrees;          // Set of pedigrees
 	
 	void _checkParentChildDOB();
+	void _checkPregnancyStateValidity();
 	void _computeWidths(const std::string& sortField,bool dobSortOrder=false);
 	void _determineFoundingGroups();
 	void _establishConnections();

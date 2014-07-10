@@ -90,7 +90,7 @@ private:
 	// <currently not used> Date*              _dod;               // date of death
 	Affected*          _affected;          // affection status
 	LivingDead*        _deceased;          // deceased or alive - defaults to missing
-	Proband*           _proband;           // true for the proband only, else false; no need for missing
+	Proband*           _proband;           // true for the proband only, else false
 	Consultand*        _consultand;        // true if a consultand, else false.
 	Pregnancy*         _pregnancy;         // true if this is a pregnancy
 	Carrier*           _carrier;           // true if a carrier, else false.
@@ -266,6 +266,7 @@ public:
 	inline bool     hasChildren(void)          { return !_children.empty(); } // returns true if individual has one or more child
 	inline bool     hasSpouses(void)           { return !_spouses.empty();  } // returns true if individual has one or more spouses
 	inline bool     pregnancyStateInvalid(void){ return isPregnancy() && (hasChildren() || hasSpouses()); } // returns true if the individual cannot represent a pregnancy
+	void            removePregnancyFlag(void)  { if(_pregnancy) _pregnancy->set(false); }
 	// For these, if the pointer is NULL, then we have no information, so return false
 	// Else, if the pointer is not NULL, then getBoolean() returns the state information:
 	bool     isAffected(void)          { if(_affected   == 0) return false; return _affected->getBoolean(); }
