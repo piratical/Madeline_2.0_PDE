@@ -275,13 +275,32 @@ void XMLTableParser::_parse(xmlNode *node)
 			//
 			///////////////////////////////////////////////////
 			
-			std::cout << "DEBUG: NODE TYPE is " <<
-			             (currentNode->type==XML_TEXT_NODE ? "TEXT" :
-			             currentNode->type==XML_ELEMENT_NODE ? "ELEMENT" :
-			             "UNKNOWN" ) <<
-			             " and NAME=" << (char *)currentNode->name <<
-			             " and PARENT NAME=" << (char *) currentNode->parent->name <<
-			             " and THERE IS NO CHILD NODE WITH A VALUE" << std::endl;
+			//
+			// However OASIS may store a completely "empty row"
+			// so don't push any of that onto the data stack:
+			// 
+			// -- remember this is already a node with no child data node
+			//    so if there is a repeat count (greater than 1), it seems 
+			//    to be just some sort of demarcation representing the 
+			//    very last row of an OASIS table ...
+			//
+			if( _getRepeatCount( currentNode )>1 ){
+				return;
+			}
+			
+			//
+			// Otherwise we get to this point if the empty cell
+			// appears in the middle of a table somewhere ...
+			// so we store this 
+			//
+			
+			//std::cout << "DEBUG: NODE TYPE is " <<
+			//             (currentNode->type==XML_TEXT_NODE ? "TEXT" :
+			//             currentNode->type==XML_ELEMENT_NODE ? "ELEMENT" :
+			//             "UNKNOWN" ) <<
+			//             " and NAME=" << (char *)currentNode->name <<
+			//             " and PARENT NAME=" << (char *) currentNode->parent->name <<
+			//             " and THERE IS NO CHILD NODE WITH A VALUE" << std::endl;
 
 			// Add the default missing value, "." to the
 			// table if we are still within the column
