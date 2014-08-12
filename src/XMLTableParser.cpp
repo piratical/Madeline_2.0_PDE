@@ -283,7 +283,7 @@ void XMLTableParser::_parse(xmlNode *node)
 			             " and PARENT NAME=" << (char *) currentNode->parent->name <<
 			             " and THERE IS NO CHILD NODE WITH A VALUE" << std::endl;
 
-			// Add the current cell contents to the
+			// Add the default missing value, "." to the
 			// table if we are still within the column
 			// boundaries defined by the column titles:
 			currentCol++;
