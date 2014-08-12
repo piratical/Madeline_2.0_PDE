@@ -104,11 +104,17 @@ std::string XMLTableParser::_getNodeContents( xmlNode * node ){
 	
 	char *temp;
 	temp = (char *) xmlNodeGetContent( node );
-	if(!temp) return std::string("");
+	if(!temp){
+		std::cerr << "Node is empty! [1]" << std::endl;
+		return std::string("");
+	}
 	
 	std::string data(temp);
 	free(temp);
 	_trimWhiteSpace(data);
+	if(data.empty()){
+		std::cerr << "Node is empty! [2]" << std::endl;
+	}	
 	return data;
 	
 }
@@ -256,7 +262,34 @@ void XMLTableParser::_parse(xmlNode *node)
 			//             " and VALUE=" << data << std::endl;
 			
 		}
-		
+		else if( _pXMLTagManager->cellHasChildXMLNode() 
+		         &&  
+		         _tagNameMatches( currentNode->name , _pXMLTagManager->getCellTagName() )
+		         &&
+		         ! currentNode->children
+		){
+			
+			///////////////////////////////////////////////////
+			//
+			// MATCHES AN OASIS-STYLE EMPTY CELL WITH NO DATA!
+			//
+			///////////////////////////////////////////////////
+			
+			std::cout << "DEBUG: NODE TYPE is " <<
+			             (currentNode->type==XML_TEXT_NODE ? "TEXT" :
+			             currentNode->type==XML_ELEMENT_NODE ? "ELEMENT" :
+			             "UNKNOWN" ) <<
+			             " and NAME=" << (char *)currentNode->name <<
+			             " and PARENT NAME=" << (char *) currentNode->parent->name <<
+			             " and THERE IS NO CHILD NODE WITH A VALUE" << std::endl;
+
+			// Add the current cell contents to the
+			// table if we are still within the column
+			// boundaries defined by the column titles:
+			currentCol++;
+			if(currentCol <= _columns) _element.push_back( std::string(".") );
+
+		}		
 		//
 		// Recurse:
 		//
