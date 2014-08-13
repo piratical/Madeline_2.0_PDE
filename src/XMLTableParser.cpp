@@ -250,7 +250,9 @@ void XMLTableParser::_parse(xmlNode *node)
 					// table if we are still within the column
 					// boundaries defined by the column titles:
 					currentCol++;
-					if(currentCol <= _columns) _element.push_back( data );
+					if(currentCol <= _columns){
+						_element.push_back( data );
+					}
 				}
 			}
 			
@@ -271,20 +273,18 @@ void XMLTableParser::_parse(xmlNode *node)
 			
 			///////////////////////////////////////////////////
 			//
-			// MATCHES AN OASIS-STYLE EMPTY CELL WITH NO DATA!
+			// MATCHES AN OASIS-STYLE EMPTY CELL WITH NO DATA
 			//
 			///////////////////////////////////////////////////
 			
 			//
-			// However OASIS may store a completely "empty row"
-			// so don't push any of that onto the data stack:
+			// However OASIS appears to store a completely "empty row"
+			// apparently to demarcate the last row of data: so we
+			// don't want to push this row onto the data stack:
 			// 
-			// -- remember this is already a node with no child data node
-			//    so if there is a repeat count (greater than 1), it seems 
-			//    to be just some sort of demarcation representing the 
-			//    very last row of an OASIS table ...
-			//
-			if( _getRepeatCount( currentNode )>1 ){
+			
+			repeatCount = _getRepeatCount( currentNode );
+			if( repeatCount == _columns ){
 				return;
 			}
 			
@@ -305,9 +305,12 @@ void XMLTableParser::_parse(xmlNode *node)
 			// Add the default missing value, "." to the
 			// table if we are still within the column
 			// boundaries defined by the column titles:
-			currentCol++;
-			if(currentCol <= _columns) _element.push_back( std::string(".") );
-
+			for(unsigned int i=0; i< repeatCount; i++){
+				currentCol++;
+				if(currentCol <= _columns){
+					_element.push_back( std::string(".") );
+				}
+			}
 		}		
 		//
 		// Recurse:
