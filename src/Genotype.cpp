@@ -163,6 +163,7 @@ void Genotype::set( const char *genotype ){
 	const char *s;
 	bool isSNP1=false;
 	bool isSNP2=false;
+	bool missingDelimiter=false;
 	
 	_isMissing=false;
 	//
@@ -188,19 +189,33 @@ void Genotype::set( const char *genotype ){
 		s++;
 	}else{
 		// Delimiter not found.
-		setMissing();
-		Warning(methodName,"Invalid character found instead of a delimiter in genotype %1$s.",genotype);
-		return;
+		missingDelimiter=true;
+		
+		//setMissing();
+		//Warning(methodName,"Invalid character found instead of a delimiter in genotype %1$s.",genotype);
+		//return;
 	}
+	
 	//
 	// Process the second allele
 	//
 	s = _setAllele(s,_allele2,isSNP2);
 	if(*s != '\0' || _allele2 <=0){
-		// Additional characters found after the allele
-		Warning(methodName,"%1$s is not a valid genotype and has been set to missing.",genotype);
-		setMissing();
-		return;
+		//
+		// Additional characters representing a second allele not found after the first allele
+		//
+		if(missingDelimiter){
+			//
+			// OK, this could be a case of representing a homozygote via a single integer:
+			// we can allow this, but issue a warning:
+			//
+			_allele2=_allele1;
+			Warning(methodName,"The genotype “%1$s” will be treated as a homozygote, %2$i/%3$i .",genotype,_allele1,_allele2);
+		}else{
+			Warning(methodName,"%1$s is not a valid genotype and has been set to missing.",genotype);
+			setMissing();
+			return;
+		}
 	}
 	if(isSNP1 && isSNP2) _isSNP = true;
 	else 
