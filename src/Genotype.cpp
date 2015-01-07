@@ -21,6 +21,9 @@
 /////////////////////////////////////////////////////////
 
 //
+// 2015.01.07.ET ADDENDA to support partial repeats on
+//                       single tandem repeat (STR) genotypes
+//
 // 2005.03.07.ET.RK
 //
 
@@ -45,10 +48,13 @@ std::set<std::string> Genotype::_genotypeMissingValue;
 /// _orderAlleles(): The normal convention is to have the lesser allele shown first:
 ///
 void Genotype::_orderAlleles( void ){
-	if( _allele1 > _allele2 ){
-		unsigned int temp= _allele1;
-		_allele1 = _allele2;
-		_allele2 = temp;
+	if( _allele1 > _allele2 || _partial1 > _partial2 ){
+		unsigned int tempAllele  = _allele1 ;
+		unsigned int tempPartial = _partial1;
+		_allele1  = _allele2 ;
+		_partial1 = _partial2;
+		_allele2  = tempAllele;
+		_partial2 = tempPartial;
 	}
 }
 
@@ -65,8 +71,16 @@ void Genotype::_setNormalizedStringRepresentation( void ){
 		
 	}else{
 		_genotype  = _itoa(_allele1);
+		if(_partial1){
+			_genotype += _normalPartialDelimiter;
+			_genotype += _itoa(_partial1);
+		}
 		_genotype += _normalDelimiter;
 		_genotype += _itoa(_allele2);
+		if(_partial2){
+			_genotype += _normalPartialDelimiter;
+			_genotype += _itoa(_partial2);
+		}
 	}
 	if(Data::isGlobalMissingValue(_genotype)) { setMissing(); return; }
 	if(Genotype::isMissingValue(_genotype))   { setMissing(); return; }
@@ -97,33 +111,96 @@ const char *Genotype::_itoa( unsigned int i ) const{
 	
 }
 
+//
+// _readAllele()  
+//
+// 2015.01.07.ET ADDENDUM
+//
+// Reads a single numeric allele or a numeric STR allele
+// followed by delimiter and a partial repeat
+//
+void Genotype::_readAllele(const char *s,unsigned &v1,unsigned &v2){
+	//
+	// multipliers
+	//
+	unsigned m1=1,m2=1;
+	//
+	// initialize values:
+	//
+	v1=v2=0;
+	//
+	// Delimiters between allele and a partial STR repeat of that allele:
+	//
+	int d1=_normalPartialDelimiter, d2=_alternatePartialDelimiter;
+	//
+	// Separators between allele1 and allele2:
+	//
+	int s1=_normalDelimiter, s2=_alternateDelimiter;
+
+	const char *e,*p,*q;
+	bool hasDelimiter=false;
+	
+	//
+	// Look for delimiter or separator or the end of the string: 
+	//
+	for(q=s;*q && !(*q==d1 || *q==d2 || *q==s1 || *q==s2);q++);
+	if(*q==d1 || *q==d2) hasDelimiter=true;
+	//
+	// Back up to the last numeral
+	// This allows us to skip all white space
+	// or other junk:
+	//
+	for(p=q,--p;p>=s && !(*p>='0' && *p<='9');p--);
+	//
+	// Now read value before decimal:
+	//
+	for(;p>=s && *p>='0' && *p<='9';p--){
+		v1 += ((*p-'0')*m1);
+		m1*=10;
+	}
+	//
+	// Stop if there is no delimiter:
+	//
+	if(!hasDelimiter) return;
+	//
+	// If there is a delimiter, look for the end:
+	//
+	for(e=q,++e;*e && *e>='0' && *e<='9';e++);
+	//
+	// read value after delimiter:
+	//
+	for(--e;e>q;e--){
+		v2 += ((*e-'0')*m2);
+		m2*=10;
+	}
+}
+
 ///
 /// _setAllele(): set an allele from a char* input
 ///
-const char* Genotype::_setAllele(const char* s, unsigned &value, bool &snp){
+const char* Genotype::_setAllele(const char* s, unsigned &allele,unsigned &partial, bool &snp){
 	
 	char *d;
-	char allele[GENERAL_STRING_BUFFER_SIZE];
 	
 	// skip white space preceding the allele:
 	for(;*s && (*s==' ' || *s=='\t');s++);
 	
 	// Process SNP A/C/G/T alleles:
-	if      (*s=='A' || *s=='a'){ value = SNP_A_ORDINAL;  ++s; snp=true; }
-	else if (*s=='C' || *s=='c'){ value = SNP_C_ORDINAL;  ++s; snp=true; }
-	else if (*s=='G' || *s=='g'){ value = SNP_G_ORDINAL;  ++s; snp=true; }
-	else if (*s=='T' || *s=='t'){ value = SNP_T_ORDINAL;  ++s; snp=true; }
+	if      (*s=='A' || *s=='a'){ allele = SNP_A_ORDINAL;  ++s; snp=true; }
+	else if (*s=='C' || *s=='c'){ allele = SNP_C_ORDINAL;  ++s; snp=true; }
+	else if (*s=='G' || *s=='g'){ allele = SNP_G_ORDINAL;  ++s; snp=true; }
+	else if (*s=='T' || *s=='t'){ allele = SNP_T_ORDINAL;  ++s; snp=true; }
 	else{
-		
-		// Process numeric allele:
-		for( d=allele ; *s && isdigit(*s) ; *d++=*s++ );
-		*d='\0';
-		value=atoi(allele);
+		//
+		// Process numeric allele, possibly with STR partial repeat:
+		//
+		_readAllele(s,allele,partial);
 	}
 	//
-	// Skip white space after the allele
+	// Skip everything up until the end of the string
+	// or until a normal or alternate genotype delimiter is found:
 	//
-	for(;*s && (*s==' ' || *s=='\t');s++);
+	for(;*s && !(*s==_normalDelimiter || *s==_alternateDelimiter);s++);
 	return s;
 	
 }
@@ -172,7 +249,7 @@ void Genotype::set( const char *genotype ){
 	char temp[GENERAL_STRING_BUFFER_SIZE];
 	strncpy(temp,DigitConverter(genotype).get().c_str(),GENERAL_STRING_BUFFER_SIZE);
 	s = temp;
-	s = _setAllele(s,_allele1,isSNP1);
+	s = _setAllele(s,_allele1,_partial1,isSNP1);
 	if(_allele1 <= 0){
 		setMissing();
 		//
@@ -199,7 +276,7 @@ void Genotype::set( const char *genotype ){
 	//
 	// Process the second allele
 	//
-	s = _setAllele(s,_allele2,isSNP2);
+	s = _setAllele(s,_allele2,_partial2,isSNP2);
 	if(*s != '\0' || _allele2 <=0){
 		//
 		// Additional characters representing a second allele not found after the first allele
@@ -263,6 +340,7 @@ void Genotype::set(const int allele1, const int allele2){
 	}
 	_allele1 = allele1;
 	_allele2 = allele2;
+	_partial1=_partial2=0;
 	_isSNP=false;
 	_isMissing=false;
 	_orderAlleles();
@@ -288,7 +366,8 @@ void Genotype::setAllele1( const int allele1 ){
 		Warning(methodName,"%d is an invalid SNP allele1 and has been set to missing.",allele1);
 		return;
 	}
-	_allele1=allele1; 
+	_allele1 =allele1;
+	_partial1=0;
 	if(_allele2){
 		_isMissing=false;
 		_orderAlleles();
@@ -315,7 +394,8 @@ void Genotype::setAllele2( const int allele2 ){
 		Warning(methodName,"%d is an invalid SNP allele2 and has been set to missing.",allele2);
 		return;
 	}
-	_allele2=allele2; 
+	_allele2 =allele2;
+	_partial2=0; 
 	if(_allele1){
 		_isMissing=false;
 		_orderAlleles();
@@ -336,7 +416,7 @@ void Genotype::setAllele1( const char* allele1){
 	char temp[GENERAL_STRING_BUFFER_SIZE];
 	strncpy(temp,DigitConverter(allele1).get().c_str(),GENERAL_STRING_BUFFER_SIZE);
 	const char *d = temp;
-	d = _setAllele(d,_allele1,snp);
+	d = _setAllele(d,_allele1,_partial1,snp);
 	if(_isMissing) return;
 	//
 	// Check whether a SNP allele is assigned a SNP ordinal.
@@ -372,7 +452,7 @@ void Genotype::setAllele2( const char* allele2){
 	char temp[GENERAL_STRING_BUFFER_SIZE];
 	strncpy(temp,DigitConverter(allele2).get().c_str(),GENERAL_STRING_BUFFER_SIZE);
 	const char* d= temp;
-	d = _setAllele(d,_allele2,snp);
+	d = _setAllele(d,_allele2,_partial2,snp);
 	if(_isMissing) return;
 	//
 	// Check whether a SNP allele is assigned a SNP ordinal.

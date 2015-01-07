@@ -53,9 +53,18 @@ private:
 	unsigned int _allele1;
 	unsigned int _allele2;
 	
-	
+	unsigned int _partial1; // partial repeat allele 1 (STR genotype)
+	unsigned int _partial2; // partial repeat allele 2 (STR genotype)
+	//
+	// Delimiters between alleles in a genotype:
+	//
 	const static char _normalDelimiter='/';
 	const static char _alternateDelimiter='|';
+	//
+	// Delimiter between an allele and a partial repeat in an STR allele:
+	//
+	const static char _normalPartialDelimiter='.';
+	const static char _alternatePartialDelimiter=',';
 	
 	// The normal convention is to have the lesser allele shown first:
 	void _orderAlleles( void );
@@ -66,7 +75,8 @@ private:
 	// Convert integer allele to (static) c-string:
 	const char *_itoa( unsigned int i ) const;
 	const char *_snpOrdinalToCString( unsigned int allele );
-	const char* _setAllele(const char* input, unsigned &value, bool &snp);
+	void _readAllele(const char *s,unsigned &v1,unsigned &v2);
+	const char* _setAllele(const char* input, unsigned &allele, unsigned &partial, bool &snp);
 
 public:
 	
