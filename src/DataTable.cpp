@@ -57,20 +57,19 @@ DataTable::DataTable(TableParser &parser){
 	// set optional core column indices to default:
 	//
 	_affectedColumnIndex    = COLUMN_IS_MISSING;
+	_carrierColumnIndex     = COLUMN_IS_MISSING;
+	_consultandColumnIndex  = COLUMN_IS_MISSING;
 	_deceasedColumnIndex    = COLUMN_IS_MISSING;
 	_dobColumnIndex         = COLUMN_IS_MISSING;
 	_dzTwinColumnIndex      = COLUMN_IS_MISSING;
+	_infertilityColumnIndex = COLUMN_IS_MISSING;
 	_mzTwinColumnIndex      = COLUMN_IS_MISSING;
+	_pregnancyColumnIndex   = COLUMN_IS_MISSING;
 	_probandColumnIndex     = COLUMN_IS_MISSING;
+	_relationshipEndedColumnIndex = COLUMN_IS_MISSING;
 	_sampledColumnIndex     = COLUMN_IS_MISSING;
 	_superscriptColumnIndex = COLUMN_IS_MISSING;
-	_consultandColumnIndex  = COLUMN_IS_MISSING;
-	_pregnancyColumnIndex   = COLUMN_IS_MISSING;
-	_carrierColumnIndex     = COLUMN_IS_MISSING;
-	_relationshipEndedColumnIndex = COLUMN_IS_MISSING;
-	_infertilityColumnIndex = COLUMN_IS_MISSING;
 	_sterilityColumnIndex   = COLUMN_IS_MISSING;
-	_pregnancyColumnIndex   = COLUMN_IS_MISSING;
 	
 	//
 	// Set ColorSeriesStack, blackAndWhiteSeriesStack pointer to null

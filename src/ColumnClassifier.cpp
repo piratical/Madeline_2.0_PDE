@@ -184,8 +184,8 @@ bool ColumnClassifier::_isGenotype( const char *p, int stt, int end ){
 	// skip white space on right edge:
 	for(;e>s && *e==' ';e--);
 	
-	// traverse first numeric label:
-	for(;s<=e && isdigit(*s);s++);
+	// traverse first numeric label (which may include a decimal point or a comma):
+	for(;s<=e && (isdigit(*s) || *s=='.' || *s==',');s++);
 	if(s>e) return 0;
 	// skip middle sections of white space and slashes
 	// but check if more than one slash character:
@@ -193,8 +193,8 @@ bool ColumnClassifier::_isGenotype( const char *p, int stt, int end ){
 	for(sc=0;s<=e && (*s==' ' || *s=='/' || *s=='|');s++) if(*s=='/' || *s=='|') sc++;
 	if(sc!=1) return 0;
 	if(s>e)   return 0;
-	// second numeric label now expected:
-	for(;s<=e && isdigit(*s);s++);
+	// second numeric label now expected (which may include a decimal point or a comma):
+	for(;s<=e && (isdigit(*s) || *s=='.' || *s==',');s++);
 	// should be one past e if OK:
 	return (s==e+1);
 	
@@ -341,7 +341,13 @@ DATATYPE ColumnClassifier::classify( void ){
 	// but clearly are not of a mixed types:
 
 	if( _dateCounter     && ! ( _numericCounter || _genotypeCounter || _genderCounter )) return DATE;
-	if( _genotypeCounter && ! ( _numericCounter || _dateCounter     || _genderCounter )) return GENOTYPE;
+	//
+	// Single numerals could represent homozygote genotypes, so don't check the _numericCounter
+	// in a potential genotype column:
+	//
+	//if( _genotypeCounter && ! ( _numericCounter || _dateCounter     || _genderCounter )) return GENOTYPE;
+	//
+	if( _genotypeCounter && ! ( _dateCounter    || _genderCounter                     )) return GENOTYPE;
 	if( _numericCounter  && ! ( _dateCounter    || _genotypeCounter || _genderCounter )) return NUMBER;
 	if( _genderCounter   && ! ( _numericCounter || _genotypeCounter || _dateCounter   )) return GENDER;
 	// Get here if it is of mixed types, or none of the above, which can be
