@@ -77,6 +77,7 @@ FieldLabels::FieldLabels()
 	RelationshipEndedField = "RELATIONSHIPENDED";
 	InfertilityField       = "INFERTILITY";
 	SterilityField         = "STERILITY";
+	CollapsedField         = "COLLAPSED";
 	
 	PEDIGREE_TABLE_CORE_COLUMN_COUNT = 5;
 	GENETIC_TABLE_CORE_COLUMN_MINIMUM = 2;
@@ -103,11 +104,11 @@ bool FieldLabels::find(std::string inString, DATATYPE inType)
 /*
 	switch(inType)
 	{
-		case ANY:			
+		case ANY:
 					break;
-		case BOOLEAN:		
+		case BOOLEAN:
 					break;
-		case DATE:			
+		case DATE:
 					break;
 		case GENDER:		
 					break;

@@ -890,10 +890,9 @@ void Pedigree::_markConnectorIndividuals(Individual* individual,unsigned& loopNu
 					
 				}
 			}
-			//************
+			//
 			// Get the children of this pair and recurse:
-			//************
-			
+			//
 			const std::set<Individual*,Individual::compareIndividual> * pchildren = individual->getChildren();
 			std::set<Individual*,Individual::compareIndividual>::const_iterator childIt = (*pchildren).begin();
 			while(childIt != (*pchildren).end()){
@@ -967,7 +966,8 @@ void Pedigree::_markConsanguinousIndividuals(){
 }
 
 ///
-/// _markConsanguinousFlags: This function gets all the individuals with consanguinity and propagates the flags up in the descent tree
+/// _markConsanguinousFlags: This function gets all the individuals with 
+/// consanguinity and propagates the flags up in the descent tree
 /// These flags determine the sibling sorting order of the Nuclear Family.
 ///
 void Pedigree::_markConsanguinousFlags(Individual* individual,unsigned& loopNumber){
@@ -1000,9 +1000,9 @@ void Pedigree::_markConsanguinousFlags(Individual* individual,unsigned& loopNumb
 		}
 		(*spouseIt)->setVisited(true);
 		
-		//************
+		// ************
 		// Get the children of this pair and recurse:
-		//************
+		// ************
 		
 		std::vector<Individual*> children;
 		std::vector<Individual*> sortedChildren;
@@ -1096,7 +1096,8 @@ void Pedigree::_sortNuclearFamilies(bool consanguinousFlag){
 }
 
 ///
-/// _sortNuclearFamiliesBasedOnDataField: If the user specifies a sorting field, the siblings are sorted based on that data field.
+/// _sortNuclearFamiliesBasedOnDataField: If the user specifies a sorting field, 
+/// the siblings are sorted based on that data field.
 ///
 void Pedigree::_sortNuclearFamiliesBasedOnDataField(const std::string& name,bool dobSortOrder){
 	
@@ -1111,7 +1112,8 @@ void Pedigree::_sortNuclearFamiliesBasedOnDataField(const std::string& name,bool
 }
 
 ///
-/// _sortAndCalculateDescentTreeWidth: Sorts the nuclear families based on consanguinous connections and calculates the descent tree width.
+/// _sortAndCalculateDescentTreeWidth: Sorts the nuclear families based on consanguinous connections 
+/// and calculates the descent tree width.
 ///
 void Pedigree::_sortAndCalculateDescentTreeWidth(){
 	
@@ -1163,7 +1165,8 @@ void Pedigree::_sortAndCalculateDescentTreeWidth(){
 }
 
 //
-// _setLeftShifConnectionFlags(): Confirms the Left Connectors and changes left and right widths of their parent NFs if required.
+// _setLeftShifConnectionFlags(): Confirms the Left Connectors and changes left and right widths of their 
+// parent NFs if required.
 //
 void Pedigree::_setLeftShiftConnectionFlags(){
 	
@@ -1700,11 +1703,11 @@ void Pedigree::_drawConsanguinousConnectors(DrawingCanvas& dc){
 }
 
 
-//********************************
+// ********************************
 //
 // Public methods:
 //
-//********************************
+// ********************************
 
 //
 // addIndividual:
@@ -1760,7 +1763,7 @@ void Pedigree::addIndividual(const std::string ind,std::string mother,std::strin
 	//
 	Individual *newCandidateIndividual = new Individual(ind,mother,father,gender,rowIndex,tableIndex);
 	//
-	// Check wheter individual already exists in pedigree:
+	// Check whether individual already exists in pedigree:
 	//
 	std::set<Individual*,compareIndividual>::iterator it = _individuals.find(newCandidateIndividual);
 	if(it==_individuals.end()){
@@ -1797,6 +1800,7 @@ void Pedigree::setCoreOptionalFields(const DataTable* pedigreeTable){
 	bool hasRelationshipEndedColumn = false; // 2009.05.11.ET
 	bool hasInfertilityColumn= false; // 2009.05.19.ET
 	bool hasSterilityColumn  = false; // 2009.05.19.ET
+	bool hasCollapsedColumn  = false; // 2015.08.21.ET
 	
 	DataColumn *dobColumn;
 	DataColumn *deceasedColumn;
@@ -1809,6 +1813,7 @@ void Pedigree::setCoreOptionalFields(const DataTable* pedigreeTable){
 	DataColumn *relationshipEndedColumn;
 	DataColumn *infertilityColumn;
 	DataColumn *sterilityColumn;
+	DataColumn *collapsedColumn;
 	
 	// Check if MZTwin column exists in the datatable
 	if(pedigreeTable->getMZTwinColumnIndex() != DataTable::COLUMN_IS_MISSING){
@@ -1889,6 +1894,12 @@ void Pedigree::setCoreOptionalFields(const DataTable* pedigreeTable){
 	if(pedigreeTable->getAffectedColumnIndex() != DataTable::COLUMN_IS_MISSING){
 		affectedColumn = pedigreeTable->getColumn(pedigreeTable->getAffectedColumnIndex());
 		hasAffectedColumn = true;
+	}
+
+	// Check if Collapsed column exists in the datatable
+	if(pedigreeTable->getCollapsedColumnIndex() != DataTable::COLUMN_IS_MISSING){
+		collapsedColumn = pedigreeTable->getColumn(pedigreeTable->getCollapsedColumnIndex());
+		hasCollapsedColumn = true;
 	}
 	
 	unsigned rowIndex;
