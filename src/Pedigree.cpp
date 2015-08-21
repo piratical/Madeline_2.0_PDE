@@ -1919,6 +1919,7 @@ void Pedigree::setCoreOptionalFields(const DataTable* pedigreeTable){
 		if(hasRelationshipEndedColumn)   (*individualIt)->setRelationshipEndedStatus(dynamic_cast<RelationshipEnded*>(const_cast<Data* const>(relationshipEndedColumn->getDataAtIndex(rowIndex))));
 		if(hasInfertilityColumn) (*individualIt)->setInfertilityStatus(dynamic_cast<Infertility*>(const_cast<Data* const>(infertilityColumn->getDataAtIndex(rowIndex))));
 		if(hasSterilityColumn)   (*individualIt)->setSterilityStatus(dynamic_cast<Sterility*>(const_cast<Data* const>(sterilityColumn->getDataAtIndex(rowIndex))));
+		if(hasCollapsedColumn)   (*individualIt)->setCollapsedStatus(dynamic_cast<Collapsed*>(const_cast<Data* const>(collapsedColumn->getDataAtIndex(rowIndex))));
 		
 		++individualIt;
 	}
