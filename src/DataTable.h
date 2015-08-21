@@ -129,7 +129,7 @@ private:
 	int _relationshipEndedColumnIndex;
 	int _infertilityColumnIndex;
 	int _sterilityColumnIndex;
-	
+	int _collapsedColumnIndex;
 	//
 	// Private methods:
 	//
@@ -220,7 +220,7 @@ public:
 	inline int getRelationshipEndedColumnIndex(void) const { return _relationshipEndedColumnIndex; }
 	inline int getInfertilityColumnIndex(void) const { return _infertilityColumnIndex; }
 	inline int getSterilityColumnIndex(void) const { return _sterilityColumnIndex; }
-	
+	inline int getCollapsedColumnIndex(void) const { return _collapsedColumnIndex; }
 	//
 	// getIconColumnCount
 	//

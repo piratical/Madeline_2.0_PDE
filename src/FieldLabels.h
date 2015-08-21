@@ -53,7 +53,7 @@ class FieldLabels
 	std::string RelationshipEndedField;
 	std::string SterilityField;
 	std::string InfertilityField;
-	
+	std::string CollapsedField;
 	int PEDIGREE_TABLE_CORE_COLUMN_COUNT;
 	int GENETIC_TABLE_CORE_COLUMN_MINIMUM;
 	int GENETIC_TABLE_CORE_COLUMN_MAXIMUM;

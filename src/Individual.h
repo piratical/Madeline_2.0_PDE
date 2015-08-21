@@ -44,6 +44,7 @@
 #include "Infertility.h"
 #include "Sterility.h"
 #include "Pregnancy.h"
+#include "Collapsed.h"
 
 #include <set>
 #include <vector>
@@ -99,7 +100,8 @@ private:
 	Infertility*       _infertility;       // 2009.05.19.ET ADDENDUM
 	Twin               _twinMarker;        // stores the marker of monozygotic or dizygotic twin 
 	Sampled*           _sampled;           // true if individual has been sampled
-	
+	Collapsed*         _collapsed;         // TRUE if individual represents a collapsed group of individuals 
+	                                       // — 2015.08.21.ET ADDENDUM
 	Individual *_father;  // Pointer to the father -- defaults to NULL (0)
 	Individual *_mother;  // Pointer to the mother -- defaults to NULL (0)
 	
@@ -220,6 +222,7 @@ public:
 	void setPregnancyStatus(Pregnancy* pregnancy){ _pregnancy=pregnancy; }
 	void setInfertilityStatus      (Infertility* infertility            ){ _infertility      =infertility;       }
 	void setSterilityStatus        (Sterility* sterility                ){ _sterility        =sterility;         }
+	void setCollapsedStatus        (Collapsed* collapsed                ){ _collapsed        =collapsed;         }
 	
 	void setBirthOrder(unsigned birthOrder){ _birthOrder = birthOrder; }
 	

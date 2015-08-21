@@ -53,6 +53,7 @@
 #include "Sterility.h"
 #include "Infertility.h"
 #include "Twin.h"
+#include "Collapsed.h"
 
 #include "Exception.h"
 #include "Warning.h"
