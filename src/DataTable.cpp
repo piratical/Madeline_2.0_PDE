@@ -1041,7 +1041,8 @@ void DataTable::_setColorSeriesStack(void){
 		
 		for(unsigned int i=0;i<_iconColumns.size();i++){
 			
-			unsigned levels = getColumn(_iconColumns[i])->getUniqueList()->getAllLevels();
+			//unsigned levels = getColumn(_iconColumns[i])->getUniqueList()->getAllLevels();
+			unsigned levels = getColumn(_iconColumns[i])->getUniqueList()->getLevels();
 			_colorSeriesStack->add(levels);
 			_blackAndWhiteSeriesStack->add(levels);
 			

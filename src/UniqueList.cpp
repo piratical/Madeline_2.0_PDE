@@ -103,7 +103,7 @@ unsigned UniqueList::getOrdinalForKey(const Data *dp) const{
 	UNIQUELIST::const_iterator it = _uniqueList.find(dp);
 	//
 	// Ordinals start at 1, so 0 means the key was not
-	// found ... but this should not occur in practice:
+	// found ...
 	//
 	if( it == _uniqueList.end() ) return 0;
 	return it->second.getOrdinal();

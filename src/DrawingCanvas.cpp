@@ -1436,6 +1436,9 @@ void DrawingCanvas::iconPie( double x, double y, Individual *pIndividual ){
 		unsigned level;
 		std::string label;
 		pUL->getOrdinalAndLabelForKey( pDC->getDataAtIndex( pIndividual->getRowIndex() ),label,level );
+		
+		// DEBUG:
+		//std::cout << "LEVEL=" << level << " LABEL=" << label << std::endl;
 		//
 		// UniqueList ordinals are 1-offset, so we should only get zero back
 		// if the key was not found, which should never happen:

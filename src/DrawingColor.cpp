@@ -31,6 +31,7 @@
 #include <iomanip>
 #include <string.h>
 #include <stdlib.h>
+#include <iostream>
 
 //
 // Original table:
@@ -416,6 +417,9 @@ bool DrawingColor::useBlackInk(void) const{
 	// don't even bother with the color lookup table.
 	// Just use a fixed cut-off value of 0.5:
 	//
+	// DEBUG:
+	//std::cout << "SATURATION=" << _s << std::endl;
+	
 	if(_s <= 0.3 ) return ( _v > 0.5 + _cutoffAdjustment );
 	
 	// _h == -1 when the color is black,

@@ -144,6 +144,10 @@ ColorSeries::ColorSeries(unsigned levels,const DrawingColor &endColor,const Draw
 //
 DrawingColor ColorSeries::get(unsigned level) const{
 	
+	if(level > _levels-1){
+		// return the default color (which is white):
+		return DrawingColor();
+	}
 	return _colorSeries[level];
 	
 }
@@ -153,6 +157,10 @@ DrawingColor ColorSeries::get(unsigned level) const{
 //
 std::string ColorSeries::getColorAtLevel(unsigned level) const{
 	
+	if(level > _levels-1){
+		// return the default color (which is white):
+		return DrawingColor().get();
+	}
 	return _colorSeries[level].get();
 	
 }
@@ -162,6 +170,11 @@ std::string ColorSeries::getColorAtLevel(unsigned level) const{
 //
 bool ColorSeries::useBlackInkAtLevel(unsigned level) const{
 	
+	if(level > _levels-1){
+		// return the default color (which is white),
+		// so this should return black ink:
+		return DrawingColor().useBlackInk();
+	}
 	return _colorSeries[level].useBlackInk();
 	
 }
@@ -170,7 +183,10 @@ bool ColorSeries::useBlackInkAtLevel(unsigned level) const{
 // reversedSeriesGetColorAtLevel():
 //
 std::string ColorSeries::reversedSeriesGetColorAtLevel(unsigned level) const{
-	
+	if(level > _levels-1){
+		// return the default color (which is white):
+		return DrawingColor().get();
+	}
 	unsigned reversedLevel = _levels - 1 - level; 
 	return _colorSeries[reversedLevel].get();
 	
@@ -181,6 +197,11 @@ std::string ColorSeries::reversedSeriesGetColorAtLevel(unsigned level) const{
 //
 bool ColorSeries::reversedSeriesUseBlackInkAtLevel(unsigned level) const{
 	
+	if(level > _levels-1){
+		// return the default color (which is white),
+		// so this should return black ink:
+		return DrawingColor().useBlackInk();
+	}
 	unsigned reversedLevel = _levels - 1 - level; 
 	return _colorSeries[reversedLevel].useBlackInk();
 	
