@@ -70,7 +70,9 @@ ColorSeriesStack::~ColorSeriesStack(){
 void ColorSeriesStack::add(unsigned levels){
 	
 	
-	if(levels<2) levels=2;
+	// 2015.09.15.ET: "levels" here is the number of NON-MISSING levels and it is possible
+	//                and in fact likely to only have one NON-MISSING level
+	//if(levels<2) levels=2;
 	
 	ColorSeries *pCS;
 	

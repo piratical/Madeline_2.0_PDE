@@ -37,6 +37,7 @@
 // Static Members:
 //
 
+double ColorSeries::_oneSaturation[]    = {1.0};
 double ColorSeries::_twoSaturations[]   = {0.00,1.0};
 double ColorSeries::_threeSaturations[] = {0.12,0.48,1.0};
 double ColorSeries::_fourSaturations[]  = {0.12,0.30,0.65,1.0};
@@ -52,7 +53,7 @@ double ColorSeries::_fiveSaturations[]  = {0.12,0.24,0.48,0.65,1.0};
 // Vector of vectors of saturations:
 double *ColorSeries::_saturations[]={
 	NULL,
-	NULL,
+	_oneSaturation,
 	_twoSaturations,
 	_threeSaturations,
 	_fourSaturations,
@@ -66,7 +67,7 @@ ColorSeries::ColorSeries(unsigned levels,const DrawingColor &endColor,const Draw
 	
 	_levels   = levels;
 	// Force series to have at least two levels always:
-	if(_levels<2) _levels=2;
+	// if(_levels<2) _levels=2;
 	
 	_endColor   = endColor;
 	_startColor = startColor;
@@ -110,7 +111,8 @@ ColorSeries::ColorSeries(unsigned levels,const DrawingColor &endColor,const Draw
 	
 	for(unsigned i=0;i<_levels;i++){
 		
-		if( startColorIsWhite && _levels<=5){
+		//if( startColorIsWhite && _levels<=5){
+		if( _levels<=5){
 			//
 			// When the start color is white and there
 			// are five or fewer steps in the series,

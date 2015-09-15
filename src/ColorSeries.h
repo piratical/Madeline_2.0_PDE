@@ -34,6 +34,7 @@ class ColorSeries{
 	
 private:
 	
+	static double _oneSaturation[1];
 	static double _twoSaturations[2];
 	static double _threeSaturations[3];
 	static double _fourSaturations[4];
