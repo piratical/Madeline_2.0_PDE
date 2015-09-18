@@ -49,7 +49,12 @@ private:
 	
 public:
 	
-	ColorSeries(unsigned levels=2,const DrawingColor &endColor=DrawingColor("black","#000"),const DrawingColor &startColor=DrawingColor("white","#fff"));
+	ColorSeries(unsigned levels,const DrawingColor &endColor=DrawingColor("black","#000"),const DrawingColor &startColor=DrawingColor("white","#fff"));
+	
+	// 2015.09.18.ET: Constructor for an empty color series
+	//                and a pushback function:
+	//ColorSeries();
+	void pushBack(const std::string &color);
 	
 	// 2015.09.15.ET: Constructor for a custom color series:
 	//                Allows defining up to 16 colors.

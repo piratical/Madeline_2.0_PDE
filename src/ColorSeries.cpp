@@ -61,7 +61,17 @@ double *ColorSeries::_saturations[]={
 };
 
 //
-// Constructor:
+// pushBack:
+//
+void ColorSeries::pushBack(const std::string &color){
+	if(color[0]=='#'){
+		_colorSeries.push_back( DrawingColor(color,color) );
+		_levels++;
+	}
+}
+
+//
+// Constructor taking levels and colors:
 //
 ColorSeries::ColorSeries(unsigned levels,const DrawingColor &endColor,const DrawingColor &startColor){
 	
@@ -166,6 +176,9 @@ ColorSeries::ColorSeries(unsigned levels,const DrawingColor &endColor,const Draw
 //                Allows defining up to 16 colors using HTML/CSS hex triplets or sextuplets
 //                e.g., "#ff0" or "#fed379", etc.
 //
+// NOTA BENE    : One can use this constructor with no parameters and then just pushBack()
+//                colors on the series.
+//
 ColorSeries::ColorSeries(
             const std::string &c0,const std::string &c1,const std::string &c2,const std::string &c3,
             const std::string &c4,const std::string &c5,const std::string &c6,const std::string &c7,
@@ -193,7 +206,7 @@ ColorSeries::ColorSeries(
 	if(cF[0]=='#') _colorSeries.push_back( DrawingColor("cF",cF) );
 	
 	_levels = _colorSeries.size();
-	// DEBUG: std::cerr << "Custom series constructed with " << _levels << " levels." << std::endl;
+	
 }
 
 //

@@ -200,6 +200,16 @@ int main(int argc, char *argv[]){
 	                   "#f00","#0f0","#00f","#000",
 	                   "#f00","#0f0","#00f","#000");
 	cout << pie(xc,yc,rc,custom_002.levels(),custom_002,true);
+	
+	yc+=140;
+	ColorSeries custom_003;
+	for(unsigned i=0;i<5;i++){
+		custom_003.pushBack("#178923");
+		custom_003.pushBack("#fdf384");
+		custom_003.pushBack("#74deef");
+	}
+	cout << pie(xc,yc,rc,custom_003.levels(),custom_003,true);
+
 	cout << svgEnd;
 	
 	return 0;
