@@ -163,7 +163,8 @@ ColorSeries::ColorSeries(unsigned levels,const DrawingColor &endColor,const Draw
 
 //
 // 2015.09.15.ET: Constructor for a custom color series:
-//                Allows defining up to 16 colors.
+//                Allows defining up to 16 colors using HTML/CSS hex triplets or sextuplets
+//                e.g., "#ff0" or "#fed379", etc.
 //
 ColorSeries::ColorSeries(
             const std::string &c0,const std::string &c1,const std::string &c2,const std::string &c3,
@@ -171,28 +172,28 @@ ColorSeries::ColorSeries(
             const std::string &c8,const std::string &c9,const std::string &cA,const std::string &cB,
             const std::string &cC,const std::string &cD,const std::string &cE,const std::string &cF){
 	
-	if(c0>".") _colorSeries.push_back( DrawingColor("c0",c0) );
-	if(c1>".") _colorSeries.push_back( DrawingColor("c1",c1) );
-	if(c2>".") _colorSeries.push_back( DrawingColor("c2",c2) );
-	if(c3>".") _colorSeries.push_back( DrawingColor("c3",c3) );
+	if(c0[0]=='#') _colorSeries.push_back( DrawingColor("c0",c0) );
+	if(c1[0]=='#') _colorSeries.push_back( DrawingColor("c1",c1) );
+	if(c2[0]=='#') _colorSeries.push_back( DrawingColor("c2",c2) );
+	if(c3[0]=='#') _colorSeries.push_back( DrawingColor("c3",c3) );
 	
-	if(c4>".") _colorSeries.push_back( DrawingColor("c4",c4) );
-	if(c5>".") _colorSeries.push_back( DrawingColor("c5",c5) );
-	if(c6>".") _colorSeries.push_back( DrawingColor("c6",c6) );
-	if(c7>".") _colorSeries.push_back( DrawingColor("c7",c7) );
+	if(c4[0]=='#') _colorSeries.push_back( DrawingColor("c4",c4) );
+	if(c5[0]=='#') _colorSeries.push_back( DrawingColor("c5",c5) );
+	if(c6[0]=='#') _colorSeries.push_back( DrawingColor("c6",c6) );
+	if(c7[0]=='#') _colorSeries.push_back( DrawingColor("c7",c7) );
 	
-	if(c8>".") _colorSeries.push_back( DrawingColor("c8",c8) );
-	if(c9>".") _colorSeries.push_back( DrawingColor("c9",c9) );
-	if(cA>".") _colorSeries.push_back( DrawingColor("cA",cA) );
-	if(cB>".") _colorSeries.push_back( DrawingColor("cB",cB) );
+	if(c8[0]=='#') _colorSeries.push_back( DrawingColor("c8",c8) );
+	if(c9[0]=='#') _colorSeries.push_back( DrawingColor("c9",c9) );
+	if(cA[0]=='#') _colorSeries.push_back( DrawingColor("cA",cA) );
+	if(cB[0]=='#') _colorSeries.push_back( DrawingColor("cB",cB) );
 	
-	if(cC>".") _colorSeries.push_back( DrawingColor("cC",cC) );
-	if(cD>".") _colorSeries.push_back( DrawingColor("cD",cD) );
-	if(cE>".") _colorSeries.push_back( DrawingColor("cE",cE) );
-	if(cF>".") _colorSeries.push_back( DrawingColor("cF",cF) );
+	if(cC[0]=='#') _colorSeries.push_back( DrawingColor("cC",cC) );
+	if(cD[0]=='#') _colorSeries.push_back( DrawingColor("cD",cD) );
+	if(cE[0]=='#') _colorSeries.push_back( DrawingColor("cE",cE) );
+	if(cF[0]=='#') _colorSeries.push_back( DrawingColor("cF",cF) );
 	
 	_levels = _colorSeries.size();
-	
+	// DEBUG: std::cerr << "Custom series constructed with " << _levels << " levels." << std::endl;
 }
 
 //

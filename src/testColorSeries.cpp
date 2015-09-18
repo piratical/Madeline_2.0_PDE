@@ -194,9 +194,9 @@ int main(int argc, char *argv[]){
 	ColorSeries custom_001("#f00","#0f0","#00f","#000");
 	cout << pie(xc,yc,rc,custom_001.levels(),custom_001,true);
 	
-	yc+=70;
+	yc+=140;
 	ColorSeries custom_002("#f00","#0f0","#00f","#000",
-	                   "#f00","#0f0","#00f","#000",
+	                   "#ff8f23","#129875","#ddeeff","#fafa92",
 	                   "#f00","#0f0","#00f","#000",
 	                   "#f00","#0f0","#00f","#000");
 	cout << pie(xc,yc,rc,custom_002.levels(),custom_002,true);
