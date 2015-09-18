@@ -22,6 +22,7 @@ int main( int argc, char *argv[] ){
 	// ABCDEFGH:
 	clp.addSwitch("--bw","-b","Print pedigrees in black and white");
 	clp.addSwitch("--color","-c","Print pedigrees in color");
+	clp.addSwitch("--custom-icon-colors","-C","Specify a comma- and semicolon-delimited list of custom icon shading color codes in HTML/CSS hex format.",1);
 	clp.addSwitch("--debug","-d","Print run-time progress messages");
 	clp.addSwitch("--embedded","-e","Produce an XML file that can be embedded in another XML document");
 	clp.addSwitch("--font","-f","Font to be used for the display of Pedigree labels",1);
@@ -100,7 +101,7 @@ int main( int argc, char *argv[] ){
 			labelreader.clear();
 			labelreader.close();
 		}
-			
+		
 		//
 		// Handle a string containing labels to be tokenized
 		// and used as the labels on the pedigree drawing:
@@ -110,6 +111,31 @@ int main( int argc, char *argv[] ){
 			showColumns = split(labelString);
 		}
 		
+		//
+		// Handle custom icon colors:
+		//
+		if(clp.hasSwitchSet("--custom-icon-colors")){
+			
+			// Set the boolean switch in DrawingMetrics:
+			DrawingMetrics::setUseCustomIconColors(true);
+			std::string colorString = clp.getSwitchArgument("--custom-icon-colors",1);
+			std::istringstream css(colorString);
+			std::string t1,t2;
+			ColorSeries tempCS; // temporary color series storage
+			
+			// Break each set at semicolon delimiters:
+			for(unsigned i=0; std::getline(css,t1,';');i++){
+				tempCS.clear();
+				std::istringstream csst(t1);
+				// For each set of colors, break at comma delimiters
+				// and push colors onto the colorSeries object
+				while(std::getline(csst,t2,',')){
+					tempCS.pushBack(t2);
+				}
+				// Finally store each custom color series in the static DrawingMetrics vector:
+				DrawingMetrics::customColorSeries.push_back(tempCS);
+			}
+		}
 		//
 		// Handle specification of a file name prefix:
 		//

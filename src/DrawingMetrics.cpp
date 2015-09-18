@@ -69,6 +69,7 @@ std::string DrawingMetrics::_fontSizeUnit;
 std::set<DrawingMedia,DrawingMedia::compare> DrawingMetrics::media;
 std::vector<DrawingColor> DrawingMetrics::monochromat;
 std::vector<DrawingColor> DrawingMetrics::bichromat;
+std::vector<ColorSeries>  DrawingMetrics::customColorSeries; // 2015.09.18.ET ADDENDUM
 DrawingMetricsLoader DrawingMetricsLoader::drawingMetricsLoader;
 
 std::string DrawingMetrics::_drawingFileNamePrefix;
@@ -81,6 +82,8 @@ bool DrawingMetrics::_noIconLabels;
 bool DrawingMetrics::_noLabelTruncation;
 bool DrawingMetrics::_outputPedTable; // State flag to print pedigree core/non-core fields to a tab-delimited file
 bool DrawingMetrics::_outputDataTable; // State flag to print input pedigree table (input order preserved) to a tab-delimited file
+// 2015.09.18.ET ADDENDUM
+bool DrawingMetrics::_useCustomIconColors; // State flag set to true if user specifies custom colors
 
 ///////////////////////////////////
 //

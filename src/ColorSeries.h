@@ -69,7 +69,7 @@ public:
 	bool useBlackInkAtLevel(unsigned level) const;
 	bool reversedSeriesUseBlackInkAtLevel(unsigned level) const;
 	unsigned levels(void) const{ return _levels; };
-	
+	void clear(void) { _colorSeries.clear(); _levels=0; };
 };
 
 #endif

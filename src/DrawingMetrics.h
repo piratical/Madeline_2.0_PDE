@@ -46,6 +46,7 @@
 
 #include "DrawingColor.h"
 #include <vector>
+#include "ColorSeries.h"
 
 class DrawingMetricsLoader;
 /////////////////////////
@@ -159,6 +160,8 @@ private:
 	static std::string _drawingFileNamePrefix;
 	static bool _hasOnlyOnePedigree;
 	
+	static bool _useCustomIconColors;
+	
 public:
 	
 	static std::set<DrawingMedia,DrawingMedia::compare> media;
@@ -167,6 +170,9 @@ public:
 	//
 	static std::vector<DrawingColor> monochromat;
 	static std::vector<DrawingColor> bichromat;
+	
+	// 2015.09.18.ET ADDENDUM: custom color series:
+	static std::vector<ColorSeries> customColorSeries;
 	
 public:
 	
@@ -212,6 +218,8 @@ public:
 	static bool getNoIconLabels();
 	static bool getHasOutputPedTable();
 	static bool getHasOutputDataTable();
+	
+	static bool getUseCustomIconColors(){ return _useCustomIconColors;};
 	//
 	// Setters:
 	//
@@ -240,6 +248,7 @@ public:
 	static void setOutputPedTable(bool value);
 	static void setOutputDataTable(bool value);
 	
+	static void setUseCustomIconColors(bool value){ _useCustomIconColors=value; };
 	//
 	// 2011.11.18.ET Addenda:
 	//
