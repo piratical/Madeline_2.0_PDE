@@ -42,7 +42,7 @@ class DrawingColor {
 public:
 	
 	// RGB constructor:
-	DrawingColor(const std::string &name="white",unsigned char red=255,unsigned char green=255,unsigned char blue=255);
+	DrawingColor(const std::string &name="default",unsigned char red=255,unsigned char green=255,unsigned char blue=255);
 	// Postscript or HTML-style hex triplet constructor:
 	DrawingColor(const std::string &name,const std::string &postScriptOrHexTriplet);
 	// HSV Constructor: Note 0<=h<=360, 0<=s<=1, 0<=v<=1 :
@@ -72,6 +72,9 @@ public:
 	double getHue(void)        const {return _h;};
 	double getSaturation(void) const {return _s;};
 	double getValue(void)      const {return _v;};
+	
+	bool   isMissing(void)     const {return _missing; };
+	
 	// DEBUG only:
 	//void printColor(void){ std::cout << "Color: " << std::hex << (int)_red << ":" << std::hex << (int)_green << ":" << std::hex << (int)_blue << std::endl; };
 	
@@ -89,6 +92,9 @@ private:
 	double _h; // Range [0,360] degrees
 	double _s; // Range [0,1]
 	double _v; // Range [0,1]
+	
+	// MISSINGNESS: false by default
+	bool _missing;
 	
 	//
 	// static lookup table for determining

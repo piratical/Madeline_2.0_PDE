@@ -36,21 +36,21 @@
 //
 // Static Members:
 //
-
+// => Note that the initial offset of 0.00 takes into account
+//    the fact that we adjust the "white" endpoint to be "off white"
+//    for monochromatic series that use these customizations, so in
+//    reality the first stop is not going to really be at 0.00 "pure white"
+//    but at whatever off-white point that "offsetStart" is set to.
+//
 double ColorSeries::_oneSaturation[]    = {1.0};
 double ColorSeries::_twoSaturations[]   = {0.00,1.0};
-double ColorSeries::_threeSaturations[] = {0.12,0.48,1.0};
-double ColorSeries::_fourSaturations[]  = {0.12,0.30,0.65,1.0};
-double ColorSeries::_fiveSaturations[]  = {0.12,0.24,0.48,0.65,1.0};
+double ColorSeries::_threeSaturations[] = {0.00,0.48,1.0};
+double ColorSeries::_fourSaturations[]  = {0.00,0.30,0.65,1.0};
+double ColorSeries::_fiveSaturations[]  = {0.00,0.24,0.48,0.65,1.0};
 
-//double ColorSeries::_fiveSaturations[]={0.08,0.24,0.48,0.80,1.0};
-
-//double ColorSeries::_twoSaturations[]={0.0,1.0};
-//double ColorSeries::_threeSaturations[]={0.0,0.50,1.0};
-//double ColorSeries::_fourSaturations[]={0.0,0.34,0.67,1.0};
-//double ColorSeries::_fiveSaturations[]={0.0,0.25,0.50,0.75,1.0};
-
+//
 // Vector of vectors of saturations:
+//
 double *ColorSeries::_saturations[]={
 	NULL,
 	_oneSaturation,
@@ -66,8 +66,6 @@ double *ColorSeries::_saturations[]={
 ColorSeries::ColorSeries(unsigned levels,const DrawingColor &endColor,const DrawingColor &startColor){
 	
 	_levels   = levels;
-	// Force series to have at least two levels always:
-	// if(_levels<2) _levels=2;
 	
 	_endColor   = endColor;
 	_startColor = startColor;
@@ -75,61 +73,83 @@ ColorSeries::ColorSeries(unsigned levels,const DrawingColor &endColor,const Draw
 	//
 	// Create series:
 	//
-	double startH,startS,startV;
+	// => When the start color is white,
+	//    we want to adjust it to actually be a very light
+	//    shade of the end color. If we don't adjust it, then
+	//    the pure "white" level looks out-of-place in the series.
+	//    startOffset determines how far away from "white" to go:
+	//
+	double startOffset=0.12;
+	// 
+	// => (When the start color is not white, then we just
+	//    create a purely linear bichromatic color series
+	//    from the start to end colors.)
+	// 
+	double startH,startS,startV,endH,endS,endV,deltaH,deltaS,deltaV;
 	startH = startColor.getHue();
 	startS = startColor.getSaturation();
 	startV = startColor.getValue();
-	
-	//
-	// If the start color is not
-	// white (the default), then
-	// create a purely linear bichromatic
-	// color series:
-	//
-	bool startColorIsWhite = ( startS==0.0 && startV==1.0);
-	
-	double endH,endS,endV;
 	endH = endColor.getHue();
 	endS = endColor.getSaturation();
 	endV = endColor.getValue();
-	
-	//
-	// Handle achromatic end points correctly:
-	// If the start color is white, then the Hue is
-	// undefined, so use the hue of the ending color
-	// in order to get a smooth monochromatic color
-	// series:
-	//
-	if( startH == -1) startH = endH;
-	
-	double deltaH,deltaS,deltaV;
 	deltaH = endH - startH;
 	deltaS = endS - startS;
 	deltaV = endV - startV;
+	
+	// Check whether the start color is white:
+	bool startColorIsWhite = ( startS==0.0 && startV==1.0);
+	
+	if(startColorIsWhite){
+		//
+		// Handle achromatic end points correctly:
+		// If the start color is white, then the Hue is
+		// undefined, so use the hue of the ending color
+		// in order to get a smooth monochromatic color
+		// series:
+		//
+		// if( startH == -1){
+		//
+		startH = endH;
+		startS += startOffset*deltaS;
+		startV += startOffset*deltaV;
+		// Recalculate the deltas:
+		deltaH = endH - startH;
+		deltaS = endS - startS;
+		deltaV = endV - startV;
+	}
+	
 	
 	double h,s,v,fraction;
 	
 	for(unsigned i=0;i<_levels;i++){
 		
-		//if( startColorIsWhite && _levels<=5){
-		if( _levels<=5){
+		if( startColorIsWhite ){
+			//
+			// MONOCHROMATIC SERIES:
 			//
 			// When the start color is white and there
 			// are five or fewer steps in the series,
 			// use non-linearly spaced colors from the
-			// saturations table:
+			// saturations table because it looks a
+			// little better to the human eye this way:
 			//
-			h = startH + deltaH * _saturations[_levels][i];
-			s = startS + deltaS * _saturations[_levels][i];
-			v = startV + deltaV * _saturations[_levels][i];
-			
+			if( _levels<=5){
+				
+				h = startH;
+				s = startS + deltaS * _saturations[_levels][i];
+				v = startV + deltaV * _saturations[_levels][i];
+			}else{
+				fraction = (double)i/(double)(_levels-1);
+				h = startH; 
+				s = startS + deltaS * fraction;
+				v = startV + deltaV * fraction;
+			}
 		}else{
-			// For bichromatic series or when there are
-			// more than five levels, just use linear spacing
-			// 
-			// For monochromatic series, this works OK for 6
-			// and maybe even 7 levels : More than 7 levels
-			// is definitely not recommended:
+			//
+			// BICHROMATIC SERIES
+			//
+			// For bichromatic series, always use linear spacing
+			// even for series with few levels:
 			//
 			fraction = (double)i/(double)(_levels-1);
 			h = startH + deltaH * fraction;
@@ -139,6 +159,40 @@ ColorSeries::ColorSeries(unsigned levels,const DrawingColor &endColor,const Draw
 		}
 		_colorSeries.push_back( DrawingColor(endColor.getName(),h,s,v));
 	}
+}
+
+//
+// 2015.09.15.ET: Constructor for a custom color series:
+//                Allows defining up to 16 colors.
+//
+ColorSeries::ColorSeries(
+            const std::string &c0,const std::string &c1,const std::string &c2,const std::string &c3,
+            const std::string &c4,const std::string &c5,const std::string &c6,const std::string &c7,
+            const std::string &c8,const std::string &c9,const std::string &cA,const std::string &cB,
+            const std::string &cC,const std::string &cD,const std::string &cE,const std::string &cF){
+	
+	if(c0>".") _colorSeries.push_back( DrawingColor("c0",c0) );
+	if(c1>".") _colorSeries.push_back( DrawingColor("c1",c1) );
+	if(c2>".") _colorSeries.push_back( DrawingColor("c2",c2) );
+	if(c3>".") _colorSeries.push_back( DrawingColor("c3",c3) );
+	
+	if(c4>".") _colorSeries.push_back( DrawingColor("c4",c4) );
+	if(c5>".") _colorSeries.push_back( DrawingColor("c5",c5) );
+	if(c6>".") _colorSeries.push_back( DrawingColor("c6",c6) );
+	if(c7>".") _colorSeries.push_back( DrawingColor("c7",c7) );
+	
+	if(c8>".") _colorSeries.push_back( DrawingColor("c8",c8) );
+	if(c9>".") _colorSeries.push_back( DrawingColor("c9",c9) );
+	if(cA>".") _colorSeries.push_back( DrawingColor("cA",cA) );
+	if(cB>".") _colorSeries.push_back( DrawingColor("cB",cB) );
+	
+	if(cC>".") _colorSeries.push_back( DrawingColor("cC",cC) );
+	if(cD>".") _colorSeries.push_back( DrawingColor("cD",cD) );
+	if(cE>".") _colorSeries.push_back( DrawingColor("cE",cE) );
+	if(cF>".") _colorSeries.push_back( DrawingColor("cF",cF) );
+	
+	_levels = _colorSeries.size();
+	
 }
 
 //

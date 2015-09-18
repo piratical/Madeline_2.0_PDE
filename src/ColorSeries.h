@@ -51,11 +51,20 @@ public:
 	
 	ColorSeries(unsigned levels=2,const DrawingColor &endColor=DrawingColor("black","#000"),const DrawingColor &startColor=DrawingColor("white","#fff"));
 	
+	// 2015.09.15.ET: Constructor for a custom color series:
+	//                Allows defining up to 16 colors.
+	ColorSeries(const std::string &c0=".",const std::string &c1=".",const std::string &c2=".",const std::string &c3=".",
+	            const std::string &c4=".",const std::string &c5=".",const std::string &c6=".",const std::string &c7=".",
+	            const std::string &c8=".",const std::string &c9=".",const std::string &cA=".",const std::string &cB=".",
+	            const std::string &cC=".",const std::string &cD=".",const std::string &cE=".",const std::string &cF=".");
+	
 	DrawingColor get(unsigned level) const;
 	std::string getColorAtLevel(unsigned level) const;
 	std::string reversedSeriesGetColorAtLevel(unsigned level) const;
 	bool useBlackInkAtLevel(unsigned level) const;
 	bool reversedSeriesUseBlackInkAtLevel(unsigned level) const;
+	unsigned levels(void) const{ return _levels; };
+	
 };
 
 #endif

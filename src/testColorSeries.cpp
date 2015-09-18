@@ -54,6 +54,7 @@ int main(int argc, char *argv[]){
 	DrawingColor redOrange("redOrange","#ff6900");
 	DrawingColor peach("peach","#ffcca2");
 	DrawingColor skyBlue("skyBlue","#768dff");
+	DrawingColor white("white","#fff");
 	
 	int xc = 70;
 	int yc = 70;
@@ -118,7 +119,7 @@ int main(int argc, char *argv[]){
 		}
 	}
 	
-	xc=630;
+	xc=650;
 	yc=70;
 	
 	//////////////////////
@@ -133,7 +134,7 @@ int main(int argc, char *argv[]){
 		cout << pie(xc,yc,rc,i,ColorSeries(i,black,yellowOrange),true);
 		xc+=140;
 		if(xc>1120){
-			xc=630;
+			xc=650;
 			yc+=140;
 		}
 	}
@@ -145,7 +146,7 @@ int main(int argc, char *argv[]){
 		cout << pie(xc,yc,rc,i,ColorSeries(i,red,banana),true);
 		xc+=140;
 		if(xc>1120){
-			xc=630;
+			xc=650;
 			yc+=140;
 		}
 	}
@@ -157,7 +158,7 @@ int main(int argc, char *argv[]){
 		cout << pie(xc,yc,rc,i,ColorSeries(i,skyBlue,magenta),true);
 		xc+=140;
 		if(xc>1120){
-			xc=630;
+			xc=650;
 			yc+=140;
 		}
 	}
@@ -169,7 +170,7 @@ int main(int argc, char *argv[]){
 		cout << pie(xc,yc,rc,i,ColorSeries(i,navy,maize),true);
 		xc+=140;
 		if(xc>1120){
-			xc=630;
+			xc=650;
 			yc+=140;
 		}
 	}
@@ -181,12 +182,24 @@ int main(int argc, char *argv[]){
 		cout << pie(xc,yc,rc,i,ColorSeries(i,forest,peach),true);
 		xc+=140;
 		if(xc>1120){
-			xc=630;
+			xc=650;
 			yc+=140;
 		}
 	}
-
-
+	
+	// Custom color series test:
+	xc=1300;
+	yc=70;
+	
+	ColorSeries custom_001("#f00","#0f0","#00f","#000");
+	cout << pie(xc,yc,rc,custom_001.levels(),custom_001,true);
+	
+	yc+=70;
+	ColorSeries custom_002("#f00","#0f0","#00f","#000",
+	                   "#f00","#0f0","#00f","#000",
+	                   "#f00","#0f0","#00f","#000",
+	                   "#f00","#0f0","#00f","#000");
+	cout << pie(xc,yc,rc,custom_002.levels(),custom_002,true);
 	cout << svgEnd;
 	
 	return 0;

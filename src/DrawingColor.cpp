@@ -63,11 +63,12 @@ double DrawingColor::_cutoffAdjustment=0.0;
 // Constructor taking RGB triplet:
 //
 DrawingColor::DrawingColor(const std::string &name,unsigned char red,unsigned char green,unsigned char blue){
-	
+
 	_name  = name;
 	_red   = red;
 	_green = green;
 	_blue  = blue;
+	_missing = false;
 	
 	_calculateHSV();
 	
@@ -77,9 +78,11 @@ DrawingColor::DrawingColor(const std::string &name,unsigned char red,unsigned ch
 // set() using unsigned char integers:
 //
 void DrawingColor::set(unsigned char red,unsigned char green,unsigned char blue){
+	
 	_red   = red;
 	_green = green;
 	_blue  = blue;
+	_missing = false;
 	
 	_calculateHSV();
 }
@@ -187,6 +190,11 @@ void DrawingColor::set(const std::string &color){
 //
 void DrawingColor::_setColorFromString(const std::string &color){
 	
+	if(color=="" || color=="."){
+		_missing=true;
+		return;
+	}
+	
 	if(color[0]=='#'){
 		//
 		// Process hex triplet:
@@ -208,6 +216,7 @@ void DrawingColor::_setColorFromString(const std::string &color){
 			_blue  = tmp = _hexCharacterToInt(color[j]);
 			_blue  <<= 4;
 			_blue  |= tmp;
+			_missing=false;
 			break;
 			
 		case 7:
@@ -223,10 +232,12 @@ void DrawingColor::_setColorFromString(const std::string &color){
 			_blue = _hexCharacterToInt(color[j++]);
 			_blue <<= 4;
 			_blue |= _hexCharacterToInt(color[j]);
+			_missing=false;
 			break;
 			
 		default:
 			_red = _green = _blue = 0;
+			_missing=true;
 			break;
 		}
 	} else {
@@ -239,7 +250,7 @@ void DrawingColor::_setColorFromString(const std::string &color){
 		
 		char *r=col;
 		for(char *c=col;*c;c++){
-			if(*c==' '){
+			if(*c==' ' || *c==','){
 				*c++='\0';
 				if(!g) g=c;
 				else   b=c;
@@ -249,10 +260,9 @@ void DrawingColor::_setColorFromString(const std::string &color){
 		_red   = static_cast<unsigned char>( 255.0*atof(r) );
 		_green = static_cast<unsigned char>( 255.0*atof(g) );
 		_blue  = static_cast<unsigned char>( 255.0*atof(b) );
-		
+		_missing=false;
 		free(col);
 	}
-	
 }
 
 //
@@ -285,8 +295,9 @@ void DrawingColor::_calculateHSV(){
 	else          _s = delta/_v;
 	
 	// Calculate hue, h:
-	if(_s==0.0) _h = -1;
-	else{
+	if(_s==0.0){
+		 _h = -1;
+	}else{
 		
 		// Get here if not black or white:
 		if     ( r == _v ) _h =     ( g - b ) / delta; // between yellow & magenta
@@ -311,12 +322,19 @@ void DrawingColor::setFromHSV(double h, double s, double v){
 	double f, p, q, t;
 	double r,g,b;
 	
+	//
 	// Achromatic case:
+	//
 	if( s == 0.0 ) {
 		_red = _green = _blue = static_cast<unsigned char>( v*255.0 );
 		_calculateHSV();
+		_missing=false;
 		return;
 	}
+	
+	//
+	// Chromatic cases:
+	//
 	
 	// Sector 0-5:
 	h /= 60;
@@ -363,13 +381,17 @@ void DrawingColor::setFromHSV(double h, double s, double v){
 	_green = static_cast<unsigned char>( g*255.0 );
 	_blue  = static_cast<unsigned char>( b*255.0 );
 	_calculateHSV();
-	
+	_missing=false;
 }
 
 //
 // get(): 
 //
 std::string DrawingColor::get(void) const{
+	
+	if(_missing){
+		return std::string(".");
+	}
 	
 	std::string s;
 	
@@ -392,6 +414,10 @@ std::string DrawingColor::getName(void) const{
 // getComplement(): 
 //
 std::string DrawingColor::getComplement(void) const{
+	
+	if(_missing){
+		return std::string(".");
+	}
 	
 	std::string s;
 	
@@ -470,6 +496,10 @@ double DrawingColor::getCutoffAdjustment(void){
 //
 std::string DrawingColor::getPostscript(void) const{
 	
+	if(_missing){
+		return std::string(".");
+	}
+	
 	std::ostringstream os;
 	
 	os << std::setprecision(2) << (_red  /255.0) << " ";
@@ -497,7 +527,3 @@ std::ostream& operator<<(std::ostream& s, const DrawingColor& color){
 	return s << color.get();
 	
 }
-
-
-
-
