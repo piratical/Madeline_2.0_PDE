@@ -1,6 +1,6 @@
 # Madeline_2.0_PDE
 
-INTRO
+INTRODUCTION
 
 The Madeline 2.0 Pedigree Drawing Engine (PDE) is a pedigree drawing program designed to handle large and
 complex pedigrees with an emphasis on readability and aesthetics. The program was designed primarily for
