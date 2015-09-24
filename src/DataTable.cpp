@@ -31,6 +31,7 @@
 #include "RandomSampleSizes.h"
 
 #include <iostream>
+#include <iomanip>
 #include <cctype>
 
 #include "utility.h"
@@ -1032,7 +1033,8 @@ ColorSeries *DataTable::getBlackAndWhiteSeriesFromStack(unsigned nth) const{
 void DataTable::_setColorSeriesStack(void){
 	
 	if(_iconColumns.size()){
-		std::cout << " iconColumns size " << _iconColumns.size() << std::endl;
+		std::cout << "Icon columns: " << _iconColumns.size() << std::endl;
+		std::cout << "----------------------------------------------------------------" << std::endl;
 		//
 		// Passing true to the ColorSeriesStack 
 		// constructor creates bichromatic color series:
@@ -1042,12 +1044,16 @@ void DataTable::_setColorSeriesStack(void){
 		
 		for(unsigned int i=0;i<_iconColumns.size();i++){
 			
-			//unsigned levels = getColumn(_iconColumns[i])->getUniqueList()->getAllLevels();
-			unsigned levels = getColumn(_iconColumns[i])->getUniqueList()->getLevels();
+			DataColumn *pDC = getColumn(_iconColumns[i]);
+			// Get number of unique, non-missing levels:
+			unsigned levels = pDC->getUniqueList()->getLevels();
+			// Push a color series with said number of levels onto the color and black-and-white stacks:
 			_colorSeriesStack->add(levels);
 			_blackAndWhiteSeriesStack->add(levels);
+			std::cout << "   " << (i+1) << ". " << std::left << std::setw(32) << pDC->getName() << " has " << levels << " non-missing level" << (levels==1?"":"s") << "." << std::endl;
 			
 		}
+		std::cout << "----------------------------------------------------------------" << std::endl;
 	}
 	
 }
