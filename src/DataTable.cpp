@@ -58,6 +58,7 @@ DataTable::DataTable(TableParser &parser){
 	//
 	_affectedColumnIndex    = COLUMN_IS_MISSING;
 	_carrierColumnIndex     = COLUMN_IS_MISSING;
+	_collapsedColumnIndex   = COLUMN_IS_MISSING;
 	_consultandColumnIndex  = COLUMN_IS_MISSING;
 	_deceasedColumnIndex    = COLUMN_IS_MISSING;
 	_dobColumnIndex         = COLUMN_IS_MISSING;
