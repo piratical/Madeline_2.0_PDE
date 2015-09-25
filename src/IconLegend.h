@@ -54,7 +54,7 @@ public:
 		double xstt = x - DrawingMetrics::getHorizontalInterval() + labelMargin;
 		//_width  = DrawingMetrics::getIconInterval()  + 2*labelMargin;
 		
-		_width = DrawingMetrics::getIconInterval();
+		_width  = DrawingMetrics::getIconInterval();
 		_height = (sections) * lineHeight + (sections+1)*labelMargin;
 		// Wrap icon labels in a group:
 		psvg->startGroup(os,"legend");
@@ -62,55 +62,80 @@ public:
 			//
 			// Get the data column of the ith icon column:
 			//
-			DataColumn * pDC = _ppedigreeTable->getColumn( _ppedigreeTable->getIconColumnIndex(i) );
+			unsigned k       = _ppedigreeTable->getIconColumnIndex(i);
+			DataColumn * pDC = _ppedigreeTable->getColumn(k);
 			//
 			// Get the UniqueList for this column:
 			//
 			const UniqueList * pUL = pDC->getUniqueList();
 			//std::cout << " pUL has missing " << pUL->getCountMissing() << std::endl;
 			//
-			// What is the level and label in the UniqueList corresponding to the data value
-			// for this individual?
+			// Get the name of this icon column:
 			//
-			std::string label = _ppedigreeTable->getColumn( _ppedigreeTable->getIconColumnIndex(i) )->getName();
+			std::string label = pDC->getName();
 			psvg->drawText(os,x,ystt, plm->fitStringToLabelWidth( label ) );
 			ystt += labelMargin;
+			//
+			// Get the labels for each level in the unique list:
+			//
 			std::vector<std::string> labels = pUL->getLabels();
 			unsigned levelsCount = labels.size();
 			//
+			// Check if there exists a missing level. If yes,
+			// we add that to the legend too:
+			//
+			if(pUL->getCountMissing()){
+				levelsCount++;
+				//
+				// Push back the standard missing value label, ".":
+				//
+				labels.push_back(".");
+			}
+			///////////////////////////////////////////////////////////
+			//
 			// Get the color series corresponding to this icon column:
 			//
+			///////////////////////////////////////////////////////////
 			ColorSeries *pCS;
 			if(sections == 1){
-				if(DrawingMetrics::getColor()) pCS = _ppedigreeTable->getColorSeriesFromStack(i);
-				else                       pCS =   _ppedigreeTable->getBlackAndWhiteSeriesFromStack(i);
-			}else if(DrawingMetrics::getBlackAndWhite()) pCS=_ppedigreeTable->getBlackAndWhiteSeriesFromStack(i);
-			else                                     pCS = _ppedigreeTable->getColorSeriesFromStack(i);
+				if(DrawingMetrics::getColor()){
+					pCS = _ppedigreeTable->getColorSeriesFromStack(i);
+				}else{
+					pCS = _ppedigreeTable->getBlackAndWhiteSeriesFromStack(i);
+				}
+			}else if(DrawingMetrics::getBlackAndWhite()){
+				pCS=_ppedigreeTable->getBlackAndWhiteSeriesFromStack(i);
+			}else{
+				pCS = _ppedigreeTable->getColorSeriesFromStack(i);
+			}
 			//
 			// Assume reversed for now:
 			//
 			bool reversed=true;
 			std::string textClass;
-			// Check if there exists a missing level
-			if(pUL->getCountMissing()){
-				levelsCount++;
-				// push the missing label:
-				labels.push_back(".");
-			}
 			double ytemp;
+			//
+			// Iterate over the categorical levels
+			//
 			for(unsigned j=0;j<levelsCount;j++){
-				if(pCS->reversedSeriesUseBlackInkAtLevel(j)) textClass = "blackInkLetter_1";
-				else textClass="whiteInkLetter_1";
+				if(pCS->reversedSeriesUseBlackInkAtLevel(j)){
+					textClass = "blackInkLetter_1";
+				}else{
+					textClass = "whiteInkLetter_1";
+				}
 				std::string style = "fill:" + (reversed?pCS->reversedSeriesGetColorAtLevel(j):pCS->getColorAtLevel(j)) + ";";
 				psvg->drawRectangle(os,xstt,ystt,_width-2*labelMargin,lineHeight,"","",style);
 				ytemp = ystt+lineHeight/2;
-				if(j < levelsCount - 1) ytemp +=  DrawingMetrics::getYMaximum()/2;
-				else if(!pUL->getCountMissing()) ytemp += DrawingMetrics::getYMaximum()/2;
+				if(j < levelsCount - 1){
+					ytemp += DrawingMetrics::getYMaximum()/2;
+				}else if(!pUL->getCountMissing()){
+					ytemp += DrawingMetrics::getYMaximum()/2;
+				}
 				psvg->drawText(os,x,ytemp, plm->fitStringToLabelWidth( labels[j] ),textClass );
-				ystt += lineHeight;
+				ystt    += lineHeight;
 				_height += lineHeight;
 			}
-			ystt+=lineHeight;
+			ystt += lineHeight;
 		}
 		psvg->endGroup(os);
 	}

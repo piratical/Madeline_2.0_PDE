@@ -61,12 +61,16 @@ double *ColorSeries::_saturations[]={
 };
 
 //
-// pushBack:
+// When there is no color series, use _missingColor():
+//
+DrawingColor ColorSeries::_missingColor;
+
+//
+// pushBack: Add a color specified in HTML/CSS hex syntax, i.e., "#ffe" or "#1239EF"
 //
 void ColorSeries::pushBack(const std::string &color){
 	if(color[0]=='#'){
 		_colorSeries.push_back( DrawingColor(color,color) );
-		_levels++;
 	}
 }
 
@@ -74,8 +78,6 @@ void ColorSeries::pushBack(const std::string &color){
 // Constructor taking levels and colors:
 //
 ColorSeries::ColorSeries(unsigned levels,const DrawingColor &endColor,const DrawingColor &startColor){
-	
-	_levels   = levels;
 	
 	_endColor   = endColor;
 	_startColor = startColor;
@@ -131,7 +133,7 @@ ColorSeries::ColorSeries(unsigned levels,const DrawingColor &endColor,const Draw
 	
 	double h,s,v,fraction;
 	
-	for(unsigned i=0;i<_levels;i++){
+	for(unsigned i=0;i<levels;i++){
 		
 		if( startColorIsWhite ){
 			//
@@ -143,13 +145,13 @@ ColorSeries::ColorSeries(unsigned levels,const DrawingColor &endColor,const Draw
 			// saturations table because it looks a
 			// little better to the human eye this way:
 			//
-			if( _levels<=5){
+			if(levels<=5){
 				
 				h = startH;
-				s = startS + deltaS * _saturations[_levels][i];
-				v = startV + deltaV * _saturations[_levels][i];
+				s = startS + deltaS * _saturations[levels][i];
+				v = startV + deltaV * _saturations[levels][i];
 			}else{
-				fraction = (double)i/(double)(_levels-1);
+				fraction = (double)i/(double)(levels-1);
 				h = startH; 
 				s = startS + deltaS * fraction;
 				v = startV + deltaV * fraction;
@@ -161,7 +163,7 @@ ColorSeries::ColorSeries(unsigned levels,const DrawingColor &endColor,const Draw
 			// For bichromatic series, always use linear spacing
 			// even for series with few levels:
 			//
-			fraction = (double)i/(double)(_levels-1);
+			fraction = (double)i/(double)(levels-1);
 			h = startH + deltaH * fraction;
 			s = startS + deltaS * fraction;
 			v = startV + deltaV * fraction;
@@ -205,8 +207,6 @@ ColorSeries::ColorSeries(
 	if(cE[0]=='#') _colorSeries.push_back( DrawingColor("cE",cE) );
 	if(cF[0]=='#') _colorSeries.push_back( DrawingColor("cF",cF) );
 	
-	_levels = _colorSeries.size();
-	
 }
 
 //
@@ -214,11 +214,11 @@ ColorSeries::ColorSeries(
 //
 DrawingColor ColorSeries::get(unsigned level) const{
 	
-	if(level > _levels-1){
-		// return the default color (which is white):
-		return DrawingColor();
+	if( _colorSeries.size() && level < _colorSeries.size() ){
+		return _colorSeries[level];
+	}else{
+		return _missingColor;
 	}
-	return _colorSeries[level];
 	
 }
 
@@ -227,11 +227,11 @@ DrawingColor ColorSeries::get(unsigned level) const{
 //
 std::string ColorSeries::getColorAtLevel(unsigned level) const{
 	
-	if(level > _levels-1){
-		// return the default color (which is white):
-		return DrawingColor().get();
+	if( _colorSeries.size() && level < _colorSeries.size() ){
+		return _colorSeries[level].get();
+	}else{
+		return _missingColor.get();
 	}
-	return _colorSeries[level].get();
 	
 }
 
@@ -240,12 +240,11 @@ std::string ColorSeries::getColorAtLevel(unsigned level) const{
 //
 bool ColorSeries::useBlackInkAtLevel(unsigned level) const{
 	
-	if(level > _levels-1){
-		// return the default color (which is white),
-		// so this should return black ink:
-		return DrawingColor().useBlackInk();
+	if( _colorSeries.size() && level < _colorSeries.size() ){
+		return _colorSeries[level].useBlackInk();
+	}else{
+		return _missingColor.useBlackInk();
 	}
-	return _colorSeries[level].useBlackInk();
 	
 }
 
@@ -253,12 +252,13 @@ bool ColorSeries::useBlackInkAtLevel(unsigned level) const{
 // reversedSeriesGetColorAtLevel():
 //
 std::string ColorSeries::reversedSeriesGetColorAtLevel(unsigned level) const{
-	if(level > _levels-1){
-		// return the default color (which is white):
-		return DrawingColor().get();
+	
+	if( _colorSeries.size() && level < _colorSeries.size() ){
+		unsigned reversedLevel = _colorSeries.size() - 1 - level;
+		return _colorSeries[reversedLevel].get();
+	}else{
+		return _missingColor.get();
 	}
-	unsigned reversedLevel = _levels - 1 - level; 
-	return _colorSeries[reversedLevel].get();
 	
 }
 
@@ -267,13 +267,12 @@ std::string ColorSeries::reversedSeriesGetColorAtLevel(unsigned level) const{
 //
 bool ColorSeries::reversedSeriesUseBlackInkAtLevel(unsigned level) const{
 	
-	if(level > _levels-1){
-		// return the default color (which is white),
-		// so this should return black ink:
-		return DrawingColor().useBlackInk();
+	if( _colorSeries.size() && level < _colorSeries.size() ){
+		unsigned reversedLevel = _colorSeries.size() - 1 - level;
+		return _colorSeries[reversedLevel].useBlackInk();
+	}else{
+		return _missingColor.useBlackInk();
 	}
-	unsigned reversedLevel = _levels - 1 - level; 
-	return _colorSeries[reversedLevel].useBlackInk();
 	
 }
 

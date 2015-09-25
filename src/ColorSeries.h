@@ -40,12 +40,13 @@ private:
 	static double _fourSaturations[4];
 	static double _fiveSaturations[5];
 	static double *_saturations[6];
+	static        DrawingColor _missingColor;
 	
-	unsigned _levels;
-	DrawingColor _endColor;
-	DrawingColor _startColor;
+	DrawingColor  _endColor;
+	DrawingColor  _startColor;
 	
 	std::vector<DrawingColor> _colorSeries;
+	
 	
 public:
 	
@@ -68,8 +69,8 @@ public:
 	std::string reversedSeriesGetColorAtLevel(unsigned level) const;
 	bool useBlackInkAtLevel(unsigned level) const;
 	bool reversedSeriesUseBlackInkAtLevel(unsigned level) const;
-	unsigned levels(void) const{ return _levels; };
-	void clear(void) { _colorSeries.clear(); _levels=0; };
+	unsigned levels(void) const{ return _colorSeries.size(); };
+	void clear(void) { _colorSeries.clear(); };
 };
 
 #endif
