@@ -1424,12 +1424,6 @@ void DrawingCanvas::iconPie( double x, double y, Individual *pIndividual ){
 		const UniqueList * pUL = pDC->getUniqueList();
 		
 		//
-		// Only process if there are some non-missing levels
-		// present:
-		//
-		if(!pUL->getLevels()) continue;
-		
-		//
 		// What is the level and label in the UniqueList corresponding to the data value
 		// for this individual?
 		//
