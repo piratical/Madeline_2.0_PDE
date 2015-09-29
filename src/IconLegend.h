@@ -97,16 +97,20 @@ public:
 			//
 			///////////////////////////////////////////////////////////
 			ColorSeries *pCS;
-			if(sections == 1){
-				if(DrawingMetrics::getColor()){
-					pCS = _ppedigreeTable->getColorSeriesFromStack(i);
-				}else{
-					pCS = _ppedigreeTable->getBlackAndWhiteSeriesFromStack(i);
-				}
-			}else if(DrawingMetrics::getBlackAndWhite()){
-				pCS=_ppedigreeTable->getBlackAndWhiteSeriesFromStack(i);
+			if(DrawingMetrics::customColorSeries.size() && i<DrawingMetrics::customColorSeries.size() ){
+				pCS = & DrawingMetrics::customColorSeries[i];
 			}else{
-				pCS = _ppedigreeTable->getColorSeriesFromStack(i);
+				if(sections == 1){
+					if(DrawingMetrics::getColor()){
+						pCS = _ppedigreeTable->getColorSeriesFromStack(i);
+					}else{
+						pCS = _ppedigreeTable->getBlackAndWhiteSeriesFromStack(i);
+					}
+				}else if(DrawingMetrics::getBlackAndWhite()){
+					pCS=_ppedigreeTable->getBlackAndWhiteSeriesFromStack(i);
+				}else{
+					pCS = _ppedigreeTable->getColorSeriesFromStack(i);
+				}
 			}
 			//
 			// Assume reversed for now:

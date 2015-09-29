@@ -1455,14 +1455,20 @@ void DrawingCanvas::iconPie( double x, double y, Individual *pIndividual ){
 		//                UNLESS there is a black-and-white override.
 		//
 		ColorSeries *pCS;
-		if(sections==1){
-			if(DrawingMetrics::getColor()) pCS = pDT->getColorSeriesFromStack(i);
-			else                           pCS = pDT->getBlackAndWhiteSeriesFromStack(i);
-		}else{
-			if(DrawingMetrics::getBlackAndWhite()) pCS = pDT->getBlackAndWhiteSeriesFromStack(i);
-			else                                   pCS = pDT->getColorSeriesFromStack(i);
-		}
 		//
+		// If the user specified custom colors, use those:
+		//
+		if(DrawingMetrics::customColorSeries.size() && i<DrawingMetrics::customColorSeries.size()){
+			pCS = & DrawingMetrics::customColorSeries.at(i);
+		}else{
+			if(sections==1){
+				if(DrawingMetrics::getColor()) pCS = pDT->getColorSeriesFromStack(i);
+				else                           pCS = pDT->getBlackAndWhiteSeriesFromStack(i);
+			}else{
+				if(DrawingMetrics::getBlackAndWhite()) pCS = pDT->getBlackAndWhiteSeriesFromStack(i);
+				else                                   pCS = pDT->getColorSeriesFromStack(i);
+			}
+		}//
 		// Assume reversed for now:
 		//
 		bool reversed=true;

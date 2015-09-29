@@ -135,6 +135,15 @@ int main( int argc, char *argv[] ){
 				// Finally store each custom color series in the static DrawingMetrics vector:
 				DrawingMetrics::customColorSeries.push_back(tempCS);
 			}
+			// verbose reporting:
+			std::cout << "Custom color series: " << DrawingMetrics::customColorSeries.size() << std::endl;
+			for(unsigned i=0;i<DrawingMetrics::customColorSeries.size();i++){
+				unsigned jmax = DrawingMetrics::customColorSeries.at(i).levels();
+				std::cout << "Custom series " << (i+1) << " has " << jmax << " levels:" << std::endl;
+				for(unsigned j=0;j<jmax;j++){
+					std::cout << "   " << (i+1) << "." << (j+1) << ". " << DrawingMetrics::customColorSeries[i].getColorAtLevel(j) << std::endl;
+				}
+			}
 		}
 		//
 		// Handle specification of a file name prefix:
