@@ -122,17 +122,24 @@ int main( int argc, char *argv[] ){
 			std::istringstream css(colorString);
 			std::string t1,t2;
 			ColorSeries tempCS; // temporary color series storage
-			
+			std::vector<std::string> tempV; // temporary vector for push back
 			// Break each set at semicolon delimiters:
 			for(unsigned i=0; std::getline(css,t1,';');i++){
+				tempV.clear();
 				tempCS.clear();
 				std::istringstream csst(t1);
 				// For each set of colors, break at comma delimiters
-				// and push colors onto the colorSeries object
+				// and push colors onto a temp vector:
 				while(std::getline(csst,t2,',')){
-					tempCS.pushBack(t2);
+					tempV.push_back(t2);
 				}
-				// Finally store each custom color series in the static DrawingMetrics vector:
+				// Push the strings in reverse order onto the 
+				// tempCS ColorSeries:
+				std::vector<std::string>::reverse_iterator r = tempV.rbegin();
+				for(; r!= tempV.rend(); ++r){
+					tempCS.pushBack(*r);
+				}
+				// Finally, store each custom color series in the static DrawingMetrics vector:
 				DrawingMetrics::customColorSeries.push_back(tempCS);
 			}
 			// verbose reporting:
