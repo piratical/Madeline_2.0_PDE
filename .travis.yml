@@ -1,0 +1,18 @@
+language: cpp
+
+compiler:
+    - gcc
+
+script: bin/test-madeline
+
+deploy:
+  provider: s3
+  bucket: usf-hii-madeline-ci
+  local-dir: tmp/output
+  on:
+    repo: USF-HII/Madeline_2.0_PDE
+    branch: master
+  skip_cleanup: true
+  access_key_id: AKIAJHOVONFA3JRSRQ3Q
+  secret_access_key:
+    secure: ocnYpRqwU33055H1laOgiXrIO5lvI+3K8vCgnlAda4AqmVJssUMVwOSx8mrX2j7mXCNL7tLX+JIGekRU4q8B78J1F59L/brzO+iXcGo+D9Sqv4sKbb28IyqmAH3rJkFDUSYeu5Hx4A+hVEs6u6lk1aO487uiaN9KmiwZQzKdArRwCdtvAHeGVDb1+0d2d9bCbGNEQg5MG/LDPMkx0WuPCQYxe1iIaRqaQH2Pp5EQZh+P6GV4AmudTnyPpWLWibLx7tBSHI1hfYLYNw3YgCLPu1ivtypbfqAXTepk3qx0dCV7koIhyu/BnDO0VGCg/FT0RvEWPDxhBR+ZDEefAeI92pfZGoGZYNqgZnvPBPJ5Bp9whpN97Kt8G9ZGvu+5n39zZuZv+0qiMbIpEogzbRht5ul9lO5a9ywKhBnd7gOmkFlSshLJaLW8mWaHLGXsXljMhWJ/LnLAVQf5SkYvW2jD/PMJC/WkLfEsOX08SdBFtnht1BEW8yjTovxumonZhhZwxMfBKNtcaYhLFVCh7/RbLP/zcHXii7YnQYFjkNKtkflnoKHeQOddZsdno6TudG5ytueh1yCHJlkBFT382LQxdWYYj+uQtWNlyy/BSgllBJ1UKA+rB7DyAHap1EPiDDlMwdox0UdaZnJFLqQjERsyXxG2S3JCjEL9oxICNnR3YOs=
