@@ -1,0 +1,37 @@
+#!/usr/bin/env bash
+
+error() {
+  echo "$@" 1>&2
+}
+
+error_and_exit() {
+  error "$@"; exit 1;
+}
+
+set -x
+
+[[ -d tmp/output ]] || mkdir -p tmp/output
+
+cmake . && make
+
+for ext in data xml; do
+  if [[ $( ls testdata/input/*.${ext} 2>/dev/null | wc -l ) -ne 0 ]]; then
+    for f in testdata/input/*.${ext}; do
+      src/madeline2  --outputprefix tmp/output/$( basename $f .${ext} ) $f || exit 1
+      if !  cmp tmp/output/$( basename $f .${ext} ).xml testdata/output/$( basename $f .${ext} ).xml; then
+        error_and_exit "tmp/output/$( basename $f .${ext} ).xml does not match testdata/output/$( basename $f .${ext} ).xml"
+      fi
+      echo; echo
+    done
+  fi
+done
+
+set +x
+
+echo "<html><body><ul>" > tmp/output/index.html
+
+for f in $( ls tmp/output | grep -v 'index\.html' ); do
+  echo "<li><a href='$f'>$f</a></li>" >> tmp/output/index.html
+done
+
+echo "</ul></body></html>" >> tmp/output/index.html
