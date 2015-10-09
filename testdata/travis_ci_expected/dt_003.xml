@@ -1,0 +1,384 @@
+<?xml version="1.0" standalone="no"?>
+ <svg version="1.1"  id="svgDC" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"  width="1459.08" height="607.674"  onload="init()" >
+ <defs>
+  <style type="text/css"><![CDATA[
+
+line{
+	stroke:#000;
+	stroke-width:0.5mm;
+	stroke-linejoin:miter;
+	stroke-linecap:square;
+}
+
+rect{
+	stroke:#000;
+	stroke-width:0.5mm;
+	stroke-linejoin:miter;
+	stroke-linecap:square;
+}
+
+ellipse{
+	stroke: #000;
+    fill: #fff;
+	stroke-width:0.25mm;
+}
+
+text{
+	font-family:"DejaVu Sans",sans-serif;
+	font-size:12px;
+}
+
+.smallText{
+	font-family:"DejaVu Sans",sans-serif;
+	font-size:9px;
+	fill:#444;
+}
+
+.layer text{
+	fill:#930;
+}
+
+.layer line{
+	stroke:#000;
+}
+
+.birthOrder,.unknownTwins{
+	font-size: 8px;
+}
+
+.header{
+	font-size:18px;
+	font-weight:bold;
+}
+
+.keyBox{
+	fill:#e5e5e5;
+	stroke:#000;
+	stroke-width:0.5mm;
+	stroke-linejoin:miter;
+	stroke-linecap:square;
+}
+
+.mating:hover{
+	stroke-width:1mm;
+	stroke:#d56300;
+}
+
+.selectedIndividual{
+	stroke-width:1mm;
+	stroke-linecap:square;
+	stroke-linejoin:miter;
+	stroke:#d00;
+    fill:none;
+}
+
+.selectedIndividual:hover{
+	stroke:#d00;
+	fill:#ffbbbb;
+	fill-opacity:0.70;
+}
+
+.solid{
+	stroke-width:0.5mm;
+	stroke-linecap:square;
+	stroke-linejoin:miter;
+	stroke:#000;
+	fill:none;
+}
+
+.dashed{
+	stroke-width:0.5mm;
+	stroke-linecap:square;
+	stroke-linejoin:miter;
+	stroke:#98afc7;
+	stroke-dasharray:2mm,1mm;
+	stroke-dashoffset:1.0mm;
+	fill:none;
+}
+
+.solid:hover{
+	fill:#ffb787;
+	fill-opacity:0.70;
+	stroke:#d56300;
+	stroke-width:1mm;
+}
+
+.dashed:hover{
+	fill:#ffb787;
+	fill-opacity:0.70;
+	stroke:#d56300;
+	stroke-width:1mm;
+}
+
+.filled{
+	stroke-width:0.5mm;
+	stroke-linecap:square;
+	stroke-linejoin:miter;
+	stroke:#000;
+	fill:#000;
+}
+
+.specialIcons{
+	stroke-width:0.25mm;
+	stroke-linecap:round;
+	stroke-linejoin:miter;
+	stroke:#000;
+	fill:#fff;
+}
+
+.specialLines{
+	stroke-linecap:square;
+	stroke-linejoin:miter;
+	stroke:#000;
+	stroke-width:0.5mm;
+	fill:none;
+}
+
+.thinLine{
+	fill:none;
+	stroke: #000;
+	stroke-width:0.25mm;
+}
+
+.curvedConnector{
+	stroke-linecap:square;
+	stroke-linejoin:miter;
+	stroke:#98afc7;
+	stroke-width:0.5mm;
+	stroke-dasharray:2mm,1mm;
+	stroke-dashoffset:1.0mm;
+	fill:none;
+}
+
+.curvedConnector:hover{
+	stroke:#d56300;
+}
+
+.whiteInkLetter_1{
+	font-size: 12px;
+	fill: #fff;
+}
+
+.whiteInkLetter_2{
+	font-size: 10px;
+	fill: #fff;
+}
+
+.whiteInkLetter_3{
+	font-size: 8px;
+	fill: #fff;
+}
+
+.whiteInkLetter{
+	font-size: 8px;
+	fill: #fff;
+}
+
+.blackInkLetter_1{
+	font-size: 12px;
+}
+
+.blackInkLetter_2{
+	font-size: 10px;
+}
+
+.blackInkLetter_3{
+	font-size: 8px;
+}
+
+.blackInkLetter{
+	font-size: 8px;
+	fill: #000;
+}
+
+.blackInk{
+	fill: #000;
+}
+
+.whiteInk{
+	fill: #fff;
+}
+
+]]></style>
+ <script type="text/javascript" xlink:href="javascript/madeline.js"></script>
+ <marker id="endArrow" viewBox="0 0 10 10" refX="1" refY="5" markerUnits="strokeWidth" orient="auto" markerWidth="5" markerHeight="4">  <polyline points="0,0 10,5 0,10 1,5" fill="#000" /> </marker>
+ </defs>
+ <g class="pedigree" transform="translate(-41.58)">
+
+ <g id="bottomLayer" class="layer" >
+<path class="curvedConnector" d="M181.44 163.597 C260.82 276.997 419.58 276.997 498.96 163.597 " />
+
+ </g>
+ <g id="layer0" class="layer" >
+  <line x1="1213.38" y1="163.597" x2="1349.46" y2="163.597" />
+  <line x1="805.14" y1="390.791" x2="1047.06" y2="390.791" />
+  <line x1="1077.3" y1="277.194" x2="1047.06" y2="277.194" />
+  <line x1="1047.06" y1="390.791" x2="1047.06" y2="277.194" />
+  <text x="498.96" y="187.846" text-anchor="middle" >A</text>
+  <text x="181.44" y="187.846" text-anchor="middle" >A</text>
+ </g>
+
+  <g class="drawing">
+  <text x="512" y="30" text-anchor="middle"  class="header" >dt_003</text>
+  <rect x="79.38" y="38.66" width="22.68" height="22.68" id="7" class="solid">
+	<title>7</title>
+</rect>
+  <text x="90.72" y="92.5845" text-anchor="middle" >7</text>
+  <line x1="102.06" y1="50" x2="170.1" y2="50" />
+<circle cx="181.44" cy="50" r="11.34" id="8" class="solid">
+	<title>8</title>
+</circle>
+  <text x="181.44" y="92.5845" text-anchor="middle" >8</text>
+  <line class="mating" id="8:7" x1="136.08" y1="50" x2="136.08" y2="123.907" />
+  <line class="solid" x1="90.72" y1="123.907" x2="90.72" y2="152.257" />
+<circle cx="90.72" cy="163.597" r="11.34" id="9" class="solid">
+	<title>9</title>
+</circle>
+  <text x="90.72" y="206.181" text-anchor="middle" >9</text>
+  <line class="solid" x1="181.44" y1="123.907" x2="181.44" y2="152.257" />
+  <rect x="170.1" y="152.257" width="22.68" height="22.68" id="6" class="solid">
+	<title>6</title>
+</rect>
+  <text x="181.44" y="206.181" text-anchor="middle" >6</text>
+  <line x1="90.72" y1="123.907" x2="181.44" y2="123.907" />
+<circle cx="317.52" cy="50" r="11.34" id="1" class="solid">
+	<title>1</title>
+</circle>
+  <text x="317.52" y="92.5845" text-anchor="middle" >1</text>
+  <line x1="328.86" y1="50" x2="396.9" y2="50" />
+  <rect x="396.9" y="38.66" width="22.68" height="22.68" id="2" class="solid">
+	<title>2</title>
+</rect>
+  <text x="408.24" y="92.5845" text-anchor="middle" >2</text>
+  <line class="mating" id="1:2" x1="362.88" y1="50" x2="362.88" y2="123.907" />
+  <line class="solid" x1="272.16" y1="123.907" x2="272.16" y2="152.257" />
+<circle cx="272.16" cy="163.597" r="11.34" id="3" class="solid">
+	<title>3</title>
+</circle>
+  <text x="272.16" y="206.181" text-anchor="middle" >3</text>
+  <line class="solid" x1="362.88" y1="123.907" x2="362.88" y2="152.257" />
+<circle cx="362.88" cy="163.597" r="11.34" id="4" class="solid">
+	<title>4</title>
+</circle>
+  <text x="362.88" y="206.181" text-anchor="middle" >4</text>
+  <line class="solid" x1="589.68" y1="123.907" x2="589.68" y2="152.257" />
+<circle cx="589.68" cy="163.597" r="11.34" id="5" class="solid">
+	<title>5</title>
+</circle>
+  <text x="589.68" y="206.181" text-anchor="middle" >5</text>
+  <line x1="510.3" y1="163.597" x2="578.34" y2="163.597" />
+  <line class="mating" id="5:6" x1="544.32" y1="163.597" x2="544.32" y2="237.504" />
+  <line class="solid" x1="453.6" y1="237.504" x2="453.6" y2="265.854" />
+  <rect x="442.26" y="265.854" width="22.68" height="22.68" id="10" class="solid">
+	<title>10</title>
+</rect>
+  <text x="453.6" y="319.778" text-anchor="middle" >10</text>
+  <line class="solid" x1="544.32" y1="237.504" x2="544.32" y2="265.854" />
+<circle cx="544.32" cy="277.194" r="11.34" id="11" class="solid">
+	<title>11</title>
+</circle>
+  <text x="544.32" y="319.778" text-anchor="middle" >11</text>
+  <line class="solid" x1="635.04" y1="237.504" x2="635.04" y2="265.854" />
+  <rect x="623.7" y="265.854" width="22.68" height="22.68" id="12" class="solid">
+	<title>12</title>
+</rect>
+  <text x="635.04" y="319.778" text-anchor="middle" >12</text>
+  <line x1="646.38" y1="277.194" x2="714.42" y2="277.194" />
+<circle cx="725.76" cy="277.194" r="11.34" id="13" class="solid">
+	<title>13</title>
+</circle>
+  <text x="725.76" y="319.778" text-anchor="middle" >13</text>
+  <line class="mating" id="13:12" x1="680.4" y1="277.194" x2="680.4" y2="351.101" />
+  <line class="solid" x1="635.04" y1="351.101" x2="635.04" y2="379.451" />
+<circle cx="635.04" cy="390.791" r="11.34" id="14" class="solid">
+	<title>14</title>
+</circle>
+  <text x="635.04" y="433.375" text-anchor="middle" >14</text>
+  <line class="solid" x1="725.76" y1="351.101" x2="725.76" y2="379.451" />
+<circle cx="725.76" cy="390.791" r="11.34" id="15" class="solid">
+	<title>15</title>
+</circle>
+  <text x="725.76" y="433.375" text-anchor="middle" >15</text>
+  <line x1="737.1" y1="390.791" x2="805.14" y2="390.791" />
+  <line class="mating" id="15:23" x1="771.12" y1="390.791" x2="771.12" y2="464.698" />
+  <line class="solid" x1="771.12" y1="464.698" x2="771.12" y2="493.048" />
+<circle cx="771.12" cy="504.388" r="11.34" id="17" class="solid">
+	<title>17</title>
+</circle>
+  <text x="771.12" y="546.972" text-anchor="middle" >17</text>
+  <line x1="635.04" y1="351.101" x2="725.76" y2="351.101" />
+  <line x1="453.6" y1="237.504" x2="635.04" y2="237.504" />
+  <line x1="272.16" y1="123.907" x2="589.68" y2="123.907" />
+  <rect x="941.22" y="38.66" width="22.68" height="22.68" id="27" class="solid">
+	<title>27</title>
+</rect>
+  <text x="952.56" y="92.5845" text-anchor="middle" >27</text>
+  <line x1="963.9" y1="50" x2="1031.94" y2="50" />
+<circle cx="1043.28" cy="50" r="11.34" id="28" class="solid">
+	<title>28</title>
+</circle>
+  <text x="1043.28" y="92.5845" text-anchor="middle" >28</text>
+  <line class="mating" id="28:27" x1="997.92" y1="50" x2="997.92" y2="123.907" />
+  <line class="solid" x1="907.2" y1="123.907" x2="907.2" y2="152.257" />
+<circle cx="907.2" cy="163.597" r="11.34" id="25" class="solid">
+	<title>25</title>
+</circle>
+  <text x="907.2" y="206.181" text-anchor="middle" >25</text>
+  <line class="solid" x1="997.92" y1="123.907" x2="997.92" y2="152.257" />
+  <rect x="986.58" y="152.257" width="22.68" height="22.68" id="26" class="solid">
+	<title>26</title>
+</rect>
+  <text x="997.92" y="206.181" text-anchor="middle" >26</text>
+  <line class="solid" x1="1134" y1="123.907" x2="1134" y2="152.257" />
+<circle cx="1134" cy="163.597" r="11.34" id="22" class="solid">
+	<title>22</title>
+</circle>
+  <text x="1134" y="206.181" text-anchor="middle" >22</text>
+  <line x1="1145.34" y1="163.597" x2="1213.38" y2="163.597" />
+  <line class="mating" id="22:21" x1="1179.36" y1="163.597" x2="1179.36" y2="237.504" />
+  <line class="solid" x1="1088.64" y1="237.504" x2="1088.64" y2="265.854" />
+  <rect x="1077.3" y="265.854" width="22.68" height="22.68" id="23" class="solid">
+	<title>23</title>
+</rect>
+  <text x="1088.64" y="319.778" text-anchor="middle" >23</text>
+  <line class="solid" x1="1179.36" y1="237.504" x2="1179.36" y2="265.854" />
+  <rect x="1168.02" y="265.854" width="22.68" height="22.68" id="16" class="solid">
+	<title>16</title>
+</rect>
+  <text x="1179.36" y="319.778" text-anchor="middle" >16</text>
+  <line class="solid" x1="1270.08" y1="237.504" x2="1270.08" y2="265.854" />
+<circle cx="1270.08" cy="277.194" r="11.34" id="24" class="solid">
+	<title>24</title>
+</circle>
+  <text x="1270.08" y="319.778" text-anchor="middle" >24</text>
+  <line x1="1088.64" y1="237.504" x2="1270.08" y2="237.504" />
+  <line x1="907.2" y1="123.907" x2="1134" y2="123.907" />
+<circle cx="1360.8" cy="50" r="11.34" id="18" class="solid">
+	<title>18</title>
+</circle>
+  <text x="1360.8" y="92.5845" text-anchor="middle" >18</text>
+  <line x1="1372.14" y1="50" x2="1440.18" y2="50" />
+  <rect x="1440.18" y="38.66" width="22.68" height="22.68" id="19" class="solid">
+	<title>19</title>
+</rect>
+  <text x="1451.52" y="92.5845" text-anchor="middle" >19</text>
+  <line class="mating" id="18:19" x1="1406.16" y1="50" x2="1406.16" y2="123.907" />
+  <line class="solid" x1="1360.8" y1="123.907" x2="1360.8" y2="152.257" />
+  <rect x="1349.46" y="152.257" width="22.68" height="22.68" id="21" class="solid">
+	<title>21</title>
+</rect>
+  <text x="1360.8" y="206.181" text-anchor="middle" >21</text>
+  <line class="solid" x1="1451.52" y1="123.907" x2="1451.52" y2="152.257" />
+<circle cx="1451.52" cy="163.597" r="11.34" id="20" class="solid">
+	<title>20</title>
+</circle>
+  <text x="1451.52" y="206.181" text-anchor="middle" >20</text>
+  <line x1="1360.8" y1="123.907" x2="1451.52" y2="123.907" />
+  </g>
+  <rect x="487.62" y="152.257" width="22.68" height="22.68" id="6" class="dashed">
+	<title>6</title>
+</rect>
+
+ </g>
+ </svg>
+
