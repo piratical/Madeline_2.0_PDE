@@ -35,7 +35,11 @@ done
 
 set +x
 
-echo "<html><body><ul>" > tmp/output/index.html
+> tmp/output/index.html
+
+echo "<html><body>" >> tmp/output/index.html
+
+echo "Artifacts Generated: $(date "+%FT%T %Z")<br/><br/><ul>" >> tmp/output/index.html
 
 for f in $( ls tmp/output | grep -v 'index\.html' ); do
   echo "<li><a href='$f'>$f</a></li>" >> tmp/output/index.html
