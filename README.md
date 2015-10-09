@@ -1,6 +1,6 @@
 # Madeline_2.0_PDE
 
-[![Build Status](https://travis-ci.org/piratical/Madeline_2.0_PDE)](https://travis-ci.org/piratical/Madeline_2.0_PDE)
+[![Build Status](https://travis-ci.org/piratical/Madeline_2.0_PDE.svg)](https://travis-ci.org/piratical/Madeline_2.0_PDE)
 
 [Build Artifacts](http://usf-hii-madeline-ci.s3-website-us-west-2.amazonaws.com/)
 
