@@ -1429,11 +1429,23 @@ void DrawingCanvas::iconPie( double x, double y, Individual *pIndividual ){
 		//
 		unsigned level;
 		std::string label;
+		std::string customColorMapColor;
+		
 		pUL->getOrdinalAndLabelForKey( pDC->getDataAtIndex( pIndividual->getRowIndex() ),label,level );
 		
 		// DEBUG:
 		//std::cout << "LEVEL=" << level << " LABEL=" << label << std::endl;
 		//
+		
+		//
+		// Check if there is a custom color mapping:
+		//
+		if( i<DrawingMetrics::customColorMap.size() && DrawingMetrics::customColorMap[i].find(label)!=DrawingMetrics::customColorMap[i].end()){
+			customColorMapColor=DrawingMetrics::customColorMap[i][label];
+			std::cout << "*** Section " << i << " custom color for " << label << " is " << customColorMapColor << std::endl;
+		}else{
+			customColorMapColor="";
+		}
 		// UniqueList ordinals are 1-offset, so we should only get zero back
 		// if the key was not found, which should never happen:
 		//
