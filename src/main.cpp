@@ -123,6 +123,7 @@ int main( int argc, char *argv[] ){
 			std::string t1,t2;
 			ColorSeries tempCS; // temporary color series storage
 			std::vector<std::string> tempV; // temporary vector for push back
+			std::map<std::string,std::string> tempM; // temporary map for push back
 			// Break each set at semicolon delimiters:
 			for(unsigned i=0; std::getline(css,t1,';');i++){
 				tempV.clear();
@@ -131,7 +132,25 @@ int main( int argc, char *argv[] ){
 				// For each set of colors, break at comma delimiters
 				// and push colors onto a temp vector:
 				while(std::getline(csst,t2,',')){
-					tempV.push_back(t2);
+					if(t2.find("=")!=std::string::npos){
+						// String contains a mapping:
+						std::istringstream cssu(t2);
+						std::string t3,t4;
+						std::getline(cssu,t3,'=');
+						std::getline(cssu,t4);
+						// Push to map:
+						tempM[t3]=t4;
+					}else{
+						tempV.push_back(t2);
+					}
+				}
+				if(tempM.size()){
+					DrawingMetrics::customColorMap.push_back(tempM);
+					std::cout << "MAP " << (i+1) << ":" << std::endl;
+					for (std::map<std::string,std::string>::iterator it=DrawingMetrics::customColorMap[i].begin(); it!=DrawingMetrics::customColorMap[i].end(); ++it){
+						std::cout << "   " << it->first << " => " << it->second << std::endl;
+					}
+					tempM.clear();
 				}
 				// Push the strings in reverse order onto the 
 				// tempCS ColorSeries:

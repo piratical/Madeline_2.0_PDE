@@ -70,6 +70,7 @@ std::set<DrawingMedia,DrawingMedia::compare> DrawingMetrics::media;
 std::vector<DrawingColor> DrawingMetrics::monochromat;
 std::vector<DrawingColor> DrawingMetrics::bichromat;
 std::vector<ColorSeries>  DrawingMetrics::customColorSeries; // 2015.09.18.ET ADDENDUM
+std::vector< std::map<std::string,std::string> > DrawingMetrics::customColorMap; // 2015.10.12.ET ADDENDUM
 DrawingMetricsLoader DrawingMetricsLoader::drawingMetricsLoader;
 
 std::string DrawingMetrics::_drawingFileNamePrefix;
