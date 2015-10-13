@@ -175,7 +175,7 @@ public:
 	// 2015.09.18.ET ADDENDUM: custom color series:
 	static std::vector<ColorSeries> customColorSeries;
 	// 2015.10.12.ET ADDENDUM: Adding a map for more flexibility;
-	static std::vector< std::map<std::string,std::string> > customColorMap;
+	static std::vector< std::map<std::string,DrawingColor> > customColorMap;
 	
 public:
 	

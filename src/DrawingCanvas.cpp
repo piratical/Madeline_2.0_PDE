@@ -1429,7 +1429,6 @@ void DrawingCanvas::iconPie( double x, double y, Individual *pIndividual ){
 		//
 		unsigned level;
 		std::string label;
-		std::string customColorMapColor;
 		
 		pUL->getOrdinalAndLabelForKey( pDC->getDataAtIndex( pIndividual->getRowIndex() ),label,level );
 		
@@ -1440,12 +1439,7 @@ void DrawingCanvas::iconPie( double x, double y, Individual *pIndividual ){
 		//
 		// Check if there is a custom color mapping:
 		//
-		if( i<DrawingMetrics::customColorMap.size() && DrawingMetrics::customColorMap[i].find(label)!=DrawingMetrics::customColorMap[i].end()){
-			customColorMapColor=DrawingMetrics::customColorMap[i][label];
-			std::cout << "*** Section " << i << " custom color for " << label << " is " << customColorMapColor << std::endl;
-		}else{
-			customColorMapColor="";
-		}
+		
 		// UniqueList ordinals are 1-offset, so we should only get zero back
 		// if the key was not found, which should never happen:
 		//
@@ -1494,7 +1488,23 @@ void DrawingCanvas::iconPie( double x, double y, Individual *pIndividual ){
 		if(sections == 1)      arcClass += "_1";
 		else if(sections == 2) arcClass += "_2";
 		else if(sections == 3) arcClass += "_3";
-		arc(x,y,radius,startAngle,endAngle,(reversed?pCS->reversedSeriesGetColorAtLevel(level):pCS->getColorAtLevel(level)),label,arcClass,isMale);
+		
+		//
+		// Choose which color to use:
+		//
+		std::string arcColor;
+		if( i<DrawingMetrics::customColorMap.size() && DrawingMetrics::customColorMap[i].find(label)!=DrawingMetrics::customColorMap[i].end()){
+			arcColor = DrawingMetrics::customColorMap[i][label].get();
+			std::cout << "*** Section " << i << " custom color for " << label << " is " << arcColor << std::endl;
+		}else{
+			if(reversed){
+				arcColor = pCS->reversedSeriesGetColorAtLevel(level);
+			}else{
+				arcColor = pCS->getColorAtLevel(level);
+			}
+		}
+		
+		arc(x,y,radius,startAngle,endAngle,arcColor,label,arcClass,isMale);
 		startAngle+=arcAngle;
 		endAngle+=arcAngle;
 		

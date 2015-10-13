@@ -123,7 +123,7 @@ int main( int argc, char *argv[] ){
 			std::string t1,t2;
 			ColorSeries tempCS; // temporary color series storage
 			std::vector<std::string> tempV; // temporary vector for push back
-			std::map<std::string,std::string> tempM; // temporary map for push back
+			std::map<std::string,DrawingColor> tempM; // temporary map for push back
 			// Break each set at semicolon delimiters:
 			for(unsigned i=0; std::getline(css,t1,';');i++){
 				tempV.clear();
@@ -139,7 +139,7 @@ int main( int argc, char *argv[] ){
 						std::getline(cssu,t3,'=');
 						std::getline(cssu,t4);
 						// Push to map:
-						tempM[t3]=t4;
+						tempM[t3]=DrawingColor(t4,t4);
 					}else{
 						tempV.push_back(t2);
 					}
@@ -147,8 +147,8 @@ int main( int argc, char *argv[] ){
 				if(tempM.size()){
 					DrawingMetrics::customColorMap.push_back(tempM);
 					std::cout << "MAP " << (i+1) << ":" << std::endl;
-					for (std::map<std::string,std::string>::iterator it=DrawingMetrics::customColorMap[i].begin(); it!=DrawingMetrics::customColorMap[i].end(); ++it){
-						std::cout << "   " << it->first << " => " << it->second << std::endl;
+					for (std::map<std::string,DrawingColor>::iterator it=DrawingMetrics::customColorMap[i].begin(); it!=DrawingMetrics::customColorMap[i].end(); ++it){
+						std::cout << "   " << it->first << " => " << it->second.get() << std::endl;
 					}
 					tempM.clear();
 				}
