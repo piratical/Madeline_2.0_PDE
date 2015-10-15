@@ -32,6 +32,7 @@
 #include <string.h>
 #include <stdlib.h>
 #include <iostream>
+#include <algorithm>
 
 //
 // Original table:
@@ -251,6 +252,9 @@ void DrawingColor::_setColorFromString(const std::string &color){
 		// Process postScript-style triplet:
 		// e.g., in a form like "1.0 0.56 0.89"
 		//
+		// NOTA BENE: Edge cases like "1.9 0.4 1.7"
+		//            are not explicitly checked
+		//
 		char *col=strdup(color.c_str());
 		char *g=NULL;
 		char *b=NULL;
@@ -271,9 +275,12 @@ void DrawingColor::_setColorFromString(const std::string &color){
 		free(col);
 	}else{
 		//
-		// see if it matches a named color:
+		// Convert string to lower case and then see if it matches
+		// a color in the namedColor map:
 		//
-		const std::map<std::string,std::string>::iterator it=_namedColors.find(color);
+		std::string lcc(color); 
+		std::transform(lcc.begin(), lcc.end(), lcc.begin(), ::tolower );
+		const std::map<std::string,std::string>::iterator it=_namedColors.find(lcc);
 		if( it==_namedColors.end() ){
 			_red=_blue=_green=0;
 			_missing=true;

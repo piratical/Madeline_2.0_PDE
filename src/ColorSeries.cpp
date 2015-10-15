@@ -69,9 +69,7 @@ DrawingColor ColorSeries::_missingColor;
 // pushBack: Add a color specified in HTML/CSS hex syntax, i.e., "#ffe" or "#1239EF"
 //
 void ColorSeries::pushBack(const std::string &color){
-	if(color[0]=='#'){
-		_colorSeries.push_back( DrawingColor(color,color) );
-	}
+	_colorSeries.push_back( DrawingColor(color,color) );
 }
 
 //
