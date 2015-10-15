@@ -51,6 +51,12 @@ int DrawingColor::_cutoff[36]={ 7, 7, 7, 6, 5, 5, 5, 5, 6, 6,
 
 double DrawingColor::_cutoffAdjustment=0.0;
 
+//
+// STATIC _namedColors lookup table:
+// 
+std::map<std::string,std::string> DrawingColor::_namedColors;
+DrawingColorLoader DrawingColorLoader::drawingColorLoader;
+
 /////////////////////////////////
 //
 // DrawingColor class
@@ -240,9 +246,10 @@ void DrawingColor::_setColorFromString(const std::string &color){
 			_missing=true;
 			break;
 		}
-	} else {
+	}else if(color[0]=='0' || color[0]=='1'){
 		//
 		// Process postScript-style triplet:
+		// e.g., in a form like "1.0 0.56 0.89"
 		//
 		char *col=strdup(color.c_str());
 		char *g=NULL;
@@ -262,6 +269,20 @@ void DrawingColor::_setColorFromString(const std::string &color){
 		_blue  = static_cast<unsigned char>( 255.0*atof(b) );
 		_missing=false;
 		free(col);
+	}else{
+		//
+		// see if it matches a named color:
+		//
+		const std::map<std::string,std::string>::iterator it=_namedColors.find(color);
+		if( it==_namedColors.end() ){
+			_red=_blue=_green=0;
+			_missing=true;
+		}else{
+			//
+			// Use _setColorFromString() recursively here::
+			//
+			_setColorFromString(it->second);
+		}
 	}
 }
 
