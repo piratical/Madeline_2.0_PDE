@@ -84,12 +84,14 @@ test_output_with_expected() {
 }
 
 generate_index_page() {
-  local commit_id=${TRAVIS_COMMIT}
+  if [[ -n ${TRAVIS_COMMIT} ]]; then
+    local commit_url=" [<a href='https://github.com/piratical/Madeline_2.0_PDE/commit/${TRAVIS_COMMIT}'>commit</a>]"
+  fi
 
   > $TMP_DIR/index.html
 
   echo "<html><body>" >> $TMP_DIR/index.html
-  echo "Generated: $(date +%FT%T%z) ${commit_id}" >> $TMP_DIR/index.html
+  echo "Generated: $(date +%FT%T%z)${commit_url}" >> $TMP_DIR/index.html
   echo "<ul>" >> $TMP_DIR/index.html
 
   for f in $( find $TMP_DIR -type f | grep -v 'index.html' | grep -v '\.txt$' ); do
