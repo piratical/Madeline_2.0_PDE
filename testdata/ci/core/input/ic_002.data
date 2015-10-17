@@ -1,0 +1,8 @@
+Individualid	Familyid	Gender	Father	Mother	Affected	Deceased	Sampled	Proband	DOB	Affected_T
+M100	ic_002	M	.	.	.	.	.	.	.	.
+M101	ic_002	F	.	.	.	Y	Y	.	.	.
+M102	ic_002	.	M100	M101	A	.	.	.	.	.
+M103	ic_002	M	.	.	A	.	.	.	.	U
+M104	ic_002	F	M103	M102	.	.	Y	Y	1989	A	
+M105	ic_002	F	M103	M102	U	.	.	.	1989	A
+M106	ic_002	F	M103	M102	A	.	.	.	1991	.

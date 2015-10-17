@@ -1,0 +1,15 @@
+Individualid	Familyid	Gender	Father	Mother
+m100	ms_001	m	.	.
+m101	ms_001	f	.	.
+m105	ms_001	f	.	.
+m106	ms_001	f	.	.
+m103	ms_001	m	m100	m101
+m107	ms_001	m	m103	m106
+m108	ms_001	f	m103	m106
+m109	ms_001	m	m103	m106
+m114	ms_001	m	m103	m106
+m110	ms_001	m	m103	m105
+m111	ms_001	f	m103	m105
+m104	ms_001	f	m100	m101
+m102	ms_001	m	m100	m101
+m112	ms_001	m	m103	m105
