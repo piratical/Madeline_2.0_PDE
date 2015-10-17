@@ -107,4 +107,16 @@ for test_group_name in $(ls testdata/ci ); do
   done
 done
 
-exit $?
+rc=$?
+
+> $TMP_DIR/index.html
+
+echo "<html><body><ul>" >> $TMP_DIR/index.html
+
+for f in $( find $TMP_DIR -type f | grep -v \.index.html ); do
+  echo "<li><a href='${f#tmp/ci/output/}'>${f#tmp/ci/output/}</a></li>"
+done | sort >> $TMP_DIR/index.html
+
+echo "</ul></body></html>" >> $TMP_DIR/index.html
+
+exit $rc
