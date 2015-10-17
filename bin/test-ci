@@ -90,8 +90,10 @@ generate_index_page() {
   echo "Generated: $(date +%FT%T%z)" >> $TMP_DIR/index.html
   echo "<ul>" >> $TMP_DIR/index.html
 
-  for f in $( find $TMP_DIR -type f | grep -v \.index.html ); do
-    echo "<li><a href='${f#$TMP_DIR/}'>${f#$TMP_DIR/}</a></li>"
+  for f in $( find $TMP_DIR -type f | grep -v 'index.html' | grep -v '\.txt$' ); do
+    f=${f#$TMP_DIR/}
+    subdir=${f%.xml}
+    echo "<li><a href='${f}'>${f}</a> [<a href='${subdir}/input.txt'>input</a>] [<a href='${subdir}/log.txt'>log</a>]</li>"
   done | sort >> $TMP_DIR/index.html
 
   echo "</ul>" >> $TMP_DIR/index.html
