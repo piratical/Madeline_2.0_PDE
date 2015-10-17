@@ -1,0 +1,15 @@
+
+FamilyId
+IndividualId
+Gender
+Father
+Mother
+
+cs_003 01 M  .  .
+cs_003 02 F  .  .
+cs_003 03 M  .  .
+cs_003 04 F 01 02
+cs_003 05 F 01 02
+cs_003 06 F 03 04
+cs_003 07 M 03 04
+cs_003 08 M 05 07

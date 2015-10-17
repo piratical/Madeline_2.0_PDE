@@ -1,0 +1,12 @@
+Individualid	Familyid	Gender	Mother	Father
+1	cs_002	m	.	.
+2	cs_002	f	.	.
+3	cs_002	f	2	1
+4	cs_002	m	.	.
+5	cs_002	m	2	1
+6	cs_002	m	2	1
+7	cs_002	m	3	4
+8	cs_002	f	3	4
+9	cs_002	f	8	5
+10	cs_002	m	8	5
+11	cs_002	f	9	7	

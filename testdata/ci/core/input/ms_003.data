@@ -1,0 +1,11 @@
+Individualid	Familyid	Gender	DOB	Mother	Father
+M100	ms_003	M	1956-02-15	.	.
+M101	ms_003	F	1952-08-23	.	.
+M102	ms_003	F	1983-04-30	.	.
+M103	ms_003	F	.	.	.
+M104	ms_003	F	.	M101	M100
+M105	ms_003	M	.	M103	M100
+M107	ms_003	M	.	M103	M100
+M106	ms_003	F	.	.	.
+M109	ms_003	F	.	M106	M105
+M108	ms_003	M	.	M102	M100

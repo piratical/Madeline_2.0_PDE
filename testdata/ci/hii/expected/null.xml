@@ -1,0 +1,975 @@
+<?xml version="1.0" standalone="no"?>
+ <svg version="1.1"  id="svgDC" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"  width="2819.88" height="699.353"  onload="init()" >
+ <defs>
+  <style type="text/css"><![CDATA[
+
+line{
+	stroke:#000;
+	stroke-width:0.5mm;
+	stroke-linejoin:miter;
+	stroke-linecap:square;
+}
+
+rect{
+	stroke:#000;
+	stroke-width:0.5mm;
+	stroke-linejoin:miter;
+	stroke-linecap:square;
+}
+
+ellipse{
+	stroke: #000;
+    fill: #fff;
+	stroke-width:0.25mm;
+}
+
+text{
+	font-family:"DejaVu Sans",sans-serif;
+	font-size:12px;
+}
+
+.smallText{
+	font-family:"DejaVu Sans",sans-serif;
+	font-size:9px;
+	fill:#444;
+}
+
+.layer text{
+	fill:#930;
+}
+
+.layer line{
+	stroke:#000;
+}
+
+.birthOrder,.unknownTwins{
+	font-size: 8px;
+}
+
+.header{
+	font-size:18px;
+	font-weight:bold;
+}
+
+.keyBox{
+	fill:#e5e5e5;
+	stroke:#000;
+	stroke-width:0.5mm;
+	stroke-linejoin:miter;
+	stroke-linecap:square;
+}
+
+.mating:hover{
+	stroke-width:1mm;
+	stroke:#d56300;
+}
+
+.selectedIndividual{
+	stroke-width:1mm;
+	stroke-linecap:square;
+	stroke-linejoin:miter;
+	stroke:#d00;
+    fill:none;
+}
+
+.selectedIndividual:hover{
+	stroke:#d00;
+	fill:#ffbbbb;
+	fill-opacity:0.70;
+}
+
+.solid{
+	stroke-width:0.5mm;
+	stroke-linecap:square;
+	stroke-linejoin:miter;
+	stroke:#000;
+	fill:none;
+}
+
+.dashed{
+	stroke-width:0.5mm;
+	stroke-linecap:square;
+	stroke-linejoin:miter;
+	stroke:#98afc7;
+	stroke-dasharray:2mm,1mm;
+	stroke-dashoffset:1.0mm;
+	fill:none;
+}
+
+.solid:hover{
+	fill:#ffb787;
+	fill-opacity:0.70;
+	stroke:#d56300;
+	stroke-width:1mm;
+}
+
+.dashed:hover{
+	fill:#ffb787;
+	fill-opacity:0.70;
+	stroke:#d56300;
+	stroke-width:1mm;
+}
+
+.filled{
+	stroke-width:0.5mm;
+	stroke-linecap:square;
+	stroke-linejoin:miter;
+	stroke:#000;
+	fill:#000;
+}
+
+.specialIcons{
+	stroke-width:0.25mm;
+	stroke-linecap:round;
+	stroke-linejoin:miter;
+	stroke:#000;
+	fill:#fff;
+}
+
+.specialLines{
+	stroke-linecap:square;
+	stroke-linejoin:miter;
+	stroke:#000;
+	stroke-width:0.5mm;
+	fill:none;
+}
+
+.thinLine{
+	fill:none;
+	stroke: #000;
+	stroke-width:0.25mm;
+}
+
+.curvedConnector{
+	stroke-linecap:square;
+	stroke-linejoin:miter;
+	stroke:#98afc7;
+	stroke-width:0.5mm;
+	stroke-dasharray:2mm,1mm;
+	stroke-dashoffset:1.0mm;
+	fill:none;
+}
+
+.curvedConnector:hover{
+	stroke:#d56300;
+}
+
+.whiteInkLetter_1{
+	font-size: 12px;
+	fill: #fff;
+}
+
+.whiteInkLetter_2{
+	font-size: 10px;
+	fill: #fff;
+}
+
+.whiteInkLetter_3{
+	font-size: 8px;
+	fill: #fff;
+}
+
+.whiteInkLetter{
+	font-size: 8px;
+	fill: #fff;
+}
+
+.blackInkLetter_1{
+	font-size: 12px;
+}
+
+.blackInkLetter_2{
+	font-size: 10px;
+}
+
+.blackInkLetter_3{
+	font-size: 8px;
+}
+
+.blackInkLetter{
+	font-size: 8px;
+	fill: #000;
+}
+
+.blackInk{
+	fill: #000;
+}
+
+.whiteInk{
+	fill: #fff;
+}
+
+]]></style>
+ <script type="text/javascript" xlink:href="javascript/madeline.js"></script>
+ <marker id="endArrow" viewBox="0 0 10 10" refX="1" refY="5" markerUnits="strokeWidth" orient="auto" markerWidth="5" markerHeight="4">  <polyline points="0,0 10,5 0,10 1,5" fill="#000" /> </marker>
+ </defs>
+ <g class="pedigree" transform="translate(49.14)">
+
+ <g id="bottomLayer" class="layer" >
+
+ </g>
+ <g id="layer0" class="layer" >
+  <line x1="2347.38" y1="181.933" x2="2494.8" y2="181.933" />
+  <line x1="2528.82" y1="313.865" x2="2494.8" y2="313.865" />
+  <line x1="2494.8" y1="181.933" x2="2494.8" y2="313.865" />
+  <line x1="2097.9" y1="315.755" x2="2037.42" y2="315.755" />
+  <line x1="2007.18" y1="183.823" x2="2037.42" y2="183.823" />
+  <line x1="2037.42" y1="315.755" x2="2037.42" y2="183.823" />
+  <line x1="2097.9" y1="311.975" x2="2041.2" y2="311.975" />
+  <line x1="2007.18" y1="180.043" x2="2041.2" y2="180.043" />
+  <line x1="2041.2" y1="311.975" x2="2041.2" y2="180.043" />
+  <line x1="1508.22" y1="181.933" x2="918.54" y2="181.933" />
+  <line x1="555.66" y1="447.688" x2="495.18" y2="447.688" />
+  <line x1="464.94" y1="315.755" x2="495.18" y2="315.755" />
+  <line x1="495.18" y1="447.688" x2="495.18" y2="315.755" />
+  <line x1="555.66" y1="443.908" x2="498.96" y2="443.908" />
+  <line x1="464.94" y1="311.975" x2="498.96" y2="311.975" />
+  <line x1="498.96" y1="443.908" x2="498.96" y2="311.975" />
+ </g>
+
+  <g class="drawing">
+  <text x="512" y="30" text-anchor="middle"  class="header" >F0019 (2015-09-18)</text>
+  <clipPath id="m022_clipPath">
+   <rect x="578.34" y="38.66" width="22.68" height="22.68" />
+  </clipPath>
+<g clip-path="url(#m022_clipPath)">
+<path d="M 589.68 50 L 573.643 50 A 16.0372 16.0372 0 0 1 589.68 33.9628 z" style="fill:#ffffff;stroke:none;"/>
+<path d="M 589.68 50 L 589.68 33.9628 A 16.0372 16.0372 0 0 1 605.717 50 z" style="fill:#ffffff;stroke:none;"/>
+<path d="M 589.68 50 L 605.717 50 A 16.0372 16.0372 0 0 1 589.68 66.0372 z" style="fill:#ffffff;stroke:none;"/>
+<path d="M 589.68 50 L 589.68 66.0372 A 16.0372 16.0372 0 0 1 573.643 50 z" style="fill:#ffffff;stroke:none;"/>
+</g>
+  <rect x="578.34" y="38.66" width="22.68" height="22.68" id="m022" class="solid">
+	<title>m022</title>
+</rect>
+  <text x="589.68" y="92.5845" text-anchor="middle" >m022</text>
+  <line x1="601.02" y1="50" x2="669.06" y2="50" />
+<g>
+<path d="M 680.4 50 L 669.06 50 A 11.34 11.34 0 0 1 680.4 38.66 z" style="fill:#ffffff;stroke:none;"/>
+<path d="M 680.4 50 L 680.4 38.66 A 11.34 11.34 0 0 1 691.74 50 z" style="fill:#ffffff;stroke:none;"/>
+<path d="M 680.4 50 L 691.74 50 A 11.34 11.34 0 0 1 680.4 61.34 z" style="fill:#ffffff;stroke:none;"/>
+<path d="M 680.4 50 L 680.4 61.34 A 11.34 11.34 0 0 1 669.06 50 z" style="fill:#ffffff;stroke:none;"/>
+</g>
+<circle cx="680.4" cy="50" r="11.34" id="m023" class="solid">
+	<title>m023</title>
+</circle>
+  <text x="680.4" y="92.5845" text-anchor="middle" >m023</text>
+  <line class="mating" id="m023:m022" x1="635.04" y1="50" x2="635.04" y2="142.243" />
+  <line class="solid" x1="181.44" y1="142.243" x2="181.44" y2="170.593" />
+  <clipPath id="m025_clipPath">
+   <rect x="170.1" y="170.593" width="22.68" height="22.68" />
+  </clipPath>
+<g clip-path="url(#m025_clipPath)">
+<path d="M 181.44 181.933 L 165.403 181.933 A 16.0372 16.0372 0 0 1 181.44 165.895 z" style="fill:#ffffff;stroke:none;"/>
+<path d="M 181.44 181.933 L 181.44 165.895 A 16.0372 16.0372 0 0 1 197.477 181.933 z" style="fill:#ffffff;stroke:none;"/>
+<path d="M 181.44 181.933 L 197.477 181.933 A 16.0372 16.0372 0 0 1 181.44 197.97 z" style="fill:#ffffff;stroke:none;"/>
+<path d="M 181.44 181.933 L 181.44 197.97 A 16.0372 16.0372 0 0 1 165.403 181.933 z" style="fill:#ffffff;stroke:none;"/>
+</g>
+  <rect x="170.1" y="170.593" width="22.68" height="22.68" id="m025" class="solid">
+	<title>m025</title>
+</rect>
+  <text x="181.44" y="224.517" text-anchor="middle" >m025</text>
+  <line x1="192.78" y1="181.933" x2="260.82" y2="181.933" />
+<g>
+<path d="M 272.16 181.933 L 260.82 181.933 A 11.34 11.34 0 0 1 272.16 170.593 z" style="fill:#ffffff;stroke:none;"/>
+<path d="M 272.16 181.933 L 272.16 170.593 A 11.34 11.34 0 0 1 283.5 181.933 z" style="fill:#ffffff;stroke:none;"/>
+<path d="M 272.16 181.933 L 283.5 181.933 A 11.34 11.34 0 0 1 272.16 193.273 z" style="fill:#ffffff;stroke:none;"/>
+<path d="M 272.16 181.933 L 272.16 193.273 A 11.34 11.34 0 0 1 260.82 181.933 z" style="fill:#ffffff;stroke:none;"/>
+</g>
+<circle cx="272.16" cy="181.933" r="11.34" id="m026" class="solid">
+	<title>m026</title>
+</circle>
+  <text x="272.16" y="224.517" text-anchor="middle" >m026</text>
+  <line class="mating" id="m026:m025" x1="226.8" y1="181.933" x2="226.8" y2="274.175" />
+  <line class="solid" x1="90.72" y1="274.175" x2="90.72" y2="302.525" />
+<g>
+<path d="M 90.72 313.865 L 79.38 313.865 A 11.34 11.34 0 0 1 90.72 302.525 z" style="fill:#ffffff;stroke:none;"/>
+<path d="M 90.72 313.865 L 90.72 302.525 A 11.34 11.34 0 0 1 102.06 313.865 z" style="fill:#ffffff;stroke:none;"/>
+<path d="M 90.72 313.865 L 102.06 313.865 A 11.34 11.34 0 0 1 90.72 325.205 z" style="fill:#ffffff;stroke:none;"/>
+<path d="M 90.72 313.865 L 90.72 325.205 A 11.34 11.34 0 0 1 79.38 313.865 z" style="fill:#ffffff;stroke:none;"/>
+</g>
+<circle cx="90.72" cy="313.865" r="11.34" id="m029" class="solid">
+	<title>m029</title>
+</circle>
+  <text x="90.72" y="356.45" text-anchor="middle" >m029</text>
+  <line x1="102.06" y1="313.865" x2="170.1" y2="313.865" />
+  <clipPath id="5_clipPath">
+   <rect x="170.1" y="302.525" width="22.68" height="22.68" />
+  </clipPath>
+<g clip-path="url(#5_clipPath)">
+<path d="M 181.44 313.865 L 165.403 313.865 A 16.0372 16.0372 0 0 1 181.44 297.828 z" style="fill:#ffffff;stroke:none;"/>
+<path d="M 181.44 313.865 L 181.44 297.828 A 16.0372 16.0372 0 0 1 197.477 313.865 z" style="fill:#ffffff;stroke:none;"/>
+<path d="M 181.44 313.865 L 197.477 313.865 A 16.0372 16.0372 0 0 1 181.44 329.902 z" style="fill:#ffffff;stroke:none;"/>
+<path d="M 181.44 313.865 L 181.44 329.902 A 16.0372 16.0372 0 0 1 165.403 313.865 z" style="fill:#ffffff;stroke:none;"/>
+</g>
+  <rect x="170.1" y="302.525" width="22.68" height="22.68" id="5" class="solid">
+	<title>5</title>
+</rect>
+  <text x="181.44" y="356.45" text-anchor="middle" >5</text>
+  <line class="mating" id="m029:5" x1="136.08" y1="313.865" x2="136.08" y2="406.108" />
+  <line class="solid" x1="136.08" y1="406.108" x2="136.08" y2="434.458" />
+<g>
+<path d="M 136.08 445.798 L 124.74 445.798 A 11.34 11.34 0 0 1 136.08 434.458 z" style="fill:#ffffff;stroke:none;"/>
+<path d="M 136.08 445.798 L 136.08 434.458 A 11.34 11.34 0 0 1 147.42 445.798 z" style="fill:#ffffff;stroke:none;"/>
+<path d="M 136.08 445.798 L 147.42 445.798 A 11.34 11.34 0 0 1 136.08 457.138 z" style="fill:#000000;stroke:none;"/>
+<path d="M 136.08 445.798 L 136.08 457.138 A 11.34 11.34 0 0 1 124.74 445.798 z" style="fill:#ffffff;stroke:none;"/>
+</g>
+<circle cx="136.08" cy="445.798" r="11.34" id="m042" class="solid">
+	<title>m042</title>
+</circle>
+  <text x="136.08" y="488.382" text-anchor="middle" >m042</text>
+  <line class="solid" x1="272.16" y1="274.175" x2="272.16" y2="302.525" />
+  <clipPath id="m031_clipPath">
+   <rect x="260.82" y="302.525" width="22.68" height="22.68" />
+  </clipPath>
+<g clip-path="url(#m031_clipPath)">
+<path d="M 272.16 313.865 L 256.123 313.865 A 16.0372 16.0372 0 0 1 272.16 297.828 z" style="fill:#ffffff;stroke:none;"/>
+<path d="M 272.16 313.865 L 272.16 297.828 A 16.0372 16.0372 0 0 1 288.197 313.865 z" style="fill:#ffffff;stroke:none;"/>
+<path d="M 272.16 313.865 L 288.197 313.865 A 16.0372 16.0372 0 0 1 272.16 329.902 z" style="fill:#ffffff;stroke:none;"/>
+<path d="M 272.16 313.865 L 272.16 329.902 A 16.0372 16.0372 0 0 1 256.123 313.865 z" style="fill:#ffffff;stroke:none;"/>
+</g>
+  <rect x="260.82" y="302.525" width="22.68" height="22.68" id="m031" class="solid">
+	<title>m031</title>
+</rect>
+  <text x="272.16" y="356.45" text-anchor="middle" >m031</text>
+  <line class="solid" x1="362.88" y1="274.175" x2="362.88" y2="302.525" />
+  <clipPath id="m030_clipPath">
+   <rect x="351.54" y="302.525" width="22.68" height="22.68" />
+  </clipPath>
+<g clip-path="url(#m030_clipPath)">
+<path d="M 362.88 313.865 L 346.843 313.865 A 16.0372 16.0372 0 0 1 362.88 297.828 z" style="fill:#ffffff;stroke:none;"/>
+<path d="M 362.88 313.865 L 362.88 297.828 A 16.0372 16.0372 0 0 1 378.917 313.865 z" style="fill:#ffffff;stroke:none;"/>
+<path d="M 362.88 313.865 L 378.917 313.865 A 16.0372 16.0372 0 0 1 362.88 329.902 z" style="fill:#ffffff;stroke:none;"/>
+<path d="M 362.88 313.865 L 362.88 329.902 A 16.0372 16.0372 0 0 1 346.843 313.865 z" style="fill:#ffffff;stroke:none;"/>
+</g>
+  <rect x="351.54" y="302.525" width="22.68" height="22.68" id="m030" class="solid">
+	<title>m030</title>
+</rect>
+  <text x="362.88" y="356.45" text-anchor="middle" >m030</text>
+  <line x1="90.72" y1="274.175" x2="362.88" y2="274.175" />
+  <line class="solid" x1="589.68" y1="142.243" x2="589.68" y2="170.593" />
+<g>
+<path d="M 589.68 181.933 L 578.34 181.933 A 11.34 11.34 0 0 1 589.68 170.593 z" style="fill:#ffffff;stroke:none;"/>
+<path d="M 589.68 181.933 L 589.68 170.593 A 11.34 11.34 0 0 1 601.02 181.933 z" style="fill:#ffffff;stroke:none;"/>
+<path d="M 589.68 181.933 L 601.02 181.933 A 11.34 11.34 0 0 1 589.68 193.273 z" style="fill:#ffffff;stroke:none;"/>
+<path d="M 589.68 181.933 L 589.68 193.273 A 11.34 11.34 0 0 1 578.34 181.933 z" style="fill:#ffffff;stroke:none;"/>
+</g>
+<circle cx="589.68" cy="181.933" r="11.34" id="m027" class="solid">
+	<title>m027</title>
+</circle>
+  <text x="589.68" y="224.517" text-anchor="middle" >m027</text>
+  <line x1="601.02" y1="181.933" x2="669.06" y2="181.933" />
+  <clipPath id="m028_clipPath">
+   <rect x="669.06" y="170.593" width="22.68" height="22.68" />
+  </clipPath>
+<g clip-path="url(#m028_clipPath)">
+<path d="M 680.4 181.933 L 664.363 181.933 A 16.0372 16.0372 0 0 1 680.4 165.895 z" style="fill:#ffffff;stroke:none;"/>
+<path d="M 680.4 181.933 L 680.4 165.895 A 16.0372 16.0372 0 0 1 696.437 181.933 z" style="fill:#ffffff;stroke:none;"/>
+<path d="M 680.4 181.933 L 696.437 181.933 A 16.0372 16.0372 0 0 1 680.4 197.97 z" style="fill:#ffffff;stroke:none;"/>
+<path d="M 680.4 181.933 L 680.4 197.97 A 16.0372 16.0372 0 0 1 664.363 181.933 z" style="fill:#ffffff;stroke:none;"/>
+</g>
+  <rect x="669.06" y="170.593" width="22.68" height="22.68" id="m028" class="solid">
+	<title>m028</title>
+</rect>
+  <text x="680.4" y="224.517" text-anchor="middle" >m028</text>
+  <line class="mating" id="m027:m028" x1="635.04" y1="181.933" x2="635.04" y2="274.175" />
+  <line class="solid" x1="453.6" y1="274.175" x2="453.6" y2="302.525" />
+  <clipPath id="m033_clipPath">
+   <rect x="442.26" y="302.525" width="22.68" height="22.68" />
+  </clipPath>
+<g clip-path="url(#m033_clipPath)">
+<path d="M 453.6 313.865 L 437.563 313.865 A 16.0372 16.0372 0 0 1 453.6 297.828 z" style="fill:#ffffff;stroke:none;"/>
+<path d="M 453.6 313.865 L 453.6 297.828 A 16.0372 16.0372 0 0 1 469.637 313.865 z" style="fill:#ffffff;stroke:none;"/>
+<path d="M 453.6 313.865 L 469.637 313.865 A 16.0372 16.0372 0 0 1 453.6 329.902 z" style="fill:#ffffff;stroke:none;"/>
+<path d="M 453.6 313.865 L 453.6 329.902 A 16.0372 16.0372 0 0 1 437.563 313.865 z" style="fill:#ffffff;stroke:none;"/>
+</g>
+  <rect x="442.26" y="302.525" width="22.68" height="22.68" id="m033" class="solid">
+	<title>m033</title>
+</rect>
+  <text x="453.6" y="356.45" text-anchor="middle" >m033</text>
+  <line class="solid" x1="635.04" y1="274.175" x2="635.04" y2="302.525" />
+<g>
+<path d="M 635.04 313.865 L 623.7 313.865 A 11.34 11.34 0 0 1 635.04 302.525 z" style="fill:#ffffff;stroke:none;"/>
+<path d="M 635.04 313.865 L 635.04 302.525 A 11.34 11.34 0 0 1 646.38 313.865 z" style="fill:#ffffff;stroke:none;"/>
+<path d="M 635.04 313.865 L 646.38 313.865 A 11.34 11.34 0 0 1 635.04 325.205 z" style="fill:#ffffff;stroke:none;"/>
+<path d="M 635.04 313.865 L 635.04 325.205 A 11.34 11.34 0 0 1 623.7 313.865 z" style="fill:#ffffff;stroke:none;"/>
+</g>
+<circle cx="635.04" cy="313.865" r="11.34" id="m032" class="solid">
+	<title>m032</title>
+</circle>
+  <text x="635.04" y="356.45" text-anchor="middle" >m032</text>
+  <line x1="646.38" y1="313.865" x2="714.42" y2="313.865" />
+  <clipPath id="m039_clipPath">
+   <rect x="714.42" y="302.525" width="22.68" height="22.68" />
+  </clipPath>
+<g clip-path="url(#m039_clipPath)">
+<path d="M 725.76 313.865 L 709.723 313.865 A 16.0372 16.0372 0 0 1 725.76 297.828 z" style="fill:#ffffff;stroke:none;"/>
+<path d="M 725.76 313.865 L 725.76 297.828 A 16.0372 16.0372 0 0 1 741.797 313.865 z" style="fill:#ffffff;stroke:none;"/>
+<path d="M 725.76 313.865 L 741.797 313.865 A 16.0372 16.0372 0 0 1 725.76 329.902 z" style="fill:#ffffff;stroke:none;"/>
+<path d="M 725.76 313.865 L 725.76 329.902 A 16.0372 16.0372 0 0 1 709.723 313.865 z" style="fill:#ffffff;stroke:none;"/>
+</g>
+  <rect x="714.42" y="302.525" width="22.68" height="22.68" id="m039" class="solid">
+	<title>m039</title>
+</rect>
+  <text x="725.76" y="356.45" text-anchor="middle" >m039</text>
+  <line class="mating" id="m032:m039" x1="680.4" y1="313.865" x2="680.4" y2="406.108" />
+  <line class="solid" x1="635.04" y1="406.108" x2="635.04" y2="434.458" />
+<g>
+<path d="M 635.04 445.798 L 623.7 445.798 A 11.34 11.34 0 0 1 635.04 434.458 z" style="fill:#ffffff;stroke:none;"/>
+<path d="M 635.04 445.798 L 635.04 434.458 A 11.34 11.34 0 0 1 646.38 445.798 z" style="fill:#ffffff;stroke:none;"/>
+<path d="M 635.04 445.798 L 646.38 445.798 A 11.34 11.34 0 0 1 635.04 457.138 z" style="fill:#ffffff;stroke:none;"/>
+<path d="M 635.04 445.798 L 635.04 457.138 A 11.34 11.34 0 0 1 623.7 445.798 z" style="fill:#ffffff;stroke:none;"/>
+</g>
+<circle cx="635.04" cy="445.798" r="11.34" id="m036" class="solid">
+	<title>m036</title>
+</circle>
+  <text x="635.04" y="488.382" text-anchor="middle" >m036</text>
+  <line x1="555.66" y1="447.688" x2="623.7" y2="447.688" />
+  <line x1="555.66" y1="443.908" x2="623.7" y2="443.908" />
+  <line class="mating" id="m036:m033" x1="589.68" y1="447.688" x2="589.68" y2="536.15" />
+  <line class="solid" x1="589.68" y1="538.04" x2="589.68" y2="566.39" />
+<g>
+<path d="M 589.68 577.73 L 578.34 577.73 A 11.34 11.34 0 0 1 589.68 566.39 z" style="fill:#ffffff;stroke:none;"/>
+<path d="M 589.68 577.73 L 589.68 566.39 A 11.34 11.34 0 0 1 601.02 577.73 z" style="fill:#ffffff;stroke:none;"/>
+<path d="M 589.68 577.73 L 601.02 577.73 A 11.34 11.34 0 0 1 589.68 589.07 z" style="fill:#ffffff;stroke:none;"/>
+<path d="M 589.68 577.73 L 589.68 589.07 A 11.34 11.34 0 0 1 578.34 577.73 z" style="fill:#ffffff;stroke:none;"/>
+</g>
+<circle cx="589.68" cy="577.73" r="11.34" id="m037" class="solid">
+	<title>m037</title>
+</circle>
+  <text x="589.68" y="620.315" text-anchor="middle" >m037</text>
+  <line class="solid" x1="725.76" y1="406.108" x2="725.76" y2="434.458" />
+  <clipPath id="m035_clipPath">
+   <rect x="714.42" y="434.458" width="22.68" height="22.68" />
+  </clipPath>
+<g clip-path="url(#m035_clipPath)">
+<path d="M 725.76 445.798 L 709.723 445.798 A 16.0372 16.0372 0 0 1 725.76 429.76 z" style="fill:#ffffff;stroke:none;"/>
+<path d="M 725.76 445.798 L 725.76 429.76 A 16.0372 16.0372 0 0 1 741.797 445.798 z" style="fill:#ffffff;stroke:none;"/>
+<path d="M 725.76 445.798 L 741.797 445.798 A 16.0372 16.0372 0 0 1 725.76 461.835 z" style="fill:#ffffff;stroke:none;"/>
+<path d="M 725.76 445.798 L 725.76 461.835 A 16.0372 16.0372 0 0 1 709.723 445.798 z" style="fill:#ffffff;stroke:none;"/>
+</g>
+  <rect x="714.42" y="434.458" width="22.68" height="22.68" id="m035" class="solid">
+	<title>m035</title>
+</rect>
+  <text x="725.76" y="488.382" text-anchor="middle" >m035</text>
+  <line x1="635.04" y1="406.108" x2="725.76" y2="406.108" />
+  <line class="solid" x1="816.48" y1="274.175" x2="816.48" y2="302.525" />
+<g>
+<path d="M 816.48 313.865 L 805.14 313.865 A 11.34 11.34 0 0 1 816.48 302.525 z" style="fill:#ffffff;stroke:none;"/>
+<path d="M 816.48 313.865 L 816.48 302.525 A 11.34 11.34 0 0 1 827.82 313.865 z" style="fill:#ffffff;stroke:none;"/>
+<path d="M 816.48 313.865 L 827.82 313.865 A 11.34 11.34 0 0 1 816.48 325.205 z" style="fill:#ffffff;stroke:none;"/>
+<path d="M 816.48 313.865 L 816.48 325.205 A 11.34 11.34 0 0 1 805.14 313.865 z" style="fill:#ffffff;stroke:none;"/>
+</g>
+<circle cx="816.48" cy="313.865" r="11.34" id="m034" class="solid">
+	<title>m034</title>
+</circle>
+  <text x="816.48" y="356.45" text-anchor="middle" >m034</text>
+  <line x1="453.6" y1="274.175" x2="816.48" y2="274.175" />
+  <line class="solid" x1="907.2" y1="142.243" x2="907.2" y2="170.593" />
+  <clipPath id="m024_clipPath">
+   <rect x="895.86" y="170.593" width="22.68" height="22.68" />
+  </clipPath>
+<g clip-path="url(#m024_clipPath)">
+<path d="M 907.2 181.933 L 891.163 181.933 A 16.0372 16.0372 0 0 1 907.2 165.895 z" style="fill:#ffffff;stroke:none;"/>
+<path d="M 907.2 181.933 L 907.2 165.895 A 16.0372 16.0372 0 0 1 923.237 181.933 z" style="fill:#ffffff;stroke:none;"/>
+<path d="M 907.2 181.933 L 923.237 181.933 A 16.0372 16.0372 0 0 1 907.2 197.97 z" style="fill:#ffffff;stroke:none;"/>
+<path d="M 907.2 181.933 L 907.2 197.97 A 16.0372 16.0372 0 0 1 891.163 181.933 z" style="fill:#ffffff;stroke:none;"/>
+</g>
+  <rect x="895.86" y="170.593" width="22.68" height="22.68" id="m024" class="solid">
+	<title>m024</title>
+</rect>
+  <text x="907.2" y="224.517" text-anchor="middle" >m024</text>
+  <line x1="181.44" y1="142.243" x2="907.2" y2="142.243" />
+  <clipPath id="m007_clipPath">
+   <rect x="1530.9" y="38.66" width="22.68" height="22.68" />
+  </clipPath>
+<g clip-path="url(#m007_clipPath)">
+<path d="M 1542.24 50 L 1526.2 50 A 16.0372 16.0372 0 0 1 1542.24 33.9628 z" style="fill:#ffffff;stroke:none;"/>
+<path d="M 1542.24 50 L 1542.24 33.9628 A 16.0372 16.0372 0 0 1 1558.28 50 z" style="fill:#ffffff;stroke:none;"/>
+<path d="M 1542.24 50 L 1558.28 50 A 16.0372 16.0372 0 0 1 1542.24 66.0372 z" style="fill:#ffffff;stroke:none;"/>
+<path d="M 1542.24 50 L 1542.24 66.0372 A 16.0372 16.0372 0 0 1 1526.2 50 z" style="fill:#ffffff;stroke:none;"/>
+</g>
+  <rect x="1530.9" y="38.66" width="22.68" height="22.68" id="m007" class="solid">
+	<title>m007</title>
+</rect>
+  <text x="1542.24" y="92.5845" text-anchor="middle" >m007</text>
+  <line x1="1553.58" y1="50" x2="1621.62" y2="50" />
+<g>
+<path d="M 1632.96 50 L 1621.62 50 A 11.34 11.34 0 0 1 1632.96 38.66 z" style="fill:#ffffff;stroke:none;"/>
+<path d="M 1632.96 50 L 1632.96 38.66 A 11.34 11.34 0 0 1 1644.3 50 z" style="fill:#ffffff;stroke:none;"/>
+<path d="M 1632.96 50 L 1644.3 50 A 11.34 11.34 0 0 1 1632.96 61.34 z" style="fill:#ffffff;stroke:none;"/>
+<path d="M 1632.96 50 L 1632.96 61.34 A 11.34 11.34 0 0 1 1621.62 50 z" style="fill:#ffffff;stroke:none;"/>
+</g>
+<circle cx="1632.96" cy="50" r="11.34" id="m008" class="solid">
+	<title>m008</title>
+</circle>
+  <text x="1632.96" y="92.5845" text-anchor="middle" >m008</text>
+  <line class="mating" id="m008:m007" x1="1587.6" y1="50" x2="1587.6" y2="142.243" />
+  <line class="solid" x1="1587.6" y1="142.243" x2="1587.6" y2="170.593" />
+<g>
+<path d="M 1587.6 181.933 L 1576.26 181.933 A 11.34 11.34 0 0 1 1587.6 170.593 z" style="fill:#7030a0;stroke:none;"/>
+<path d="M 1587.6 181.933 L 1587.6 170.593 A 11.34 11.34 0 0 1 1598.94 181.933 z" style="fill:#ffffff;stroke:none;"/>
+<path d="M 1587.6 181.933 L 1598.94 181.933 A 11.34 11.34 0 0 1 1587.6 193.273 z" style="fill:#ffffff;stroke:none;"/>
+<path d="M 1587.6 181.933 L 1587.6 193.273 A 11.34 11.34 0 0 1 1576.26 181.933 z" style="fill:#000000;stroke:none;"/>
+</g>
+<circle cx="1587.6" cy="181.933" r="11.34" id="1" class="solid">
+	<title>1</title>
+</circle>
+<path d="M 1574.37 195.163 l -8.7318 3.7422 l 1.8711 1.8711 l -3.1185 3.1185 l 1.2474 1.2474 l 3.1185 -3.1185 l 1.8711 1.8711 z" />
+  <text x="1558.49" y="207.259" text-anchor="middle" >P</text>
+  <text x="1587.6" y="224.517" text-anchor="middle" >1</text>
+  <line x1="1508.22" y1="181.933" x2="1576.26" y2="181.933" />
+  <line class="mating" id="1:m024" x1="1542.24" y1="181.933" x2="1542.24" y2="274.175" />
+  <line x1="1134" y1="298.745" x2="1134" y2="302.525" />
+<g>
+<path d="M 1134 313.865 L 1122.66 313.865 A 11.34 11.34 0 0 1 1134 302.525 z" style="fill:#ffffff;stroke:none;"/>
+<path d="M 1134 313.865 L 1134 302.525 A 11.34 11.34 0 0 1 1145.34 313.865 z" style="fill:#ffffff;stroke:none;"/>
+<path d="M 1134 313.865 L 1145.34 313.865 A 11.34 11.34 0 0 1 1134 325.205 z" style="fill:#ffffff;stroke:none;"/>
+<path d="M 1134 313.865 L 1134 325.205 A 11.34 11.34 0 0 1 1122.66 313.865 z" style="fill:#ffffff;stroke:none;"/>
+</g>
+<circle cx="1134" cy="313.865" r="11.34" id="m017" class="solid">
+	<title>m017</title>
+</circle>
+  <text x="1134" y="356.45" text-anchor="middle" >m017</text>
+  <line x1="1145.34" y1="313.865" x2="1213.38" y2="313.865" />
+  <clipPath id="m044_clipPath">
+   <rect x="1213.38" y="302.525" width="22.68" height="22.68" />
+  </clipPath>
+<g clip-path="url(#m044_clipPath)">
+<path d="M 1224.72 313.865 L 1208.68 313.865 A 16.0372 16.0372 0 0 1 1224.72 297.828 z" style="fill:#ffffff;stroke:none;"/>
+<path d="M 1224.72 313.865 L 1224.72 297.828 A 16.0372 16.0372 0 0 1 1240.76 313.865 z" style="fill:#ffffff;stroke:none;"/>
+<path d="M 1224.72 313.865 L 1240.76 313.865 A 16.0372 16.0372 0 0 1 1224.72 329.902 z" style="fill:#ffffff;stroke:none;"/>
+<path d="M 1224.72 313.865 L 1224.72 329.902 A 16.0372 16.0372 0 0 1 1208.68 313.865 z" style="fill:#ffffff;stroke:none;"/>
+</g>
+  <rect x="1213.38" y="302.525" width="22.68" height="22.68" id="m044" class="solid">
+	<title>m044</title>
+</rect>
+  <text x="1224.72" y="356.45" text-anchor="middle" >m044</text>
+  <line class="mating" id="m017:m044" x1="1179.36" y1="313.865" x2="1179.36" y2="406.108" />
+  <line class="solid" x1="997.92" y1="406.108" x2="997.92" y2="425.063" />
+<path d="M 997.92 425.063 l -16.0372 16.0372 16.0372 16.0372 16.0372 -16.0372 z" id="m043" class="solid">
+	<title>m043</title>
+</path>
+  <text x="997.92" y="488.382" text-anchor="middle" >m043</text>
+  <line class="solid" x1="1088.64" y1="406.108" x2="1088.64" y2="434.458" />
+  <clipPath id="m041_clipPath">
+   <rect x="1077.3" y="434.458" width="22.68" height="22.68" />
+  </clipPath>
+<g clip-path="url(#m041_clipPath)">
+<path d="M 1088.64 445.798 L 1072.6 445.798 A 16.0372 16.0372 0 0 1 1088.64 429.76 z" style="fill:#ffffff;stroke:none;"/>
+<path d="M 1088.64 445.798 L 1088.64 429.76 A 16.0372 16.0372 0 0 1 1104.68 445.798 z" style="fill:#ffffff;stroke:none;"/>
+<path d="M 1088.64 445.798 L 1104.68 445.798 A 16.0372 16.0372 0 0 1 1088.64 461.835 z" style="fill:#ffffff;stroke:none;"/>
+<path d="M 1088.64 445.798 L 1088.64 461.835 A 16.0372 16.0372 0 0 1 1072.6 445.798 z" style="fill:#000000;stroke:none;"/>
+</g>
+  <text x="1110.19" y="440.884" text-anchor="middle" >*</text>
+  <rect x="1077.3" y="434.458" width="22.68" height="22.68" id="m041" class="solid">
+	<title>m041</title>
+</rect>
+  <text x="1088.64" y="488.382" text-anchor="middle" >m041</text>
+  <line class="solid" x1="1360.8" y1="406.108" x2="1360.8" y2="434.458" />
+<g>
+<path d="M 1360.8 445.798 L 1349.46 445.798 A 11.34 11.34 0 0 1 1360.8 434.458 z" style="fill:#ff0000;stroke:none;"/>
+<path d="M 1360.8 445.798 L 1360.8 434.458 A 11.34 11.34 0 0 1 1372.14 445.798 z" style="fill:#ffffff;stroke:none;"/>
+<path d="M 1360.8 445.798 L 1372.14 445.798 A 11.34 11.34 0 0 1 1360.8 457.138 z" style="fill:#000000;stroke:none;"/>
+<path d="M 1360.8 445.798 L 1360.8 457.138 A 11.34 11.34 0 0 1 1349.46 445.798 z" style="fill:#000000;stroke:none;"/>
+</g>
+  <text x="1382.35" y="440.884" text-anchor="middle" >*</text>
+<circle cx="1360.8" cy="445.798" r="11.34" id="m045" class="solid">
+	<title>m045</title>
+</circle>
+  <text x="1360.8" y="488.382" text-anchor="middle" >m045</text>
+  <line x1="1372.14" y1="445.798" x2="1440.18" y2="445.798" />
+  <clipPath id="m046_clipPath">
+   <rect x="1440.18" y="434.458" width="22.68" height="22.68" />
+  </clipPath>
+<g clip-path="url(#m046_clipPath)">
+<path d="M 1451.52 445.798 L 1435.48 445.798 A 16.0372 16.0372 0 0 1 1451.52 429.76 z" style="fill:#ffffff;stroke:none;"/>
+<path d="M 1451.52 445.798 L 1451.52 429.76 A 16.0372 16.0372 0 0 1 1467.56 445.798 z" style="fill:#ffffff;stroke:none;"/>
+<path d="M 1451.52 445.798 L 1467.56 445.798 A 16.0372 16.0372 0 0 1 1451.52 461.835 z" style="fill:#ffffff;stroke:none;"/>
+<path d="M 1451.52 445.798 L 1451.52 461.835 A 16.0372 16.0372 0 0 1 1435.48 445.798 z" style="fill:#ffffff;stroke:none;"/>
+</g>
+  <rect x="1440.18" y="434.458" width="22.68" height="22.68" id="m046" class="solid">
+	<title>m046</title>
+</rect>
+  <text x="1451.52" y="488.382" text-anchor="middle" >m046</text>
+  <line class="mating" id="m045:m046" x1="1406.16" y1="445.798" x2="1406.16" y2="538.04" />
+  <line class="solid" x1="1406.16" y1="538.04" x2="1406.16" y2="566.39" />
+<g>
+<path d="M 1406.16 577.73 L 1394.82 577.73 A 11.34 11.34 0 0 1 1406.16 566.39 z" style="fill:#ffffff;stroke:none;"/>
+<path d="M 1406.16 577.73 L 1406.16 566.39 A 11.34 11.34 0 0 1 1417.5 577.73 z" style="fill:#ffffff;stroke:none;"/>
+<path d="M 1406.16 577.73 L 1417.5 577.73 A 11.34 11.34 0 0 1 1406.16 589.07 z" style="fill:#000000;stroke:none;"/>
+<path d="M 1406.16 577.73 L 1406.16 589.07 A 11.34 11.34 0 0 1 1394.82 577.73 z" style="fill:#ffffff;stroke:none;"/>
+</g>
+<circle cx="1406.16" cy="577.73" r="11.34" id="m048" class="solid">
+	<title>m048</title>
+</circle>
+  <text x="1406.16" y="620.315" text-anchor="middle" >m048</text>
+  <clipPath id="m047_clipPath">
+   <rect x="1168.02" y="434.458" width="22.68" height="22.68" />
+  </clipPath>
+<g clip-path="url(#m047_clipPath)">
+<path d="M 1179.36 445.798 L 1163.32 445.798 A 16.0372 16.0372 0 0 1 1179.36 429.76 z" style="fill:#ffffff;stroke:none;"/>
+<path d="M 1179.36 445.798 L 1179.36 429.76 A 16.0372 16.0372 0 0 1 1195.4 445.798 z" style="fill:#ffffff;stroke:none;"/>
+<path d="M 1179.36 445.798 L 1195.4 445.798 A 16.0372 16.0372 0 0 1 1179.36 461.835 z" style="fill:#ffffff;stroke:none;"/>
+<path d="M 1179.36 445.798 L 1179.36 461.835 A 16.0372 16.0372 0 0 1 1163.32 445.798 z" style="fill:#ffffff;stroke:none;"/>
+</g>
+  <rect x="1168.02" y="434.458" width="22.68" height="22.68" id="m047" class="solid">
+	<title>m047</title>
+</rect>
+  <text x="1179.36" y="488.382" text-anchor="middle" >m047</text>
+  <line x1="1190.7" y1="445.798" x2="1258.74" y2="445.798" />
+  <line class="mating" id="m045:m047" x1="1224.72" y1="445.798" x2="1224.72" y2="538.04" />
+  <line class="solid" x1="1224.72" y1="538.04" x2="1224.72" y2="566.39" />
+<g>
+<path d="M 1224.72 577.73 L 1213.38 577.73 A 11.34 11.34 0 0 1 1224.72 566.39 z" style="fill:#ffffff;stroke:none;"/>
+<path d="M 1224.72 577.73 L 1224.72 566.39 A 11.34 11.34 0 0 1 1236.06 577.73 z" style="fill:#ffffff;stroke:none;"/>
+<path d="M 1224.72 577.73 L 1236.06 577.73 A 11.34 11.34 0 0 1 1224.72 589.07 z" style="fill:#ffffff;stroke:none;"/>
+<path d="M 1224.72 577.73 L 1224.72 589.07 A 11.34 11.34 0 0 1 1213.38 577.73 z" style="fill:#ffffff;stroke:none;"/>
+</g>
+<circle cx="1224.72" cy="577.73" r="11.34" id="m049" class="solid">
+	<title>m049</title>
+</circle>
+  <text x="1224.72" y="620.315" text-anchor="middle" >m049</text>
+  <line x1="1349.46" y1="445.798" x2="1258.74" y2="445.798" />
+  <line x1="997.92" y1="406.108" x2="1360.8" y2="406.108" />
+  <line x1="1542.24" y1="298.745" x2="1542.24" y2="302.525" />
+<g>
+<path d="M 1542.24 313.865 L 1530.9 313.865 A 11.34 11.34 0 0 1 1542.24 302.525 z" style="fill:#ffffff;stroke:none;"/>
+<path d="M 1542.24 313.865 L 1542.24 302.525 A 11.34 11.34 0 0 1 1553.58 313.865 z" style="fill:#ffffff;stroke:none;"/>
+<path d="M 1542.24 313.865 L 1553.58 313.865 A 11.34 11.34 0 0 1 1542.24 325.205 z" style="fill:#ffffff;stroke:none;"/>
+<path d="M 1542.24 313.865 L 1542.24 325.205 A 11.34 11.34 0 0 1 1530.9 313.865 z" style="fill:#ffffff;stroke:none;"/>
+</g>
+<circle cx="1542.24" cy="313.865" r="11.34" id="m018" class="solid">
+	<title>m018</title>
+</circle>
+  <text x="1542.24" y="356.45" text-anchor="middle" >m018</text>
+  <line x1="1632.96" y1="298.745" x2="1632.96" y2="302.525" />
+<g>
+<path d="M 1632.96 313.865 L 1621.62 313.865 A 11.34 11.34 0 0 1 1632.96 302.525 z" style="fill:#ffffff;stroke:none;"/>
+<path d="M 1632.96 313.865 L 1632.96 302.525 A 11.34 11.34 0 0 1 1644.3 313.865 z" style="fill:#ffffff;stroke:none;"/>
+<path d="M 1632.96 313.865 L 1644.3 313.865 A 11.34 11.34 0 0 1 1632.96 325.205 z" style="fill:#ffffff;stroke:none;"/>
+<path d="M 1632.96 313.865 L 1632.96 325.205 A 11.34 11.34 0 0 1 1621.62 313.865 z" style="fill:#ffffff;stroke:none;"/>
+</g>
+<circle cx="1632.96" cy="313.865" r="11.34" id="m019" class="solid">
+	<title>m019</title>
+</circle>
+  <text x="1632.96" y="356.45" text-anchor="middle" >m019</text>
+  <line x1="1723.68" y1="298.745" x2="1723.68" y2="302.525" />
+  <clipPath id="m020_clipPath">
+   <rect x="1712.34" y="302.525" width="22.68" height="22.68" />
+  </clipPath>
+<g clip-path="url(#m020_clipPath)">
+<path d="M 1723.68 313.865 L 1707.64 313.865 A 16.0372 16.0372 0 0 1 1723.68 297.828 z" style="fill:#ffffff;stroke:none;"/>
+<path d="M 1723.68 313.865 L 1723.68 297.828 A 16.0372 16.0372 0 0 1 1739.72 313.865 z" style="fill:#ffffff;stroke:none;"/>
+<path d="M 1723.68 313.865 L 1739.72 313.865 A 16.0372 16.0372 0 0 1 1723.68 329.902 z" style="fill:#ffffff;stroke:none;"/>
+<path d="M 1723.68 313.865 L 1723.68 329.902 A 16.0372 16.0372 0 0 1 1707.64 313.865 z" style="fill:#ffffff;stroke:none;"/>
+</g>
+  <rect x="1712.34" y="302.525" width="22.68" height="22.68" id="m020" class="solid">
+	<title>m020</title>
+</rect>
+  <text x="1723.68" y="356.45" text-anchor="middle" >m020</text>
+  <line x1="1735.02" y1="313.865" x2="1803.06" y2="313.865" />
+<g>
+<path d="M 1814.4 313.865 L 1803.06 313.865 A 11.34 11.34 0 0 1 1814.4 302.525 z" style="fill:#ffffff;stroke:none;"/>
+<path d="M 1814.4 313.865 L 1814.4 302.525 A 11.34 11.34 0 0 1 1825.74 313.865 z" style="fill:#ffffff;stroke:none;"/>
+<path d="M 1814.4 313.865 L 1825.74 313.865 A 11.34 11.34 0 0 1 1814.4 325.205 z" style="fill:#ffffff;stroke:none;"/>
+<path d="M 1814.4 313.865 L 1814.4 325.205 A 11.34 11.34 0 0 1 1803.06 313.865 z" style="fill:#ffffff;stroke:none;"/>
+</g>
+<circle cx="1814.4" cy="313.865" r="11.34" id="4" class="solid">
+	<title>4</title>
+</circle>
+  <text x="1814.4" y="356.45" text-anchor="middle" >4</text>
+  <line class="mating" id="4:m020" x1="1769.04" y1="313.865" x2="1769.04" y2="406.108" />
+  <line class="solid" x1="1769.04" y1="406.108" x2="1769.04" y2="434.458" />
+  <clipPath id="m040_clipPath">
+   <rect x="1757.7" y="434.458" width="22.68" height="22.68" />
+  </clipPath>
+<g clip-path="url(#m040_clipPath)">
+<path d="M 1769.04 445.798 L 1753 445.798 A 16.0372 16.0372 0 0 1 1769.04 429.76 z" style="fill:#ffffff;stroke:none;"/>
+<path d="M 1769.04 445.798 L 1769.04 429.76 A 16.0372 16.0372 0 0 1 1785.08 445.798 z" style="fill:#ffffff;stroke:none;"/>
+<path d="M 1769.04 445.798 L 1785.08 445.798 A 16.0372 16.0372 0 0 1 1769.04 461.835 z" style="fill:#ffffff;stroke:none;"/>
+<path d="M 1769.04 445.798 L 1769.04 461.835 A 16.0372 16.0372 0 0 1 1753 445.798 z" style="fill:#000000;stroke:none;"/>
+</g>
+  <rect x="1757.7" y="434.458" width="22.68" height="22.68" id="m040" class="solid">
+	<title>m040</title>
+</rect>
+  <text x="1769.04" y="488.382" text-anchor="middle" >m040</text>
+  <line x1="1905.12" y1="298.745" x2="1905.12" y2="302.525" />
+<g>
+<path d="M 1905.12 313.865 L 1893.78 313.865 A 11.34 11.34 0 0 1 1905.12 302.525 z" style="fill:#ffffff;stroke:none;"/>
+<path d="M 1905.12 313.865 L 1905.12 302.525 A 11.34 11.34 0 0 1 1916.46 313.865 z" style="fill:#ffffff;stroke:none;"/>
+<path d="M 1905.12 313.865 L 1916.46 313.865 A 11.34 11.34 0 0 1 1905.12 325.205 z" style="fill:#ffffff;stroke:none;"/>
+<path d="M 1905.12 313.865 L 1905.12 325.205 A 11.34 11.34 0 0 1 1893.78 313.865 z" style="fill:#ffffff;stroke:none;"/>
+</g>
+<circle cx="1905.12" cy="313.865" r="11.34" id="m021" class="solid">
+	<title>m021</title>
+</circle>
+  <text x="1905.12" y="356.45" text-anchor="middle" >m021</text>
+  <line x1="1383.48" y1="274.175" x2="1383.48" y2="277.955" />
+  <line x1="1134" y1="298.745" x2="1383.48" y2="277.955" />
+  <line x1="1542.24" y1="298.745" x2="1383.48" y2="277.955" />
+  <line x1="1632.96" y1="298.745" x2="1383.48" y2="277.955" />
+  <line x1="1134" y1="298.745" x2="1632.96" y2="298.745" />
+  <line x1="1814.4" y1="274.175" x2="1814.4" y2="277.955" />
+  <line x1="1723.68" y1="298.745" x2="1814.4" y2="277.955" />
+  <line x1="1905.12" y1="298.745" x2="1814.4" y2="277.955" />
+  <line x1="1383.48" y1="274.175" x2="1814.4" y2="274.175" />
+  <line class="solid" x1="1995.84" y1="142.243" x2="1995.84" y2="170.593" />
+  <clipPath id="m010_clipPath">
+   <rect x="1984.5" y="170.593" width="22.68" height="22.68" />
+  </clipPath>
+<g clip-path="url(#m010_clipPath)">
+<path d="M 1995.84 181.933 L 1979.8 181.933 A 16.0372 16.0372 0 0 1 1995.84 165.895 z" style="fill:#ffffff;stroke:none;"/>
+<path d="M 1995.84 181.933 L 1995.84 165.895 A 16.0372 16.0372 0 0 1 2011.88 181.933 z" style="fill:#ffffff;stroke:none;"/>
+<path d="M 1995.84 181.933 L 2011.88 181.933 A 16.0372 16.0372 0 0 1 1995.84 197.97 z" style="fill:#ffffff;stroke:none;"/>
+<path d="M 1995.84 181.933 L 1995.84 197.97 A 16.0372 16.0372 0 0 1 1979.8 181.933 z" style="fill:#ffffff;stroke:none;"/>
+</g>
+  <rect x="1984.5" y="170.593" width="22.68" height="22.68" id="m010" class="solid">
+	<title>m010</title>
+</rect>
+  <text x="1995.84" y="224.517" text-anchor="middle" >m010</text>
+  <line class="solid" x1="2268" y1="142.243" x2="2268" y2="170.593" />
+<g>
+<path d="M 2268 181.933 L 2256.66 181.933 A 11.34 11.34 0 0 1 2268 170.593 z" style="fill:#ffffff;stroke:none;"/>
+<path d="M 2268 181.933 L 2268 170.593 A 11.34 11.34 0 0 1 2279.34 181.933 z" style="fill:#ffffff;stroke:none;"/>
+<path d="M 2268 181.933 L 2279.34 181.933 A 11.34 11.34 0 0 1 2268 193.273 z" style="fill:#ffffff;stroke:none;"/>
+<path d="M 2268 181.933 L 2268 193.273 A 11.34 11.34 0 0 1 2256.66 181.933 z" style="fill:#ffffff;stroke:none;"/>
+</g>
+<circle cx="2268" cy="181.933" r="11.34" id="m009" class="solid">
+	<title>m009</title>
+</circle>
+  <text x="2268" y="224.517" text-anchor="middle" >m009</text>
+  <line x1="2279.34" y1="181.933" x2="2347.38" y2="181.933" />
+  <line class="mating" id="m009:m004" x1="2313.36" y1="181.933" x2="2313.36" y2="274.175" />
+  <line class="solid" x1="2177.28" y1="274.175" x2="2177.28" y2="302.525" />
+<g>
+<path d="M 2177.28 313.865 L 2165.94 313.865 A 11.34 11.34 0 0 1 2177.28 302.525 z" style="fill:#ffffff;stroke:none;"/>
+<path d="M 2177.28 313.865 L 2177.28 302.525 A 11.34 11.34 0 0 1 2188.62 313.865 z" style="fill:#ffffff;stroke:none;"/>
+<path d="M 2177.28 313.865 L 2188.62 313.865 A 11.34 11.34 0 0 1 2177.28 325.205 z" style="fill:#ffffff;stroke:none;"/>
+<path d="M 2177.28 313.865 L 2177.28 325.205 A 11.34 11.34 0 0 1 2165.94 313.865 z" style="fill:#ffffff;stroke:none;"/>
+</g>
+<circle cx="2177.28" cy="313.865" r="11.34" id="m014" class="solid">
+	<title>m014</title>
+</circle>
+  <text x="2177.28" y="356.45" text-anchor="middle" >m014</text>
+  <line x1="2097.9" y1="315.755" x2="2165.94" y2="315.755" />
+  <line x1="2097.9" y1="311.975" x2="2165.94" y2="311.975" />
+  <line class="mating" id="m014:m010" x1="2131.92" y1="315.755" x2="2131.92" y2="404.218" />
+  <line x1="2086.56" y1="430.678" x2="2086.56" y2="434.458" />
+<g>
+<path d="M 2086.56 445.798 L 2075.22 445.798 A 11.34 11.34 0 0 1 2086.56 434.458 z" style="fill:#ffffff;stroke:none;"/>
+<path d="M 2086.56 445.798 L 2086.56 434.458 A 11.34 11.34 0 0 1 2097.9 445.798 z" style="fill:#ffffff;stroke:none;"/>
+<path d="M 2086.56 445.798 L 2097.9 445.798 A 11.34 11.34 0 0 1 2086.56 457.138 z" style="fill:#ffffff;stroke:none;"/>
+<path d="M 2086.56 445.798 L 2086.56 457.138 A 11.34 11.34 0 0 1 2075.22 445.798 z" style="fill:#ffffff;stroke:none;"/>
+</g>
+<circle cx="2086.56" cy="445.798" r="11.34" id="m015" class="solid">
+	<title>m015</title>
+</circle>
+  <text x="2086.56" y="488.382" text-anchor="middle" >m015</text>
+  <line x1="2177.28" y1="430.678" x2="2177.28" y2="434.458" />
+  <clipPath id="m016_clipPath">
+   <rect x="2165.94" y="434.458" width="22.68" height="22.68" />
+  </clipPath>
+<g clip-path="url(#m016_clipPath)">
+<path d="M 2177.28 445.798 L 2161.24 445.798 A 16.0372 16.0372 0 0 1 2177.28 429.76 z" style="fill:#ffffff;stroke:none;"/>
+<path d="M 2177.28 445.798 L 2177.28 429.76 A 16.0372 16.0372 0 0 1 2193.32 445.798 z" style="fill:#ffffff;stroke:none;"/>
+<path d="M 2177.28 445.798 L 2193.32 445.798 A 16.0372 16.0372 0 0 1 2177.28 461.835 z" style="fill:#ffffff;stroke:none;"/>
+<path d="M 2177.28 445.798 L 2177.28 461.835 A 16.0372 16.0372 0 0 1 2161.24 445.798 z" style="fill:#ffffff;stroke:none;"/>
+</g>
+  <rect x="2165.94" y="434.458" width="22.68" height="22.68" id="m016" class="solid">
+	<title>m016</title>
+</rect>
+  <text x="2177.28" y="488.382" text-anchor="middle" >m016</text>
+  <line x1="2131.92" y1="406.108" x2="2131.92" y2="409.888" />
+  <line x1="2086.56" y1="430.678" x2="2131.92" y2="409.888" />
+  <line x1="2177.28" y1="430.678" x2="2131.92" y2="409.888" />
+  <ellipse cx="2131.92" cy="421.228" rx="6" ry="6" />
+  <text x="2131.92" y="423.724" text-anchor="middle"  class="unknownTwins" >?</text>
+  <line x1="2131.92" y1="406.108" x2="2131.92" y2="406.108" />
+  <line class="solid" x1="2268" y1="274.175" x2="2268" y2="302.525" />
+<g>
+<path d="M 2268 313.865 L 2256.66 313.865 A 11.34 11.34 0 0 1 2268 302.525 z" style="fill:#ffffff;stroke:none;"/>
+<path d="M 2268 313.865 L 2268 302.525 A 11.34 11.34 0 0 1 2279.34 313.865 z" style="fill:#ffffff;stroke:none;"/>
+<path d="M 2268 313.865 L 2279.34 313.865 A 11.34 11.34 0 0 1 2268 325.205 z" style="fill:#ffffff;stroke:none;"/>
+<path d="M 2268 313.865 L 2268 325.205 A 11.34 11.34 0 0 1 2256.66 313.865 z" style="fill:#ffffff;stroke:none;"/>
+</g>
+<circle cx="2268" cy="313.865" r="11.34" id="m012" class="solid">
+	<title>m012</title>
+</circle>
+  <text x="2268" y="356.45" text-anchor="middle" >m012</text>
+  <line class="solid" x1="2358.72" y1="274.175" x2="2358.72" y2="302.525" />
+<g>
+<path d="M 2358.72 313.865 L 2347.38 313.865 A 11.34 11.34 0 0 1 2358.72 302.525 z" style="fill:#ffffff;stroke:none;"/>
+<path d="M 2358.72 313.865 L 2358.72 302.525 A 11.34 11.34 0 0 1 2370.06 313.865 z" style="fill:#ffffff;stroke:none;"/>
+<path d="M 2358.72 313.865 L 2370.06 313.865 A 11.34 11.34 0 0 1 2358.72 325.205 z" style="fill:#ffffff;stroke:none;"/>
+<path d="M 2358.72 313.865 L 2358.72 325.205 A 11.34 11.34 0 0 1 2347.38 313.865 z" style="fill:#ffffff;stroke:none;"/>
+</g>
+<circle cx="2358.72" cy="313.865" r="11.34" id="m011" class="solid">
+	<title>m011</title>
+</circle>
+  <text x="2358.72" y="356.45" text-anchor="middle" >m011</text>
+  <line class="solid" x1="2449.44" y1="274.175" x2="2449.44" y2="302.525" />
+  <clipPath id="m013_clipPath">
+   <rect x="2438.1" y="302.525" width="22.68" height="22.68" />
+  </clipPath>
+<g clip-path="url(#m013_clipPath)">
+<path d="M 2449.44 313.865 L 2433.4 313.865 A 16.0372 16.0372 0 0 1 2449.44 297.828 z" style="fill:#ff0000;stroke:none;"/>
+<path d="M 2449.44 313.865 L 2449.44 297.828 A 16.0372 16.0372 0 0 1 2465.48 313.865 z" style="fill:#ffffff;stroke:none;"/>
+<path d="M 2449.44 313.865 L 2465.48 313.865 A 16.0372 16.0372 0 0 1 2449.44 329.902 z" style="fill:#000000;stroke:none;"/>
+<path d="M 2449.44 313.865 L 2449.44 329.902 A 16.0372 16.0372 0 0 1 2433.4 313.865 z" style="fill:#000000;stroke:none;"/>
+</g>
+  <rect x="2438.1" y="302.525" width="22.68" height="22.68" id="m013" class="solid">
+	<title>m013</title>
+</rect>
+  <text x="2449.44" y="356.45" text-anchor="middle" >m013</text>
+  <line x1="2177.28" y1="274.175" x2="2449.44" y2="274.175" />
+  <line x1="1587.6" y1="142.243" x2="2268" y2="142.243" />
+  <clipPath id="2_clipPath">
+   <rect x="2528.82" y="38.66" width="22.68" height="22.68" />
+  </clipPath>
+<g clip-path="url(#2_clipPath)">
+<path d="M 2540.16 50 L 2524.12 50 A 16.0372 16.0372 0 0 1 2540.16 33.9628 z" style="fill:#ffffff;stroke:none;"/>
+<path d="M 2540.16 50 L 2540.16 33.9628 A 16.0372 16.0372 0 0 1 2556.2 50 z" style="fill:#ffffff;stroke:none;"/>
+<path d="M 2540.16 50 L 2556.2 50 A 16.0372 16.0372 0 0 1 2540.16 66.0372 z" style="fill:#ffffff;stroke:none;"/>
+<path d="M 2540.16 50 L 2540.16 66.0372 A 16.0372 16.0372 0 0 1 2524.12 50 z" style="fill:#ffffff;stroke:none;"/>
+</g>
+  <rect x="2528.82" y="38.66" width="22.68" height="22.68" id="2" class="solid">
+	<title>2</title>
+</rect>
+  <text x="2540.16" y="92.5845" text-anchor="middle" >2</text>
+  <line x1="2551.5" y1="50" x2="2619.54" y2="50" />
+<g>
+<path d="M 2630.88 50 L 2619.54 50 A 11.34 11.34 0 0 1 2630.88 38.66 z" style="fill:#ffffff;stroke:none;"/>
+<path d="M 2630.88 50 L 2630.88 38.66 A 11.34 11.34 0 0 1 2642.22 50 z" style="fill:#ffffff;stroke:none;"/>
+<path d="M 2630.88 50 L 2642.22 50 A 11.34 11.34 0 0 1 2630.88 61.34 z" style="fill:#ffffff;stroke:none;"/>
+<path d="M 2630.88 50 L 2630.88 61.34 A 11.34 11.34 0 0 1 2619.54 50 z" style="fill:#ffffff;stroke:none;"/>
+</g>
+<circle cx="2630.88" cy="50" r="11.34" id="3" class="solid">
+	<title>3</title>
+</circle>
+  <text x="2630.88" y="92.5845" text-anchor="middle" >3</text>
+  <line class="mating" id="3:2" x1="2585.52" y1="50" x2="2585.52" y2="142.243" />
+  <line class="solid" x1="2540.16" y1="142.243" x2="2540.16" y2="170.593" />
+  <clipPath id="m001_clipPath">
+   <rect x="2528.82" y="170.593" width="22.68" height="22.68" />
+  </clipPath>
+<g clip-path="url(#m001_clipPath)">
+<path d="M 2540.16 181.933 L 2524.12 181.933 A 16.0372 16.0372 0 0 1 2540.16 165.895 z" style="fill:#ff0000;stroke:none;"/>
+<path d="M 2540.16 181.933 L 2540.16 165.895 A 16.0372 16.0372 0 0 1 2556.2 181.933 z" style="fill:#ffffff;stroke:none;"/>
+<path d="M 2540.16 181.933 L 2556.2 181.933 A 16.0372 16.0372 0 0 1 2540.16 197.97 z" style="fill:#ffffff;stroke:none;"/>
+<path d="M 2540.16 181.933 L 2540.16 197.97 A 16.0372 16.0372 0 0 1 2524.12 181.933 z" style="fill:#ffffff;stroke:none;"/>
+</g>
+  <rect x="2528.82" y="170.593" width="22.68" height="22.68" id="m001" class="solid">
+	<title>m001</title>
+</rect>
+  <text x="2540.16" y="224.517" text-anchor="middle" >m001</text>
+  <line x1="2551.5" y1="181.933" x2="2619.54" y2="181.933" />
+<g>
+<path d="M 2630.88 181.933 L 2619.54 181.933 A 11.34 11.34 0 0 1 2630.88 170.593 z" style="fill:#0000ff;stroke:none;"/>
+<path d="M 2630.88 181.933 L 2630.88 170.593 A 11.34 11.34 0 0 1 2642.22 181.933 z" style="fill:#ffffff;stroke:none;"/>
+<path d="M 2630.88 181.933 L 2642.22 181.933 A 11.34 11.34 0 0 1 2630.88 193.273 z" style="fill:#ffffff;stroke:none;"/>
+<path d="M 2630.88 181.933 L 2630.88 193.273 A 11.34 11.34 0 0 1 2619.54 181.933 z" style="fill:#ffffff;stroke:none;"/>
+</g>
+<circle cx="2630.88" cy="181.933" r="11.34" id="m002" class="solid">
+	<title>m002</title>
+</circle>
+  <text x="2630.88" y="224.517" text-anchor="middle" >m002</text>
+  <line class="mating" id="m002:m001" x1="2585.52" y1="181.933" x2="2585.52" y2="274.175" />
+  <line class="solid" x1="2540.16" y1="274.175" x2="2540.16" y2="302.525" />
+  <clipPath id="m004_clipPath">
+   <rect x="2528.82" y="302.525" width="22.68" height="22.68" />
+  </clipPath>
+<g clip-path="url(#m004_clipPath)">
+<path d="M 2540.16 313.865 L 2524.12 313.865 A 16.0372 16.0372 0 0 1 2540.16 297.828 z" style="fill:#ffffff;stroke:none;"/>
+<path d="M 2540.16 313.865 L 2540.16 297.828 A 16.0372 16.0372 0 0 1 2556.2 313.865 z" style="fill:#ffffff;stroke:none;"/>
+<path d="M 2540.16 313.865 L 2556.2 313.865 A 16.0372 16.0372 0 0 1 2540.16 329.902 z" style="fill:#ffffff;stroke:none;"/>
+<path d="M 2540.16 313.865 L 2540.16 329.902 A 16.0372 16.0372 0 0 1 2524.12 313.865 z" style="fill:#ffffff;stroke:none;"/>
+</g>
+  <rect x="2528.82" y="302.525" width="22.68" height="22.68" id="m004" class="solid">
+	<title>m004</title>
+</rect>
+  <text x="2540.16" y="356.45" text-anchor="middle" >m004</text>
+  <line class="solid" x1="2630.88" y1="274.175" x2="2630.88" y2="302.525" />
+<g>
+<path d="M 2630.88 313.865 L 2619.54 313.865 A 11.34 11.34 0 0 1 2630.88 302.525 z" style="fill:#00b050;stroke:none;"/>
+<path d="M 2630.88 313.865 L 2630.88 302.525 A 11.34 11.34 0 0 1 2642.22 313.865 z" style="fill:#ffffff;stroke:none;"/>
+<path d="M 2630.88 313.865 L 2642.22 313.865 A 11.34 11.34 0 0 1 2630.88 325.205 z" style="fill:#ffffff;stroke:none;"/>
+<path d="M 2630.88 313.865 L 2630.88 325.205 A 11.34 11.34 0 0 1 2619.54 313.865 z" style="fill:#ffffff;stroke:none;"/>
+</g>
+<circle cx="2630.88" cy="313.865" r="11.34" id="m003" class="solid">
+	<title>m003</title>
+</circle>
+  <text x="2630.88" y="356.45" text-anchor="middle" >m003</text>
+  <line x1="2642.22" y1="313.865" x2="2710.26" y2="313.865" />
+  <clipPath id="m038_clipPath">
+   <rect x="2710.26" y="302.525" width="22.68" height="22.68" />
+  </clipPath>
+<g clip-path="url(#m038_clipPath)">
+<path d="M 2721.6 313.865 L 2705.56 313.865 A 16.0372 16.0372 0 0 1 2721.6 297.828 z" style="fill:#ffffff;stroke:none;"/>
+<path d="M 2721.6 313.865 L 2721.6 297.828 A 16.0372 16.0372 0 0 1 2737.64 313.865 z" style="fill:#ffffff;stroke:none;"/>
+<path d="M 2721.6 313.865 L 2737.64 313.865 A 16.0372 16.0372 0 0 1 2721.6 329.902 z" style="fill:#ffffff;stroke:none;"/>
+<path d="M 2721.6 313.865 L 2721.6 329.902 A 16.0372 16.0372 0 0 1 2705.56 313.865 z" style="fill:#ffffff;stroke:none;"/>
+</g>
+  <rect x="2710.26" y="302.525" width="22.68" height="22.68" id="m038" class="solid">
+	<title>m038</title>
+</rect>
+  <text x="2721.6" y="356.45" text-anchor="middle" >m038</text>
+  <line class="mating" id="m003:m038" x1="2676.24" y1="313.865" x2="2676.24" y2="406.108" />
+  <line class="solid" x1="2630.88" y1="406.108" x2="2630.88" y2="434.458" />
+  <clipPath id="m006_clipPath">
+   <rect x="2619.54" y="434.458" width="22.68" height="22.68" />
+  </clipPath>
+<g clip-path="url(#m006_clipPath)">
+<path d="M 2630.88 445.798 L 2614.84 445.798 A 16.0372 16.0372 0 0 1 2630.88 429.76 z" style="fill:#ffffff;stroke:none;"/>
+<path d="M 2630.88 445.798 L 2630.88 429.76 A 16.0372 16.0372 0 0 1 2646.92 445.798 z" style="fill:#ffffff;stroke:none;"/>
+<path d="M 2630.88 445.798 L 2646.92 445.798 A 16.0372 16.0372 0 0 1 2630.88 461.835 z" style="fill:#000000;stroke:none;"/>
+<path d="M 2630.88 445.798 L 2630.88 461.835 A 16.0372 16.0372 0 0 1 2614.84 445.798 z" style="fill:#ffffff;stroke:none;"/>
+</g>
+  <rect x="2619.54" y="434.458" width="22.68" height="22.68" id="m006" class="solid">
+	<title>m006</title>
+</rect>
+  <text x="2630.88" y="488.382" text-anchor="middle" >m006</text>
+  <line class="solid" x1="2721.6" y1="406.108" x2="2721.6" y2="434.458" />
+<g>
+<path d="M 2721.6 445.798 L 2710.26 445.798 A 11.34 11.34 0 0 1 2721.6 434.458 z" style="fill:#ffffff;stroke:none;"/>
+<path d="M 2721.6 445.798 L 2721.6 434.458 A 11.34 11.34 0 0 1 2732.94 445.798 z" style="fill:#ffffff;stroke:none;"/>
+<path d="M 2721.6 445.798 L 2732.94 445.798 A 11.34 11.34 0 0 1 2721.6 457.138 z" style="fill:#ffffff;stroke:none;"/>
+<path d="M 2721.6 445.798 L 2721.6 457.138 A 11.34 11.34 0 0 1 2710.26 445.798 z" style="fill:#ffffff;stroke:none;"/>
+</g>
+<circle cx="2721.6" cy="445.798" r="11.34" id="m005" class="solid">
+	<title>m005</title>
+</circle>
+  <text x="2721.6" y="488.382" text-anchor="middle" >m005</text>
+  <line x1="2630.88" y1="406.108" x2="2721.6" y2="406.108" />
+  <line x1="2540.16" y1="274.175" x2="2630.88" y2="274.175" />
+  <line x1="2540.16" y1="142.243" x2="2585.52" y2="142.243" />
+  </g>
+  <g class="legend">
+  <text x="-2.84217e-14" y="50" text-anchor="middle" >AFFECTED</text>
+  <rect  x="-41.58" y="53.78" width="83.16" height="18.3356" style="fill:#ffffff;"  />
+  <text x="-2.84217e-14" y="67.5123" text-anchor="middle"  class="blackInkLetter_1" >ALS</text>
+  <rect  x="-41.58" y="72.1156" width="83.16" height="18.3356" style="fill:#ffffff;"  />
+  <text x="-2.84217e-14" y="85.8479" text-anchor="middle"  class="blackInkLetter_1" >HSP</text>
+  <rect  x="-41.58" y="90.4513" width="83.16" height="18.3356" style="fill:#ffffff;"  />
+  <text x="-2.84217e-14" y="104.184" text-anchor="middle"  class="blackInkLetter_1" >PLS</text>
+  <rect  x="-41.58" y="108.787" width="83.16" height="18.3356" style="fill:#ffffff;"  />
+  <text x="-2.84217e-14" y="122.519" text-anchor="middle"  class="blackInkLetter_1" >PMA</text>
+  <rect  x="-41.58" y="127.123" width="83.16" height="18.3356" style="fill:#ffffff;"  />
+  <text x="-2.84217e-14" y="136.29" text-anchor="middle"  class="blackInkLetter_1" >.</text>
+  <text x="-2.84217e-14" y="163.794" text-anchor="middle" >AFFECTED_IBM</text>
+  <rect  x="-41.58" y="167.574" width="83.16" height="18.3356" style="fill:#ffffff;"  />
+  <text x="-2.84217e-14" y="176.742" text-anchor="middle"  class="blackInkLetter_1" >.</text>
+  <text x="-2.84217e-14" y="204.245" text-anchor="middle" >AFFECTED_FTD</text>
+  <rect  x="-41.58" y="208.025" width="83.16" height="18.3356" style="fill:#ffffff;"  />
+  <text x="-2.84217e-14" y="221.757" text-anchor="middle"  class="blackInkLetter_1" >A</text>
+  <rect  x="-41.58" y="226.361" width="83.16" height="18.3356" style="fill:#ffffff;"  />
+  <text x="-2.84217e-14" y="235.528" text-anchor="middle"  class="blackInkLetter_1" >.</text>
+  <text x="-2.84217e-14" y="263.032" text-anchor="middle" >AFFECTED_NEURODEG</text>
+  <rect  x="-41.58" y="266.812" width="83.16" height="18.3356" style="fill:#ffffff;"  />
+  <text x="-2.84217e-14" y="280.544" text-anchor="middle"  class="blackInkLetter_1" >A</text>
+  <rect  x="-41.58" y="285.148" width="83.16" height="18.3356" style="fill:#ffffff;"  />
+  <text x="-2.84217e-14" y="294.315" text-anchor="middle"  class="blackInkLetter_1" >.</text>
+  </g>
+
+ </g>
+ </svg>
+
