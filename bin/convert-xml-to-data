@@ -1,0 +1,41 @@
+#!/usr/bin/env python
+#
+# Usage: bin/convert-xml-to-data input.xml > input.data
+#
+# NOTE: Any spaces or tabs in the text of a data element will be collapsed to a singe pipe character (|)
+
+import re
+import sys
+import xml.etree.ElementTree as ET
+
+def print_header(table):
+    for d in table[0]:
+        print d.text
+
+for fname in sys.argv[1:]:
+    tree = ET.parse(fname)
+    root = tree.getroot()
+    table = root.find('table')
+
+    # convert white space sequence
+    for row in table:
+      for d in row:
+        d.text = re.sub(r'\s+', '|', d.text)
+
+    number_columns = len(table[0])
+
+    rows = []
+    column_size_map = []
+
+    print_header(table)
+    print
+
+    for row in table[1:]:
+        rows.append([d.text for d in row])
+
+    for column_index in range(0, number_columns):
+        column_size_map.append(max(len(row[column_index]) for row in rows) + 2)
+
+    for row in rows:
+        line = ''.join(column.ljust(column_size_map[idx]) for idx, column in enumerate(row))
+        print line.rstrip()
