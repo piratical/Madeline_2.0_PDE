@@ -1495,7 +1495,6 @@ void DrawingCanvas::iconPie( double x, double y, Individual *pIndividual ){
 		std::string arcColor;
 		if( i<DrawingMetrics::customColorMap.size() && DrawingMetrics::customColorMap[i].find(label)!=DrawingMetrics::customColorMap[i].end()){
 			arcColor = DrawingMetrics::customColorMap[i][label].get();
-			std::cout << "*** Section " << i << " custom color for " << label << " is " << arcColor << std::endl;
 		}else{
 			if(reversed){
 				arcColor = pCS->reversedSeriesGetColorAtLevel(level);

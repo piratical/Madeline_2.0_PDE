@@ -118,16 +118,37 @@ public:
 			bool reversed=true;
 			std::string textClass;
 			double ytemp;
+			
 			//
-			// Iterate over the categorical levels
+			// Print the label and color for each level of the variable:
 			//
 			for(unsigned j=0;j<levelsCount;j++){
+				
+				//
+				// This needs to be refactored:
+				//				
 				if(pCS->reversedSeriesUseBlackInkAtLevel(j)){
 					textClass = "blackInkLetter_1";
 				}else{
 					textClass = "whiteInkLetter_1";
 				}
-				std::string style = "fill:" + (reversed?pCS->reversedSeriesGetColorAtLevel(j):pCS->getColorAtLevel(j)) + ";";
+				
+				//
+				// get the color:
+				//
+				std::string legendColor;
+				if(i<DrawingMetrics::customColorMap.size() && 
+				   DrawingMetrics::customColorMap[i].find(labels[j])!=DrawingMetrics::customColorMap[i].end()){				
+					legendColor=DrawingMetrics::customColorMap[i][labels[j]].get();
+				}else if(reversed){
+					legendColor=pCS->reversedSeriesGetColorAtLevel(j);
+				}else{
+					legendColor=pCS->getColorAtLevel(j);
+				}
+				//
+				// Set up the CSS style:
+				//
+				std::string style = "fill:" + legendColor + ";";
 				psvg->drawRectangle(os,xstt,ystt,_width-2*labelMargin,lineHeight,"","",style);
 				ytemp = ystt+lineHeight/2;
 				if(j < levelsCount - 1){
