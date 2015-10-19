@@ -69,15 +69,40 @@ test_output_with_expected() {
 
   local cli_options="$( option_map ${test_group_name}/${short_name} )"
 
-  [[ -d ${output_prefix} ]] || mkdir -p ${output_prefix}
+  [[ -d ${output_prefix}/${short_name} ]] || mkdir -p ${output_prefix}/${short_name}
 
   banner "${test_group_name}/${short_name}"
 
-  run_cmd src/madeline2 ${cli_options} --outputprefix ${output_prefix}/${short_name} ${input_file}
+  cp ${input_file} ${output_prefix}/${short_name}/input.txt
+
+  run_cmd src/madeline2 ${cli_options} --outputprefix ${output_prefix}/${short_name} ${input_file} \
+    2>&1 | tee ${output_prefix}/${short_name}/log.txt
 
   if ! cmp ${output_prefix}/${short_name}.xml ${testdata_dir}/expected/${short_name}.xml; then
     error_and_exit "'${output_prefix}/${short_name}.xml' differs from '${testdata_dir}/expected/${short_name}.xml'"
   fi
+}
+
+generate_index_page() {
+  if [[ -n ${TRAVIS_COMMIT} ]]; then
+    local commit_url=" [<a href='https://github.com/piratical/Madeline_2.0_PDE/commit/${TRAVIS_COMMIT}'>commit</a>]"
+  fi
+
+  > $TMP_DIR/index.html
+
+  echo "<html><body>" >> $TMP_DIR/index.html
+  echo "Generated: $(date +%FT%T%z)${commit_url}" >> $TMP_DIR/index.html
+  echo "<ul>" >> $TMP_DIR/index.html
+
+  for f in $( find $TMP_DIR -type f | grep -v 'index.html' | grep -v '\.txt$' ); do
+    f=${f#$TMP_DIR/}
+    subdir=${f%.xml}
+    echo "<li><a href='${f}'>${f}</a> [<a href='${subdir}/input.txt'>input</a>] [<a href='${subdir}/log.txt'>log</a>]</li>"
+  done | sort >> $TMP_DIR/index.html
+
+  echo "</ul>" >> $TMP_DIR/index.html
+  echo "</body></html>" >> $TMP_DIR/index.html
+
 }
 
 madeline=src/madeline2
@@ -109,14 +134,6 @@ done
 
 rc=$?
 
-> $TMP_DIR/index.html
-
-echo "<html><body><ul>" >> $TMP_DIR/index.html
-
-for f in $( find $TMP_DIR -type f | grep -v \.index.html ); do
-  echo "<li><a href='${f#tmp/ci/output/}'>${f#tmp/ci/output/}</a></li>"
-done | sort >> $TMP_DIR/index.html
-
-echo "</ul></body></html>" >> $TMP_DIR/index.html
+generate_index_page
 
 exit $rc
