@@ -217,7 +217,19 @@ DrawingColor ColorSeries::get(unsigned level) const{
 	}else{
 		return _missingColor;
 	}
+}
+
+//
+// reversedGet():
+//
+DrawingColor ColorSeries::reversedGet(unsigned level) const{
 	
+	if( _colorSeries.size() && level < _colorSeries.size() ){
+		unsigned reversedLevel = _colorSeries.size() - 1 - level;
+		return _colorSeries[reversedLevel];
+	}else{
+		return _missingColor;
+	}
 }
 
 //

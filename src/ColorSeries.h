@@ -65,6 +65,7 @@ public:
 	            const std::string &cC=".",const std::string &cD=".",const std::string &cE=".",const std::string &cF=".");
 	
 	DrawingColor get(unsigned level) const;
+	DrawingColor reversedGet(unsigned level) const;
 	std::string getColorAtLevel(unsigned level) const;
 	std::string reversedSeriesGetColorAtLevel(unsigned level) const;
 	bool useBlackInkAtLevel(unsigned level) const;

@@ -1478,32 +1478,31 @@ void DrawingCanvas::iconPie( double x, double y, Individual *pIndividual ){
 		// Assume reversed for now:
 		//
 		bool reversed=true;
-		std::string arcClass="blackInkLetter";
-		if(!pCS->reversedSeriesUseBlackInkAtLevel(level)) arcClass="whiteInkLetter";
 		
-		//
-		// If the number of sections is small, use a larger font size
-		//
-		
-		if(sections == 1)      arcClass += "_1";
-		else if(sections == 2) arcClass += "_2";
-		else if(sections == 3) arcClass += "_3";
 		
 		//
 		// Choose which color to use:
 		//
-		std::string arcColor;
+		DrawingColor arcColor;
 		if( i<DrawingMetrics::customColorMap.size() && DrawingMetrics::customColorMap[i].find(label)!=DrawingMetrics::customColorMap[i].end()){
-			arcColor = DrawingMetrics::customColorMap[i][label].get();
+			arcColor = DrawingMetrics::customColorMap[i][label];
 		}else{
 			if(reversed){
-				arcColor = pCS->reversedSeriesGetColorAtLevel(level);
+				arcColor = pCS->reversedGet(level);
 			}else{
-				arcColor = pCS->getColorAtLevel(level);
+				arcColor = pCS->get(level);
 			}
 		}
 		
-		arc(x,y,radius,startAngle,endAngle,arcColor,label,arcClass,isMale);
+		std::string arcClass= arcColor.useBlackInk()?"blackInkLetter":"whiteInkLetter";
+		//
+		// If the number of sections is small, use a larger font size
+		//
+		if(sections == 1)      arcClass += "_1";
+		else if(sections == 2) arcClass += "_2";
+		else if(sections == 3) arcClass += "_3";
+		
+		arc(x,y,radius,startAngle,endAngle,arcColor.get(),label,arcClass,isMale);
 		startAngle+=arcAngle;
 		endAngle+=arcAngle;
 		

@@ -116,7 +116,6 @@ public:
 			// Assume reversed for now:
 			//
 			bool reversed=true;
-			std::string textClass;
 			double ytemp;
 			
 			//
@@ -125,30 +124,22 @@ public:
 			for(unsigned j=0;j<levelsCount;j++){
 				
 				//
-				// This needs to be refactored:
-				//				
-				if(pCS->reversedSeriesUseBlackInkAtLevel(j)){
-					textClass = "blackInkLetter_1";
-				}else{
-					textClass = "whiteInkLetter_1";
-				}
-				
-				//
 				// get the color:
 				//
-				std::string legendColor;
+				DrawingColor legendColor;
 				if(i<DrawingMetrics::customColorMap.size() && 
 				   DrawingMetrics::customColorMap[i].find(labels[j])!=DrawingMetrics::customColorMap[i].end()){				
-					legendColor=DrawingMetrics::customColorMap[i][labels[j]].get();
+					legendColor=DrawingMetrics::customColorMap[i][labels[j]];
 				}else if(reversed){
-					legendColor=pCS->reversedSeriesGetColorAtLevel(j);
+					legendColor=pCS->reversedGet(j);
 				}else{
-					legendColor=pCS->getColorAtLevel(j);
+					legendColor=pCS->get(j);
 				}
+				std::string textClass=legendColor.useBlackInk()?"blackInkLetter_1":"whiteInkLetter_1";
 				//
 				// Set up the CSS style:
 				//
-				std::string style = "fill:" + legendColor + ";";
+				std::string style = "fill:" + legendColor.get() + ";";
 				psvg->drawRectangle(os,xstt,ystt,_width-2*labelMargin,lineHeight,"","",style);
 				ytemp = ystt+lineHeight/2;
 				if(j < levelsCount - 1){
