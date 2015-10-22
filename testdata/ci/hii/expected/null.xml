@@ -948,11 +948,11 @@ text{
   <rect  x="-41.58" y="53.78" width="83.16" height="18.3356" style="fill:#ff0000;"  />
   <text x="-2.84217e-14" y="67.5123" text-anchor="middle"  class="blackInkLetter_1" >ALS</text>
   <rect  x="-41.58" y="72.1156" width="83.16" height="18.3356" style="fill:#7030a0;"  />
-  <text x="-2.84217e-14" y="85.8479" text-anchor="middle"  class="blackInkLetter_1" >HSP</text>
+  <text x="-2.84217e-14" y="85.8479" text-anchor="middle"  class="whiteInkLetter_1" >HSP</text>
   <rect  x="-41.58" y="90.4513" width="83.16" height="18.3356" style="fill:#0000ff;"  />
-  <text x="-2.84217e-14" y="104.184" text-anchor="middle"  class="blackInkLetter_1" >PLS</text>
+  <text x="-2.84217e-14" y="104.184" text-anchor="middle"  class="whiteInkLetter_1" >PLS</text>
   <rect  x="-41.58" y="108.787" width="83.16" height="18.3356" style="fill:#00b050;"  />
-  <text x="-2.84217e-14" y="122.519" text-anchor="middle"  class="blackInkLetter_1" >PMA</text>
+  <text x="-2.84217e-14" y="122.519" text-anchor="middle"  class="whiteInkLetter_1" >PMA</text>
   <rect  x="-41.58" y="127.123" width="83.16" height="18.3356" style="fill:#ffffff;"  />
   <text x="-2.84217e-14" y="136.29" text-anchor="middle"  class="blackInkLetter_1" >.</text>
   <text x="-2.84217e-14" y="163.794" text-anchor="middle" >AFFECTED_IBM</text>
@@ -960,12 +960,12 @@ text{
   <text x="-2.84217e-14" y="176.742" text-anchor="middle"  class="blackInkLetter_1" >.</text>
   <text x="-2.84217e-14" y="204.245" text-anchor="middle" >AFFECTED_FTD</text>
   <rect  x="-41.58" y="208.025" width="83.16" height="18.3356" style="fill:#000000;"  />
-  <text x="-2.84217e-14" y="221.757" text-anchor="middle"  class="blackInkLetter_1" >A</text>
+  <text x="-2.84217e-14" y="221.757" text-anchor="middle"  class="whiteInkLetter_1" >A</text>
   <rect  x="-41.58" y="226.361" width="83.16" height="18.3356" style="fill:#ffffff;"  />
   <text x="-2.84217e-14" y="235.528" text-anchor="middle"  class="blackInkLetter_1" >.</text>
   <text x="-2.84217e-14" y="263.032" text-anchor="middle" >AFFECTED_NEURODEG</text>
   <rect  x="-41.58" y="266.812" width="83.16" height="18.3356" style="fill:#000000;"  />
-  <text x="-2.84217e-14" y="280.544" text-anchor="middle"  class="blackInkLetter_1" >A</text>
+  <text x="-2.84217e-14" y="280.544" text-anchor="middle"  class="whiteInkLetter_1" >A</text>
   <rect  x="-41.58" y="285.148" width="83.16" height="18.3356" style="fill:#ffffff;"  />
   <text x="-2.84217e-14" y="294.315" text-anchor="middle"  class="blackInkLetter_1" >.</text>
   </g>

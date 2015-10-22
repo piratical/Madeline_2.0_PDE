@@ -1,0 +1,19 @@
+familyid
+individualid
+gender
+father
+mother
+dztwin
+mztwin
+dob
+proband
+AFFECTED
+AFFECTED_IBM
+AFFECTED_FTD
+AFFECTED_NEURODEG
+superscript
+
+F0016|(2015-10-22)  1  F  2  3  .  A  2007-03-03  Y  ALS  .  A  A  .
+F0016|(2015-10-22)  2  M  .  .  .  B  1966-02-09  N  HSP  .  .  A  .
+F0016|(2015-10-22)  3  M  .  .  .  .  1962-01-11  N  PLS  .  .  A  .
+F0016|(2015-10-22)  4  F  .  .  .  .  2007-02-12  N  ALS  .  A  A  .
