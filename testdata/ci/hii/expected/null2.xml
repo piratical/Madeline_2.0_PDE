@@ -217,14 +217,10 @@ text{
    <rect x="500.66" y="38.66" width="22.68" height="22.68" />
   </clipPath>
 <g clip-path="url(#2_clipPath)">
-<path d="M 512 50 L 495.963 50 A 16.0372 16.0372 0 0 1 512 33.9628 z" style="fill:#01cf58;stroke:none;"/>
-  <text x="507.464" y="49.8228" text-anchor="middle"  class="blackInkLetter" >HSP</text>
+<path d="M 512 50 L 495.963 50 A 16.0372 16.0372 0 0 1 512 33.9628 z" style="fill:#7030a0;stroke:none;"/>
 <path d="M 512 50 L 512 33.9628 A 16.0372 16.0372 0 0 1 528.037 50 z" style="fill:#ffffff;stroke:none;"/>
-  <text x="516.536" y="45.464" text-anchor="middle"  class="blackInkLetter" >.</text>
 <path d="M 512 50 L 528.037 50 A 16.0372 16.0372 0 0 1 512 66.0372 z" style="fill:#ffffff;stroke:none;"/>
-  <text x="516.536" y="54.536" text-anchor="middle"  class="blackInkLetter" >.</text>
 <path d="M 512 50 L 512 66.0372 A 16.0372 16.0372 0 0 1 495.963 50 z" style="fill:#000000;stroke:none;"/>
-  <text x="507.464" y="58.8948" text-anchor="middle"  class="whiteInkLetter" >A</text>
 </g>
   <rect x="500.66" y="38.66" width="22.68" height="22.68" id="2" class="solid">
 	<title>2</title>
@@ -232,14 +228,10 @@ text{
   <text x="512" y="92.5845" text-anchor="middle" >2</text>
   <line x1="523.34" y1="50" x2="591.38" y2="50" />
 <g>
-<path d="M 602.72 50 L 591.38 50 A 11.34 11.34 0 0 1 602.72 38.66 z" style="fill:#ffd802;stroke:none;"/>
-  <text x="598.711" y="50.3495" text-anchor="middle"  class="blackInkLetter" >PLS</text>
+<path d="M 602.72 50 L 591.38 50 A 11.34 11.34 0 0 1 602.72 38.66 z" style="fill:#0000ff;stroke:none;"/>
 <path d="M 602.72 50 L 602.72 38.66 A 11.34 11.34 0 0 1 614.06 50 z" style="fill:#ffffff;stroke:none;"/>
-  <text x="606.729" y="45.9907" text-anchor="middle"  class="blackInkLetter" >.</text>
 <path d="M 602.72 50 L 614.06 50 A 11.34 11.34 0 0 1 602.72 61.34 z" style="fill:#ffffff;stroke:none;"/>
-  <text x="606.729" y="54.0093" text-anchor="middle"  class="blackInkLetter" >.</text>
 <path d="M 602.72 50 L 602.72 61.34 A 11.34 11.34 0 0 1 591.38 50 z" style="fill:#000000;stroke:none;"/>
-  <text x="598.711" y="58.3681" text-anchor="middle"  class="whiteInkLetter" >A</text>
 </g>
 <circle cx="602.72" cy="50" r="11.34" id="3" class="solid">
 	<title>3</title>
@@ -248,14 +240,10 @@ text{
   <line class="mating" id="3:2" x1="557.36" y1="50" x2="557.36" y2="142.243" />
   <line class="solid" x1="557.36" y1="142.243" x2="557.36" y2="170.593" />
 <g>
-<path d="M 557.36 181.933 L 546.02 181.933 A 11.34 11.34 0 0 1 557.36 170.593 z" style="fill:#0000a0;stroke:none;"/>
-  <text x="553.351" y="182.282" text-anchor="middle"  class="whiteInkLetter" >ALS</text>
+<path d="M 557.36 181.933 L 546.02 181.933 A 11.34 11.34 0 0 1 557.36 170.593 z" style="fill:#ff0000;stroke:none;"/>
 <path d="M 557.36 181.933 L 557.36 170.593 A 11.34 11.34 0 0 1 568.7 181.933 z" style="fill:#ffffff;stroke:none;"/>
-  <text x="561.369" y="177.923" text-anchor="middle"  class="blackInkLetter" >.</text>
 <path d="M 557.36 181.933 L 568.7 181.933 A 11.34 11.34 0 0 1 557.36 193.273 z" style="fill:#000000;stroke:none;"/>
-  <text x="561.369" y="190.301" text-anchor="middle"  class="whiteInkLetter" >A</text>
 <path d="M 557.36 181.933 L 557.36 193.273 A 11.34 11.34 0 0 1 546.02 181.933 z" style="fill:#000000;stroke:none;"/>
-  <text x="553.351" y="190.301" text-anchor="middle"  class="whiteInkLetter" >A</text>
 </g>
 <circle cx="557.36" cy="181.933" r="11.34" id="1" class="solid">
 	<title>1</title>
@@ -266,21 +254,21 @@ text{
   </g>
   <g class="legend">
   <text x="421.28" y="50" text-anchor="middle" >AFFECTED</text>
-  <rect  x="379.7" y="53.78" width="83.16" height="18.3356" style="fill:#0000a0;"  />
-  <text x="421.28" y="67.5123" text-anchor="middle"  class="whiteInkLetter_1" >ALS</text>
-  <rect  x="379.7" y="72.1156" width="83.16" height="18.3356" style="fill:#01cf58;"  />
-  <text x="421.28" y="85.8479" text-anchor="middle"  class="blackInkLetter_1" >HSP</text>
-  <rect  x="379.7" y="90.4513" width="83.16" height="18.3356" style="fill:#ffd802;"  />
-  <text x="421.28" y="104.184" text-anchor="middle"  class="blackInkLetter_1" >PLS</text>
-  <text x="421.28" y="127.123" text-anchor="middle" >AFFECTE...</text>
+  <rect  x="379.7" y="53.78" width="83.16" height="18.3356" style="fill:#ff0000;"  />
+  <text x="421.28" y="67.5123" text-anchor="middle"  class="blackInkLetter_1" >ALS</text>
+  <rect  x="379.7" y="72.1156" width="83.16" height="18.3356" style="fill:#7030a0;"  />
+  <text x="421.28" y="85.8479" text-anchor="middle"  class="whiteInkLetter_1" >HSP</text>
+  <rect  x="379.7" y="90.4513" width="83.16" height="18.3356" style="fill:#0000ff;"  />
+  <text x="421.28" y="104.184" text-anchor="middle"  class="whiteInkLetter_1" >PLS</text>
+  <text x="421.28" y="127.123" text-anchor="middle" >AFFECTED_IBM</text>
   <rect  x="379.7" y="130.903" width="83.16" height="18.3356" style="fill:#ffffff;"  />
   <text x="421.28" y="140.07" text-anchor="middle"  class="blackInkLetter_1" >.</text>
-  <text x="421.28" y="167.574" text-anchor="middle" >AFFECTE...</text>
+  <text x="421.28" y="167.574" text-anchor="middle" >AFFECTED_FTD</text>
   <rect  x="379.7" y="171.354" width="83.16" height="18.3356" style="fill:#000000;"  />
   <text x="421.28" y="185.086" text-anchor="middle"  class="whiteInkLetter_1" >A</text>
   <rect  x="379.7" y="189.689" width="83.16" height="18.3356" style="fill:#ffffff;"  />
   <text x="421.28" y="198.857" text-anchor="middle"  class="blackInkLetter_1" >.</text>
-  <text x="421.28" y="226.361" text-anchor="middle" >AFFECTE...</text>
+  <text x="421.28" y="226.361" text-anchor="middle" >AFFECTED_NEURODEG</text>
   <rect  x="379.7" y="230.141" width="83.16" height="18.3356" style="fill:#000000;"  />
   <text x="421.28" y="243.873" text-anchor="middle"  class="whiteInkLetter_1" >A</text>
   </g>
