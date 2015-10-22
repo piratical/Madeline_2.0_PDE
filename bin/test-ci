@@ -7,7 +7,7 @@ option_map() {
   local key="$1"
 
   case $key in
-    hii/null)
+    hii/null*)
       echo "-nNC 'ALS=#FF0000,HSP=#7030A0,PLS=#0000FF,PMA=#00B050;A=#000;A=#000;A=#000'" ;;
     core-color/ObesityAndHypertension)
       echo "-nNC '#4f4,#f44,#ffc800,#98d6ff;#fff,#cffdfd,8ff,#0ff,#433efe'" ;;
