@@ -1038,7 +1038,7 @@ void Pedigree::_establishNuclearFamilies(){
 		// Get the spouses
 		const std::set<Individual*,Individual::compareIndividual> * pspouses = (*individualIt)->getSpouses();
 		std::set<Individual*,Individual::compareIndividual>::const_iterator it = (*pspouses).begin();
-		while(it != (*pspouses).end()){ 
+		while(it != (*pspouses).end()){
 			if((*individualIt)->getGender().getEnum() == Gender::FEMALE){
 				_addNuclearFamily(*individualIt,*it);
 			}else{

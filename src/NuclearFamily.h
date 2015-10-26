@@ -56,7 +56,7 @@ public:
 	// Constructors:
 	//
 	NuclearFamily() { _twinGroupCount=0; _leftConnectionShiftFlag=false; }
-	NuclearFamily(Individual* mother,Individual* father){ _mother=mother; _father=father; _twinGroupCount=0; _leftConnectionShiftFlag = false; }
+	NuclearFamily(Individual* mother,Individual* father);
 	//
 	// Methods:
 	//

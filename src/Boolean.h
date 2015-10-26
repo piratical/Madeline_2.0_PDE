@@ -57,7 +57,7 @@ public:
 	//
 	// Constructors:
 	//
-	Boolean(){ _isMissing=true; }
+	Boolean(){ _isMissing=true; _value=false; }
 	Boolean(const char *value){ set(value); }
 	Boolean(const std::string &value){ set( value.c_str() ); }
 	

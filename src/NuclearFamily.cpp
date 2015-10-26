@@ -35,6 +35,24 @@
 #include <map>
 #include <algorithm>
 
+//
+// CONSTRUCTOR
+//
+NuclearFamily::NuclearFamily(Individual* mother,Individual* father){
+	if(mother->getGender().getEnum() != Gender::FEMALE){
+		throw Exception("NuclearFamily::NuclearFamily()","Mother %1$s must be set to FEMALE. This probably indicates an omission in the data file.",mother->getId().get().c_str());
+	}
+	if(father->getGender().getEnum() != Gender::MALE){
+		throw Exception("NuclearFamily::NuclearFamily()","Father %1$s will be set to MALE. This probably indicates an omission in the data file.",father->getId().get().c_str());
+	}
+	
+	_mother=mother; 
+	_father=father; 
+	_twinGroupCount=0; 
+	_leftConnectionShiftFlag = false;
+}
+
+
 ////////////////////////////////////////
 //
 // PRIVATE METHODS
