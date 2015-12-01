@@ -174,6 +174,8 @@ private:
 	bool _individualAdoptedIn;
 	bool _isSpecial;
 	
+	unsigned _collapsedCount;
+	
 public:
 	
 	//
@@ -245,6 +247,7 @@ public:
 	void setLeftSpouseConnector(bool value){ _leftSpouseConnector = value; }
 	
 	
+	void incrementCollapsedCount(void){ _collapsedCount++; }
 	//
 	// Getters:
 	//
@@ -377,6 +380,7 @@ public:
 	inline bool isIndividualAdoptedOut(void){                    return _individualAdoptedOut;                    }
 	inline bool isSpecial(void){                                 return _isSpecial;                               }
 	
+	unsigned getCollapsedCount(void){                            return _collapsedCount;                          }
 	//
 	// getDataTable:
 	//

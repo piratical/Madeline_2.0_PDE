@@ -522,6 +522,13 @@ void DataTable::_determineTableType(const std::vector<std::string> *pTitles) {
 			_finalTypes[i] = PREGNANCY;
 			_pregnancyColumnIndex = i;
 		}
+		else if(tempString == labels.CollapsedField)
+		{
+			
+			// Optional core field:
+			_finalTypes[i] = COLLAPSED;
+			_collapsedColumnIndex = i;
+		}
 	}
 	
 	

@@ -170,12 +170,22 @@ void PedigreeSet::addPedigreesFromDataTable(const DataTable * p_pedigreeTable, u
 	DataColumn *motherIdColumn = pedigreeTable.getColumn( pedigreeTable.labels.MotherIdField );
 	DataColumn *fatherIdColumn = pedigreeTable.getColumn( pedigreeTable.labels.FatherIdField );
 	DataColumn *genderColumn   = pedigreeTable.getColumn( pedigreeTable.labels.GenderField );
+	
+	DataColumn *collapsedColumn= 0;
+	if(pedigreeTable.columnExists(pedigreeTable.labels.CollapsedField)){
+		// 2015.11.30.ET ADDENDA:
+		collapsedColumn=pedigreeTable.getColumn( pedigreeTable.labels.CollapsedField );
+	}
 	//
 	// Insert the Pedigrees in a set:
 	//
 	std::string currentFamily;
 	int numberOfRows = familyIdColumn->getNumberOfRows();
 	int index=0;
+	
+	std::set<std::string> collapsedIndicatorSet;
+	Individual * collapsedIndividual=0;
+	
 	while(index < numberOfRows){
 		
 		currentFamily = familyIdColumn->get(index);
@@ -192,7 +202,32 @@ void PedigreeSet::addPedigreesFromDataTable(const DataTable * p_pedigreeTable, u
 		if(pp.second){
 			for(int i=0;i<familyIdColumn->getNumberOfRows();i++) { 
 				if(currentFamily.compare(familyIdColumn->get(i)) == 0){
-					(*pp.first)->addIndividual(individualIdColumn->get(i),motherIdColumn->get(i),fatherIdColumn->get(i),genderColumn->get(i),i,tableIndex,pedigreeTable);
+					// 2015.11.30.ET Handle collapsing:
+					if(collapsedColumn){
+						std::string indicator=collapsedColumn->get(i);
+						if(indicator=="."){
+							// Add normal, non-collapsed individual, as usual:
+							(*pp.first)->addIndividual(individualIdColumn->get(i),motherIdColumn->get(i),fatherIdColumn->get(i),genderColumn->get(i),i,tableIndex,pedigreeTable);
+						}else{
+							// Handling collapsed individuals:
+							if(collapsedIndicatorSet.find(indicator)==collapsedIndicatorSet.end()){
+								//
+								// Indicator not yet present in set, so add the first marked individual
+								// as the token individual:
+								//
+								collapsedIndicatorSet.insert(indicator);
+								collapsedIndividual = (*pp.first)->addIndividual(individualIdColumn->get(i),motherIdColumn->get(i),fatherIdColumn->get(i),genderColumn->get(i),i,tableIndex,pedigreeTable);
+								collapsedIndividual->incrementCollapsedCount();
+								// 2015.12.01.ET DEBUG
+								std::cout << "*** Individual " << individualIdColumn->get(i) << " used for collapsed group " << indicator << std::endl;
+							}else{
+								// increment collapsed count:
+							}
+						}
+					}else{
+						// Collapsed column not present, so just add everybody:
+						(*pp.first)->addIndividual(individualIdColumn->get(i),motherIdColumn->get(i),fatherIdColumn->get(i),genderColumn->get(i),i,tableIndex,pedigreeTable);
+					}
 				}
 			}
 		}

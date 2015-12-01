@@ -177,7 +177,6 @@ int main( int argc, char *argv[] ){
 		if(clp.hasSwitchSet("--outputprefix")){
 			DrawingMetrics::setDrawingFileNamePrefix( clp.getSwitchArgument("--outputprefix",1) );
 		}
-
 		//
 		// Handle specification of special file name extension:
 		//

@@ -72,8 +72,11 @@ inline void Individual::_init(void){
 	_dob        = 0;
 	_proband    = 0;
 	_sampled    = 0;
-	
 	_birthOrder = 0;
+	
+	// 2015.12.01.ET addenda;
+	_collapsed  = 0;
+	_collapsedCount = 0;
 	
 	_leftWidth = _rightWidth = 1;
 	_totalWidth= _leftWidth + _rightWidth;

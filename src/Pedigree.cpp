@@ -1712,14 +1712,14 @@ void Pedigree::_drawConsanguinousConnectors(DrawingCanvas& dc){
 //
 // addIndividual:
 //
-void Pedigree::addIndividual(const std::string ind,std::string mother,std::string father, std::string gender, int rowIndex, int tableIndex ,const DataTable& pedigreeTable) {
+Individual * Pedigree::addIndividual(const std::string ind,std::string mother,std::string father, std::string gender, int rowIndex, int tableIndex ,const DataTable& pedigreeTable) {
 	//
 	// for warnings:
 	//
 	const char *methodName="Pedigree::addIndiidual()";
 	if(ind == "."){
 		Warning(methodName,"Id is missing for individual with father %s and mother %s. This individual will be ignored.",father.c_str(),mother.c_str());
-		return;
+		return 0;
 	}
 	//
 	// Check for mother/father IDs being identical:
@@ -1766,6 +1766,7 @@ void Pedigree::addIndividual(const std::string ind,std::string mother,std::strin
 	// Check whether individual already exists in pedigree:
 	//
 	std::set<Individual*,compareIndividual>::iterator it = _individuals.find(newCandidateIndividual);
+	delete newCandidateIndividual;
 	if(it==_individuals.end()){
 		//
 		// Add new individual to pedigree
@@ -1775,13 +1776,14 @@ void Pedigree::addIndividual(const std::string ind,std::string mother,std::strin
 		if(iit.second){
 			(*iit.first)->setPedigreeDataTable(&pedigreeTable);
 		}
+		return *iit.first;
 	}else{
 		//
 		// Report replicated individual:
 		//
 		Warning(methodName,"Individual %1$s already exists in pedigree %2$s: Ignoring replicated individual from data file.",ind.c_str(),_id.c_str());
+		return *it;
 	}
-	delete newCandidateIndividual;
 }
 
 ///
