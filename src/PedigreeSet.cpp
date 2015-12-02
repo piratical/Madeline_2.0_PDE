@@ -183,7 +183,8 @@ void PedigreeSet::addPedigreesFromDataTable(const DataTable * p_pedigreeTable, u
 	int numberOfRows = familyIdColumn->getNumberOfRows();
 	int index=0;
 	
-	std::set<std::string> collapsedIndicatorSet;
+	// std::set<std::string> collapsedIndicatorSet;
+	std::map<std::string,Individual *> collapsedIndicatorSet;
 	Individual * collapsedIndividual=0;
 	
 	while(index < numberOfRows){
@@ -209,19 +210,25 @@ void PedigreeSet::addPedigreesFromDataTable(const DataTable * p_pedigreeTable, u
 							// Add normal, non-collapsed individual, as usual:
 							(*pp.first)->addIndividual(individualIdColumn->get(i),motherIdColumn->get(i),fatherIdColumn->get(i),genderColumn->get(i),i,tableIndex,pedigreeTable);
 						}else{
+							//
 							// Handling collapsed individuals:
-							if(collapsedIndicatorSet.find(indicator)==collapsedIndicatorSet.end()){
+							//
+							std::map<std::string,Individual *>::iterator it=collapsedIndicatorSet.find(indicator);
+							if(it==collapsedIndicatorSet.end()){
 								//
 								// Indicator not yet present in set, so add the first marked individual
 								// as the token individual:
 								//
-								collapsedIndicatorSet.insert(indicator);
 								collapsedIndividual = (*pp.first)->addIndividual(individualIdColumn->get(i),motherIdColumn->get(i),fatherIdColumn->get(i),genderColumn->get(i),i,tableIndex,pedigreeTable);
 								collapsedIndividual->incrementCollapsedCount();
+								collapsedIndicatorSet.insert(std::pair<std::string,Individual *>(indicator,collapsedIndividual));
 								// 2015.12.01.ET DEBUG
 								std::cout << "*** Individual " << individualIdColumn->get(i) << " used for collapsed group " << indicator << std::endl;
 							}else{
 								// increment collapsed count:
+								it->second->incrementCollapsedCount();
+								// 2015.12.01.ET DEBUG
+								std::cout << "*** Individual " << it->second->getId() << " with indicator " << indicator << " incremented to " << it->second->getCollapsedCount() << std::endl;
 							}
 						}
 					}else{

@@ -251,6 +251,7 @@ public:
 	//
 	// Getters:
 	//
+	unsigned getCollapsedCount(void)   { return _collapsedCount; }
 	String   getId( void )             { return _id;       }
 	String   getMotherId( void )       { return _motherId; }
 	String   getFatherId( void )       { return _fatherId; }
@@ -380,7 +381,6 @@ public:
 	inline bool isIndividualAdoptedOut(void){                    return _individualAdoptedOut;                    }
 	inline bool isSpecial(void){                                 return _isSpecial;                               }
 	
-	unsigned getCollapsedCount(void){                            return _collapsedCount;                          }
 	//
 	// getDataTable:
 	//
