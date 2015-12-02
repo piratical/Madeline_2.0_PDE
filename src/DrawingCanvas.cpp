@@ -438,6 +438,15 @@ void DrawingCanvas::_setCSS(){
 	_header << ".whiteInk{\n";
 	_header << "	fill: #fff;\n";
 	_header << "}\n\n";
+	
+	_header << ".counter{\n";
+	_header << "	font-size: " << DrawingMetrics::getCounterFontSize() << DrawingMetrics::getFontSizeUnit() << ";\n";
+	_header << "	fill: #000;\n";
+	_header << "}\n\n";
+	
+	_header << ".counterFill{\n";
+	_header << "	fill: #ccd;\n";
+	_header << "}\n\n";
 	//
 	// End style CDATA section:
 	//
@@ -1032,9 +1041,11 @@ void DrawingCanvas::drawIndividual(Individual* pIndividual,double x,double y,boo
 	//
 	// Nota bene: there is really no provision made for the potential situation
 	// where, for example, the user wants to show an individual as being both a carrier
-	// and a pregnancy at one and the same time ...
-	// 
-
+	// and a pregnancy at one and the same time ... or alternatively if a carrier and
+	// also showing a "collapsed" count. Currently, these all just over-print on top 
+	// of one another.
+	//
+	
 	//
 	// Draw Carrier dot:
 	//
@@ -1050,10 +1061,20 @@ void DrawingCanvas::drawIndividual(Individual* pIndividual,double x,double y,boo
 	}
 	
 	//
+	// Draw Collapsed count:
+	//
+	if(!pIndividual->hasBeenDrawn() && pIndividual->getCollapsedCount()){
+		_svg.drawCollapsedCount(_body,x,y,pIndividual->getCollapsedCount());
+	}
+	
+	//
 	// Draw labels:
 	//
-	if(!pIndividual->hasBeenDrawn()){
-		// drawLabelSet
+	if( !pIndividual->hasBeenDrawn() && !pIndividual->getCollapsedCount() ) {
+		//
+		// Draw label set on ordinary individuals who have not yet been drawn
+		// and who are not "collapsed" individuals:
+		//
 		drawLabelSet(pIndividual);
 		
 	}else if( pIndividual->isOriginalFounder() || pIndividual->isOrdinaryFounder() ){

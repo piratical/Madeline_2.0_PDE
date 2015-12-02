@@ -69,6 +69,8 @@ public:
 	void drawCurve(std::ostringstream& os, double x1, double y1, double x2, double y2);
 	 
 	void drawPregnancyLetterP(std::ostringstream& os,double x,double y, const std::string & inkClass="blackInk");   // Double-struck P to indicate a pregnancy
+	void drawCollapsedCount(std::ostringstream& os,double x,double y,unsigned collapsedCount); // Large centered numerals to indicate number of individuals
+
 
 };
 

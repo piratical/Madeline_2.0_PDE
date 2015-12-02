@@ -493,3 +493,17 @@ void SVG::drawPregnancyLetterP(std::ostringstream& os,double x,double y,const st
 	
 }
 
+//
+// drawCollapsedCount
+//
+// Draw large, centered numerals indicating the number of individuals who have been "collapsed" into one symbol:
+//
+void SVG::drawCollapsedCount(std::ostringstream& os,double x,double y,unsigned collapsedCount){
+	
+	// filled circle at x-y position:
+	os << "<circle cx=\"" << x << "\" cy=\"" << y << "\" r=\"" << 0.75*DrawingMetrics::getIconRadius() << "\"";
+	os << " class=\"counterFill\" />\n";
+	std::string collapsed = static_cast<std::ostringstream*>( &(std::ostringstream() << collapsedCount) )->str();
+	drawText(os,x,y+DrawingMetrics::getCounterFontSize()/3,collapsed,"counter","");
+	
+}

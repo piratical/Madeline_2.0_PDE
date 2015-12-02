@@ -134,6 +134,7 @@ private:
 	static std::string _fontFamily;
 	static double _fontSize;
 	static double _headerFontSize;
+	static double _counterFontSize;
 	static std::string _fontSizeUnit;
 	
 	static double _scalingFactor;
@@ -208,6 +209,7 @@ public:
 	static std::string getFontFamily();
 	static double getFontSize();
 	static double getHeaderFontSize();
+	static double getCounterFontSize();
 	static std::string getFontSizeUnit();
 	
 	static bool getEmbeddedState();
@@ -309,8 +311,9 @@ public:
 		// 2009.09.01.ET: Changed default font to DejaVu Sans
 		// 
 		DrawingMetrics::_fontFamily = "DejaVu Sans";
-		DrawingMetrics::_fontSize = 12;
-		DrawingMetrics::_headerFontSize = 18;
+		DrawingMetrics::_fontSize        = 12;
+		DrawingMetrics::_headerFontSize  = 18;
+		DrawingMetrics::_counterFontSize = 14;
 		DrawingMetrics::_fontSizeUnit = "px";
 		
 		//

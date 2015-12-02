@@ -65,6 +65,7 @@ std::string DrawingMetrics::_lineWidthUnit;
 std::string DrawingMetrics::_fontFamily;
 double DrawingMetrics::_fontSize;
 double DrawingMetrics::_headerFontSize;
+double DrawingMetrics::_counterFontSize;
 std::string DrawingMetrics::_fontSizeUnit;
 std::set<DrawingMedia,DrawingMedia::compare> DrawingMetrics::media;
 std::vector<DrawingColor> DrawingMetrics::monochromat;
@@ -274,6 +275,14 @@ double DrawingMetrics::getHeaderFontSize(){
 	
 }
 
+//
+// getCounterFontSize()
+//
+double DrawingMetrics::getCounterFontSize(){
+	
+	return _counterFontSize;
+	
+}
 //
 // getFontSizeUnit()
 //
