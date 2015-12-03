@@ -369,10 +369,23 @@ void SVG::drawMiniFemaleIcon(std::ostringstream& os,double x,double y){
 void SVG::drawMiniCircle(std::ostringstream& os,double x,double y){
 	
 	double r  = DrawingMetrics::getIconRadius();
-	double hr = 0.25*r;
+	double hr = 0.40*r;
 	
 	os << "<circle cx=\"" << x << "\" cy=\"" << y << "\" r=\"" << hr << "\"";
 	os << " class=\"filled\" />\n";
+	
+}
+
+//
+// drawMiniOpenCircle: - Draws a small filled circle indicating obligate carrier status
+//
+void SVG::drawMiniOpenCircle(std::ostringstream& os,double x,double y){
+	
+	double r  = DrawingMetrics::getIconRadius();
+	double hr = 0.40*r;
+	
+	os << "<circle cx=\"" << x << "\" cy=\"" << y << "\" r=\"" << hr << "\"";
+	os << " class=\"solid\" />\n";
 	
 }
 
@@ -506,4 +519,14 @@ void SVG::drawCollapsedCount(std::ostringstream& os,double x,double y,unsigned c
 	std::string collapsed = static_cast<std::ostringstream*>( &(std::ostringstream() << collapsedCount) )->str();
 	drawText(os,x,y+DrawingMetrics::getCounterFontSize()/3,collapsed,"counter","");
 	
+}
+
+void SVG::drawTestTube(std::ostringstream& os,double x,double y){
+	
+	// move to x-y position:
+	os << "<g transform=\"translate(" << x << "," << y << ") scale(0.75)\">" << std::endl;
+	os << " <path class=\"blackInk\" d=\"";
+	// Instructions to draw test tube:
+	os << " M 20,5 c -0.543574,0 -0.98118,0.4376 -0.98118,0.98118 0,0.54357 0.437606,0.98118 0.98118,0.98118 l 0.73098,0 0,11.70426 c 0,2.59953 2.128534,4.72805 4.728062,4.72805 2.599528,0 4.728062,-2.12852 4.728062,-4.72805 l 0,-11.70426 0.73098,0 c 0.543573,0 0.98118,-0.43761 0.98118,-0.98118 0,-0.54358 -0.437607,-0.98118 -0.98118,-0.98118 l -10.918084,0 z m 2.69334,2.02123 5.531404,0 0,1.78452 -2.222374,0 c -0.543573,0 -0.98118,0.4376 -0.98118,0.98118 0,0.54357 0.437607,0.98119 0.98118,0.98119 l 2.222374,0 0,1.84339 -2.222374,0 c -0.543573,0 -0.98118,0.43759 -0.98118,0.98118 0,0.54358 0.437607,0.98117 0.98118,0.98117 l 2.222374,0 0,1.84339 -2.222374,0 c -0.543573,0 -0.98118,0.43762 -0.98118,0.98118 0,0.54358 0.437607,0.98119 0.98118,0.98119 l 2.222374,0 0,0.287 c 0,1.53874 -1.226943,2.76568 -2.765702,2.76568 -1.538759,0 -2.765702,-1.22694 -2.765702,-2.76568 l 0,-11.64539 z\" />" << std::endl;
+	os << "</g>" << std::endl;
 }
