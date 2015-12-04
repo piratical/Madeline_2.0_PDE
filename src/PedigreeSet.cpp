@@ -183,7 +183,6 @@ void PedigreeSet::addPedigreesFromDataTable(const DataTable * p_pedigreeTable, u
 	int numberOfRows = familyIdColumn->getNumberOfRows();
 	int index=0;
 	
-	// std::set<std::string> collapsedIndicatorSet;
 	std::map<std::string,Individual *> collapsedIndicatorSet;
 	Individual * collapsedIndividual=0;
 	
@@ -203,8 +202,12 @@ void PedigreeSet::addPedigreesFromDataTable(const DataTable * p_pedigreeTable, u
 		if(pp.second){
 			for(int i=0;i<familyIdColumn->getNumberOfRows();i++) { 
 				if(currentFamily.compare(familyIdColumn->get(i)) == 0){
-					// 2015.11.30.ET Handle collapsing:
-					if(collapsedColumn){
+					///////////////////////////////////
+					//
+					// Handle "collapsing":
+					//
+					///////////////////////////////////
+					if(DrawingMetrics::getCollapsible() && collapsedColumn){
 						std::string indicator=collapsedColumn->get(i);
 						if(indicator=="."){
 							// Add normal, non-collapsed individual, as usual:
@@ -232,7 +235,7 @@ void PedigreeSet::addPedigreesFromDataTable(const DataTable * p_pedigreeTable, u
 							}
 						}
 					}else{
-						// Collapsed column not present, so just add everybody:
+						// CollapsedState OFF or Collapsed column not present, so just add everybody:
 						(*pp.first)->addIndividual(individualIdColumn->get(i),motherIdColumn->get(i),fatherIdColumn->get(i),genderColumn->get(i),i,tableIndex,pedigreeTable);
 					}
 				}

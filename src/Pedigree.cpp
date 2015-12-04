@@ -38,11 +38,6 @@
 #include <vector>
 #include <deque>
 
-//
-// set the file extension so it's easier to use with programs that don't know ".xml".
-//
-static std::string drawingFileExt = ".xml";
-
 /////////////////////////////////////
 //
 // Destructor:
@@ -2222,7 +2217,7 @@ void Pedigree::draw(const LabelSet* labelSet){
 		//
 		// Just use the _id if no file name prefix was provided:
 		//
-		if(drawingFileName.empty()) drawingFileName = _id+"ped";
+		if(drawingFileName.empty()) drawingFileName = _id+"_pedigree";
 		
 	}else{
 		//
@@ -2236,7 +2231,7 @@ void Pedigree::draw(const LabelSet* labelSet){
 	//
 	// Add file name extension:
 	//
-	drawingFileName += drawingFileExt;
+	drawingFileName += DrawingMetrics::getDrawingFileNameExtension();
 	
 	//
 	// Print out the drawing:
@@ -2462,14 +2457,6 @@ void Pedigree::display() const{
 	}
 	
 }
-
-//
-// setDrawingFileExtension
-//
-void Pedigree::setDrawingFileExtension(const std::string& ext) {
-	drawingFileExt = ext;
-}
-
 
 //
 // clearVisitCounts

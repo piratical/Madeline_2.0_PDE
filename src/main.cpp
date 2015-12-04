@@ -28,6 +28,7 @@ int main( int argc, char *argv[] ){
 	clp.addSwitch("--font","-f","Font to be used for the display of Pedigree labels",1);
 	clp.addSwitch("--font-size","-z","Font size to be used for the display of Pedigree labels",1);
 	clp.addSwitch("--help","-h","Print this help and exit");
+	clp.addSwitch("--collapsed","-k","“Collapse” multiple individuals into groups (requires “Collapsed” data column)");
 	// IJKLMNOP:
 	clp.addSwitch("--labels","-l","Path to the file that has a list of labels to be displayed on the Pedigree",1);
 	clp.addSwitch("--Labels","-L","Specify labels to be displayed on the Pedigree using a single string containing space-delimited labels",1);
@@ -181,7 +182,7 @@ int main( int argc, char *argv[] ){
 		// Handle specification of special file name extension:
 		//
 		if(clp.hasSwitchSet("--outputext")){
-			Pedigree::setDrawingFileExtension( clp.getSwitchArgument("--outputext",1) );
+			DrawingMetrics::setDrawingFileNameExtension( clp.getSwitchArgument("--outputext",1) );
 		}
 		
 		//
@@ -233,6 +234,13 @@ int main( int argc, char *argv[] ){
 		//
 		if(clp.hasSwitchSet("--outputdatatable")){
 			DrawingMetrics::setOutputDataTable(true);
+		}
+		
+		//
+		// Set Pedigree class for collapsing drawings:
+		//
+		if( clp.hasSwitchSet("--collapsed")){
+			DrawingMetrics::setCollapsible(true);
 		}
 		///////////////////////
 		//

@@ -160,9 +160,11 @@ private:
 	// just the prefix):
 	//
 	static std::string _drawingFileNamePrefix;
-	static bool _hasOnlyOnePedigree;
+	static std::string _drawingFileNameExtension;
 	
+	static bool _hasOnlyOnePedigree;
 	static bool _useCustomIconColors;
+	static bool _collapsible;
 	
 public:
 	
@@ -225,6 +227,8 @@ public:
 	static bool getHasOutputDataTable();
 	
 	static bool getUseCustomIconColors(){ return _useCustomIconColors;};
+	static std::string &getDrawingFileNameExtension(void){ return _drawingFileNameExtension; };
+	static bool getCollapsible(void){ return _collapsible; };
 	//
 	// Setters:
 	//
@@ -254,6 +258,8 @@ public:
 	static void setOutputDataTable(bool value);
 	
 	static void setUseCustomIconColors(bool value){ _useCustomIconColors=value; };
+	static void setDrawingFileNameExtension(const std::string &ext);
+	static void setCollapsible(bool value){ _collapsible=value; };
 	//
 	// 2011.11.18.ET Addenda:
 	//
@@ -465,6 +471,10 @@ public:
 		DrawingMetrics::bichromat.push_back(  DrawingColor("peach","#ffcca2"));
 		DrawingMetrics::monochromat.push_back(DrawingColor("ceramicBlue","#768dff"));
 		DrawingMetrics::bichromat.push_back(  DrawingColor("lavender","#fcf"));
+		
+		DrawingMetrics::_drawingFileNameExtension = ".xml";
+		DrawingMetrics::_collapsible = false;
+		
 	}
 };
 

@@ -43,7 +43,6 @@
 //
 ///////////////////////////////////
 
-std::string DrawingMetrics::_unit;
 double DrawingMetrics::_horizontalInterval;
 double DrawingMetrics::_iconInterval;
 double DrawingMetrics::_iconDiameter;
@@ -61,22 +60,27 @@ double DrawingMetrics::_verticalTick; // Used for drawing twins.
 
 bool DrawingMetrics::_isEmbedded; // State flag for embedded document creation
 bool DrawingMetrics::_displayBirthOrder; // State flag that indicates DOB order has to be drawn with the labelset
+
+std::string DrawingMetrics::_unit;
 std::string DrawingMetrics::_lineWidthUnit;
 std::string DrawingMetrics::_fontFamily;
+std::string DrawingMetrics::_drawingFileNamePrefix;
+std::string DrawingMetrics::_drawingFileNameExtension;
+std::string DrawingMetrics::_fontSizeUnit;
+
 double DrawingMetrics::_fontSize;
 double DrawingMetrics::_headerFontSize;
 double DrawingMetrics::_counterFontSize;
-std::string DrawingMetrics::_fontSizeUnit;
+
 std::set<DrawingMedia,DrawingMedia::compare> DrawingMetrics::media;
+
 std::vector<DrawingColor> DrawingMetrics::monochromat;
 std::vector<DrawingColor> DrawingMetrics::bichromat;
 std::vector<ColorSeries>  DrawingMetrics::customColorSeries;                      // 2015.09.18.ET ADDENDUM
 std::vector< std::map<std::string,DrawingColor> > DrawingMetrics::customColorMap; // 2015.10.12.ET ADDENDUM
-DrawingMetricsLoader DrawingMetricsLoader::drawingMetricsLoader;
 
-std::string DrawingMetrics::_drawingFileNamePrefix;
+bool DrawingMetrics::_collapsible;
 bool DrawingMetrics::_hasOnlyOnePedigree;
-
 bool DrawingMetrics::_blackAndWhite;
 bool DrawingMetrics::_color;
 bool DrawingMetrics::_useQuadrantShadingMethod;
@@ -86,6 +90,14 @@ bool DrawingMetrics::_outputPedTable; // State flag to print pedigree core/non-c
 bool DrawingMetrics::_outputDataTable; // State flag to print input pedigree table (input order preserved) to a tab-delimited file
 // 2015.09.18.ET ADDENDUM
 bool DrawingMetrics::_useCustomIconColors; // State flag set to true if user specifies custom colors
+
+
+///////////////////////////////////
+//
+// DrawingMetricsLoader instance:
+//
+///////////////////////////////////
+DrawingMetricsLoader DrawingMetricsLoader::drawingMetricsLoader;
 
 ///////////////////////////////////
 //
@@ -408,6 +420,14 @@ void DrawingMetrics::setDrawingFileNamePrefix(const std::string &prefix){
 	
 	_drawingFileNamePrefix = prefix;
 	
+}
+
+void DrawingMetrics::setDrawingFileNameExtension(const std::string &ext){
+	
+	_drawingFileNameExtension=ext;
+	if(_drawingFileNameExtension[0]!='.'){
+		_drawingFileNameExtension.insert(0,".");
+	}
 }
 
 //

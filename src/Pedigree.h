@@ -58,9 +58,8 @@ public:
 	void computePedigreeWidth(const std::string& sortField,bool dobSortOrder);
 	void draw(const LabelSet* labelSet);
 	// Debug:
-	void display() const;                          // Prints out all pedigrees that have been read in
-	static void setDrawingFileExtension(const std::string& ext);
-
+	void display() const;   // Prints out all pedigrees that have been read in
+	
 private:
 	
 	std::string _id;    // Pedigree Id
