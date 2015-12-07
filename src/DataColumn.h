@@ -54,6 +54,8 @@
 #include "Infertility.h"
 #include "Twin.h"
 #include "Collapsed.h"
+#include "ObligateCarrier.h"
+#include "SampleQuantity.h"
 
 #include "Exception.h"
 #include "Warning.h"

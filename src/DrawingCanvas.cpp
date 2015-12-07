@@ -447,6 +447,14 @@ void DrawingCanvas::_setCSS(){
 	_header << ".counterFill{\n";
 	_header << "	fill: #ccd;\n";
 	_header << "}\n\n";
+	
+	//
+	// Used for showing sample levels
+	//
+	_header << ".sampleLevel{\n";
+	_header << "	stroke:none;\n";
+	_header << "	fill:#f99;\n";
+	_header << "}\n\n";
 	//
 	// End style CDATA section:
 	//
@@ -1052,6 +1060,12 @@ void DrawingCanvas::drawIndividual(Individual* pIndividual,double x,double y,boo
 	if(!pIndividual->hasBeenDrawn() && pIndividual->isCarrier()){
 		_svg.drawMiniCircle(_body,x,y);
 	}
+	//
+	// Draw Obligate Carrier dot:
+	//
+	if(!pIndividual->hasBeenDrawn() && pIndividual->isObligateCarrier()){
+		_svg.drawMiniOpenCircle(_body,x,y);
+	}
 	
 	//
 	// Draw Pregnancy symbol:
@@ -1066,6 +1080,13 @@ void DrawingCanvas::drawIndividual(Individual* pIndividual,double x,double y,boo
 	if(!pIndividual->hasBeenDrawn() && pIndividual->getCollapsedCount()){
 		_svg.drawCollapsedCount(_body,x,y,pIndividual->getCollapsedCount());
 	}
+	
+	////////////////////////////////////////
+	//
+	// 2015.12.07.ET SAMPLE QUANTITY DEBUG
+	// This part is not yet complete:
+	// _svg.drawTestTube(_body,x,y,1.0);
+	// _svg.drawTestTube(_body,x,y);
 	
 	//
 	// Draw labels:

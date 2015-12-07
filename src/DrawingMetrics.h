@@ -472,7 +472,7 @@ public:
 		DrawingMetrics::monochromat.push_back(DrawingColor("ceramicBlue","#768dff"));
 		DrawingMetrics::bichromat.push_back(  DrawingColor("lavender","#fcf"));
 		
-		DrawingMetrics::_drawingFileNameExtension = ".xml";
+		DrawingMetrics::_drawingFileNameExtension = ".svg";
 		DrawingMetrics::_collapsible = false;
 		
 	}

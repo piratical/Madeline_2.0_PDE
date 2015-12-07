@@ -66,11 +66,38 @@ void String::set( const std::string &value){
 void String::set( const char* value){
 	
 	const char* src;
-	if(Data::isGlobalMissingValue(value)) { setMissing(); return;}
-	if(String::isMissingValue(value)) { setMissing(); return; }
+	//
+	// Is the value considered a globally-applicable
+	// missing value?
+	//
+	if(Data::isGlobalMissingValue(value)){
+		setMissing();
+		return;
+	}
+	//
+	// Is the value considered a missing value
+	// specific to the String class?
+	// (But are there any String-specific missing values?
+	//  I think that none are currently defined - 2015.12.07.ET )
+	//
+	if(String::isMissingValue(value)){
+		setMissing();
+		return;
+	}
+	//
+	// Is the value an empty ASCII string?
+	// (This is not very good here because Unicode is ignored)
+	//
 	for(src=value;*src && (*src == ' ' || *src == '\t');src++);
-	if(*src == '\0')  setMissing();
-	else            { _value=value; _isMissing = false; }
+	if(*src == '\0'){
+		setMissing();
+		return;
+	}
+	//
+	// Otherwise we get here and the value is not missing:
+	//
+	_value=value;
+	_isMissing = false;
 }
 
 //

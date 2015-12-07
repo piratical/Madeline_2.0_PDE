@@ -95,6 +95,7 @@ private:
 	Consultand*        _consultand;        // true if a consultand, else false.
 	Pregnancy*         _pregnancy;         // true if this is a pregnancy
 	Carrier*           _carrier;           // true if a carrier, else false.
+	ObligateCarrier*   _obligateCarrier;   // true if an obligate carrier, else false.
 	RelationshipEnded* _relationshipEnded; // true if relationship ended (divorced,separated,reason unknown) - requires that a mated pair are *both* so marked for display ...
 	Sterility*         _sterility;         // 2009.05.19.ET ADDENDUM
 	Infertility*       _infertility;       // 2009.05.19.ET ADDENDUM
@@ -219,6 +220,7 @@ public:
 	void setSampled(Sampled* sampled){ _sampled=sampled; }
 	void setConsultandStatus(Consultand* consultand){ _consultand=consultand; }
 	void setCarrierStatus(Carrier* carrier){ _carrier=carrier; }
+	void setObligateCarrierStatus(ObligateCarrier* obligateCarrier){ _obligateCarrier = obligateCarrier; }
 	// 2009.05....ET Newly added columns:
 	void setRelationshipEndedStatus(RelationshipEnded* relationshipEnded){ _relationshipEnded=relationshipEnded; }
 	void setPregnancyStatus(Pregnancy* pregnancy){ _pregnancy=pregnancy; }
@@ -282,6 +284,7 @@ public:
 	bool     isConsultand(void)        { if(_consultand == 0) return false; return _consultand->getBoolean(); }
 	bool     isPregnancy(void)         { if(_pregnancy  == 0) return false; return _pregnancy->getBoolean(); }
 	bool     isCarrier(void)           { if(_carrier    == 0) return false; return _carrier->getBoolean(); }
+	bool     isObligateCarrier(void)   { if(_obligateCarrier == 0) return false; return _obligateCarrier->getBoolean(); }
 	// 2009.05.11.ET Addendum:
 	bool     relationshipHasEnded(void){ if(_relationshipEnded == 0) return false; return _relationshipEnded->getBoolean(); }
 	// 2009.05.19.ET Addenda:

@@ -521,12 +521,28 @@ void SVG::drawCollapsedCount(std::ostringstream& os,double x,double y,unsigned c
 	
 }
 
-void SVG::drawTestTube(std::ostringstream& os,double x,double y){
+//
+// drawTestTube
+//
+// fillFraction specifies how filled up the test tube is.
+//
+void SVG::drawTestTube(std::ostringstream& os,double x,double y,double fillFraction){
 	
-	// move to x-y position:
+	double yStart=6;
+	// move to x-y position and scale:
 	os << "<g transform=\"translate(" << x << "," << y << ") scale(0.75)\">" << std::endl;
-	os << " <path class=\"blackInk\" d=\"";
+	// Draw the sample fill fraction first:
+	if(fillFraction>0.0 && fillFraction<=1.0){
+		double full=16.0;
+		double fillHeight=fillFraction*full;
+		double yOffset=yStart+(full-fillHeight);
+		os << " <rect class=\"sampleLevel\" x=\"22\" y=\"" << yOffset <<"\" width=\"7\" height=\"" << fillHeight << "\" />" << std::endl;
+		std::stringstream ss;
+		ss << std::fixed << std::setprecision(2) << fillFraction;
+		drawText(os,25.5,35,ss.str());
+	}
 	// Instructions to draw test tube:
+	os << " <path class=\"blackInk\" d=\"";
 	os << " M 20,5 c -0.543574,0 -0.98118,0.4376 -0.98118,0.98118 0,0.54357 0.437606,0.98118 0.98118,0.98118 l 0.73098,0 0,11.70426 c 0,2.59953 2.128534,4.72805 4.728062,4.72805 2.599528,0 4.728062,-2.12852 4.728062,-4.72805 l 0,-11.70426 0.73098,0 c 0.543573,0 0.98118,-0.43761 0.98118,-0.98118 0,-0.54358 -0.437607,-0.98118 -0.98118,-0.98118 l -10.918084,0 z m 2.69334,2.02123 5.531404,0 0,1.78452 -2.222374,0 c -0.543573,0 -0.98118,0.4376 -0.98118,0.98118 0,0.54357 0.437607,0.98119 0.98118,0.98119 l 2.222374,0 0,1.84339 -2.222374,0 c -0.543573,0 -0.98118,0.43759 -0.98118,0.98118 0,0.54358 0.437607,0.98117 0.98118,0.98117 l 2.222374,0 0,1.84339 -2.222374,0 c -0.543573,0 -0.98118,0.43762 -0.98118,0.98118 0,0.54358 0.437607,0.98119 0.98118,0.98119 l 2.222374,0 0,0.287 c 0,1.53874 -1.226943,2.76568 -2.765702,2.76568 -1.538759,0 -2.765702,-1.22694 -2.765702,-2.76568 l 0,-11.64539 z\" />" << std::endl;
 	os << "</g>" << std::endl;
 }

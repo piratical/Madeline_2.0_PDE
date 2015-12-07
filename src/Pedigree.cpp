@@ -1786,18 +1786,19 @@ Individual * Pedigree::addIndividual(const std::string ind,std::string mother,st
 ///
 void Pedigree::setCoreOptionalFields(const DataTable* pedigreeTable){
 	
-	bool hasDOBColumn        = false;
-	bool hasDeceasedColumn   = false;
-	bool hasSampledColumn    = false;
-	bool hasProbandColumn    = false;
-	bool hasAffectedColumn   = false;
-	bool hasConsultandColumn = false;
-	bool hasPregnancyColumn  = false;
-	bool hasCarrierColumn    = false;
+	bool hasDOBColumn               = false;
+	bool hasDeceasedColumn          = false;
+	bool hasSampledColumn           = false;
+	bool hasProbandColumn           = false;
+	bool hasAffectedColumn          = false;
+	bool hasConsultandColumn        = false;
+	bool hasPregnancyColumn         = false;
+	bool hasCarrierColumn           = false;
+	bool hasObligateCarrierColumn   = false;
 	bool hasRelationshipEndedColumn = false; // 2009.05.11.ET
-	bool hasInfertilityColumn= false; // 2009.05.19.ET
-	bool hasSterilityColumn  = false; // 2009.05.19.ET
-	bool hasCollapsedColumn  = false; // 2015.08.21.ET
+	bool hasInfertilityColumn       = false; // 2009.05.19.ET
+	bool hasSterilityColumn         = false; // 2009.05.19.ET
+	bool hasCollapsedColumn         = false; // 2015.08.21.ET
 	
 	DataColumn *dobColumn;
 	DataColumn *deceasedColumn;
@@ -1807,6 +1808,7 @@ void Pedigree::setCoreOptionalFields(const DataTable* pedigreeTable){
 	DataColumn *consultandColumn;
 	DataColumn *pregnancyColumn;
 	DataColumn *carrierColumn;
+	DataColumn *obligateCarrierColumn;
 	DataColumn *relationshipEndedColumn;
 	DataColumn *infertilityColumn;
 	DataColumn *sterilityColumn;
@@ -1866,6 +1868,11 @@ void Pedigree::setCoreOptionalFields(const DataTable* pedigreeTable){
 		carrierColumn = pedigreeTable->getColumn(pedigreeTable->getCarrierColumnIndex());
 		hasCarrierColumn = true;
 	}
+	// Check if ObligateCarrier column exists in the datatable
+	if(pedigreeTable->getObligateCarrierColumnIndex() != DataTable::COLUMN_IS_MISSING){
+		obligateCarrierColumn = pedigreeTable->getColumn(pedigreeTable->getObligateCarrierColumnIndex());
+		hasObligateCarrierColumn = true;
+	}
 	
 	// Check if RelationshipEnded column exists in the datatable:
 	if(pedigreeTable->getRelationshipEndedColumnIndex() != DataTable::COLUMN_IS_MISSING){
@@ -1913,6 +1920,7 @@ void Pedigree::setCoreOptionalFields(const DataTable* pedigreeTable){
 		if(hasConsultandColumn) (*individualIt)->setConsultandStatus(dynamic_cast<Consultand*>(const_cast<Data* const>(consultandColumn->getDataAtIndex(rowIndex))));
 		if(hasPregnancyColumn)  (*individualIt)->setPregnancyStatus(dynamic_cast<Pregnancy*>(const_cast<Data* const>(pregnancyColumn->getDataAtIndex(rowIndex))));
 		if(hasCarrierColumn)    (*individualIt)->setCarrierStatus(dynamic_cast<Carrier*>(const_cast<Data* const>(carrierColumn->getDataAtIndex(rowIndex))));
+		if(hasObligateCarrierColumn) (*individualIt)->setObligateCarrierStatus(dynamic_cast<ObligateCarrier*>(const_cast<Data* const>(obligateCarrierColumn->getDataAtIndex(rowIndex))));
 		if(hasRelationshipEndedColumn)   (*individualIt)->setRelationshipEndedStatus(dynamic_cast<RelationshipEnded*>(const_cast<Data* const>(relationshipEndedColumn->getDataAtIndex(rowIndex))));
 		if(hasInfertilityColumn) (*individualIt)->setInfertilityStatus(dynamic_cast<Infertility*>(const_cast<Data* const>(infertilityColumn->getDataAtIndex(rowIndex))));
 		if(hasSterilityColumn)   (*individualIt)->setSterilityStatus(dynamic_cast<Sterility*>(const_cast<Data* const>(sterilityColumn->getDataAtIndex(rowIndex))));

@@ -20,20 +20,20 @@
 // 
 /////////////////////////////////////////////////////////
 //
-// 2015.08.21.ET
+// 2015.12.07.ET
 //
 
 //
-// Collapsed.h
+// SampleQuantity.h
 //
 
-#ifndef Collapsed_INCLUDED
-#define Collapsed_INCLUDED
+#ifndef SampleQuantity_INCLUDED
+#define SampleQuantity_INCLUDED
 
 #include "String.h"
 #include "Warning.h"
 
-class Collapsed : public String
+class SampleQuantity : public String
 {
 public:
 	
@@ -46,30 +46,26 @@ public:
 	//
 	// Constructors:
 	//
-	Collapsed() { _isMissing = true; }
-	Collapsed( const char *collapsedMarker) { set(collapsedMarker); }
-	Collapsed( const std::string& collapsedMarker) { set(collapsedMarker); }
+	SampleQuantity() { _isMissing = true; }
+	SampleQuantity( const char *sampleQuantityMarker) { set(sampleQuantityMarker); }
+	SampleQuantity( const std::string& sampleQuantityMarker) { set(sampleQuantityMarker); }
 	
 	//
 	// Setters:
 	//
-	void set(const char *collapsedMarker){ 
+	void set(const char *sampleQuantityMarker){ 
 		
-		_marker=collapsedMarker;
+		_marker=sampleQuantityMarker;
 		if(_marker=="."){
 			_isMissing=true;
-		}else{
-			_isMissing=false;
 		}
 	}
 	
-	void set(const std::string& collapsedMarker){ 
+	void set(const std::string& sampleQuantityMarker){ 
 		
-		_marker=collapsedMarker;
+		_marker=sampleQuantityMarker;
 		if(_marker=="."){
 			_isMissing=true;
-		}else{
-			_isMissing=false;
 		}
 	}
 	

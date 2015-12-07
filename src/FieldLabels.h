@@ -53,7 +53,10 @@ class FieldLabels
 	std::string RelationshipEndedField;
 	std::string SterilityField;
 	std::string InfertilityField;
+	// 2015.12 Addenda:
 	std::string CollapsedField;
+	std::string ObligateCarrierField;
+	std::string SampleQuantityField;
 	
 	int PEDIGREE_TABLE_CORE_COLUMN_COUNT;
 	int GENETIC_TABLE_CORE_COLUMN_MINIMUM;

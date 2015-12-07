@@ -89,6 +89,8 @@ SET( SOURCES
 	Number.cpp 
 	Number.h 
 	
+	ObligateCarrier.cpp
+	
 	Parser.cpp 
 	Parser.h
 	PedigreeSet.cpp

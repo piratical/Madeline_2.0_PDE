@@ -77,7 +77,10 @@ FieldLabels::FieldLabels()
 	RelationshipEndedField = "RELATIONSHIPENDED";
 	InfertilityField       = "INFERTILITY";
 	SterilityField         = "STERILITY";
+	// 2015.12 Addenda:;
 	CollapsedField         = "COLLAPSED";
+	ObligateCarrierField   = "OBLIGATECARRIER";
+	SampleQuantityField    = "SAMPLEQUANTITY";
 	
 	PEDIGREE_TABLE_CORE_COLUMN_COUNT = 5;
 	GENETIC_TABLE_CORE_COLUMN_MINIMUM = 2;

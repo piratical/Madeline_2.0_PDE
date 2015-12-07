@@ -100,6 +100,15 @@ DataColumn::DataColumn(const std::string &name,DATATYPE columnType, unsigned lon
 	case TWIN:
 		for(unsigned int k=0; k < _rows; k++) _data.push_back(new Twin());
 		break;
+	case OBLIGATECARRIER:
+		for(unsigned int k=0; k < _rows; k++) _data.push_back(new ObligateCarrier());
+		break;
+	case SAMPLEQUANTITY:
+		for(unsigned int k=0; k < _rows; k++) _data.push_back(new SampleQuantity());
+		break;
+	case COLLAPSED:
+		for(unsigned int k=0; k < _rows; k++) _data.push_back(new Collapsed());
+		break;
 	//
 	// UNCLASSIFIED / MISSING CASES:
 	//

@@ -130,6 +130,8 @@ private:
 	int _infertilityColumnIndex;
 	int _sterilityColumnIndex;
 	int _collapsedColumnIndex;
+	int _obligateCarrierColumnIndex;
+	int _sampleQuantityColumnIndex;
 	//
 	// Private methods:
 	//
@@ -221,6 +223,8 @@ public:
 	inline int getInfertilityColumnIndex(void) const { return _infertilityColumnIndex; }
 	inline int getSterilityColumnIndex(void) const { return _sterilityColumnIndex; }
 	inline int getCollapsedColumnIndex(void) const { return _collapsedColumnIndex; }
+	inline int getObligateCarrierColumnIndex(void) const { return _obligateCarrierColumnIndex; }
+	inline int getSampleQuantityColumnIndex(void) const { return _sampleQuantityColumnIndex; }
 	//
 	// getIconColumnCount
 	//

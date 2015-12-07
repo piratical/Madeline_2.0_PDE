@@ -57,21 +57,23 @@ DataTable::DataTable(TableParser &parser){
 	//
 	// set optional core column indices to default:
 	//
-	_affectedColumnIndex    = COLUMN_IS_MISSING;
-	_carrierColumnIndex     = COLUMN_IS_MISSING;
-	_collapsedColumnIndex   = COLUMN_IS_MISSING;
-	_consultandColumnIndex  = COLUMN_IS_MISSING;
-	_deceasedColumnIndex    = COLUMN_IS_MISSING;
-	_dobColumnIndex         = COLUMN_IS_MISSING;
-	_dzTwinColumnIndex      = COLUMN_IS_MISSING;
-	_infertilityColumnIndex = COLUMN_IS_MISSING;
-	_mzTwinColumnIndex      = COLUMN_IS_MISSING;
-	_pregnancyColumnIndex   = COLUMN_IS_MISSING;
-	_probandColumnIndex     = COLUMN_IS_MISSING;
+	_affectedColumnIndex          = COLUMN_IS_MISSING;
+	_carrierColumnIndex           = COLUMN_IS_MISSING;
+	_collapsedColumnIndex         = COLUMN_IS_MISSING;
+	_consultandColumnIndex        = COLUMN_IS_MISSING;
+	_deceasedColumnIndex          = COLUMN_IS_MISSING;
+	_dobColumnIndex               = COLUMN_IS_MISSING;
+	_dzTwinColumnIndex            = COLUMN_IS_MISSING;
+	_infertilityColumnIndex       = COLUMN_IS_MISSING;
+	_mzTwinColumnIndex            = COLUMN_IS_MISSING;
+	_obligateCarrierColumnIndex   = COLUMN_IS_MISSING;
+	_pregnancyColumnIndex         = COLUMN_IS_MISSING;
+	_probandColumnIndex           = COLUMN_IS_MISSING;
 	_relationshipEndedColumnIndex = COLUMN_IS_MISSING;
-	_sampledColumnIndex     = COLUMN_IS_MISSING;
-	_superscriptColumnIndex = COLUMN_IS_MISSING;
-	_sterilityColumnIndex   = COLUMN_IS_MISSING;
+	_sampledColumnIndex           = COLUMN_IS_MISSING;
+	_sampleQuantityColumnIndex    = COLUMN_IS_MISSING;
+	_superscriptColumnIndex       = COLUMN_IS_MISSING;
+	_sterilityColumnIndex         = COLUMN_IS_MISSING;
 	
 	//
 	// Set ColorSeriesStack, blackAndWhiteSeriesStack pointer to null
@@ -528,6 +530,20 @@ void DataTable::_determineTableType(const std::vector<std::string> *pTitles) {
 			// Optional core field:
 			_finalTypes[i] = COLLAPSED;
 			_collapsedColumnIndex = i;
+		}
+		else if(tempString == labels.ObligateCarrierField)
+		{
+			
+			// Optional core field:
+			_finalTypes[i] = OBLIGATECARRIER;
+			_obligateCarrierColumnIndex = i;
+		}
+		else if(tempString == labels.SampleQuantityField)
+		{
+			
+			// Optional core field:
+			_finalTypes[i] = SAMPLEQUANTITY;
+			_sampleQuantityColumnIndex = i;
 		}
 	}
 	
