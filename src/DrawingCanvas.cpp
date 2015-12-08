@@ -1087,7 +1087,9 @@ void DrawingCanvas::drawIndividual(Individual* pIndividual,double x,double y,boo
 	// This part is not yet complete:
 	// _svg.drawTestTube(_body,x,y,1.0);
 	// _svg.drawTestTube(_body,x,y);
-	
+	if(!pIndividual->hasBeenDrawn() && pIndividual->hasSampleQuantity()){
+		_svg.drawTestTube(_body,x,y,pIndividual->getSampleQuantity());
+	}
 	//
 	// Draw labels:
 	//

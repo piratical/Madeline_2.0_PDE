@@ -105,6 +105,7 @@ SET( SOURCES
 	RelationshipEnded.cpp
 	
 	Sampled.cpp
+	SampleQuantity.cpp
 	ScriptCodes.h 
 	Sterility.h
 	Sterility.cpp

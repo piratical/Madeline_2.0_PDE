@@ -31,55 +31,71 @@
 #define SampleQuantity_INCLUDED
 
 #include "String.h"
-#include "Warning.h"
+#include <map>
+
+#define HAS_SAMPLE true
+#define NO_SAMPLE false
 
 class SampleQuantity : public String
 {
-public:
-	
-	
 private:
 	
-	std::string _marker;
+	bool   _booleanValue;
+	double _doubleValue;
+	
+	void   _set(void);
+	
+	friend class SampleQuantityMapLoader;
+	static std::map<std::string,bool> _lookupTable;
 	
 public:
 	//
 	// Constructors:
 	//
-	SampleQuantity() { _isMissing = true; }
+	SampleQuantity(){ _value="."; _isMissing = true; _booleanValue=false; _doubleValue=0; }
 	SampleQuantity( const char *sampleQuantityMarker) { set(sampleQuantityMarker); }
 	SampleQuantity( const std::string& sampleQuantityMarker) { set(sampleQuantityMarker); }
-	
-	//
-	// Setters:
-	//
-	void set(const char *sampleQuantityMarker){ 
 		
-		_marker=sampleQuantityMarker;
-		if(_marker=="."){
-			_isMissing=true;
-		}
+	void set(const char *sampleQuantityMarker){ 
+		_value=sampleQuantityMarker;
+		_set();
 	}
 	
 	void set(const std::string& sampleQuantityMarker){ 
-		
-		_marker=sampleQuantityMarker;
-		if(_marker=="."){
-			_isMissing=true;
-		}
+		_value=sampleQuantityMarker;
+		_set();
 	}
 	
-	// get():  Returns the original marker set by the user
-	const std::string get(void) const { 
-		
-		if(_isMissing) return ".";
-		return _marker;
-		
-	}
+	const std::string get(void)        const { return _value;        }
+	const bool        getBoolean(void) const { return _booleanValue; }
+	const double      getValue(void)   const { return _doubleValue;  }
 	
 	static bool isa(std::string inString);
 	
 };
 
+//
+// SampleQuantity Friend class that initializes the lookup table:$
+//
+class SampleQuantityMapLoader
+{
+public:
+	static SampleQuantityMapLoader sampleQuantityMapLoader;
+	
+	SampleQuantityMapLoader(){
+		SampleQuantity::_lookupTable["y"]   = HAS_SAMPLE;
+		SampleQuantity::_lookupTable["n"]   = NO_SAMPLE;
+		SampleQuantity::_lookupTable["Y"]   = HAS_SAMPLE;
+		SampleQuantity::_lookupTable["N"]   = NO_SAMPLE;
+		SampleQuantity::_lookupTable["yes"] = HAS_SAMPLE;
+		SampleQuantity::_lookupTable["no"]  = NO_SAMPLE;
+		SampleQuantity::_lookupTable["YES"] = HAS_SAMPLE;
+		SampleQuantity::_lookupTable["NO"]  = NO_SAMPLE;
+		SampleQuantity::_lookupTable["Yes"] = HAS_SAMPLE;
+		SampleQuantity::_lookupTable["No"]  = NO_SAMPLE;
+	}
+};
+
+std::ostream& operator<<(std::ostream& s,const SampleQuantity& n);
 
 #endif

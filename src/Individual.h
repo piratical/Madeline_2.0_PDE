@@ -40,11 +40,13 @@
 #include "Sampled.h"
 #include "Consultand.h"
 #include "Carrier.h"
+#include "ObligateCarrier.h"
 #include "RelationshipEnded.h"
 #include "Infertility.h"
 #include "Sterility.h"
 #include "Pregnancy.h"
 #include "Collapsed.h"
+#include "SampleQuantity.h"
 
 #include <set>
 #include <vector>
@@ -101,7 +103,9 @@ private:
 	Infertility*       _infertility;       // 2009.05.19.ET ADDENDUM
 	Twin               _twinMarker;        // stores the marker of monozygotic or dizygotic twin 
 	Sampled*           _sampled;           // true if individual has been sampled
-	Collapsed*         _collapsed;         // TRUE if individual represents a collapsed group of individuals 
+	Collapsed*         _collapsed;         // TRUE if individual represents a collapsed group of individuals
+	SampleQuantity*    _sampleQuantity;    // Holds sample quantity values
+	
 	                                       // — 2015.08.21.ET ADDENDUM
 	Individual *_father;  // Pointer to the father -- defaults to NULL (0)
 	Individual *_mother;  // Pointer to the mother -- defaults to NULL (0)
@@ -227,6 +231,7 @@ public:
 	void setInfertilityStatus      (Infertility* infertility            ){ _infertility      =infertility;       }
 	void setSterilityStatus        (Sterility* sterility                ){ _sterility        =sterility;         }
 	void setCollapsedStatus        (Collapsed* collapsed                ){ _collapsed        =collapsed;         }
+	void setSampleQuantityStatus   (SampleQuantity* sampleQuantity      ){ _sampleQuantity   =sampleQuantity;    }
 	
 	void setBirthOrder(unsigned birthOrder){ _birthOrder = birthOrder; }
 	
@@ -284,7 +289,10 @@ public:
 	bool     isConsultand(void)        { if(_consultand == 0) return false; return _consultand->getBoolean(); }
 	bool     isPregnancy(void)         { if(_pregnancy  == 0) return false; return _pregnancy->getBoolean(); }
 	bool     isCarrier(void)           { if(_carrier    == 0) return false; return _carrier->getBoolean(); }
+	// 2015.12.07.ET addenda:
 	bool     isObligateCarrier(void)   { if(_obligateCarrier == 0) return false; return _obligateCarrier->getBoolean(); }
+	bool     hasSampleQuantity(void)   { if(_sampleQuantity  == 0) return false; return _sampleQuantity->getBoolean(); }
+	double   getSampleQuantity(void)   { if(_sampleQuantity  == 0) return 0; return _sampleQuantity->getValue(); }
 	// 2009.05.11.ET Addendum:
 	bool     relationshipHasEnded(void){ if(_relationshipEnded == 0) return false; return _relationshipEnded->getBoolean(); }
 	// 2009.05.19.ET Addenda:

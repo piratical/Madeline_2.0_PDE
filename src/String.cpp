@@ -36,12 +36,13 @@ std::set<std::string> String::_stringMissingValue;
 // STATIC METHODS:
 //
 ///////////////////////////////////
-bool String::isMissingValue(std::string value){
+bool String::isMissingValue(const std::string &value) const {
 	
+	std::string trimmedValue(value);
+	Data::trim(trimmedValue);
 	std::set<std::string>::const_iterator iter;
-	iter = _stringMissingValue.find(Data::trim(value));
-	if(iter != _stringMissingValue.end()) return true;
-	return false;
+	iter = _stringMissingValue.find(trimmedValue);
+	return (iter != _stringMissingValue.end());
 	
 }
 

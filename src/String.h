@@ -60,7 +60,8 @@ public:
 	// Static Methods:
 	//
 	static void addStringMissingValue(std::string value){ _stringMissingValue.insert(value); }
-	static bool isMissingValue(std::string value);
+	
+	bool isMissingValue(const std::string &value) const;
 	
 	//
 	// Methods required by Variable virtual base class:

@@ -1799,6 +1799,7 @@ void Pedigree::setCoreOptionalFields(const DataTable* pedigreeTable){
 	bool hasInfertilityColumn       = false; // 2009.05.19.ET
 	bool hasSterilityColumn         = false; // 2009.05.19.ET
 	bool hasCollapsedColumn         = false; // 2015.08.21.ET
+	bool hasSampleQuantityColumn    = false; // 2015.08.21.ET
 	
 	DataColumn *dobColumn;
 	DataColumn *deceasedColumn;
@@ -1813,6 +1814,7 @@ void Pedigree::setCoreOptionalFields(const DataTable* pedigreeTable){
 	DataColumn *infertilityColumn;
 	DataColumn *sterilityColumn;
 	DataColumn *collapsedColumn;
+	DataColumn *sampleQuantityColumn;
 	
 	// Check if MZTwin column exists in the datatable
 	if(pedigreeTable->getMZTwinColumnIndex() != DataTable::COLUMN_IS_MISSING){
@@ -1906,6 +1908,12 @@ void Pedigree::setCoreOptionalFields(const DataTable* pedigreeTable){
 		hasCollapsedColumn = true;
 	}
 	
+	// Check if SampleQuantity column exists in the datatable
+	if(pedigreeTable->getSampleQuantityColumnIndex() != DataTable::COLUMN_IS_MISSING){
+		sampleQuantityColumn = pedigreeTable->getColumn(pedigreeTable->getSampleQuantityColumnIndex());
+		hasSampleQuantityColumn = true;
+	}
+	
 	unsigned rowIndex;
 	std::set<Individual*,compareIndividual>::iterator individualIt = _individuals.begin();
 	
@@ -1925,6 +1933,7 @@ void Pedigree::setCoreOptionalFields(const DataTable* pedigreeTable){
 		if(hasInfertilityColumn) (*individualIt)->setInfertilityStatus(dynamic_cast<Infertility*>(const_cast<Data* const>(infertilityColumn->getDataAtIndex(rowIndex))));
 		if(hasSterilityColumn)   (*individualIt)->setSterilityStatus(dynamic_cast<Sterility*>(const_cast<Data* const>(sterilityColumn->getDataAtIndex(rowIndex))));
 		if(hasCollapsedColumn)   (*individualIt)->setCollapsedStatus(dynamic_cast<Collapsed*>(const_cast<Data* const>(collapsedColumn->getDataAtIndex(rowIndex))));
+		if(hasSampleQuantityColumn) (*individualIt)->setSampleQuantityStatus(dynamic_cast<SampleQuantity*>(const_cast<Data* const>(sampleQuantityColumn->getDataAtIndex(rowIndex))));
 		
 		++individualIt;
 	}
