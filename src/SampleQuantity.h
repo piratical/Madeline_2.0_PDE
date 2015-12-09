@@ -83,16 +83,21 @@ public:
 	static SampleQuantityMapLoader sampleQuantityMapLoader;
 	
 	SampleQuantityMapLoader(){
-		SampleQuantity::_lookupTable["y"]   = HAS_SAMPLE;
-		SampleQuantity::_lookupTable["n"]   = NO_SAMPLE;
-		SampleQuantity::_lookupTable["Y"]   = HAS_SAMPLE;
-		SampleQuantity::_lookupTable["N"]   = NO_SAMPLE;
-		SampleQuantity::_lookupTable["yes"] = HAS_SAMPLE;
-		SampleQuantity::_lookupTable["no"]  = NO_SAMPLE;
-		SampleQuantity::_lookupTable["YES"] = HAS_SAMPLE;
-		SampleQuantity::_lookupTable["NO"]  = NO_SAMPLE;
-		SampleQuantity::_lookupTable["Yes"] = HAS_SAMPLE;
-		SampleQuantity::_lookupTable["No"]  = NO_SAMPLE;
+		SampleQuantity::_lookupTable["y"]      = HAS_SAMPLE;
+		SampleQuantity::_lookupTable["n"]      = NO_SAMPLE;
+		SampleQuantity::_lookupTable["Y"]      = HAS_SAMPLE;
+		SampleQuantity::_lookupTable["N"]      = NO_SAMPLE;
+		SampleQuantity::_lookupTable["yes"]    = HAS_SAMPLE;
+		SampleQuantity::_lookupTable["no"]     = NO_SAMPLE;
+		SampleQuantity::_lookupTable["YES"]    = HAS_SAMPLE;
+		SampleQuantity::_lookupTable["NO"]     = NO_SAMPLE;
+		SampleQuantity::_lookupTable["Yes"]    = HAS_SAMPLE;
+		SampleQuantity::_lookupTable["No"]     = NO_SAMPLE;
+		SampleQuantity::_lookupTable["s"]      = HAS_SAMPLE;
+		SampleQuantity::_lookupTable["S"]      = HAS_SAMPLE;
+		SampleQuantity::_lookupTable["sample"] = HAS_SAMPLE;
+		SampleQuantity::_lookupTable["Sample"] = HAS_SAMPLE;
+		SampleQuantity::_lookupTable["SAMPLE"] = HAS_SAMPLE;
 	}
 };
 
