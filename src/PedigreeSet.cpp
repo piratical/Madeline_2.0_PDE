@@ -228,7 +228,26 @@ void PedigreeSet::addPedigreesFromDataTable(const DataTable * p_pedigreeTable, u
 								// 2015.12.01.ET DEBUG
 								std::cout << "*** Individual " << individualIdColumn->get(i) << " used for collapsed group " << indicator << std::endl;
 							}else{
+								///////////////////////////////////////
+								//
+								// Is gender of new person consistent?
+								//
+								///////////////////////////////////////
+								if( it->second->getGender().get() != genderColumn->get(i) ){
+									// Change to missing on token individual:
+									it->second->setGender(".");
+								}
+								//////////////////////////////////////////////////
+								//
+								// Is affection status of new person consistent?
+								//
+								//////////////////////////////////////////////////
+								
+								//////////////////////////////////////////////////
+								//
 								// increment collapsed count:
+								//
+								//////////////////////////////////////////////////
 								it->second->incrementCollapsedCount();
 								// 2015.12.01.ET DEBUG
 								std::cout << "*** Individual " << it->second->getId() << " with indicator " << indicator << " incremented to " << it->second->getCollapsedCount() << std::endl;
