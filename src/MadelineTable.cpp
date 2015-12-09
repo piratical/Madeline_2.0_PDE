@@ -31,7 +31,7 @@
 
 #include "ColumnClassifier.h"
 #include "utility.h"
-#include <string.h>
+#include <string>
 
 ///////////////////////////////////
 //
@@ -111,7 +111,7 @@ void MadelineTable::_readFile(const char *fileName){
 		// Close file:
 		is.close();
 	}catch( ... ){
-		throw Exception("MadelineTable::_readFile()","Unable to open or read file");
+		throw Exception("MadelineTable::_readFile()","Unable to open or read file, “%s”.",fileName);
 	}
 }
 
@@ -147,7 +147,7 @@ void MadelineTable::_getLineCount( void ){
 	
 	// Count carriage returns:
 	for(_lines=0, b=_buffer;*b;b++) if(*b=='\n') _lines++;
-
+	
 	// Last line may not have a carriage return at the end:
 	b--;
 	if(*b!='\n') _lines++;
@@ -176,27 +176,37 @@ void MadelineTable::_assignLinePointers( void ){
 	char *stt;
 	
 	for(i=0,stt=b=_buffer;*b;){
-		
-		if(*b=='\r' || *b=='\n'){
+		//
+		// 2015.12.09.ET: Now handles four possibilities: CR, LF, CR-LF, and LF-CR
+		//
+		if( *b=='\r' || *b=='\n' ){
 			// Found end of a line:
-			
 			if(*b=='\r'){
-				// DOS/WINDOWS case of \r followed by \n:
+				// '\r' case:
 				*b++='\0';
-				if(*b=='\n') *b++='\0';
+				// Check for additional end-of-line character:
+				if(*b=='\n'){
+					*b++='\0';
+				}
 			}else{
-				// Normal case on Unix: single '\n':
+				// '\n' case:
 				*b++='\0';
+				// Check for additional end-of-line character:
+				if(*b=='\r'){
+					*b++='\0';
+				}
 			}
+			// Set pointer to beginning of this line
 			_lineInfo[i].setBeginning(stt);
+			// 2015.12.09.ET DEBUG:
+			//std::cout << i << ". [" << _lineInfo[i].getLine() << "]" << std::endl;
 			i++;
-			
-			// set start for the next round:
+			// Set start for the next round:
 			stt=b;
 		}else{
+			// Just increment pointer:
 			b++;
 		}
-	
 	}
 	
 }
@@ -532,11 +542,14 @@ std::string MadelineTable::getData(unsigned columnIndex, unsigned long rowIndex)
 	// Offset is a pointer to the beginning of the row of data:
 	offset = _lineInfo[ _firstDataRow + rowIndex ].getLine();
 	
-
+	
 	stt = offset + _columnOffset[ columnIndex ].getStart();
 	// Skip past any initial white space:
 	for(;*stt && *stt==' ';stt++);
+	
+	// 2015.12.09.ET end is supposed to be one byte past end of data:
 	end = offset + _columnOffset[ columnIndex ].getEnd();
+	end--;
 	// Skip past any terminal white space:
 	for(;*end==' ';end--);
 	// Copy data:

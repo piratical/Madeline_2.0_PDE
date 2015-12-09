@@ -51,7 +51,7 @@ void SampleQuantity::_set(void){
 		_doubleValue = strtod(_value.c_str(),&pEnd);
 		// Restrict range of allowed value to fraction between 0 to 1 inclusive:
 		if(_doubleValue<0.0 || _doubleValue>1.0){
-			Warning("SampleQuantity::_set()","Sample quantity should be a fractional value between 0 and 1 inclusive.\nThe value %d will be set to 0.",_doubleValue);
+			Warning("SampleQuantity::_set()","Sample quantity “%.3g” is not a fraction between 0 and 1 inclusive and will be set to 0.",_doubleValue);
 			_doubleValue=0;
 		}
 		_isMissing    = false;
@@ -62,7 +62,7 @@ void SampleQuantity::_set(void){
 		if(iter != _lookupTable.end()){
 			_booleanValue = iter->second;
 		}else{
-			Warning("SampleQuantity::_set()","Sample quantity marker is unrecognized.\nThe value %s will be set to FALSE",_value.c_str());
+			Warning("SampleQuantity::_set()","Sample quantity marker “%s” is unrecognized and will be interpreted as FALSE.",_value.c_str());
 			_booleanValue = false;
 		}
 		_isMissing    = false;
