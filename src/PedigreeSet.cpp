@@ -304,7 +304,7 @@ void PedigreeSet::draw(const DataTable *const pedigreeTable){
 	// Instantiate a LabelSet object for a pedigree set:
 	//
 	LabelSet labelSet(pedigreeTable);
-	std::cout << "No of labels: " << labelSet.getNumberOfLabels() << std::endl;
+	// DEBUG: std::cout << "No of labels: " << labelSet.getNumberOfLabels() << std::endl;
 	
 	//
 	// Iterate over the pedigrees and draw them:

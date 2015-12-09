@@ -806,7 +806,9 @@ void DataTable::toggleColumnsForPedigree(const std::vector<std::string> &columns
 			DataColumn* dc = getColumn(stringToUpper(columns[i]).c_str());
 			dc->setShowOnPedigree(true);
 			_labelColumns.push_back(dc->getOrdinal());
-		}else Warning("DataTable::toggleColumnsForPedigree","Could not find column %s to show on the pedigree.",columns[i].c_str());
+		}else{
+			Warning("DataTable::toggleColumnsForPedigree","Could not find column “%s” to show on the pedigree.",columns[i].c_str());
+		}
 	}
 	
 }
@@ -1056,7 +1058,8 @@ ColorSeries *DataTable::getBlackAndWhiteSeriesFromStack(unsigned nth) const{
 void DataTable::_setColorSeriesStack(void){
 	
 	if(_iconColumns.size()){
-		std::cout << "Icon columns: " << _iconColumns.size() << std::endl;
+		std::cout << "----------------------------------------------------------------" << std::endl;
+		std::cout << "\x1b[1;34m" << " ICON COLUMNS                                        TOTAL: " << _iconColumns.size() << "\x1b[0m" << std::endl;
 		std::cout << "----------------------------------------------------------------" << std::endl;
 		//
 		// Passing true to the ColorSeriesStack 

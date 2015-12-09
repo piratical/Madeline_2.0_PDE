@@ -2254,7 +2254,7 @@ void Pedigree::draw(const LabelSet* labelSet){
 	// Print out the drawing:
 	//
 	dc.show(drawingFileName.c_str());
-	std::cout << "Pedigree output file is \"" << drawingFileName << "\"" << std::endl; 
+	std::cout << "Pedigree output file is “" << drawingFileName << "”" << std::endl; 
 	
 }
 
