@@ -941,20 +941,26 @@ void DrawingCanvas::drawIndividual(Individual* pIndividual,double x,double y,boo
 	//
 	// Draw the icon shading first:
 	//
-	if(!pIndividual->hasBeenDrawn() && pIndividual->getGender().getEnum() != Gender::MISSING){
+	if(!pIndividual->hasBeenDrawn()){
 		if(DrawingMetrics::getQuadrantShading()){
 			//
 			// Use quadrant fill method of shading:
 			// NOTA BENE: This uses only the first "Affected" column:
 			// any additional "Affected" columns are ignored:
 			//
-			iconQuadrantFill(x,y,pIndividual);
+			if(pIndividual->getGender().getEnum()!=Gender::MISSING){
+				iconQuadrantFill(x,y,pIndividual);
+			}
 		}else{
 			//
 			// Use color shading method where icon is automatically divided into
 			// pie slices depending on the number of "Affected" columns present:
 			//
-			iconPie(x,y,pIndividual);
+			double yy = y;
+			if(pIndividual->getGender().getEnum()==Gender::MISSING){
+				yy -= (M_SQRT2-1)*DrawingMetrics::getIconDiameter();
+			}
+			iconPie(x,yy,pIndividual);
 		}
 	}
 	
@@ -1431,7 +1437,7 @@ void DrawingCanvas::iconPie( double x, double y, Individual *pIndividual ){
 	//
 	std::string clipId = pIndividual->getId().get() + "_clipPath";
 	double radius=DrawingMetrics::getIconRadius();
-	bool isMale = false;
+	bool isSquareOrDiamond = false;
 	if( pIndividual->getGender().getEnum()==Gender::MALE ){
 		
 		setClipPath(x,y,clipId);
@@ -1439,9 +1445,21 @@ void DrawingCanvas::iconPie( double x, double y, Individual *pIndividual ){
 		// Increase radius for clipping:
 		//
 		radius*=Number::SQRT_TWO;
-		isMale = true;
+		isSquareOrDiamond = true;
 		_body << "<g clip-path=\"url(#" << clipId << ")\">\n";
 		
+	}else if(pIndividual->getGender().getEnum()==Gender::MISSING ){
+		
+		setDiamondClipPath(x,y,clipId);
+		//
+		// Increase radius for clipping, same as for MALE case:
+		//
+		radius*=Number::SQRT_TWO;
+		//
+		// The diamond is basically a rotated MALE symbol:
+		//
+		isSquareOrDiamond = true;
+		_body << "<g clip-path=\"url(#" << clipId << ")\">\n";
 	}else{
 		//
 		// Empty g with no clipping for female:
@@ -1546,7 +1564,7 @@ void DrawingCanvas::iconPie( double x, double y, Individual *pIndividual ){
 		else if(sections == 2) arcClass += "_2";
 		else if(sections == 3) arcClass += "_3";
 		
-		arc(x,y,radius,startAngle,endAngle,arcColor.get(),label,arcClass,isMale);
+		arc(x,y,radius,startAngle,endAngle,arcColor.get(),label,arcClass,isSquareOrDiamond);
 		startAngle+=arcAngle;
 		endAngle+=arcAngle;
 		
@@ -1574,6 +1592,25 @@ void DrawingCanvas::setClipPath(double x, double y, const std::string &id){
 	y -= r;
 	_body << "  <clipPath id=\"" << id << "\">\n";
 	_body << "   <rect x=\"" << x << "\" y=\"" << y << "\" width=\"" << d << "\" height=\"" << d << "\" />\n";;
+	_body << "  </clipPath>\n";
+	
+}
+
+
+///
+/// setDiamondClipPath() : Sets the clipping path for a GENDER_MISSING icon
+///
+void DrawingCanvas::setDiamondClipPath(double x, double y, const std::string &id){
+	
+	double r = DrawingMetrics::getIconRadius();
+	double d = 2.0 * r / M_SQRT2;
+	y -= r;
+	_body << "  <clipPath id=\"" << id << "\">\n";
+	_body << "   <path d=\"M " << x << " " << y;
+	_body << " l " << -d << " " << d;
+	_body << " " << d << " " << d;
+	_body << " " << d << " " << -d;
+	_body << " z\" />\n";
 	_body << "  </clipPath>\n";
 	
 }

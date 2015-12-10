@@ -228,12 +228,17 @@ void PedigreeSet::addPedigreesFromDataTable(const DataTable * p_pedigreeTable, u
 								// 2015.12.01.ET DEBUG
 								std::cout << "*** Individual " << individualIdColumn->get(i) << " used for collapsed group " << indicator << std::endl;
 							}else{
-								///////////////////////////////////////
+								//////////////////////////////////////////////////
 								//
 								// Is gender of new person consistent?
+								// 
+								// Note: using Gender.getEnum() guarantees 
+								// symbolic equivalency across different
+								// string representations, e.g. "M"=="male", 
+								// "♀"=="female", etc.
 								//
-								///////////////////////////////////////
-								if( it->second->getGender().get() != genderColumn->get(i) ){
+								//////////////////////////////////////////////////
+								if( it->second->getGender().getEnum() != Gender(genderColumn->get(i)).getEnum() ){
 									// Change to missing on token individual:
 									it->second->setGender(".");
 								}
