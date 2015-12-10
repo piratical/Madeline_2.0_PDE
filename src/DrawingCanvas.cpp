@@ -947,6 +947,8 @@ void DrawingCanvas::drawIndividual(Individual* pIndividual,double x,double y,boo
 			// Use quadrant fill method of shading:
 			// NOTA BENE: This uses only the first "Affected" column:
 			// any additional "Affected" columns are ignored:
+			// 
+			// NOTA BENE: Gender::MISSING is not yet supported
 			//
 			if(pIndividual->getGender().getEnum()!=Gender::MISSING){
 				iconQuadrantFill(x,y,pIndividual);
@@ -1084,7 +1086,12 @@ void DrawingCanvas::drawIndividual(Individual* pIndividual,double x,double y,boo
 	// Draw Collapsed count:
 	//
 	if(!pIndividual->hasBeenDrawn() && pIndividual->getCollapsedCount()){
-		_svg.drawCollapsedCount(_body,x,y,pIndividual->getCollapsedCount());
+		double yy=y;
+		if(pIndividual->getGender().getEnum()==Gender::MISSING){
+			// Adjust y-centering:
+			yy-= (Number::SQRT_TWO-1)*DrawingMetrics::getIconRadius();
+		}
+		_svg.drawCollapsedCount(_body,x,yy,pIndividual->getCollapsedCount());
 	}
 	
 	////////////////////////////////////////
@@ -1460,6 +1467,10 @@ void DrawingCanvas::iconPie( double x, double y, Individual *pIndividual ){
 		//
 		isSquareOrDiamond = true;
 		_body << "<g clip-path=\"url(#" << clipId << ")\">\n";
+		//
+		// Adjust center point for drawing arcs:
+		//
+		y+=(Number::SQRT_TWO-1)*DrawingMetrics::getIconRadius();
 	}else{
 		//
 		// Empty g with no clipping for female:
