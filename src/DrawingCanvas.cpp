@@ -445,7 +445,7 @@ void DrawingCanvas::_setCSS(){
 	_header << "}\n\n";
 	
 	_header << ".counterFill{\n";
-	_header << "	fill: #ccd;\n";
+	_header << "	fill: #fff;\n";
 	_header << "}\n\n";
 	
 	//
@@ -985,17 +985,34 @@ void DrawingCanvas::drawIndividual(Individual* pIndividual,double x,double y,boo
 	case(Gender::MALE):
 		
 		_svg.drawMaleIcon(_body,x,y,pIndividual->getId().get(),cssClass);
+		if(pIndividual->getCollapsedCount()){
+			_svg.drawMaleIconEdge(_body,x,y);
+			if(pIndividual->getCollapsedCount()>2){
+				double repeatOffset = DrawingMetrics::getScalingFactor();
+				_svg.drawMaleIconEdge(_body,x+repeatOffset,y+repeatOffset);
+			}
+		}
 		break;
 		
 	case(Gender::FEMALE):
 		
 		_svg.drawFemaleIcon(_body,x,y,pIndividual->getId().get(),cssClass);
+		if(pIndividual->getCollapsedCount()){
+			// ... draw edge method not yet implemented for this case ...
+		}
 		break;
 		
 	case(Gender::MISSING):
 	default:
 		
 		_svg.drawGenderUnknownIcon(_body,x,y-(M_SQRT2-1)*DrawingMetrics::getIconDiameter(),pIndividual->getId().get(),cssClass);
+		if(pIndividual->getCollapsedCount()){
+			_svg.drawGenderUnknownIconEdge(_body,x,y);
+			if(pIndividual->getCollapsedCount()>2){
+				//double repeatOffset = DrawingMetrics::getScalingFactor()/Number::SQRT_TWO;
+				//_svg.drawGenderUnknownIconEdge(_body,x+repeatOffset,y);
+			}
+		}
 		break;
 		
 	}

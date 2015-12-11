@@ -53,8 +53,10 @@ public:
 	// Low level methods for drawing individuals:
 	//
 	void drawMaleIcon(std::ostringstream& os,double x, double y, const std::string &id = std::string(""), const std::string &cssClass = std::string(""));
+	void drawMaleIconEdge(std::ostringstream& os,double x, double y);
 	void drawFemaleIcon(std::ostringstream& os,double x, double y, const std::string &id = std::string(""), const std::string &cssClass = std::string(""));
 	void drawGenderUnknownIcon(std::ostringstream& os,double x, double y, const std::string &id = std::string(""), const std::string &cssClass = std::string(""));
+	void drawGenderUnknownIconEdge(std::ostringstream& os,double x, double y);
 	void drawIconForNoChildren(std::ostringstream& os,double x, double y);
 	void drawIconForInfertility(std::ostringstream& os,double x, double y);
 	void drawIconForAbortedPregnancy(std::ostringstream& os,double x, double y, const std::string &id = std::string(""), const std::string &cssClass = std::string(""));

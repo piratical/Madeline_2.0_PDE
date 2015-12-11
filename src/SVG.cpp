@@ -142,6 +142,36 @@ void SVG::drawMaleIcon(std::ostringstream& os,double x, double y, const std::str
 }
 
 //
+// drawMaleIconEdge
+//
+void SVG::drawMaleIconEdge(std::ostringstream& os,double x, double y){
+	
+	double d = DrawingMetrics::getIconDiameter();
+	double r = 0.5 * d;
+	double edgeOffset=DrawingMetrics::getScalingFactor();
+	x += r;
+	y -= r;
+	y += edgeOffset;
+	double x2 = x + edgeOffset;
+	double y2 = y;
+	os  << "  <line x1=\"" << x << "\" y1=\"" << y << "\" x2=\"" << x2 << "\" y2=\"" << y2 << "\" />\n";
+	x  =  x2;
+	y  =  y2;
+	y2 += d;
+	os  << "  <line x1=\"" << x << "\" y1=\"" << y << "\" x2=\"" << x2 << "\" y2=\"" << y2 << "\" />\n";
+	x  =  x2;
+	y  =  y2;
+	x2 -= d;
+	os  << "  <line x1=\"" << x << "\" y1=\"" << y << "\" x2=\"" << x2 << "\" y2=\"" << y2 << "\" />\n";
+	x  =  x2;
+	y  =  y2;
+	y2 -= edgeOffset;
+	os  << "  <line x1=\"" << x << "\" y1=\"" << y << "\" x2=\"" << x2 << "\" y2=\"" << y2 << "\" />\n";
+	
+}
+
+
+//
 // drawFemaleIcon()
 //
 void SVG::drawFemaleIcon(std::ostringstream& os,double x, double y, const std::string &id, const std::string &cssClass){
@@ -188,6 +218,37 @@ void SVG::drawGenderUnknownIcon(std::ostringstream& os,double x, double y, const
 		os << "/>\n";
 		
 	}
+	
+}
+
+//
+// drawGenderUnknownIconEdge
+//
+void SVG::drawGenderUnknownIconEdge(std::ostringstream& os,double x, double y){
+	
+	double d = DrawingMetrics::getIconDiameter()/M_SQRT2;
+	double r = 0.5 * d;
+	double edgeOffset=DrawingMetrics::getScalingFactor();
+	y -= d;
+	x += edgeOffset;
+	double x2 = x + edgeOffset;
+	double y2 = y - edgeOffset;
+	os  << "  <line x1=\"" << x << "\" y1=\"" << y << "\" x2=\"" << x2 << "\" y2=\"" << y2 << "\" />\n";
+	x  =  x2;
+	y  =  y2;
+	x2 += d;
+	y2 += d;
+	os  << "  <line x1=\"" << x << "\" y1=\"" << y << "\" x2=\"" << x2 << "\" y2=\"" << y2 << "\" />\n";
+	x  =  x2;
+	y  =  y2;
+	x2 -= d;
+	y2 += d;
+	os  << "  <line x1=\"" << x << "\" y1=\"" << y << "\" x2=\"" << x2 << "\" y2=\"" << y2 << "\" />\n";
+	x  =  x2;
+	y  =  y2;
+	x2 -= edgeOffset;
+	y2 -= edgeOffset;
+	os  << "  <line x1=\"" << x << "\" y1=\"" << y << "\" x2=\"" << x2 << "\" y2=\"" << y2 << "\" />\n";
 	
 }
 
@@ -513,8 +574,15 @@ void SVG::drawPregnancyLetterP(std::ostringstream& os,double x,double y,const st
 //
 void SVG::drawCollapsedCount(std::ostringstream& os,double x,double y,unsigned collapsedCount){
 	
+	static bool filterDefined=false;
+	double radius=0.75*DrawingMetrics::getIconRadius();
 	// filled circle at x-y position:
-	os << "<circle cx=\"" << x << "\" cy=\"" << y << "\" r=\"" << 0.75*DrawingMetrics::getIconRadius() << "\"";
+	if(!filterDefined){
+		// Define a blur filter:
+		os << "<defs>\n <filter id=\"blur_001\">\n  <feGaussianBlur in=\"SourceGraphic\" stdDeviation=\"3\" />\n </filter></defs>\n";
+		filterDefined=true;
+	}
+	os << "<circle filter=\"url(#blur_001)\" cx=\"" << x << "\" cy=\"" << y << "\" r=\"" << radius << "\"";
 	os << " class=\"counterFill\" />\n";
 	std::string collapsed = static_cast<std::ostringstream*>( &(std::ostringstream() << collapsedCount) )->str();
 	drawText(os,x,y+DrawingMetrics::getCounterFontSize()/3,collapsed,"counter","");

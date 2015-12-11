@@ -255,7 +255,7 @@ void PedigreeSet::addPedigreesFromDataTable(const DataTable * p_pedigreeTable, u
 								//////////////////////////////////////////////////
 								it->second->incrementCollapsedCount();
 								// 2015.12.01.ET DEBUG
-								std::cout << "*** Individual " << it->second->getId() << " with indicator " << indicator << " incremented to " << it->second->getCollapsedCount() << std::endl;
+								// std::cout << "*** Individual " << it->second->getId() << " with indicator " << indicator << " incremented to " << it->second->getCollapsedCount() << std::endl;
 							}
 						}
 					}else{
