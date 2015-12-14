@@ -22,7 +22,7 @@
 //
 // 2006.12.29.RK
 //
-// Last updated 2011.11.18.ET
+// Last updated 2015.12.14.ET
 //
 
 //
@@ -197,7 +197,14 @@ void SVG::drawFemaleIcon(std::ostringstream& os,double x, double y, const std::s
 //
 void SVG::drawFemaleIconEdge(std::ostringstream& os,double x, double y){
 	
-	// Not complete yet ...
+	os << "<g transform=\"translate(" << x << "," << y << ") scale(0.50)\">" << std::endl;
+	os << " <path ";
+	os << " style=\"fill:none;stroke:#000000;stroke-width:3.77999997\" ";
+	os << " d=\""; 
+	os << " m -12.875,18.65625 c 4.0926449,5.918156 10.9162147,9.8125 18.65625,9.8125 12.525818,0 22.6875,-10.161682 22.6875,-22.6875 0,-7.7400353 -3.894344,-14.5636051 -9.8125,-18.65625\"";
+	os << " />" << std::endl;
+	os << "</g>" << std::endl;
+	
 }
 
 //

@@ -999,6 +999,10 @@ void DrawingCanvas::drawIndividual(Individual* pIndividual,double x,double y,boo
 		_svg.drawFemaleIcon(_body,x,y,pIndividual->getId().get(),cssClass);
 		if(pIndividual->getCollapsedCount()){
 			_svg.drawFemaleIconEdge(_body,x,y);
+			if(pIndividual->getCollapsedCount()>2){
+				double repeatOffset = 0.7*DrawingMetrics::getScalingFactor();
+				_svg.drawFemaleIconEdge(_body,x+repeatOffset,y+repeatOffset);
+			}
 		}
 		break;
 		
