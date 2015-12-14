@@ -998,7 +998,7 @@ void DrawingCanvas::drawIndividual(Individual* pIndividual,double x,double y,boo
 		
 		_svg.drawFemaleIcon(_body,x,y,pIndividual->getId().get(),cssClass);
 		if(pIndividual->getCollapsedCount()){
-			// ... draw edge method not yet implemented for this case ...
+			_svg.drawFemaleIconEdge(_body,x,y);
 		}
 		break;
 		
@@ -1009,8 +1009,8 @@ void DrawingCanvas::drawIndividual(Individual* pIndividual,double x,double y,boo
 		if(pIndividual->getCollapsedCount()){
 			_svg.drawGenderUnknownIconEdge(_body,x,y);
 			if(pIndividual->getCollapsedCount()>2){
-				//double repeatOffset = DrawingMetrics::getScalingFactor()/Number::SQRT_TWO;
-				//_svg.drawGenderUnknownIconEdge(_body,x+repeatOffset,y);
+				double repeatOffset = M_SQRT2*DrawingMetrics::getScalingFactor();
+				_svg.drawGenderUnknownIconEdge(_body,x+repeatOffset,y);
 			}
 		}
 		break;

@@ -192,6 +192,13 @@ void SVG::drawFemaleIcon(std::ostringstream& os,double x, double y, const std::s
 	
 }
 
+//
+// drawFemaleIconEdge()
+//
+void SVG::drawFemaleIconEdge(std::ostringstream& os,double x, double y){
+	
+	// Not complete yet ...
+}
 
 //
 // drawGenderUnknownIcon()
@@ -226,11 +233,14 @@ void SVG::drawGenderUnknownIcon(std::ostringstream& os,double x, double y, const
 //
 void SVG::drawGenderUnknownIconEdge(std::ostringstream& os,double x, double y){
 	
-	double d = DrawingMetrics::getIconDiameter()/M_SQRT2;
-	double r = 0.5 * d;
-	double edgeOffset=DrawingMetrics::getScalingFactor();
+	double c          = DrawingMetrics::getIconDiameter();
+	double d          = c / M_SQRT2;
+	double r          = DrawingMetrics::getIconRadius() / M_SQRT2;
+	double offset     = 0.5 * DrawingMetrics::getScalingFactor();
+	double edgeOffset = offset / M_SQRT2;
 	y -= d;
-	x += edgeOffset;
+	y -= 1.72*offset;
+	x += 2*offset;
 	double x2 = x + edgeOffset;
 	double y2 = y - edgeOffset;
 	os  << "  <line x1=\"" << x << "\" y1=\"" << y << "\" x2=\"" << x2 << "\" y2=\"" << y2 << "\" />\n";
