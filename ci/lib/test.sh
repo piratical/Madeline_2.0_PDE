@@ -68,7 +68,6 @@ LABELS() {
   else
     LABELS="$LABELS $@"
   fi
-
 }
 
 RUN() {
@@ -103,11 +102,11 @@ RUN() {
   echo "<img src='${OUTPUT}.svg' alt='${OUTPUT}.svg image' />" >> $OUTPUT_DIR/index.html
   echo "<p/><p/>" >> $OUTPUT_DIR/index.html
 
-  unset INPUT
-  unset OUTPUT
-  unset OPTIONS
-  unset COLOR
-  unset LABELS
+  unset -v INPUT
+  unset -v OUTPUT
+  unset -v OPTIONS
+  unset -v COLOR
+  unset -v LABELS
 }
 
 OUTPUT_DIR=$MYBASE/ci/tmp
