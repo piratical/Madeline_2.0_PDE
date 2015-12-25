@@ -114,6 +114,10 @@ OUTPUT_DIR=$MYBASE/ci/tmp
 INPUT_DIR=$MYBASE/ci/testdata
 MADELINE=$MYBASE/src/madeline2
 
+if [[ ! -x $MADELINE ]]; then
+  cmake . && make
+fi
+
 [[ -d $OUTPUT_DIR ]] || mkdir -p $OUTPUT_DIR
 
 echo "<h1>Madeline PDE CI Artifacts $(date --utc +%FT%T%z )</h1>" > $OUTPUT_DIR/index.html
