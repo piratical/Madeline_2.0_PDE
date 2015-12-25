@@ -3,12 +3,12 @@ language: cpp
 compiler:
     - gcc
 
-script: bin/test-ci
+script: ci/bin/test
 
 deploy:
   provider: s3
   bucket: usf-hii-madeline-ci
-  local-dir: tmp/ci/output
+  local-dir: ci/tmp
   on:
     repo: piratical/Madeline_2.0_PDE
     branch: master

@@ -1,0 +1,36 @@
+#!/usr/bin/env bash
+
+MYDIR=$( readlink -f $( dirname $0 ) )
+MYBASE=$( readlink -f $MYDIR/../.. )
+
+source $MYBASE/ci/lib/test.sh
+
+parse_options "$@"
+
+#------------------------------------------------------------------------------------------
+# Specify test cases below with the following Bash DSL:
+#
+# INPUT   Data file to read to generate test (Mandatory).
+#
+# OUTPUT  Defaults to INPUT. Must be unique. Will generate the files:
+#           tmp/ci/<output>.svg, tmp/ci/<output>-cli.txt, and tmp/ci/<output>-log.txt.
+#
+#         Note: tmp/ci/<output>.svg will be compared against ci/expected/<output>.svg
+#
+# LABELS  Custom labels
+#
+# COLORS  Convienience method for --custom-icon-colors since these lines can be long.
+#         When run, the options will be concatenated in a quoted string separated by semicolons (;).
+#
+# RUN     Kicks off the test with any arguments provided (Mandatory).
+#------------------------------------------------------------------------------------------
+
+
+INPUT    "cs_001"
+RUN
+
+INPUT    "collapsed"
+COLORS   "A=salmon"
+COLORS   "A=purple"
+LABELS   "IndividualId SampleQuantity Collapsed"
+RUN      "--collapsed --noiconlabels --nolabeltruncation"
