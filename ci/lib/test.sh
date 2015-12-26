@@ -105,7 +105,7 @@ RUN() {
   unset -v INPUT
   unset -v OUTPUT
   unset -v OPTIONS
-  unset -v COLOR
+  unset -v COLORS
   unset -v LABELS
 }
 

@@ -1,0 +1,10 @@
+Individualid	Familyid	Gender	Mother	Father
+m100	cs_ms_003	m	.	.
+m101	cs_ms_003	f	.	.
+m102	cs_ms_003	f	.	.
+m105	cs_ms_003	f	.	.
+m104	cs_ms_003	m	m102	m100
+m103	cs_ms_003	f	m101	m100
+m106	cs_ms_003	m	m102	m100
+m107	cs_ms_003	f	m103	m104
+m108	cs_ms_003	m	m105	m104

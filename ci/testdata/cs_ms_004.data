@@ -1,0 +1,17 @@
+Individualid	Familyid	Gender	Mother	Father
+1	cs_ms_004	m	.	.
+2	cs_ms_004	f	.	.
+3	cs_ms_004	m	2	1
+4	cs_ms_004	f	.	.
+5	cs_ms_004	f	2	1
+6	cs_ms_004	m	.	.
+7	cs_ms_004	f	2	1
+8	cs_ms_004	m	.	.
+9	cs_ms_004	f	4	3
+10	cs_ms_004	m	4	3
+11	cs_ms_004	f	5	6
+12	cs_ms_004	f	5	6
+13	cs_ms_004	m	7	8
+14	cs_ms_004	f	7	8
+15	cs_ms_004	m	11	10
+16	cs_ms_004	f	11	13
