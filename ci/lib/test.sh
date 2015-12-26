@@ -119,7 +119,13 @@ fi
 
 [[ -d $OUTPUT_DIR ]] || mkdir -p $OUTPUT_DIR
 
-echo "<h1>Madeline PDE CI Artifacts $(date --utc +%FT%T%z )</h1>" > $OUTPUT_DIR/index.html
+> $OUTPUT_DIR/index.html
+
+echo "<head><style>img { max-width: 100%; height: auto; width: auto\9; /* ie8 */ }</style></head>" >> $OUTPUT_DIR/index.html
+
+echo "<h1>Madeline PDE CI Artifacts $(date --utc +%FT%T%z )</h1>" >> $OUTPUT_DIR/index.html
+
+
 
 # If input file is remote, specify the file
 # name starting with 'http://' or 'https://'.
