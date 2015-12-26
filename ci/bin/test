@@ -26,6 +26,12 @@ parse_options "$@"
 #------------------------------------------------------------------------------------------------
 
 INPUT    "collapsed"
+OUTPUT   "collapsed-expanded"
+COLORS   "A=salmon;A=purple"
+LABELS   "IndividualId SampleQuantity Collapsed"
+RUN      "--noiconlabels --nolabeltruncation"
+
+INPUT    "collapsed"
 COLORS   "A=salmon;A=purple"
 LABELS   "IndividualId SampleQuantity Collapsed"
 RUN      "--collapsed --noiconlabels --nolabeltruncation"
@@ -35,6 +41,9 @@ COLORS   "NORMAL=lightgreen,OBESE=salmon,OVERWT=orange,UNDERWT=skyblue"
 COLORS   "NORMAL=cyan,PREHYPT=#fdd,STAGE_1=#DCD,STAGE_2=purple"
 RUN      "--noiconlabels --nolabeltruncation"
 
+INPUT    "pregnancies"
+LABELS   "Gestation DOB"
+RUN      "--noiconlabels"
 
 #------------------------------------------------------------------------------------------------
 # Standard Tests
