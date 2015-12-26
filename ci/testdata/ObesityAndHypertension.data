@@ -1,0 +1,30 @@
+FamilyId
+IndividualId
+Gender
+Father
+Mother
+Deceased
+Proband
+DOB
+MZTwin
+DZTwin
+Sampled
+Affected_OB
+Affected_HT
+
+ObesityAndHypertension U00100 M .      .      Y . .          . . . .       .      
+ObesityAndHypertension U00101 F .      .      Y . .          . . . .       .      
+ObesityAndHypertension U00102 M U00100 U00101 . . .          . . . NORMAL  .      
+ObesityAndHypertension U00103 M U00100 U00101 . . .          . . . NORMAL  PREHYPT
+ObesityAndHypertension U00104 F U00100 U00101 . . .          . . . OVERWT  PREHYPT
+ObesityAndHypertension U00105 F U00100 U00101 . . .          . . . OVERWT  NORMAL 
+ObesityAndHypertension U00106 F U00100 U00101 . . .          . . . OBESE   STAGE_2
+ObesityAndHypertension U00107 F .      .      . . .          . . . UNDERWT NORMAL 
+ObesityAndHypertension U00108 F U00102 U00107 . . .          . . . NORMAL  PREHYPT
+ObesityAndHypertension U00109 F U00102 U00107 . . .          . . . OVERWT  STAGE_1
+ObesityAndHypertension U00110 M .      .      . . .          . . . OBESE   STAGE_2
+ObesityAndHypertension U00111 M U00110 U00104 . . .          . . . OVERWT  STAGE_2
+ObesityAndHypertension U00112 F U00110 U00104 . . .          . . . OBESE   STAGE_1
+ObesityAndHypertension U00113 M .      .      . . .          . . . NORMAL  NORMAL 
+ObesityAndHypertension U00114 M U00103 U00112 . Y .          . . . OBESE   STAGE_2
+ObesityAndHypertension U00115 F U00103 U00112 . . .          . . . NORMAL  PREHYPT
