@@ -89,6 +89,7 @@ RUN() {
 
   bash -x $OUTPUT_DIR/$OUTPUT-cli.txt 2>&1 | tee ${OUTPUT_DIR}/${OUTPUT}-log.txt
 
+  echo "<hr/>" >> $OUTPUT_DIR/index.html
   echo "<h2>$OUTPUT</h2>" >> $OUTPUT_DIR/index.html
   echo "<h3>Command Line</h3>" >> $OUTPUT_DIR/index.html
 
