@@ -1,0 +1,16 @@
+Individualid	Familyid	Gender	Father	Mother	Affected	Afected_Other	Affected_A	Affected_B
+M100	ic_004	M	.	.	.	.	.	.
+M101	ic_004	F	.	.	.	.	.	.
+M102	ic_004	F	M100	M101	U	U	A	I
+M103	ic_004	M	M100	M101	A	A	A	U
+M104	ic_004	F	M100	M101	A	A	U	I
+M105	ic_004	M	.	.	U	.	U	.
+M106	ic_004	M	M105	M102	U	U	.	.
+M107	ic_004	F	M105	M102	U	I	A	U
+M108	ic_004	F	.	.	A	I	U	A
+M109	ic_004	F	M104	M108	A	U	I	A
+M110	ic_004	M	.	.	U	.	.	.
+M111	ic_004	.	M110	M107	A	.	A	U
+M112	ic_004	F	.	.	A	A	A	I
+M113	ic_004	M	M104	M112	A	.	.	.
+!M114	ic_004	.	M104	M112	.	.	.	.

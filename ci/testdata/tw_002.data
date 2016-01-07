@@ -1,0 +1,22 @@
+FamilyId
+IndividualId
+Gender
+Father
+Mother
+Deceased
+Proband
+DOB
+MZTwin
+DZTwin
+Sampled
+Affected
+
+tw_002      U00097      M .           .           Y . .          . . . . 
+tw_002      U00098      F .           .           Y . .          . . . . 
+tw_002      U00099      M U00097      U00098      . . 1975.09.18 . A . . 
+tw_002      U00100      M U00097      U00098      . . .          . A . . 
+tw_002      U00101      F U00097      U00098      . . 1972.07.04 A . . . 
+tw_002      U00102      F U00097      U00098      . . .          . A . . 
+tw_002      U00103      F U00097      U00098      . . .          A . . A 
+tw_002      U00104      F U00097      U00098      . . .          . A . . 
+tw_002      U00105      F U00097      U00098      . . .          A . . . 

@@ -1,0 +1,24 @@
+
+FamilyId
+IndividualId
+Gender
+Father
+Mother
+
+cs_007 01 M  .  .
+cs_007 02 F  .  .
+cs_007 03 M  .  .
+cs_007 04 F 01 02
+cs_007 05 M 01 02
+cs_007 06 M 03 04
+cs_007 07 F 03 04
+cs_007 08 F 03 04
+cs_007 09 M  .  .
+cs_007 10 F 09 08
+cs_007 11 F 09 08
+cs_007 12 F 14 11
+cs_007 13 M 14 11
+cs_007 14 M  .  .
+cs_007 15 F 05 12
+cs_007 16 M 05 12
+

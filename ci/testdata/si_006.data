@@ -1,0 +1,38 @@
+FamilyId
+IndividualId
+Gender
+Father
+Mother
+Deceased
+Proband
+DOB
+Carrier
+MZTwin
+DZTwin
+Sampled
+Affected
+Superscript
+Consultand
+
+si_006 S00102     M S00100 S00101 . . 1937.07    . . . Y U Ω      .
+si_006 S00103     F S00100 S00101 . Y 1939.02.25 . . . Y A Θ∆   .
+si_006 S00104     F S00100 S00101 . . 1942.04.15 . . . Y U µA     .
+si_006 S00105     F S00100 S00101 . . 1943       . . . Y A †     .
+si_006 U00106     . S00100 S00101 Y . 1944.06.07 . . . . U ‡     .
+si_006 ^NO_OFFSPR . S00107 S00103 . . .          . . . . . ±      .
+si_006 &NON_FERTL . S00108 S00104 . . .          . . . . . ×      .
+si_006 @SAB1      . S00100 S00101 . . .          . . . . . +       .
+si_006 @SAB2      M S00100 S00101 . . .          . . . . . ◊     .
+si_006 @SAB3      F S00100 S00101 . . .          . . . . . ∑     .
+si_006 @TOP1      M S00100 S00101 Y . .          . . . . . ◐     .
+si_006 @TOP2      F S00100 S00101 Y . .          . . . . . ◑     .
+si_006 +ADOPT_IN1 M S00109 S00105 . . .          . . . . . .       .
+si_006 -ADOP_OUT1 F S00109 S00105 . . .          . . . . . ◊     .
+si_006 +ADOPT_IN2 F S00109 S00105 . . .          . . . . . ‡     .
+si_006 -ADOP_OUT2 M S00109 S00105 . . .          . . . . . ★     .
+si_006 +ADOPT_IN3 . S00109 S00105 . . .          . . . . .         .
+si_006 -ADOP_OUT3 . S00109 S00105 . . .          . . . . . .       .
+si_006 S00110     F S00109 S00105 . . 1972.02    c . . Y . ☆     .
+si_006 S00111     M .      .      . . 1971.03.25 . . . . . .       C
+si_006 S00112     M S00111 S00110 . . 1991.03.18 . A . . . .       .
+si_006 S00113     M S00111 S00110 . . 1991.03.19 . A . . A .       .

@@ -1,0 +1,45 @@
+FamilyId
+IndividualId
+Gender
+Father
+Mother
+Deceased
+Proband
+DOB
+MZTwin
+DZTwin
+Sampled
+Affected_HD
+Collapsed
+Carrier
+ObligateCarrier
+SampleQuantity
+Affected_GL
+
+Collapsed_001 U00100      M .           .           . . .          . . . . . . Y .    .
+Collapsed_001 U00101      F .           .           . . .          . . . . . . . S    .
+Collapsed_001 U00102      M U00100      U00101      . . .          . . Y . . . . 1.85 .
+Collapsed_001 U00103      M U00100      U00101      . . .          . . Y . . . Y .    .
+Collapsed_001 U00104      F U00100      U00101      . . .          . . . . . Y . 0.25 .
+Collapsed_001 U00105      F U00100      U00101      . . .          . . . . . . . 0.50 .
+Collapsed_001 U00106      F .           .           . . .          . . . . . . . Y    .
+Collapsed_001 U00107      M U00103      U00106      . . .          . . Y . . . . 0.75 .
+Collapsed_001 U00108      M U00103      U00106      . . .          . . . . A . . .    A
+Collapsed_001 U00109      M U00103      U00106      . . .          . . . . A . . .    .
+Collapsed_001 U00110      F U00103      U00106      . . .          . . . A B . . .    .
+Collapsed_001 U00111      F U00103      U00106      . . .          . . . . B . . 1    .
+Collapsed_001 U00112      F U00103      U00106      . . .          . . . . B . . .    .
+Collapsed_001 U00113      F U00103      U00106      . . .          . . . . . . Y .    .
+Collapsed_001 U00114      M .           .           . . .          . . . . . . . .    .
+Collapsed_001 U00115      M U00114      U00104      . . .          . . . A C . . .    A
+Collapsed_001 U00116      F U00114      U00104      . . .          . . . A C . . .    A
+Collapsed_001 U00117      F U00114      U00104      . . .          . . . . . Y . 1.00 .
+Collapsed_001 U00118      F U00114      U00104      . . .          . . . A C . . .    A
+Collapsed_001 U00119      F U00114      U00104      . . .          . . . A C . . .    A
+Collapsed_001 U00120      M U00114      U00104      . . .          . . . A C . . .    A
+Collapsed_001 U00121      F U00114      U00104      . . .          . . . A C . . .    A
+Collapsed_001 U00122      F U00114      U00104      . . .          . . . A C . . .    A
+Collapsed_001 U00123      M U00114      U00104      . . .          . . . A C . . .    A
+Collapsed_001 U00124      M U00114      U00104      . . .          . . . A C . . .    A
+Collapsed_001 U00125      F U00114      U00104      . . .          . . . A C . . .    A
+Collapsed_001 U00126      F U00114      U00104      . . .          . . . A C . . .    A

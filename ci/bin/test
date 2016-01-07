@@ -1,0 +1,93 @@
+#!/usr/bin/env bash
+
+MYDIR=$( readlink -f $( dirname $0 ) )
+MYBASE=$( readlink -f $MYDIR/../.. )
+
+source $MYBASE/ci/lib/test.sh
+
+parse_options "$@"
+
+#------------------------------------------------------------------------------------------------
+# Specify test cases below with the following Bash DSL:
+#
+# INPUT   Data file to read to generate test (Mandatory).
+#
+# OUTPUT  Defaults to INPUT. Must be unique. Will generate the files:
+#           tmp/ci/<output>.svg, tmp/ci/<output>-cli.txt, and tmp/ci/<output>-log.txt.
+#
+#         Note: tmp/ci/<output>.svg will be compared against ci/expected/<output>.svg
+#
+# LABELS  Custom labels
+#
+# COLORS  Convienience method for --custom-icon-colors since these lines can be long.
+#         When run, the options will be concatenated in a quoted string separated by semicolons (;).
+#
+# RUN     Kicks off the test with any arguments provided (Mandatory).
+#------------------------------------------------------------------------------------------------
+
+INPUT    "collapsed"
+OUTPUT   "collapsed-expanded"
+COLORS   "A=salmon;A=purple"
+LABELS   "IndividualId SampleQuantity Collapsed"
+RUN      "--noiconlabels --nolabeltruncation"
+
+INPUT    "collapsed"
+COLORS   "A=salmon;A=purple"
+LABELS   "IndividualId SampleQuantity Collapsed"
+RUN      "--collapsed --noiconlabels --nolabeltruncation"
+
+INPUT    "ObesityAndHypertension"
+COLORS   "NORMAL=lightgreen,OBESE=salmon,OVERWT=orange,UNDERWT=skyblue"
+COLORS   "NORMAL=cyan,PREHYPT=#fdd,STAGE_1=#DCD,STAGE_2=purple"
+RUN      "--noiconlabels --nolabeltruncation"
+
+INPUT    "pregnancies"
+LABELS   "Gestation DOB"
+RUN      "--noiconlabels"
+
+#------------------------------------------------------------------------------------------------
+# Standard Tests
+#------------------------------------------------------------------------------------------------
+
+STANDARD_TESTDATA="
+cs_001
+cs_002
+cs_003
+cs_004
+cs_005
+cs_006
+cs_007
+cs_008
+cs_009
+cs_010
+cs_ms_001
+cs_ms_002
+cs_ms_003
+cs_ms_004
+cx_001
+cx_002
+dt_001
+dt_002
+dt_003
+ic_002
+ic_004
+ic_005
+ms_001
+ms_002
+ms_003
+ms_004
+si_001
+si_002
+si_003
+si_004
+si_006
+tw_001
+tw_002
+tw_003
+tw_004
+"
+
+for input in $STANDARD_TESTDATA; do
+  INPUT  ${input}
+  RUN    "--noiconlabels --nolabeltruncation"
+done
