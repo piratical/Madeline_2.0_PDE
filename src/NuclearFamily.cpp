@@ -924,11 +924,15 @@ void NuclearFamily::draw(Individual* startIndividual,DrawingCanvas& dc,double st
 	}else{
 		dc.drawVerticalLine(currentX,currentY,currentY+verticalDrop1,std::string("mating"),dropLineId);
 		//
-		// Testing the case of drawing uterus symbol (for future use in displaying gestational surrogates)
+		// Commented out code is only for initial testing of Assisted Reproductive Technology
+		// iconography:
 		//
 		//double vMiddle=currentY+0.5*verticalDrop1;
 		//dc.drawVerticalLine(currentX,currentY,vMiddle-16,std::string("mating"),dropLineId);
+		//dc.drawVerticalLine(currentX,currentY,vMiddle-5,std::string("mating"),dropLineId);
 		//dc.drawUterusSymbol(currentX,vMiddle);
+		//dc.drawSpermSymbol(currentX,vMiddle,true);
+		//dc.drawVerticalLine(currentX,vMiddle+5,currentY+verticalDrop1,std::string("mating"),dropLineId);
 		//dc.drawVerticalLine(currentX,vMiddle+16,currentY+verticalDrop1,std::string("mating"),dropLineId);
 		
 	}

@@ -170,8 +170,9 @@ public:
 	//
 	bool useWhiteInk(Individual *pIndividual);
 	
-	// 2016.01.07.ET Addendum:
+	// 2016.01.07.ET Addenda to support Assisted Reproductive Technologies:
 	void drawUterusSymbol(double x,double y);
+	void drawSpermSymbol(double x,double y,bool facingLeft=false);
 	
 };
 

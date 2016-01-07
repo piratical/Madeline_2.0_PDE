@@ -1979,3 +1979,17 @@ void DrawingCanvas::drawUterusSymbol(double x,double y){
 	_svg.drawUterus(_body,x,y);
 	
 }
+
+//
+// drawSpermSymbol -- 2016.01.07.ET ADDENDUM
+//
+void DrawingCanvas::drawSpermSymbol(double x,double y,bool facingLeft){
+	
+	if(facingLeft){
+		_svg.drawLeftFacingSperm(_body,x,y);
+	}else{
+		_svg.drawRightFacingSperm(_body,x,y);
+	}
+	
+}
+

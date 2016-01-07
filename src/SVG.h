@@ -75,8 +75,13 @@ public:
 	void drawPregnancyLetterP(std::ostringstream& os,double x,double y, const std::string & inkClass="blackInk");   // Double-struck P to indicate a pregnancy
 	void drawCollapsedCount(std::ostringstream& os,double x,double y,unsigned collapsedCount); // Large centered numerals to indicate number of individuals
 	void drawTestTube(std::ostringstream& os,double x,double y,double fillFraction=0.0);
-	void drawUterus(std::ostringstream& os, double x, double y); // Used to indicate a gestational surrogate
-
+	//
+	// 2016.01.07.ET Addenda for Assisted Reproductive Technologies (ARTs):
+	//
+	void drawUterus(std::ostringstream& os, double x, double y);                // Used to indicate a gestational surrogate
+	void drawLeftFacingSperm(std::ostringstream& os, double x, double y);  // Used to indicate a sperm donor
+	void drawRightFacingSperm(std::ostringstream& os, double x, double y); // Used to indicate a sperm donor
+	
 };
 
 #endif
