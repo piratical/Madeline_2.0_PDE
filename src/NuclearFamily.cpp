@@ -932,6 +932,8 @@ void NuclearFamily::draw(Individual* startIndividual,DrawingCanvas& dc,double st
 		//dc.drawVerticalLine(currentX,currentY,vMiddle-5,std::string("mating"),dropLineId);
 		//dc.drawUterusSymbol(currentX,vMiddle);
 		//dc.drawSpermSymbol(currentX,vMiddle,true);
+		//dc.drawEntwinedRingsSymbol(currentX,vMiddle);
+		//dc.drawOvumSymbol(currentX,vMiddle);
 		//dc.drawVerticalLine(currentX,vMiddle+5,currentY+verticalDrop1,std::string("mating"),dropLineId);
 		//dc.drawVerticalLine(currentX,vMiddle+16,currentY+verticalDrop1,std::string("mating"),dropLineId);
 		

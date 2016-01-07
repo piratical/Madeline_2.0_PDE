@@ -1993,3 +1993,21 @@ void DrawingCanvas::drawSpermSymbol(double x,double y,bool facingLeft){
 	
 }
 
+//
+// drawOvumSymbol  -- 2016.01.07.ET ADDENDUM
+//
+void DrawingCanvas::drawOvumSymbol(double x,double y){
+	
+	_svg.drawOvum(_body,x,y);
+	
+}
+
+//
+// drawEntwinedRingsSymbol  -- 2016.01.07.ET ADDENDUM
+//
+void DrawingCanvas::drawEntwinedRingsSymbol(double x,double y){
+	
+	_svg.drawEntwinedRings(_body,x,y);
+	
+}
+

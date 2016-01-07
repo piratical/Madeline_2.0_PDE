@@ -173,6 +173,8 @@ public:
 	// 2016.01.07.ET Addenda to support Assisted Reproductive Technologies:
 	void drawUterusSymbol(double x,double y);
 	void drawSpermSymbol(double x,double y,bool facingLeft=false);
+	void drawOvumSymbol(double x,double y);
+	void drawEntwinedRingsSymbol(double x,double y);
 	
 };
 
