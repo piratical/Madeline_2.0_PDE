@@ -1971,3 +1971,11 @@ bool DrawingCanvas::useWhiteInk(Individual *pIndividual){
 	}
 }
 
+//
+// drawUterusSymbol  -- 2016.01.07.ET ADDENDUM
+//
+void DrawingCanvas::drawUterusSymbol(double x,double y){
+	
+	_svg.drawUterus(_body,x,y);
+	
+}

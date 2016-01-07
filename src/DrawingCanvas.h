@@ -21,7 +21,7 @@
 /////////////////////////////////////////////////////////
 //
 // 2006.03.01.RK.
-// 2006.08.10.ET: Revised
+// 2016.01.07.ET: Revised
 //
 
 //
@@ -169,6 +169,9 @@ public:
 	// 2014.07.08.ET Addendum: useWhiteInk()
 	//
 	bool useWhiteInk(Individual *pIndividual);
+	
+	// 2016.01.07.ET Addendum:
+	void drawUterusSymbol(double x,double y);
 	
 };
 

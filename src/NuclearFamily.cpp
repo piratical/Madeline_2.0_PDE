@@ -919,8 +919,20 @@ void NuclearFamily::draw(Individual* startIndividual,DrawingCanvas& dc,double st
 	// Draw the verticalDrop1
 	// Add class and id attribute to the vertical drop line for javascript manipulation:
 	std::string dropLineId= _mother->getId().get() + std::string(":") + _father->getId().get();
-	if(isConsanguinous()) dc.drawVerticalLine(currentX,currentY+verticalTick/2,currentY-verticalTick/2+verticalDrop1,std::string("mating"),dropLineId);
-	else                  dc.drawVerticalLine(currentX,currentY,currentY+verticalDrop1,std::string("mating"),dropLineId);
+	if(isConsanguinous()){ 
+		dc.drawVerticalLine(currentX,currentY+verticalTick/2,currentY-verticalTick/2+verticalDrop1,std::string("mating"),dropLineId);
+	}else{
+		dc.drawVerticalLine(currentX,currentY,currentY+verticalDrop1,std::string("mating"),dropLineId);
+		//
+		// Testing the case of drawing uterus symbol (for future use in displaying gestational surrogates)
+		//
+		//double vMiddle=currentY+0.5*verticalDrop1;
+		//dc.drawVerticalLine(currentX,currentY,vMiddle-16,std::string("mating"),dropLineId);
+		//dc.drawUterusSymbol(currentX,vMiddle);
+		//dc.drawVerticalLine(currentX,vMiddle+16,currentY+verticalDrop1,std::string("mating"),dropLineId);
+		
+	}
+	
 	
 	//////////////////////////////
 	//
