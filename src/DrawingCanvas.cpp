@@ -836,35 +836,32 @@ void DrawingCanvas::drawIndividual(Individual* pIndividual,double x,double y,boo
 	/////////////////////////////////////////
 	
 	if( pIndividual->isSpecial() ){
-		
 		//
-		// This is not a "real" individual, but rather a marker for 
-		// the condition of a married couple with no children:
+		// These are not "real" individuals but rather surrogate markers
+		// to indicate unions without offspring. Madeline makes
+		// several distinctions, all treated here:
 		//
+		// UNION WITHOUT OFFSPRING, STANDARD ICONOGRAPHY:
 		if( pIndividual->isIndividualIndicatingNoOffspring()){
-			
 			_svg.drawIconForNoChildren(_body,x,y-DrawingMetrics::getVerticalDrop2());
-			//
-			// No "real" offspring -- so return:
-			//
 			return;
-			
 		}
-		
-		//
-		// This too is not a "real" individual, but rather a marker for
-		// the condition of a married couple with non-fertility:
-		//
+		// UNION WITHOUT OFFSPRING SHOWING NON-FERTILITY:
 		if( pIndividual->isIndividualIndicatingNonFertility()){
-			
 			_svg.drawIconForInfertility(_body,x,y-DrawingMetrics::getVerticalDrop2());
-			//
-			// No "real" offspring -- so return:
-			//
 			return;
-			
 		}
-		     
+		// UNION WITHOUT OFFSPRING WITH NO SYMBOL:
+		if( pIndividual->isIndividualIndicatingNoOffspringWithNoSymbol()){
+			return;
+		}
+		// UNION WITHOUT OFFSPRING WITH ENTWINED RINGS SYMBOL:
+		if( pIndividual->isIndividualIndicatingNoOffspringWithEntwinedRingsSymbol()){
+			// In this case, entwined rings will have already been drawn
+			// in the NuclearFamily::draw() routine, so just return here as well:
+			return;
+		}
+		// TERMINATED PREGNANCY:
 		if( pIndividual->isIndividualIndicatingTerminatedPregnancy()){
 			//
 			// position the icon 2*VerticalTick distance below the horizontal comb:
@@ -905,7 +902,7 @@ void DrawingCanvas::drawIndividual(Individual* pIndividual,double x,double y,boo
 			return;
 			
 		}
-		
+		// ADOPTED IN:
 		if( pIndividual->isIndividualAdoptedIn()){
 			
 			_svg.drawAdoptedIn(_body,x,y,pIndividual->getGender().getEnum()==Gender::MISSING);
@@ -917,6 +914,7 @@ void DrawingCanvas::drawIndividual(Individual* pIndividual,double x,double y,boo
 				
 			}
 		}
+		// ADOPTED OUT:
 		if( pIndividual->isIndividualAdoptedOut()){
 			
 			_svg.drawAdoptedOut(_body,x,y,pIndividual->getGender().getEnum()==Gender::MISSING);

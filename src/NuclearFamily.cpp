@@ -835,8 +835,10 @@ void NuclearFamily::calculateWidth(bool classicalOrder){
 /// draw: Draws the NuclearFamily
 ///
 void NuclearFamily::draw(Individual* startIndividual,DrawingCanvas& dc,double startX, double startY,bool classicalOrder,bool dashedOriginalFounder){
+	//
+	// NOTA BENE: The children are always drawn with the mother
+	//
 	
-	// NOTE: The children are always drawn with the mother
 	//
 	// Initialize : get drawing attributes from DrawingMetrics
 	//
@@ -858,55 +860,89 @@ void NuclearFamily::draw(Individual* startIndividual,DrawingCanvas& dc,double st
 	if(classicalOrder) children.assign(_childrenInClassicalOrder.begin(),_childrenInClassicalOrder.end());
 	else children.assign(_sortedChildren.begin(),_sortedChildren.end());
 	
+	//
 	// If the left connection shift flag is set adjust the currentX
+	//
 	if(_leftConnectionShiftFlag && !_isMaleWithLoopFlags(startIndividual,0)){
 		currentX += horizontalInterval;
 	}
 	
+	////////////////////////////////////////
 	//
-	// Start by drawing the startIndividual:
+	// (1) START BY DRAWING THE startIndividual:
 	//
+	////////////////////////////////////////
 	if(startIndividual->getLeftSpouseConnector()){
 		dc.drawIndividual(startIndividual,currentX+iconInterval,currentY,dashedOriginalFounder);
 	}else{
-		// It is possible that the startIndividual is male and has loop flags set; he needs to be drawn with his pedigree
-		// rather than his spouse which has multipls NFs
-		if((isConsanguinous() || hasExternalConnection()) && startIndividual->getGender().getEnum() == Gender::MALE && _mother->hasBeenDrawn() && !children[0]->hasBeenDrawn());
-		else dc.drawIndividual(startIndividual,currentX,currentY,dashedOriginalFounder);
+		//
+		// It is possible that the startIndividual is male and has loop flags set; 
+		// he needs to be drawn with his pedigree rather than his spouse which has 
+		// multipls NFs
+		//
+		if((isConsanguinous() || hasExternalConnection()) && startIndividual->getGender().getEnum() == Gender::MALE && _mother->hasBeenDrawn() && !children[0]->hasBeenDrawn()){
+			// Don't draw him here ...
+		}else{
+			dc.drawIndividual(startIndividual,currentX,currentY,dashedOriginalFounder);
+		}
 	}
-	
 	
 	if((isConsanguinous() || hasExternalConnection()) && startIndividual->getGender().getEnum() == Gender::MALE){
 		if(_mother->hasBeenDrawn() && !children[0]->hasBeenDrawn() && _mother->getNumberOfNuclearFamilies() > 1){
-			// Though the father has loop flags set, do not return as the mother has > 1 NF and the children have not been drawn yet
+			// Though the father has loop flags set, do not return as the mother 
+			// has > 1 NF and the children have not been drawn yet
 		}else{
 			// Do not draw the NF with the father if he has loop flags set
 			return;
 		}
 	}
 	
+	//////////////////////////////////////
 	//
-	// Draw spouse connector line: 
-	// 
-	double x1, x2;
-	x1 = currentX + iconDiameter/2; 
-	x2 = currentX + iconInterval-iconDiameter/2;
-	
-	//dc.drawLine(x1,currentY,x2,currentY);
-	
+	// (2) DRAW SPOUSE CONNECTOR LINE:
+	//
+	//////////////////////////////////////
+	double x1, x2, r1, r2, x3, x4;
+	r1 = 0.5*iconDiameter;
+	r2 = 0.5*iconInterval;
+	x1 = currentX + r1; 
+	x2 = currentX + iconInterval - r1;
+	x3 = currentX + r2 - 9;
+	x4 = currentX + r2 + 9;
 	//
 	// If consanguinous, make a double line:
 	//
 	if(isConsanguinous()){
+		//
+		// Draw a double line indicating consanguinity:
+		//
 		dc.drawHorizontalLine(currentY+verticalTick/2,x1,x2);
-		 dc.drawHorizontalLine(currentY-verticalTick/2,x1,x2);
-	}else   dc.drawHorizontalLine(currentY,x1,x2);
+		dc.drawHorizontalLine(currentY-verticalTick/2,x1,x2);
+		
+	}else if(children.size()==1 && children[0]->isIndividualIndicatingNoOffspringWithEntwinedRingsSymbol()){
+		//
+		// Draw a two line segments with the entwined rings in the middle between them:
+		//
+		// NOTA BENE: This demonstrates how unions between same-sex individuals will be drawn as well
+		//
+		dc.drawHorizontalLine(currentY,x1,x3);
+		dc.drawEntwinedRingsSymbol(currentX+r2,currentY);
+		dc.drawHorizontalLine(currentY,x4,x2);
+		
+	}else{
+		//
+		// Finally here is the normal case where we just draw a single horizontal line:
+		//
+		dc.drawHorizontalLine(currentY,x1,x2);
+	}
 	//
 	// Draw the spouse
 	//
 	if(startIndividual->getId() == _father->getId()){
 		spouse = _mother;
-	}else spouse = _father;
+	}else{
+		spouse = _father;
+	}
 	// Draw the spouse only if the Nuclear Family is not consanguinous and does not have an external connection:
 	if(!isConsanguinous() && !hasExternalConnection()){
 		dc.drawIndividual(spouse,currentX+iconInterval,currentY,dashedOriginalFounder);
@@ -917,28 +953,29 @@ void NuclearFamily::draw(Individual* startIndividual,DrawingCanvas& dc,double st
 	
 	//
 	// Draw the verticalDrop1
-	// Add class and id attribute to the vertical drop line for javascript manipulation:
-	std::string dropLineId= _mother->getId().get() + std::string(":") + _father->getId().get();
-	if(isConsanguinous()){ 
-		dc.drawVerticalLine(currentX,currentY+verticalTick/2,currentY-verticalTick/2+verticalDrop1,std::string("mating"),dropLineId);
+	// Add class and id attribute to the vertical drop 
+	// line for javascript manipulation:
+	//
+	if( children.size()==1 &&
+            (
+	     children[0]->isIndividualIndicatingNoOffspringWithNoSymbol() ||
+	     children[0]->isIndividualIndicatingNoOffspringWithEntwinedRingsSymbol()
+	    )
+	){
+		//
+		// Don't draw the verticalDrop1 line in these cases
+		//
 	}else{
-		dc.drawVerticalLine(currentX,currentY,currentY+verticalDrop1,std::string("mating"),dropLineId);
-		//
-		// Commented out code is only for initial testing of Assisted Reproductive Technology
-		// iconography:
-		//
-		//double vMiddle=currentY+0.5*verticalDrop1;
-		//dc.drawVerticalLine(currentX,currentY,vMiddle-16,std::string("mating"),dropLineId);
-		//dc.drawVerticalLine(currentX,currentY,vMiddle-5,std::string("mating"),dropLineId);
-		//dc.drawUterusSymbol(currentX,vMiddle);
-		//dc.drawSpermSymbol(currentX,vMiddle,true);
-		//dc.drawEntwinedRingsSymbol(currentX,vMiddle);
-		//dc.drawOvumSymbol(currentX,vMiddle);
-		//dc.drawVerticalLine(currentX,vMiddle+5,currentY+verticalDrop1,std::string("mating"),dropLineId);
-		//dc.drawVerticalLine(currentX,vMiddle+16,currentY+verticalDrop1,std::string("mating"),dropLineId);
-		
+		// Normal cases: draw the verticalDrop1 line:
+		std::string dropLineId= _mother->getId().get() + std::string(":") + _father->getId().get();
+		if(isConsanguinous()){
+			// Because of the double horizontal line we need to adjust the start and length of the vertical line:
+			dc.drawVerticalLine(currentX,currentY+verticalTick/2,currentY-verticalTick/2+verticalDrop1,std::string("mating"),dropLineId);
+		}else{
+			// Normal case:
+			dc.drawVerticalLine(currentX,currentY,currentY+verticalDrop1,std::string("mating"),dropLineId);
+		}
 	}
-	
 	
 	//////////////////////////////
 	//
@@ -990,8 +1027,7 @@ void NuclearFamily::draw(Individual* startIndividual,DrawingCanvas& dc,double st
 		
 		}else if(_width.getLeft() == children[0]->getLeftWidth()) currentX -= horizontalInterval;
 		
-	}else
-	if(children[0]->getNumberOfNuclearFamilies() == 1){
+	}else if(children[0]->getNumberOfNuclearFamilies() == 1){
 		
 		//
 		// The cases where the left most
@@ -1481,7 +1517,11 @@ void NuclearFamily::drawVerticalDropToIndividual(DrawingCanvas &dc,Individual *p
 	//
 	// Handle cases where there is no vertical line at all:
 	//
-	if( pChild->isIndividualIndicatingNoOffspring() || pChild->isIndividualIndicatingNonFertility() ){
+	if( pChild->isIndividualIndicatingNoOffspring()  || 
+	    pChild->isIndividualIndicatingNonFertility() || 
+	    pChild->isIndividualIndicatingNoOffspringWithNoSymbol() ||
+	    pChild->isIndividualIndicatingNoOffspringWithEntwinedRingsSymbol()
+	){
 		
 		return;
 		

@@ -680,7 +680,8 @@ void SVG::drawOvum(std::ostringstream& os, double x, double y){
 //
 // drawEntwinedRings: This symbol is generally used to indicate a marriage.
 //                    In Madeline, it is specifically used to unambiguously
-//                    designate a same-sex relationship.
+//                    designate a same-sex relationship and may also be used
+//                    to indicate any union without (biological) offspring.
 //
 void SVG::drawEntwinedRings(std::ostringstream& os, double x, double y){
 	

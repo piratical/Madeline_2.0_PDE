@@ -91,6 +91,8 @@ inline void Individual::_init(void){
 	
 	_individualIndicatingNoOffspring=false;
 	_individualIndicatingNonFertility=false;
+	_individualIndicatingNoOffspringWithNoSymbol=false;
+	_individualIndicatingNoOffspringWithEntwinedRingsSymbol=false;
 	_individualIndicatingTerminatedPregnancy=false;
 	_individualAdoptedOut=false;
 	_individualAdoptedIn =false;
@@ -115,13 +117,23 @@ void Individual::_checkForSpecialIndividualTypes(void){
 		_isVirtual = true;
 		break;
 	case '^':
-		// MARRIAGE WITH NO OFFSPRING:
+		// UNION WITH NO OFFSPRING (REASON UNKNOWN):
 		_individualIndicatingNoOffspring=true;
 		_isSpecial=true;
 		break;
 	case '&':
-		// NON-FERTILITY:
+		// UNION WITH NO OFFRSPING (NON-FERTILITY):
 		_individualIndicatingNonFertility=true;
+		_isSpecial=true;
+		break;
+	case '*':
+		// UNION WITH NO OFFSPRING (NO SYMBOL OTHER THAN THE NORMAL HORIZONTAL JOIN LINE):
+		_individualIndicatingNoOffspringWithNoSymbol=true;
+		_isSpecial=true;
+		break;
+	case '%':
+		// UNION WITH NO OFFSPRING (WITH ENTWINED RINGS SYMBOL):
+		_individualIndicatingNoOffspringWithEntwinedRingsSymbol=true;
 		_isSpecial=true;
 		break;
 	case '@':

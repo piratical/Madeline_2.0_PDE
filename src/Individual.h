@@ -174,6 +174,8 @@ private:
 	//
 	bool _individualIndicatingNoOffspring;
 	bool _individualIndicatingNonFertility;
+	bool _individualIndicatingNoOffspringWithNoSymbol;
+	bool _individualIndicatingNoOffspringWithEntwinedRingsSymbol;
 	bool _individualIndicatingTerminatedPregnancy;
 	bool _individualAdoptedOut;
 	bool _individualAdoptedIn;
@@ -387,6 +389,8 @@ public:
 	//
 	inline bool isIndividualIndicatingNoOffspring(void){         return _individualIndicatingNoOffspring;         }
 	inline bool isIndividualIndicatingNonFertility(void){        return _individualIndicatingNonFertility;        }
+	inline bool isIndividualIndicatingNoOffspringWithNoSymbol(void){ return _individualIndicatingNoOffspringWithNoSymbol; }
+	inline bool isIndividualIndicatingNoOffspringWithEntwinedRingsSymbol(void){ return _individualIndicatingNoOffspringWithEntwinedRingsSymbol; }
 	inline bool isIndividualIndicatingTerminatedPregnancy(void){ return _individualIndicatingTerminatedPregnancy; }
 	inline bool isIndividualAdoptedIn(void){                     return _individualAdoptedIn;                     }
 	inline bool isIndividualAdoptedOut(void){                    return _individualAdoptedOut;                    }
