@@ -47,6 +47,7 @@
 #include "Pregnancy.h"
 #include "Collapsed.h"
 #include "SampleQuantity.h"
+#include "Donor.h"
 
 #include <set>
 #include <vector>
@@ -105,6 +106,7 @@ private:
 	Sampled*           _sampled;           // true if individual has been sampled
 	Collapsed*         _collapsed;         // TRUE if individual represents a collapsed group of individuals
 	SampleQuantity*    _sampleQuantity;    // Holds sample quantity values
+	Donor*             _donor;             // Holds donor status (missing, sperm, ovum, sperm+ovum)
 	
 	                                       // — 2015.08.21.ET ADDENDUM
 	Individual *_father;  // Pointer to the father -- defaults to NULL (0)
@@ -227,6 +229,7 @@ public:
 	void setConsultandStatus(Consultand* consultand){ _consultand=consultand; }
 	void setCarrierStatus(Carrier* carrier){ _carrier=carrier; }
 	void setObligateCarrierStatus(ObligateCarrier* obligateCarrier){ _obligateCarrier = obligateCarrier; }
+	void setDonorStatus(Donor* donor){ _donor = donor; }
 	// 2009.05....ET Newly added columns:
 	void setRelationshipEndedStatus(RelationshipEnded* relationshipEnded){ _relationshipEnded=relationshipEnded; }
 	void setPregnancyStatus(Pregnancy* pregnancy){ _pregnancy=pregnancy; }
@@ -295,6 +298,8 @@ public:
 	bool     isObligateCarrier(void)   { if(_obligateCarrier == 0) return false; return _obligateCarrier->getBoolean(); }
 	bool     hasSampleQuantity(void)   { if(_sampleQuantity  == 0) return false; return _sampleQuantity->getBoolean(); }
 	double   getSampleQuantity(void)   { if(_sampleQuantity  == 0) return 0; return _sampleQuantity->getValue(); }
+	// 2016.01.12.ET addendum:
+	Donor::DONOR_TYPE getDonorType(void){ if(_donor  == 0) return Donor::MISSING_DONOR; return _donor->getDonorType(); }
 	// 2009.05.11.ET Addendum:
 	bool     relationshipHasEnded(void){ if(_relationshipEnded == 0) return false; return _relationshipEnded->getBoolean(); }
 	// 2009.05.19.ET Addenda:

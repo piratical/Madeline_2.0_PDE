@@ -81,6 +81,7 @@ FieldLabels::FieldLabels()
 	CollapsedField         = "COLLAPSED";
 	ObligateCarrierField   = "OBLIGATECARRIER";
 	SampleQuantityField    = "SAMPLEQUANTITY";
+	DonorField             = "DONOR";
 	
 	PEDIGREE_TABLE_CORE_COLUMN_COUNT = 5;
 	GENETIC_TABLE_CORE_COLUMN_MINIMUM = 2;

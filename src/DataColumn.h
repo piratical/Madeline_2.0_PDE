@@ -56,6 +56,7 @@
 #include "Collapsed.h"
 #include "ObligateCarrier.h"
 #include "SampleQuantity.h"
+#include "Donor.h"
 
 #include "Exception.h"
 #include "Warning.h"
@@ -75,6 +76,7 @@
 class DataColumn {
 	
 private:
+
 	std::string _name;                // column name
 	int _ordinal;                     // physical position of the column 
 	DATATYPE _columnType;             // Type of data

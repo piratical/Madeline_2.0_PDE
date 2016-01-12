@@ -109,6 +109,9 @@ DataColumn::DataColumn(const std::string &name,DATATYPE columnType, unsigned lon
 	case COLLAPSED:
 		for(unsigned int k=0; k < _rows; k++) _data.push_back(new Collapsed());
 		break;
+	case DONOR:
+		for(unsigned int k=0; k < _rows; k++) _data.push_back(new Donor());
+		break;
 	//
 	// UNCLASSIFIED / MISSING CASES:
 	//

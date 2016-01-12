@@ -1786,35 +1786,37 @@ Individual * Pedigree::addIndividual(const std::string ind,std::string mother,st
 ///
 void Pedigree::setCoreOptionalFields(const DataTable* pedigreeTable){
 	
-	bool hasDOBColumn               = false;
-	bool hasDeceasedColumn          = false;
-	bool hasSampledColumn           = false;
-	bool hasProbandColumn           = false;
 	bool hasAffectedColumn          = false;
-	bool hasConsultandColumn        = false;
-	bool hasPregnancyColumn         = false;
 	bool hasCarrierColumn           = false;
+	bool hasCollapsedColumn         = false; // 2015.08.21.ET
+	bool hasConsultandColumn        = false;
+	bool hasDeceasedColumn          = false;
+	bool hasDOBColumn               = false;
+	bool hasDonorColumn             = false; // 2016.01.12.ET
+	bool hasInfertilityColumn       = false; // 2009.05.19.ET
+	bool hasPregnancyColumn         = false;
+	bool hasProbandColumn           = false;
 	bool hasObligateCarrierColumn   = false;
 	bool hasRelationshipEndedColumn = false; // 2009.05.11.ET
-	bool hasInfertilityColumn       = false; // 2009.05.19.ET
-	bool hasSterilityColumn         = false; // 2009.05.19.ET
-	bool hasCollapsedColumn         = false; // 2015.08.21.ET
+	bool hasSampledColumn           = false;
 	bool hasSampleQuantityColumn    = false; // 2015.08.21.ET
+	bool hasSterilityColumn         = false; // 2009.05.19.ET
 	
-	DataColumn *dobColumn;
-	DataColumn *deceasedColumn;
-	DataColumn *sampledColumn;
-	DataColumn *probandColumn;
 	DataColumn *affectedColumn;
-	DataColumn *consultandColumn;
-	DataColumn *pregnancyColumn;
 	DataColumn *carrierColumn;
+	DataColumn *collapsedColumn;
+	DataColumn *consultandColumn;
+	DataColumn *deceasedColumn;
+	DataColumn *dobColumn;
+	DataColumn *donorColumn;
+	DataColumn *infertilityColumn;
+	DataColumn *pregnancyColumn;
+	DataColumn *probandColumn;
 	DataColumn *obligateCarrierColumn;
 	DataColumn *relationshipEndedColumn;
-	DataColumn *infertilityColumn;
-	DataColumn *sterilityColumn;
-	DataColumn *collapsedColumn;
+	DataColumn *sampledColumn;
 	DataColumn *sampleQuantityColumn;
+	DataColumn *sterilityColumn;
 	
 	// Check if MZTwin column exists in the datatable
 	if(pedigreeTable->getMZTwinColumnIndex() != DataTable::COLUMN_IS_MISSING){
@@ -1914,30 +1916,38 @@ void Pedigree::setCoreOptionalFields(const DataTable* pedigreeTable){
 		hasSampleQuantityColumn = true;
 	}
 	
+	// Check if Donor column exists in the datatable
+	if(pedigreeTable->getDonorColumnIndex() != DataTable::COLUMN_IS_MISSING){
+		donorColumn = pedigreeTable->getColumn(pedigreeTable->getDonorColumnIndex());
+		hasDonorColumn = true;
+	}
+	
 	unsigned rowIndex;
 	std::set<Individual*,compareIndividual>::iterator individualIt = _individuals.begin();
 	
 	while(individualIt != _individuals.end()){
 		
 		rowIndex = (*individualIt)->getRowIndex();
-		if(hasDOBColumn)        (*individualIt)->setDOB(dynamic_cast<Date*>(const_cast<Data* const>(dobColumn->getDataAtIndex(rowIndex))));
-		if(hasDeceasedColumn)   (*individualIt)->setDeceasedStatus(dynamic_cast<LivingDead*>(const_cast<Data* const>(deceasedColumn->getDataAtIndex(rowIndex))));
-		if(hasSampledColumn)    (*individualIt)->setSampled(dynamic_cast<Sampled*>(const_cast<Data* const>(sampledColumn->getDataAtIndex(rowIndex))));
-		if(hasProbandColumn)    (*individualIt)->setProbandStatus(dynamic_cast<Proband*>(const_cast<Data* const>(probandColumn->getDataAtIndex(rowIndex))));
+		
 		if(hasAffectedColumn)   (*individualIt)->setAffectionStatus(dynamic_cast<Affected*>(const_cast<Data* const>(affectedColumn->getDataAtIndex(rowIndex))));
-		if(hasConsultandColumn) (*individualIt)->setConsultandStatus(dynamic_cast<Consultand*>(const_cast<Data* const>(consultandColumn->getDataAtIndex(rowIndex))));
-		if(hasPregnancyColumn)  (*individualIt)->setPregnancyStatus(dynamic_cast<Pregnancy*>(const_cast<Data* const>(pregnancyColumn->getDataAtIndex(rowIndex))));
 		if(hasCarrierColumn)    (*individualIt)->setCarrierStatus(dynamic_cast<Carrier*>(const_cast<Data* const>(carrierColumn->getDataAtIndex(rowIndex))));
-		if(hasObligateCarrierColumn) (*individualIt)->setObligateCarrierStatus(dynamic_cast<ObligateCarrier*>(const_cast<Data* const>(obligateCarrierColumn->getDataAtIndex(rowIndex))));
-		if(hasRelationshipEndedColumn)   (*individualIt)->setRelationshipEndedStatus(dynamic_cast<RelationshipEnded*>(const_cast<Data* const>(relationshipEndedColumn->getDataAtIndex(rowIndex))));
+		if(hasCollapsedColumn)  (*individualIt)->setCollapsedStatus(dynamic_cast<Collapsed*>(const_cast<Data* const>(collapsedColumn->getDataAtIndex(rowIndex))));
+		if(hasConsultandColumn) (*individualIt)->setConsultandStatus(dynamic_cast<Consultand*>(const_cast<Data* const>(consultandColumn->getDataAtIndex(rowIndex))));
+		if(hasDeceasedColumn)   (*individualIt)->setDeceasedStatus(dynamic_cast<LivingDead*>(const_cast<Data* const>(deceasedColumn->getDataAtIndex(rowIndex))));
+		if(hasDOBColumn)        (*individualIt)->setDOB(dynamic_cast<Date*>(const_cast<Data* const>(dobColumn->getDataAtIndex(rowIndex))));
+		if(hasDonorColumn)      (*individualIt)->setDonorStatus(dynamic_cast<Donor*>(const_cast<Data* const>(donorColumn->getDataAtIndex(rowIndex))));
 		if(hasInfertilityColumn) (*individualIt)->setInfertilityStatus(dynamic_cast<Infertility*>(const_cast<Data* const>(infertilityColumn->getDataAtIndex(rowIndex))));
-		if(hasSterilityColumn)   (*individualIt)->setSterilityStatus(dynamic_cast<Sterility*>(const_cast<Data* const>(sterilityColumn->getDataAtIndex(rowIndex))));
-		if(hasCollapsedColumn)   (*individualIt)->setCollapsedStatus(dynamic_cast<Collapsed*>(const_cast<Data* const>(collapsedColumn->getDataAtIndex(rowIndex))));
+		if(hasObligateCarrierColumn) (*individualIt)->setObligateCarrierStatus(dynamic_cast<ObligateCarrier*>(const_cast<Data* const>(obligateCarrierColumn->getDataAtIndex(rowIndex))));
+		if(hasProbandColumn)    (*individualIt)->setProbandStatus(dynamic_cast<Proband*>(const_cast<Data* const>(probandColumn->getDataAtIndex(rowIndex))));
+		if(hasPregnancyColumn)  (*individualIt)->setPregnancyStatus(dynamic_cast<Pregnancy*>(const_cast<Data* const>(pregnancyColumn->getDataAtIndex(rowIndex))));
+		if(hasRelationshipEndedColumn) (*individualIt)->setRelationshipEndedStatus(dynamic_cast<RelationshipEnded*>(const_cast<Data* const>(relationshipEndedColumn->getDataAtIndex(rowIndex))));
+		if(hasSampledColumn)    (*individualIt)->setSampled(dynamic_cast<Sampled*>(const_cast<Data* const>(sampledColumn->getDataAtIndex(rowIndex))));
 		if(hasSampleQuantityColumn) (*individualIt)->setSampleQuantityStatus(dynamic_cast<SampleQuantity*>(const_cast<Data* const>(sampleQuantityColumn->getDataAtIndex(rowIndex))));
+		if(hasSterilityColumn)   (*individualIt)->setSterilityStatus(dynamic_cast<Sterility*>(const_cast<Data* const>(sterilityColumn->getDataAtIndex(rowIndex))));
 		
 		++individualIt;
+		
 	}
-	
 	
 }
 

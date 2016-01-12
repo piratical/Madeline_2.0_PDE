@@ -57,6 +57,7 @@ class FieldLabels
 	std::string CollapsedField;
 	std::string ObligateCarrierField;
 	std::string SampleQuantityField;
+	std::string DonorField;
 	
 	int PEDIGREE_TABLE_CORE_COLUMN_COUNT;
 	int GENETIC_TABLE_CORE_COLUMN_MINIMUM;

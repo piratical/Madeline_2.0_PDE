@@ -63,6 +63,7 @@ DataTable::DataTable(TableParser &parser){
 	_consultandColumnIndex        = COLUMN_IS_MISSING;
 	_deceasedColumnIndex          = COLUMN_IS_MISSING;
 	_dobColumnIndex               = COLUMN_IS_MISSING;
+	_donorColumnIndex             = COLUMN_IS_MISSING;
 	_dzTwinColumnIndex            = COLUMN_IS_MISSING;
 	_infertilityColumnIndex       = COLUMN_IS_MISSING;
 	_mzTwinColumnIndex            = COLUMN_IS_MISSING;
@@ -543,6 +544,13 @@ void DataTable::_determineTableType(const std::vector<std::string> *pTitles) {
 			
 			// Optional core field:
 			_finalTypes[i] = SAMPLEQUANTITY;
+			_sampleQuantityColumnIndex = i;
+		}
+		else if(tempString == labels.DonorField)
+		{
+			
+			// Optional core field:
+			_finalTypes[i] = DONOR;
 			_sampleQuantityColumnIndex = i;
 		}
 	}

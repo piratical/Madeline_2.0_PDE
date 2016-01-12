@@ -29,7 +29,7 @@
 #include "Donor.h"
 #include "utility.h"
 
-std::map<std::string,DONOR_TYPE> Donor::_lookupTable;
+std::map<std::string,Donor::DONOR_TYPE> Donor::_lookupTable;
 DonorMapLoader DonorMapLoader::donorMapLoader;
 
 std::string Donor::englishString[4]={".","sperm donor","ovum donor","sperm and ovum donor"};

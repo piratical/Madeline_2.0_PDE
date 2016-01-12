@@ -38,9 +38,12 @@
 //
 // DONOR_TYPE
 //
-enum DONOR_TYPE{MISSING_DONOR,SPERM_DONOR,OVUM_DONOR,SPERM_AND_OVUM_DONOR};
 
 class Donor : public Data {
+	
+public:
+	
+	enum DONOR_TYPE{MISSING_DONOR,SPERM_DONOR,OVUM_DONOR,SPERM_AND_OVUM_DONOR};
 	
 private:
 	
@@ -88,20 +91,20 @@ public:
 	static DonorMapLoader donorMapLoader;
 	
 	DonorMapLoader(){
-		Donor::_lookupTable["S"]              = SPERM_DONOR;
-		Donor::_lookupTable["O"]              = OVUM_DONOR;
-		Donor::_lookupTable["SO"]             = SPERM_AND_OVUM_DONOR;
-		Donor::_lookupTable["OS"]             = SPERM_AND_OVUM_DONOR;
-		Donor::_lookupTable["SPERM"]          = SPERM_DONOR;
-		Donor::_lookupTable["OVUM"]           = OVUM_DONOR;
-		Donor::_lookupTable["SPERM_AND_OVUM"] = SPERM_AND_OVUM_DONOR;
-		Donor::_lookupTable["OVUM_AND_SPERM"] = SPERM_AND_OVUM_DONOR;
-		Donor::_lookupTable["SPERM AND OVUM"] = SPERM_AND_OVUM_DONOR;
-		Donor::_lookupTable["OVUM AND SPERM"] = SPERM_AND_OVUM_DONOR;
-		Donor::_lookupTable["SPERM OVUM"]     = SPERM_AND_OVUM_DONOR;
-		Donor::_lookupTable["OVUM SPERM"]     = SPERM_AND_OVUM_DONOR;
-		Donor::_lookupTable["SPERM & OVUM"]   = SPERM_AND_OVUM_DONOR;
-		Donor::_lookupTable["OVUM & SPERM"]   = SPERM_AND_OVUM_DONOR;
+		Donor::_lookupTable["S"]              = Donor::SPERM_DONOR;
+		Donor::_lookupTable["O"]              = Donor::OVUM_DONOR;
+		Donor::_lookupTable["SO"]             = Donor::SPERM_AND_OVUM_DONOR;
+		Donor::_lookupTable["OS"]             = Donor::SPERM_AND_OVUM_DONOR;
+		Donor::_lookupTable["SPERM"]          = Donor::SPERM_DONOR;
+		Donor::_lookupTable["OVUM"]           = Donor::OVUM_DONOR;
+		Donor::_lookupTable["SPERM_AND_OVUM"] = Donor::SPERM_AND_OVUM_DONOR;
+		Donor::_lookupTable["OVUM_AND_SPERM"] = Donor::SPERM_AND_OVUM_DONOR;
+		Donor::_lookupTable["SPERM AND OVUM"] = Donor::SPERM_AND_OVUM_DONOR;
+		Donor::_lookupTable["OVUM AND SPERM"] = Donor::SPERM_AND_OVUM_DONOR;
+		Donor::_lookupTable["SPERM OVUM"]     = Donor::SPERM_AND_OVUM_DONOR;
+		Donor::_lookupTable["OVUM SPERM"]     = Donor::SPERM_AND_OVUM_DONOR;
+		Donor::_lookupTable["SPERM & OVUM"]   = Donor::SPERM_AND_OVUM_DONOR;
+		Donor::_lookupTable["OVUM & SPERM"]   = Donor::SPERM_AND_OVUM_DONOR;
 	}
 };
 

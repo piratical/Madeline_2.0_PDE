@@ -116,22 +116,24 @@ private:
 	// Which optional core data columns exist?
 	// 
 	int _affectedColumnIndex;
+	int _carrierColumnIndex;
+	int _collapsedColumnIndex;
+	int _consultandColumnIndex;
 	int _deceasedColumnIndex;
 	int _dobColumnIndex;
+	int _donorColumnIndex;
 	int _dzTwinColumnIndex;
-	int _mzTwinColumnIndex;
-	int _probandColumnIndex;
-	int _sampledColumnIndex;
-	int _superscriptColumnIndex;
-	int _consultandColumnIndex;
-	int _pregnancyColumnIndex;
-	int _carrierColumnIndex;
-	int _relationshipEndedColumnIndex;
 	int _infertilityColumnIndex;
-	int _sterilityColumnIndex;
-	int _collapsedColumnIndex;
+	int _mzTwinColumnIndex;
 	int _obligateCarrierColumnIndex;
+	int _pregnancyColumnIndex;
+	int _probandColumnIndex;
+	int _relationshipEndedColumnIndex;
+	int _sampledColumnIndex;
 	int _sampleQuantityColumnIndex;
+	int _sterilityColumnIndex;
+	int _superscriptColumnIndex;
+	
 	//
 	// Private methods:
 	//
@@ -209,22 +211,23 @@ public:
 	// get the indices for optional core columns:
 	// -1 if not present
 	inline int getAffectedColumnIndex(void) const { return _affectedColumnIndex; }
+	inline int getCarrierColumnIndex(void)     const { return _carrierColumnIndex; }
+	inline int getCollapsedColumnIndex(void) const { return _collapsedColumnIndex; }
+	inline int getConsultandColumnIndex(void)  const { return _consultandColumnIndex; }
 	inline int getDeceasedColumnIndex(void) const { return _deceasedColumnIndex; }
 	inline int getDOBColumnIndex(void) const { return _dobColumnIndex; }
+	inline int getDonorColumnIndex(void) const { return _donorColumnIndex; }
 	inline int getDZTwinColumnIndex(void)  const { return _dzTwinColumnIndex; }
-	inline int getMZTwinColumnIndex(void) const { return _mzTwinColumnIndex; }
-	inline int getProbandColumnIndex(void) const { return _probandColumnIndex; }
-	inline int getSampledColumnIndex(void) const { return _sampledColumnIndex; }
-	inline int getSuperscriptColumnIndex(void) const { return _superscriptColumnIndex; }
-	inline int getConsultandColumnIndex(void)  const { return _consultandColumnIndex; }
-	inline int getPregnancyColumnIndex(void)   const { return _pregnancyColumnIndex; }
-	inline int getCarrierColumnIndex(void)     const { return _carrierColumnIndex; }
-	inline int getRelationshipEndedColumnIndex(void) const { return _relationshipEndedColumnIndex; }
 	inline int getInfertilityColumnIndex(void) const { return _infertilityColumnIndex; }
-	inline int getSterilityColumnIndex(void) const { return _sterilityColumnIndex; }
-	inline int getCollapsedColumnIndex(void) const { return _collapsedColumnIndex; }
+	inline int getMZTwinColumnIndex(void) const { return _mzTwinColumnIndex; }
 	inline int getObligateCarrierColumnIndex(void) const { return _obligateCarrierColumnIndex; }
+	inline int getPregnancyColumnIndex(void)   const { return _pregnancyColumnIndex; }
+	inline int getProbandColumnIndex(void) const { return _probandColumnIndex; }
+	inline int getRelationshipEndedColumnIndex(void) const { return _relationshipEndedColumnIndex; }
+	inline int getSampledColumnIndex(void) const { return _sampledColumnIndex; }
 	inline int getSampleQuantityColumnIndex(void) const { return _sampleQuantityColumnIndex; }
+	inline int getSterilityColumnIndex(void) const { return _sterilityColumnIndex; }
+	inline int getSuperscriptColumnIndex(void) const { return _superscriptColumnIndex; }
 	//
 	// getIconColumnCount
 	//
