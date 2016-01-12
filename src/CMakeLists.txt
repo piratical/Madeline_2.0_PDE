@@ -39,7 +39,8 @@ SET( SOURCES
 	DelimitedTableParser.h 
 	DescentTree.cpp
 	DigitConverter.cpp 
-	DigitConverter.h 
+	DigitConverter.h
+	Donor.cpp
 	DrawingColor.cpp
 	DrawingLabelManager.cpp
 	DrawingMetrics.cpp
