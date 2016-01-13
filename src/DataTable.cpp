@@ -551,7 +551,7 @@ void DataTable::_determineTableType(const std::vector<std::string> *pTitles) {
 			
 			// Optional core field:
 			_finalTypes[i] = DONOR;
-			_sampleQuantityColumnIndex = i;
+			_donorColumnIndex = i;
 		}
 	}
 	
