@@ -740,7 +740,7 @@ void NuclearFamily::calculateWidth(bool classicalOrder){
 		}
 		//std::cout << "RIGHT MANIPULATION : " << leftWidth << " and " << rightWidth << std::endl;
 	}
-	//******************************
+	//*****************************
 	// LeftWidth manipulation
 	//*****************************
 	if(children.size() > 1 && children[0]->getNumberOfNuclearFamilies() > 1){
@@ -897,81 +897,12 @@ void NuclearFamily::draw(Individual* startIndividual,DrawingCanvas& dc,double st
 		}
 	}
 	
-	//////////////////////////////////////
 	//
-	// (2) DRAW SPOUSE CONNECTOR LINE:
+	// draw the connecting line and other details of the connection
+	// between the parental pair or couple:
 	//
-	//////////////////////////////////////
-	double x1, x2, r1, r2, x3, x4, x5, x6, x7;
-	r1 = 0.5*iconDiameter;
-	r2 = 0.5*iconInterval;
-	x1 = currentX + r1; 
-	x2 = currentX + iconInterval - r1;
-	x5 = currentX + r2;
-	x3 = x5 - 9;
-	x4 = x5 + 9;
-	x6 = 0.5*(x1+x5);
-	x7 = 0.5*(x5+x2);
-	//
-	// If consanguinous, make a double line:
-	//
-	if(isConsanguinous()){
-		//
-		// Draw a double line indicating consanguinity:
-		//
-		dc.drawHorizontalLine(currentY+verticalTick/2,x1,x2);
-		dc.drawHorizontalLine(currentY-verticalTick/2,x1,x2);
-		
-	}else if(children.size()==1 && children[0]->isIndividualIndicatingNoOffspringWithEntwinedRingsSymbol()){
-		//
-		// Draw a two line segments with the entwined rings in the middle between them:
-		//
-		// NOTA BENE: This demonstrates how unions between same-sex individuals will be drawn as well
-		//
-		dc.drawHorizontalLine(currentY,x1,x3);
-		dc.drawEntwinedRingsSymbol(currentX+r2,currentY);
-		dc.drawHorizontalLine(currentY,x4,x2);
-		
-	}else{
-		//
-		// Finally here is the normal case where we just draw a single horizontal line:
-		//
-		Donor::DONOR_TYPE donor=children[0]->getDonorType();
-		double h1,h2,h3,h4;
-		if(donor!=Donor::MISSING_DONOR){
-			// Is the male or the female parent on the left?
-			if( startIndividual->getGender().getEnum() == Gender::MALE ){
-				h1=x6;
-				h2=x5;
-				h3=x2;
-				h4=x7;
-			}else{
-				h1=x7;
-				h2=x1;
-				h3=x5;
-				h4=x6;
-			}
-			switch(donor){
-			case Donor::SPERM_DONOR:
-				dc.drawSpermSymbol(h1,currentY);
-				dc.drawHorizontalLine(currentY,h2,h3);
-				break;
-			case Donor::OVUM_DONOR:
-				dc.drawOvumSymbol(h1,currentY);
-				dc.drawHorizontalLine(currentY,h2,h3);
-				break;
-			case Donor::SPERM_AND_OVUM_DONOR:
-				dc.drawSpermSymbol(h1,currentY);
-				dc.drawOvumSymbol(h4,currentY);
-				break;
-			case Donor::MISSING_DONOR:
-			default:
-				dc.drawHorizontalLine(currentY,x1,x2);
-			}
-		}else{
-			dc.drawHorizontalLine(currentY,x1,x2);
-		}
-	}
+	drawConnectionsBetweenParentalPair(dc,startIndividual,children,currentX,currentY);
+	
 	//
 	// Draw the spouse
 	//
@@ -994,7 +925,7 @@ void NuclearFamily::draw(Individual* startIndividual,DrawingCanvas& dc,double st
 	// line for javascript manipulation:
 	//
 	if( children.size()==1 &&
-            (
+	    (
 	     children[0]->isIndividualIndicatingNoOffspringWithNoSymbol() ||
 	     children[0]->isIndividualIndicatingNoOffspringWithEntwinedRingsSymbol()
 	    )
@@ -1341,6 +1272,121 @@ void NuclearFamily::draw(Individual* startIndividual,DrawingCanvas& dc,double st
 		dc.drawHorizontalLine(children[0]->getY()-verticalDrop2-iconDiameter/2,children[0]->getX(),children[children.size()-1]->getX());
 	
 }
+
+///////////////////////////////////
+//
+// drawConnectionsBetweenParentalPair()
+//
+///////////////////////////////////
+void NuclearFamily::drawConnectionsBetweenParentalPair(DrawingCanvas &dc,Individual *startIndividual,const std::vector<Individual*> &children, double currentX,double currentY){
+	//
+	// 
+	//   [ ].---.--...--.---.( )
+	//      x   x   x   x   x
+	//      1   2   3   4   5
+	//             x x
+	//             6 7
+	//	
+	double r1, r2, x1, x2, x3, x4, x5, x6, x7;
+	r1 = 0.5 * DrawingMetrics::getIconDiameter();
+	r2 = 0.5 * DrawingMetrics::getIconInterval();
+	x1 = currentX + r1;
+	x5 = currentX + DrawingMetrics::getIconInterval() - r1;
+	x3 = 0.5 * ( x1 + x5 );
+	x2 = 0.5 * ( x1 + x3 );
+	x4 = 0.5 * ( x3 + x5 );
+	x6 = x3 - 9;
+	x7 = x3 + 9;
+	//
+	// If consanguinous, make a double line:
+	//
+	if(isConsanguinous()){
+		//
+		// Draw a double line indicating consanguinity:
+		//
+		double verticalDisplacement=0.5*DrawingMetrics::getVerticalTick();
+		dc.drawHorizontalLine(currentY+verticalDisplacement,x1,x5);
+		dc.drawHorizontalLine(currentY-verticalDisplacement,x1,x5);
+		
+	}else if(children.size()==1 && children[0]->isIndividualIndicatingNoOffspringWithEntwinedRingsSymbol()){
+		//
+		// Draw a two line segments with the entwined rings in the middle between them:
+		//
+		// NOTA BENE: This demonstrates how unions between same-sex individuals will be drawn as well
+		//
+		dc.drawHorizontalLine(currentY,x1,x6);
+		dc.drawEntwinedRingsSymbol(currentX+r2,currentY);
+		dc.drawHorizontalLine(currentY,x7,x5);
+		
+	}else{
+		//
+		// Was a sperm or ovum donor one of the parents in this nuclear family?
+		// This is tracked on the child(ren) because the children uniquely identify
+		// their parents:
+		//
+		Donor::DONOR_TYPE donor=children[0]->getDonorType();
+		
+		if(donor!=Donor::MISSING_DONOR){
+			// Is the male or the female parent on the left?
+			if( startIndividual->getGender().getEnum() == Gender::MALE ){
+				//
+				// MALE on LEFT
+				//
+				switch(donor){
+				case Donor::SPERM_DONOR:
+					dc.drawSpermSymbol(x2,currentY);
+					dc.drawHorizontalLine(currentY,x3,x5);
+					break;
+				case Donor::OVUM_DONOR:
+					dc.drawOvumSymbol(x4,currentY);
+					dc.drawHorizontalLine(currentY,x1,x3);
+					break;
+				case Donor::SPERM_AND_OVUM_DONOR:
+					dc.drawSpermSymbol(x2,currentY);
+					dc.drawOvumSymbol(x4,currentY);
+					break;
+				// The following is only here to keep the
+				// compiler from complaining:
+				case Donor::MISSING_DONOR:
+				default:
+					break;
+				}
+			}else{
+				//
+				// FEMALE ON LEFT
+				//
+				bool spermSwimsLeft=true;
+				switch(donor){
+				case Donor::SPERM_DONOR:
+					dc.drawSpermSymbol(x4,currentY,spermSwimsLeft);
+					dc.drawHorizontalLine(currentY,x1,x3);
+					break;
+				case Donor::OVUM_DONOR:
+					dc.drawOvumSymbol(x2,currentY);
+					dc.drawHorizontalLine(currentY,x3,x5);
+					break;
+				case Donor::SPERM_AND_OVUM_DONOR:
+					dc.drawSpermSymbol(x4,currentY,spermSwimsLeft);
+					dc.drawOvumSymbol(x2,currentY);
+					break;
+				// The following is only here to keep the
+				// compiler from complaining:
+				case Donor::MISSING_DONOR:
+				default:
+					break;
+				}
+			}
+		}else{
+			//
+			// Simple default case: just draw a
+			// horizontal line between the mated
+			// pair.
+			//
+			dc.drawHorizontalLine(currentY,x1,x5);
+		}
+	}
+}	
+
 
 ///
 /// drawSpouseConnectors: Draws the spouse connections for an individual with more than one spouse.

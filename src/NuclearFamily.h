@@ -74,6 +74,7 @@ public:
 	void calculateWidth(bool classicalOrder);
 	void drawVerticalDropToIndividual(DrawingCanvas & dc, Individual *pChild, double x,double y);
 	void draw(Individual* startIndividual,DrawingCanvas& dc,double startX,double startY, bool classicalOrder,bool dashedOrg=false);
+	void drawConnectionsBetweenParentalPair(DrawingCanvas& dc,Individual *startIndividual,const std::vector<Individual*> &children,double currentX,double currentY);
 	void drawSpouseConnectors(Individual* individual,const double horizontalInterval,const double iconInterval,const double iconDiameter,DrawingCanvas& dc);
 	void sortChildrenInClassicalOrder(bool consanguinousFlag,bool mutipleDT=false);
 	void sortChildrenBasedOnDataField(const std::string& name,bool dobSortOrder);
