@@ -1082,6 +1082,16 @@ void DrawingCanvas::drawIndividual(Individual* pIndividual,double x,double y,boo
 	//
 	
 	//
+	// yy is adjusted to account for the different center point of a Gender::MISSING (aka "diamond")
+	// individual
+	//
+	double yy=y;
+	if(pIndividual->getGender().getEnum()==Gender::MISSING){
+		// Adjust y-centering:
+		yy-= (Number::SQRT_TWO-1)*DrawingMetrics::getIconRadius();
+	}
+	
+	//
 	// Draw Carrier dot:
 	//
 	if(!pIndividual->hasBeenDrawn() && pIndividual->isCarrier()){
@@ -1098,18 +1108,13 @@ void DrawingCanvas::drawIndividual(Individual* pIndividual,double x,double y,boo
 	// Draw Pregnancy symbol:
 	//
 	if(!pIndividual->hasBeenDrawn() && pIndividual->isPregnancy()){
-		_svg.drawPregnancyLetterP(_body,x,y,(useWhiteInk(pIndividual)?"blackInk":"whiteInk"));
+		_svg.drawPregnancyLetterP(_body,x,yy,(useWhiteInk(pIndividual)?"whiteInk":"blackInk"));
 	}
 	
 	//
 	// Draw Collapsed count:
 	//
 	if(!pIndividual->hasBeenDrawn() && pIndividual->getCollapsedCount()){
-		double yy=y;
-		if(pIndividual->getGender().getEnum()==Gender::MISSING){
-			// Adjust y-centering:
-			yy-= (Number::SQRT_TWO-1)*DrawingMetrics::getIconRadius();
-		}
 		_svg.drawCollapsedCount(_body,x,yy,pIndividual->getCollapsedCount());
 	}
 	

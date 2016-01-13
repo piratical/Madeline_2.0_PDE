@@ -93,20 +93,20 @@ private:
 	Date*              _dob;               // date of birth
 	// <currently not used> Date*              _dod;               // date of death
 	Affected*          _affected;          // affection status
-	LivingDead*        _deceased;          // deceased or alive - defaults to missing
-	Proband*           _proband;           // true for the proband only, else false
-	Consultand*        _consultand;        // true if a consultand, else false.
-	Pregnancy*         _pregnancy;         // true if this is a pregnancy
 	Carrier*           _carrier;           // true if a carrier, else false.
-	ObligateCarrier*   _obligateCarrier;   // true if an obligate carrier, else false.
-	RelationshipEnded* _relationshipEnded; // true if relationship ended (divorced,separated,reason unknown) - requires that a mated pair are *both* so marked for display ...
-	Sterility*         _sterility;         // 2009.05.19.ET ADDENDUM
-	Infertility*       _infertility;       // 2009.05.19.ET ADDENDUM
-	Twin               _twinMarker;        // stores the marker of monozygotic or dizygotic twin 
-	Sampled*           _sampled;           // true if individual has been sampled
 	Collapsed*         _collapsed;         // TRUE if individual represents a collapsed group of individuals
-	SampleQuantity*    _sampleQuantity;    // Holds sample quantity values
+	Consultand*        _consultand;        // true if a consultand, else false.
 	Donor*             _donor;             // Holds donor status (missing, sperm, ovum, sperm+ovum)
+	Infertility*       _infertility;       // 2009.05.19.ET ADDENDUM
+	LivingDead*        _deceased;          // deceased or alive - defaults to missing
+	ObligateCarrier*   _obligateCarrier;   // true if an obligate carrier, else false.
+	Pregnancy*         _pregnancy;         // true if this is a pregnancy
+	Proband*           _proband;           // true for the proband only, else false
+	RelationshipEnded* _relationshipEnded; // true if relationship ended (divorced,separated,reason unknown) - requires that a mated pair are *both* so marked for display ...
+	Sampled*           _sampled;           // true if individual has been sampled
+	SampleQuantity*    _sampleQuantity;    // Holds sample quantity values
+	Sterility*         _sterility;         // 2009.05.19.ET ADDENDUM
+	Twin               _twinMarker;        // stores the marker of monozygotic or dizygotic twin 
 	
 	                                       // — 2015.08.21.ET ADDENDUM
 	Individual *_father;  // Pointer to the father -- defaults to NULL (0)

@@ -62,23 +62,22 @@ inline void Individual::_init(void){
 	// Make sure these pointers are set to NULL to begin with:
 	//
 	_affected          = 0;
-	_carrier           = 0;
-	_consultand        = 0;
-	_pregnancy         = 0;
-	_deceased          = 0;
-	_relationshipEnded = 0; // 2009.05.11.ET addendum ...
-	_infertility       = 0;
-	_sterility         = 0;
-	_dob               = 0;
-	_proband           = 0;
-	_sampled           = 0;
 	_birthOrder        = 0;
+	_carrier           = 0;
+	_collapsed         = 0;
+	_collapsedCount    = 0;
+	_consultand        = 0;
+	_deceased          = 0;
+	_dob               = 0;
+	_donor             = 0;
+	_infertility       = 0;
 	_obligateCarrier   = 0;
+	_pregnancy         = 0;
+	_proband           = 0;
+	_relationshipEnded = 0; // 2009.05.11.ET addendum ...
+	_sampled           = 0;
 	_sampleQuantity    = 0;
-	
-	// 2015.12.01.ET addenda;
-	_collapsed  = 0;
-	_collapsedCount = 0;
+	_sterility         = 0;
 	
 	_leftWidth = _rightWidth = 1;
 	_totalWidth= _leftWidth + _rightWidth;

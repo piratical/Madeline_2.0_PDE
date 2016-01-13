@@ -902,13 +902,16 @@ void NuclearFamily::draw(Individual* startIndividual,DrawingCanvas& dc,double st
 	// (2) DRAW SPOUSE CONNECTOR LINE:
 	//
 	//////////////////////////////////////
-	double x1, x2, r1, r2, x3, x4;
+	double x1, x2, r1, r2, x3, x4, x5, x6, x7;
 	r1 = 0.5*iconDiameter;
 	r2 = 0.5*iconInterval;
 	x1 = currentX + r1; 
 	x2 = currentX + iconInterval - r1;
-	x3 = currentX + r2 - 9;
-	x4 = currentX + r2 + 9;
+	x5 = currentX + r2;
+	x3 = x5 - 9;
+	x4 = x5 + 9;
+	x6 = 0.5*(x1+x5);
+	x7 = 0.5*(x5+x2);
 	//
 	// If consanguinous, make a double line:
 	//
@@ -933,7 +936,41 @@ void NuclearFamily::draw(Individual* startIndividual,DrawingCanvas& dc,double st
 		//
 		// Finally here is the normal case where we just draw a single horizontal line:
 		//
-		dc.drawHorizontalLine(currentY,x1,x2);
+		Donor::DONOR_TYPE donor=children[0]->getDonorType();
+		double h1,h2,h3,h4;
+		if(donor!=Donor::MISSING_DONOR){
+			// Is the male or the female parent on the left?
+			if( startIndividual->getGender().getEnum() == Gender::MALE ){
+				h1=x6;
+				h2=x5;
+				h3=x2;
+				h4=x7;
+			}else{
+				h1=x7;
+				h2=x1;
+				h3=x5;
+				h4=x6;
+			}
+			switch(donor){
+			case Donor::SPERM_DONOR:
+				dc.drawSpermSymbol(h1,currentY);
+				dc.drawHorizontalLine(currentY,h2,h3);
+				break;
+			case Donor::OVUM_DONOR:
+				dc.drawOvumSymbol(h1,currentY);
+				dc.drawHorizontalLine(currentY,h2,h3);
+				break;
+			case Donor::SPERM_AND_OVUM_DONOR:
+				dc.drawSpermSymbol(h1,currentY);
+				dc.drawOvumSymbol(h4,currentY);
+				break;
+			case Donor::MISSING_DONOR:
+			default:
+				dc.drawHorizontalLine(currentY,x1,x2);
+			}
+		}else{
+			dc.drawHorizontalLine(currentY,x1,x2);
+		}
 	}
 	//
 	// Draw the spouse
