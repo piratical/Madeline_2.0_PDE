@@ -32,7 +32,7 @@
 std::map<std::string,Donor::DONOR_TYPE> Donor::_lookupTable;
 DonorMapLoader DonorMapLoader::donorMapLoader;
 
-std::string Donor::englishString[4]={".","sperm donor","ovum donor","sperm and ovum donor"};
+std::string Donor::englishString[5]={".","sperm donor","ovum donor","sperm and ovum donor","gestational"};
 
 //
 // Donor::set() base method:

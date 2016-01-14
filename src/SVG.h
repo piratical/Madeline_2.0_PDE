@@ -78,7 +78,8 @@ public:
 	//
 	// 2016.01.07.ET Addenda for Assisted Reproductive Technologies (ARTs):
 	//
-	void drawUterus(std::ostringstream& os, double x, double y);           // Used to indicate a gestational surrogate
+	void drawUterus(std::ostringstream& os, double x, double y);           // Used to indicate a gestational surrogate (used now)
+	void drawLargerUterus(std::ostringstream& os, double x, double y);     // Used to indicate a gestational surrogate (not used)
 	void drawLeftFacingSperm(std::ostringstream& os, double x, double y);  // Used to indicate a sperm donor
 	void drawRightFacingSperm(std::ostringstream& os, double x, double y); // Used to indicate a sperm donor
 	void drawOvum(std::ostringstream& os, double x, double y);             // Used to indicate an ovum donor
