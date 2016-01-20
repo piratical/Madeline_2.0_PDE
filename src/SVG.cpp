@@ -759,13 +759,54 @@ void SVG::drawFlower(std::ostringstream& os, double x, double y){
 }
 
 //
-// draw: Used to indicate 
+// drawSmallRoundedTriangle: Used to indicate a DSD condition below an individual icon
 //
-//void SVG::draw(std::ostringstream& os, double x, double y){
+void SVG::drawSmallRoundedTriangle(std::ostringstream& os, double x, double y){
+	
+	os << "<g transform=\"translate(" << (x-8.0) << "," << (y-8.0) << ")\" >" << std::endl;
+	os << " <path class=\"solid\" d=\"m 1.1737412,3.3521719 c -1.51900002,2.67282 3.7503,11.7977101 6.8414,11.7928001 3.0319998,-0.005 8.3720998,-9.0964501 6.8255998,-11.7635901 -1.5466,-2.66714995 -12.1350998,-2.72455995 -13.6669998,-0.0292 z\" />" << std::endl;
+	os << "</g>" << std::endl;
+	
+}
+
+//
+// drawSmallSquareTopRoundBottom: Used to indicate protandry below an individual icon
+//
+void SVG::drawSmallSquareTopRoundBottom(std::ostringstream& os, double x, double y){
+	
+	os << "<g transform=\"translate(" << (x-6.545) << "," << (y-6.545) << ")\" >" << std::endl;
+	os << " <path class=\"solid\" d=\"M 6.5448,12.20342 A 5.6587914,5.6587914 0 0 1 0.88599998,6.54471 l 0,-5.65871002 5.65880002,0 5.6587,0 0,5.65871002 a 5.6587914,5.6587914 0 0 1 -5.6587,5.65871 z\" />" << std::endl;
+	os << "</g>" << std::endl;
+	
+}
+
+//
+// drawSmallRoundTopSquareBottom: Used to indicate protogyny below an individual icon
+//
+void SVG::drawSmallRoundTopSquareBottom(std::ostringstream& os, double x, double y){
+	
+	os << "<g transform=\"translate(" << (x-6.545) << "," << (y-6.545) << ")\" >" << std::endl;
+	os << " <path class=\"solid\" d=\"M 6.5448,0.88599998 A 5.6587914,5.6587914 0 0 0 0.88599998,6.54471 l 0,5.65871 5.65880002,0 5.6587,0 0,-5.65871 A 5.6587914,5.6587914 0 0 0 6.5448,0.88599998 Z\" />" << std::endl;
+	os << "</g>" << std::endl;
+	
+}
+//
+// drawPhaseISymbol: Used to indicate 
+//
+//void SVG::drawPhaseISymbol(std::ostringstream& os, double x, double y){
 //	
 //	os << "<g transform=\"translate(" << (x-) << "," << (y-) << ")\" >" << std::endl;
 //	os << " <path class=\"solid\" d=\"\" />" << std::endl;
 //	os << "</g>" << std::endl;
 //	
 //}
-
+//
+// drawPhaseIISymbol: Used to indicate 
+//
+//void SVG::drawPhaseIISymbol(std::ostringstream& os, double x, double y){
+//	
+//	os << "<g transform=\"translate(" << (x-) << "," << (y-) << ")\" >" << std::endl;
+//	os << " <path class=\"solid\" d=\"\" />" << std::endl;
+//	os << "</g>" << std::endl;
+//	
+//}

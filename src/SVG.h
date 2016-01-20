@@ -89,6 +89,9 @@ public:
 	void drawRoundTopSquareBottom(std::ostringstream& os, double x, double y); // Used to indicate protogyny 
 	void drawHermaphrodite(std::ostringstream& os, double x, double y);        // Used to indicate a true hermaphrodite
 	void drawFlower(std::ostringstream& os, double x, double y);               // Used to indicate monoecy
+	void drawSmallRoundedTriangle(std::ostringstream& os, double x, double y);      // Used to indicate DSD or intersex below an individual icon
+	void drawSmallSquareTopRoundBottom(std::ostringstream& os, double x, double y); // Used to indicate protandry below an individual
+	void drawSmallRoundTopSquareBottom(std::ostringstream& os, double x, double y); // Used to indicate protogyny below an individual
 };
 
 #endif
