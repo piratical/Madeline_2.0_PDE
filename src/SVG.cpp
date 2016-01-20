@@ -700,3 +700,72 @@ void SVG::drawEntwinedRings(std::ostringstream& os, double x, double y){
 	os << "</g>" << std::endl;
 	
 }
+
+//
+// drawRoundedTriangle: Used to indicate an intersex or DSD individual
+//
+void SVG::drawRoundedTriangle(std::ostringstream& os, double x, double y){
+	// h=25.939 w=26.716
+	os << "<g transform=\"translate(" << (x-13.358) << "," << (y-12.969) << ")\" >" << std::endl;
+	os << " <path class=\"solid\" d=\"m 1.376316,4.3850361 c -2.6623,4.68441 6.5727,20.6768399 11.9903,20.6682199 5.3139,-0.009 14.6731,-15.9425599 11.9626,-20.6170299 -2.7105,-4.67447995 -21.2681,-4.77509995 -23.9529,-0.0512 z\" />" << std::endl;
+	os << "</g>" << std::endl;
+	
+}
+
+//
+// drawSquareTopRoundBottom: Used to indicate protoandrous individual
+//
+void SVG::drawSquareTopRoundBottom(std::ostringstream& os, double x, double y){
+	//
+	//    height="24.451679" width="24.4517"
+	//
+	os << "<g transform=\"translate(" << (x-12.226) << "," << (y-12.226) << ")\" >" << std::endl;
+	os << " <path class=\"solid\" d=\"M 12.2259,23.56568 A 11.34,11.34 0 0 1 0.88599998,12.22584 l 0,-11.33984002 11.33990002,0 11.3398,0 0,11.33984002 A 11.34,11.34 0 0 1 12.2259,23.56568 Z\" />" << std::endl;
+	os << "</g>" << std::endl;
+	
+}
+
+//
+// drawRoundTopSquareBottom: Used to indicate 
+//
+void SVG::drawRoundTopSquareBottom(std::ostringstream& os, double x, double y){
+	
+	os << "<g transform=\"translate(" << (x-12.226) << "," << (y-12.226) << ")\" >" << std::endl;
+	os << " <path class=\"solid\" d=\"M 12.2259,0.88599998 A 11.34,11.34 0 0 0 0.88599998,12.22584 l 0,11.33984 11.33990002,0 11.3398,0 0,-11.33984 A 11.34,11.34 0 0 0 12.2259,0.88599998 Z\" />" << std::endl;
+	os << "</g>" << std::endl;
+	
+}
+
+//
+// drawHermaphrodite: Used to indicate a true hermaphrodite 
+//
+void SVG::drawHermaphrodite(std::ostringstream& os, double x, double y){
+	
+	os << "<g transform=\"translate(" << (x-17.398) << "," << (y-12.346) << ")\" >" << std::endl;
+	os << " <path class=\"solid\" d=\"M 17.398297,0.88600038 A 17.566586,17.566586 0 0 0 0.94492706,12.36118 17.566586,17.566586 0 0 0 17.398297,23.80641 17.566586,17.566586 0 0 0 33.851667,12.33122 17.566586,17.566586 0 0 0 17.398297,0.88600038 Z\" />" << std::endl;
+	os << "</g>" << std::endl;
+	
+}
+
+//
+// drawFlower: Used to indicate a monoecious individual 
+//
+void SVG::drawFlower(std::ostringstream& os, double x, double y){
+	
+	os << "<g transform=\"translate(" << (x-12.605) << "," << (y-12.379) << ")\" >" << std::endl;
+	os << " <path class=\"solid\" d=\"m 12.530327,23.871684 c -2.51472,0.0384 -4.9195604,-1.70845 -5.6605804,-4.11183 -3.03275,0.0911 -5.80939,-2.48434 -5.96522005,-5.50769 -0.1665,-2.05364 0.82785005,-4.15196 2.53042005,-5.31494 -1.08313,-2.81564 0.39832,-6.27406 3.17977,-7.43544 1.88,-0.85249999 4.1962204,-0.62525999 5.8670204,0.59049 2.33744,-1.84646999 6.02401,-1.50135999 7.97891,0.7457 1.47932,1.59522 1.95055,4.03051 1.17527,6.06298 2.55839,1.60347 3.45593,5.26833 1.92401,7.87132 -1.04719,1.9178 -3.22026,3.14122 -5.40317,3.04111 -0.76374,2.37748 -3.12879,4.08484 -5.62643,4.0583 z\" />" << std::endl;
+	os << "</g>" << std::endl;
+	
+}
+
+//
+// draw: Used to indicate 
+//
+//void SVG::draw(std::ostringstream& os, double x, double y){
+//	
+//	os << "<g transform=\"translate(" << (x-) << "," << (y-) << ")\" >" << std::endl;
+//	os << " <path class=\"solid\" d=\"\" />" << std::endl;
+//	os << "</g>" << std::endl;
+//	
+//}
+

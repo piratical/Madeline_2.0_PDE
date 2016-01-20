@@ -84,6 +84,11 @@ public:
 	void drawRightFacingSperm(std::ostringstream& os, double x, double y); // Used to indicate a sperm donor
 	void drawOvum(std::ostringstream& os, double x, double y);             // Used to indicate an ovum donor
 	void drawEntwinedRings(std::ostringstream& os, double x, double y);    // Used to unambiguously designate a same-gender relationship
+	void drawRoundedTriangle(std::ostringstream& os, double x, double y);      // Used to indicate intersex or DSD individual
+	void drawSquareTopRoundBottom(std::ostringstream& os, double x, double y); // Used to indicate protandry 
+	void drawRoundTopSquareBottom(std::ostringstream& os, double x, double y); // Used to indicate protogyny 
+	void drawHermaphrodite(std::ostringstream& os, double x, double y);        // Used to indicate a true hermaphrodite
+	void drawFlower(std::ostringstream& os, double x, double y);               // Used to indicate monoecy
 };
 
 #endif
