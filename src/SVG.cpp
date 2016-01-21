@@ -796,7 +796,7 @@ void SVG::drawSmallRoundTopSquareBottom(std::ostringstream& os, double x, double
 }
 
 //
-// drawPhaseISymbol: Used to indicate a phase I male in certain protandrous species
+// drawPhaseISymbol: Used to indicate a phase I male in certain protandrous species (e.g., certain wrasses)
 //
 void SVG::drawPhaseISymbol(std::ostringstream& os, double x, double y){
 	
@@ -807,7 +807,7 @@ void SVG::drawPhaseISymbol(std::ostringstream& os, double x, double y){
 }
 
 //
-// drawPhaseIISymbol: Used to indicate a phase I male in certain protandrous species
+// drawPhaseIISymbol: Used to indicate a phase II (terminal) male in certain protandrous species (e.g., certain wrasses)
 //
 void SVG::drawPhaseIISymbol(std::ostringstream& os, double x, double y){
 	
