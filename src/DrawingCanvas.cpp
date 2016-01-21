@@ -981,7 +981,6 @@ void DrawingCanvas::drawIndividual(Individual* pIndividual,double x,double y,boo
 	//
 	switch(pIndividual->getGender().getEnum()){
 	case(Gender::MALE):
-		
 		_svg.drawMaleIcon(_body,x,y,pIndividual->getId().get(),cssClass);
 		if(pIndividual->getCollapsedCount()){
 			_svg.drawMaleIconEdge(_body,x,y);
@@ -993,7 +992,6 @@ void DrawingCanvas::drawIndividual(Individual* pIndividual,double x,double y,boo
 		break;
 		
 	case(Gender::FEMALE):
-		
 		_svg.drawFemaleIcon(_body,x,y,pIndividual->getId().get(),cssClass);
 		if(pIndividual->getCollapsedCount()){
 			_svg.drawFemaleIconEdge(_body,x,y);

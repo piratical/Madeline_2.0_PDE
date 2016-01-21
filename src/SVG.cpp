@@ -763,10 +763,14 @@ void SVG::drawFlower(std::ostringstream& os, double x, double y){
 //
 void SVG::drawSmallRoundedTriangle(std::ostringstream& os, double x, double y){
 	
-	os << "<g transform=\"translate(" << (x-8.0) << "," << (y-8.0) << ")\" >" << std::endl;
-	os << " <path class=\"solid\" d=\"m 1.1737412,3.3521719 c -1.51900002,2.67282 3.7503,11.7977101 6.8414,11.7928001 3.0319998,-0.005 8.3720998,-9.0964501 6.8255998,-11.7635901 -1.5466,-2.66714995 -12.1350998,-2.72455995 -13.6669998,-0.0292 z\" />" << std::endl;
-	os << "</g>" << std::endl;
+	//os << "<g transform=\"translate(" << (x-8.0) << "," << (y-8.0) << ")\" >" << std::endl;
+	//os << " <path class=\"solid\" d=\"m 1.1737412,3.3521719 c -1.51900002,2.67282 3.7503,11.7977101 6.8414,11.7928001 3.0319998,-0.005 8.3720998,-9.0964501 6.8255998,-11.7635901 -1.5466,-2.66714995 -12.1350998,-2.72455995 -13.6669998,-0.0292 z\" />" << std::endl;
+	//os << "</g>" << std::endl;
 	
+	// Revised (smaller):
+	os << "<g transform=\"translate(" << (x-6.840) << "," << (y-6.645) << ")\" >" << std::endl;
+	os << " <path class=\"solid\" d=\"m 1.1294298,2.5537709 c -1.26890003,2.23275 3.13284,9.8553001 5.71501,9.8512001 2.5328,-0.004 6.9937002,-7.5987901 5.7018202,-9.8268001 C 11.2543,0.35014088 2.4091098,0.30218088 1.1294298,2.5537709 Z\" />" << std::endl;
+	os << "</g>" << std::endl;
 }
 
 //
@@ -790,23 +794,36 @@ void SVG::drawSmallRoundTopSquareBottom(std::ostringstream& os, double x, double
 	os << "</g>" << std::endl;
 	
 }
+
 //
-// drawPhaseISymbol: Used to indicate 
+// drawPhaseISymbol: Used to indicate a phase I male in certain protandrous species
 //
-//void SVG::drawPhaseISymbol(std::ostringstream& os, double x, double y){
-//	
-//	os << "<g transform=\"translate(" << (x-) << "," << (y-) << ")\" >" << std::endl;
-//	os << " <path class=\"solid\" d=\"\" />" << std::endl;
-//	os << "</g>" << std::endl;
-//	
-//}
+void SVG::drawPhaseISymbol(std::ostringstream& os, double x, double y){
+	
+	os << "<g transform=\"translate(" << (x-2.645) << "," << (y-5.596) << ")\" >" << std::endl;
+	os << " <path class=\"blackInk\" d=\"m 0,0 0,1.77148 1.7598,0 0,7.64884 -1.7598,0 0,1.77148 5.2911,0 0,-1.77148 -1.7598,0 0,-7.64884 1.7598,0 0,-1.77148 z\" />" << std::endl;
+	os << "</g>" << std::endl;
+	
+}
+
 //
-// drawPhaseIISymbol: Used to indicate 
+// drawPhaseIISymbol: Used to indicate a phase I male in certain protandrous species
 //
-//void SVG::drawPhaseIISymbol(std::ostringstream& os, double x, double y){
-//	
-//	os << "<g transform=\"translate(" << (x-) << "," << (y-) << ")\" >" << std::endl;
-//	os << " <path class=\"solid\" d=\"\" />" << std::endl;
-//	os << "</g>" << std::endl;
-//	
-//}
+void SVG::drawPhaseIISymbol(std::ostringstream& os, double x, double y){
+	
+	os << "<g transform=\"translate(" << (x-5.257) << "," << (y-5.596) << ")\" >" << std::endl;
+	os << " <path class=\"blackInk\" d=\"m 0,0 0,1.77149 1.75976,0 0,7.64883 -1.75976,0 0,1.77148 10.51367,0 0,-1.77148 -1.75977,0 0,-7.64883 1.75977,0 0,-1.77149 z m 3.53125,1.77149 3.45117,0 0,7.64883 -3.45117,0 z\" />" << std::endl;
+	os << "</g>" << std::endl;
+	
+}
+
+//
+// drawSmallX: Used to indicate absent parent in a parthenogenetic situation
+//
+void SVG::drawSmallX(std::ostringstream& os, double x, double y){
+	
+	os << "<g transform=\"translate(" << (x-4.553) << "," << (y-4.553) << ")\" >" << std::endl;
+	os << " <path class=\"blackInk\" d=\"M 0,1.25262 0.0911,1.34382 3.3007,4.55342 0.09248,7.76165 0.00128,7.85275 1.2539,9.10537 1.345,9.01427 4.55322,5.80605 7.76145,9.01427 7.85265,9.10537 9.10527,7.85275 9.01417,7.76165 5.80595,4.55342 9.01556,1.34382 9.10666,1.25262 7.85404,0 7.76294,0.0911 4.55333,3.30071 1.34373,0.09111 1.25263,1e-5 10e-6,1.25263 Z\" />" << std::endl;
+	os << "</g>" << std::endl;
+	
+}

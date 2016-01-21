@@ -92,6 +92,9 @@ public:
 	void drawSmallRoundedTriangle(std::ostringstream& os, double x, double y);      // Used to indicate DSD or intersex below an individual icon
 	void drawSmallSquareTopRoundBottom(std::ostringstream& os, double x, double y); // Used to indicate protandry below an individual
 	void drawSmallRoundTopSquareBottom(std::ostringstream& os, double x, double y); // Used to indicate protogyny below an individual
+	void drawPhaseISymbol(std::ostringstream& os, double x, double y);  // Used to indicate phase I males in certain protandrous species
+	void drawPhaseIISymbol(std::ostringstream& os, double x, double y); // Used to indicate phase II (terminal) males in certain protandrous species
+	void drawSmallX(std::ostringstream& os, double x, double y);        // Used to indicate absence of a parent in a parthenogenetic situation
 };
 
 #endif
