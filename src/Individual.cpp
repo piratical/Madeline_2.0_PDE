@@ -47,14 +47,14 @@ bool Individual::_sampledColumnPresent = false;
 //
 inline void Individual::_init(void){
 	
-	_isOriginalFounder = false;
-	_isOrdinaryFounder = false;
-	_isVirtual = false;
-	_isConsanguinous = false;
-	_isUnconnected = false;
-	_hasBeenVisited = false;
-	_visitCount = 0;
-	_hasBeenDrawn = false;
+	_isOriginalFounder     = false;
+	_isOrdinaryFounder     = false;
+	_isVirtual             = false;
+	_isConsanguinous       = false;
+	_isUnconnected         = false;
+	_hasBeenVisited        = false;
+	_visitCount            = 0;
+	_hasBeenDrawn          = false;
 	_hasExternalConnection = false;
 	
 	
@@ -74,7 +74,7 @@ inline void Individual::_init(void){
 	_obligateCarrier   = 0;
 	_pregnancy         = 0;
 	_proband           = 0;
-	_relationshipEnded = 0; // 2009.05.11.ET addendum ...
+	_relationshipEnded = 0;
 	_sampled           = 0;
 	_sampleQuantity    = 0;
 	_sterility         = 0;
@@ -82,14 +82,14 @@ inline void Individual::_init(void){
 	_leftWidth = _rightWidth = 1;
 	_totalWidth= _leftWidth + _rightWidth;
 	
-	_leftSideOfLoop=0;
-	_rightSideOfLoop=0;
-	_leftSideOfExternalConnection=0;
+	_leftSideOfLoop                = 0;
+	_rightSideOfLoop               = 0;
+	_leftSideOfExternalConnection  = 0;
 	_rightSideOfExternalConnection = 0;
-	_leftSpouseConnector = false;
+	_leftSpouseConnector           = false;
 	
-	_individualIndicatingNoOffspring=false;
-	_individualIndicatingNonFertility=false;
+	_individualIndicatingNoOffspring  = false;
+	_individualIndicatingNonFertility = false;
 	_individualIndicatingNoOffspringWithNoSymbol=false;
 	_individualIndicatingNoOffspringWithEntwinedRingsSymbol=false;
 	_individualIndicatingTerminatedPregnancy=false;
@@ -100,7 +100,8 @@ inline void Individual::_init(void){
 	// 2009.05.22.ET :: Prophylactic setting of pointer to zero:
 	_adoptedComplement = 0;
 	// 2011.03.16.ET :: Apparently the same is necessary for mom & dad too:
-	_father = _mother = 0;
+	_father = 0; 
+	_mother = 0;
 	
 }
 
@@ -223,7 +224,7 @@ void Individual::_rearrangeMultipleSpouses(std::deque<Individual*>& initial,std:
 //
 // Individual()
 //
-Individual::Individual(){
+Individual::Individual():_id(),_fatherId(),_motherId(),_gender(){
 	
 	_init();
 	
@@ -232,7 +233,7 @@ Individual::Individual(){
 //
 // Individual()
 //
-Individual::Individual(const std::string & id){ 
+Individual::Individual(const std::string & id):_id(),_fatherId(),_motherId(),_gender(){ 
 	
 	_init();
 	_id.set(id);

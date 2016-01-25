@@ -43,7 +43,7 @@ public:
 	void set(const std::string id, const unsigned tableId) { _id = id; _tableId = tableId; }
 	std::string getId() const { return _id; }
 	unsigned getTableId() const { return _tableId; }
-	Individual *addIndividual(const std::string ind,std::string mother,std::string father, std::string gender, int rowIndex, int tableIndex,const DataTable& pedigreeTable );
+	Individual *addIndividual(const std::string &ind,std::string mother,std::string father,std::string gender,int rowIndex,int tableIndex,const DataTable& pedigreeTable );
 	
 	void setCoreOptionalFields(const DataTable* pedigreeTable);
 	void determineFoundingGroups();

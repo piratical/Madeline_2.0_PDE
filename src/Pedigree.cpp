@@ -1707,11 +1707,11 @@ void Pedigree::_drawConsanguinousConnectors(DrawingCanvas& dc){
 //
 // addIndividual:
 //
-Individual * Pedigree::addIndividual(const std::string ind,std::string mother,std::string father, std::string gender, int rowIndex, int tableIndex ,const DataTable& pedigreeTable) {
+Individual * Pedigree::addIndividual(const std::string &ind,std::string mother,std::string father,std::string gender,int rowIndex,int tableIndex ,const DataTable& pedigreeTable) {
 	//
 	// for warnings:
 	//
-	const char *methodName="Pedigree::addIndiidual()";
+	const char *methodName="Pedigree::addIndividual()";
 	if(ind == "."){
 		Warning(methodName,"Id is missing for individual with father %s and mother %s. This individual will be ignored.",father.c_str(),mother.c_str());
 		return 0;
@@ -1723,18 +1723,18 @@ Individual * Pedigree::addIndividual(const std::string ind,std::string mother,st
 		//
 		// check if the mother/father is already in the pedigree
 		// If yes, check for gender and set the other parent to missing
-		// else change the gender of one of the parent to missing
+		// else change the gender of one of the parents to missing
 		//
-		Individual* tempIndividual = new Individual(mother);
-		std::set<Individual*,compareIndividual>::iterator it = _individuals.find(tempIndividual);
-		delete tempIndividual;
+		Individual tempIndividual(mother);
+		std::set<Individual*,compareIndividual>::iterator it = _individuals.find(&tempIndividual);
+		
 		if(it != _individuals.end()){
 			if((*it)->getGender().getEnum() == Gender::MALE){
 				mother = ".";
-				Warning(methodName,"Both mother and father have the same id. Mother of %s set to Missing.",ind.c_str());
+				Warning(methodName,"Both mother and father have the same id. Mother of %s set to MISSING.",ind.c_str());
 			}else{
 				father = ".";
-				Warning(methodName,"Both mother and father have the same id. Father of %s set to Missing.",ind.c_str());
+				Warning(methodName,"Both mother and father have the same id. Father of %s set to MISSING.",ind.c_str());
 			}
 		}else{
 			throw Exception("addIndividual()","Both mother and father of %s have the same id. For founders use '.' as the id.",ind.c_str());
@@ -1761,22 +1761,24 @@ Individual * Pedigree::addIndividual(const std::string ind,std::string mother,st
 	// Check whether individual already exists in pedigree:
 	//
 	std::set<Individual*,compareIndividual>::iterator it = _individuals.find(newCandidateIndividual);
-	delete newCandidateIndividual;
 	if(it==_individuals.end()){
 		//
 		// Add new individual to pedigree
 		//
 		std::pair<std::set<Individual*,compareIndividual>::iterator,bool> iit;
-		iit =  _individuals.insert(new Individual(ind,mother,father,gender,rowIndex,tableIndex)); 
+		iit =  _individuals.insert(newCandidateIndividual); 
 		if(iit.second){
 			(*iit.first)->setPedigreeDataTable(&pedigreeTable);
+			return *iit.first;
+		}else{
+			throw Exception(methodName,"Unable to add individual %1$s to pedigree %2$s",ind.c_str(),_id.c_str());
 		}
-		return *iit.first;
 	}else{
 		//
 		// Report replicated individual:
 		//
 		Warning(methodName,"Individual %1$s already exists in pedigree %2$s: Ignoring replicated individual from data file.",ind.c_str(),_id.c_str());
+		delete newCandidateIndividual;
 		return *it;
 	}
 }
@@ -2278,41 +2280,44 @@ void Pedigree::establishIndividualConnections(){
 	
 	std::vector<Individual*> individualsMissingParentInformation;
 	std::set<Individual*,compareIndividual>::iterator individualIt = _individuals.begin();
+	
 	while(individualIt != _individuals.end()){
-		
 		if((*individualIt)->getFatherId().isMissing() && (*individualIt)->getMotherId().isMissing()){
 			(*individualIt)->setOrdinaryFounder(true);
 		}else if((*individualIt)->getMotherId().isMissing()){
 			individualsMissingParentInformation.push_back(*individualIt);
 			// Add the father link
-			Individual* tempIndividual = new Individual((*individualIt)->getFatherId().get());
-			std::set<Individual*,compareIndividual>::iterator fatherIt = _individuals.find(tempIndividual);
+			Individual findFather((*individualIt)->getFatherId().get());
+			std::set<Individual*,compareIndividual>::iterator fatherIt = _individuals.find(&findFather);
 			if(fatherIt != _individuals.end()){
 				(*individualIt)->setFather(*fatherIt);
 				(*fatherIt)->addChild(*individualIt);
+			}else{
+				Warning(methodName,">>> Father %s row not present in the input data file.",(*individualIt)->getFatherId().get().c_str());
 			}
-			delete tempIndividual;
 		}else if((*individualIt)->getFatherId().isMissing()){
 			individualsMissingParentInformation.push_back(*individualIt);
 			// Add the mother link
-			Individual* tempIndividual = new Individual((*individualIt)->getMotherId().get());
-			std::set<Individual*,compareIndividual>::iterator motherIt = _individuals.find(tempIndividual);
+			Individual findMother((*individualIt)->getMotherId().get());
+			std::set<Individual*,compareIndividual>::iterator motherIt = _individuals.find(&findMother);
 			if(motherIt != _individuals.end()){
 				(*individualIt)->setMother(*motherIt);
 				(*motherIt)->addChild(*individualIt);
+			}else{
+				Warning(methodName,">>> Mother %s row not present in the input data file.",(*individualIt)->getMotherId().get().c_str());
 			}
-			delete tempIndividual;
 		}else{
 			// Establish mother and father connections:
-			Individual* tempIndividual = new Individual((*individualIt)->getFatherId().get());
-			Individual* tempIndividual1 = new Individual((*individualIt)->getMotherId().get());
-			std::set<Individual*,compareIndividual>::iterator fatherIt = _individuals.find(tempIndividual);
-			std::set<Individual*,compareIndividual>::iterator motherIt = _individuals.find(tempIndividual1);
+			Individual findFather((*individualIt)->getFatherId().get());
+			Individual findMother((*individualIt)->getMotherId().get());
+			std::set<Individual*,compareIndividual>::iterator fatherIt = _individuals.find(&findFather);
+			std::set<Individual*,compareIndividual>::iterator motherIt = _individuals.find(&findMother);
 			if(fatherIt != _individuals.end()){
 				(*individualIt)->setFather(*fatherIt);
 				(*fatherIt)->addChild(*individualIt);
 			}else{
 				Warning(methodName,"Father %s row not present in the input data file.",(*individualIt)->getFatherId().get().c_str());
+				// Add a virtual individual with a pre-determined id
 				std::pair<std::set<Individual*,compareIndividual>::iterator,bool> p;
 				p = _individuals.insert(new Individual((*individualIt)->getFatherId().get(),".",".","M",-1,-1));
 				(*individualIt)->setFather(*p.first);
@@ -2338,8 +2343,6 @@ void Pedigree::establishIndividualConnections(){
 			(*fatherIt)->addSpouse(*motherIt);
 			(*motherIt)->addSpouse(*fatherIt);
 			_checkParentsGender((*individualIt));
-			delete tempIndividual;
-			delete tempIndividual1;
 		}
 		
 		///////////////////////////////////////////////////////////
@@ -2386,8 +2389,8 @@ void Pedigree::establishIndividualConnections(){
 	while(cnt < individualsMissingParentInformation.size()){
 		individual = individualsMissingParentInformation[cnt];
 		if(individual->getMotherId().isMissing()){
-			
 			Individual* father = individual->getFather();
+			//std::cout << "Pedigree.cpp 2392 Fixing up Individual " << individual->getId() << " with Mother='.' and father =" << father << " FID=" << father->getId() << std::endl;
 			if(father){
 				Individual* spouse = father->getFirstSpouse();
 				if(spouse){
@@ -2412,8 +2415,8 @@ void Pedigree::establishIndividualConnections(){
 			_checkParentsGender(individual);
 			}
 		}else if(individual->getFatherId().isMissing()){
-			
 			Individual* mother = individual->getMother();
+			//std::cout << "Pedigree.cpp 2419 Fixing up Individual " << individual->getId() << " with Father='.' and mother =" << mother << " MID=" << mother->getId() << std::endl;
 			if(mother){
 				Individual* spouse = mother->getFirstSpouse();
 				if(spouse){
