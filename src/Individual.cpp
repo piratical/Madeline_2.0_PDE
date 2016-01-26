@@ -405,8 +405,11 @@ void Individual::getChildrenSortedByExternalConnections(Individual* spouse,std::
 Individual* Individual::getFirstSpouse(){
 	
 	std::set<Individual*,compareIndividual>::iterator spouseIt = _spouses.begin();
-	return (*spouseIt);
-	
+	if(spouseIt!=_spouses.end()){
+		return (*spouseIt);
+	}else{
+		return (Individual *) 0; // nullptr
+	}
 }
 
 

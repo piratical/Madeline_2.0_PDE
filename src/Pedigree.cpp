@@ -2286,25 +2286,39 @@ void Pedigree::establishIndividualConnections(){
 			(*individualIt)->setOrdinaryFounder(true);
 		}else if((*individualIt)->getMotherId().isMissing()){
 			individualsMissingParentInformation.push_back(*individualIt);
+			//
 			// Add the father link
+			//
 			Individual findFather((*individualIt)->getFatherId().get());
 			std::set<Individual*,compareIndividual>::iterator fatherIt = _individuals.find(&findFather);
 			if(fatherIt != _individuals.end()){
 				(*individualIt)->setFather(*fatherIt);
 				(*fatherIt)->addChild(*individualIt);
 			}else{
-				Warning(methodName,">>> Father %s row not present in the input data file.",(*individualIt)->getFatherId().get().c_str());
+				Warning(methodName,"Adding virtual father %s who is not present in the input data file.",(*individualIt)->getFatherId().get().c_str());
+				Individual *newVirtualFather = new Individual((*individualIt)->getFatherId().get(),".",".","M",-1,-1);
+				(*individualIt)->setFather(newVirtualFather);
+				newVirtualFather->addChild(*individualIt);
+				newVirtualFather->setOrdinaryFounder(true);
+				newVirtualFather->setVirtualIndividual(true);
 			}
 		}else if((*individualIt)->getFatherId().isMissing()){
 			individualsMissingParentInformation.push_back(*individualIt);
+			//
 			// Add the mother link
+			//
 			Individual findMother((*individualIt)->getMotherId().get());
 			std::set<Individual*,compareIndividual>::iterator motherIt = _individuals.find(&findMother);
 			if(motherIt != _individuals.end()){
 				(*individualIt)->setMother(*motherIt);
 				(*motherIt)->addChild(*individualIt);
 			}else{
-				Warning(methodName,">>> Mother %s row not present in the input data file.",(*individualIt)->getMotherId().get().c_str());
+				Warning(methodName,"Adding virtual mother %s who is not present in the input data file.",(*individualIt)->getMotherId().get().c_str());
+				Individual *newVirtualMother = new Individual((*individualIt)->getMotherId().get(),".",".","F",-1,-1);
+				(*individualIt)->setMother(newVirtualMother);
+				newVirtualMother->addChild(*individualIt);
+				newVirtualMother->setOrdinaryFounder(true);
+				newVirtualMother->setVirtualIndividual(true);
 			}
 		}else{
 			// Establish mother and father connections:
@@ -2390,7 +2404,7 @@ void Pedigree::establishIndividualConnections(){
 		individual = individualsMissingParentInformation[cnt];
 		if(individual->getMotherId().isMissing()){
 			Individual* father = individual->getFather();
-			//std::cout << "Pedigree.cpp 2392 Fixing up Individual " << individual->getId() << " with Mother='.' and father =" << father << " FID=" << father->getId() << std::endl;
+			// DEBUG: std::cout << ">>> Fixing up Individual " << individual->getId() << " with Mother='.' and father =" << father << " FID=" << father->getId() << std::endl;
 			if(father){
 				Individual* spouse = father->getFirstSpouse();
 				if(spouse){
