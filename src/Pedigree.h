@@ -47,6 +47,7 @@ public:
 	
 	void setCoreOptionalFields(const DataTable* pedigreeTable);
 	void determineFoundingGroups();
+	void determineFoundingGroups2(); // Complete revision and replacement for determineFoundingGroups()
 	void establishIndividualConnections();
 	
 	// 2011.03.17.ET Addenda:

@@ -106,7 +106,7 @@ void PedigreeSet::_determineFoundingGroups(){
 	
 	std::set<Pedigree*,comparePedigrees>::const_iterator it = _pedigrees.begin();
 	while(it != _pedigrees.end()){
-		(*it)->determineFoundingGroups();
+		(*it)->determineFoundingGroups2();
 		++it;
 	}
 	

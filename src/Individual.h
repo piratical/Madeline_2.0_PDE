@@ -77,6 +77,13 @@ public:
 		}
 	};
 	
+	struct compareSpousalCount // Sort by number of spouses descending
+	{
+		bool operator()(Individual *i1,Individual *i2) const
+		{
+			return i2->getSpouses()->size() < i1->getSpouses()->size();
+		}
+	};
 	
 private:
 	

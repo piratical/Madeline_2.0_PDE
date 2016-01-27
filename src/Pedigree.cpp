@@ -37,6 +37,7 @@
 #include <map>
 #include <vector>
 #include <deque>
+#include <set>
 
 /////////////////////////////////////
 //
@@ -344,11 +345,16 @@ void Pedigree::_getSpouses(std::set<Individual*,compareIndividual>& foundingGrou
 	const std::set<Individual*,Individual::compareIndividual> * pspouses = individual->getSpouses();
 	std::set<Individual*,Individual::compareIndividual>::const_iterator it = (*pspouses).begin();
 	
+	static unsigned _recursionLevel=0;
+	
 	while(it != (*pspouses).end()){
 		std::pair<std::set<Individual*,compareIndividual>::const_iterator,bool> pit = foundingGroup.insert(*it);
+		std::cout << "+++ >>> At recursion level " << _recursionLevel << " adding " << (*it)->getId() << " to founding group " << static_cast<void *>(&foundingGroup) << " ." << std::endl;
 		if(pit.second) _getSpouses(foundingGroup,*it);
 		++it;
 	}
+	
+	_recursionLevel++;
 	
 }
 
@@ -2006,6 +2012,136 @@ void Pedigree::checkPregnancyStateValidity(){
 	}
 }
 
+//
+// determineFoundingGroups2(): Determine the original founding groups in a pedigree
+//
+// NOTA BENE: This method is being implemented as a complete replacement for the
+//            original determineFoundingGroups() method.
+//
+void Pedigree::determineFoundingGroups2(){
+	
+	// for warnings:
+	const char *methodName="Pedigree::determineFoundingGroups2()";
+	// counter and sequential ID for descent trees:
+	unsigned descentTreeCount = 0;
+	// vector of ordinary founders:
+	std::vector<Individual*> ordinaryFounders;
+	// vector of original founders:
+	std::vector<Individual*> originalFounders;
+	// Iterator over the _individuals set:
+	std::set<Individual*,compareIndividual>::iterator iit;
+	//
+	// Loop over the individuals and check to see if the
+	// ordinary founders are original founders:
+	//
+	// *=> "Ordinary founders" are individuals who have neither 
+	//     a father nor a mother in the data table.
+	//
+	// *=> "Original founders" are "ordinary founders" whose spouse
+	//     is also an ordinary founder. In other words, original
+	//     founders are the parents of children who have no 
+	//     grandparents in the pedigree. Because there are no
+	//     grandparents, the parents form the root or start of 
+	//     a descent tree.
+	//
+	for(iit=_individuals.begin();iit!=_individuals.end();++iit){
+		if((*iit)->isOrdinaryFounder()){
+			//
+			// Loop over this person's spouses:
+			// If the spouse is also an ordinary
+			// founder, make the pair original founders.
+			//
+			std::set<Individual*,compareIndividual>::iterator spi;
+			for(spi=(*iit)->getSpouses()->begin();spi!=(*iit)->getSpouses()->end();++spi){
+				
+				if((*spi)->isOrdinaryFounder()){
+					(*iit)->setOriginalFounder(true);
+					(*spi)->setOriginalFounder(true);
+					// DEBUG
+					//std::cout << ">>> Setting " << (*iit)->getId() << " and " << (*spi)->getId() << " as original founders." << std::endl;
+				}
+			}
+		}
+	}
+	//
+	// Original founders are all now flagged.
+	// Now remove their setting as "ordinary founders"
+	// (making them exclusively "original founders")
+	// and place them into a multiset where they will be:
+	// sorted based on number of spouses descending:
+	//
+	
+	std::multiset<Individual *,Individual::compareSpousalCount> allOriginalFounders;
+	
+	for(iit=_individuals.begin();iit!=_individuals.end();++iit){
+		if((*iit)->isOriginalFounder()){
+			// DEBUG
+			//std::cout << ">>> Setting " << (*iit)->getId() << " as no longer an ordinary founder." << std::endl;
+			(*iit)->setOrdinaryFounder(false);
+			allOriginalFounders.insert((*iit));
+		}
+	}
+	//
+	// Create the vector of descent trees. Individuals with the most
+	// spouses are the first to be added (because of the multiset's
+	// ordering):
+	//
+	unsigned descentTreeId=0;
+	std::multiset<Individual *,Individual::compareSpousalCount>::iterator it;
+	for(it=allOriginalFounders.begin();it!=allOriginalFounders.end();it++){
+		
+		// DEBUG
+		//std::cout << ">>> " << (*it)->getId() 
+		//          << " has spouse count = " << (*it)->getSpouses()->size() 
+		//          << " and " << ((*it)->hasBeenVisited()?"has been":"has not been") << " visited."
+		//          << std::endl;
+		
+		if( ! (*it)->hasBeenVisited() ){
+			(*it)->setVisited(true);
+			descentTreeId++;
+			DescentTree *newDescentTree = new DescentTree( descentTreeId );
+			newDescentTree->setStartIndividual((*it));
+			// Check whether this is necessary since startIndividual is already set:
+			newDescentTree->addIndividualToFoundingGroup((*it));
+			//
+			// (1) Set all of the start individual's direct spouses as visited
+			//     (so that they won't become startIndividuals to another 
+			//     descent tree)
+			//
+			// (2) Then add them as members of this descentTree founders' group:
+			//
+			std::set<Individual*,compareIndividual>::iterator spi;
+			for(spi=(*it)->getSpouses()->begin();spi!=(*it)->getSpouses()->end();++spi){
+				
+				(*spi)->setVisited(true);
+				newDescentTree->addIndividualToFoundingGroup((*spi));
+			}
+			//
+			// Push the newDescentTree onto the pedigree:
+			//
+			_descentTrees.push_back( newDescentTree );
+			std::cout << ">>> DescentTree #" << descentTreeId << " with start individual " << (*it)->getId() << " added." << std::endl;
+		}
+	}
+	//
+	// Prophylactically reset the visit flags for use by other algorithms:
+	//
+	for(it=allOriginalFounders.begin();it!=allOriginalFounders.end();it++){
+		(*it)->setVisited(false);
+	}
+	//
+	// DEBUG: Print all the descent tree ids:
+	//
+	//std::cout << "# of Descent Trees " << _descentTrees.size() << std::endl;
+	//for(unsigned cnt =0;cnt < _descentTrees.size();cnt++){
+	//	std::cout << "id: " << _descentTrees[cnt]->getId() << std::endl;
+	//	_descentTrees[cnt]->displayFoundingGroup();
+	//}
+	
+	return;
+	
+}
+
 /// 
 /// determineFoundingGroups: Determine the original founding groups in a pedigree.
 ///
@@ -2013,20 +2149,26 @@ void Pedigree::determineFoundingGroups(){
 	
 	// for warnings:
 	const char *methodName="Pedigree::determineFoundingGroups()";
-	
-	std::set<Individual*,compareIndividual>::iterator individualIt = _individuals.begin();
-	
+	//
 	// Determine the number of Descent Trees and founding groups:
+	//
 	std::vector<Individual*> ordinaryFounders;
 	unsigned descentTreeCount = 0;
 	//
 	// Push all the ordinary founders in a vector
 	//
-	individualIt = _individuals.begin();
-	while(individualIt != _individuals.end()){
-		if((*individualIt)->isOrdinaryFounder() == true){ 
-			//std::cout << "ORD " << (*individualIt)->getId() << std::endl;
+	std::set<Individual*,compareIndividual>::iterator individualIt;
+	//
+	// Loop over all individuals and put ordinary founders in a vector:
+	// At the same time, also check for unconnected people and take them
+	// out of the founders group:
+	//
+	for(individualIt = _individuals.begin(); individualIt != _individuals.end(); individualIt++){
+		if((*individualIt)->isOrdinaryFounder() == true){
+			// DEBUG:
+			std::cout << ">>> 2037 >>> Adding " << (*individualIt)->getId() << " to ordinaryFounders vector." << std::endl;
 			ordinaryFounders.push_back((*individualIt));
+			
 			// Check for unconnected people:
 			if((*individualIt)->getNumberOfSpouses() == 0 && (*individualIt)->getNumberOfChildren() == 0){
 				(*individualIt)->setIsUnconnected(true);
@@ -2040,17 +2182,23 @@ void Pedigree::determineFoundingGroups(){
 				}
 			}
 		}
-		++individualIt;
 	}
 	
 	while(ordinaryFounders.size() != 0){
 		Individual* temp = ordinaryFounders[0];
 		std::set<Individual*,compareIndividual> foundingGroup;
+		std::cout << ">>> 2059 >>> Inserting " << temp->getId() << " into foundingGroup set." << std::endl;
 		foundingGroup.insert(temp);
 		_getSpouses(foundingGroup,temp);
 		bool originalFounderGroup = true;
 		std::set<Individual*,compareIndividual>::iterator it = foundingGroup.begin();
 		while(it != foundingGroup.end()){
+			
+			std::cout << ">>> 2065 >>> " << (*it)->getId() 
+			<< " ordininaryFounder = " << (*it)->isOrdinaryFounder()
+			<< " originalFounder = " << (*it)->isOriginalFounder()
+			<< std::endl;
+			
 			if((*it)->isOrdinaryFounder() == true){
 				++it; continue;
 			}
@@ -2067,6 +2215,12 @@ void Pedigree::determineFoundingGroups(){
 			while(it != foundingGroup.end()){
 				(*it)->setOrdinaryFounder(false);
 				(*it)->setOriginalFounder(true);
+				
+				std::cout << ">>> 2088 >>> " << (*it)->getId() 
+				<< " ordininaryFounder = " << (*it)->isOrdinaryFounder()
+				<< " originalFounder = " << (*it)->isOriginalFounder()
+				<< std::endl;
+				
 				// add the individual to the descent Tree founding group:
 				dt->addIndividualToFoundingGroup(*it);
 				++it;
@@ -2083,7 +2237,7 @@ void Pedigree::determineFoundingGroups(){
 	}
 	
 	// DEBUG: Print the original and ordinary founders:
-	/* 
+	//* 
 	individualIt = _individuals.begin();
 	while(individualIt != _individuals.end()){
 		if((*individualIt)->isOrdinaryFounder() == true){ 
@@ -2102,7 +2256,7 @@ void Pedigree::determineFoundingGroups(){
 		std::cout << "id: " << _descentTrees[cnt]->getId() << std::endl;
 		_descentTrees[cnt]->displayFoundingGroup();
 	}
-	*/
+	//*/
 	return;
 	
 }
