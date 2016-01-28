@@ -911,6 +911,14 @@ void NuclearFamily::draw(Individual* startIndividual,DrawingCanvas& dc,double st
 	}else{
 		spouse = _father;
 	}
+	
+	// DEBUG:
+	//std::cout << ">>> Spouse is " << spouse->getId() 
+	//          << " and hasExternalConnection=" << hasExternalConnection()
+	//          << " and dashedOriginalFounder=" << dashedOriginalFounder
+	//          << " and numberOfDescentTrees=" << spouse->getNumberOfDescentTrees()
+	//          << std::endl;
+	
 	// Draw the spouse only if the Nuclear Family is not consanguinous and does not have an external connection:
 	if(!isConsanguinous() && !hasExternalConnection()){
 		dc.drawIndividual(spouse,currentX+iconInterval,currentY,dashedOriginalFounder);

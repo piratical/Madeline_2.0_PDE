@@ -79,7 +79,8 @@ private:
 	std::vector<Individual *> _anomolous;
 	
 	void _setIndividualTwinField(const DataColumn * twinDataColumn,char type);
-	void _assignChildrenDescentTree(Individual* individual,unsigned descentTreeId);	
+	void _assignChildrenToDescentTree(Individual* individual,unsigned descentTreeId);
+	void _assignSpousesToDescentTree(Individual* individual,unsigned descentTreeId);
 	void _assignDescentTrees();
 	void _addDescentTree(unsigned id) ;
 	void _addDescentTreesConnectedTo(unsigned dtIndex,std::deque<DescentTree*>& orderedDescentTrees,bool left);
