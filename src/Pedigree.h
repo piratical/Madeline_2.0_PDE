@@ -82,6 +82,7 @@ private:
 	void _assignChildrenToDescentTree(Individual* individual,unsigned descentTreeId);
 	void _assignSpousesToDescentTree(Individual* individual,unsigned descentTreeId);
 	void _assignDescentTrees();
+	void _assignMultipleDescentTreeJoinerSpouses();
 	void _addDescentTree(unsigned id) ;
 	void _addDescentTreesConnectedTo(unsigned dtIndex,std::deque<DescentTree*>& orderedDescentTrees,bool left);
 	void _sortAndCalculateDescentTreeWidth();

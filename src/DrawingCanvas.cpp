@@ -772,14 +772,26 @@ void DrawingCanvas::drawIndividual(Individual* pIndividual,double x,double y,boo
 	
 	if(pIndividual->hasBeenDrawn()){
 		//
-		// There might be an Ordinary Founder
-		// that is married to more than one person in the pedigree. 
-		// There might be an Original Founder who has multiple spouses
-		// or an individual with a consanguinous or external loop.
-		// In such cases draw a dashed individual to represent a repeat.
+		// There might be:
 		//
-		if(pIndividual->isOrdinaryFounder() || isDashed);
-		else return;
+		// (1) An ordinaryFounder that is married to more 
+		//     than one person in the pedigree. 
+		// (2) An originalFounder who has multiple spouses
+		// (3) An individual with a consanguinous or external loop
+		// (4) An individual who is married to 2 or more people who
+		//     are in different descent trees
+		//
+		// In such cases draw a dashed individual to represent a repeat:
+		// 
+		if(    pIndividual->isOrdinaryFounder() 
+		    || isDashed 
+		    || pIndividual->isMultipleDescentTreeJoinerSpouse()
+		){
+			// Don't do anything: continue to draw this individual;
+		}else{
+			// Individual has been drawn once, don't draw them again
+			return;
+		}
 		
 	}
 	
@@ -821,8 +833,8 @@ void DrawingCanvas::drawIndividual(Individual* pIndividual,double x,double y,boo
 	// Determine the CSS class of the individual: solid or dashed
 	//
 	std::string cssClass;
-	if( pIndividual->isVirtual() ||
-	    (pIndividual->hasBeenDrawn() && (pIndividual->isOrdinaryFounder() || isDashed))
+	if(     pIndividual->isVirtual()
+	    || (pIndividual->hasBeenDrawn() && (pIndividual->isOrdinaryFounder() || isDashed || pIndividual->isMultipleDescentTreeJoinerSpouse() ))
 	){
 		cssClass="dashed";
 	}else{
@@ -1072,7 +1084,7 @@ void DrawingCanvas::drawIndividual(Individual* pIndividual,double x,double y,boo
 	}
 	
 	//
-	// Nota bene: there is really no provision made for the potential situation
+	// NOTA BENE: there is really no provision made for the potential situation
 	// where, for example, the user wants to show an individual as being both a carrier
 	// and a pregnancy at one and the same time ... or alternatively if a carrier and
 	// also showing a "collapsed" count. Currently, these all just over-print on top 
@@ -1135,7 +1147,10 @@ void DrawingCanvas::drawIndividual(Individual* pIndividual,double x,double y,boo
 		//
 		drawLabelSet(pIndividual);
 		
-	}else if( pIndividual->isOriginalFounder() || pIndividual->isOrdinaryFounder() ){
+	}else if(    pIndividual->isOriginalFounder() 
+		  || pIndividual->isOrdinaryFounder() 
+		  || pIndividual->isMultipleDescentTreeJoinerSpouse()
+	){
 		//
 		// For individuals who have already been drawn -- display only the id 
 		//

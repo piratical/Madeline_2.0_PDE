@@ -133,6 +133,7 @@ private:
 	// Determined attributes:
 	bool     _isOriginalFounder;
 	bool     _isOrdinaryFounder;
+	bool     _isMultipleDescentTreeJoinerSpouse;
 	
 	//
 	// Drawing attributes:
@@ -217,6 +218,7 @@ public:
 	//
 	void setOrdinaryFounder(bool value) { _isOrdinaryFounder = value; }
 	void setOriginalFounder(bool value) { _isOriginalFounder = value; }
+	void setMultipleDescentTreeJoinerSpouse(bool value) { _isMultipleDescentTreeJoinerSpouse = value; }
 	void setExternalConnection(bool value) { _hasExternalConnection = value; }
 	void setIsUnconnected(bool value) { _isUnconnected = value; }
 	void setIsConsanguinous(bool value) { _isConsanguinous = value; }
@@ -282,6 +284,7 @@ public:
 	//
 	bool     isOrdinaryFounder(void)   { return _isOrdinaryFounder; }
 	bool     isOriginalFounder(void)   { return _isOriginalFounder; } 
+	bool     isMultipleDescentTreeJoinerSpouse(void)   { return _isMultipleDescentTreeJoinerSpouse; } 
 	bool     isVirtual(void)           { return _isVirtual; }
 	bool     hasExternalConnection(void) { return _hasExternalConnection; }
 	bool     hasBeenVisited(void)      { return _hasBeenVisited; }

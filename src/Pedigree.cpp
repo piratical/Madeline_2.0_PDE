@@ -1,8 +1,8 @@
-
+/////////////////////////////////////////////////////////
 //
 // This file is part of the MADELINE 2 program 
 // written by Edward H. Trager and Ritu Khanna
-// Copyright (c) 2005 by the
+// Copyright (c) 2005, 2016 by the
 // Regents of the University of Michigan.
 // All Rights Reserved.
 // 
@@ -22,6 +22,8 @@
 
 //
 // Pedigree.cpp
+//
+// Last updated: 2016.01.28 by ET
 //
 
 #include "Pedigree.h"
@@ -541,55 +543,38 @@ void Pedigree::_markExternalConnectionFlags(){
 	
 }
 
-
 //
 // _assignDescentTrees:
+//
+// (1) Make sure that the start individual
+//     and all of his or her originalFounder spouses
+//     are marked with their descentTreeId.
+//
+// (2) Make sure all the children in the descent tree
+//     are likewise marked with their descentTreeId(s).
+//
+//     NOTA BENE: ordinaryFounders below the originalFounders
+//     in a given descent tree do not need to be considered
+//     part of the descent tree and so are not marked
 //
 void Pedigree::_assignDescentTrees(){
 	
 	unsigned cnt,descentTreeId,cnt1;
 	
 	for(unsigned i =0;i < _descentTrees.size();i++){
-		// Get number of individuals in the founding group
-		//cnt = _descentTrees[i]->getNumberOfFoundingGroupIndividuals();
-		//cnt1 = cnt;
 		
 		descentTreeId = _descentTrees[i]->getId();
 		
 		Individual* startIndividual = _descentTrees[i]->getStartIndividual();
-		std::cout << ">>> _assignDescentTrees(): startIndividual is " << startIndividual->getId() << std::endl;
-		
+		// DEBUG: std::cout << ">>> _assignDescentTrees(): startIndividual is " << startIndividual->getId() << std::endl;
 		startIndividual->addDescentTree(descentTreeId);
+		// This marks the direct spouses of the startIndividual
+		// (who are also originalFounders):
 		_assignSpousesToDescentTree(startIndividual,descentTreeId);
+		// The following is recursive, so all direct lineage children
+		// get marked:
 		_assignChildrenToDescentTree(startIndividual,descentTreeId);
 		
-		//while(cnt > 0){
-		//	startIndividual->addDescentTree(descentTreeId);
-		//	cnt--;
-		//	if(cnt > 0){
-		//		_assignSpousesToDescentTree(startIndividual,descentTreeId);
-		//		// Assign descentTreeId to all the spouses of the startIndividual:
-		//		//const std::set<Individual*,Individual::compareIndividual> * pspouses = startIndividual->getSpouses();
-		//		//std::set<Individual*,Individual::compareIndividual>::const_iterator it = (*pspouses).begin();
-		//		//while(it != (*pspouses).end()){
-		//		//	(*it)->addDescentTree(descentTreeId);
-		//		//	std::cout << ">>> _assignDescentTrees(): Individual " << (*it)->getId() << " assigned to descent tree " << descentTreeId << std::endl;
-		//		//	cnt--;
-		//		//	++it;
-		//		//}
-		//	}
-		//	_assignChildrenToDescentTree(startIndividual,descentTreeId);
-		//	//
-		//	// If any of the founding group members have not been assigned their descentTree
-		//	// make them the startIndividual
-		//	//
-		//	for(unsigned j=0;j<cnt1;j++){
-		//		Individual* individual = _descentTrees[i]->getFoundingGroupIndividual(j);
-		//		if(individual->getNumberOfDescentTrees()) continue;
-		//		startIndividual = individual;
-		//		break;
-		//	}
-		//}
 	}
 	
 }
@@ -597,18 +582,27 @@ void Pedigree::_assignDescentTrees(){
 //
 // _assignChildrenToDescentTree:
 //
+// Assigns (flags) all direct lineage children in a descent tree
+// with the descentTreeId so that this information can later be
+// used to find marriages across descent trees, etc.
+//
 void Pedigree::_assignChildrenToDescentTree(Individual* individual,unsigned descentTreeId){
 	
 	const std::set<Individual*,Individual::compareIndividual> *pChildren = individual->getChildren();
 	std::set<Individual*,Individual::compareIndividual>::const_iterator it;
 	
 	for(it=pChildren->begin();it!=pChildren->end();++it){
-		std::cout << ">>> _assignChildrenToDescentTree: Individual " << (*it)->getId()
-		          << " assigned to descent tree " << descentTreeId << std::endl;
+		// DEBUG: std::cout << ">>> _assignChildrenToDescentTree: Individual " << (*it)->getId()
+		//          << " assigned to descent tree " << descentTreeId << std::endl;
+		
+		//
+		// Assign the children in this sibship:
+		//
 		(*it)->addDescentTree(descentTreeId);
-		//Assign spouses of this child to the descentTree: (new as of 2016.01.28)
-		//_assignSpousesToDescentTree(*it,descentTreeId);
-		// Recursively assign the children to the descentTree
+		//
+		// Recursively assign the children of these children 
+		// to the descentTree too:
+		//
 		_assignChildrenToDescentTree(*it,descentTreeId);
 	}
 	
@@ -617,19 +611,88 @@ void Pedigree::_assignChildrenToDescentTree(Individual* individual,unsigned desc
 //
 // _assignSpousesToDescentTree:
 //
+// Assigns (flags) spouses of the starting individual
+// with a descentTreeId
+//
 void Pedigree::_assignSpousesToDescentTree(Individual* individual,unsigned descentTreeId){
 	
 	const std::set<Individual*,Individual::compareIndividual> *pSpouses = individual->getSpouses();
 	std::set<Individual*,Individual::compareIndividual>::const_iterator it;
 	
 	for(it=pSpouses->begin();it!=pSpouses->end();++it){
-		std::cout << ">>> _assignSpousesToDescentTree: Individual " << (*it)->getId()
-		          << " assigned to descent tree " << descentTreeId << std::endl;
+		// DEBUG: std::cout << ">>> _assignSpousesToDescentTree: Individual " << (*it)->getId()
+		//          << " assigned to descent tree " << descentTreeId << std::endl;
 		(*it)->addDescentTree(descentTreeId);
 	}
 	
 }
 
+//
+// _assignMultipleDescentTreeJoinerSpouses
+//
+// Mark individuals who are multiply mated to individuals across
+// different descent trees. There are two cases which are 
+// treated here:
+//
+// (1) An originalFounder with multiple spouses could be
+//     an original founder in more than one descentTree.
+//
+// (2) An originalFounder or ordinaryFounder could join
+//     together two different descent trees (in which case
+//     the intersection set of the descent trees of the 
+//     founder and one of his or her spouses is expected to 
+//     be an empty set).
+//
+void Pedigree::_assignMultipleDescentTreeJoinerSpouses(){
+	
+	std::set<Individual*,compareIndividual>::iterator it;
+	for(it=_individuals.begin();it!=_individuals.end();++it){
+		
+		//
+		// CASE 1: An original founder of more than one descent tree:
+		//
+		if( (*it)->isOriginalFounder() && (*it)->getNumberOfDescentTrees()>1 ){
+			(*it)->setMultipleDescentTreeJoinerSpouse(true);
+			continue;
+		}
+		
+		//
+		// CASE 2: A founder who does not share descent trees
+		//         with one or more of his or her spouses:
+		//         (NOTA BENE: This depends on Madeline's current
+		//         behavior of not marking married-in ordinary
+		//         founders as being part of their spouse's descent tree.
+		//         However, note that the code is careful to cover 
+		//         the case of individuals who might an originalFounder
+		//         in one descentTree and an ordinaryFounder in "another"
+		//         descentTree.
+		//
+		std::set<unsigned> dt1 = (*it)->getDescentTrees();
+		if((*it)->getNumberOfSpouses()>1){
+			// DEBUG: std::cout << ">>> DMDTJS: Individual " << (*it)->getId() 
+			//          << " has " << (*it)->getNumberOfSpouses() << " spouses"
+			//          << " and belongs to " << (*it)->getNumberOfDescentTrees() << " descent tree(s)"
+			//          << std::endl;
+			const std::set<Individual*,Individual::compareIndividual> *pSpouses = (*it)->getSpouses();
+			std::set<Individual*,Individual::compareIndividual>::const_iterator spi;
+			for(spi=pSpouses->begin();spi!=pSpouses->end();++spi){
+				std::set<unsigned> dt2 = (*spi)->getDescentTrees();
+				std::vector<unsigned> vIntersect;
+				std::set_intersection(dt1.begin(),dt1.end(),
+				                      dt2.begin(),dt2.end(),
+				                      std::back_inserter(vIntersect));
+				//
+				// DEBUG: std::cout << (*it)->getId() << " and " << (*spi)->getId() << " have " << vIntersect.size() << " elements in common" << std::endl;
+				//
+				if(vIntersect.size()==0){
+					(*it)->setMultipleDescentTreeJoinerSpouse(true);
+					continue;
+				}
+			}
+		}
+	}
+	
+}
 
 
 ///
@@ -701,10 +764,12 @@ void Pedigree::_addDescentTreesConnectedTo(unsigned dtIndex,std::deque<DescentTr
 	
 }
 
-///
-/// _determineConnectorIndividuals(): 
-///    A depth-first search approach is used to mark individuals who are consanguinous or have mates who are part of a different descent tree.
-///
+//
+// _determineConnectorIndividuals(): 
+//  
+//  A depth-first search approach is used to mark individuals who are consanguinous 
+//  or have mates who are part of a different descent tree.
+//
 void Pedigree::_determineConnectorIndividuals(){
 	
 	// Determine external and internal connectors:
@@ -713,6 +778,7 @@ void Pedigree::_determineConnectorIndividuals(){
 		// Assign descent trees to individuals only if there is more than one descent tree
 		// If there is only one descent tree the connectors can only be consanguinous.
 		_assignDescentTrees();
+		_assignMultipleDescentTreeJoinerSpouses();
 	unsigned cnt, cnt1;
 	for(unsigned i=0;i<_descentTrees.size();i++){
 		// Get number of individuals in the founding group
@@ -869,7 +935,7 @@ void Pedigree::_markConnectorIndividuals(Individual* individual,unsigned& loopNu
 		std::set<Individual*,Individual::compareIndividual>::const_iterator spouseIt = (*pspouses).begin();
 		while(spouseIt != (*pspouses).end()){
 			if((*spouseIt)->isOriginalFounder() == true || (*spouseIt)->isOrdinaryFounder() == true){
-			
+				// Don't do anything
 			}else
 			if(_descentTrees.size() == 1){
 				// Mark the consanguinous individuals:
@@ -917,7 +983,7 @@ void Pedigree::_markConnectorIndividuals(Individual* individual,unsigned& loopNu
 				}else{
 					//  To sort the descent trees based on complexity
 					//  we need to know how many external connections
-					// are there is each DT and with which DT they have maximum connections:
+					// are there in each DT and with which DT they have maximum connections:
 					unsigned dtIndex = _getPrimaryDescentTreeIndex(dt1,individual,true);
 					unsigned spouseDTIndex = _getPrimaryDescentTreeIndex(dt2,(*spouseIt),false);
 					_descentTrees[dtIndex]->addExternalConnectorPair(individual,(*spouseIt));
@@ -1188,7 +1254,7 @@ void Pedigree::_sortAndCalculateDescentTreeWidth(){
 				// Get each NF and check if it has been processed
 				for(unsigned j=0;j<fgIndividual->getNumberOfNuclearFamilies();j++){
 					if(fgIndividual->getNuclearFamily(j)->getTotalWidth() == 0){
-						std::cout << " This Founding Group member " << fgIndividual->getId() << " needs to be processed further" << std::endl;
+						// THIS MESSAGE IS NOT INFORMATIVE: std::cout << " This Founding Group member " << fgIndividual->getId() << " needs to be processed further" << std::endl;
 						fgIndividual->getNuclearFamily(j)->calculateWidth(classicalOrdering);
 						_nfOfOrdinaryFounders.push_back(fgIndividual->getNuclearFamily(j));
 					}
@@ -2117,7 +2183,7 @@ void Pedigree::determineFoundingGroups2(){
 	//
 	// Create the vector of descent trees. Individuals with the most
 	// spouses are the first to be added (because of the multiset's
-	// ordering):
+	// ordering via the Individual::compareSpousalCount functor):
 	//
 	unsigned descentTreeId=0;
 	std::multiset<Individual *,Individual::compareSpousalCount>::iterator it;
@@ -2151,8 +2217,9 @@ void Pedigree::determineFoundingGroups2(){
 			//
 			// Push the newDescentTree onto the pedigree:
 			//
+			// DEBUG: std::cout << ">>> DescentTree #" << descentTreeId 
+			//             << " with start individual " << (*it)->getId() << " added." << std::endl;
 			_descentTrees.push_back( newDescentTree );
-			std::cout << ">>> DescentTree #" << descentTreeId << " with start individual " << (*it)->getId() << " added." << std::endl;
 		}
 	}
 	//
@@ -2177,6 +2244,7 @@ void Pedigree::determineFoundingGroups2(){
 /// 
 /// determineFoundingGroups: Determine the original founding groups in a pedigree.
 ///
+/*
 void Pedigree::determineFoundingGroups(){
 	
 	// for warnings:
@@ -2269,7 +2337,7 @@ void Pedigree::determineFoundingGroups(){
 	}
 	
 	// DEBUG: Print the original and ordinary founders:
-	//* 
+	// 
 	individualIt = _individuals.begin();
 	while(individualIt != _individuals.end()){
 		if((*individualIt)->isOrdinaryFounder() == true){ 
@@ -2288,10 +2356,11 @@ void Pedigree::determineFoundingGroups(){
 		std::cout << "id: " << _descentTrees[cnt]->getId() << std::endl;
 		_descentTrees[cnt]->displayFoundingGroup();
 	}
-	//*/
+	//
 	return;
 	
 }
+*/
 
 //
 // computePedigreeWidth:

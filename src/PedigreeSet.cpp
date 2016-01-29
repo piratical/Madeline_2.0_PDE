@@ -28,6 +28,7 @@
 #include "DataColumn.h"
 #include "LabelSet.h"
 #include "DrawingMetrics.h"
+#include "VT100.h"
 #include <algorithm>
 #include <set>
 #include <map>
@@ -158,7 +159,7 @@ void PedigreeSet::addPedigreesFromDataTable(const DataTable * p_pedigreeTable, u
 	//
 	const DataTable & pedigreeTable = (*p_pedigreeTable);
 	
-	std::cout << "Start of addPedigreesFromDataTable" << std::endl;
+	std::cout << vt100::startBlue << "┏ Start of    addPedigreesFromDataTable ┓" << vt100::stopColor << std::endl;
 	
 	//
 	// Get all the core columns from the datatable:
@@ -309,7 +310,7 @@ void PedigreeSet::addPedigreesFromDataTable(const DataTable * p_pedigreeTable, u
 			
 		}
 	}
-	std::cout << "End of addPedigreesFromDataTable" << std::endl;
+	std::cout << vt100::startBlue << "┗ End of      addPedigreesFromDataTable ┛" << vt100::stopColor << std::endl;
 	
 }
 
@@ -318,7 +319,7 @@ void PedigreeSet::addPedigreesFromDataTable(const DataTable * p_pedigreeTable, u
 //
 void PedigreeSet::draw(const DataTable *const pedigreeTable){
 	
-	std::cout << "Start of draw" << std::endl;
+	std::cout << vt100::startBlue << "┏ Start of    draw                      ┓" << vt100::stopColor << std::endl;
 	//
 	// Make a note if there is only one pedigree to be drawn: 
 	//
@@ -347,7 +348,7 @@ void PedigreeSet::draw(const DataTable *const pedigreeTable){
 		++it;
 	}
 	
-	std::cout << "End of draw" << std::endl;
+	std::cout << vt100::startBlue << "┗ End of      draw                      ┛" << vt100::stopColor << std::endl;
 	
 }
 

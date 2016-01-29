@@ -49,6 +49,7 @@ inline void Individual::_init(void){
 	
 	_isOriginalFounder     = false;
 	_isOrdinaryFounder     = false;
+	_isMultipleDescentTreeJoinerSpouse = false;
 	_isVirtual             = false;
 	_isConsanguinous       = false;
 	_isUnconnected         = false;
