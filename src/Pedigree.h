@@ -48,6 +48,7 @@ public:
 	void setCoreOptionalFields(const DataTable* pedigreeTable);
 	void determineFoundingGroups();
 	void determineFoundingGroups2(); // Complete revision and replacement for determineFoundingGroups()
+	void addIdentifiedMissingParents(); // Add identified missing parents to the _individuals set prior to establishing connections.
 	void establishIndividualConnections();
 	
 	// 2011.03.17.ET Addenda:

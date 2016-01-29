@@ -120,6 +120,7 @@ void PedigreeSet::_establishConnections(){
 	
 	std::set<Pedigree*,comparePedigrees>::const_iterator it = _pedigrees.begin();
 	while(it != _pedigrees.end()){
+		(*it)->addIdentifiedMissingParents();
 		(*it)->establishIndividualConnections();
 		++it;
 	}
