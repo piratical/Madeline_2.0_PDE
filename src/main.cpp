@@ -13,6 +13,7 @@
 #include "Data.h"
 #include "DrawingMetrics.h"
 #include "utility.h"
+#include "VT100.h"
 
 int main( int argc, char *argv[] ){
 	
@@ -253,7 +254,7 @@ int main( int argc, char *argv[] ){
 		// DEBUGGING: Show column information
 		//
 		std::cout << "--------------------------------------------" << std::endl;
-		std::cout << "\x1b[1;34m" << " LABELS                          TOTAL: " << showColumns.size() << "\x1b[0m" << std::endl;
+		std::cout << vt100::startBlue << " LABELS                          TOTAL: " << showColumns.size() << vt100::stopColor << std::endl;
 		std::cout << "--------------------------------------------" << std::endl;
 		for(unsigned i=0;i<showColumns.size();i++){
 			std::cout << " " << (i+1) << ". " << showColumns[i] << std::endl;

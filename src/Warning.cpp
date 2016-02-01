@@ -30,6 +30,7 @@
 #include "Warning.h"
 #include "Debug.h"
 #include <string.h>
+#include "VT100.h"
 
 bool Warning::_suppressWarnings=false;
 const char *Warning::_warningSalutation="Warning";
@@ -71,13 +72,13 @@ void Warning::suppressWarnings(bool suppressWarnings){
 //
 void Warning::print(void){
 	
-	std::cerr << "\x1b[1;31m" ;
+	std::cerr << vt100::startRed ;
 	std::cerr << _salutation << ": ";
-	std::cerr << "\x1b[0m" ;
+	std::cerr << vt100::stopColor;
 	if(Debug::DEBUG){
-		std::cerr << "\x1b[0;32m" ;
+		std::cerr << vt100::startGreen ;
 		std::cerr << _methodName << ": ";
-		std::cerr << "\x1b[0m" ;
+		std::cerr << vt100::stopColor  ;
 	}
 	std::cerr << _message << std::endl;
 	if(_truncated){

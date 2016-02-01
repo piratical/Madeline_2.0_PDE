@@ -29,6 +29,7 @@
 
 #include "Exception.h"
 #include <string.h>
+#include "VT100.h"
 
 const char *Exception::_exceptionSalutation="Unrecoverable Error";
 

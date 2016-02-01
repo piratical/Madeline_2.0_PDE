@@ -46,8 +46,7 @@ public:
 	Individual *addIndividual(const std::string &ind,std::string mother,std::string father,std::string gender,int rowIndex,int tableIndex,const DataTable& pedigreeTable );
 	
 	void setCoreOptionalFields(const DataTable* pedigreeTable);
-	void determineFoundingGroups();
-	void determineFoundingGroups2(); // Complete revision and replacement for determineFoundingGroups()
+	void determineFoundingGroups(); // Completely rewritten in Jan. 2016
 	void addIdentifiedMissingParents(); // Add identified missing parents to the _individuals set prior to establishing connections.
 	void establishIndividualConnections();
 	

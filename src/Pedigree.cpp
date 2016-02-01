@@ -2113,12 +2113,12 @@ void Pedigree::checkPregnancyStateValidity(){
 }
 
 //
-// determineFoundingGroups2(): Determine the original founding groups in a pedigree
+// determineFoundingGroups(): Determine the original founding groups in a pedigree
 //
-// NOTA BENE: This method is being implemented as a complete replacement for the
+// NOTA BENE: This method has been completely rewritten as a complete replacement for the
 //            original determineFoundingGroups() method.
 //
-void Pedigree::determineFoundingGroups2(){
+void Pedigree::determineFoundingGroups(){
 	
 	// for warnings:
 	const char *methodName="Pedigree::determineFoundingGroups2()";
@@ -2240,127 +2240,6 @@ void Pedigree::determineFoundingGroups2(){
 	return;
 	
 }
-
-/// 
-/// determineFoundingGroups: Determine the original founding groups in a pedigree.
-///
-/*
-void Pedigree::determineFoundingGroups(){
-	
-	// for warnings:
-	const char *methodName="Pedigree::determineFoundingGroups()";
-	//
-	// Determine the number of Descent Trees and founding groups:
-	//
-	std::vector<Individual*> ordinaryFounders;
-	unsigned descentTreeCount = 0;
-	//
-	// Push all the ordinary founders in a vector
-	//
-	std::set<Individual*,compareIndividual>::iterator individualIt;
-	//
-	// Loop over all individuals and put ordinary founders in a vector:
-	// At the same time, also check for unconnected people and take them
-	// out of the founders group:
-	//
-	for(individualIt = _individuals.begin(); individualIt != _individuals.end(); individualIt++){
-		if((*individualIt)->isOrdinaryFounder() == true){
-			// DEBUG:
-			std::cout << ">>> 2037 >>> Adding " << (*individualIt)->getId() << " to ordinaryFounders vector." << std::endl;
-			ordinaryFounders.push_back((*individualIt));
-			
-			// Check for unconnected people:
-			if((*individualIt)->getNumberOfSpouses() == 0 && (*individualIt)->getNumberOfChildren() == 0){
-				(*individualIt)->setIsUnconnected(true);
-				std::string indid = (*individualIt)->getId().get();
-				Warning(methodName,"Individual %s is Unconnected.",indid.c_str());
-				(*individualIt)->setOrdinaryFounder(false);
-				ordinaryFounders.pop_back();
-				if(_individuals.size() == 1){
-					Warning(methodName,"There is only 1 Unconnected individual %s in Pedigree %s.",indid.c_str(),_id.c_str()); 
-					Warning(methodName,"Pedigree %s will not be drawn.",_id.c_str());
-				}
-			}
-		}
-	}
-	
-	while(ordinaryFounders.size() != 0){
-		Individual* temp = ordinaryFounders[0];
-		std::set<Individual*,compareIndividual> foundingGroup;
-		std::cout << ">>> 2059 >>> Inserting " << temp->getId() << " into foundingGroup set." << std::endl;
-		foundingGroup.insert(temp);
-		_getSpouses(foundingGroup,temp);
-		bool originalFounderGroup = true;
-		std::set<Individual*,compareIndividual>::iterator it = foundingGroup.begin();
-		while(it != foundingGroup.end()){
-			
-			std::cout << ">>> 2065 >>> " << (*it)->getId() 
-			<< " ordininaryFounder = " << (*it)->isOrdinaryFounder()
-			<< " originalFounder = " << (*it)->isOriginalFounder()
-			<< std::endl;
-			
-			if((*it)->isOrdinaryFounder() == true){
-				++it; continue;
-			}
-			originalFounderGroup = false;
-			break;
-		}
-		if(originalFounderGroup){
-			// Set the originalFounder flag
-			descentTreeCount++;
-			// add to the list of Descent Trees:
-			_addDescentTree(descentTreeCount);
-			DescentTree* dt = _descentTrees.back();
-			it = foundingGroup.begin();
-			while(it != foundingGroup.end()){
-				(*it)->setOrdinaryFounder(false);
-				(*it)->setOriginalFounder(true);
-				
-				std::cout << ">>> 2088 >>> " << (*it)->getId() 
-				<< " ordininaryFounder = " << (*it)->isOrdinaryFounder()
-				<< " originalFounder = " << (*it)->isOriginalFounder()
-				<< std::endl;
-				
-				// add the individual to the descent Tree founding group:
-				dt->addIndividualToFoundingGroup(*it);
-				++it;
-			}
-		}
-		std::vector<Individual*>::iterator vit;
-		it = foundingGroup.begin();
-		while(it != foundingGroup.end()){
-			// Delete these individuals from the ordinaryFounders vector
-			vit = find(ordinaryFounders.begin(),ordinaryFounders.end(),*it);
-			if (vit != ordinaryFounders.end()) ordinaryFounders.erase(vit);
-			++it;
-		}
-	}
-	
-	// DEBUG: Print the original and ordinary founders:
-	// 
-	individualIt = _individuals.begin();
-	while(individualIt != _individuals.end()){
-		if((*individualIt)->isOrdinaryFounder() == true){ 
-			std::cout << "Ordinary Founder: " << (*individualIt)->getId() << std::endl;
-		}
-		if((*individualIt)->isOriginalFounder() == true){ 
-			std::cout << "Original Founder: " << (*individualIt)->getId() << std::endl;
-		}
-		++individualIt;
-	}
-	//
-	// DEBUG: Print all the descent tree ids:
-	//
-	std::cout << "# of Descent Trees " << _descentTrees.size() << std::endl;
-	for(unsigned cnt =0;cnt < _descentTrees.size();cnt++){
-		std::cout << "id: " << _descentTrees[cnt]->getId() << std::endl;
-		_descentTrees[cnt]->displayFoundingGroup();
-	}
-	//
-	return;
-	
-}
-*/
 
 //
 // computePedigreeWidth:
@@ -2768,7 +2647,7 @@ void Pedigree::establishIndividualConnections(){
 					(*p.first)->addSpouse(father);
 					(*p.first)->setOrdinaryFounder(true);
 					(*p.first)->setVirtualIndividual(true);
-					Warning(methodName,"Mother of %s could not be determined from the input data file. \x1b[1;34m%s\x1b[0m has been set as the mother.",individual->getId().get().c_str(),randomId.c_str());
+					Warning(methodName,"Mother of %s could not be determined from the input data file. %s has been set as the mother.",individual->getId().get().c_str(),randomId.c_str());
 				}
 			_checkParentsGender(individual);
 			}
@@ -2798,7 +2677,7 @@ void Pedigree::establishIndividualConnections(){
 					(*p.first)->addSpouse(mother);
 					(*p.first)->setOrdinaryFounder(true);
 					(*p.first)->setVirtualIndividual(true);
-					Warning(methodName,"Father of %s could not be determined from the input data file. \x1b[1;34m%s\x1b[0m has been set as the father.",individual->getId().get().c_str(),randomId.c_str());
+					Warning(methodName,"Father of %s could not be determined from the input data file. %s has been set as the father.",individual->getId().get().c_str(),randomId.c_str());
 				}
 			_checkParentsGender(individual);
 			}

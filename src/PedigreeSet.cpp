@@ -107,7 +107,7 @@ void PedigreeSet::_determineFoundingGroups(){
 	
 	std::set<Pedigree*,comparePedigrees>::const_iterator it = _pedigrees.begin();
 	while(it != _pedigrees.end()){
-		(*it)->determineFoundingGroups2();
+		(*it)->determineFoundingGroups();
 		++it;
 	}
 	
@@ -284,7 +284,7 @@ void PedigreeSet::addPedigreesFromDataTable(const DataTable * p_pedigreeTable, u
 	if(pedigreeTable.getPregnancyColumnIndex() != DataTable::COLUMN_IS_MISSING){
 		_checkPregnancyStateValidity();
 	}
-
+	
 	_determineFoundingGroups();
 	
 	bool sortFieldPresent = false;

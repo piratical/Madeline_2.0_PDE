@@ -20,29 +20,64 @@
 // 
 /////////////////////////////////////////////////////////
 //
+// VT100.h
+//
 // 2016.01.28.ET
 //
 
 #ifndef VT100_INCLUDED$
 #define VT100_INCLUDED$
 
+#include <iostream>
+#include <unistd.h>
+#include <stdio.h>
+
 //
-// Just a few simple VT100 terminal escape commands
-// for setting the color and boldness of text output
-// to a terminal:
+// vt100 command namespace and enum:
 //
-namespace vt100 
-	{
-	const char *stopColor    = "\x1b[0m";
-	const char *startBlack   = "\x1b[1;30m";
-	const char *startRed     = "\x1b[1;31m";
-	const char *startGreen   = "\x1b[1;32m";
-	const char *startYellow  = "\x1b[1;33m";
-	const char *startBlue    = "\x1b[1;34m";
-	const char *startMagenta = "\x1b[1;35m";
-	const char *startCyan    = "\x1b[1;36m";
-	const char *startWhite   = "\x1b[1;37m";
+namespace vt100{
+	enum command{
+		stopColor,
+		startBlack,
+		startRed,
+		startGreen,
+		startYellow,
+		startBlue,
+		startMagenta,
+		startCyan,
+		startWhite
+	};
+};
+
+//
+// Static class VTStreamState
+// maintains information about the
+// state of the standard streams
+// and whether they are really
+// a terminal device or not
+//
+class VTStreamState{
+private:
+	static VTStreamState vtStreamState;
 	
-}
+public:
+	static const std::streambuf *coutBuf;
+	static const std::streambuf *cerrBuf;
+	static const bool coutIsATerminal;
+	static const bool cerrIsATerminal;
+	
+public:
+	
+	// Constructor:
+	VTStreamState();
+	
+};
+
+//
+// Stream operator << for the vt100::commands:
+// 
+// (This is where the actual work is done)
+//
+std::ostream & operator << (std::ostream &os,enum vt100::command cmd);
 
 #endif

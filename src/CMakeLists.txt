@@ -123,7 +123,7 @@ SET( SOURCES
 	Utf8String.cpp
 	Utf8String.h
 	
-	VT100.h
+	VT100.cpp
 	
 	Warning.cpp 
 	Warning.h 
