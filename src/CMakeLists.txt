@@ -99,6 +99,7 @@ SET( SOURCES
 	Pregnancy.cpp
 	Proband.cpp
 	
+	RandomId.cpp
 	RandomSampleSizes.h 
 	RandomGenerator.cpp 
 	RandomGenerator.h 

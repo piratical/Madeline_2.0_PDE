@@ -23,7 +23,7 @@
 //
 // Pedigree.cpp
 //
-// Last updated: 2016.01.28 by ET
+// Last updated: 2016.02.01 by ET
 //
 
 #include "Pedigree.h"
@@ -34,6 +34,7 @@
 #include "DrawingCanvas.h"
 #include "Grid.h"
 #include "HexavigesimalConverter.h"
+#include "RandomId.h"
 
 #include <algorithm>
 #include <map>
@@ -2620,6 +2621,7 @@ void Pedigree::establishIndividualConnections(){
 		Warning(methodName,"One or more children in the pedigree have only one parent: Consider augmenting your data set.");
 	}
 	for(unsigned cnt=0;cnt<individualsMissingParentInformation.size();cnt++){
+		RandomId randomIdGenerator;
 		Individual *individual = individualsMissingParentInformation[cnt];
 		if(individual->getMotherId().isMissing()){
 			//
@@ -2637,7 +2639,7 @@ void Pedigree::establishIndividualConnections(){
 					// Id of the missing mother cannot be determined.
 					// Add a virtual mother with a random id:
 					//
-					std::string randomId = Individual::getRandomId();
+					std::string randomId = randomIdGenerator.get();
 					std::pair<std::set<Individual*,compareIndividual>::iterator,bool> p;
 					p = _individuals.insert(new Individual(randomId,".",".","F",-1,-1));
 					(*p.first)->addChild(individual);
@@ -2667,7 +2669,7 @@ void Pedigree::establishIndividualConnections(){
 					// Id of the missing father cannot be determined.
 					// Add a virtual father with a random id
 					//
-					std::string randomId = Individual::getRandomId();
+					std::string randomId = randomIdGenerator.get();
 					std::pair<std::set<Individual*,compareIndividual>::iterator,bool> p;
 					p = _individuals.insert(new Individual(randomId,".",".","M",-1,-1));
 					(*p.first)->addChild(individual);
