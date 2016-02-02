@@ -601,7 +601,10 @@ void SVG::drawCollapsedCount(std::ostringstream& os,double x,double y,unsigned c
 	}
 	os << "<circle filter=\"url(#blur_001)\" cx=\"" << x << "\" cy=\"" << y << "\" r=\"" << radius << "\"";
 	os << " class=\"counterFill\" />\n";
-	std::string collapsed = static_cast<std::ostringstream*>( &(std::ostringstream() << collapsedCount) )->str();
+	std::ostringstream osscc;
+	osscc <<  collapsedCount;
+	std::string collapsed = osscc.str();
+	//static_cast<std::ostringstream*>( &(std::ostringstream() << collapsedCount) )->str();
 	drawText(os,x,y+DrawingMetrics::getCounterFontSize()/3,collapsed,"counter","");
 	
 }

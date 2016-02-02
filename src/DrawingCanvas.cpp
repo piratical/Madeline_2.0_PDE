@@ -1877,10 +1877,10 @@ void DrawingCanvas::iconQuadrantFill( double x, double y, Individual *pIndividua
 	}
 	std::string label;
 	std::string svalue = data->get();
-	std::istringstream i(svalue);
+	std::istringstream iss(svalue);
 	int level;
-	bool converted = (i>>level);
-	if(!converted || level<0 || level>15 ){
+	iss >> level;
+	if(iss.fail() || level<0 || level>15 ){
 		//
 		// (1) Unable to convert data string to integer, or
 		// (2) integer value is out of range
