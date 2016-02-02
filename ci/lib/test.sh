@@ -115,7 +115,8 @@ INPUT_DIR=$MYBASE/ci/testdata
 MADELINE=$MYBASE/src/madeline2
 
 if [[ ! -x $MADELINE ]]; then
-  cmake . && make
+  cmake . || exit 1
+  make || exit 1
 fi
 
 [[ -d $OUTPUT_DIR ]] || mkdir -p $OUTPUT_DIR
