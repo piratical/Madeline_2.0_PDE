@@ -12,7 +12,7 @@
 #include "PedigreeSet.h"
 #include "Data.h"
 #include "DrawingMetrics.h"
-#include "utility.h"
+#include "Utility.h"
 #include "VT100.h"
 
 int main( int argc, char *argv[] ){
@@ -110,7 +110,7 @@ int main( int argc, char *argv[] ){
 		//
 		if(clp.hasSwitchSet("--Labels")){
 			std::string labelString = clp.getSwitchArgument("--Labels",1);
-			showColumns = split(labelString);
+			showColumns = utility::split(labelString);
 		}
 		
 		//

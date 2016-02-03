@@ -41,7 +41,7 @@
 #include "LabelLegend.h"
 #include "IconLegend.h"
 #include "SVG.h"
-#include "utility.h"
+//#include "Utility.h"
 
 #include "DrawingLabelManager.h"
 

@@ -25,7 +25,7 @@
 //
 
 #include "DataColumn.h"
-#include "utility.h"
+#include "Utility.h"
 
 #include <iostream>
 
@@ -391,7 +391,7 @@ std::string DataColumn::getColumnTypeAsString(void) const{
 ///
 std::string DataColumn::getCaseInvariantName( void ) const{
 	
-	return stringToUpper(_name);
+	return utility::stringToUpper(_name);
 	
 }
 

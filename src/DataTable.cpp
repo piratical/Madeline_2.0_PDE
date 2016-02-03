@@ -29,12 +29,12 @@
 #include "RandomGenerator.h"
 #include "ColumnClassifier.h"
 #include "RandomSampleSizes.h"
+#include "Utility.h"
 
 #include <iostream>
 #include <iomanip>
 #include <cctype>
 
-#include "utility.h"
 
 ///////////////////////////////////
 //
@@ -327,7 +327,7 @@ void DataTable::_determineTableType(const std::vector<std::string> *pTitles) {
 	for(unsigned i = 0; i < _columns ; i++)
 	{
 		
-		std::string tempString = stringToUpper(titles[i]);
+		std::string tempString = utility::stringToUpper(titles[i]);
 		
 		if(tempString == labels.FamilyIdField)
 		{
@@ -760,7 +760,7 @@ DataColumn *DataTable::getColumn( unsigned ordinal ) const{
 ///
 DataColumn *DataTable::getColumn(const std::string &name ) const{
 	
-	DataColumn* tempdc = new DataColumn(stringToUpper(name));
+	DataColumn* tempdc = new DataColumn(utility::stringToUpper(name));
 	std::set<DataColumn *,ltstr>::const_iterator p=_columnSet.find(tempdc);
 	if(p != _columnSet.end()){
 		delete tempdc;
@@ -789,7 +789,7 @@ void DataTable::deleteFrontColumn() {
 ///
 bool DataTable::columnExists(const std::string &name) const{
 	
-	DataColumn* tempdc = new DataColumn(stringToUpper(name));
+	DataColumn* tempdc = new DataColumn(utility::stringToUpper(name));
 	
 	std::set<DataColumn *,ltstr>::const_iterator p=_columnSet.find(tempdc);
 	
@@ -811,7 +811,7 @@ void DataTable::toggleColumnsForPedigree(const std::vector<std::string> &columns
 	_labelColumns.clear();
 	for(unsigned i=0;i<columns.size();i++){
 		if(columnExists(columns[i])){
-			DataColumn* dc = getColumn(stringToUpper(columns[i]).c_str());
+			DataColumn* dc = getColumn(utility::stringToUpper(columns[i]).c_str());
 			dc->setShowOnPedigree(true);
 			_labelColumns.push_back(dc->getOrdinal());
 		}else{

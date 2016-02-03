@@ -27,7 +27,7 @@
 // Donor.cpp
 //
 #include "Donor.h"
-#include "utility.h"
+#include "Utility.h"
 
 std::map<std::string,Donor::DONOR_TYPE> Donor::_lookupTable;
 DonorMapLoader DonorMapLoader::donorMapLoader;
@@ -39,7 +39,7 @@ std::string Donor::englishString[5]={".","sperm donor","ovum donor","sperm and o
 //
 void Donor::set(const std::string &value){
 	
-	std::string findMe=stringToUpper(value);
+	std::string findMe=utility::stringToUpper(value);
 	Data::trim(findMe);
 	
 	std::map<std::string,DONOR_TYPE>::const_iterator iter = _lookupTable.find(findMe);

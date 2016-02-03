@@ -10,7 +10,7 @@
 #include "DescentTree.h"
 #include "LabelSet.h"
 #include "Exception.h"
-#include "utility.h"
+#include "Utility.h"
 #include "Grid.h"
 
 

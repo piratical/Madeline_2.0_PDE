@@ -36,6 +36,10 @@
 // Required for math definitions like TWO_PI, etc:
 //
 #include "Number.h"
+//
+// a few utility functions in namespace utility:
+//
+#include "Utility.h"
 
 //
 // We include limits.h to set up
@@ -1877,26 +1881,51 @@ void DrawingCanvas::iconQuadrantFill( double x, double y, Individual *pIndividua
 	}
 	std::string label;
 	std::string svalue = data->get();
-	std::istringstream iss(svalue);
+	//
+	// level will contain the value:
+	//
 	int level;
-	iss >> level;
-	if(iss.fail() || level<0 || level>15 ){
+	//
+	// Check for binary pattern like "0101" or "0000" or "1001":
+	//
+	if(svalue.length()==4 && utility::looksLikeABinaryPattern(svalue)){
 		//
-		// (1) Unable to convert data string to integer, or
-		// (2) integer value is out of range
+		// Get value of binary pattern. It cannot be out
+		// of range because we already limit svalue to a length
+		// of four binary digits:
 		//
-		double lineSpacing,xAdvance,yMinimum,yMaximum;
-		_lasiWrapper.getDimensions(svalue,&lineSpacing,&xAdvance,&yMinimum,&yMaximum);
-		y+= 0.5*(yMaximum-yMinimum);
-		drawIconText(x,y,svalue,"blackInkLetter_1");
-		_body << "</g>\n";
-		return;
+		level = utility::binaryPatternToInteger(svalue);
+		
+	}else{
+		//
+		// See if it is an integer value
+		//
+		std::istringstream iss(svalue);
+		iss >> level;
+		if(iss.fail() || level<0 || level>15 ){
+			//
+			// (1) Unable to convert data string to integer, or
+			// (2) integer value is out of range
+			//
+			// ... in which case we just print the svalue directly
+			//     without trying to interpret it as a shading pattern:
+			//
+			double lineSpacing,xAdvance,yMinimum,yMaximum;
+			_lasiWrapper.getDimensions(svalue,&lineSpacing,&xAdvance,&yMinimum,&yMaximum);
+			y+= 0.5*(yMaximum-yMinimum);
+			drawIconText(x,y,svalue,"blackInkLetter_1");
+			_body << "</g>\n";
+			return;
+		}
 	}
 	
 	//
+	// We get here when the value is between 0-15 and can be represented as a quadrant
+	// shading pattern.
+	//
 	// Fill arc for each quadrant based on level:
 	// Note: Madeline's "arc()" method doesn't use the standard counter-clockwise quadrants
-	// starting at 0, so the order of the 4 "if" statements below may appear mixed up but 
+	// starting at 0, so the order of the 4 "if" statements below may appear mixed up but
 	// this actually results in shading of the quadrants according to standard notation:
 	//
 	if(level & 0x02 ){

@@ -123,6 +123,7 @@ SET( SOURCES
 	Utf8String.h
 	Utf8String.cpp
 	Utf8String.h
+	Utility.cpp
 	
 	VT100.cpp
 	

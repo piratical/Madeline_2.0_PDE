@@ -30,7 +30,7 @@
 // #include <iostream>
 
 #include "ColumnClassifier.h"
-#include "utility.h"
+#include "Utility.h"
 #include <string>
 
 ///////////////////////////////////
