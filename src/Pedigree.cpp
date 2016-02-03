@@ -1565,10 +1565,95 @@ void Pedigree::_drawHorizontalConnectorLine(double y,double x1,double x2,bool is
 	
 }
 
-///
-/// _drawVerticalConnectorLine: Draws vertical consanguinous and external connections.
-///
-void Pedigree::_drawVerticalConnectorLine(double startY,double endY,double startX,double endX,bool isConsanguinous,DrawingCanvas& dc,double multipleSpouseOffset,bool singleChild){
+//
+// _drawSteppedConnectorLine: 
+//
+// Draws a stepped connecting line 
+// between consanguinous or externally-connected
+// mated pairs.
+// 
+// Stepped connecting lines look like this:
+//    ___       ___
+// __|      or     |___
+//
+// "stepUp" or "stepDown"
+//
+void Pedigree::_drawSteppedConnectorLine(double startY,double endY,double startX,double endX,bool isConsanguinous,DrawingCanvas& dc,double multipleSpouseOffset,bool singleChild){
+	
+	/////////////////////////////////////////////////////
+	//
+	// DEBUG ONLY: Draw a direct diagonal line just to
+	//             see where the connections are going:
+	//
+	//dc.drawLine(startX,startY,endX,endY);
+	//
+	/////////////////////////////////////////////////////
+	
+	//
+	// This is calculation for the
+	// x midpoint is too simplistic
+	// but let it go for now:
+	//
+	double midX = 0.5*(startX+endX);
+	//
+	// Either we are stepping up or stepping down:
+	//
+	bool stepDown=false;
+	//
+	// There are four cases but reducible to
+	// just two if we swap points in the latter
+	// two cases:
+	//
+	if(startX<endX && startY<endY){
+		// left-to-right step down, no swap:
+		stepDown=true;
+	}else if(startX<endX && startY>endY){
+		// left-to-right step up, no swap:
+		stepDown=false;
+	}else if(startX>endX && startY>endY){
+		// This is a left-to-right step down after swapping points:
+		double temp;
+		temp=endX; endX=startX; startX=temp;
+		temp=endY; endY=startY; startY=temp;
+		stepDown=true;
+	}else if(startX>endX && startY<endY){
+		// This is a left-to-right step up after swapping points
+		double temp;
+		temp=endX; endX=startX; startX=temp;
+		temp=endY; endY=startY; startY=temp;
+		stepDown=false;
+	}
+	
+	if(isConsanguinous){
+		if(stepDown){
+			// left to right step down:
+			dc.drawHorizontalDoubleLine(startY,startX,midX,'|','/');
+			dc.drawVerticalDoubleLine(midX,startY,endY,'/','/');
+			dc.drawHorizontalDoubleLine(endY,midX,endX,'/','|');
+		}else{
+			// left to right step up:
+			dc.drawHorizontalDoubleLine(startY,startX,midX,'|','\\');
+			dc.drawVerticalDoubleLine(midX,startY,endY,'\\','\\');
+			dc.drawHorizontalDoubleLine(endY,midX,endX,'\\','|');
+		}
+	}else{
+		if(stepDown){
+			// left to right step down:
+			dc.drawHorizontalLine(startY,startX,midX);
+			dc.drawVerticalLine(midX,startY,endY);
+			dc.drawHorizontalLine(endY,midX,endX);
+		}else{
+			// left to right step up:
+			dc.drawHorizontalLine(startY,startX,midX);
+			dc.drawVerticalLine(midX,startY,endY);
+			dc.drawHorizontalLine(endY,midX,endX);
+		}
+	}
+	
+	//
+	// TEMPORARY RETURN POSITION:
+	//
+	return;
 	
 	double verticalTick = DrawingMetrics::getVerticalTick();
 	double radius = DrawingMetrics::getIconRadius();
@@ -1609,9 +1694,9 @@ void Pedigree::_drawVerticalConnectorLine(double startY,double endY,double start
 }
 
 //
-// _drawConsanguinousConnectors:
+// _drawConsanguinousAndExternalConnectors:
 //
-void Pedigree::_drawConsanguinousConnectors(DrawingCanvas& dc){
+void Pedigree::_drawConsanguinousAndExternalConnectors(DrawingCanvas& dc){
 	
 	std::set<NuclearFamily*,compareNuclearFamily>::iterator nfIt = _nuclearFamilies.begin();
 	Individual* mother,*father;
@@ -1651,8 +1736,8 @@ void Pedigree::_drawConsanguinousConnectors(DrawingCanvas& dc){
 							bool singleChild=false;
 							std::vector<std::string> temp = father->getMother()->getChildrenIds(father->getFather());
 							if(temp.size() == 1) singleChild = true;
-							// Draw a vertical line
-							_drawVerticalConnectorLine(mother->getY(),father->getY(),mother->getX()-iconInterval+radius,father->getX()+radius,(*nfIt)->isConsanguinous(),dc,0.0,singleChild);
+							// Draw a stepped connector line
+							_drawSteppedConnectorLine(mother->getY(),father->getY(),mother->getX()-iconInterval+radius,father->getX()+radius,(*nfIt)->isConsanguinous(),dc,0.0,singleChild);
 						}
 					}else{
 						if(_hasIndividualAtPosition(father,mother)){
@@ -1666,7 +1751,7 @@ void Pedigree::_drawConsanguinousConnectors(DrawingCanvas& dc){
 								bool singleChild=false;
 								std::vector<std::string> temp = father->getMother()->getChildrenIds(father->getFather());
 								if(temp.size() == 1) singleChild = true;
-								_drawVerticalConnectorLine(father->getY(),mother->getY(),father->getX()+radius,mother->getX()-iconInterval+radius,(*nfIt)->isConsanguinous(),dc,0.0,singleChild);
+								_drawSteppedConnectorLine(father->getY(),mother->getY(),father->getX()+radius,mother->getX()-iconInterval+radius,(*nfIt)->isConsanguinous(),dc,0.0,singleChild);
 							}
 						}
 					}
@@ -1685,7 +1770,7 @@ void Pedigree::_drawConsanguinousConnectors(DrawingCanvas& dc){
 						double multipleSpouseOffset = 0.0;
 						if(father->getNumberOfNuclearFamilies() > 1)
 							multipleSpouseOffset = father->getLeftWidth()*horizontalInterval - horizontalInterval;
-						_drawVerticalConnectorLine(mother->getY(),father->getY(),mother->getX()+iconInterval-radius,father->getX()-radius,(*nfIt)->isConsanguinous(),dc,multipleSpouseOffset);
+						_drawSteppedConnectorLine(mother->getY(),father->getY(),mother->getX()+iconInterval-radius,father->getX()-radius,(*nfIt)->isConsanguinous(),dc,multipleSpouseOffset);
 					}
 				}else{
 					// Check if the father is the only child
@@ -1701,7 +1786,7 @@ void Pedigree::_drawConsanguinousConnectors(DrawingCanvas& dc){
 								multipleSpouseOffset = father->getLeftWidth()*horizontalInterval - horizontalInterval;
 								if(multipleSpouseOffset == 0) multipleSpouseOffset = iconInterval;
 							}
-							_drawVerticalConnectorLine(mother->getY(),father->getY(),mother->getX()+iconInterval-radius,father->getX()-radius,(*nfIt)->isConsanguinous(),dc,multipleSpouseOffset);
+							_drawSteppedConnectorLine(mother->getY(),father->getY(),mother->getX()+iconInterval-radius,father->getX()-radius,(*nfIt)->isConsanguinous(),dc,multipleSpouseOffset);
 						}
 					}else
 					// Cases in which the father has <= 3NFs and the first NF has a totalWidth > 4 is not detected by the previous case;
@@ -1713,7 +1798,7 @@ void Pedigree::_drawConsanguinousConnectors(DrawingCanvas& dc){
 							_drawHorizontalConnectorLine(mother->getY(),mother->getX()+(*nfIt)->getRightWidth()*horizontalInterval-radius,father->getX()-radius,(*nfIt)->isConsanguinous(),dc);
 						}else{
 							double multipleSpouseOffset = father->getLeftWidth()*horizontalInterval-horizontalInterval;
-							_drawVerticalConnectorLine(mother->getY(),father->getY(),mother->getX()+horizontalInterval,father->getX()-radius,(*nfIt)->isConsanguinous(),dc,multipleSpouseOffset);
+							_drawSteppedConnectorLine(mother->getY(),father->getY(),mother->getX()+horizontalInterval,father->getX()-radius,(*nfIt)->isConsanguinous(),dc,multipleSpouseOffset);
 						}
 					}else{
 						if(_hasIndividualAtPosition(mother,father)){
@@ -1723,7 +1808,7 @@ void Pedigree::_drawConsanguinousConnectors(DrawingCanvas& dc){
 							if(mother->getY() == father->getY()){
 								_drawHorizontalConnectorLine(mother->getY(),mother->getX()+iconInterval-radius,father->getX()-radius,(*nfIt)->isConsanguinous(),dc); 
 							}else{
-								_drawVerticalConnectorLine(mother->getY(),father->getY(),mother->getX()+iconInterval-radius,father->getX()-radius,(*nfIt)->isConsanguinous(),dc);
+								_drawSteppedConnectorLine(mother->getY(),father->getY(),mother->getX()+iconInterval-radius,father->getX()-radius,(*nfIt)->isConsanguinous(),dc);
 							}
 						}
 					}
@@ -1761,11 +1846,11 @@ void Pedigree::_drawConsanguinousConnectors(DrawingCanvas& dc){
 								_drawHorizontalConnectorLine(mother->getY(),mother->getX()+rw*horizontalInterval+iconInterval-radius,father->getX()-radius,(*nfIt)->isConsanguinous(),dc);
 							}
 						}else{
-							// Vertical line
+							// Stepped connector line:
 							if(i==0){
-								_drawVerticalConnectorLine(mother->getY(),father->getY(),mother->getX()+iconInterval-radius,father->getX()-radius,(*nfIt)->isConsanguinous(),dc);
+								_drawSteppedConnectorLine(mother->getY(),father->getY(),mother->getX()+iconInterval-radius,father->getX()-radius,(*nfIt)->isConsanguinous(),dc);
 							}else{
-								_drawVerticalConnectorLine(mother->getY(),father->getY(),mother->getX()+rw*horizontalInterval+iconInterval-radius,father->getX()-radius,(*nfIt)->isConsanguinous(),dc);
+								_drawSteppedConnectorLine(mother->getY(),father->getY(),mother->getX()+rw*horizontalInterval+iconInterval-radius,father->getX()-radius,(*nfIt)->isConsanguinous(),dc);
 							}
 						}
 					}else{
@@ -1784,8 +1869,8 @@ void Pedigree::_drawConsanguinousConnectors(DrawingCanvas& dc){
 							// Horizontal line
 							_drawHorizontalConnectorLine(mother->getY(),father->getX()+radius,mother->getX()-(lw)*horizontalInterval+radius,(*nfIt)->isConsanguinous(),dc);
 						}else{
-							// Vertical line
-							_drawVerticalConnectorLine(mother->getY(),father->getY(),father->getX()+iconInterval+radius,father->getX()+radius,(*nfIt)->isConsanguinous(),dc);
+							// Stepped connector line
+							_drawSteppedConnectorLine(mother->getY(),father->getY(),father->getX()+iconInterval+radius,father->getX()+radius,(*nfIt)->isConsanguinous(),dc);
 						}
 					
 					}else{
@@ -2364,7 +2449,7 @@ void Pedigree::draw(const LabelSet* labelSet){
 	
 	// Start the connectors on a new layer
 	dc.startLayer();
-	_drawConsanguinousConnectors(dc);
+	_drawConsanguinousAndExternalConnectors(dc);
 	// End the connectors layer
 	dc.endLayer();
 	

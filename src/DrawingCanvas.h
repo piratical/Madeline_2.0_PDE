@@ -22,7 +22,7 @@
 //
 // 2006.03.01.RK.
 // 2016.01.07.ET: Revised
-//
+// 2016.02.03.ET: Revised
 
 //
 // DrawingCanvas.h
@@ -133,7 +133,9 @@ public:
 	void drawTitle(const std::string title);
 	void drawLine(double x1,double y1,double x2,double y2);
 	void drawHorizontalLine(double y,double x1,double x2);
+	void drawHorizontalDoubleLine(double y,double x1,double x2,char startMiter='|',char endMiter='|');
 	void drawVerticalLine(double x,double y1,double y2,const std::string & className=std::string(""), const std::string & id=std::string(""));
+	void drawVerticalDoubleLine(double x,double y1,double y2,char startMiter='-',char endMiter='-');
 	void drawPolyline(const std::string points,const std::string& id=std::string(""),const std::string& myclass=std::string(""));
 	void drawText(double x,double y,std::string text,std::string  myclass="");
 	void drawIconText(double x,double y,std::string text,std::string  myclass="");

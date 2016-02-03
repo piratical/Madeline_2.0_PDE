@@ -1005,20 +1005,35 @@ void NuclearFamily::draw(Individual* startIndividual,DrawingCanvas& dc,double st
 		
 	}else if(children[0]->getNumberOfNuclearFamilies() == 1){
 		
+		// 2016.02.03.ET DEBUG
+		//std::cout << "Indv. " << children[0]->getId()
+		//          << " " << children[0]->getGender().get() << " "
+		//          << " isConsanguinous = " << children[0]->isConsanguinous()
+		//          << " hasExternalConnection = " << children[0]->hasExternalConnection()
+		//          << std::endl;
 		//
 		// The cases where the left most
 		// child has a single Nuclear family have to be dealt differently
 		//
 		// Adjust currentX for a NF with a single child who is married
-		// so that he gets drawn just under the first parent instead of the center
+		// so that he or she gets drawn just under the first parent 
+		// (i.e., the parent on the left) instead of in the center between
+		// the two parents:
+		//
 		if(children.size() == 1 ){
 			if((!children[0]->isConsanguinous() && !children[0]->hasExternalConnection()) || children[0]->getGender().getEnum()==Gender::FEMALE){
 				currentX -= horizontalInterval;
 			}
+			// 2016.02.03.ET: This is one option but not a pretty one so has been vetoed:
+			//if(_isMaleWithLoopFlags(children[0],0)){
+			//	// 2016.02.03.ET: Needs refactoring but see if this is correct:
+			//	//currentX -= horizontalInterval;
+			//}
 		}else{
 			if(_isMaleWithLoopFlags(children[0],0)){
-				if(children.size() == 1);
-				else{
+				if(children.size() == 1){
+					// do nothing special ...
+				}else{
 					currentX -= horizontalInterval * (_width.getLeft() - 1);
 				}
 			}else{
@@ -1281,11 +1296,11 @@ void NuclearFamily::draw(Individual* startIndividual,DrawingCanvas& dc,double st
 	
 }
 
-///////////////////////////////////
+/////////////////////////////////////////
 //
 // drawConnectionsBetweenParentalPair()
 //
-///////////////////////////////////
+/////////////////////////////////////////
 void NuclearFamily::drawConnectionsBetweenParentalPair(DrawingCanvas &dc,Individual *startIndividual,const std::vector<Individual*> &children, double currentX,double currentY){
 	//
 	// 

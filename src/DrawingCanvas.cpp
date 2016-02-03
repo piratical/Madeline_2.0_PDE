@@ -747,6 +747,66 @@ void DrawingCanvas::drawHorizontalLine(double y, double x1, double x2){
 }
 
 //
+// drawHorizontalDoubleLine:
+//
+// startMiter and endMiter default to '|'
+//
+void DrawingCanvas::drawHorizontalDoubleLine(double y,double x1,double x2,char startMiter,char endMiter){
+	//
+	//  Graphic view of the x assignments:
+	//  
+	//  x3 .____________. x4
+	//  x1 .            . x2
+	//  x5 .____________. x6
+	//
+	//  x3,x4,x5 and x6 change depending on the start and end miters: '|', '/', or '\'
+	//
+	
+	// Swap if x1 and x2 are backward so we 
+	// are always drawing from right to left:
+	if(x1>x2){
+		double temp=x1;
+		x1=x2; x2=temp;
+	}
+	
+	double offset = 0.5 * DrawingMetrics::getVerticalTick();
+	double x3,x4,x5,x6;
+	
+	switch(startMiter){
+	case '/':
+		x3=x1+offset;
+		x5=x1-offset;
+		break;
+	case '\\':
+		x3=x1-offset;
+		x5=x1+offset;
+		break;
+	case '|':
+	default:
+		x3=x5=x1;
+		break;
+	}
+	
+	switch(endMiter){
+	case '/':
+		x4=x2+offset;
+		x6=x2-offset;
+		break;
+	case '\\':
+		x4=x2-offset;
+		x6=x2+offset;
+		break;
+	case '|':
+	default:
+		x4=x6=x2;
+		break;
+	}
+	drawHorizontalLine(y-offset,x3,x4);
+	drawHorizontalLine(y+offset,x5,x6);
+	
+}
+
+//
 // drawVerticalLine:
 //
 void DrawingCanvas::drawVerticalLine(double x, double y1, double y2,const std::string & className, const std::string & id){
@@ -755,6 +815,74 @@ void DrawingCanvas::drawVerticalLine(double x, double y1, double y2,const std::s
 	else            _svg.drawVerticalLine(_layer,x,y1,y2,className,id);
 	
 }
+
+//
+// drawVerticalDoubleLine:
+//
+// startMiter and endMiter default to '-'
+//
+void DrawingCanvas::drawVerticalDoubleLine(double x,double y1,double y2,char startMiter,char endMiter){
+	//
+	//  Graphic view of the y assignments:
+	//  
+	//  y5 y1 y3
+	//   .  .  .
+	//   |     |
+	//   |     |
+	//   |     |
+	//   |     |
+	//   |     |
+	//   |     |
+	//   .  .  .
+	//  y6 y2 y4
+	//
+	//  y3,y4,y5 and y6 change depending on the start and end miters: '-', '/', or '\'
+	//
+	
+	// Swap if y1 and y2 are backward so we 
+	// are always drawing from top to bottom:
+	if(y1>y2){
+		double temp=y1;
+		y1=y2; y2=temp;
+	}
+	
+	double offset = 0.5 * DrawingMetrics::getVerticalTick();
+	double y3,y4,y5,y6;
+	
+	switch(startMiter){
+	case '/':
+		y3=y1-offset;
+		y5=y1+offset;
+		break;
+	case '\\':
+		y3=y1+offset;
+		y5=y1-offset;
+		break;
+	case '-':
+	default:
+		y3=y5=y1;
+		break;
+	}
+	
+	switch(endMiter){
+	case '/':
+		y4=y2-offset;
+		y6=y2+offset;
+		break;
+	case '\\':
+		y4=y2+offset;
+		y6=y2-offset;
+		break;
+	case '-':
+	default:
+		y4=y6=y2;
+		break;
+	}
+	drawVerticalLine(x+offset,y3,y4);
+	drawVerticalLine(x-offset,y5,y6);
+	
+}
+
 
 //
 // drawText:
