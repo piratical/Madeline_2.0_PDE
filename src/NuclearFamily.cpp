@@ -668,7 +668,7 @@ void NuclearFamily::calculateWidth(bool classicalOrder){
 				}
 			}
 		}else{
-			//std::cout << "ISOLATE:: " << children[i]->getId() << std::endl;
+			//std::cout << ">>> CALC WIDTH ISOLATE:: " << children[i]->getId() << std::endl;
 			totalWidth+=2;
 		}
 		++i;
@@ -818,14 +818,38 @@ void NuclearFamily::calculateWidth(bool classicalOrder){
 	_width.setLeft(leftWidth);
 	_width.setRight(rightWidth);
 	
+	//
+	// 2016.02.04.ET ADDENDUM:
+	// Normally having the left, right, and totalWidth set at the NuclearFamily
+	// level is enough. But for certain cases where joining across descent trees
+	// where multiple spouses might be involved, it is preferable to check directly
+	// the widths of the parents, especially their left and right widths. 
+	// So, in order to do that generically, we need to
+	// fix up NFs where none of the children are married and so parental width is
+	// left hanging at less than the total NF width:
+	//
+	if( _father->getTotalWidth() < _width.getTotal()){
+		_father->setLeftWidth( _width.getLeft());
+		_father->setTotalWidth( _width.getTotal());
+		_father->setRightWidth( _width.getRight());
+	}
+	if( _mother->getTotalWidth() < _width.getTotal()){
+		_mother->setLeftWidth( _width.getLeft());
+		_mother->setTotalWidth( _width.getTotal());
+		_mother->setRightWidth( _width.getRight());
+	}
+	
 	// DEBUG:
 	if(Debug::DEBUG){
-		std::cout << std::endl;
-		std::cout << "***WIDTH calculation of NF***" << std::endl;
+		std::cout << "#################################" << std::endl;
+		std::cout << ">>> ***WIDTH calculation of NF***" << std::endl;
 		display();
-		std::cout << "Left width for NF is  :" << leftWidth << std::endl;
-		std::cout << "Right width for NF is :" << rightWidth << std::endl;
-		std::cout << "Total width for NF is :" << totalWidth << std::endl;
+		std::cout << ">>> Left width for NF is  :" << leftWidth << std::endl;
+		std::cout << ">>> Right width for NF is :" << rightWidth << std::endl;
+		std::cout << ">>> Total width for NF is :" << totalWidth << std::endl;
+		std::cout << ">>> FATHER widths are     :" << "L=" << getFather()->getLeftWidth() << " T=" << getFather()->getTotalWidth() << " R=" << getFather()->getRightWidth() << std::endl;
+		std::cout << ">>> MOTHER widths are     :" << "L=" << getMother()->getLeftWidth() << " T=" << getMother()->getTotalWidth() << " R=" << getMother()->getRightWidth() << std::endl;
+		std::cout << "#################################" << std::endl;
 	}
 	
 	
