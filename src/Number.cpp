@@ -1795,8 +1795,11 @@ inline double Number::_theta_To_Haldane_cM(double r) const{
 //
 inline double Number::_kosambi_cM_To_Theta(double m) const{
 	
-	register double four_m;
-	register double n;
+	// register double four_m;
+	// register double n;
+	
+	double four_m;
+	double n;
 	
 	// Remember that m is in centiMorgans, so we need to
 	// convert to Morgans and then multiply by 4:
@@ -1815,7 +1818,9 @@ inline double Number::_kosambi_cM_To_Theta(double m) const{
 //
 inline double Number::_theta_To_Kosambi_cM(double r) const{
 	
-	register double two_r;
+	//register double two_r;
+	
+	double two_r;
 	
 	// Here again we multiply by 100 to get centiMorgans
 	// instead of Morgans:

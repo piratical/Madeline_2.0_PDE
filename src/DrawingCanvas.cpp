@@ -74,30 +74,28 @@ void DrawingCanvas::_setHeader(){
 	_header << " <svg version=\"1.1\"  id=\"svgDC\" xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=\"http://www.w3.org/1999/xlink\" ";
 	
 	//
-	// Viewbox only:
+	// Set HEIGHT and WIDTH based on actual x and y extents:
 	//
-	//_header << " viewBox=\"0,0," + width.str() + "," + height.str() + "\"  onload=\"init()\" >\n";
+	// However, don't include HEIGHT and WIDTH if the SCALABLE flag is set
+	// (in which case only VIEWBOX will be included (below):
+	//
+	if(DrawingMetrics::getScalableState()==false){
+		_header << " width=\"" << (int) getXRange() << "\" height=\"" << (int) getYRange() << "\" ";
+	}
 	
 	//
-	// Based on media width and height only:
-	//
-	//_header << " width=\"" + width.str() + "\" height=\"" + height.str() + "\"";
+	// Add the VIEWBOX attribute, again based on actual x and y extents:
+	_header << " viewBox=\"0 0 " << (int) getXRange() << " " << (int) getYRange() << "\" ";
 	
 	//
-	// Based on actual x and y extents:
+	// Add javascript stub:
 	//
-	_header << " width=\""; 
-	_header << getXRange();
-	_header << "\" height=\"";
-	_header << getYRange();
-	_header << "\" ";
-	
-	_header << " onload=\"init()\" >\n";
+	_header << " onload=\"init()\" >" << std::endl;
 	
 	//
 	// Start of <defs> section:
 	//
-	_header << " <defs>\n";
+	_header << " <defs>" << std::endl;
 	
 	//
 	// Append the CSS:
@@ -116,7 +114,7 @@ void DrawingCanvas::_setHeader(){
 	//
 	// End defs section:
 	//
-	_header << " </defs>\n";
+	_header << " </defs>" << std::endl;
 	
 	// Set up the group tag for the whole document
 	

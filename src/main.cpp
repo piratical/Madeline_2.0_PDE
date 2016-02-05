@@ -19,9 +19,12 @@ int main( int argc, char *argv[] ){
 	
 	std::ifstream labelreader;
 	std::vector<std::string> showColumns; // vector containing field labels that need to be displayed on the pedigree
+	
 	CLP clp;
+	
 	// ABCDEFGH:
 	clp.addSwitch("--bw","-b","Print pedigrees in black and white");
+	clp.addSwitch("--collapsed","-k","“Collapse” multiple individuals into groups (requires “Collapsed” data column)");
 	clp.addSwitch("--color","-c","Print pedigrees in color");
 	clp.addSwitch("--custom-icon-colors","-C","Specify a comma- and semicolon-delimited list of custom icon shading color codes in HTML/CSS hex format.",1);
 	clp.addSwitch("--debug","-d","Print run-time progress messages");
@@ -29,7 +32,6 @@ int main( int argc, char *argv[] ){
 	clp.addSwitch("--font","-f","Font to be used for the display of Pedigree labels",1);
 	clp.addSwitch("--font-size","-z","Font size to be used for the display of Pedigree labels",1);
 	clp.addSwitch("--help","-h","Print this help and exit");
-	clp.addSwitch("--collapsed","-k","“Collapse” multiple individuals into groups (requires “Collapsed” data column)");
 	// IJKLMNOP:
 	clp.addSwitch("--labels","-l","Path to the file that has a list of labels to be displayed on the Pedigree",1);
 	clp.addSwitch("--Labels","-L","Specify labels to be displayed on the Pedigree using a single string containing space-delimited labels",1);
@@ -42,8 +44,14 @@ int main( int argc, char *argv[] ){
 	// QRSTUVWXYZ:
 	clp.addSwitch("--quadrantshading","-q","Use the quadrant shading method to indicate categorical levels on icons");
 	clp.addSwitch("--sort","-s","Field based on which siblings are sorted",1);
+	clp.addSwitch("--scalable","-S","Make the SVG output scalable");
 	clp.addSwitch("--version","-v","Print version and exit");
 	clp.addUsage("madeline2 [option]... [file]...\n\nIf input file is remote, specify the file\nname starting with 'http://' or 'https://'.\nTo retrieve the data from a mysql database use\n'mysql://[host:port/]username:passwd@database:table'");
+	
+	// Print statement:
+	std::cout << vt100::startBlue << "┌─────────────────────────────┐" << vt100::stopColor << std::endl;
+	std::cout << vt100::startBlue << "│ Welcome to Madeline 2.0 PDE │" << vt100::stopColor << std::endl;
+	std::cout << vt100::startBlue << "└─────────────────────────────┘" << vt100::stopColor << std::endl;
 	
 	if(clp.parse(argc,argv)){
 		// No error, process the switches
@@ -52,7 +60,7 @@ int main( int argc, char *argv[] ){
 			return 0;
 		}
 		if(clp.hasSwitchSet("--version")){
-			Version ver("MiniMadeline","1");
+			Version ver("Madeline 2.0 PDE","1");
 			ver.printVersion();
 			return 0;
 		}
@@ -80,6 +88,15 @@ int main( int argc, char *argv[] ){
 		//
 		if( clp.hasSwitchSet("--embedded")){
 			DrawingMetrics::setEmbeddedState(true);
+		}
+		
+		//
+		// Set the SVG to not print height and width attributes
+		// (i.e., only include the viewBox attribute)
+		//
+		if(clp.hasSwitchSet("--scalable")){
+			DrawingMetrics::setScalableState(true);
+			std::cout << vt100::startGreen << "NOTE:" << vt100::stopColor << "SVG will be scalable via VIEWBOX without HEIGHT or WIDTH attributes." << std::endl;
 		}
 		
 		//
@@ -243,6 +260,8 @@ int main( int argc, char *argv[] ){
 		if( clp.hasSwitchSet("--collapsed")){
 			DrawingMetrics::setCollapsible(true);
 		}
+		
+		
 		///////////////////////
 		//
 		// MAIN PROCESSING:

@@ -30,6 +30,7 @@
 #include "ColumnClassifier.h"
 #include "RandomSampleSizes.h"
 #include "Utility.h"
+#include "VT100.h"
 
 #include <iostream>
 #include <iomanip>
@@ -1067,7 +1068,7 @@ void DataTable::_setColorSeriesStack(void){
 	
 	if(_iconColumns.size()){
 		std::cout << "----------------------------------------------------------------" << std::endl;
-		std::cout << "\x1b[1;34m" << " ICON COLUMNS                                        TOTAL: " << _iconColumns.size() << "\x1b[0m" << std::endl;
+		std::cout << vt100::startBlue << " ICON COLUMNS                                        TOTAL: " << _iconColumns.size() << vt100::stopColor << std::endl;
 		std::cout << "----------------------------------------------------------------" << std::endl;
 		//
 		// Passing true to the ColorSeriesStack 

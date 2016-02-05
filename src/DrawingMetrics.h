@@ -144,6 +144,7 @@ private:
 	// State flags which control output:
 	//
 	static bool _isEmbedded;
+	static bool _isScalable;
 	static bool _displayBirthOrder;
 	static bool _blackAndWhite;
 	static bool _color;
@@ -215,6 +216,7 @@ public:
 	static std::string getFontSizeUnit();
 	
 	static bool getEmbeddedState();
+	static bool getScalableState();
 	static std::string getDrawingFileNamePrefix();
 	static bool getHasOnlyOnePedigreeState();
 	static bool getDisplayBirthOrder();
@@ -246,6 +248,7 @@ public:
 	static double getYMinimum();
 	
 	static void setEmbeddedState(bool isEmbedded);
+	static void setScalableState(bool isScalable);
 	static void setDrawingFileNamePrefix(const std::string &prefix);
 	static void setHasOnlyOnePedigreeState(bool hasOnlyOne);
 	static void setDisplayBirthOrder(bool value);
@@ -326,6 +329,7 @@ public:
 		// State flags:
 		//
 		DrawingMetrics::_isEmbedded=false;
+		DrawingMetrics::_isScalable=false;
 		DrawingMetrics::_displayBirthOrder=false;
 		//
 		// These two override the automatic settings:

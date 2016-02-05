@@ -298,7 +298,10 @@ bool Date::_intersectionIsNotNull(const Date& b) const{
 ///
 bool Date::_hasASCIIDateDelimiter(const char **position){
 	
-	register const char *s=*position;
+	//register const char *s=*position;
+	
+	const char *s=*position;
+	
 	if( *s && (*s=='.' || *s=='/' || *s=='-')){
 		
 		*position+=1;
@@ -323,7 +326,10 @@ bool Date::_hasASCIIDateDelimiter(const char **position){
 ///
 bool Date::_hasApproximationIndicator(const char **position){
 	
-	register const char *s=*position;
+	//register const char *s=*position;
+	
+	const char *s=*position;
+	
 	if( *s && *s=='~'){
 		
 		*position+=1;
@@ -350,9 +356,13 @@ bool Date::_hasApproximationIndicator(const char **position){
 ///
 bool Date::_hasCJKCharacterForYear(const char **position){
 	
-	register const char *s=*position;
-	register const char *t=s+1;
-	register const char *u=s+2;
+	//register const char *s=*position;
+	//register const char *t=s+1;
+	//register const char *u=s+2;
+	
+	const char *s=*position;
+	const char *t=s+1;
+	const char *u=s+2;
 	
 	if( *s && *t && *u && *s=='\xe5' && *t=='\xb9' &&  *u=='\xb4' ){
 		
@@ -379,9 +389,13 @@ bool Date::_hasCJKCharacterForYear(const char **position){
 /// 
 bool Date::_hasCJKCharacterForMonth(const char **position){
 	
-	register const char *s=*position;
-	register const char *t=s+1;
-	register const char *u=s+2;
+	//register const char *s=*position;
+	//register const char *t=s+1;
+	//register const char *u=s+2;
+	
+	const char *s=*position;
+	const char *t=s+1;
+	const char *u=s+2;
 	
 	if( *s && *t && *u && *s=='\xe6' && *t=='\x9c' &&  *u=='\x88' ){
 		
@@ -408,9 +422,13 @@ bool Date::_hasCJKCharacterForMonth(const char **position){
 /// 
 bool Date::_hasCJKCharacterForDay(const char **position){
 	
-	register const char *s=*position;
-	register const char *t=s+1;
-	register const char *u=s+2;
+	//register const char *s=*position;
+	//register const char *t=s+1;
+	//register const char *u=s+2;
+	
+	const char *s=*position;
+	const char *t=s+1;
+	const char *u=s+2;
 	
 	if( *s && *t && *u && *s=='\xe6' && *t=='\x97' &&  *u=='\xa5' ){
 		
@@ -437,9 +455,13 @@ bool Date::_hasCJKCharacterForDay(const char **position){
 // 
 bool Date::_hasCJKCharacterForArrive(const char **position){
 	
-	register const char *s=*position;
-	register const char *t=s+1;
-	register const char *u=s+2;
+	//register const char *s=*position;
+	//register const char *t=s+1;
+	//register const char *u=s+2;
+	
+	const char *s=*position;
+	const char *t=s+1;
+	const char *u=s+2;
 	
 	if( *s && *t && *u && *s=='\xe5' && *t=='\x88' &&  *u=='\xb0' ){
 		
@@ -466,9 +488,14 @@ bool Date::_hasCJKCharacterForArrive(const char **position){
 // 
 bool Date::_hasCJKCharacterForFullStop(const char **position){
 	
-	register const char *s=*position;
-	register const char *t=s+1;
-	register const char *u=s+2;
+	//register const char *s=*position;
+	//register const char *t=s+1;
+	//register const char *u=s+2;
+	
+	
+	const char *s=*position;
+	const char *t=s+1;
+	const char *u=s+2;
 	
 	if( *s && *t && *u && *s=='\xe3' && *t=='\x80' &&  *u=='\x82' ){
 		
@@ -495,9 +522,13 @@ bool Date::_hasCJKCharacterForFullStop(const char **position){
 // 
 bool Date::_hasCJKCharacterForForwardSlash(const char **position){
 	
-	register const char *s=*position;
-	register const char *t=s+1;
-	register const char *u=s+2;
+	//register const char *s=*position;
+	//register const char *t=s+1;
+	//register const char *u=s+2;
+	
+	const char *s=*position;
+	const char *t=s+1;
+	const char *u=s+2;
 	
 	if( *s && *t && *u && *s=='\xef' && *t=='\xbc' &&  *u=='\x8f' ){
 		
@@ -524,9 +555,13 @@ bool Date::_hasCJKCharacterForForwardSlash(const char **position){
 // 
 bool Date::_hasCJKCharacterForDash(const char **position){
 	
-	register const char *s=*position;
-	register const char *t=s+1;
-	register const char *u=s+2;
+	//register const char *s=*position;
+	//register const char *t=s+1;
+	//register const char *u=s+2;
+	
+	const char *s=*position;
+	const char *t=s+1;
+	const char *u=s+2;
 	
 	if( *s && *t && *u && *s=='\xef' && *t=='\xbc' &&  *u=='\x8d' ){
 		
@@ -553,9 +588,13 @@ bool Date::_hasCJKCharacterForDash(const char **position){
 // 
 bool Date::_hasCJKCharacterForOpeningSquareBracket(const char **position){
 	
-	register const char *s=*position;
-	register const char *t=s+1;
-	register const char *u=s+2;
+	//register const char *s=*position;
+	//register const char *t=s+1;
+	//register const char *u=s+2;
+	
+	const char *s=*position;
+	const char *t=s+1;
+	const char *u=s+2;
 	
 	if( *s && *t && *u && *s=='\xef' && *t=='\xbc' &&  *u=='\xbb' ){
 		
@@ -582,9 +621,13 @@ bool Date::_hasCJKCharacterForOpeningSquareBracket(const char **position){
 // 
 bool Date::_hasCJKCharacterForClosingSquareBracket(const char **position){
 	
-	register const char *s=*position;
-	register const char *t=s+1;
-	register const char *u=s+2;
+	//register const char *s=*position;
+	//register const char *t=s+1;
+	//register const char *u=s+2;
+	
+	const char *s=*position;
+	const char *t=s+1;
+	const char *u=s+2;
 	
 	if( *s && *t && *u && *s=='\xef' && *t=='\xbc' &&  *u=='\xbd' ){
 		
@@ -611,9 +654,13 @@ bool Date::_hasCJKCharacterForClosingSquareBracket(const char **position){
 // 
 bool Date::_hasUnicodeRightArrow(const char **position){
 	
-	register const char *s=*position;
-	register const char *t=s+1;
-	register const char *u=s+2;
+	//register const char *s=*position;
+	//register const char *t=s+1;
+	//register const char *u=s+2;
+	
+	const char *s=*position;
+	const char *t=s+1;
+	const char *u=s+2;
 	
 	if( *s && *t && *u && *s=='\xe2' && *t=='\x86' &&  *u=='\x92' ){
 		
@@ -644,9 +691,13 @@ bool Date::_hasUnicodeRightArrow(const char **position){
 // 
 bool Date::_hasKoreanHangulForYear(const char **position){
 	
-	register const char *s=*position;
-	register const char *t=s+1;
-	register const char *u=s+2;
+	//register const char *s=*position;
+	//register const char *t=s+1;
+	//register const char *u=s+2;
+	
+	const char *s=*position;
+	const char *t=s+1;
+	const char *u=s+2;
 	
 	if( *s && *t && *u && *s=='\xeb' && *t=='\x85' &&  *u=='\x84' ){
 		
@@ -673,9 +724,13 @@ bool Date::_hasKoreanHangulForYear(const char **position){
 /// 
 bool Date::_hasKoreanHangulForMonth(const char **position){
 	
-	register const char *s=*position;
-	register const char *t=s+1;
-	register const char *u=s+2;
+	//register const char *s=*position;
+	//register const char *t=s+1;
+	//register const char *u=s+2;
+	
+	const char *s=*position;
+	const char *t=s+1;
+	const char *u=s+2;
 	
 	if( *s && *t && *u && *s=='\xec' && *t=='\x9b' &&  *u=='\x94' ){
 		
@@ -702,9 +757,13 @@ bool Date::_hasKoreanHangulForMonth(const char **position){
 /// 
 bool Date::_hasKoreanHangulForDay(const char **position){
 	
-	register const char *s=*position;
-	register const char *t=s+1;
-	register const char *u=s+2;
+	//register const char *s=*position;
+	//register const char *t=s+1;
+	//register const char *u=s+2;
+	
+	const char *s=*position;
+	const char *t=s+1;
+	const char *u=s+2;
 	
 	if( *s && *t && *u && *s=='\xec' && *t=='\x9d' &&  *u=='\xbc' ){
 		
@@ -729,8 +788,11 @@ bool Date::_hasKoreanHangulForDay(const char **position){
 ///
 bool Date::_hasUTF8Character(const char **position,const char *UTF8Character){
 	
-	register const char *s=*position;
-	register const char *t=UTF8Character;
+	//register const char *s=*position;
+	//register const char *t=UTF8Character;
+	
+	const char *s=*position;
+	const char *t=UTF8Character;
 	
 	for(s=*position,t=UTF8Character; *t && *s==*t ; s++,t++);
 	// Matches if t exhausted:
@@ -764,7 +826,9 @@ bool Date::_hasUTF8Character(const char **position,const char *UTF8Character){
 ///    
 bool Date::_hasRangeDelimiter(const char **position,bool startBracketFound){
 	
-	register const char *s=*position;
+	//register const char *s=*position;
+	
+	const char *s=*position;
 	
 	//DEBUG:
 	//std::cout << "In hasRangeDelimiter: " << s << std::endl;
@@ -889,7 +953,9 @@ bool Date::_hasDayDelimiter(const char **position){
 //
 void Date::_skipWhiteSpace(const char **position){
 	
-	register const char *s=*position;
+	//register const char *s=*position;
+	
+	const char *s=*position;
 	for(;*s && *s==' ';s++);
 	*position=s;
 	
@@ -904,7 +970,8 @@ bool Date::_hasOpeningBracket(const char **position){
 	// First check for ASCII version,
 	// then CJK version:
 	//
-	register const char *s=*position;
+	//register const char *s=*position;
+	const char *s=*position;
 	
 	if(*s && *s=='['){
 		
@@ -927,7 +994,9 @@ bool Date::_hasClosingBracket(const char **position){
 	// First check for ASCII version,
 	// then CJK version:
 	//
-	register const char *s=*position;
+	// register const char *s=*position;
+	
+	const char *s=*position;
 	
 	if(*s && *s==']'){
 		
@@ -952,8 +1021,11 @@ int Date::_getValue(const char **position){
 	char valueString[VALUESTRINGSIZE+1];
 	int sign=1;
 	
-	register const char *s=*position;
-	register char *d;
+	//register const char *s=*position;
+	//register char *d;
+	
+	const char *s=*position;
+	char *d;
 	
 	if(*s=='-'){
 		sign=-1;

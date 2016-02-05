@@ -466,10 +466,14 @@ char *MadelineTable::_readAndNullTerminateColumnName(char *beginning,const char 
 ///
 char *MadelineTable::_readColumnType(char *beginning,const char *headerEnd, ColumnOffset &columnOffset ){
 	
-	register char a;
-	register char c;
-	register char *b;
-
+	//register char a;
+	//register char c;
+	//register char *b;
+	
+	char a;
+	char c;
+	char *b;
+	
 	/*                   */
 	/* skip white space: */
 	/*                   */

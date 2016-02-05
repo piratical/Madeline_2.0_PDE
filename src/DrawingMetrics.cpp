@@ -59,6 +59,7 @@ double DrawingMetrics::_yMinimum;     // Probably not needed.
 double DrawingMetrics::_verticalTick; // Used for drawing twins.
 
 bool DrawingMetrics::_isEmbedded; // State flag for embedded document creation
+bool DrawingMetrics::_isScalable; // State flag for scalable document creation (i.e., no width or height, only viewBox)
 bool DrawingMetrics::_displayBirthOrder; // State flag that indicates DOB order has to be drawn with the labelset
 
 std::string DrawingMetrics::_unit;
@@ -410,6 +411,24 @@ void DrawingMetrics::setEmbeddedState(bool isEmbedded){
 bool DrawingMetrics::getEmbeddedState(){
 	
 	return _isEmbedded;
+	
+}
+
+//
+// setScalableState()
+//
+void DrawingMetrics::setScalableState(bool isScalable){
+	
+	_isScalable=isScalable;
+	
+}
+
+//
+// getScalableState
+//
+bool DrawingMetrics::getScalableState(){
+	
+	return _isScalable;
 	
 }
 
