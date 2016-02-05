@@ -19,7 +19,18 @@ private:
 	
 	void _determineLength( void ){ _length=strlen(_beginning); }
 	void _determineTabCount( void ){ for(const char *b=_beginning;*b;b++) if(*b=='\t') _tabCount++; }
-	void _determineIfDirty( void ) { for(const char *b=_beginning;*b;b++) if(!isspace(*b)) _type=DIRTY_LINE; }
+	void _determineIfDirty( void ){
+		if( _beginning[0] && _beginning[0]=='/' && _beginning[1] && _beginning[1]=='/' ){
+			_type=EMPTY_LINE;
+		}else{ 
+			for(const char *b=_beginning;*b;b++){
+				if(!isspace(*b)){
+					_type=DIRTY_LINE;
+					return;
+				}
+			}
+		}
+	}
 	
 public:
 	
