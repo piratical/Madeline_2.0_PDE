@@ -1688,25 +1688,29 @@ void Pedigree::_drawSteppedConnectorLine(double startY,double endY,double startX
 	//
 	int adjustment=0;
 	if(stepDown){
-		//
-		// step DOWN: Prevent overlaps with children on the left side
-		//
-		adjustment = leftParent->getRightWidth();
-		adjustment -= 3; 
-		if(adjustment>0){
-			midX+=adjustment*DrawingMetrics::getHorizontalInterval();
-			midX+=DrawingMetrics::getIconRadius();
+		if(leftParent==nf->getMother()){
+			//
+			// step DOWN: Prevent overlaps with children on the left side
+			//
+			adjustment = leftParent->getRightWidth();
+			adjustment -= 3; 
+			if(adjustment>0){
+				midX+=adjustment*DrawingMetrics::getHorizontalInterval();
+				midX+=DrawingMetrics::getIconRadius();
+			}
 			// DEBUG: std::cout << ">>> STEP DOWN ADJUSTING MP FOR " << nf->getFather()->getId() << " & " << nf->getMother()->getId() << std::endl;
 		}
 	}else{
-		//
-		// step UP: Prevent overlaps with children on the right side:
-		//
-		adjustment = rightParent->getLeftWidth();
-		adjustment -= 3;
-		if(adjustment>0){
-			midX-=adjustment*DrawingMetrics::getHorizontalInterval();
-			midX-=DrawingMetrics::getIconRadius();
+		if(rightParent==nf->getMother()){
+			//
+			// step UP: Prevent overlaps with children on the right side:
+			//
+			adjustment = rightParent->getLeftWidth();
+			adjustment -= 3;
+			if(adjustment>0){
+				midX-=adjustment*DrawingMetrics::getHorizontalInterval();
+				midX-=DrawingMetrics::getIconRadius();
+			}
 			// DEBUG: std::cout << ">>> STEP UP ADJUSTING MP FOR " << nf->getFather()->getId() << " & " << nf->getMother()->getId() << std::endl;
 		}
 	}
