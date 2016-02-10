@@ -1648,32 +1648,9 @@ void Pedigree::_drawSteppedConnectorLine(double startY,double endY,double startX
 		temp=endY; endY=startY; startY=temp;
 		stepDown=false;
 	}
-	
-	///////////////////////////////////////////////////////////
 	//
-	// Calculate the "mid point"; adjust to prevent overlaps:
+	// Get references to the left and right parents:
 	//
-	///////////////////////////////////////////////////////////
-	//
-	// This is a good place to start :-) :
-	//
-	double midX = 0.5*(startX+endX);
-	//
-	// Adjust for the iconRadius of one parent:
-	// This gives better results in the consanguinous
-	// case:
-	//
-	if(nf->isConsanguinous()){
-		if(stepDown){
-			midX+=DrawingMetrics::getIconRadius();
-		}else{
-			midX-=DrawingMetrics::getIconRadius();
-		}
-	}
-	
-	//
-	// Now let's see if we need more adjustment
-	// For this, we need to know left vs. right parent:
 	Individual *leftParent;
 	Individual *rightParent;
 	if(nf->getFather()->getX() < nf->getMother()->getX()){
@@ -1684,65 +1661,33 @@ void Pedigree::_drawSteppedConnectorLine(double startY,double endY,double startX
 		rightParent = nf->getFather();
 	}
 	//
-	// And now check what's happening:
+	//    (1) By default, we start with sX=startX and eX=endX, with the idea that midX will be
+	//    in the center between sX and eX. But we adjust as follows to avoid "collisions"
+	//    with adjacent people:
 	//
-	int adjustment=0;
-	if(stepDown){
-		if(leftParent==nf->getMother()){
-			//
-			// step DOWN: Prevent overlaps with children on the left side
-			//
-			adjustment = leftParent->getRightWidth();
-			adjustment -= 3; 
-			if(adjustment>0){
-				midX+=adjustment*DrawingMetrics::getHorizontalInterval();
-				midX+=DrawingMetrics::getIconRadius();
-				// DEBUG:
-				// std::cout << ">>> STEP DOWN ADJUSTING MP FOR " << nf->getFather()->getId() << " & " << nf->getMother()->getId() << " by " << adjustment << std::endl;
-			}
-		}
-	}else{
-		if(rightParent==nf->getMother()){
-			//
-			// step UP: Prevent overlaps with children on the right side:
-			//
-			adjustment = rightParent->getLeftWidth();
-			adjustment -= 3;
-			if(adjustment>0){
-				midX-=adjustment*DrawingMetrics::getHorizontalInterval();
-				midX-=DrawingMetrics::getIconRadius();
-				// DEBUG:
-				// std::cout << ">>> STEP UP ADJUSTING MP FOR " << nf->getFather()->getId() << " & " << nf->getMother()->getId() << " by " << adjustment << std::endl;
-			}
-		}
-	}
-	
+	// startX
+	//  [.]-------   [.] <----- (2) If there is someone here and they are more to the left than
+	//           |                  the original endX, then make this the new eX
+	//      [.]  --------(.)
+	//       ^          endX
+	//       |
 	//
-	// DEBUG: Still check if midX is overlapping someone: 
-	//        This can happen in cases where midX was not
-	//        adjusted from its default, so fix here:
+	//      (3) Likewise if there is someone here and they are more to the right than
+	//          the original startX, then make this the new sX
 	//
-	Individual* found;
-	// Check at start of vertical segment:
-	found = _individualGrid.find(int(midX),int(startY));
-	if(found){
-		// DEBUG:
-		// std::cout << "Oops midX will hit " << found->getId() << " at start of vertical segment." << std::endl;
-		// std::cout << "with startY=" << startY << " and endY=" << endY << std::endl;
-		
-		// At the start, we must move left to get out of the way:
-		midX -= DrawingMetrics::getHorizontalInterval();
+	//      (4) Then just take the average between sX and eX to be the midX position.
+	//
+	Individual* nextRight = _individualGrid.findAdjacentRight((int)leftParent->getX(),(int)leftParent->getY());
+	Individual* nextLeft  = _individualGrid.findAdjacentLeft((int)rightParent->getX(),(int)rightParent->getY());
+	double sX = startX;
+	double eX = endX;
+	if(nextRight && nextRight->getX()<eX){
+		eX = nextRight->getX();
 	}
-	// Check at end of vertical segment:
-	found = _individualGrid.find(int(midX),int(endY));
-	if(found){
-		// DEBUG:
-		// std::cout << "Oops midX will hit " << found->getId() << " at end of vertical segment." << std::endl;
-		// std::cout << "with startY=" << startY << " and endY=" << endY << std::endl;
-		
-		// At the end, we must move right to get out of the way:
-		midX += DrawingMetrics::getHorizontalInterval();
+	if(nextLeft && nextLeft->getX()>sX){
+		sX = nextLeft->getX();
 	}
+	double midX = 0.5*(sX+eX);
 	
 	//////////////////////////////
 	//

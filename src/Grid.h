@@ -57,6 +57,8 @@ template <class N,class pT> class Grid{
 	public: 
 		void insert(N xPosition,N yPosition,pT pointerToObjectOfTypeT);
 		pT   find  (N xPosition,N yPosition);
+		pT   findAdjacentLeft(N xPosition,N yPosition);
+		pT   findAdjacentRight(N xPosition,N yPosition);
 		
 		// FOR DEBUGGING ONLY: 
 		 void printNames();
@@ -113,6 +115,86 @@ template<class N,class pT> pT Grid<N,pT>::find(N xPosition,N yPosition){
 	return (pT) 0;
 	
 }
+
+//
+// Grid::findAdjacentLeft() method: Find next object to the left of xPosition,yPosition
+//
+// Returns an object of type pT if found.  
+// Returns 0 (NULL) if not found.
+//
+// NOTE BENE: It is the user's responsibility to check if the 
+//            returned pointer is NULL before dereferencing!
+//            
+template<class N,class pT> pT Grid<N,pT>::findAdjacentLeft(N xPosition,N yPosition){
+	
+	// Get an iterator to the horizontalVector map in row Y of
+	// the grid:
+	typename verticalVector::iterator tempY = _grid.find(yPosition);
+	//
+	// If a horizontalVector map is not yet present, then return
+	// 
+	if(tempY == _grid.end()){
+		
+		return (pT) 0;
+		
+	}
+	//
+	// Get here if row Y has entries: look for x:
+	//
+	typename horizontalVector::iterator tempX = tempY->second.find(xPosition);
+	if(tempX != tempY->second.end()){
+		if(tempX==tempY->second.begin()){
+			// this is the first object and there is no object to the left:
+			return (pT) 0;
+		}else{
+			tempX--;
+			return tempX->second;
+		}
+	}
+	return (pT) 0;
+	
+}
+
+//
+// Grid::findAdjacentRight() method: Find next object to the Right of xPosition,yPosition
+//
+// Returns an object of type pT if found.  
+// Returns 0 (NULL) if not found.
+//
+// NOTE BENE: It is the user's responsibility to check if the 
+//            returned pointer is NULL before dereferencing!
+//            
+template<class N,class pT> pT Grid<N,pT>::findAdjacentRight(N xPosition,N yPosition){
+	
+	// Get an iterator to the horizontalVector map in row Y of
+	// the grid:
+	typename verticalVector::iterator tempY = _grid.find(yPosition);
+	//
+	// If a horizontalVector map is not yet present, then return
+	// 
+	if(tempY == _grid.end()){
+		
+		return (pT) 0;
+		
+	}
+	//
+	// Get here if row Y has entries: look for x:
+	//
+	typename horizontalVector::iterator tempX = tempY->second.find(xPosition);
+	if(tempX != tempY->second.end()){
+		tempX++;
+		if(tempX==tempY->second.end()){
+			// this is the last object and there is no object to the right:
+			return (pT) 0;
+		}else{
+			return tempX->second;
+		}
+	}
+	return (pT) 0;
+}
+
+
+
 
 //
 // printNames() is to be used for debugging only:
