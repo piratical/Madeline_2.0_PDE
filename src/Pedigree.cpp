@@ -1607,13 +1607,13 @@ void Pedigree::_drawSteppedConnectorLine(double startY,double endY,double startX
 	//          << " RW=" << nf->getRightWidth()
 	//          << " TW=" << nf->getTotalWidth()
 	//          << std::endl
-	//          << "FATHER:" << nf->getFather()->getId() 
+	//          << "FATHER=" << nf->getFather()->getId() 
 	//          << " X=" << nf->getFather()->getX()
 	//          << " Y=" << nf->getFather()->getY()
 	//          << " LW=" << nf->getFather()->getLeftWidth()
 	//          << " RW=" << nf->getFather()->getRightWidth()
 	//          << std::endl
-	//          << "MOTHER:" << nf->getMother()->getId() 
+	//          << "MOTHER=" << nf->getMother()->getId() 
 	//          << " X=" << nf->getMother()->getX()
 	//          << " Y=" << nf->getMother()->getY() 
 	//          << " LW=" << nf->getMother()->getLeftWidth()
@@ -1697,8 +1697,9 @@ void Pedigree::_drawSteppedConnectorLine(double startY,double endY,double startX
 			if(adjustment>0){
 				midX+=adjustment*DrawingMetrics::getHorizontalInterval();
 				midX+=DrawingMetrics::getIconRadius();
+				// DEBUG:
+				// std::cout << ">>> STEP DOWN ADJUSTING MP FOR " << nf->getFather()->getId() << " & " << nf->getMother()->getId() << " by " << adjustment << std::endl;
 			}
-			// DEBUG: std::cout << ">>> STEP DOWN ADJUSTING MP FOR " << nf->getFather()->getId() << " & " << nf->getMother()->getId() << std::endl;
 		}
 	}else{
 		if(rightParent==nf->getMother()){
@@ -1710,9 +1711,37 @@ void Pedigree::_drawSteppedConnectorLine(double startY,double endY,double startX
 			if(adjustment>0){
 				midX-=adjustment*DrawingMetrics::getHorizontalInterval();
 				midX-=DrawingMetrics::getIconRadius();
+				// DEBUG:
+				// std::cout << ">>> STEP UP ADJUSTING MP FOR " << nf->getFather()->getId() << " & " << nf->getMother()->getId() << " by " << adjustment << std::endl;
 			}
-			// DEBUG: std::cout << ">>> STEP UP ADJUSTING MP FOR " << nf->getFather()->getId() << " & " << nf->getMother()->getId() << std::endl;
 		}
+	}
+	
+	//
+	// DEBUG: Still check if midX is overlapping someone: 
+	//        This can happen in cases where midX was not
+	//        adjusted from its default, so fix here:
+	//
+	Individual* found;
+	// Check at start of vertical segment:
+	found = _individualGrid.find(int(midX),int(startY));
+	if(found){
+		// DEBUG:
+		// std::cout << "Oops midX will hit " << found->getId() << " at start of vertical segment." << std::endl;
+		// std::cout << "with startY=" << startY << " and endY=" << endY << std::endl;
+		
+		// At the start, we must move left to get out of the way:
+		midX -= DrawingMetrics::getHorizontalInterval();
+	}
+	// Check at end of vertical segment:
+	found = _individualGrid.find(int(midX),int(endY));
+	if(found){
+		// DEBUG:
+		// std::cout << "Oops midX will hit " << found->getId() << " at end of vertical segment." << std::endl;
+		// std::cout << "with startY=" << startY << " and endY=" << endY << std::endl;
+		
+		// At the end, we must move right to get out of the way:
+		midX += DrawingMetrics::getHorizontalInterval();
 	}
 	
 	//////////////////////////////
