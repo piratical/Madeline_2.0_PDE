@@ -1,0 +1,32 @@
+//
+// simple_003.data
+//
+FamilyId
+IndividualId
+Gender
+Father
+Mother
+Deceased
+Proband
+DOB
+MZTwin
+DZTwin
+Sampled
+Affected
+
+simple_003      P00121      M .           .           . . .          . . . . 
+simple_003      P00122      F .           .           . . .          . . . . 
+simple_003      P00123      M P00121      P00122      . . .          . . . . 
+simple_003      P00124      F .           .           . . .          . . . . 
+simple_003      P00125      F P00123      P00124      . . .          . . . . 
+simple_003      P00126      M .           .           . . .          . . . . 
+simple_003      P00127      M P00126      P00125      . . .          . . . . 
+simple_003      P00128      F P00126      P00125      . . .          . . . . 
+simple_003      P00129      F .           .           . . .          . . . . 
+simple_003      P00130      F P00127      P00129      . . .          . . . . 
+simple_003      P00131      M .           .           . . .          . . . . 
+simple_003      P00132      M P00131      P00128      . . .          . . . . 
+simple_003      P00133      M .           .           . . .          . . . . 
+simple_003      P00134      M P00133      P00130      . . .          . . . . 
+simple_003      P00137      F .           .           . . .          . . . . 
+simple_003      P00138      F P00132      P00137      . . .          . . . . 

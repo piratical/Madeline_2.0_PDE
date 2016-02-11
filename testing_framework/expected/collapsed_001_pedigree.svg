@@ -1,0 +1,491 @@
+<?xml version="1.0" standalone="no"?>
+ <svg version="1.1"  id="svgDC" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"  viewBox="0 0 824 545"  onload="init()" >
+ <defs>
+  <style type="text/css"><![CDATA[
+
+line{
+	stroke:#000;
+	stroke-width:0.5mm;
+	stroke-linejoin:miter;
+	stroke-linecap:square;
+}
+
+rect{
+	stroke:#000;
+	stroke-width:0.5mm;
+	stroke-linejoin:miter;
+	stroke-linecap:square;
+}
+
+ellipse{
+	stroke: #000;
+    fill: #fff;
+	stroke-width:0.25mm;
+}
+
+text{
+	font-family:"DejaVu Sans",sans-serif;
+	font-size:12px;
+}
+
+.smallText{
+	font-family:"DejaVu Sans",sans-serif;
+	font-size:9px;
+	fill:#444;
+}
+
+.layer text{
+	fill:#930;
+}
+
+.layer line{
+	stroke:#000;
+}
+
+.birthOrder,.unknownTwins{
+	font-size: 8px;
+}
+
+.header{
+	font-size:18px;
+	font-weight:bold;
+}
+
+.keyBox{
+	fill:#e5e5e5;
+	stroke:#000;
+	stroke-width:0.5mm;
+	stroke-linejoin:miter;
+	stroke-linecap:square;
+}
+
+.mating:hover{
+	stroke-width:1mm;
+	stroke:#d56300;
+}
+
+.selectedIndividual{
+	stroke-width:1mm;
+	stroke-linecap:square;
+	stroke-linejoin:miter;
+	stroke:#d00;
+    fill:none;
+}
+
+.selectedIndividual:hover{
+	stroke:#d00;
+	fill:#ffbbbb;
+	fill-opacity:0.70;
+}
+
+.solid{
+	stroke-width:0.5mm;
+	stroke-linecap:square;
+	stroke-linejoin:miter;
+	stroke:#000;
+	fill:none;
+}
+
+.dashed{
+	stroke-width:0.5mm;
+	stroke-linecap:square;
+	stroke-linejoin:miter;
+	stroke:#98afc7;
+	stroke-dasharray:2mm,1mm;
+	stroke-dashoffset:1.0mm;
+	fill:none;
+}
+
+.solid:hover{
+	fill:#ffb787;
+	fill-opacity:0.70;
+	stroke:#d56300;
+	stroke-width:1mm;
+}
+
+.dashed:hover{
+	fill:#ffb787;
+	fill-opacity:0.70;
+	stroke:#d56300;
+	stroke-width:1mm;
+}
+
+.filled{
+	stroke-width:0.5mm;
+	stroke-linecap:square;
+	stroke-linejoin:miter;
+	stroke:#000;
+	fill:#000;
+}
+
+.specialIcons{
+	stroke-width:0.25mm;
+	stroke-linecap:round;
+	stroke-linejoin:miter;
+	stroke:#000;
+	fill:#fff;
+}
+
+.specialLines{
+	stroke-linecap:square;
+	stroke-linejoin:miter;
+	stroke:#000;
+	stroke-width:0.5mm;
+	fill:none;
+}
+
+.thinLine{
+	fill:none;
+	stroke: #000;
+	stroke-width:0.25mm;
+}
+
+.curvedConnector{
+	stroke-linecap:square;
+	stroke-linejoin:miter;
+	stroke:#98afc7;
+	stroke-width:0.5mm;
+	stroke-dasharray:2mm,1mm;
+	stroke-dashoffset:1.0mm;
+	fill:none;
+}
+
+.curvedConnector:hover{
+	stroke:#d56300;
+}
+
+.whiteInkLetter_1{
+	font-size: 12px;
+	fill: #fff;
+}
+
+.whiteInkLetter_2{
+	font-size: 10px;
+	fill: #fff;
+}
+
+.whiteInkLetter_3{
+	font-size: 8px;
+	fill: #fff;
+}
+
+.whiteInkLetter{
+	font-size: 8px;
+	fill: #fff;
+}
+
+.blackInkLetter_1{
+	font-size: 12px;
+}
+
+.blackInkLetter_2{
+	font-size: 10px;
+}
+
+.blackInkLetter_3{
+	font-size: 8px;
+}
+
+.blackInkLetter{
+	font-size: 8px;
+	fill: #000;
+}
+
+.blackInk{
+	fill: #000;
+}
+
+.whiteInk{
+	fill: #fff;
+}
+
+.counter{
+	font-size: 14px;
+	fill: #000;
+}
+
+.counterFill{
+	fill: #fff;
+}
+
+.sampleLevel{
+	stroke:none;
+	fill:#f99;
+}
+
+]]></style>
+ <script type="text/javascript" xlink:href="javascript/madeline.js"></script>
+ <marker id="endArrow" viewBox="0 0 10 10" refX="1" refY="5" markerUnits="strokeWidth" orient="auto" markerWidth="5" markerHeight="4">  <polyline points="0,0 10,5 0,10 1,5" fill="#000" /> </marker>
+ </defs>
+ <g class="pedigree" transform="translate(-99.98)">
+
+ <g id="bottomLayer" class="layer" >
+
+ </g>
+ <g id="layer0" class="layer" >
+ </g>
+
+  <g class="drawing">
+  <text x="557.36" y="30" text-anchor="middle"  class="header" >collapsed_001</text>
+  <clipPath id="U00100_clipPath">
+   <rect x="500.66" y="38.66" width="22.68" height="22.68" />
+  </clipPath>
+<g clip-path="url(#U00100_clipPath)">
+<path d="M 512 50 L 512 66.0372 A 16.0372 16.0372 0 0 1 512 33.9628 z" style="fill:#ffffff;stroke:none;"/>
+<path d="M 512 50 L 512 33.9628 A 16.0372 16.0372 0 0 1 512 66.0372 z" style="fill:#ffffff;stroke:none;"/>
+</g>
+  <rect x="500.66" y="38.66" width="22.68" height="22.68" id="U00100" class="solid">
+	<title>U00100</title>
+</rect>
+<circle cx="512" cy="50" r="4.536" class="solid" />
+  <text x="512" y="120.049" text-anchor="middle" >U00100</text>
+  <text x="512" y="138.385" text-anchor="middle" >.</text>
+  <text x="512" y="156.72" text-anchor="middle" >.</text>
+  <line x1="523.34" y1="50" x2="591.38" y2="50" />
+<g>
+<path d="M 602.72 50 L 602.72 61.34 A 11.34 11.34 0 0 1 602.72 38.66 z" style="fill:#ffffff;stroke:none;"/>
+<path d="M 602.72 50 L 602.72 38.66 A 11.34 11.34 0 0 1 602.72 61.34 z" style="fill:#ffffff;stroke:none;"/>
+</g>
+<circle cx="602.72" cy="50" r="11.34" id="U00101" class="solid">
+	<title>U00101</title>
+</circle>
+<g transform="translate(602.72,50) scale(0.75)">
+ <path class="blackInk" d=" M 20,5 c -0.543574,0 -0.98118,0.4376 -0.98118,0.98118 0,0.54357 0.437606,0.98118 0.98118,0.98118 l 0.73098,0 0,11.70426 c 0,2.59953 2.128534,4.72805 4.728062,4.72805 2.599528,0 4.728062,-2.12852 4.728062,-4.72805 l 0,-11.70426 0.73098,0 c 0.543573,0 0.98118,-0.43761 0.98118,-0.98118 0,-0.54358 -0.437607,-0.98118 -0.98118,-0.98118 l -10.918084,0 z m 2.69334,2.02123 5.531404,0 0,1.78452 -2.222374,0 c -0.543573,0 -0.98118,0.4376 -0.98118,0.98118 0,0.54357 0.437607,0.98119 0.98118,0.98119 l 2.222374,0 0,1.84339 -2.222374,0 c -0.543573,0 -0.98118,0.43759 -0.98118,0.98118 0,0.54358 0.437607,0.98117 0.98118,0.98117 l 2.222374,0 0,1.84339 -2.222374,0 c -0.543573,0 -0.98118,0.43762 -0.98118,0.98118 0,0.54358 0.437607,0.98119 0.98118,0.98119 l 2.222374,0 0,0.287 c 0,1.53874 -1.226943,2.76568 -2.765702,2.76568 -1.538759,0 -2.765702,-1.22694 -2.765702,-2.76568 l 0,-11.64539 z" />
+</g>
+  <text x="602.72" y="120.049" text-anchor="middle" >U00101</text>
+  <text x="602.72" y="138.385" text-anchor="middle" >S</text>
+  <text x="602.72" y="156.72" text-anchor="middle" >.</text>
+  <line class="mating" id="U00101:U00100" x1="557.36" y1="50" x2="557.36" y2="178.914" />
+  <line class="solid" x1="239.84" y1="178.914" x2="239.84" y2="207.264" />
+  <clipPath id="U00102_clipPath">
+   <rect x="228.5" y="207.264" width="22.68" height="22.68" />
+  </clipPath>
+<g clip-path="url(#U00102_clipPath)">
+<path d="M 239.84 218.604 L 239.84 234.641 A 16.0372 16.0372 0 0 1 239.84 202.567 z" style="fill:#ffffff;stroke:none;"/>
+<path d="M 239.84 218.604 L 239.84 202.567 A 16.0372 16.0372 0 0 1 239.84 234.641 z" style="fill:#ffffff;stroke:none;"/>
+</g>
+  <line x1="215.27" y1="211.989" x2="224.72" y2="211.989" />
+  <line x1="219.995" y1="207.264" x2="219.995" y2="216.714" />
+  <rect x="228.5" y="207.264" width="22.68" height="22.68" id="U00102" class="solid">
+	<title>U00102</title>
+</rect>
+<g transform="translate(239.84,218.604) scale(0.75)">
+ <path class="blackInk" d=" M 20,5 c -0.543574,0 -0.98118,0.4376 -0.98118,0.98118 0,0.54357 0.437606,0.98118 0.98118,0.98118 l 0.73098,0 0,11.70426 c 0,2.59953 2.128534,4.72805 4.728062,4.72805 2.599528,0 4.728062,-2.12852 4.728062,-4.72805 l 0,-11.70426 0.73098,0 c 0.543573,0 0.98118,-0.43761 0.98118,-0.98118 0,-0.54358 -0.437607,-0.98118 -0.98118,-0.98118 l -10.918084,0 z m 2.69334,2.02123 5.531404,0 0,1.78452 -2.222374,0 c -0.543573,0 -0.98118,0.4376 -0.98118,0.98118 0,0.54357 0.437607,0.98119 0.98118,0.98119 l 2.222374,0 0,1.84339 -2.222374,0 c -0.543573,0 -0.98118,0.43759 -0.98118,0.98118 0,0.54358 0.437607,0.98117 0.98118,0.98117 l 2.222374,0 0,1.84339 -2.222374,0 c -0.543573,0 -0.98118,0.43762 -0.98118,0.98118 0,0.54358 0.437607,0.98119 0.98118,0.98119 l 2.222374,0 0,0.287 c 0,1.53874 -1.226943,2.76568 -2.765702,2.76568 -1.538759,0 -2.765702,-1.22694 -2.765702,-2.76568 l 0,-11.64539 z" />
+</g>
+  <text x="239.84" y="288.653" text-anchor="middle" >U00102</text>
+  <text x="239.84" y="306.988" text-anchor="middle" >1.85</text>
+  <text x="239.84" y="325.324" text-anchor="middle" >.</text>
+  <line class="solid" x1="421.28" y1="178.914" x2="421.28" y2="207.264" />
+  <clipPath id="U00103_clipPath">
+   <rect x="409.94" y="207.264" width="22.68" height="22.68" />
+  </clipPath>
+<g clip-path="url(#U00103_clipPath)">
+<path d="M 421.28 218.604 L 421.28 234.641 A 16.0372 16.0372 0 0 1 421.28 202.567 z" style="fill:#ffffff;stroke:none;"/>
+<path d="M 421.28 218.604 L 421.28 202.567 A 16.0372 16.0372 0 0 1 421.28 234.641 z" style="fill:#ffffff;stroke:none;"/>
+</g>
+  <line x1="396.71" y1="211.989" x2="406.16" y2="211.989" />
+  <line x1="401.435" y1="207.264" x2="401.435" y2="216.714" />
+  <rect x="409.94" y="207.264" width="22.68" height="22.68" id="U00103" class="solid">
+	<title>U00103</title>
+</rect>
+<circle cx="421.28" cy="218.604" r="4.536" class="solid" />
+  <text x="421.28" y="288.653" text-anchor="middle" >U00103</text>
+  <text x="421.28" y="306.988" text-anchor="middle" >.</text>
+  <text x="421.28" y="325.324" text-anchor="middle" >.</text>
+  <line x1="432.62" y1="218.604" x2="500.66" y2="218.604" />
+<g>
+<path d="M 512 218.604 L 512 229.944 A 11.34 11.34 0 0 1 512 207.264 z" style="fill:#ffffff;stroke:none;"/>
+<path d="M 512 218.604 L 512 207.264 A 11.34 11.34 0 0 1 512 229.944 z" style="fill:#ffffff;stroke:none;"/>
+</g>
+<circle cx="512" cy="218.604" r="11.34" id="U00106" class="solid">
+	<title>U00106</title>
+</circle>
+<g transform="translate(512,218.604) scale(0.75)">
+ <path class="blackInk" d=" M 20,5 c -0.543574,0 -0.98118,0.4376 -0.98118,0.98118 0,0.54357 0.437606,0.98118 0.98118,0.98118 l 0.73098,0 0,11.70426 c 0,2.59953 2.128534,4.72805 4.728062,4.72805 2.599528,0 4.728062,-2.12852 4.728062,-4.72805 l 0,-11.70426 0.73098,0 c 0.543573,0 0.98118,-0.43761 0.98118,-0.98118 0,-0.54358 -0.437607,-0.98118 -0.98118,-0.98118 l -10.918084,0 z m 2.69334,2.02123 5.531404,0 0,1.78452 -2.222374,0 c -0.543573,0 -0.98118,0.4376 -0.98118,0.98118 0,0.54357 0.437607,0.98119 0.98118,0.98119 l 2.222374,0 0,1.84339 -2.222374,0 c -0.543573,0 -0.98118,0.43759 -0.98118,0.98118 0,0.54358 0.437607,0.98117 0.98118,0.98117 l 2.222374,0 0,1.84339 -2.222374,0 c -0.543573,0 -0.98118,0.43762 -0.98118,0.98118 0,0.54358 0.437607,0.98119 0.98118,0.98119 l 2.222374,0 0,0.287 c 0,1.53874 -1.226943,2.76568 -2.765702,2.76568 -1.538759,0 -2.765702,-1.22694 -2.765702,-2.76568 l 0,-11.64539 z" />
+</g>
+  <text x="512" y="288.653" text-anchor="middle" >U00106</text>
+  <text x="512" y="306.988" text-anchor="middle" >Y</text>
+  <text x="512" y="325.324" text-anchor="middle" >.</text>
+  <line class="mating" id="U00106:U00103" x1="466.64" y1="218.604" x2="466.64" y2="347.518" />
+  <line class="solid" x1="330.56" y1="347.518" x2="330.56" y2="375.868" />
+  <clipPath id="U00107_clipPath">
+   <rect x="319.22" y="375.868" width="22.68" height="22.68" />
+  </clipPath>
+<g clip-path="url(#U00107_clipPath)">
+<path d="M 330.56 387.208 L 330.56 403.245 A 16.0372 16.0372 0 0 1 330.56 371.17 z" style="fill:#ffffff;stroke:none;"/>
+<path d="M 330.56 387.208 L 330.56 371.17 A 16.0372 16.0372 0 0 1 330.56 403.245 z" style="fill:#ffffff;stroke:none;"/>
+</g>
+  <line x1="305.99" y1="380.593" x2="315.44" y2="380.593" />
+  <line x1="310.715" y1="375.868" x2="310.715" y2="385.318" />
+  <rect x="319.22" y="375.868" width="22.68" height="22.68" id="U00107" class="solid">
+	<title>U00107</title>
+</rect>
+<g transform="translate(330.56,387.208) scale(0.75)">
+ <rect class="sampleLevel" x="22" y="10" width="7" height="12" />
+  <text x="25.5" y="35" text-anchor="middle" >0.75</text>
+ <path class="blackInk" d=" M 20,5 c -0.543574,0 -0.98118,0.4376 -0.98118,0.98118 0,0.54357 0.437606,0.98118 0.98118,0.98118 l 0.73098,0 0,11.70426 c 0,2.59953 2.128534,4.72805 4.728062,4.72805 2.599528,0 4.728062,-2.12852 4.728062,-4.72805 l 0,-11.70426 0.73098,0 c 0.543573,0 0.98118,-0.43761 0.98118,-0.98118 0,-0.54358 -0.437607,-0.98118 -0.98118,-0.98118 l -10.918084,0 z m 2.69334,2.02123 5.531404,0 0,1.78452 -2.222374,0 c -0.543573,0 -0.98118,0.4376 -0.98118,0.98118 0,0.54357 0.437607,0.98119 0.98118,0.98119 l 2.222374,0 0,1.84339 -2.222374,0 c -0.543573,0 -0.98118,0.43759 -0.98118,0.98118 0,0.54358 0.437607,0.98117 0.98118,0.98117 l 2.222374,0 0,1.84339 -2.222374,0 c -0.543573,0 -0.98118,0.43762 -0.98118,0.98118 0,0.54358 0.437607,0.98119 0.98118,0.98119 l 2.222374,0 0,0.287 c 0,1.53874 -1.226943,2.76568 -2.765702,2.76568 -1.538759,0 -2.765702,-1.22694 -2.765702,-2.76568 l 0,-11.64539 z" />
+</g>
+  <text x="330.56" y="457.257" text-anchor="middle" >U00107</text>
+  <text x="330.56" y="475.592" text-anchor="middle" >0.75</text>
+  <text x="330.56" y="493.928" text-anchor="middle" >.</text>
+  <line class="solid" x1="421.28" y1="347.518" x2="421.28" y2="375.868" />
+  <clipPath id="U00108_clipPath">
+   <rect x="409.94" y="375.868" width="22.68" height="22.68" />
+  </clipPath>
+<g clip-path="url(#U00108_clipPath)">
+<path d="M 421.28 387.208 L 421.28 403.245 A 16.0372 16.0372 0 0 1 421.28 371.17 z" style="fill:#ffffff;stroke:none;"/>
+<path d="M 421.28 387.208 L 421.28 371.17 A 16.0372 16.0372 0 0 1 421.28 403.245 z" style="fill:#800080;stroke:none;"/>
+</g>
+  <rect x="409.94" y="375.868" width="22.68" height="22.68" id="U00108" class="solid">
+	<title>U00108</title>
+</rect>
+  <line x1="432.62" y1="379.648" x2="436.4" y2="379.648" />
+  <line x1="436.4" y1="379.648" x2="436.4" y2="402.328" />
+  <line x1="436.4" y1="402.328" x2="413.72" y2="402.328" />
+  <line x1="413.72" y1="402.328" x2="413.72" y2="398.548" />
+<defs>
+ <filter id="blur_001">
+  <feGaussianBlur in="SourceGraphic" stdDeviation="3" />
+ </filter></defs>
+<circle filter="url(#blur_001)" cx="421.28" cy="387.208" r="8.505" class="counterFill" />
+  <text x="421.28" y="391.874" text-anchor="middle"  class="counter" >2</text>
+  <line class="solid" x1="512" y1="347.518" x2="512" y2="375.868" />
+<g>
+<path d="M 512 387.208 L 512 398.548 A 11.34 11.34 0 0 1 512 375.868 z" style="fill:#fa8072;stroke:none;"/>
+<path d="M 512 387.208 L 512 375.868 A 11.34 11.34 0 0 1 512 398.548 z" style="fill:#ffffff;stroke:none;"/>
+</g>
+<circle cx="512" cy="387.208" r="11.34" id="U00110" class="solid">
+	<title>U00110</title>
+</circle>
+<g transform="translate(512,387.208) scale(0.50)">
+ <path  style="fill:none;stroke:#000000;stroke-width:3.77999997"  d=" m -12.875,18.65625 c 4.0926449,5.918156 10.9162147,9.8125 18.65625,9.8125 12.525818,0 22.6875,-10.161682 22.6875,-22.6875 0,-7.7400353 -3.894344,-14.5636051 -9.8125,-18.65625" />
+</g>
+<g transform="translate(514.646,389.854) scale(0.50)">
+ <path  style="fill:none;stroke:#000000;stroke-width:3.77999997"  d=" m -12.875,18.65625 c 4.0926449,5.918156 10.9162147,9.8125 18.65625,9.8125 12.525818,0 22.6875,-10.161682 22.6875,-22.6875 0,-7.7400353 -3.894344,-14.5636051 -9.8125,-18.65625" />
+</g>
+<circle filter="url(#blur_001)" cx="512" cy="387.208" r="8.505" class="counterFill" />
+  <text x="512" y="391.874" text-anchor="middle"  class="counter" >3</text>
+  <line class="solid" x1="602.72" y1="347.518" x2="602.72" y2="375.868" />
+<g>
+<path d="M 602.72 387.208 L 602.72 398.548 A 11.34 11.34 0 0 1 602.72 375.868 z" style="fill:#ffffff;stroke:none;"/>
+<path d="M 602.72 387.208 L 602.72 375.868 A 11.34 11.34 0 0 1 602.72 398.548 z" style="fill:#ffffff;stroke:none;"/>
+</g>
+<circle cx="602.72" cy="387.208" r="11.34" id="U00113" class="solid">
+	<title>U00113</title>
+</circle>
+<circle cx="602.72" cy="387.208" r="4.536" class="solid" />
+  <text x="602.72" y="457.257" text-anchor="middle" >U00113</text>
+  <text x="602.72" y="475.592" text-anchor="middle" >.</text>
+  <text x="602.72" y="493.928" text-anchor="middle" >.</text>
+  <line x1="330.56" y1="347.518" x2="602.72" y2="347.518" />
+  <line class="solid" x1="693.44" y1="178.914" x2="693.44" y2="207.264" />
+<g>
+<path d="M 693.44 218.604 L 693.44 229.944 A 11.34 11.34 0 0 1 693.44 207.264 z" style="fill:#ffffff;stroke:none;"/>
+<path d="M 693.44 218.604 L 693.44 207.264 A 11.34 11.34 0 0 1 693.44 229.944 z" style="fill:#ffffff;stroke:none;"/>
+</g>
+<circle cx="693.44" cy="218.604" r="11.34" id="U00104" class="solid">
+	<title>U00104</title>
+</circle>
+<circle cx="693.44" cy="218.604" r="4.536" class="filled" />
+<g transform="translate(693.44,218.604) scale(0.75)">
+ <rect class="sampleLevel" x="22" y="18" width="7" height="4" />
+  <text x="25.5" y="35" text-anchor="middle" >0.25</text>
+ <path class="blackInk" d=" M 20,5 c -0.543574,0 -0.98118,0.4376 -0.98118,0.98118 0,0.54357 0.437606,0.98118 0.98118,0.98118 l 0.73098,0 0,11.70426 c 0,2.59953 2.128534,4.72805 4.728062,4.72805 2.599528,0 4.728062,-2.12852 4.728062,-4.72805 l 0,-11.70426 0.73098,0 c 0.543573,0 0.98118,-0.43761 0.98118,-0.98118 0,-0.54358 -0.437607,-0.98118 -0.98118,-0.98118 l -10.918084,0 z m 2.69334,2.02123 5.531404,0 0,1.78452 -2.222374,0 c -0.543573,0 -0.98118,0.4376 -0.98118,0.98118 0,0.54357 0.437607,0.98119 0.98118,0.98119 l 2.222374,0 0,1.84339 -2.222374,0 c -0.543573,0 -0.98118,0.43759 -0.98118,0.98118 0,0.54358 0.437607,0.98117 0.98118,0.98117 l 2.222374,0 0,1.84339 -2.222374,0 c -0.543573,0 -0.98118,0.43762 -0.98118,0.98118 0,0.54358 0.437607,0.98119 0.98118,0.98119 l 2.222374,0 0,0.287 c 0,1.53874 -1.226943,2.76568 -2.765702,2.76568 -1.538759,0 -2.765702,-1.22694 -2.765702,-2.76568 l 0,-11.64539 z" />
+</g>
+  <text x="693.44" y="288.653" text-anchor="middle" >U00104</text>
+  <text x="693.44" y="306.988" text-anchor="middle" >0.25</text>
+  <text x="693.44" y="325.324" text-anchor="middle" >.</text>
+  <line x1="704.78" y1="218.604" x2="772.82" y2="218.604" />
+  <clipPath id="U00114_clipPath">
+   <rect x="772.82" y="207.264" width="22.68" height="22.68" />
+  </clipPath>
+<g clip-path="url(#U00114_clipPath)">
+<path d="M 784.16 218.604 L 784.16 234.641 A 16.0372 16.0372 0 0 1 784.16 202.567 z" style="fill:#ffffff;stroke:none;"/>
+<path d="M 784.16 218.604 L 784.16 202.567 A 16.0372 16.0372 0 0 1 784.16 234.641 z" style="fill:#ffffff;stroke:none;"/>
+</g>
+  <rect x="772.82" y="207.264" width="22.68" height="22.68" id="U00114" class="solid">
+	<title>U00114</title>
+</rect>
+  <text x="784.16" y="288.653" text-anchor="middle" >U00114</text>
+  <text x="784.16" y="306.988" text-anchor="middle" >.</text>
+  <text x="784.16" y="325.324" text-anchor="middle" >.</text>
+  <line class="mating" id="U00104:U00114" x1="738.8" y1="218.604" x2="738.8" y2="347.518" />
+  <line class="solid" x1="693.44" y1="347.518" x2="693.44" y2="366.473" />
+  <clipPath id="U00115_clipPath">
+   <path d="M 693.44 366.473 l -16.0372 16.0372 16.0372 16.0372 16.0372 -16.0372 z" />
+  </clipPath>
+<g clip-path="url(#U00115_clipPath)">
+<path d="M 693.44 382.51 L 693.44 398.548 A 16.0372 16.0372 0 0 1 693.44 366.473 z" style="fill:#fa8072;stroke:none;"/>
+<path d="M 693.44 382.51 L 693.44 366.473 A 16.0372 16.0372 0 0 1 693.44 398.548 z" style="fill:#800080;stroke:none;"/>
+</g>
+<path d="M 693.44 366.473 l -16.0372 16.0372 16.0372 16.0372 16.0372 -16.0372 z" id="U00115" class="solid">
+	<title>U00115</title>
+</path>
+  <line x1="697.22" y1="367.92" x2="698.556" y2="366.583" />
+  <line x1="698.556" y1="366.583" x2="714.594" y2="382.62" />
+  <line x1="714.594" y1="382.62" x2="698.556" y2="398.657" />
+  <line x1="698.556" y1="398.657" x2="697.22" y2="397.321" />
+  <line x1="702.566" y1="367.92" x2="703.902" y2="366.583" />
+  <line x1="703.902" y1="366.583" x2="719.939" y2="382.62" />
+  <line x1="719.939" y1="382.62" x2="703.902" y2="398.657" />
+  <line x1="703.902" y1="398.657" x2="702.566" y2="397.321" />
+<circle filter="url(#blur_001)" cx="693.44" cy="382.51" r="8.505" class="counterFill" />
+  <text x="693.44" y="387.177" text-anchor="middle"  class="counter" >11</text>
+  <line class="solid" x1="784.16" y1="347.518" x2="784.16" y2="375.868" />
+<g>
+<path d="M 784.16 387.208 L 784.16 398.548 A 11.34 11.34 0 0 1 784.16 375.868 z" style="fill:#ffffff;stroke:none;"/>
+<path d="M 784.16 387.208 L 784.16 375.868 A 11.34 11.34 0 0 1 784.16 398.548 z" style="fill:#ffffff;stroke:none;"/>
+</g>
+<circle cx="784.16" cy="387.208" r="11.34" id="U00117" class="solid">
+	<title>U00117</title>
+</circle>
+<circle cx="784.16" cy="387.208" r="4.536" class="filled" />
+<g transform="translate(784.16,387.208) scale(0.75)">
+ <rect class="sampleLevel" x="22" y="6" width="7" height="16" />
+  <text x="25.5" y="35" text-anchor="middle" >1.00</text>
+ <path class="blackInk" d=" M 20,5 c -0.543574,0 -0.98118,0.4376 -0.98118,0.98118 0,0.54357 0.437606,0.98118 0.98118,0.98118 l 0.73098,0 0,11.70426 c 0,2.59953 2.128534,4.72805 4.728062,4.72805 2.599528,0 4.728062,-2.12852 4.728062,-4.72805 l 0,-11.70426 0.73098,0 c 0.543573,0 0.98118,-0.43761 0.98118,-0.98118 0,-0.54358 -0.437607,-0.98118 -0.98118,-0.98118 l -10.918084,0 z m 2.69334,2.02123 5.531404,0 0,1.78452 -2.222374,0 c -0.543573,0 -0.98118,0.4376 -0.98118,0.98118 0,0.54357 0.437607,0.98119 0.98118,0.98119 l 2.222374,0 0,1.84339 -2.222374,0 c -0.543573,0 -0.98118,0.43759 -0.98118,0.98118 0,0.54358 0.437607,0.98117 0.98118,0.98117 l 2.222374,0 0,1.84339 -2.222374,0 c -0.543573,0 -0.98118,0.43762 -0.98118,0.98118 0,0.54358 0.437607,0.98119 0.98118,0.98119 l 2.222374,0 0,0.287 c 0,1.53874 -1.226943,2.76568 -2.765702,2.76568 -1.538759,0 -2.765702,-1.22694 -2.765702,-2.76568 l 0,-11.64539 z" />
+</g>
+  <text x="784.16" y="457.257" text-anchor="middle" >U00117</text>
+  <text x="784.16" y="475.592" text-anchor="middle" >1.00</text>
+  <text x="784.16" y="493.928" text-anchor="middle" >.</text>
+  <line x1="693.44" y1="347.518" x2="784.16" y2="347.518" />
+  <line class="solid" x1="874.88" y1="178.914" x2="874.88" y2="207.264" />
+<g>
+<path d="M 874.88 218.604 L 874.88 229.944 A 11.34 11.34 0 0 1 874.88 207.264 z" style="fill:#ffffff;stroke:none;"/>
+<path d="M 874.88 218.604 L 874.88 207.264 A 11.34 11.34 0 0 1 874.88 229.944 z" style="fill:#ffffff;stroke:none;"/>
+</g>
+<circle cx="874.88" cy="218.604" r="11.34" id="U00105" class="solid">
+	<title>U00105</title>
+</circle>
+<g transform="translate(874.88,218.604) scale(0.75)">
+ <rect class="sampleLevel" x="22" y="14" width="7" height="8" />
+  <text x="25.5" y="35" text-anchor="middle" >0.50</text>
+ <path class="blackInk" d=" M 20,5 c -0.543574,0 -0.98118,0.4376 -0.98118,0.98118 0,0.54357 0.437606,0.98118 0.98118,0.98118 l 0.73098,0 0,11.70426 c 0,2.59953 2.128534,4.72805 4.728062,4.72805 2.599528,0 4.728062,-2.12852 4.728062,-4.72805 l 0,-11.70426 0.73098,0 c 0.543573,0 0.98118,-0.43761 0.98118,-0.98118 0,-0.54358 -0.437607,-0.98118 -0.98118,-0.98118 l -10.918084,0 z m 2.69334,2.02123 5.531404,0 0,1.78452 -2.222374,0 c -0.543573,0 -0.98118,0.4376 -0.98118,0.98118 0,0.54357 0.437607,0.98119 0.98118,0.98119 l 2.222374,0 0,1.84339 -2.222374,0 c -0.543573,0 -0.98118,0.43759 -0.98118,0.98118 0,0.54358 0.437607,0.98117 0.98118,0.98117 l 2.222374,0 0,1.84339 -2.222374,0 c -0.543573,0 -0.98118,0.43762 -0.98118,0.98118 0,0.54358 0.437607,0.98119 0.98118,0.98119 l 2.222374,0 0,0.287 c 0,1.53874 -1.226943,2.76568 -2.765702,2.76568 -1.538759,0 -2.765702,-1.22694 -2.765702,-2.76568 l 0,-11.64539 z" />
+</g>
+  <text x="874.88" y="288.653" text-anchor="middle" >U00105</text>
+  <text x="874.88" y="306.988" text-anchor="middle" >0.50</text>
+  <text x="874.88" y="325.324" text-anchor="middle" >.</text>
+  <line x1="239.84" y1="178.914" x2="874.88" y2="178.914" />
+  </g>
+  <g class="legend">
+  <text x="149.12" y="50" text-anchor="middle" >Affected_HD</text>
+  <rect  x="107.54" y="53.78" width="83.16" height="18.3356" style="fill:#fa8072;"  />
+  <text x="149.12" y="67.5123" text-anchor="middle"  class="blackInkLetter_1" >A</text>
+  <rect  x="107.54" y="72.1156" width="83.16" height="18.3356" style="fill:#ffffff;"  />
+  <text x="149.12" y="81.2834" text-anchor="middle"  class="blackInkLetter_1" >.</text>
+  <text x="149.12" y="108.787" text-anchor="middle" >Affected_GL</text>
+  <rect  x="107.54" y="112.567" width="83.16" height="18.3356" style="fill:#800080;"  />
+  <text x="149.12" y="126.299" text-anchor="middle"  class="whiteInkLetter_1" >A</text>
+  <rect  x="107.54" y="130.903" width="83.16" height="18.3356" style="fill:#ffffff;"  />
+  <text x="149.12" y="140.07" text-anchor="middle"  class="blackInkLetter_1" >.</text>
+  </g>
+  <g class="legend">
+  <rect  x="107.54" y="171.354" width="83.16" height="62.5669" class="keyBox"  />
+  <text x="149.12" y="189.689" text-anchor="middle" >IndividualId</text>
+  <text x="149.12" y="208.025" text-anchor="middle" >SampleQuantity</text>
+  <text x="149.12" y="226.361" text-anchor="middle" >Collapsed</text>
+  </g>
+
+ </g>
+ </svg>
+

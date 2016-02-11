@@ -1,0 +1,433 @@
+<?xml version="1.0" standalone="no"?>
+ <svg version="1.1"  id="svgDC" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"  viewBox="0 0 642 765"  onload="init()" >
+ <defs>
+  <style type="text/css"><![CDATA[
+
+line{
+	stroke:#000;
+	stroke-width:0.5mm;
+	stroke-linejoin:miter;
+	stroke-linecap:square;
+}
+
+rect{
+	stroke:#000;
+	stroke-width:0.5mm;
+	stroke-linejoin:miter;
+	stroke-linecap:square;
+}
+
+ellipse{
+	stroke: #000;
+    fill: #fff;
+	stroke-width:0.25mm;
+}
+
+text{
+	font-family:"DejaVu Sans",sans-serif;
+	font-size:12px;
+}
+
+.smallText{
+	font-family:"DejaVu Sans",sans-serif;
+	font-size:9px;
+	fill:#444;
+}
+
+.layer text{
+	fill:#930;
+}
+
+.layer line{
+	stroke:#000;
+}
+
+.birthOrder,.unknownTwins{
+	font-size: 8px;
+}
+
+.header{
+	font-size:18px;
+	font-weight:bold;
+}
+
+.keyBox{
+	fill:#e5e5e5;
+	stroke:#000;
+	stroke-width:0.5mm;
+	stroke-linejoin:miter;
+	stroke-linecap:square;
+}
+
+.mating:hover{
+	stroke-width:1mm;
+	stroke:#d56300;
+}
+
+.selectedIndividual{
+	stroke-width:1mm;
+	stroke-linecap:square;
+	stroke-linejoin:miter;
+	stroke:#d00;
+    fill:none;
+}
+
+.selectedIndividual:hover{
+	stroke:#d00;
+	fill:#ffbbbb;
+	fill-opacity:0.70;
+}
+
+.solid{
+	stroke-width:0.5mm;
+	stroke-linecap:square;
+	stroke-linejoin:miter;
+	stroke:#000;
+	fill:none;
+}
+
+.dashed{
+	stroke-width:0.5mm;
+	stroke-linecap:square;
+	stroke-linejoin:miter;
+	stroke:#98afc7;
+	stroke-dasharray:2mm,1mm;
+	stroke-dashoffset:1.0mm;
+	fill:none;
+}
+
+.solid:hover{
+	fill:#ffb787;
+	fill-opacity:0.70;
+	stroke:#d56300;
+	stroke-width:1mm;
+}
+
+.dashed:hover{
+	fill:#ffb787;
+	fill-opacity:0.70;
+	stroke:#d56300;
+	stroke-width:1mm;
+}
+
+.filled{
+	stroke-width:0.5mm;
+	stroke-linecap:square;
+	stroke-linejoin:miter;
+	stroke:#000;
+	fill:#000;
+}
+
+.specialIcons{
+	stroke-width:0.25mm;
+	stroke-linecap:round;
+	stroke-linejoin:miter;
+	stroke:#000;
+	fill:#fff;
+}
+
+.specialLines{
+	stroke-linecap:square;
+	stroke-linejoin:miter;
+	stroke:#000;
+	stroke-width:0.5mm;
+	fill:none;
+}
+
+.thinLine{
+	fill:none;
+	stroke: #000;
+	stroke-width:0.25mm;
+}
+
+.curvedConnector{
+	stroke-linecap:square;
+	stroke-linejoin:miter;
+	stroke:#98afc7;
+	stroke-width:0.5mm;
+	stroke-dasharray:2mm,1mm;
+	stroke-dashoffset:1.0mm;
+	fill:none;
+}
+
+.curvedConnector:hover{
+	stroke:#d56300;
+}
+
+.whiteInkLetter_1{
+	font-size: 12px;
+	fill: #fff;
+}
+
+.whiteInkLetter_2{
+	font-size: 10px;
+	fill: #fff;
+}
+
+.whiteInkLetter_3{
+	font-size: 8px;
+	fill: #fff;
+}
+
+.whiteInkLetter{
+	font-size: 8px;
+	fill: #fff;
+}
+
+.blackInkLetter_1{
+	font-size: 12px;
+}
+
+.blackInkLetter_2{
+	font-size: 10px;
+}
+
+.blackInkLetter_3{
+	font-size: 8px;
+}
+
+.blackInkLetter{
+	font-size: 8px;
+	fill: #000;
+}
+
+.blackInk{
+	fill: #000;
+}
+
+.whiteInk{
+	fill: #fff;
+}
+
+.counter{
+	font-size: 14px;
+	fill: #000;
+}
+
+.counterFill{
+	fill: #fff;
+}
+
+.sampleLevel{
+	stroke:none;
+	fill:#f99;
+}
+
+]]></style>
+ <script type="text/javascript" xlink:href="javascript/madeline.js"></script>
+ <marker id="endArrow" viewBox="0 0 10 10" refX="1" refY="5" markerUnits="strokeWidth" orient="auto" markerWidth="5" markerHeight="4">  <polyline points="0,0 10,5 0,10 1,5" fill="#000" /> </marker>
+ </defs>
+ <g class="pedigree" transform="translate(-190.7)">
+
+ <g id="bottomLayer" class="layer" >
+
+ </g>
+ <g id="layer0" class="layer" >
+ </g>
+
+  <g class="drawing">
+  <text x="557.36" y="30" text-anchor="middle"  class="header" >simple_005</text>
+  <clipPath id="Indv0001_clipPath">
+   <rect x="500.66" y="38.66" width="22.68" height="22.68" />
+  </clipPath>
+<g clip-path="url(#Indv0001_clipPath)">
+<circle cx="512" cy="50" r="16.0372" style="fill:#000000;stroke:none;"/>
+  <text x="512" y="54.3588" text-anchor="middle"  class="whiteInkLetter_1" >A</text>
+</g>
+  <rect x="500.66" y="38.66" width="22.68" height="22.68" id="Indv0001" class="solid">
+	<title>Indv0001</title>
+</rect>
+  <text x="512" y="120.049" text-anchor="middle" >Indv0001</text>
+  <text x="512" y="138.385" text-anchor="middle" >1925.08.06</text>
+  <text x="512" y="156.72" text-anchor="middle" >สมัตถ์</text>
+  <text x="512" y="175.056" text-anchor="middle" >สุนทรวาทิน</text>
+  <text x="512" y="193.392" text-anchor="middle" >ปรังเผล</text>
+  <text x="512" y="211.727" text-anchor="middle" >สังขละบุรี</text>
+  <text x="512" y="230.063" text-anchor="middle" >กาญจนบุรี</text>
+  <line x1="523.34" y1="50" x2="591.38" y2="50" />
+<g>
+<circle cx="602.72" cy="50" r="11.34" style="fill:#ffffff;stroke:none;"/>
+  <text x="602.72" y="50" text-anchor="middle"  class="blackInkLetter_1" >.</text>
+</g>
+<circle cx="602.72" cy="50" r="11.34" id="Indv0002" class="solid">
+	<title>Indv0002</title>
+</circle>
+  <text x="602.72" y="120.049" text-anchor="middle" >Indv0002</text>
+  <text x="602.72" y="138.385" text-anchor="middle" >1933.06.11</text>
+  <text x="602.72" y="156.72" text-anchor="middle" >สุชานุช</text>
+  <text x="602.72" y="175.056" text-anchor="middle" >ผลพันธิน</text>
+  <text x="602.72" y="193.392" text-anchor="middle" >ปรังเผล</text>
+  <text x="602.72" y="211.727" text-anchor="middle" >สังขละบุรี</text>
+  <text x="602.72" y="230.063" text-anchor="middle" >กาญจนบุรี</text>
+  <line class="mating" id="Indv0002:Indv0001" x1="557.36" y1="50" x2="557.36" y2="252.256" />
+  <line class="solid" x1="330.56" y1="252.256" x2="330.56" y2="280.606" />
+  <clipPath id="Indv0005_clipPath">
+   <rect x="319.22" y="280.606" width="22.68" height="22.68" />
+  </clipPath>
+<g clip-path="url(#Indv0005_clipPath)">
+<circle cx="330.56" cy="291.946" r="16.0372" style="fill:#ffffff;stroke:none;"/>
+  <text x="330.56" y="291.946" text-anchor="middle"  class="blackInkLetter_1" >.</text>
+</g>
+  <rect x="319.22" y="280.606" width="22.68" height="22.68" id="Indv0005" class="solid">
+	<title>Indv0005</title>
+</rect>
+  <ellipse cx="330.56" cy="334.531" rx="6" ry="6" />
+  <text x="330.56" y="337.027" text-anchor="middle"  class="birthOrder" >1</text>
+  <text x="330.56" y="361.995" text-anchor="middle" >Indv0005</text>
+  <text x="330.56" y="380.331" text-anchor="middle" >1953.12.11</text>
+  <text x="330.56" y="398.667" text-anchor="middle" >ฆโนทัย</text>
+  <text x="330.56" y="417.002" text-anchor="middle" >สุนทรวาทิน</text>
+  <text x="330.56" y="435.338" text-anchor="middle" >นาสีนวน</text>
+  <text x="330.56" y="453.673" text-anchor="middle" >เมือง</text>
+  <text x="330.56" y="472.009" text-anchor="middle" >มุกดาหาร</text>
+  <line class="solid" x1="421.28" y1="252.256" x2="421.28" y2="280.606" />
+<g>
+<circle cx="421.28" cy="291.946" r="11.34" style="fill:#ffffff;stroke:none;"/>
+  <text x="421.28" y="291.946" text-anchor="middle"  class="blackInkLetter_1" >.</text>
+</g>
+<circle cx="421.28" cy="291.946" r="11.34" id="Indv0006" class="solid">
+	<title>Indv0006</title>
+</circle>
+  <ellipse cx="421.28" cy="334.531" rx="6" ry="6" />
+  <text x="421.28" y="337.027" text-anchor="middle"  class="birthOrder" >2</text>
+  <text x="421.28" y="361.995" text-anchor="middle" >Indv0006</text>
+  <text x="421.28" y="380.331" text-anchor="middle" >1954.12.03</text>
+  <text x="421.28" y="398.667" text-anchor="middle" >มทนา</text>
+  <text x="421.28" y="417.002" text-anchor="middle" >สุนทรวาทิน</text>
+  <text x="421.28" y="435.338" text-anchor="middle" >นาสีนวน</text>
+  <text x="421.28" y="453.673" text-anchor="middle" >เมือง</text>
+  <text x="421.28" y="472.009" text-anchor="middle" >มุกดาหาร</text>
+  <line class="solid" x1="512" y1="252.256" x2="512" y2="280.606" />
+  <clipPath id="Indv0004_clipPath">
+   <rect x="500.66" y="280.606" width="22.68" height="22.68" />
+  </clipPath>
+<g clip-path="url(#Indv0004_clipPath)">
+<circle cx="512" cy="291.946" r="16.0372" style="fill:#ffffff;stroke:none;"/>
+  <text x="512" y="291.946" text-anchor="middle"  class="blackInkLetter_1" >.</text>
+</g>
+  <rect x="500.66" y="280.606" width="22.68" height="22.68" id="Indv0004" class="solid">
+	<title>Indv0004</title>
+</rect>
+  <ellipse cx="512" cy="334.531" rx="6" ry="6" />
+  <text x="512" y="337.027" text-anchor="middle"  class="birthOrder" >3</text>
+  <text x="512" y="361.995" text-anchor="middle" >Indv0004</text>
+  <text x="512" y="380.331" text-anchor="middle" >1955.05.05</text>
+  <text x="512" y="398.667" text-anchor="middle" >การุญ</text>
+  <text x="512" y="417.002" text-anchor="middle" >สุนทรวาทิน</text>
+  <text x="512" y="435.338" text-anchor="middle" >กระเบื้อง</text>
+  <text x="512" y="453.673" text-anchor="middle" >ชุมพลบุรี</text>
+  <text x="512" y="472.009" text-anchor="middle" >สุรินทร์</text>
+  <line class="solid" x1="602.72" y1="252.256" x2="602.72" y2="280.606" />
+<g>
+<circle cx="602.72" cy="291.946" r="11.34" style="fill:#ffffff;stroke:none;"/>
+  <text x="602.72" y="291.946" text-anchor="middle"  class="blackInkLetter_1" >.</text>
+</g>
+<circle cx="602.72" cy="291.946" r="11.34" id="Indv0003" class="solid">
+	<title>Indv0003</title>
+</circle>
+  <ellipse cx="602.72" cy="334.531" rx="6" ry="6" />
+  <text x="602.72" y="337.027" text-anchor="middle"  class="birthOrder" >4</text>
+  <text x="602.72" y="361.995" text-anchor="middle" >Indv0003</text>
+  <text x="602.72" y="380.331" text-anchor="middle" >1956.07.04</text>
+  <text x="602.72" y="398.667" text-anchor="middle" >สุชานาถ</text>
+  <text x="602.72" y="417.002" text-anchor="middle" >สุนทรวาทิน</text>
+  <text x="602.72" y="435.338" text-anchor="middle" >กระเบื้อง</text>
+  <text x="602.72" y="453.673" text-anchor="middle" >ชุมพลบุรี</text>
+  <text x="602.72" y="472.009" text-anchor="middle" >สุรินทร์</text>
+  <line x1="614.06" y1="291.946" x2="682.1" y2="291.946" />
+  <clipPath id="Indv0008_clipPath">
+   <rect x="682.1" y="280.606" width="22.68" height="22.68" />
+  </clipPath>
+<g clip-path="url(#Indv0008_clipPath)">
+<circle cx="693.44" cy="291.946" r="16.0372" style="fill:#ffffff;stroke:none;"/>
+  <text x="693.44" y="291.946" text-anchor="middle"  class="blackInkLetter_1" >.</text>
+</g>
+  <rect x="682.1" y="280.606" width="22.68" height="22.68" id="Indv0008" class="solid">
+	<title>Indv0008</title>
+</rect>
+  <text x="693.44" y="361.995" text-anchor="middle" >Indv0008</text>
+  <text x="693.44" y="380.331" text-anchor="middle" >1955.11.07</text>
+  <text x="693.44" y="398.667" text-anchor="middle" >พาทิศ</text>
+  <text x="693.44" y="417.002" text-anchor="middle" >อุตตมะโ...</text>
+  <text x="693.44" y="435.338" text-anchor="middle" >ปรังเผล</text>
+  <text x="693.44" y="453.673" text-anchor="middle" >สังขละบุรี</text>
+  <text x="693.44" y="472.009" text-anchor="middle" >กาญจนบุรี</text>
+  <line class="mating" id="Indv0003:Indv0008" x1="648.08" y1="291.946" x2="648.08" y2="494.203" />
+  <line class="solid" x1="602.72" y1="494.203" x2="602.72" y2="522.553" />
+<g>
+<circle cx="602.72" cy="533.893" r="11.34" style="fill:#ffffff;stroke:none;"/>
+  <text x="602.72" y="533.893" text-anchor="middle"  class="blackInkLetter_1" >.</text>
+</g>
+<circle cx="602.72" cy="533.893" r="11.34" id="Indv0010" class="solid">
+	<title>Indv0010</title>
+</circle>
+  <ellipse cx="602.72" cy="576.477" rx="6" ry="6" />
+  <text x="602.72" y="578.973" text-anchor="middle"  class="birthOrder" >1</text>
+  <text x="602.72" y="603.942" text-anchor="middle" >Indv0010</text>
+  <text x="602.72" y="622.277" text-anchor="middle" >1880.10.31</text>
+  <text x="602.72" y="640.613" text-anchor="middle" >สังวรี</text>
+  <text x="602.72" y="658.948" text-anchor="middle" >อุตตมะโ...</text>
+  <text x="602.72" y="677.284" text-anchor="middle" >กระเบื้อง</text>
+  <text x="602.72" y="695.62" text-anchor="middle" >ชุมพลบุรี</text>
+  <text x="602.72" y="713.955" text-anchor="middle" >สุรินทร์</text>
+  <line class="solid" x1="693.44" y1="494.203" x2="693.44" y2="522.553" />
+  <clipPath id="Indv0009_clipPath">
+   <rect x="682.1" y="522.553" width="22.68" height="22.68" />
+  </clipPath>
+<g clip-path="url(#Indv0009_clipPath)">
+<circle cx="693.44" cy="533.893" r="16.0372" style="fill:#000000;stroke:none;"/>
+  <text x="693.44" y="538.251" text-anchor="middle"  class="whiteInkLetter_1" >A</text>
+</g>
+  <rect x="682.1" y="522.553" width="22.68" height="22.68" id="Indv0009" class="solid">
+	<title>Indv0009</title>
+</rect>
+  <ellipse cx="693.44" cy="576.477" rx="6" ry="6" />
+  <text x="693.44" y="578.973" text-anchor="middle"  class="birthOrder" >2</text>
+  <text x="693.44" y="603.942" text-anchor="middle" >Indv0009</text>
+  <text x="693.44" y="622.277" text-anchor="middle" >1980.03.15</text>
+  <text x="693.44" y="640.613" text-anchor="middle" >ไกรสร</text>
+  <text x="693.44" y="658.948" text-anchor="middle" >อุตตมะโ...</text>
+  <text x="693.44" y="677.284" text-anchor="middle" >กระเบื้อง</text>
+  <text x="693.44" y="695.62" text-anchor="middle" >ชุมพลบุรี</text>
+  <text x="693.44" y="713.955" text-anchor="middle" >สุรินทร์</text>
+  <line x1="602.72" y1="494.203" x2="693.44" y2="494.203" />
+  <line class="solid" x1="784.16" y1="252.256" x2="784.16" y2="280.606" />
+<g>
+<circle cx="784.16" cy="291.946" r="11.34" style="fill:#ffffff;stroke:none;"/>
+  <text x="784.16" y="291.946" text-anchor="middle"  class="blackInkLetter_1" >.</text>
+</g>
+<circle cx="784.16" cy="291.946" r="11.34" id="Indv0007" class="solid">
+	<title>Indv0007</title>
+</circle>
+  <ellipse cx="784.16" cy="334.531" rx="6" ry="6" />
+  <text x="784.16" y="337.027" text-anchor="middle"  class="birthOrder" >5</text>
+  <text x="784.16" y="361.995" text-anchor="middle" >Indv0007</text>
+  <text x="784.16" y="380.331" text-anchor="middle" >1959.09.12</text>
+  <text x="784.16" y="398.667" text-anchor="middle" >สุทธนุช</text>
+  <text x="784.16" y="417.002" text-anchor="middle" >จารุนัฎ</text>
+  <text x="784.16" y="435.338" text-anchor="middle" >ปรังเผล</text>
+  <text x="784.16" y="453.673" text-anchor="middle" >สังขละบุรี</text>
+  <text x="784.16" y="472.009" text-anchor="middle" >กาญจนบุรี</text>
+  <line x1="330.56" y1="252.256" x2="784.16" y2="252.256" />
+  </g>
+  <g class="legend">
+  <text x="239.84" y="50" text-anchor="middle" >Affected</text>
+  <rect  x="198.26" y="53.78" width="83.16" height="18.3356" style="fill:#000000;"  />
+  <text x="239.84" y="67.5123" text-anchor="middle"  class="whiteInkLetter_1" >A</text>
+  <rect  x="198.26" y="72.1156" width="83.16" height="18.3356" style="fill:#ffffff;"  />
+  <text x="239.84" y="81.2834" text-anchor="middle"  class="blackInkLetter_1" >.</text>
+  </g>
+  <g class="legend">
+  <rect  x="198.26" y="112.567" width="83.16" height="135.909" class="keyBox"  />
+  <text x="239.84" y="130.903" text-anchor="middle" >Individ...</text>
+  <text x="239.84" y="149.238" text-anchor="middle" >DOB</text>
+  <text x="239.84" y="167.574" text-anchor="middle" >ชื่อ</text>
+  <text x="239.84" y="185.909" text-anchor="middle" >นามสกุล</text>
+  <text x="239.84" y="204.245" text-anchor="middle" >ตำบล</text>
+  <text x="239.84" y="222.581" text-anchor="middle" >อำเภอ</text>
+  <text x="239.84" y="240.916" text-anchor="middle" >จังหวัด</text>
+  </g>
+
+ </g>
+ </svg>
+

@@ -1,0 +1,35 @@
+FamilyId
+IndividualId
+Gender
+Father
+Mother
+Deceased
+Proband
+DOB
+MZTwin
+DZTwin
+Sampled
+Affected
+
+consanguinous_008      i00045      M .           .           . . .         . . . .
+consanguinous_008      i00046      F .           .           . . .         . . . .
+consanguinous_008      i00047      M i00045      i00046      . . .         . . . .
+consanguinous_008      i00048      M i00045      i00046      . . .         . . . .
+consanguinous_008      i00049      F i00045      i00046      . . .         . . . .
+consanguinous_008      i00050      F i00045      i00046      . . .         . . . .
+consanguinous_008      i00051      F .           .           . . .         . . . .
+consanguinous_008      i00052      F i00047      i00051      . . .         . . . .
+consanguinous_008      i00053      F i00047      i00051      . . .         . . . .
+consanguinous_008      i00054      M .           .           . . .         . . . .
+consanguinous_008      i00055      M i00054      i00049      . . .         . . . .
+consanguinous_008      i00056      M i00054      i00049      . . .         . . . .
+consanguinous_008      i00057      M i00054      i00049      . . .         . . . .
+consanguinous_008      i00058      M .           .           . . .         . . . .
+consanguinous_008      i00059      M i00058      i00052      . . .         . . . .
+consanguinous_008      i00060      M i00058      i00052      . . .         . . . .
+consanguinous_008      i00061      F i00058      i00052      . Y .         . . . A
+consanguinous_008      i00062      F .           .           . . .         . . . A
+consanguinous_008      i00063      M i00056      i00062      . . .         . . . .
+consanguinous_008      i00064      F i00056      i00062      . . .         . . . .
+consanguinous_008      i00066      M i00060      i00064      . . .         . . . .
+consanguinous_008      i00067      F i00060      i00064      . . .         . . . A

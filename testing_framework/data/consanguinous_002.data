@@ -1,0 +1,12 @@
+Individualid	Familyid	Gender	Mother	Father
+1	consanguinous_002	m	.	.
+2	consanguinous_002	f	.	.
+3	consanguinous_002	f	2	1
+4	consanguinous_002	m	.	.
+5	consanguinous_002	m	2	1
+6	consanguinous_002	m	2	1
+7	consanguinous_002	m	3	4
+8	consanguinous_002	f	3	4
+9	consanguinous_002	f	8	5
+10	consanguinous_002	m	8	5
+11	consanguinous_002	f	9	7	

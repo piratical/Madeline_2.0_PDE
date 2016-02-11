@@ -1,0 +1,25 @@
+//
+// descent_tree_006.data 2016.02.09.ET
+//
+// This file was previously mdtj_001.data
+//
+FamilyId
+IndividualId
+Father
+Mother
+Gender
+
+descent_tree_006  1  .  . M
+descent_tree_006  2  .  . F
+descent_tree_006  3  .  . M
+descent_tree_006  4  .  . F
+descent_tree_006  5  .  . F
+descent_tree_006  6  .  . M
+descent_tree_006  7  1  2 M
+descent_tree_006  9  1  2 M
+descent_tree_006  8  3  4 F
+descent_tree_006 10  3  4 F
+descent_tree_006 13  7  8 F
+descent_tree_006 14  9 10 M
+descent_tree_006 11  3  5 F
+descent_tree_006 12  6  5 M

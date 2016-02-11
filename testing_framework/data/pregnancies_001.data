@@ -1,0 +1,24 @@
+//
+// pregnancies_001.data 2016.02.09.ET
+//
+FamilyId
+IndividualId
+Gender
+Father
+Mother
+Deceased
+Proband
+DOB
+MZTwin
+DZTwin
+Sampled
+Affected
+Pregnancy
+Gestation
+
+pregnancies_001 U00100      M .           .           . . .          . . . . . .    
+pregnancies_001 U00101      F .           .           . . .          . . Y . . .    
+pregnancies_001 U00102      M U00100      U00101      . . 2011.12.01 . . Y . . .    
+pregnancies_001 U00103      F U00100      U00101      . . 2013.07.07 . . Y A . .    
+pregnancies_001 U00104      F U00100      U00101      . . .          . A Y . P 20wks
+pregnancies_001 U00105      F U00100      U00101      . . .          . A Y A P 20wks

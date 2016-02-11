@@ -1,0 +1,131 @@
+body{
+	font-family:Ubuntu,sans-serif;
+	font-size:25px;
+	color:#000;
+	border:none;
+	margin:0;
+	padding:0;
+}
+
+#content{
+	margin:5vw;
+	background-color:#fff;
+}
+
+.case_container{
+	border:2px solid #455d8a;
+	margin-top:1.5vw;
+	margin-bottom:1.5vw;
+}
+
+h1{
+	color:#def;
+	background-color:#455d8a;
+	font-family:"Yanone Kaffeesatz";
+	font-size:37px;
+	font-style:normal;
+	margin:0;
+	padding:3px;
+	padding-left:12px;
+	padding-bottom:7px;
+}
+
+h2{
+	color:#fff;
+	background-color:#455d8a;
+	font-family:"Yanone Kaffeesatz";
+	font-size:32px;
+	font-style:normal;
+	margin:0;
+	padding:3px;
+	padding-left:12px;
+	padding-bottom:7px;
+}
+
+.case_container p{
+	margin-left:3vw;
+	margin-right:3vw;
+}
+
+.case_container object{
+	margin-left:3vw;
+	margin-right:3vw;
+	max-height:60vh;
+}
+
+.case_container ul{
+	margin-left:3vw;
+	margin-right:3vw;
+}
+
+em,i{
+	font-style:italic;
+	color:#455d8a;
+}
+
+.figure{
+	display:block;
+	margin-left:auto;
+	margin-right:auto;
+	margin-top:12px;
+	margin-bottom:12px;
+}
+.command_line{
+	background-color:#efefef;
+	color:#455d8a;
+	margin-left:3vw;
+	margin-right:3vw;
+	font-family:monospace;
+	font-size:25px;
+	padding:3px;
+	padding-left:3vw;
+}
+
+input{
+	color:#455d8a;
+	font-family:monospace;
+	font-size:25px;
+	padding:3px;
+	padding-left:5px;
+	min-width:50vw;
+	border:2px dotted #ccccdd;
+}
+
+a{
+	text-decoration:none;
+	color:#1b5474;
+	padding:3px;
+	border-bottom:2px dotted #ccccdd;
+}
+
+a:hover{
+	background-color:#455d8a;
+	color:#fff;
+}
+
+.label{
+	color:#455d8a;
+	padding:3px;
+	display:inline-block;
+	width:200px;
+}
+
+.green{
+	color:#0c0;
+}
+
+.red{
+	color:#d00;
+}
+
+.warning{
+	color:#d00;
+}
+
+.warning::before{
+	font-size:50px;
+	content:" ⚠ ";
+}
+
+
+

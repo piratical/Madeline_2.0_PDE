@@ -1,0 +1,30 @@
+//
+// twin_003
+//
+FamilyId
+IndividualId
+Gender
+Father
+Mother
+Deceased
+Proband
+DOB
+MZTwin
+DZTwin
+Sampled
+Affected
+
+twin_003      T00139      M .           .           . . .          . . . .
+twin_003      T00140      F .           .           . . .          . . . .
+twin_003      T00141      M T00139      T00140      . . .          . A . .
+twin_003      T00142      M T00139      T00140      . . .          . A . .
+twin_003      T00143      M T00139      T00140      . . .          . A . .
+twin_003      T00144      M T00139      T00140      . . .          . A . .
+twin_003      T00145      M T00139      T00140      . . .          . A . .
+twin_003      T00146      F T00139      T00140      . . .          . A . .
+twin_003      T00147      F T00139      T00140      . . .          . A . .
+twin_003      T00148      F T00139      T00140      . . .          . A . .
+twin_003      T00149      F T00139      T00140      . . .          . A . .
+twin_003      T00150      F T00139      T00140      . . .          . A . .
+twin_003      T00151      F T00139      T00140      . . .          . A . .
+twin_003      T00152      F T00139      T00140      . . .          . A . .

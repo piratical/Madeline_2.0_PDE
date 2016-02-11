@@ -1,0 +1,35 @@
+//
+// format_002.data — Tests Madeline 2.0 PDE flat file format (MFF)
+//
+FamilyId
+IndividualId
+Gender
+Father
+Mother
+Deceased
+Proband
+DOB
+MZTwin
+DZTwin
+Sampled
+Affected
+FirstName
+LastName
+
+format_002 U00100      M .           .           Y . .          . . . . .                               .                               
+format_002 U00101      F .           .           Y . .          . . . . .                               .                               
+format_002 U00102      M U00100      U00101      . . .          . . Y A .                               .                               
+format_002 U00103      M U00100      U00101      . Y .          . . Y . .                               .                               
+format_002 U00104      M U00100      U00101      . . .          . . Y A .                               .                               
+format_002 U00105      F U00100      U00101      . . .          . . Y . .                               .                               
+format_002 U00106      F U00100      U00101      . . .          . . Y . .                               .                               
+format_002 U00107      . U00100      U00101      Y . .          . . . . .                               .                               
+format_002 U00108      F .           .           . . .          . . . . .                               .                               
+format_002 U00109      F U00103      U00108      . . .          . . Y . .                               .                               
+format_002 U00110      F U00103      U00108      . . .          . . Y A .                               .                               
+format_002 U00111      M .           .           . . .          . . . . .                               .                               
+format_002 U00112      M U00111      U00105      . . .          . . Y . .                               .                               
+format_002 U00113      F U00111      U00105      . . .          . . Y . .                               .                               
+format_002 U00114      F .           .           . . .          . . . . .                               .                               
+format_002 U00115      M U00112      U00114      . . .          . . Y A .                               .                               
+format_002 U00116      F U00112      U00114      . . .          . . Y . .                               .                               

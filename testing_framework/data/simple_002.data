@@ -1,0 +1,33 @@
+////////////////////////////////////////////////////////////////////////
+//
+// simple_002.data
+//
+////////////////////////////////////////////////////////////////////////
+FamilyId
+IndividualId
+Gender
+Father
+Mother
+Deceased
+Proband
+DOB
+MZTwin
+DZTwin
+Sampled
+Affected
+
+simple_002      T00106      M .           .           Y . .          . . . . 
+simple_002      T00107      F .           .           . . .          . . . . 
+simple_002      T00108      M T00106      T00107      . . .          . . . M 
+simple_002      T00109      M T00106      T00107      . . .          . . . U 
+simple_002      T00110      M T00106      T00107      . . .          . . . S 
+simple_002      T00111      M T00106      T00107      . . .          . . . U 
+simple_002      T00112      M T00106      T00107      . . .          . . . U 
+simple_002      T00113      M T00106      T00107      . Y .          . . . M 
+simple_002      T00114      M T00106      T00107      . . .          . . . S 
+simple_002      T00115      F T00106      T00107      . . .          . . . U 
+simple_002      T00116      F T00106      T00107      . . .          . . . S 
+simple_002      T00117      F T00106      T00107      . . .          . . . U 
+simple_002      T00118      F T00106      T00107      . . .          . . . U 
+simple_002      T00119      F T00106      T00107      . . .          . . . U 
+simple_002      T00120      F T00106      T00107      . . .          . . . U 

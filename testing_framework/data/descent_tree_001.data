@@ -1,0 +1,11 @@
+IndividualId	FamilyId	Gender	Mother	Father
+m100	descent_tree_001	m	.	.
+m101	descent_tree_001	f	.	.
+m102	descent_tree_001	f	m101	m100
+m103	descent_tree_001	m	m101	m100
+m104	descent_tree_001	f	m101	m100
+m105	descent_tree_001	f	m104	m202
+m200	descent_tree_001	m	.	.
+m201	descent_tree_001	f	.	.
+m202	descent_tree_001	m	m201	m200
+m203	descent_tree_001	m	m201	m200

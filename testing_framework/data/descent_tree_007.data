@@ -1,0 +1,34 @@
+//
+// descent_tree_007.data 2016.02.09.ET
+//
+// This file was previously descent_tree_007.data
+//
+FamilyId
+IndividualId
+Father
+Mother
+Gender
+MZTwin
+
+descent_tree_007  5  .  . F .
+descent_tree_007  6  .  . M .
+descent_tree_007  7  .  . F .
+descent_tree_007 10  .  . F .
+descent_tree_007 11  .  . M .
+descent_tree_007 12  .  . M .
+descent_tree_007  8  .  . F .
+descent_tree_007  9  .  . M .
+descent_tree_007 13  6  5 M .
+descent_tree_007 14  6  5 F .
+descent_tree_007 15  6  7 M .
+descent_tree_007 16  6  8 M .
+descent_tree_007 17  6  8 F .
+descent_tree_007 18  6  8 F .
+descent_tree_007 19  9  8 F .
+descent_tree_007 20 12 10 F .
+descent_tree_007 21 19 20 F .
+descent_tree_007 22 19 20 M .
+descent_tree_007 23 19 20 F .
+descent_tree_007 24 11 10 F .
+descent_tree_007 25  6 10 F A
+descent_tree_007 26  6 10 F A

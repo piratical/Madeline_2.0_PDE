@@ -1,0 +1,64 @@
+FamilyID	IndividualId	Gender	Father	Mother	Deceased	DOB	Proband	Affected
+0999_family_corrected	10414	M	10416	10415			Y	
+0999_family_corrected	10415	F						
+0999_family_corrected	10416	M	10526	10527				
+0999_family_corrected	10417	F	10416	10415				
+0999_family_corrected	10418	M	10419	10431				
+0999_family_corrected	10419	M	10430	10531				
+0999_family_corrected	10419B	M	10430	10531				
+0999_family_corrected	10420	M	10434	10433				
+0999_family_corrected	10421	M	10422	10449				
+0999_family_corrected	10422	M	10432	10540				
+0999_family_corrected	10423	F	10424	10481				
+0999_family_corrected	10424	M	10432	10540				
+0999_family_corrected	10427	M	10525	10524				
+0999_family_corrected	10430	M	10526	10527				
+0999_family_corrected	10431	F	10517	10516				
+0999_family_corrected	10432	M	10526	10527				
+0999_family_corrected	10433	F	10526	10527				
+0999_family_corrected	10434	M	10511	10510				
+0999_family_corrected	10440	F	10442	10441				
+0999_family_corrected	10441	F						
+0999_family_corrected	10442	M	10517	10516				
+0999_family_corrected	10447	F	10416	10415				
+0999_family_corrected	10449	F						
+0999_family_corrected	10481	F						
+0999_family_corrected	10486	F						
+0999_family_corrected	10487	M						
+0999_family_corrected	10488	F	10487	10486				
+0999_family_corrected	10489	M						
+0999_family_corrected	10490	F						
+0999_family_corrected	10491	M	10489	10488				
+0999_family_corrected	10492	M	10491	10490				
+0999_family_corrected	10493	F	10494	10495				
+0999_family_corrected	10494	M	10496	10497				
+0999_family_corrected	10495	F						
+0999_family_corrected	10496	M						
+0999_family_corrected	10497	F						
+0999_family_corrected	10510	F						
+0999_family_corrected	10511	M	10512	10513				
+0999_family_corrected	10512	M						
+0999_family_corrected	10513	F						
+0999_family_corrected	10516	F	10519	10518				
+0999_family_corrected	10517	M						
+0999_family_corrected	10518	F						
+0999_family_corrected	10519	M	10521	10520				
+0999_family_corrected	10520	F						
+0999_family_corrected	10521	M						
+0999_family_corrected	10522	F	10521	10520				
+0999_family_corrected	10523	M						
+0999_family_corrected	10524	F	10523	10522				
+0999_family_corrected	10525	M						
+0999_family_corrected	10526	M						
+0999_family_corrected	10527	F						
+0999_family_corrected	10531	F	10492	10493					2
+0999_family_corrected	10540	F						
+0999_family_corrected	11205	M	10419	10431				
+0999_family_corrected	11206	F	10419	10431				
+0999_family_corrected	11206B	F	10419	10431				
+0999_family_corrected	11207	F	10424	10481				
+0999_family_corrected	11940	F	10414	11952				
+0999_family_corrected	11941	F	10417	11964				
+0999_family_corrected	11952	F						
+0999_family_corrected	11953	M	10414	11952				
+0999_family_corrected	11964	M						

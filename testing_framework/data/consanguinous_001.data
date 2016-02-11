@@ -1,0 +1,15 @@
+Individualid	Familyid	Gender	Mother	Father
+m100	consanguinous_001	m	.	.
+m101	consanguinous_001	f	.	.
+m102	consanguinous_001	m	m101	m100
+m103	consanguinous_001	f	m101	m100
+m104	consanguinous_001	m	.	.
+m105	consanguinous_001	f	m101	m100
+m106	consanguinous_001	m	.	.
+m107	consanguinous_001	m	m101	m100
+m109	consanguinous_001	m	m103	m104
+m108	consanguinous_001	m	m103	m104
+m110	consanguinous_001	m	m114	m108
+m111	consanguinous_001	m	m114	m108
+m114	consanguinous_001	f	m105	m106
+m112	consanguinous_001	m	m105	m106

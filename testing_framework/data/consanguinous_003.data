@@ -1,0 +1,15 @@
+
+FamilyId
+IndividualId
+Gender
+Father
+Mother
+
+consanguinous_003 01 M  .  .
+consanguinous_003 02 F  .  .
+consanguinous_003 03 M  .  .
+consanguinous_003 04 F 01 02
+consanguinous_003 05 F 01 02
+consanguinous_003 06 F 03 04
+consanguinous_003 07 M 03 04
+consanguinous_003 08 M 05 07

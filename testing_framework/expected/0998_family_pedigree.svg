@@ -1,0 +1,458 @@
+<?xml version="1.0" standalone="no"?>
+ <svg version="1.1"  id="svgDC" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"  viewBox="0 0 1005 699"  onload="init()" >
+ <defs>
+  <style type="text/css"><![CDATA[
+
+line{
+	stroke:#000;
+	stroke-width:0.5mm;
+	stroke-linejoin:miter;
+	stroke-linecap:square;
+}
+
+rect{
+	stroke:#000;
+	stroke-width:0.5mm;
+	stroke-linejoin:miter;
+	stroke-linecap:square;
+}
+
+ellipse{
+	stroke: #000;
+    fill: #fff;
+	stroke-width:0.25mm;
+}
+
+text{
+	font-family:"DejaVu Sans",sans-serif;
+	font-size:12px;
+}
+
+.smallText{
+	font-family:"DejaVu Sans",sans-serif;
+	font-size:9px;
+	fill:#444;
+}
+
+.layer text{
+	fill:#930;
+}
+
+.layer line{
+	stroke:#000;
+}
+
+.birthOrder,.unknownTwins{
+	font-size: 8px;
+}
+
+.header{
+	font-size:18px;
+	font-weight:bold;
+}
+
+.keyBox{
+	fill:#e5e5e5;
+	stroke:#000;
+	stroke-width:0.5mm;
+	stroke-linejoin:miter;
+	stroke-linecap:square;
+}
+
+.mating:hover{
+	stroke-width:1mm;
+	stroke:#d56300;
+}
+
+.selectedIndividual{
+	stroke-width:1mm;
+	stroke-linecap:square;
+	stroke-linejoin:miter;
+	stroke:#d00;
+    fill:none;
+}
+
+.selectedIndividual:hover{
+	stroke:#d00;
+	fill:#ffbbbb;
+	fill-opacity:0.70;
+}
+
+.solid{
+	stroke-width:0.5mm;
+	stroke-linecap:square;
+	stroke-linejoin:miter;
+	stroke:#000;
+	fill:none;
+}
+
+.dashed{
+	stroke-width:0.5mm;
+	stroke-linecap:square;
+	stroke-linejoin:miter;
+	stroke:#98afc7;
+	stroke-dasharray:2mm,1mm;
+	stroke-dashoffset:1.0mm;
+	fill:none;
+}
+
+.solid:hover{
+	fill:#ffb787;
+	fill-opacity:0.70;
+	stroke:#d56300;
+	stroke-width:1mm;
+}
+
+.dashed:hover{
+	fill:#ffb787;
+	fill-opacity:0.70;
+	stroke:#d56300;
+	stroke-width:1mm;
+}
+
+.filled{
+	stroke-width:0.5mm;
+	stroke-linecap:square;
+	stroke-linejoin:miter;
+	stroke:#000;
+	fill:#000;
+}
+
+.specialIcons{
+	stroke-width:0.25mm;
+	stroke-linecap:round;
+	stroke-linejoin:miter;
+	stroke:#000;
+	fill:#fff;
+}
+
+.specialLines{
+	stroke-linecap:square;
+	stroke-linejoin:miter;
+	stroke:#000;
+	stroke-width:0.5mm;
+	fill:none;
+}
+
+.thinLine{
+	fill:none;
+	stroke: #000;
+	stroke-width:0.25mm;
+}
+
+.curvedConnector{
+	stroke-linecap:square;
+	stroke-linejoin:miter;
+	stroke:#98afc7;
+	stroke-width:0.5mm;
+	stroke-dasharray:2mm,1mm;
+	stroke-dashoffset:1.0mm;
+	fill:none;
+}
+
+.curvedConnector:hover{
+	stroke:#d56300;
+}
+
+.whiteInkLetter_1{
+	font-size: 12px;
+	fill: #fff;
+}
+
+.whiteInkLetter_2{
+	font-size: 10px;
+	fill: #fff;
+}
+
+.whiteInkLetter_3{
+	font-size: 8px;
+	fill: #fff;
+}
+
+.whiteInkLetter{
+	font-size: 8px;
+	fill: #fff;
+}
+
+.blackInkLetter_1{
+	font-size: 12px;
+}
+
+.blackInkLetter_2{
+	font-size: 10px;
+}
+
+.blackInkLetter_3{
+	font-size: 8px;
+}
+
+.blackInkLetter{
+	font-size: 8px;
+	fill: #000;
+}
+
+.blackInk{
+	fill: #000;
+}
+
+.whiteInk{
+	fill: #fff;
+}
+
+.counter{
+	font-size: 14px;
+	fill: #000;
+}
+
+.counterFill{
+	fill: #fff;
+}
+
+.sampleLevel{
+	stroke:none;
+	fill:#f99;
+}
+
+]]></style>
+ <script type="text/javascript" xlink:href="javascript/madeline.js"></script>
+ <marker id="endArrow" viewBox="0 0 10 10" refX="1" refY="5" markerUnits="strokeWidth" orient="auto" markerWidth="5" markerHeight="4">  <polyline points="0,0 10,5 0,10 1,5" fill="#000" /> </marker>
+ </defs>
+ <g class="pedigree" transform="translate(-41.58)">
+
+ <g id="bottomLayer" class="layer" >
+
+ </g>
+ <g id="layer0" class="layer" >
+  <line x1="623.7" y1="313.865" x2="861.84" y2="313.865" />
+  <line x1="861.84" y1="313.865" x2="861.84" y2="445.798" />
+  <line x1="861.84" y1="445.798" x2="941.22" y2="445.798" />
+ </g>
+
+  <g class="drawing">
+  <text x="512" y="30" text-anchor="middle"  class="header" >0998_family</text>
+<g>
+</g>
+<circle cx="272.16" cy="50" r="11.34" id="99092" class="solid">
+	<title>99092</title>
+</circle>
+  <line x1="257.04" y1="65.12" x2="287.28" y2="34.88" />
+  <text x="272.16" y="92.5845" text-anchor="middle" >99092</text>
+  <line x1="283.5" y1="50" x2="351.54" y2="50" />
+  <clipPath id="99093_clipPath">
+   <rect x="351.54" y="38.66" width="22.68" height="22.68" />
+  </clipPath>
+<g clip-path="url(#99093_clipPath)">
+</g>
+  <rect x="351.54" y="38.66" width="22.68" height="22.68" id="99093" class="solid">
+	<title>99093</title>
+</rect>
+  <line x1="347.76" y1="65.12" x2="378" y2="34.88" />
+  <text x="362.88" y="92.5845" text-anchor="middle" >99093</text>
+  <line class="mating" id="99092:99093" x1="317.52" y1="50" x2="317.52" y2="142.243" />
+  <line class="solid" x1="272.16" y1="142.243" x2="272.16" y2="170.593" />
+<g>
+</g>
+<circle cx="272.16" cy="181.933" r="11.34" id="99077" class="solid">
+	<title>99077</title>
+</circle>
+  <text x="272.16" y="224.517" text-anchor="middle" >99077</text>
+  <line x1="283.5" y1="181.933" x2="351.54" y2="181.933" />
+  <clipPath id="99099_clipPath">
+   <rect x="351.54" y="170.593" width="22.68" height="22.68" />
+  </clipPath>
+<g clip-path="url(#99099_clipPath)">
+</g>
+  <rect x="351.54" y="170.593" width="22.68" height="22.68" id="99099" class="solid">
+	<title>99099</title>
+</rect>
+  <text x="362.88" y="224.517" text-anchor="middle" >99099</text>
+  <line class="mating" id="99077:99099" x1="317.52" y1="181.933" x2="317.52" y2="274.175" />
+  <line class="solid" x1="90.72" y1="274.175" x2="90.72" y2="302.525" />
+<g>
+</g>
+<circle cx="90.72" cy="313.865" r="11.34" id="99086" class="solid">
+	<title>99086</title>
+</circle>
+  <line x1="75.6" y1="328.985" x2="105.84" y2="298.745" />
+  <text x="90.72" y="356.45" text-anchor="middle" >99086</text>
+  <line class="solid" x1="544.32" y1="274.175" x2="544.32" y2="302.525" />
+<g>
+</g>
+<circle cx="544.32" cy="313.865" r="11.34" id="99087" class="solid">
+	<title>99087</title>
+</circle>
+  <text x="544.32" y="356.45" text-anchor="middle" >99087</text>
+  <line x1="555.66" y1="313.865" x2="623.7" y2="313.865" />
+  <line class="mating" id="99087:99085" x1="589.68" y1="313.865" x2="589.68" y2="406.108" />
+  <line class="solid" x1="272.16" y1="406.108" x2="272.16" y2="434.458" />
+  <clipPath id="99082_clipPath">
+   <rect x="260.82" y="434.458" width="22.68" height="22.68" />
+  </clipPath>
+<g clip-path="url(#99082_clipPath)">
+<path d="M 272.16 445.798 L 256.123 445.798 A 16.0372 16.0372 0 0 1 272.16 429.76 z" style="fill:#000;stroke:none;"/>
+<path d="M 272.16 445.798 L 272.16 429.76 A 16.0372 16.0372 0 0 1 288.197 445.798 z" style="fill:#000;stroke:none;"/>
+<path d="M 272.16 445.798 L 288.197 445.798 A 16.0372 16.0372 0 0 1 272.16 461.835 z" style="fill:#000;stroke:none;"/>
+<path d="M 272.16 445.798 L 272.16 461.835 A 16.0372 16.0372 0 0 1 256.123 445.798 z" style="fill:#000;stroke:none;"/>
+</g>
+  <rect x="260.82" y="434.458" width="22.68" height="22.68" id="99082" class="solid">
+	<title>99082</title>
+</rect>
+<path d="M 258.93 459.028 l -8.7318 3.7422 l 1.8711 1.8711 l -3.1185 3.1185 l 1.2474 1.2474 l 3.1185 -3.1185 l 1.8711 1.8711 z" />
+  <text x="243.054" y="471.124" text-anchor="middle" >P</text>
+  <text x="272.16" y="488.382" text-anchor="middle" >99082</text>
+  <line x1="283.5" y1="445.798" x2="351.54" y2="445.798" />
+<g>
+</g>
+<circle cx="362.88" cy="445.798" r="11.34" id="99094" class="solid">
+	<title>99094</title>
+</circle>
+  <text x="362.88" y="488.382" text-anchor="middle" >99094</text>
+  <line class="mating" id="99094:99082" x1="317.52" y1="445.798" x2="317.52" y2="538.04" />
+  <line class="solid" x1="181.44" y1="538.04" x2="181.44" y2="566.39" />
+  <clipPath id="99091_clipPath">
+   <rect x="170.1" y="566.39" width="22.68" height="22.68" />
+  </clipPath>
+<g clip-path="url(#99091_clipPath)">
+</g>
+  <rect x="170.1" y="566.39" width="22.68" height="22.68" id="99091" class="solid">
+	<title>99091</title>
+</rect>
+  <text x="181.44" y="620.315" text-anchor="middle" >99091</text>
+  <line class="solid" x1="272.16" y1="538.04" x2="272.16" y2="566.39" />
+<g>
+</g>
+<circle cx="272.16" cy="577.73" r="11.34" id="99090" class="solid">
+	<title>99090</title>
+</circle>
+  <text x="272.16" y="620.315" text-anchor="middle" >99090</text>
+  <line class="solid" x1="362.88" y1="538.04" x2="362.88" y2="566.39" />
+<g>
+</g>
+<circle cx="362.88" cy="577.73" r="11.34" id="99089" class="solid">
+	<title>99089</title>
+</circle>
+  <text x="362.88" y="620.315" text-anchor="middle" >99089</text>
+  <line class="solid" x1="453.6" y1="538.04" x2="453.6" y2="566.39" />
+  <clipPath id="99088_clipPath">
+   <rect x="442.26" y="566.39" width="22.68" height="22.68" />
+  </clipPath>
+<g clip-path="url(#99088_clipPath)">
+</g>
+  <rect x="442.26" y="566.39" width="22.68" height="22.68" id="99088" class="solid">
+	<title>99088</title>
+</rect>
+  <text x="453.6" y="620.315" text-anchor="middle" >99088</text>
+  <line x1="181.44" y1="538.04" x2="453.6" y2="538.04" />
+  <line class="solid" x1="544.32" y1="406.108" x2="544.32" y2="434.458" />
+  <clipPath id="99078_clipPath">
+   <rect x="532.98" y="434.458" width="22.68" height="22.68" />
+  </clipPath>
+<g clip-path="url(#99078_clipPath)">
+</g>
+  <rect x="532.98" y="434.458" width="22.68" height="22.68" id="99078" class="solid">
+	<title>99078</title>
+</rect>
+  <text x="544.32" y="488.382" text-anchor="middle" >99078</text>
+  <line class="solid" x1="635.04" y1="406.108" x2="635.04" y2="434.458" />
+  <clipPath id="99079_clipPath">
+   <rect x="623.7" y="434.458" width="22.68" height="22.68" />
+  </clipPath>
+<g clip-path="url(#99079_clipPath)">
+</g>
+  <rect x="623.7" y="434.458" width="22.68" height="22.68" id="99079" class="solid">
+	<title>99079</title>
+</rect>
+  <text x="635.04" y="488.382" text-anchor="middle" >99079</text>
+  <line class="solid" x1="725.76" y1="406.108" x2="725.76" y2="434.458" />
+  <clipPath id="99080_clipPath">
+   <rect x="714.42" y="434.458" width="22.68" height="22.68" />
+  </clipPath>
+<g clip-path="url(#99080_clipPath)">
+</g>
+  <rect x="714.42" y="434.458" width="22.68" height="22.68" id="99080" class="solid">
+	<title>99080</title>
+</rect>
+  <text x="725.76" y="488.382" text-anchor="middle" >99080</text>
+  <line class="solid" x1="816.48" y1="406.108" x2="816.48" y2="434.458" />
+<g>
+</g>
+<circle cx="816.48" cy="445.798" r="11.34" id="99081" class="solid">
+	<title>99081</title>
+</circle>
+  <text x="816.48" y="488.382" text-anchor="middle" >99081</text>
+  <line x1="272.16" y1="406.108" x2="816.48" y2="406.108" />
+  <line x1="90.72" y1="274.175" x2="544.32" y2="274.175" />
+  <line x1="272.16" y1="142.243" x2="317.52" y2="142.243" />
+  <clipPath id="99095_clipPath">
+   <rect x="895.86" y="38.66" width="22.68" height="22.68" />
+  </clipPath>
+<g clip-path="url(#99095_clipPath)">
+</g>
+  <rect x="895.86" y="38.66" width="22.68" height="22.68" id="99095" class="solid">
+	<title>99095</title>
+</rect>
+  <line x1="892.08" y1="65.12" x2="922.32" y2="34.88" />
+  <text x="907.2" y="92.5845" text-anchor="middle" >99095</text>
+  <line x1="918.54" y1="50" x2="986.58" y2="50" />
+<g>
+</g>
+<circle cx="997.92" cy="50" r="11.34" id="99096" class="solid">
+	<title>99096</title>
+</circle>
+  <line x1="982.8" y1="65.12" x2="1013.04" y2="34.88" />
+  <text x="997.92" y="92.5845" text-anchor="middle" >99096</text>
+  <line class="mating" id="99096:99095" x1="952.56" y1="50" x2="952.56" y2="142.243" />
+  <line class="solid" x1="907.2" y1="142.243" x2="907.2" y2="170.593" />
+<g>
+</g>
+<circle cx="907.2" cy="181.933" r="11.34" id="99083" class="solid">
+	<title>99083</title>
+</circle>
+  <text x="907.2" y="224.517" text-anchor="middle" >99083</text>
+  <line x1="918.54" y1="181.933" x2="986.58" y2="181.933" />
+  <clipPath id="99097_clipPath">
+   <rect x="986.58" y="170.593" width="22.68" height="22.68" />
+  </clipPath>
+<g clip-path="url(#99097_clipPath)">
+</g>
+  <rect x="986.58" y="170.593" width="22.68" height="22.68" id="99097" class="solid">
+	<title>99097</title>
+</rect>
+  <text x="997.92" y="224.517" text-anchor="middle" >99097</text>
+  <line class="mating" id="99083:99097" x1="952.56" y1="181.933" x2="952.56" y2="274.175" />
+  <line class="solid" x1="907.2" y1="274.175" x2="907.2" y2="302.525" />
+<g>
+</g>
+<circle cx="907.2" cy="313.865" r="11.34" id="99084" class="solid">
+	<title>99084</title>
+</circle>
+  <text x="907.2" y="356.45" text-anchor="middle" >99084</text>
+  <line x1="918.54" y1="313.865" x2="986.58" y2="313.865" />
+  <clipPath id="99098_clipPath">
+   <rect x="986.58" y="302.525" width="22.68" height="22.68" />
+  </clipPath>
+<g clip-path="url(#99098_clipPath)">
+</g>
+  <rect x="986.58" y="302.525" width="22.68" height="22.68" id="99098" class="solid">
+	<title>99098</title>
+</rect>
+  <text x="997.92" y="356.45" text-anchor="middle" >99098</text>
+  <line class="mating" id="99084:99098" x1="952.56" y1="313.865" x2="952.56" y2="406.108" />
+  <line class="solid" x1="952.56" y1="406.108" x2="952.56" y2="434.458" />
+  <clipPath id="99085_clipPath">
+   <rect x="941.22" y="434.458" width="22.68" height="22.68" />
+  </clipPath>
+<g clip-path="url(#99085_clipPath)">
+</g>
+  <rect x="941.22" y="434.458" width="22.68" height="22.68" id="99085" class="solid">
+	<title>99085</title>
+</rect>
+  <line x1="937.44" y1="460.918" x2="967.68" y2="430.678" />
+  <text x="952.56" y="488.382" text-anchor="middle" >99085</text>
+  <line x1="907.2" y1="274.175" x2="952.56" y2="274.175" />
+  <line x1="907.2" y1="142.243" x2="952.56" y2="142.243" />
+  </g>
+
+ </g>
+ </svg>
+

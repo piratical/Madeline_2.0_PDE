@@ -1,0 +1,23 @@
+//
+// twin_001
+//
+FamilyId
+IndividualId
+Gender
+Father
+Mother
+Deceased
+Proband
+DOB
+MZTwin
+DZTwin
+Sampled
+Affected
+Name
+
+twin_001      00020       M .           .           Y . .          . . . . .    
+twin_001      00021       F .           .           Y . .          . . . . .    
+twin_001      00022       M 00020       00021       . Y 1987.02.12 . . . A Fred 
+twin_001      00023       F 00020       00021       . . 1985.04.17 . . . . Nancy
+twin_001      00024       F 00020       00021       . . 1982.03.02 . . . . Sandy
+twin_001      00025       F 00020       00021       . . 1982.03.02 . . . . Sarah

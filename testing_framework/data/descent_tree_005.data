@@ -1,0 +1,25 @@
+IndividualID
+FamilyID
+Gender
+Mother
+Father
+Proband
+Pregnancy
+Deceased
+Age
+
+226745 descent_tree_005 M 226767 226768 Y . . .
+226767 descent_tree_005 F .      .      . . . .
+226768 descent_tree_005 M .      .      . . . .
+226748 descent_tree_005 F 226743 226745 . . . .
+226743 descent_tree_005 F .      .      . . . .
+226727 descent_tree_005 M 226743 226744 . . . .
+226744 descent_tree_005 M .      .      . . . .
+226749 descent_tree_005 M 226746 226744 . . . .
+226746 descent_tree_005 F .      .      . . . .
+226750 descent_tree_005 F 226747 226744 . . . .
+226747 descent_tree_005 F .      .      . . . .
+226751 descent_tree_005 . 226743 226744 . . . .
+226752 descent_tree_005 . 226743 226744 . . . .
+226761 descent_tree_005 M .      226727 . . . .
+226762 descent_tree_005 F .      226727 . . . .

@@ -1,0 +1,44 @@
+/////////////////////////////////////////////////////////////////////////
+//
+// simple_001.data    2016.02.05.ET
+//
+// This data set contains a simple nuclear family with five siblings, 
+// of which two are affected. Four of the siblings are sampled, one 
+// is unsampled. The proband is marked. Two of the siblings have 
+// approximated dates of birth: the month is known, but the precise 
+// day is unknown. Madeline 2.0 PDE treats these dates as ranged dates. 
+// Both parents are missing from the data set: Madeline2 is smart enough 
+// to create them as virtual individuals.
+//
+// This pedigree tests:
+//
+// * Handling of missing parents when both parents are not present 
+//   in the data file.
+// * Display of icons, including gender unknown individuals.
+// * Basic icon shading.
+// * Display of sampled individuals.
+// * Display of proband.
+// * Display of data labels.
+// * Display of encircled birth-order numerals.
+// * Display of ranged dates
+//
+/////////////////////////////////////////////////////////////////////////
+ 
+FamilyId
+IndividualId
+Gender
+Father
+Mother
+Deceased
+Proband
+DOB
+MZTwin
+DZTwin
+Sampled
+Affected
+
+simple_001 S00102 M S00100 S00101 . . 1937.07    . . Y U     
+simple_001 S00103 F S00100 S00101 . Y 1939.02.25 . . Y A     
+simple_001 S00104 F S00100 S00101 . . 1942.04.15 . . Y U     
+simple_001 S00105 F S00100 S00101 . . 1943       . . Y A     
+simple_001 U00106 . S00100 S00101 . . 1944.06.07 . . . U     

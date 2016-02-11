@@ -1,0 +1,37 @@
+//
+// custom_color_001.data 2016.02.09.ET
+//
+// This data file was originally called custom_color_001.data
+// It has been added to the test suite to test Madeline's custom color
+// features.
+//
+FamilyId
+IndividualId
+Gender
+Father
+Mother
+Deceased
+Proband
+DOB
+MZTwin
+DZTwin
+Sampled
+Affected_OB
+Affected_HT
+
+custom_color_001 U00100 M .      .      Y . .          . . . .       .      
+custom_color_001 U00101 F .      .      Y . .          . . . .       .      
+custom_color_001 U00102 M U00100 U00101 . . .          . . . NORMAL  .      
+custom_color_001 U00103 M U00100 U00101 . . .          . . . NORMAL  PREHYPT
+custom_color_001 U00104 F U00100 U00101 . . .          . . . OVERWT  PREHYPT
+custom_color_001 U00105 F U00100 U00101 . . .          . . . OVERWT  NORMAL 
+custom_color_001 U00106 F U00100 U00101 . . .          . . . OBESE   STAGE_2
+custom_color_001 U00107 F .      .      . . .          . . . UNDERWT NORMAL 
+custom_color_001 U00108 F U00102 U00107 . . .          . . . NORMAL  PREHYPT
+custom_color_001 U00109 F U00102 U00107 . . .          . . . OVERWT  STAGE_1
+custom_color_001 U00110 M .      .      . . .          . . . OBESE   STAGE_2
+custom_color_001 U00111 M U00110 U00104 . . .          . . . OVERWT  STAGE_2
+custom_color_001 U00112 F U00110 U00104 . . .          . . . OBESE   STAGE_1
+custom_color_001 U00113 M .      .      . . .          . . . NORMAL  NORMAL 
+custom_color_001 U00114 M U00103 U00112 . Y .          . . . OBESE   STAGE_2
+custom_color_001 U00115 F U00103 U00112 . . .          . . . NORMAL  PREHYPT
