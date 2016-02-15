@@ -1,62 +1,62 @@
 FamilyID	IndividualId	Gender	Father	Mother	Deceased	DOB	Proband	Affected
-0999_family	10414	M	10416	10415			Y	
-0999_family	10415	F						
-0999_family	10416	M	10526	10527				
-0999_family	10417	F	10416	10415				
-0999_family	10418	M	10419	10431				
-0999_family	10419	M	10430	10531				
-0999_family	10420	M	10434	10433				
-0999_family	10421	M	10422	10449				
-0999_family	10422	M	10432	10540				
-0999_family	10423	F	10424	10481				
-0999_family	10424	M	10432	10540				
-0999_family	10427	M	10525	10524				
-0999_family	10430	M	10526	10527				
-0999_family	10431	F	10517	10516				
-0999_family	10432	M	10526	10527				
-0999_family	10433	F	10526	10527				
-0999_family	10434	M	10511	10510				
-0999_family	10440	F	10442	10441				
-0999_family	10441	F						
-0999_family	10442	M	10517	10516				
-0999_family	10447	F	10416	10415				
-0999_family	10449	F						
-0999_family	10481	F						
-0999_family	10486	F						
-0999_family	10487	M						
-0999_family	10488	F	10487	10486				
-0999_family	10489	M						
-0999_family	10490	F						
-0999_family	10491	M	10489	10488				
-0999_family	10492	M	10491	10490				
-0999_family	10493	F	10494	10495				
-0999_family	10494	M	10496	10497				
-0999_family	10495	F						
-0999_family	10496	M						
-0999_family	10497	F						
-0999_family	10510	F						
-0999_family	10511	M	10512	10513				
-0999_family	10512	M						
-0999_family	10513	F						
-0999_family	10516	F	10519	10518				
-0999_family	10517	M						
-0999_family	10518	F						
-0999_family	10519	M	10521	10520				
-0999_family	10520	F						
-0999_family	10521	M						
-0999_family	10522	F	10521	10520				
-0999_family	10523	M						
-0999_family	10524	F	10523	10522				
-0999_family	10525	M						
-0999_family	10526	M						
-0999_family	10527	F						
-0999_family	10531	F	10492	10493					2
-0999_family	10540	F						
-0999_family	11205	M	10419	10431				
-0999_family	11206	F	10419	10431				
-0999_family	11207	F	10424	10481				
-0999_family	11940	F	10414	11952				
-0999_family	11941	F	10417	11964				
-0999_family	11952	F						
-0999_family	11953	M	10414	11952				
-0999_family	11964	M						
+0999_family	90001	M	90003	90002			Y	
+0999_family	90002	F						
+0999_family	90003	M	90050	90051				
+0999_family	90004	F	90003	90002				
+0999_family	90005	M	90006	90014				
+0999_family	90006	M	90013	90052				
+0999_family	90007	M	90017	90016				
+0999_family	90008	M	90009	90022				
+0999_family	90009	M	90015	90053				
+0999_family	90010	F	90011	90023				
+0999_family	90011	M	90015	90053				
+0999_family	90012	M	90049	90048				
+0999_family	90013	M	90050	90051				
+0999_family	90014	F	90041	90040				
+0999_family	90015	M	90050	90051				
+0999_family	90016	F	90050	90051				
+0999_family	90017	M	90037	90036				
+0999_family	90018	F	90020	90019				
+0999_family	90019	F						
+0999_family	90020	M	90041	90040				
+0999_family	90021	F	90003	90002				
+0999_family	90022	F						
+0999_family	90023	F						
+0999_family	90024	F						
+0999_family	90025	M						
+0999_family	90026	F	90025	90024				
+0999_family	90027	M						
+0999_family	90028	F						
+0999_family	90029	M	90027	90026				
+0999_family	90030	M	90029	90028				
+0999_family	90031	F	90032	90033				
+0999_family	90032	M	90034	90035				
+0999_family	90033	F						
+0999_family	90034	M						
+0999_family	90035	F						
+0999_family	90036	F						
+0999_family	90037	M	90038	90039				
+0999_family	90038	M						
+0999_family	90039	F						
+0999_family	90040	F	90043	90042				
+0999_family	90041	M						
+0999_family	90042	F						
+0999_family	90043	M	90045	90044				
+0999_family	90044	F						
+0999_family	90045	M						
+0999_family	90046	F	90045	90044				
+0999_family	90047	M						
+0999_family	90048	F	90047	90046				
+0999_family	90049	M						
+0999_family	90050	M						
+0999_family	90051	F						
+0999_family	90052	F	90030	90031					2
+0999_family	90053	F						
+0999_family	90054	M	90006	90014				
+0999_family	90055	F	90006	90014				
+0999_family	90056	F	90011	90023				
+0999_family	90057	F	90001	90059				
+0999_family	90058	F	90004	90061				
+0999_family	90059	F						
+0999_family	90060	M	90001	90059				
+0999_family	90061	M						
