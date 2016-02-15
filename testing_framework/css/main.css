@@ -127,5 +127,8 @@ a:hover{
 	content:" ⚠ ";
 }
 
+.invisible{
+	display:none;
+}
 
 
