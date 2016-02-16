@@ -1130,9 +1130,8 @@
    </div>
    <!-- END CASE CONTAINER -->
 
-   </div>
    <div class="case_container">
-    <h2>...</h2>
+    <h2>Missing Parents 002</h2>
     <p>
      This pedigree tests how Madeline handles missing parents.
     </p>
@@ -1148,7 +1147,6 @@
    </div>
    <!-- END CASE CONTAINER -->
 
-   </div>
    <div class="case_container">
     <h2>Missing Parents 003</h2>
     <p>
@@ -1166,7 +1164,58 @@
    </div>
    <!-- END CASE CONTAINER -->
 
+   <h1>Donor Symbology (Incomplete Support)</h1>
+   <p>
+    Madeline now accepts an optional column in a data table called "<b>Donor</b>".
+    Madeline currently recognizes the following codes in the donor column:
+   </p>
+   <ul>
+    <li>sperm (S)</li>
+    <li>ovum (O)</li>
+    <li>sperm and ovum (SO)</li>
+    <li>ovum and sperm (OS) <em>(this is identical to "sperm and ovum (SO)" above)</em></li>
+    <li>gestational (G)</li>
+    <li>mitochondrial (M)</li>
+   </ul>
+   <p>
+    Because of drawing limitations in the current version of Madeline, it is not yet possible 
+    to show so-called "3 parent" assisted reproductive technology (ART) situations.  However,
+    future support is planned for at least two cases:
+   </p>
+   <ul>
+    <li><b>Gestational Donor</b>. A <em>gestational</em> donor carries a 
+    pregnancy for a couple using the couple's egg and sperm.</li> 
+    <li><b>Mitochondrial Donor (PNT or MST)</b>. As of this writing, <em>pronuclear transfer (PNT)</em>
+    and <em>maternal spindle transfer (MST)</em> technologies have been tested in macaques and mice, yielding
+    apparently normal offspring. On February 24, 2015, the UK House of Lords approved legislation 
+    permitting "3-person IVF" <em>(in-vitro fertilization)</em> techniques directly in fertility
+    clinics without human clinical trials and with no required follow-up of any resulting children.</ul>
+   </li>
+   <p>
+    <b>NOTA BENE:</b> Donor codes need to be placed on the <em>offspring</em>, not on the parents, because
+    the offspring uniquely identify the parents.
+   </p>
+   
+   <!-- STT CASE CONTAINER -->
+   <div class="case_container">
+    <h2>Donor 001</h2>
+    <p>
+     This pedigree tests how Madeline draws the symbols used to indicate sperm, ovum, gestational, and mitochondrial
+     donors. Currently, the symbols exist in Madeline to support <em>gestational</em> and <em>mitochondrial</em> donors,
+     but Madeline cannot show 3-parent situations so these latter two are not yet very useful.
+    </p>
+    <!-- DATA AND COMMAND LINE -->
+    <p><span class="label">DATA:</span> <a href="data/donor_001.data">donor_001.data</a></p>
+    <p><span class="label">COMMAND LINE:</span><input type="text" value='madeline2 -nNL "IndividualId Donor" donor_001.data'></input></p>
+    <p><span class="label">RESULT FILE:</span> <a href="results/donor_001_pedigree.svg">donor_001_pedigree.svg</a></p>
+    <div class="svg_image">
+     <object type="image/svg+xml" data="results/donor_001_pedigree.svg">
+      <span class="warning">SVG FILE NOT FOUND</span>
+     </object>
+    </div>
    </div>
+   <!-- END CASE CONTAINER -->
+
    <div class="invisible">
    <!-- STT CASE CONTAINER -->
    <div class="case_container">
@@ -1184,9 +1233,9 @@
     </div>
    </div>
    <!-- END CASE CONTAINER -->
-
    </div>
-   <h1 id="End"> 🙡❀🙣 </h1>
+
+   <h1 id="End"> 🙡 ❀ end ❀ 🙣  </h1>
 
  </div><!-- END MAIN CONTENT -->
 </body>

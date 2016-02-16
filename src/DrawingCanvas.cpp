@@ -2182,3 +2182,12 @@ void DrawingCanvas::drawEntwinedRingsSymbol(double x,double y){
 	
 }
 
+//
+// drawMitochondrialSymbol  -- 2016.02.16.ET ADDENDUM
+//
+void DrawingCanvas::drawMitochondrialSymbol(double x,double y){
+	
+	_svg.drawMitochondrium(_body,x,y);
+	
+}
+

@@ -43,7 +43,7 @@ class Donor : public Data {
 	
 public:
 	
-	enum DONOR_TYPE{MISSING_DONOR,SPERM_DONOR,OVUM_DONOR,SPERM_AND_OVUM_DONOR,GESTATIONAL_DONOR};
+	enum DONOR_TYPE{MISSING_DONOR,SPERM_DONOR,OVUM_DONOR,SPERM_AND_OVUM_DONOR,GESTATIONAL_DONOR,MITOCHONDRIAL_DONOR};
 	
 private:
 	
@@ -107,6 +107,8 @@ public:
 		Donor::_lookupTable["OVUM & SPERM"]   = Donor::SPERM_AND_OVUM_DONOR;
 		Donor::_lookupTable["G" ]             = Donor::GESTATIONAL_DONOR;
 		Donor::_lookupTable["GESTATIONAL" ]   = Donor::GESTATIONAL_DONOR;
+		Donor::_lookupTable["M" ]             = Donor::MITOCHONDRIAL_DONOR;
+		Donor::_lookupTable["MITOCHONDRIAL" ] = Donor::MITOCHONDRIAL_DONOR;
 	}
 };
 

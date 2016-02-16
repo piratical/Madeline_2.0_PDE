@@ -1392,6 +1392,10 @@ void NuclearFamily::drawConnectionsBetweenParentalPair(DrawingCanvas &dc,Individ
 					dc.drawUterusSymbol(x4,currentY);
 					dc.drawHorizontalLine(currentY,x1,x3);
 					break;
+				case Donor::MITOCHONDRIAL_DONOR:
+					dc.drawMitochondrialSymbol(x4,currentY);
+					dc.drawHorizontalLine(currentY,x1,x3);
+					break;
 				case Donor::SPERM_AND_OVUM_DONOR:
 					dc.drawSpermSymbol(x2,currentY);
 					dc.drawOvumSymbol(x4,currentY);
@@ -1418,6 +1422,10 @@ void NuclearFamily::drawConnectionsBetweenParentalPair(DrawingCanvas &dc,Individ
 					break;
 				case Donor::GESTATIONAL_DONOR:
 					dc.drawUterusSymbol(x2,currentY);
+					dc.drawHorizontalLine(currentY,x3,x5);
+					break;
+				case Donor::MITOCHONDRIAL_DONOR:
+					dc.drawMitochondrialSymbol(x2,currentY);
 					dc.drawHorizontalLine(currentY,x3,x5);
 					break;
 				case Donor::SPERM_AND_OVUM_DONOR:

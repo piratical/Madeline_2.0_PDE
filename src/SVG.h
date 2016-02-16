@@ -95,6 +95,7 @@ public:
 	void drawPhaseISymbol(std::ostringstream& os, double x, double y);  // Used to indicate phase I males in certain protandrous species
 	void drawPhaseIISymbol(std::ostringstream& os, double x, double y); // Used to indicate phase II (terminal) males in certain protandrous species
 	void drawSmallX(std::ostringstream& os, double x, double y);        // Used to indicate absence of a parent in a parthenogenetic situation
+	void drawMitochondrium(std::ostringstream& os, double x, double y); // Used to indicate a mitochondrial donor in pronuclear transfer or maternal spindle transfer
 };
 
 #endif

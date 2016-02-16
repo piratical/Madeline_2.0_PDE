@@ -177,6 +177,7 @@ public:
 	void drawSpermSymbol(double x,double y,bool facingLeft=false);
 	void drawOvumSymbol(double x,double y);
 	void drawEntwinedRingsSymbol(double x,double y);
+	void drawMitochondrialSymbol(double x,double y);
 	
 };
 
