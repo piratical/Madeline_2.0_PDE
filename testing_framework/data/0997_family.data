@@ -1,17 +1,26 @@
-FamilyID	IndividualId	Gender	Father	Mother	Deceased	DOB	Proband	Affected	Superscript	DZTwin	MZTwin	SampleQuantity	TUBE_ID	TM_Info_1	SBD	ASRE	SDE	
-0997_family	99001	F						0					X78743					
-0997_family	99002	F						0										
-0997_family	99003	F			Y			0										
-0997_family	99004	F						0										
-0997_family	99005	M			Y			0										
-0997_family	99006	M			Y			0										
-0997_family	99007	F			Y			0										
-0997_family	99008	M	99011	99001		1977/6/11		2					X78743	#1234.70				
-0997_family	99009	F	99011	99001		1980/10/12		15					X78743	#1234.70				
-0997_family	99010	M	99016	99002				0										
-0997_family	99011	M	99010	99003				0					X78743					
-0997_family	99012	M	99010	99004		1958/7/28		2					X78743	#1234.70				
-0997_family	99013	F	99010	99004		1954/8/05	Y	15					X78743	#1234.70				
-0997_family	99014	F	99010	99004		1966/1/13		2					X78743	#1234.70				
-0997_family	99015	F	99005	99004				0										
-0997_family	99016	M	99006	99007				0										
+FamilyID
+IndividualId
+Gender
+Father
+Mother
+Deceased
+DOB
+Proband
+Affected
+
+0997_family 01 F  .  . . .          .  0
+0997_family 02 F  .  . . .          .  0
+0997_family 03 F  .  . Y .          .  0
+0997_family 04 F  .  . . .          .  0
+0997_family 05 M  .  . Y .          .  0
+0997_family 06 M  .  . Y .          .  0
+0997_family 07 F  .  . Y .          .  0
+0997_family 08 M 11 01 . 1977/06/11 .  2
+0997_family 09 F 11 01 . 1980/10/12 . 15
+0997_family 10 M 16 02 . .          .  0
+0997_family 11 M 10 03 . .          .  0
+0997_family 12 M 10 04 . 1958/07/28 .  2
+0997_family 13 F 10 04 . 1954/08/05 Y 15
+0997_family 14 F 10 04 . 1966/01/13 .  2
+0997_family 15 F 05 04 . .          .  0
+0997_family 16 M 06 07 . .          .  0

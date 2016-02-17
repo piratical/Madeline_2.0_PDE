@@ -1298,21 +1298,31 @@ void NuclearFamily::draw(Individual* startIndividual,DrawingCanvas& dc,double st
 		}
 		i++;
 	}
-	
+	///////////////////////////////////////////////////////////////////////////////////////
 	//
 	// Draw the line that connects the children
 	// The individual stores its co-ordinate position this task can be easily accomplished.
 	// 
-	
+	///////////////////////////////////////////////////////////////////////////////////////
+	//
 	//Draw the line for the twinGroups
-	if(_twinGroupCount) _drawTwinConnectors(dc,classicalOrder,verticalDropX);
-	else
-	if(children.size() == 1 && children[0]->getNumberOfNuclearFamilies()){
+	//
+	if(_twinGroupCount){
+		 _drawTwinConnectors(dc,classicalOrder,verticalDropX);
+	}else if(children.size() == 1 && children[0]->getNumberOfNuclearFamilies()){
 		if(children[0]->getLeftSpouseConnector()){
 			dc.drawHorizontalLine(children[0]->getY()-verticalDrop2-iconDiameter/2,children[0]->getX(),children[0]->getX()-horizontalInterval);
 		}else{
-			if(_isMaleWithLoopFlags(children[0],0) || children[0]->getNuclearFamily((unsigned)0)->getLeftConnectionShiftFlag());
-			else dc.drawHorizontalLine(children[0]->getY()-verticalDrop2-iconDiameter/2,children[0]->getX(),children[0]->getX()+horizontalInterval);
+			if(_isMaleWithLoopFlags(children[0],0) || children[0]->getNuclearFamily((unsigned)0)->getLeftConnectionShiftFlag()){
+				// apparently do nothing;
+			}else{
+				//
+				// Draw the line that connects from the child to the vertical drop
+				// since the single child is shifted over to the left in vertical
+				// alignment with his or her leftmost parent:
+				//
+				dc.drawHorizontalLine(currentY,startX,startX+horizontalInterval);
+			}
 		}
 	}else
 	if(children.size() > 1)
