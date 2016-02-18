@@ -122,6 +122,7 @@ void PedigreeSet::_establishConnections(){
 	while(it != _pedigrees.end()){
 		(*it)->addIdentifiedMissingParents();
 		(*it)->establishIndividualConnections();
+		(*it)->reportUnconnectedIndividuals();
 		++it;
 	}
 	

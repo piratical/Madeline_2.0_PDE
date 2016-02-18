@@ -1,0 +1,33 @@
+//
+// unconnected_001.data           2016.02.18.ET
+//
+// In this data set, all the individuals with IDs 
+// in the 100s are unconnected. Only individual "202"
+// has parents listed and thus is considered minimally
+// connected by the program.
+//
+FamilyId
+IndividualId
+Gender
+DOB
+Father
+Mother
+Proband
+MZTwin
+DZTwin
+
+unconnected_001 101 M 1953.12.09   .   . Y . .
+unconnected_001 102 F 1957.02.03   .   . . . .
+unconnected_001 103 M 1961.10.15   .   . . . .
+unconnected_001 104 F 1962.07.13   .   . . . .
+unconnected_001 105 M 1965.01.19   .   . . . .
+unconnected_001 106 M 1968.11.29   .   . . A .
+unconnected_001 107 M 1968.11.29   .   . . A .
+unconnected_001 108 M 1969.03.09   .   . . . .
+unconnected_001 109 M 1969.09.11   .   . . . .
+unconnected_001 110 F 1971.04.04   .   . . . A
+unconnected_001 111 F 1971.04.04   .   . . . A
+unconnected_001 112 F 1973.07.14   .   . . . .
+unconnected_001 113 . 1975.06.24   .   . . . .
+unconnected_001 202 F 1976.03.08 200 201 . . .
+

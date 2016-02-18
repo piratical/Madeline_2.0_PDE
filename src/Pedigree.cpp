@@ -2553,7 +2553,7 @@ void Pedigree::addIdentifiedMissingParents(){
 				// Check if we have already added this virtual father into the missingParents set:
 				fatherIt = missingParents.find(&findFather);
 				if(fatherIt==missingParents.end()){
-					Warning(methodName,"Adding virtual father %s who is not present in the input data file.",(*iit)->getFatherId().get().c_str());
+					Warning(methodName,"Adding virtual father “%s” who is not present in the input data file.",(*iit)->getFatherId().get().c_str());
 					Individual *newVirtualFather = new Individual((*iit)->getFatherId().get(),".",".","M",-1,-1);
 					newVirtualFather->setOrdinaryFounder(true);
 					newVirtualFather->setVirtualIndividual(true);
@@ -2571,7 +2571,7 @@ void Pedigree::addIdentifiedMissingParents(){
 				// Check if we have already added this virtual mother into the missingParents set:
 				motherIt = missingParents.find(&findMother);
 				if(motherIt==missingParents.end()){
-					Warning(methodName,"Adding virtual mother %s who is not present in the input data file.",(*iit)->getMotherId().get().c_str());
+					Warning(methodName,"Adding virtual mother “%s” who is not present in the input data file.",(*iit)->getMotherId().get().c_str());
 					Individual *newVirtualMother = new Individual((*iit)->getMotherId().get(),".",".","F",-1,-1);
 					newVirtualMother->setOrdinaryFounder(true);
 					newVirtualMother->setVirtualIndividual(true);
@@ -2620,13 +2620,8 @@ void Pedigree::establishIndividualConnections(){
 				(*individualIt)->setFather(*fatherIt);
 				(*fatherIt)->addChild(*individualIt);
 			}else{
+				// This should not occur now that we add virtual identified parents as a pre-requisite before this method is called:
 				throw Exception(methodName,"Virtual father %s is not present in the set of individuals.",(*individualIt)->getFatherId().get().c_str());
-				//Warning(methodName,"Adding virtual father %s who is not present in the input data file.",(*individualIt)->getFatherId().get().c_str());
-				//Individual *newVirtualFather = new Individual((*individualIt)->getFatherId().get(),".",".","M",-1,-1);
-				//(*individualIt)->setFather(newVirtualFather);
-				//newVirtualFather->addChild(*individualIt);
-				//newVirtualFather->setOrdinaryFounder(true);
-				//newVirtualFather->setVirtualIndividual(true);
 			}
 		}else if((*individualIt)->getFatherId().isMissing()){
 			//
@@ -2642,13 +2637,8 @@ void Pedigree::establishIndividualConnections(){
 				(*individualIt)->setMother(*motherIt);
 				(*motherIt)->addChild(*individualIt);
 			}else{
+				// This should not occur now that we add virtual identified parents as a pre-requisite before this method is called:
 				throw Exception(methodName,"Virtual mother %s is not present in the set of individuals.",(*individualIt)->getMotherId().get().c_str());
-				//Warning(methodName,"Adding virtual mother %s who is not present in the input data file.",(*individualIt)->getMotherId().get().c_str());
-				//Individual *newVirtualMother = new Individual((*individualIt)->getMotherId().get(),".",".","F",-1,-1);
-				//(*individualIt)->setMother(newVirtualMother);
-				//newVirtualMother->addChild(*individualIt);
-				//newVirtualMother->setOrdinaryFounder(true);
-				//newVirtualMother->setVirtualIndividual(true);
 			}
 		}else{
 			//
@@ -2782,7 +2772,7 @@ void Pedigree::establishIndividualConnections(){
 				}else{
 					//
 					// Id of the missing father cannot be determined.
-					// Add a virtual father with a random id
+					// Add a virtual father with a random id:
 					//
 					std::string randomId = randomIdGenerator.get();
 					std::pair<std::set<Individual*,compareIndividual>::iterator,bool> p;
@@ -2828,6 +2818,28 @@ void Pedigree::establishIndividualConnections(){
 }
 
 
+///
+/// reportUnconnectedIndividuals: Report remaining unconnected individuals:
+///
+void Pedigree::reportUnconnectedIndividuals(){
+	
+	// for warnings:
+	const char *methodName="Pedigree::reportUnconnectedIndividuals()";
+	
+	std::set<Individual*,compareIndividual>::iterator individualIt;
+	
+	for(individualIt=_individuals.begin();individualIt != _individuals.end();++individualIt){
+		//if((*individualIt)->getFatherId().isMissing() && (*individualIt)->getMotherId().isMissing()){
+		
+		if(    (*individualIt)->getFather()==nullptr
+		    && (*individualIt)->getMother()==nullptr
+		    && (*individualIt)->getNumberOfSpouses()==0
+		    && (*individualIt)->getNumberOfChildren()==0
+		){
+			Warning(methodName,"Individual “%s” is not connected to anyone and will not be drawn!",(*individualIt)->getId().get().c_str());
+		}
+	}
+}
 //
 // Debug Methods:
 //

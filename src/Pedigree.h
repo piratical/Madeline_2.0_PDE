@@ -49,7 +49,7 @@ public:
 	void determineFoundingGroups(); // Completely rewritten in Jan. 2016
 	void addIdentifiedMissingParents(); // Add identified missing parents to the _individuals set prior to establishing connections.
 	void establishIndividualConnections();
-	
+	void reportUnconnectedIndividuals(); // Reports unconnected individuals (after establishIndividualConnections() has run).
 	// 2011.03.17.ET Addenda:
 	void checkForAncestorDescendantAnomoly(Individual *ancestor);
 	void clearVisitCounts();

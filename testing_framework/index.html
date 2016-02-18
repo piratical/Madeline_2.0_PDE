@@ -1231,6 +1231,37 @@
    </div>
    <!-- END CASE CONTAINER -->
 
+   <!-- UNCONNECTEDS -->
+   <h1>Unconnecteds</h1>
+   <p>
+    The program is expected to identify unconnected individuals
+    in data files for users to review.
+   </p>
+   
+   <!-- STT CASE CONTAINER -->
+   <div class="case_container">
+    <h2>Unconnected 001</h2>
+    <p>
+     In this test pedigree, all individuals with IDs in the 100s
+     are unconnected and will not be drawn. The program is expected
+     to issue warning statements in these cases.
+     Only individual “202” (who has parents identified
+     but not actually present in the data file) is considered minimally
+     connected by the program and drawn on the pedigree.
+    </p>
+    <!-- DATA AND COMMAND LINE -->
+    <p><span class="label">DATA:</span> <a href="data/unconnected_001.data">unconnected_001.data</a></p>
+    <p><span class="label">COMMAND LINE:</span><input type="text" value='madeline2 unconnected_001.data'></input></p>
+    <p><span class="label">RESULT FILE:</span> <a href="results/unconnected_001_pedigree.svg">unconnected_001_pedigree.svg</a></p>
+    <div class="svg_image">
+     <object type="image/svg+xml" data="results/unconnected_001_pedigree.svg">
+      <span class="warning">SVG FILE NOT FOUND</span>
+     </object>
+    </div>
+   </div>
+   <!-- END CASE CONTAINER -->
+   </div>
+
    <div class="invisible">
    <!-- STT CASE CONTAINER -->
    <div class="case_container">
