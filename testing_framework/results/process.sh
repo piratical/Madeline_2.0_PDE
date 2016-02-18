@@ -50,15 +50,18 @@ diff -r -q -s ./ ../expected/ > diff_report
 
 regex_identical="Files ./([a-z0-9_]+\.svg) and ../expected/([a-z0-9_]+\.svg) are identical"
 regex_different="Files ./([a-z0-9_]+\.svg) and ../expected/([a-z0-9_]+\.svg) differ"
+echo "" > summary.report
 while read -r line
 do
 	if [[ $line =~ $regex_identical ]]
 	then
 		echo -e "\033[1;32m PASS: ${BASH_REMATCH[1]}"
+		echo "<p style='font-family:Ubuntu;font-size:20px;font-style:italic;color:#0d0;'>PASS: ${BASH_REMATCH[1]}</p>" >> summary.report
 	elif [[ $line =~ $regex_different ]]
 	then
 		echo -e "\033[1;31m DIFFER: ${BASH_REMATCH[1]}"
+		echo "<p style='font-family:Ubuntu;font-size:20px;font-style:italic;color:#f00;'>DIFFER: ${BASH_REMATCH[1]}</p>" >> summary.report
 	fi
 done < diff_report
-echo -n -e "\033[0m" ; # reset terminal color
-
+echo -n -e "\033[0m" # reset terminal color
+date "+<p style='font-family:Ubuntu;font-size:20px;font-style:italic'>Test results in this document were last run on %Y.%m.%d at %H:%Mh.</p>" > report.date
