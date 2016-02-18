@@ -140,12 +140,13 @@ a:hover{
 	width:100%;
 }
 
-object{
+.report_object{
 	width:100%;
 }
 
 .summary_object{
 	height:50vh;
+	width:100%;
 }
 .summary_report{
 	background-color:#fff;
@@ -154,5 +155,4 @@ object{
 	color:#000;
 	width:100%;
 }
-
 

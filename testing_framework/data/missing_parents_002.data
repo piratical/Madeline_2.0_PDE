@@ -1,0 +1,18 @@
+FamilyId
+IndividualId
+Father
+Mother
+Gender
+DOB
+Proband
+
+missing_parents_002 12  .  1 M 1960.12.07 P
+missing_parents_002  3  2  . M 1961.11.04 .
+missing_parents_002  4  2  . F 1963.05.12 .
+missing_parents_002  5  2  . F 1967.09.05 .
+missing_parents_002  6  2  . M 1968.09.05 .
+missing_parents_002  7 12  5 M 1985       .
+missing_parents_002  9  7  . F 1999.06.02 .
+missing_parents_002 10  6  9 F 2015.05.12 .
+missing_parents_002 11  6  9 M 2016.01.20 .
+missing_parents_002 16  3  . M 2016.01.20 .

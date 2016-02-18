@@ -1,0 +1,18 @@
+FamilyId
+IndividualId
+Father
+Mother
+Gender
+Proband
+
+missing_parents_003 12  .  1 M P
+missing_parents_003  3  2  . M .
+missing_parents_003  4  2  . F .
+missing_parents_003  5  2  . F .
+missing_parents_003  6  2  . M .
+missing_parents_003  7 12  5 M .
+missing_parents_003  9  7  . F .
+missing_parents_003 10  6  9 F .
+missing_parents_003 11  6  9 M .
+missing_parents_003 16  3 15 M .
+missing_parents_003 17 16 10 F .
