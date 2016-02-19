@@ -1,0 +1,11 @@
+Individualid	Familyid	Gender	DOB	Mother	Father
+M100	multiple_spouse_003	M	1956-02-15	.	.
+M101	multiple_spouse_003	F	1952-08-23	.	.
+M102	multiple_spouse_003	F	1983-04-30	.	.
+M103	multiple_spouse_003	F	.	.	.
+M104	multiple_spouse_003	F	.	M101	M100
+M105	multiple_spouse_003	M	.	M103	M100
+M107	multiple_spouse_003	M	.	M103	M100
+M106	multiple_spouse_003	F	.	.	.
+M109	multiple_spouse_003	F	.	M106	M105
+M108	multiple_spouse_003	M	.	M102	M100

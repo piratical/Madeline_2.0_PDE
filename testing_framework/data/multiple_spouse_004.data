@@ -1,0 +1,53 @@
+FamilyId
+IndividualId
+Gender
+Father
+Mother
+Deceased
+Proband
+DOB
+MZTwin
+DZTwin
+Sampled
+Affected
+
+multiple_spouse_004      K00186      M .           .           . . .          . . . . 
+multiple_spouse_004      K00187      F .           .           . . .          . . . . 
+multiple_spouse_004      K00188      M K00186      K00187      . . .          . . Y . 
+multiple_spouse_004      K00189      M K00186      K00187      . . 1966.02.04 . . . A 
+multiple_spouse_004      K00190      F K00186      K00187      . . 1962.09.13 . . Y . 
+multiple_spouse_004      K00191      F K00186      K00187      . . 1959.03.14 . . Y A 
+multiple_spouse_004      K00192      F K00186      K00187      . . 1993       . . Y . 
+multiple_spouse_004      K00193      . K00186      K00187      . . .          . . . . 
+multiple_spouse_004      K00194      . K00186      K00187      . . .          . . . . 
+multiple_spouse_004      K00195      . K00186      K00187      . . .          . . . . 
+multiple_spouse_004      K00196      F .           .           . . .          . . . . 
+multiple_spouse_004      K00197      M K00189      K00196      . . .          . . . . 
+multiple_spouse_004      K00198      F .           .           . . .          . . . . 
+multiple_spouse_004      K00199      M K00189      K00198      . . .          . . . . 
+multiple_spouse_004      K00200      F K00189      K00198      . . .          . . . . 
+multiple_spouse_004      K00201      F .           .           . . .          . . . . 
+multiple_spouse_004      K00202      M K00189      K00201      . . .          . . . . 
+multiple_spouse_004      K00203      F K00189      K00201      . . .          . . . . 
+multiple_spouse_004      K00204      F .           .           . . .          . . . . 
+multiple_spouse_004      K00205      M K00189      K00204      . . .          . . . . 
+multiple_spouse_004      K00206      F .           .           . . .          . . . . 
+multiple_spouse_004      K00207      F K00189      K00206      . . .          . . . . 
+multiple_spouse_004      K00208      F .           .           . . .          . . . . 
+multiple_spouse_004      K00209      M K00189      K00208      . . .          . . . . 
+multiple_spouse_004      K00210      F .           .           . . .          . . . . 
+multiple_spouse_004      K00211      F K00189      K00210      . . .          . . . . 
+multiple_spouse_004      K00212      F K00189      K00210      . . .          . . . . 
+multiple_spouse_004      K00213      F .           .           . . .          . . . . 
+multiple_spouse_004      K00214      M K00189      K00213      . . .          . . . . 
+multiple_spouse_004      K00215      M K00189      K00213      . . .          . . . . 
+multiple_spouse_004      K00216      M K00189      K00213      . . .          . . . . 
+multiple_spouse_004      K00217      F K00189      K00213      . . .          . . . . 
+multiple_spouse_004      K00218      F .           .           . . .          . . . . 
+multiple_spouse_004      K00219      F K00189      K00218      . . .          . . . . 
+multiple_spouse_004      K00220      F K00189      K00218      . . .          . . . . 
+multiple_spouse_004      K00221      F .           .           . . .          . . . . 
+multiple_spouse_004      K00222      F K00189      K00221      . . .          . . . . 
+multiple_spouse_004      K00223      F .           .           . . .          . . . . 
+multiple_spouse_004      K00224      F K00189      K00223      . . .          . . . . 
+multiple_spouse_004      K00225      F K00189      K00223      . . .          . . . . 
