@@ -244,11 +244,11 @@ text{
 </rect>
   <text x="272.16" y="206.181" text-anchor="middle" >226727</text>
   <line x1="283.5" y1="163.597" x2="351.54" y2="163.597" />
-<circle cx="362.88" cy="163.597" r="11.34" id="!SEFAYO!" class="dashed">
-	<title>!SEFAYO!</title>
+<circle cx="362.88" cy="163.597" r="11.34" id="!KANOTO!" class="dashed">
+	<title>!KANOTO!</title>
 </circle>
-  <text x="362.88" y="206.181" text-anchor="middle" >!SEFAYO!</text>
-  <line class="mating" id="!SEFAYO!:226727" x1="317.52" y1="163.597" x2="317.52" y2="237.504" />
+  <text x="362.88" y="206.181" text-anchor="middle" >!KANOTO!</text>
+  <line class="mating" id="!KANOTO!:226727" x1="317.52" y1="163.597" x2="317.52" y2="237.504" />
   <line class="solid" x1="272.16" y1="237.504" x2="272.16" y2="265.854" />
   <rect x="260.82" y="265.854" width="22.68" height="22.68" id="226761" class="solid">
 	<title>226761</title>

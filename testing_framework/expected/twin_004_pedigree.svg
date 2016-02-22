@@ -220,7 +220,6 @@ text{
  <g class="pedigree" transform="translate(81.46)">
 
  <g id="bottomLayer" class="layer" >
-<path class="curvedConnector" d="M1056.32 313.865 C1033.64 200.465 988.28 200.465 965.6 313.865 " />
 
  </g>
  <g id="layer0" class="layer" >
@@ -553,10 +552,6 @@ text{
 </circle>
   <text x="874.88" y="356.45" text-anchor="middle" >T00184</text>
   <line x1="886.22" y1="313.865" x2="954.26" y2="313.865" />
-  <rect x="954.26" y="302.525" width="22.68" height="22.68" id="T00166" class="dashed">
-	<title>T00166</title>
-</rect>
-  <text x="965.6" y="356.45" text-anchor="middle" >T00166</text>
   <line class="mating" id="T00184:T00166" x1="920.24" y1="313.865" x2="920.24" y2="406.108" />
   <line class="solid" x1="920.24" y1="406.108" x2="920.24" y2="434.458" />
 <g>

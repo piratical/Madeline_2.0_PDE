@@ -951,7 +951,6 @@ void DrawingCanvas::drawIndividual(Individual* pIndividual,double x,double y,boo
 		//std::cerr << pIndividual->getId() << ": Original Pos (x,y)=>(" << pIndividual->getX() << "," << pIndividual->getY() << ")\n";
 		
 		_svg.drawCurve(_bottomLayer,pIndividual->getX(),pIndividual->getY(),x,y);
-		
 	}
 	//
 	// track the minima and maxima on the drawing so we 

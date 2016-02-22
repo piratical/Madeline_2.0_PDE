@@ -56,6 +56,7 @@ inline void Individual::_init(void){
 	_hasBeenVisited        = false;
 	_visitCount            = 0;
 	_hasBeenDrawn          = false;
+	_multipleSpouseConnectorsDrawn = false;
 	_hasExternalConnection = false;
 	
 	

@@ -234,27 +234,27 @@ text{
 
   <g class="drawing">
   <text x="512" y="30" text-anchor="middle"  class="header" >missing_parents_002</text>
-<circle cx="226.8" cy="50" r="11.34" id="!FIROFE!" class="dashed">
-	<title>!FIROFE!</title>
+<circle cx="226.8" cy="50" r="11.34" id="!COZIDI!" class="dashed">
+	<title>!COZIDI!</title>
 </circle>
-  <text x="226.8" y="92.5845" text-anchor="middle" >!FIROFE!</text>
+  <text x="226.8" y="92.5845" text-anchor="middle" >!COZIDI!</text>
   <line x1="238.14" y1="50" x2="306.18" y2="50" />
   <rect x="306.18" y="38.66" width="22.68" height="22.68" id="2" class="dashed">
 	<title>2</title>
 </rect>
   <text x="317.52" y="92.5845" text-anchor="middle" >2</text>
-  <line class="mating" id="!FIROFE!:2" x1="272.16" y1="50" x2="272.16" y2="142.243" />
+  <line class="mating" id="!COZIDI!:2" x1="272.16" y1="50" x2="272.16" y2="142.243" />
   <line class="solid" x1="90.72" y1="142.243" x2="90.72" y2="170.593" />
   <rect x="79.38" y="170.593" width="22.68" height="22.68" id="3" class="solid">
 	<title>3</title>
 </rect>
   <text x="90.72" y="224.517" text-anchor="middle" >3</text>
   <line x1="102.06" y1="181.933" x2="170.1" y2="181.933" />
-<circle cx="181.44" cy="181.933" r="11.34" id="!KIGAGA!" class="dashed">
-	<title>!KIGAGA!</title>
+<circle cx="181.44" cy="181.933" r="11.34" id="!VUYOYO!" class="dashed">
+	<title>!VUYOYO!</title>
 </circle>
-  <text x="181.44" y="224.517" text-anchor="middle" >!KIGAGA!</text>
-  <line class="mating" id="!KIGAGA!:3" x1="136.08" y1="181.933" x2="136.08" y2="274.175" />
+  <text x="181.44" y="224.517" text-anchor="middle" >!VUYOYO!</text>
+  <line class="mating" id="!VUYOYO!:3" x1="136.08" y1="181.933" x2="136.08" y2="274.175" />
   <line class="solid" x1="136.08" y1="274.175" x2="136.08" y2="302.525" />
   <rect x="124.74" y="302.525" width="22.68" height="22.68" id="16" class="solid">
 	<title>16</title>
@@ -283,11 +283,11 @@ text{
 </rect>
   <text x="453.6" y="356.45" text-anchor="middle" >7</text>
   <line x1="464.94" y1="313.865" x2="532.98" y2="313.865" />
-<circle cx="544.32" cy="313.865" r="11.34" id="!VEKURO!" class="dashed">
-	<title>!VEKURO!</title>
+<circle cx="544.32" cy="313.865" r="11.34" id="!BEFIPA!" class="dashed">
+	<title>!BEFIPA!</title>
 </circle>
-  <text x="544.32" y="356.45" text-anchor="middle" >!VEKURO!</text>
-  <line class="mating" id="!VEKURO!:7" x1="498.96" y1="313.865" x2="498.96" y2="406.108" />
+  <text x="544.32" y="356.45" text-anchor="middle" >!BEFIPA!</text>
+  <line class="mating" id="!BEFIPA!:7" x1="498.96" y1="313.865" x2="498.96" y2="406.108" />
   <line class="solid" x1="544.32" y1="406.108" x2="544.32" y2="434.458" />
 <circle cx="544.32" cy="445.798" r="11.34" id="9" class="solid">
 	<title>9</title>
@@ -310,16 +310,16 @@ text{
   <line x1="544.32" y1="406.108" x2="498.96" y2="406.108" />
   <line x1="453.6" y1="274.175" x2="498.96" y2="274.175" />
   <line x1="90.72" y1="142.243" x2="453.6" y2="142.243" />
-  <rect x="623.7" y="38.66" width="22.68" height="22.68" id="!KEJITA!" class="dashed">
-	<title>!KEJITA!</title>
+  <rect x="623.7" y="38.66" width="22.68" height="22.68" id="!GETOKO!" class="dashed">
+	<title>!GETOKO!</title>
 </rect>
-  <text x="635.04" y="92.5845" text-anchor="middle" >!KEJITA!</text>
+  <text x="635.04" y="92.5845" text-anchor="middle" >!GETOKO!</text>
   <line x1="646.38" y1="50" x2="714.42" y2="50" />
 <circle cx="725.76" cy="50" r="11.34" id="1" class="dashed">
 	<title>1</title>
 </circle>
   <text x="725.76" y="92.5845" text-anchor="middle" >1</text>
-  <line class="mating" id="1:!KEJITA!" x1="680.4" y1="50" x2="680.4" y2="142.243" />
+  <line class="mating" id="1:!GETOKO!" x1="680.4" y1="50" x2="680.4" y2="142.243" />
   <line class="solid" x1="680.4" y1="142.243" x2="680.4" y2="170.593" />
   <rect x="669.06" y="170.593" width="22.68" height="22.68" id="12" class="solid">
 	<title>12</title>

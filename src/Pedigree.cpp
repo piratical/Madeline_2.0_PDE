@@ -601,6 +601,10 @@ void Pedigree::_assignChildrenToDescentTree(Individual* individual,unsigned desc
 		//
 		(*it)->addDescentTree(descentTreeId);
 		//
+		// 2016.02.19.ET TEST:
+		//
+		//_assignSpousesToDescentTree(*it,descentTreeId);
+		//
 		// Recursively assign the children of these children 
 		// to the descentTree too:
 		//
@@ -654,6 +658,11 @@ void Pedigree::_assignMultipleDescentTreeJoinerSpouses(){
 		//
 		if( (*it)->isOriginalFounder() && (*it)->getNumberOfDescentTrees()>1 ){
 			(*it)->setMultipleDescentTreeJoinerSpouse(true);
+			// DEBUG:
+			//std::cout << ">>> CASE I  DMDTJS: Individual " << (*it)->getId() 
+			//          << " has " << (*it)->getNumberOfSpouses() << " spouses"
+			//          << " and belongs to " << (*it)->getNumberOfDescentTrees() << " descent tree(s)"
+			//          << std::endl;
 			continue;
 		}
 		
@@ -664,30 +673,37 @@ void Pedigree::_assignMultipleDescentTreeJoinerSpouses(){
 		//         behavior of not marking married-in ordinary
 		//         founders as being part of their spouse's descent tree.
 		//         However, note that the code is careful to cover 
-		//         the case of individuals who might an originalFounder
+		//         the case of individuals who might be an originalFounder
 		//         in one descentTree and an ordinaryFounder in "another"
 		//         descentTree.
 		//
 		std::set<unsigned> dt1 = (*it)->getDescentTrees();
 		if((*it)->getNumberOfSpouses()>1){
-			// DEBUG: std::cout << ">>> DMDTJS: Individual " << (*it)->getId() 
+			// DEBUG:
+			//std::cout << ">>> CASE II  DMDTJS: Individual " << (*it)->getId() 
 			//          << " has " << (*it)->getNumberOfSpouses() << " spouses"
 			//          << " and belongs to " << (*it)->getNumberOfDescentTrees() << " descent tree(s)"
 			//          << std::endl;
 			const std::set<Individual*,Individual::compareIndividual> *pSpouses = (*it)->getSpouses();
 			std::set<Individual*,Individual::compareIndividual>::const_iterator spi;
 			for(spi=pSpouses->begin();spi!=pSpouses->end();++spi){
+				// Don't check for intersection set when spouse doesn't belong to descent trees:
+				if( (*spi)->getNumberOfDescentTrees()==0 ){
+					continue;
+				}
+				// DEBUG:
+				// std::cout << ">>> CASE II MDTJS: Individual '" << (*spi)->getId() << "' has " << (*spi)->getNumberOfSpouses() << " spouses and belongs to " << (*spi)->getNumberOfDescentTrees() << " descent trees." << std::endl;
 				std::set<unsigned> dt2 = (*spi)->getDescentTrees();
 				std::vector<unsigned> vIntersect;
 				std::set_intersection(dt1.begin(),dt1.end(),
 				                      dt2.begin(),dt2.end(),
 				                      std::back_inserter(vIntersect));
 				//
-				// DEBUG: std::cout << (*it)->getId() << " and " << (*spi)->getId() << " have " << vIntersect.size() << " elements in common" << std::endl;
+				// DEBUG: 
+				std::cout << (*it)->getId() << " and " << (*spi)->getId() << " have " << vIntersect.size() << " elements in common" << std::endl;
 				//
 				if(vIntersect.size()==0){
 					(*it)->setMultipleDescentTreeJoinerSpouse(true);
-					continue;
 				}
 			}
 		}

@@ -146,6 +146,7 @@ private:
 	bool     _hasBeenVisited; // true if the individual has been visited
 	int      _visitCount;     // counter for times visited
 	bool     _hasBeenDrawn;   // true if the individual has been drawn
+	bool     _multipleSpouseConnectorsDrawn;   // true if multiple spouse connectors have been drawn
 	
 	// Loop flags:
 	unsigned _leftSideOfLoop;
@@ -423,6 +424,8 @@ public:
 	void resetVisitCount()       { _visitCount = 0;    }
 	void incrementVisitCount()   { _visitCount++;      }
 	
+	void setMultipleSpouseConnectorsDrawn(void){ _multipleSpouseConnectorsDrawn=true; }
+	bool getMultipleSpouseConnectorsDrawn(void){ return _multipleSpouseConnectorsDrawn; }
 };
 
 #endif

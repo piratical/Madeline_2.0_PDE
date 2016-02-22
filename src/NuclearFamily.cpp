@@ -1155,8 +1155,10 @@ void NuclearFamily::draw(Individual* startIndividual,DrawingCanvas& dc,double st
 					xl -= (children[i]->getNuclearFamily(j)->getLeftWidth())  * horizontalInterval;
 				}
 			}
-			if(children[i]->getNumberOfNuclearFamilies() >= 2) drawSpouseConnectors(children[i],horizontalInterval,iconInterval,iconDiameter,dc);
-			
+			if(children[i]->getNumberOfNuclearFamilies() >= 2){
+				std::cout << ">>> Drawing Spouse connectors for " << children[i]->getId() << std::endl;
+				drawSpouseConnectors(children[i],horizontalInterval,iconInterval,iconDiameter,dc);
+			}
 			//**********************************
 			//
 			// Adjust the currentX and currentY to draw the next sibling:
@@ -1467,7 +1469,7 @@ void NuclearFamily::drawConnectionsBetweenParentalPair(DrawingCanvas &dc,Individ
 void NuclearFamily::drawSpouseConnectors(Individual* individual,const double horizontalInterval,const double iconInterval,const double iconDiameter,DrawingCanvas& dc){
 	
 	double xr,yr;
-	double radius = iconDiameter/2;
+	double radius = 0.5*iconDiameter;
 	xr = individual->getX();
 	yr  = individual->getY();
 	
