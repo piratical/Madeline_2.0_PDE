@@ -12,6 +12,39 @@ body{
 	background-color:#fff;
 }
 
+#menu{
+	position:fixed;
+	border-bottom:2px solid #1b4574;
+	border-left:2px solid #1b4574;
+	border-right:2px solid #1b4574;
+	margin-right:5vw;
+	float:right;
+	top:0px;
+	right:0px;
+	z-index:10000;
+	background-color:#88afea;
+	opacity:0.9;
+}
+
+#menu a{
+	font-size:12px;
+	display:block;
+	float:left;
+	text-decoration:none;
+	color:#1b4574;
+	font-weight:bold;
+	margin:2px;
+	padding:3px;
+	border:1px solid #1b4574;
+	background-color:#fff;
+	text-align:center;
+}
+
+#menu a:hover{
+	color:#fff;
+	background-color:#1b4574;
+}
+
 .case_container{
 	border:2px solid #455d8a;
 	margin-top:1.5vw;

@@ -11,27 +11,46 @@
 </head>
 
 <body>
+ <div id="menu">
+  <a href="#Intro">Intro</a>
+  <a href="#Summary">Summary</a>
+  <a href="#Collapsed">Collapsed</a>
+  <a href="#Compression">Compression</a>
+  <a href="#Consanguinous">Consanguinous</a>
+  <a href="#CustomColor">Custom Colors</a>
+  <a href="#DescentTrees">Descent Trees</a>
+  <a href="#Donor">Donor</a>
+  <a href="#Format">Format</a>
+  <a href="#MissingParents">Missing Parents</a>
+  <a href="#MultipleSpouses">Multiple Spouses</a>
+  <a href="#Pregnancies">Pregnancies</a>
+  <a href="#QuadrantShading">Quadrant Shading</a>
+  <a href="#Simple">Simple Pedigrees</a>
+  <a href="#TwinGroups">Twin Groups</a>
+  <a href="#Unconnecteds">Unconnecteds</a>
+ </div>
+
  <div id="content">
    <!-- INTRODUCTION -->
-   <h1 id="Introduction">Introduction to the Testing Framework</h1>
+   <h1 id="Intro">Introduction to the Testing Framework</h1>
 
    <p>
     Madeline is a capable pedigree drawing tool with many features and options. This resource provides
     a large set of categorized test pedigrees that are used to both document and verify Madeline's feature set.
    </p><p>
     This resource may be updated frequently in order to document and provide tests for new features, so be sure
-    to keep up to date by obtaining the latest version of Madeline and this testing framework from Madeline's 
+    to keep up to date by obtaining the latest version of Madeline and this testing framework from Madeline's
     code repository.
    </p><p>
     <b>How Testing is Performed</b>. A script is used to extract the <b>COMMAND LINE</b>s directly from this web
     document. These command lines not only reference the correct data files, but also contain specific
     command-line switches that are necessary for testing specific features.  Once the script has obtained the
-    set of command lines, the "<em>-S</em>" switch is added to each command line to insure that the output SVG 
+    set of command lines, the "<em>-S</em>" switch is added to each command line to insure that the output SVG
     results will be scalable so that they can be more easily embedded in this web document. Data files are
     stored in the <em>data</em> directory, so the data file names are prefixed with the proper relative paths,
     and then the command lines are executed to produce the output that you see here.
    </p><p>
-    <b>Results and Comparisons to Expected Output</b>. The results of running the script are stored in the 
+    <b>Results and Comparisons to Expected Output</b>. The results of running the script are stored in the
      <em>results</em> subdirectory of this testing framework. The expected results are stored in the
      <em>expected</em> subdirectory of the testing framework. The test script essentially runs the <em>diff</em>
      command to compare the results against the expected result set. When results are identical, the
@@ -40,12 +59,12 @@
    </p><p>
      Note that there are many reasons why the output SVGs
      may differ, so a "<span class="red">DIFFER</span>" does not necessarily mean that the program has failed to
-     produce suitable output. For example, the program generates randomized string identifiers (IDs) for 
+     produce suitable output. For example, the program generates randomized string identifiers (IDs) for
      missing parents, so the "names" of those unnamed parents will change every time the program is invoked.
      This currently occurs, for example, in the <em>descent_tree_004</em> and <em>descent_tree_005</em> test
-     pedigrees. In addition, the way that Madeline produces SVG output may change between versions. In addition, 
-     the layout of certain pedigrees may also change over time as Madeline becomes better at optimizing chart 
-     layouts. The test script report, while useful, is not capable of interpreting differences in the same way 
+     pedigrees. In addition, the way that Madeline produces SVG output may change between versions. In addition,
+     the layout of certain pedigrees may also change over time as Madeline becomes better at optimizing chart
+     layouts. The test script report, while useful, is not capable of interpreting differences in the same way
      as you, a human, are able to do. Thus, the best thing to do is to visually inspect the results presented here,
      paying special attention to pedigrees that are reported to "<span class="red">DIFFER</span>".
    </p><p>
@@ -63,8 +82,8 @@
    </p><p>
      <b>bash ./process.sh</b>
    </p><p>
-     Note that a modern "<em>unixy</em>" terminal environment with the <em>BASH</em> shell is required. 
-     (<em>Mac OS X</em>, <em>Linux</em>, and the <em>CYGWIN</em> emulation environment on 
+     Note that a modern "<em>unixy</em>" terminal environment with the <em>BASH</em> shell is required.
+     (<em>Mac OS X</em>, <em>Linux</em>, and the <em>CYGWIN</em> emulation environment on
      <em>Microsoft Windows</em> all provide what is needed).
      If everything goes smoothly, you should see a lot of output on the terminal as the script runs. This will be
      followed by the <span class="green">PASS</span>/<span class="red">DIFFER</span> reports. After that, just reload
@@ -72,7 +91,7 @@
    </p>
 
     <!-- SUMMARY REPORT -->
-    <h1>Summary Report</h1>
+    <h1 id="Summary">Summary Report</h1>
 
     <!-- REPORT DATE NOTICE -->
     <div class="report_date">
@@ -87,20 +106,85 @@
      </object>
     </div>
 
+    <!-- COLLAPSED -->
+    <h1 id="Collapsed">Collapsed Pedigrees</h1>
+    <p>
+     The ability to "collapse" a group of siblings into a single representative icon is a
+     fairly recent addition to Madeline.
+    </p>
+    <!-- STT CASE CONTAINER -->
+    <div class="case_container">
+     <h2>Collapsed 001</h2>
+     <p>
+      Madeline 2.0 PDE supports a data field called <b>Collapsed</b> that allows you to
+      "collapse" a group of siblings in a nuclear family into a single representative individual:
+     </p>
+     <img class="figure" src="images/clp_001.png" alt="Collapsing a pedigree" />
+     <p>
+      To use this option, first you need to add a <b>Collapsed</b> column in your data table and
+      then identify the "collapse groups" using unique identifiers, such as "<b>A</b>" for the
+      first group, "<b>B</b>" for the second group, "<b>C</b>" for the third group, etc.
+     </p><p>
+      After that, all you need to do is use the "<em>-k</em>" or "<em>--collapsed</em>" flag when
+      you run Madeline. If individuals in the group differ in gender, the program will automatically
+      use a diamond to represent the group. Affection status will be based on the affection status
+      (or multiple affection statuses) of the <em>first individual within each group as seen by the program</em>.
+      A number will be printed in the center of the individual icon indicating the number of individuals
+      represented by that icon.
+     </p><p>
+      Currently, the implementation is somewhat limited in that collapsing is only supported for terminal
+      individuals without children. The program's behavior is undefined if you try to collapse other individuals.
+      Nevertheless, this new functionality can be extremely useful for collapsing large pedigrees into
+      more compact forms.
+     </p><p>
+      ...
+     </p><p>
+      This same pedigree is also used to test the <b>SampleQuantity</b>, <b>Carrier</b>, and <b>ObligateCarrier</b>
+      fields:
+     </p>
+     <img class="figure" src="images/clp_000.png" alt="SampleQuantity and ObligateCarrier" />
+     <p>
+      (1) The <b>ObligateCarrier</b> is a boolean field. When <b>ObligateCarrier</b> is true, individuals
+      are drawn with a small open circle in the middle. In contrast, individuals with a true in the
+      <b>Carrier</b> field are drawn with a filled circle. Used together, these two fields allow you to
+      distinguish between individuals who have been confirmed as carriers based on physical samples, versus
+      individuals who are deduced to be obligate carriers based on inheritance but for whom
+      confirmatory samples may not be available.
+     </p><p>
+      (2) The <b>SampleQuantity</b> field is similar in purpose but more flexible than the
+      previously-available <b>Sampled</b> field. In <b>SampleQuantity</b>, you can specify either a
+      boolean value or a numeric fractional value. If you specify a boolean value such as "Y" for yes
+      or "S" for sample, the program will draw a small test tube to indicate that you have a sample,
+      but the volume or quantity of the sample is unspecified.
+     </p><p>
+      Alternatively, if you specify a numeric value between 0.00 to 1.00 inclusive, then the test tube will be drawn filled proportionally. (If you specify a number beyond 1.00, the test tube will still be drawn, but you will receive a warning and the test tube will not be filled with color). This field thus allows you to visually track available sample quantities both generally and with precision.
+     </p>
+     <!-- DATA AND COMMAND LINE -->
+     <p><span class="label">DATA:</span> <a href="data/collapsed_001.data">collapsed_001.data</a></p>
+     <p><span class="label">COMMAND LINE:</span><input type="text" value='madeline2 -nNkL "IndividualId SampleQuantity Collapsed" -C "A=salmon;A=purple" collapsed_001.data'></input></p>
+     <p><span class="label">RESULTS FILE:</span> <a href="results/collapsed_001_pedigree.svg">collapsed_001_pedigree.svg</a></p>
+     <div class="svg_image">
+      <object type="image/svg+xml" data="results/collapsed_001_pedigree.svg">
+       <span class="warning">SVG FILE NOT FOUND</span>
+      </object>
+     </div>
+    </div>
+    <!-- END CASE CONTAINER -->
+
    <!-- COMPRESSION -->
-   <h1 id="CompressionTests">Compression Tests</h1>
+   <h1 id="Compression">Compression Tests</h1>
    <p>
    Madeline automatically recognizes three compression formats:
    </p>
    <ul>
-    <li>pkzip</li> 
-    <li>gzip</li> 
-    <li>bzip2</li> 
+    <li>pkzip</li>
+    <li>gzip</li>
+    <li>bzip2</li>
    </ul>
    <p>
    The following use one pedigree to test these different compression formats:
    </p>
-   
+
    <!-- STT CASE CONTAINER -->
    <div class="case_container">
     <h2>Compress 000</h2>
@@ -159,395 +243,8 @@
    </div>
    <!-- END CASE CONTAINER -->
 
-   <!-- DATA FORMATS -->
-   <h1 id="DataFormatTests">Data Format Tests</h1>
-   <p>
-    Madeline currently recognizes five data storage formats: 
-   </p>
-   <ul>
-    <li>Madeline flat file format (MFF)</li>
-    <li>Tab delimited</li>
-    <li>Madeline XML format (MXML)</li>
-    <li>Open Office OASIS XML (i.e., OpenOffice or LibreOffice files with a <b>.ods</b> ending)</li>
-    <li>W3C XHTML tables (i.e., HTML tables embedded in web documents, usually with a <b>.html</b> ending)</li>
-   </ul>
-   <p>
-   The following use one pedigree to test these different data storage formats:
-   </p>
-
-   <!-- STT CASE CONTAINER -->
-   <div class="case_container">
-    <h2>Format 000</h2>
-    <p>
-     This data set set is stored in the MADELINE XML (MXML) format.
-    </p>
-    <!-- DATA AND COMMAND LINE -->
-    <p><span class="label">DATA:</span> <a href="data/format_000.data">format_000.data</a></p>
-    <p><span class="label">COMMAND LINE:</span><input type="text" value='madeline2 format_000.data'></input></p>
-    <p><span class="label">RESULT FILE:</span> <a href="results/format_000_pedigree.svg">format_000_pedigree.svg</a></p>
-    <div class="svg_image">
-     <object type="image/svg+xml" data="results/format_000_pedigree.svg">
-      <span class="warning">SVG FILE NOT FOUND</span>
-     </object>
-    </div>
-   </div>
-   <!-- END CASE CONTAINER -->
-
-   <!-- STT CASE CONTAINER -->
-   <div class="case_container">
-    <h2>Format 001</h2>
-    <p>
-     This data set set is stored in a TAB DELIMITED format.
-    </p>
-    <!-- DATA AND COMMAND LINE -->
-    <p><span class="label">DATA:</span> <a href="data/format_001.data">format_001.data</a></p>
-    <p><span class="label">COMMAND LINE:</span><input type="text" value='madeline2 format_001.data'></input></p>
-    <p><span class="label">RESULT FILE:</span> <a href="results/format_001_pedigree.svg">format_001_pedigree.svg</a></p>
-    <div class="svg_image">
-     <object type="image/svg+xml" data="results/format_001_pedigree.svg">
-      <span class="warning">SVG FILE NOT FOUND</span>
-     </object>
-    </div>
-   </div>
-   <!-- END CASE CONTAINER -->
-
-   <!-- STT CASE CONTAINER -->
-   <div class="case_container">
-    <h2>Format 002</h2>
-    <p>
-     This data set set is stored in MADELINE FLAT FILE (MFF) format.
-    </p>
-    <!-- DATA AND COMMAND LINE -->
-    <p><span class="label">DATA:</span> <a href="data/format_002.data">format_002.data</a></p>
-    <p><span class="label">COMMAND LINE:</span><input type="text" value='madeline2 format_002.data'></input></p>
-    <p><span class="label">RESULT FILE:</span> <a href="results/format_002_pedigree.svg">format_002_pedigree.svg</a></p>
-    <div class="svg_image">
-     <object type="image/svg+xml" data="results/format_002_pedigree.svg">
-      <span class="warning">SVG FILE NOT FOUND</span>
-     </object>
-    </div>
-   </div>
-   <!-- END CASE CONTAINER -->
-
-   <!-- STT CASE CONTAINER -->
-   <div class="case_container">
-    <h2>Format 004</h2>
-    <p>
-     This data set set is stored in OpenDocument OASIS XML format.
-    </p>
-    <!-- DATA AND COMMAND LINE -->
-    <p><span class="label">DATA:</span> <a href="data/format_004.ods">format_004.ods</a></p>
-    <p><span class="label">COMMAND LINE:</span><input type="text" value='madeline2 format_004.ods'></input></p>
-    <p><span class="label">RESULT FILE:</span> <a href="results/format_004_pedigree.svg">format_004_pedigree.svg</a></p>
-    <div class="svg_image">
-     <object type="image/svg+xml" data="results/format_004_pedigree.svg">
-      <span class="warning">SVG FILE NOT FOUND</span>
-     </object>
-    </div>
-   </div>
-   <!-- END CASE CONTAINER -->
-
-   <!-- STT CASE CONTAINER -->
-   <div class="case_container">
-    <h2>Format 005</h2>
-    <p>
-     This data set set is stored in W3C XHTML TABLE format.
-     Such a table may be embedded in a web document. This can
-     be very useful since
-     one can easily include additional notes and commentary in a
-     web document alongside the data.
-    </p>
-    <!-- DATA AND COMMAND LINE -->
-    <p><span class="label">DATA:</span> <a href="data/format_005.html">format_005.html</a></p>
-    <p><span class="label">COMMAND LINE:</span><input type="text" value='madeline2 format_005.html'></input></p>
-    <p><span class="label">RESULT FILE:</span> <a href="results/format_005_pedigree.svg">format_005_pedigree.svg</a></p>
-    <div class="svg_image">
-     <object type="image/svg+xml" data="results/format_005_pedigree.svg">
-      <span class="warning">SVG FILE NOT FOUND</span>
-     </object>
-    </div>
-   </div>
-   <!-- END CASE CONTAINER -->
-
-
-
-  <!-- SIMPLE PEDIGREE TESTS -->
-  <h1 id="SimplePedigrees">Simple Pedigrees</h1>
-  <p>
-   The following test various aspects of Madeline 2.0's ability to draw simple pedigrees.
-  </p>
-
-   <!-- STT CASE CONTAINER -->
-   <div class="case_container">
-    <h2>Simple 001</h2>
-    <p>
-     This data set contains a simple nuclear family with five siblings, 
-     of which two are affected. Four of the siblings are sampled, one is unsampled. 
-     The proband is marked. Two of the siblings have approximated dates of birth: 
-     the month is known, but the precise day is unknown. Madeline2 treats these 
-     dates as ranged dates. Both parents are missing from the data set: <b>Madeline2</b> 
-     is smart enough to create them as virtual individuals.
-    </p>
-    <p>
-     This pedigree tests:
-    </p>
-    <p>
-    <ul>
-     <li>
-      Handling of missing parents when both parents are not present in the data file.
-     </li>
-     <li>
-      Display of icons, including gender unknown individuals.
-     </li>
-     <li>
-      Basic icon shading.
-     </li>
-     <li>
-      Display of sampled individuals.
-     </li>
-     <li>
-      Display of proband.
-     </li>
-     <li>
-      Display of data labels.
-     </li>
-     <li>
-      Display of encircled birth-order numerals.
-     </li>
-     <li>
-      Display of ranged dates
-     </li>
-    </ul>
-    </p>
-
-    <!-- DATA AND COMMAND LINE -->
-    <p><span class="label">DATA:</span> <a href="data/simple_001.data">simple_001.data</a></p>
-    <p><span class="label">COMMAND LINE:</span><input type="text" value='madeline2 -L "IndividualID DOB" simple_001.data'></input></p>
-    <p><span class="label">RESULT FILE:</span> <a href="results/simple_001_pedigree.svg">simple_001_pedigree.svg</a></p>
-
-    <div class="svg_image">
-     <object type="image/svg+xml" data="results/simple_001_pedigree.svg">
-      <span class="warning">SVG FILE NOT FOUND</span>
-     </object>
-    </div>
-   </div>
-   <!-- END CASE CONTAINER -->
-
-   <!-- STT CASE CONTAINER -->
-   <div class="case_container">
-    <h2>Simple 002</h2>
-    <p>
-     This data set contains a simple nuclear family with 13 offspring. 
-     The affection variable records unaffected (U), moderate (M), severe (S) 
-     and unknown/missing (.) condition states.
-    </p>
-    <p>
-     This pedigree tests:
-    </p>
-    <ul>
-     <li>Large number of offspring in a single nuclear family.</li>
-     <li>Categorical Affected variable with more than two levels.</li>
-     <li>--color switch.</li>
-    </ul>
-    <!-- DATA AND COMMAND LINE -->
-    <p><span class="label">DATA:</span> <a href="data/simple_002.data">simple_002.data</a></p>
-    <p><span class="label">COMMAND LINE:</span><input type="text" value='madeline2 --color -L "IndividualID DOB" simple_002.data'></input></p>
-    <p><span class="label">RESULT FILE:</span> <a href="results/simple_002_pedigree.svg">simple_002_pedigree.svg</a></p>
-
-    <div class="svg_image">
-     <object type="image/svg+xml" data="results/simple_002_pedigree.svg">
-      <span class="warning">SVG FILE NOT FOUND</span>
-     </object>
-    </div>
-   </div>
-   <!-- END CASE CONTAINER -->
-
-   <!-- STT CASE CONTAINER -->
-   <div class="case_container">
-    <h2>Simple 003</h2>
-    <p>
-     This simple pedigree data set contains multiple generations. In most of the generations there is only one offspring in a nuclear family.
-    </p>
-    <p>
-     This pedigree demonstrates how single married offspring are drawn. A single unmarried offspring is drawn centered directly below both parents. But when married, a single offspring is shifted so the nuclear family subtree remains centered.
-    </p>
-    <!-- DATA AND COMMAND LINE -->
-    <p><span class="label">DATA:</span> <a href="data/simple_003.data">simple_003.data</a></p>
-    <p><span class="label">COMMAND LINE:</span><input type="text" value='madeline2 simple_003.data'></input></p>
-    <p><span class="label">RESULT FILE:</span> <a href="results/simple_003_pedigree.svg">simple_003_pedigree.svg</a></p>
-
-    <div class="svg_image">
-     <object type="image/svg+xml" data="results/simple_003_pedigree.svg">
-      <span class="warning">SVG FILE NOT FOUND</span>
-     </object>
-    </div>
-   </div>
-   <!-- END CASE CONTAINER -->
-
-   <!-- STT CASE CONTAINER -->
-   <div class="case_container">
-    <h2>Simple 004</h2>
-    <p>
-     This is a simple pedigree which contains non-ASCII Unicode strings. In addition to having Chinese name strings, the Gender column is coded using "男" and "女" and dates in the DOB column are in Chinese format (e.g., "1999年04月10日").
-    </p>
-    <!-- DATA AND COMMAND LINE -->
-    <p><span class="label">DATA:</span> <a href="data/simple_004.data">simple_004.data</a></p>
-    <p><span class="label">COMMAND LINE:</span><input type="text" value='madeline2 -L "IndividualId DOB 姓名" simple_004.data'></input></p>
-    <p><span class="label">RESULT FILE:</span> <a href="results/simple_004_pedigree.svg">simple_004_pedigree.svg</a></p>
-
-    <div class="svg_image">
-     <object type="image/svg+xml" data="results/simple_004_pedigree.svg">
-      <span class="warning">SVG FILE NOT FOUND</span>
-     </object>
-    </div>
-   </div>
-   <!-- END CASE CONTAINER -->
-
-   <!-- STT CASE CONTAINER -->
-   <div class="case_container">
-    <h2>Simple 005</h2>
-    <p>
-     This is a simple pedigree which contains non-ASCII Unicode strings. 
-     In addition to having Thai strings, the DOB column contains dates in Thai digits.
-    </p>
-    <!-- DATA AND COMMAND LINE -->
-    <p><span class="label">DATA:</span> <a href="data/simple_005.ods">simple_005.ods</a></p>
-    <p><span class="label">LABELS FILE:</span> <a href="data/simple_005.labels">simple_005.labels</a></p>
-    <p><span class="label">COMMAND LINE:</span><input type="text" value='madeline2 -L "IndividualId DOB ชื่อ นามสกุล ตำบล อำเภอ จังหวัด" simple_005.ods'></input></p>
-    <p><span class="label">RESULT FILE:</span> <a href="results/simple_005_pedigree.svg">simple_005_pedigree.svg</a></p>
-
-    <div class="svg_image">
-     <object type="image/svg+xml" data="results/simple_005_pedigree.svg">
-      <span class="warning">SVG FILE NOT FOUND</span>
-     </object>
-    </div>
-   </div>
-   <!-- END CASE CONTAINER -->
-
-   <!-- STT CASE CONTAINER -->
-   <div class="case_container">
-    <h2>Simple_006</h2>
-    <p>
-     This is a simple pedigree which demonstrates Madeline 2.0 PED's ability to draw special types of individuals. Special types of "nuclear families" such as marriages without offspring are also shown. Special types of annotations are also shown.
-    </p><p>
-     Madeline 2.0 uses a superset of the recommendations of the Pedigree Standardization Task Force (PSTF: Benett, RL et al (1995) Am J Hum Genet. 56: 745-752) for drawing special types of individuals and other special situations.
-    </p><p>
-     Spontaneous abortions (SAB) and terminations of pregnancies (TOP) are designated by prefixing individual IDs with the "@" symbol. Madeline follows the PSTF by drawing a triangular icon, but differs from the PSTF recommendations by also drawing a small square or circle below the triangle to indicate gender iconically when known.
-    </p><p>
-     Individuals who are adopted out are designated by prefixing individual IDs with "-" minus signs. Here again Madeline 2.0 differs from the PSTF recommendations by making the brackets surrounding the individual face outward in this case. Individuals who are adopted in are designated by prefixing individual IDs with "+" plus signs: brackets in this case face inward (just as in the PSTF recommendations).
-    </p><p>
-     A marriage with no offspring due to infertility is realized by inserting a "marker" individual into the database with an ID prefixed by "&". A marriage with no offspring for other reasons is realized in a similar way with a marker individual whose ID is prefixed with a "^" instead.
-    </p><p>
-     Inclusion of a Carrier column in the data table allows individuals such as S00110 to be marked as carriers. Inclusion of a Consultand column in the data table allows individuals such as S00111 to be marked as a consultand.
-    </p><p>
-     Finally, inclusion of a Superscript column in the data table permits the display of short strings of letters, numerals, or Unicode symbols just off to the right and slightly above the icons. These superscripts provide a convenient way to annotate pedigree drawings with additional information. A random assortment of superscripts is shown in the example reproduced here.    
-    </p>
-    <!-- DATA AND COMMAND LINE -->
-    <p><span class="label">DATA:</span> <a href="data/simple_006.data">simple_006.data</a></p>
-    <p><span class="label">COMMAND LINE:</span><input type="text" value='madeline2 simple_006.data'></input></p>
-    <p><span class="label">RESULT FILE:</span> <a href="results/simple_006_pedigree.svg">simple_006_pedigree.svg</a></p>
-
-    <div class="svg_image">
-     <object type="image/svg+xml" data="results/simple_006_pedigree.svg">
-      <span class="warning">SVG FILE NOT FOUND</span>
-     </object>
-    </div>
-   </div>
-   <!-- END CASE CONTAINER -->
-
-   <!-- TWIN GROUPS -->
-   <h1 id="TwinGroups">Twin Groups</h1>
-
-   <p>The following pedigrees test Madeline's ability to draw twin groups.</p>
-
-   <!-- STT CASE CONTAINER -->
-   <div class="case_container">
-    <h2>Twin 001</h2>
-    <p>
-     This data set contains two siblings (Sandy and Sarah) with the same date of birth but the twin columns are not coded to indicate twins.
-    </p><p>
-     This data set tests Madeline's ability to detect twinships based on date of birth alone.
-    </p><p>
-     Madeline automatically draws the pair as twins. However, an encircled question 
-     mark is displayed because twin zygosity is unknown. The program alerts the user 
-     with warning messages. The MZTwin or DZTwin column in the data set should be 
-     completed in order to code the data set unambiguously.
-    </p>
-    <!-- DATA AND COMMAND LINE -->
-    <p><span class="label">DATA:</span> <a href="data/twin_001.data">twin_001.data</a></p>
-    <p><span class="label">COMMAND LINE:</span><input type="text" value='madeline2 -L "IndividualId Name DOB" twin_001.data'></input></p>
-    <p><span class="label">RESULT FILE:</span> <a href="results/twin_001_pedigree.svg">twin_001_pedigree.svg</a></p>
-    <div class="svg_image">
-     <object type="image/svg+xml" data="results/twin_001_pedigree.svg">
-      <span class="warning">SVG FILE NOT FOUND</span>
-     </object>
-    </div>
-   </div>
-   <!-- END CASE CONTAINER -->
-
-   <!-- STT CASE CONTAINER -->
-   <div class="case_container">
-    <h2>Twin 002</h2>
-    <p>
-     This data set tests the program's rendering of two twin groups in a single nuclear family --one monozygotic and one dizygotic group.
-    </p><p>
-     This pedigree is not realistic for humans, but might be possible for mice or other animals.
-    </p>
-    <!-- DATA AND COMMAND LINE -->
-    <p><span class="label">DATA:</span> <a href="data/twin_002.data">twin_002.data</a></p>
-    <p><span class="label">COMMAND LINE:</span><input type="text" value='madeline2 -L "IndividualId DOB" twin_002.data'></input></p>
-    <p><span class="label">RESULT FILE:</span> <a href="results/twin_002_pedigree.svg">twin_002_pedigree.svg</a></p>
-    <div class="svg_image">
-     <object type="image/svg+xml" data="results/twin_002_pedigree.svg">
-      <span class="warning">SVG FILE NOT FOUND</span>
-     </object>
-    </div>
-   </div>
-   <!-- END CASE CONTAINER -->
-
-   <!-- STT CASE CONTAINER -->
-   <div class="case_container">
-    <h2>Twin 003</h2>
-    <p>
-     This data set tests the program's rendering of a single very large twin group.
-     This pedigree is not realistic for humans, but might be possible for mice or 
-     other animals. This pedigree demonstrates that the program does not impose 
-     limits on the number of twins in a twin group.
-    </p>
-    <!-- DATA AND COMMAND LINE -->
-    <p><span class="label">DATA:</span> <a href="data/twin_003.data">twin_003.data</a></p>
-    <p><span class="label">COMMAND LINE:</span><input type="text" value='madeline2 twin_003.data'></input></p>
-    <p><span class="label">RESULT FILE:</span> <a href="results/twin_003_pedigree.svg">twin_003_pedigree.svg</a></p>
-    <div class="svg_image">
-     <object type="image/svg+xml" data="results/twin_003_pedigree.svg">
-      <span class="warning">SVG FILE NOT FOUND</span>
-     </object>
-    </div>
-   </div>
-   <!-- END CASE CONTAINER -->
-
-
-   <!-- STT CASE CONTAINER -->
-   <div class="case_container">
-    <h2>Twin 004</h2>
-    <p>
-     This data set tests the program's rendering of twin groups 
-     where the siblings are married and have children of their own.
-    </p>
-    <!-- DATA AND COMMAND LINE -->
-    <p><span class="label">DATA:</span> <a href="data/twin_004.data">twin_004.data</a></p>
-    <p><span class="label">COMMAND LINE:</span><input type="text" value='madeline2 twin_004.data'></input></p>
-    <p><span class="label">RESULT FILE:</span> <a href="results/twin_004_pedigree.svg">twin_004_pedigree.svg</a></p>
-    <div class="svg_image">
-     <object type="image/svg+xml" data="results/twin_004_pedigree.svg">
-      <span class="warning">SVG FILE NOT FOUND</span>
-     </object>
-    </div>
-   </div>
-   <!-- END CASE CONTAINER -->
-
    <!-- CONSANGUINOUS PEDIGREES -->
-   <h1 id="ConsanguinousPedigrees" >Consanguinous Pedigrees</h1>
+   <h1 id="Consanguinous" >Consanguinous Pedigrees</h1>
    <p>
     This set of pedigrees test Madeline's ability to handle consanguinous relationships such as
     uncle-niece or cousin-cousin pairings.
@@ -576,7 +273,7 @@
    <div class="case_container">
     <h2>Consanguinous 002</h2>
     <p>
-     This data set contains a consanguinous pedigree. This data set is used to test the drawing 
+     This data set contains a consanguinous pedigree. This data set is used to test the drawing
      of uncle-niece consanguinous matings occurring in subsequent generations.
     </p>
     <!-- DATA AND COMMAND LINE -->
@@ -593,7 +290,7 @@
    <div class="case_container">
     <h2>Consanguinous 003</h2>
     <p>
-     This data set contains a consanguinous pedigree showing the 
+     This data set contains a consanguinous pedigree showing the
      rare case of an aunt marrying a nephew.
     </p>
     <!-- DATA AND COMMAND LINE -->
@@ -610,7 +307,7 @@
    <div class="case_container">
     <h2>Consanguinous 004</h2>
     <p>
-     This data set contains a consanguinous pedigree. An uncle-niece marriage 
+     This data set contains a consanguinous pedigree. An uncle-niece marriage
      is followed by a marriage between first cousins in the offspring generation.
     </p>
     <!-- DATA AND COMMAND LINE -->
@@ -627,7 +324,7 @@
    <div class="case_container">
     <h2>Consanguinous 005</h2>
     <p>
-     In this consanguinous pedigree there are three consanguinous marriages. 
+     In this consanguinous pedigree there are three consanguinous marriages.
      This example also has multiple descent trees.
     </p>
     <!-- DATA AND COMMAND LINE -->
@@ -644,8 +341,8 @@
    <div class="case_container">
     <h2>Consanguinous 006</h2>
     <p>
-     In this consanguinous pedigree, a grand uncle marries 
-     a grand niece. This demonstrates that consanguinous matings 
+     In this consanguinous pedigree, a grand uncle marries
+     a grand niece. This demonstrates that consanguinous matings
      which skip a generation can be drawn by the program.
     </p>
     <!-- DATA AND COMMAND LINE -->
@@ -662,9 +359,9 @@
    <div class="case_container">
     <h2>Consanguinous 007</h2>
     <p>
-     In this consanguinous pedigree a great-grand uncle 
-     marries a great-grand niece. This demonstrates that 
-     consanguinous matings which skip two generations can 
+     In this consanguinous pedigree a great-grand uncle
+     marries a great-grand niece. This demonstrates that
+     consanguinous matings which skip two generations can
      be drawn by the program.
     </p>
     <!-- DATA AND COMMAND LINE -->
@@ -713,20 +410,20 @@
    <div class="case_container">
     <h2>Consanguinous 010</h2>
     <p>
-     This is the consanguinous pedigree used in the published Madeline 2.0 PDE paper. 
-     In the paper, it is labeled as pedigree "F1000", but is labeled "consanguinous_010" here. 
-     The pattern of inheritance in the family suggests a recessive or possibly a complex disease. 
+     This is the consanguinous pedigree used in the published Madeline 2.0 PDE paper.
+     In the paper, it is labeled as pedigree "F1000", but is labeled "consanguinous_010" here.
+     The pattern of inheritance in the family suggests a recessive or possibly a complex disease.
      The figure description from the paper follows:
     </p><p>
-     <em>“Sample pedigree with four consanguinous loop (CL) matings. 
-     Direct connecting lines are drawn for three of the four CL matings. 
-     However the fourth CL mating would require a line crossing and so individual 
-     T04 has been drawn in two locations and marked directly below the icon with a 
-     unique label "A" to indicate the repeat. Circled numbers indicate birth order 
+     <em>“Sample pedigree with four consanguinous loop (CL) matings.
+     Direct connecting lines are drawn for three of the four CL matings.
+     However the fourth CL mating would require a line crossing and so individual
+     T04 has been drawn in two locations and marked directly below the icon with a
+     unique label "A" to indicate the repeat. Circled numbers indicate birth order
      within sibships. Dates of birth are also displayed.”</em>
     </p>
     <p>
-     Curved dashed background connectors were added as a feature in the program 
+     Curved dashed background connectors were added as a feature in the program
      at a later date after the paper had already been published. A curved background
      connector is now shown connecting father T04.
     </p>
@@ -740,71 +437,6 @@
      </object>
     </div>
    </div>
-   
-   <!-- COLLAPSED -->
-   <h1 id="CollapsedPedigrees">Collapsed Pedigrees</h1>
-   <p>
-    The ability to "collapse" a group of siblings into a single representative icon is a 
-    fairly recent addition to Madeline.
-   </p>
-   <!-- STT CASE CONTAINER -->
-   <div class="case_container">
-    <h2>Collapsed 001</h2>
-    <p>
-     Madeline 2.0 PDE supports a data field called <b>Collapsed</b> that allows you to 
-     "collapse" a group of siblings in a nuclear family into a single representative individual:
-    </p>
-    <img class="figure" src="images/clp_001.png" alt="Collapsing a pedigree" />
-    <p>
-     To use this option, first you need to add a <b>Collapsed</b> column in your data table and 
-     then identify the "collapse groups" using unique identifiers, such as "<b>A</b>" for the 
-     first group, "<b>B</b>" for the second group, "<b>C</b>" for the third group, etc.
-    </p><p>
-     After that, all you need to do is use the "<em>-k</em>" or "<em>--collapsed</em>" flag when 
-     you run Madeline. If individuals in the group differ in gender, the program will automatically 
-     use a diamond to represent the group. Affection status will be based on the affection status 
-     (or multiple affection statuses) of the <em>first individual within each group as seen by the program</em>. 
-     A number will be printed in the center of the individual icon indicating the number of individuals 
-     represented by that icon.
-    </p><p>
-     Currently, the implementation is somewhat limited in that collapsing is only supported for terminal 
-     individuals without children. The program's behavior is undefined if you try to collapse other individuals.
-     Nevertheless, this new functionality can be extremely useful for collapsing large pedigrees into 
-     more compact forms.
-    </p><p>
-     ...
-    </p><p>
-     This same pedigree is also used to test the <b>SampleQuantity</b>, <b>Carrier</b>, and <b>ObligateCarrier</b> 
-     fields:
-    </p>
-    <img class="figure" src="images/clp_000.png" alt="SampleQuantity and ObligateCarrier" />
-    <p>
-     (1) The <b>ObligateCarrier</b> is a boolean field. When <b>ObligateCarrier</b> is true, individuals 
-     are drawn with a small open circle in the middle. In contrast, individuals with a true in the 
-     <b>Carrier</b> field are drawn with a filled circle. Used together, these two fields allow you to 
-     distinguish between individuals who have been confirmed as carriers based on physical samples, versus 
-     individuals who are deduced to be obligate carriers based on inheritance but for whom 
-     confirmatory samples may not be available.
-    </p><p>
-     (2) The <b>SampleQuantity</b> field is similar in purpose but more flexible than the 
-     previously-available <b>Sampled</b> field. In <b>SampleQuantity</b>, you can specify either a 
-     boolean value or a numeric fractional value. If you specify a boolean value such as "Y" for yes 
-     or "S" for sample, the program will draw a small test tube to indicate that you have a sample, 
-     but the volume or quantity of the sample is unspecified.
-    </p><p>
-     Alternatively, if you specify a numeric value between 0.00 to 1.00 inclusive, then the test tube will be drawn filled proportionally. (If you specify a number beyond 1.00, the test tube will still be drawn, but you will receive a warning and the test tube will not be filled with color). This field thus allows you to visually track available sample quantities both generally and with precision.
-    </p>
-    <!-- DATA AND COMMAND LINE -->
-    <p><span class="label">DATA:</span> <a href="data/collapsed_001.data">collapsed_001.data</a></p>
-    <p><span class="label">COMMAND LINE:</span><input type="text" value='madeline2 -nNkL "IndividualId SampleQuantity Collapsed" -C "A=salmon;A=purple" collapsed_001.data'></input></p>
-    <p><span class="label">RESULTS FILE:</span> <a href="results/collapsed_001_pedigree.svg">collapsed_001_pedigree.svg</a></p>
-    <div class="svg_image">
-     <object type="image/svg+xml" data="results/collapsed_001_pedigree.svg">
-      <span class="warning">SVG FILE NOT FOUND</span>
-     </object>
-    </div>
-   </div>
-   <!-- END CASE CONTAINER -->
 
    <!-- CUSTOM COLORS -->
    <h1 id="CustomColor">Custom Color Pedigrees</h1>
@@ -813,14 +445,14 @@
    <div class="case_container">
     <h2>Custom Color 001</h2>
     <p>
-     Madeline 2.0 PDE supports named colors and the assignment of colors to specific levels of a categorical 
+     Madeline 2.0 PDE supports named colors and the assignment of colors to specific levels of a categorical
      variable. Use "<em>--custom-icon-colors</em>", or "<em>-C</em>" for short.
     </p><p>
-     The 140 web color names recognized by modern web browsers are now also recognized by Madeline. 
-     You can also specify custom colors using HTML/CSS hex syntax, such as "<b>#f00</b>" or "<b>#ff0000</b>" 
+     The 140 web color names recognized by modern web browsers are now also recognized by Madeline.
+     You can also specify custom colors using HTML/CSS hex syntax, such as "<b>#f00</b>" or "<b>#ff0000</b>"
      for red. And you can freely mix-and-match hex syntax and named colors.
     </p><p>
-     Each color in a custom color series is separated by a comma. To assign colors to specific keys, use the 
+     Each color in a custom color series is separated by a comma. To assign colors to specific keys, use the
      equal sign, e.g., "<em>NORMAL=lightgreen,AFFECTED=red,INDETERMINATE=gray</em>", etc.
     </p><p>
      To specify colors for multiple "<b>Affected_xxx</b>" variables, separate each series by a <em>semicolon</em>.
@@ -838,32 +470,8 @@
    </div>
    <!-- END CASE CONTAINER -->
 
-   <!-- PREGNANCIES -->
-   <h1>Pregnancies</h1>
-   <!-- STT CASE CONTAINER -->
-   <div class="case_container">
-    <h2>Pregnancies 001</h2>
-    <p>
-     Users may now include a column called <b>Pregnancy</b> in order to 
-     indicate pregnancies. In order to avoid confusion, pregnancies are 
-     displayed using a unique double-struck P, “ℙ”. Since the “ℙ” is printed 
-     in the center of the icons, be sure to set the <em>--noiconlabels</em> flag so 
-     that the “ℙ” will not over-print on top of affection status code letters.
-    </p>
-    <!-- DATA AND COMMAND LINE -->
-    <p><span class="label">DATA:</span> <a href="data/pregnancies_001.data">pregnancies_001.data</a></p>
-    <p><span class="label">COMMAND LINE:</span><input type="text" value='madeline2 --noiconlabels --Labels "Gestation DOB" pregnancies_001.data'></input></p>
-    <p><span class="label">RESULT FILE:</span> <a href="results/pregnancies_001_pedigree.svg">pregnancies_001_pedigree.svg</a></p>
-    <div class="svg_image">
-     <object type="image/svg+xml" data="results/pregnancies_001_pedigree.svg">
-      <span class="warning">SVG FILE NOT FOUND</span>
-     </object>
-    </div>
-   </div>
-   <!-- END CASE CONTAINER -->
-
    <!-- DESCENT TREES -->
-   <h1>Descent Trees</h1>
+   <h1 id="DescentTrees">Descent Trees</h1>
    <p>These pedigrees test Madeline's handling of multiple descent trees.</p>
    <!-- STT CASE CONTAINER -->
    <div class="case_container">
@@ -1055,55 +663,163 @@
    </div>
    <!-- END CASE CONTAINER -->
 
-   <!-- QUADRANT SHADING -->
-   <h1>Quadrant Shading</h1>
+   <!-- DONOR -->
+   <h1 id="Donor">Donor Symbology (Incomplete Support)</h1>
+   <p>
+    Madeline now accepts an optional column in a data table called "<b>Donor</b>".
+    Madeline currently recognizes the following codes in the donor column:
+   </p>
+   <ul>
+    <li>sperm (S)</li>
+    <li>ovum (O)</li>
+    <li>sperm and ovum (SO)</li>
+    <li>ovum and sperm (OS) <em>(this is identical to "sperm and ovum (SO)" above)</em></li>
+    <li>gestational (G)</li>
+    <li>mitochondrial (M)</li>
+   </ul>
+   <p>
+    Because of drawing limitations in the current version of Madeline, it is not yet possible
+    to show so-called "3 parent" assisted reproductive technology (ART) situations.  However,
+    future support is planned for at least two cases:
+   </p>
+   <ul>
+    <li><b>Gestational Donor</b>. A <em>gestational</em> donor carries a
+    pregnancy for a couple using the couple's egg and sperm.</li>
+    <li><b>Mitochondrial Donor (PNT or MST)</b>. As of this writing, <em>pronuclear transfer (PNT)</em>
+    and <em>maternal spindle transfer (MST)</em> technologies have been tested in macaques and mice, yielding
+    apparently normal offspring. On February 24, 2015, the UK House of Lords approved legislation
+    permitting "3-person IVF" <em>(in-vitro fertilization)</em> techniques directly in fertility
+    clinics without human clinical trials and with no required follow-up of any resulting children.</ul>
+   </li>
+   <p>
+    <b>NOTA BENE:</b> Donor codes need to be placed on the <em>offspring</em>, not on the parents, because
+    the offspring uniquely identify the parents.
+   </p>
 
    <!-- STT CASE CONTAINER -->
    <div class="case_container">
-    <h2>Quadrant 001</h2>
+    <h2>Donor 001</h2>
     <p>
-     Madeline supports quadrant shading of icons based on numerical or bit pattern codes
-     stored in the first <b>Affected</b> column encountered (i.e., in the <b>Affected_quadrant</b>
-     column in this test data file).
-    </p><p>
-     To use this feature, pass "<em>--quadrantshading</em>" or "<em>-q</em>" as a command line argument. 
-     The first <b>Affected</b> field encountered in the data set will be used. Any additional <b>Affected</b> 
-     fields will be ignored.
-    </p><p>
-     Integer codes in the range from <b>0-15</b> inclusive produce the quadrant shading patterns shown in 
-     the table below. Note that zero produces an unshaded pattern. Non-integer codes as well as integer 
-     codes outside of the range of <b>0-15</b> will simply be displayed in the middle of the icon without 
-     a shading pattern. 
+     This pedigree tests how Madeline draws the symbols used to indicate sperm, ovum, gestational, and mitochondrial
+     donors. Currently, the symbols exist in Madeline to support <em>gestational</em> and <em>mitochondrial</em> donors,
+     but Madeline cannot show 3-parent situations so these latter two are not yet very useful.
     </p>
-    <img class="figure" src="images/quadrant_symbols.jpeg" alt="table of quadrant shading patterns"/>
-    <p>
-     However four-digit integers consisting of only <b>1</b>s and <b>0</b>s are interpreted as binary bit pattern
-     flags. So, starting with the least significant binary digit, "<b>0001</b>" will shade the first quadrant, 
-     "<b>0010</b>" will shade the second quadrant, "<b>0100</b>" will shade the third quadrant, "<b>0011</b>" 
-     will shade the upper two quadrants, and so on, as illustrated in the table above.
-    </p><p>
-     This is illustrated in the pedigree here, where:
-    </p>
-    <ul>
-     <li>The shading code for individual 17 is a zero</li>
-     <li>The code for individual 16 is "16" for which no shading pattern exists</li>
-     <li>The code for individual 18 is a missing value, and thus a dot is printed</li>
-     <li>The code for individual 19 is the letter "I" which is thus printed as shown</li>
-     <li>Individuals 09,10,11,12 and 13 are assigned binary bit-patterns.</li>
-     <li>The code for individual 20 is "@" which is likewise just printed as shown since 
-         no other interpretation exists for this symbol in this context.</li>
-    </ul>
-    </p><p>
-     <b>NOTA BENE:</b> This is not the only way to shade quadrants in Madeline. The other option, which
-     is also the more flexible option, is to have four individual <b>Affected_xxx</b> columns. You can 
-     assign specific colors to specific levels in each of those <b>Affected_xxx</b> columns. This is
-     illustrated in the <a href="#CustomColor">Custom Color</a> pedigrees.
     <!-- DATA AND COMMAND LINE -->
-    <p><span class="label">DATA:</span> <a href="data/quadrant_001.data">quadrant_001.data</a></p>
-    <p><span class="label">COMMAND LINE:</span><input type="text" value='madeline2 -q -L "IndividualId Affected_quadrant" quadrant_001.data'></input></p>
-    <p><span class="label">RESULT FILE:</span> <a href="results/quadrant_001_pedigree.svg">quadrant_001_pedigree.svg</a></p>
+    <p><span class="label">DATA:</span> <a href="data/donor_001.data">donor_001.data</a></p>
+    <p><span class="label">COMMAND LINE:</span><input type="text" value='madeline2 -nNL "IndividualId Donor" donor_001.data'></input></p>
+    <p><span class="label">RESULT FILE:</span> <a href="results/donor_001_pedigree.svg">donor_001_pedigree.svg</a></p>
     <div class="svg_image">
-     <object type="image/svg+xml" data="results/quadrant_001_pedigree.svg">
+     <object type="image/svg+xml" data="results/donor_001_pedigree.svg">
+      <span class="warning">SVG FILE NOT FOUND</span>
+     </object>
+    </div>
+   </div>
+   <!-- END CASE CONTAINER -->
+
+   <!-- DATA FORMATS -->
+   <h1 id="Format">Format Tests</h1>
+   <p>
+    Madeline currently recognizes five data storage formats:
+   </p>
+   <ul>
+    <li>Madeline flat file format (MFF)</li>
+    <li>Tab delimited</li>
+    <li>Madeline XML format (MXML)</li>
+    <li>Open Office OASIS XML (i.e., OpenOffice or LibreOffice files with a <b>.ods</b> ending)</li>
+    <li>W3C XHTML tables (i.e., HTML tables embedded in web documents, usually with a <b>.html</b> ending)</li>
+   </ul>
+   <p>
+   The following use one pedigree to test these different data storage formats:
+   </p>
+
+   <!-- STT CASE CONTAINER -->
+   <div class="case_container">
+    <h2>Format 000</h2>
+    <p>
+     This data set set is stored in the MADELINE XML (MXML) format.
+    </p>
+    <!-- DATA AND COMMAND LINE -->
+    <p><span class="label">DATA:</span> <a href="data/format_000.data">format_000.data</a></p>
+    <p><span class="label">COMMAND LINE:</span><input type="text" value='madeline2 format_000.data'></input></p>
+    <p><span class="label">RESULT FILE:</span> <a href="results/format_000_pedigree.svg">format_000_pedigree.svg</a></p>
+    <div class="svg_image">
+     <object type="image/svg+xml" data="results/format_000_pedigree.svg">
+      <span class="warning">SVG FILE NOT FOUND</span>
+     </object>
+    </div>
+   </div>
+   <!-- END CASE CONTAINER -->
+
+   <!-- STT CASE CONTAINER -->
+   <div class="case_container">
+    <h2>Format 001</h2>
+    <p>
+     This data set set is stored in a TAB DELIMITED format.
+    </p>
+    <!-- DATA AND COMMAND LINE -->
+    <p><span class="label">DATA:</span> <a href="data/format_001.data">format_001.data</a></p>
+    <p><span class="label">COMMAND LINE:</span><input type="text" value='madeline2 format_001.data'></input></p>
+    <p><span class="label">RESULT FILE:</span> <a href="results/format_001_pedigree.svg">format_001_pedigree.svg</a></p>
+    <div class="svg_image">
+     <object type="image/svg+xml" data="results/format_001_pedigree.svg">
+      <span class="warning">SVG FILE NOT FOUND</span>
+     </object>
+    </div>
+   </div>
+   <!-- END CASE CONTAINER -->
+
+   <!-- STT CASE CONTAINER -->
+   <div class="case_container">
+    <h2>Format 002</h2>
+    <p>
+     This data set set is stored in MADELINE FLAT FILE (MFF) format.
+    </p>
+    <!-- DATA AND COMMAND LINE -->
+    <p><span class="label">DATA:</span> <a href="data/format_002.data">format_002.data</a></p>
+    <p><span class="label">COMMAND LINE:</span><input type="text" value='madeline2 format_002.data'></input></p>
+    <p><span class="label">RESULT FILE:</span> <a href="results/format_002_pedigree.svg">format_002_pedigree.svg</a></p>
+    <div class="svg_image">
+     <object type="image/svg+xml" data="results/format_002_pedigree.svg">
+      <span class="warning">SVG FILE NOT FOUND</span>
+     </object>
+    </div>
+   </div>
+   <!-- END CASE CONTAINER -->
+
+   <!-- STT CASE CONTAINER -->
+   <div class="case_container">
+    <h2>Format 004</h2>
+    <p>
+     This data set set is stored in OpenDocument OASIS XML format.
+    </p>
+    <!-- DATA AND COMMAND LINE -->
+    <p><span class="label">DATA:</span> <a href="data/format_004.ods">format_004.ods</a></p>
+    <p><span class="label">COMMAND LINE:</span><input type="text" value='madeline2 format_004.ods'></input></p>
+    <p><span class="label">RESULT FILE:</span> <a href="results/format_004_pedigree.svg">format_004_pedigree.svg</a></p>
+    <div class="svg_image">
+     <object type="image/svg+xml" data="results/format_004_pedigree.svg">
+      <span class="warning">SVG FILE NOT FOUND</span>
+     </object>
+    </div>
+   </div>
+   <!-- END CASE CONTAINER -->
+
+   <!-- STT CASE CONTAINER -->
+   <div class="case_container">
+    <h2>Format 005</h2>
+    <p>
+     This data set set is stored in W3C XHTML TABLE format.
+     Such a table may be embedded in a web document. This can
+     be very useful since
+     one can easily include additional notes and commentary in a
+     web document alongside the data.
+    </p>
+    <!-- DATA AND COMMAND LINE -->
+    <p><span class="label">DATA:</span> <a href="data/format_005.html">format_005.html</a></p>
+    <p><span class="label">COMMAND LINE:</span><input type="text" value='madeline2 format_005.html'></input></p>
+    <p><span class="label">RESULT FILE:</span> <a href="results/format_005_pedigree.svg">format_005_pedigree.svg</a></p>
+    <div class="svg_image">
+     <object type="image/svg+xml" data="results/format_005_pedigree.svg">
       <span class="warning">SVG FILE NOT FOUND</span>
      </object>
     </div>
@@ -1113,9 +829,9 @@
    <!-- MISSING PARENTS -->
    <h1 id="MissingParents">Missing Parents</h1>
    <p>
-    Missing parents are drawn using a dashed line and may be present 
-    in a pedigree in two ways. In the first case, a parent is named in the 
-    <em>Father</em> or <em>Mother</em> column but no row exists for that 
+    Missing parents are drawn using a dashed line and may be present
+    in a pedigree in two ways. In the first case, a parent is named in the
+    <em>Father</em> or <em>Mother</em> column but no row exists for that
     parent in the data file. In the second case, only a single parent is named
     for one or more children. In these cases, Madeline automatically generates
     a random identifier for the missing parent. In doing so, Madeline makes the
@@ -1176,90 +892,8 @@
    </div>
    <!-- END CASE CONTAINER -->
 
-   <h1>Donor Symbology (Incomplete Support)</h1>
-   <p>
-    Madeline now accepts an optional column in a data table called "<b>Donor</b>".
-    Madeline currently recognizes the following codes in the donor column:
-   </p>
-   <ul>
-    <li>sperm (S)</li>
-    <li>ovum (O)</li>
-    <li>sperm and ovum (SO)</li>
-    <li>ovum and sperm (OS) <em>(this is identical to "sperm and ovum (SO)" above)</em></li>
-    <li>gestational (G)</li>
-    <li>mitochondrial (M)</li>
-   </ul>
-   <p>
-    Because of drawing limitations in the current version of Madeline, it is not yet possible 
-    to show so-called "3 parent" assisted reproductive technology (ART) situations.  However,
-    future support is planned for at least two cases:
-   </p>
-   <ul>
-    <li><b>Gestational Donor</b>. A <em>gestational</em> donor carries a 
-    pregnancy for a couple using the couple's egg and sperm.</li> 
-    <li><b>Mitochondrial Donor (PNT or MST)</b>. As of this writing, <em>pronuclear transfer (PNT)</em>
-    and <em>maternal spindle transfer (MST)</em> technologies have been tested in macaques and mice, yielding
-    apparently normal offspring. On February 24, 2015, the UK House of Lords approved legislation 
-    permitting "3-person IVF" <em>(in-vitro fertilization)</em> techniques directly in fertility
-    clinics without human clinical trials and with no required follow-up of any resulting children.</ul>
-   </li>
-   <p>
-    <b>NOTA BENE:</b> Donor codes need to be placed on the <em>offspring</em>, not on the parents, because
-    the offspring uniquely identify the parents.
-   </p>
-   
-   <!-- STT CASE CONTAINER -->
-   <div class="case_container">
-    <h2>Donor 001</h2>
-    <p>
-     This pedigree tests how Madeline draws the symbols used to indicate sperm, ovum, gestational, and mitochondrial
-     donors. Currently, the symbols exist in Madeline to support <em>gestational</em> and <em>mitochondrial</em> donors,
-     but Madeline cannot show 3-parent situations so these latter two are not yet very useful.
-    </p>
-    <!-- DATA AND COMMAND LINE -->
-    <p><span class="label">DATA:</span> <a href="data/donor_001.data">donor_001.data</a></p>
-    <p><span class="label">COMMAND LINE:</span><input type="text" value='madeline2 -nNL "IndividualId Donor" donor_001.data'></input></p>
-    <p><span class="label">RESULT FILE:</span> <a href="results/donor_001_pedigree.svg">donor_001_pedigree.svg</a></p>
-    <div class="svg_image">
-     <object type="image/svg+xml" data="results/donor_001_pedigree.svg">
-      <span class="warning">SVG FILE NOT FOUND</span>
-     </object>
-    </div>
-   </div>
-   <!-- END CASE CONTAINER -->
-
-   <!-- UNCONNECTEDS -->
-   <h1>Unconnecteds</h1>
-   <p>
-    The program is expected to identify unconnected individuals
-    in data files for users to review.
-   </p>
-   
-   <!-- STT CASE CONTAINER -->
-   <div class="case_container">
-    <h2>Unconnected 001</h2>
-    <p>
-     In this test pedigree, all individuals with IDs in the 100s
-     are unconnected and will not be drawn. The program is expected
-     to issue warning statements in these cases.
-     Only individual “202” (who has parents identified
-     but not actually present in the data file) is considered minimally
-     connected by the program and drawn on the pedigree.
-    </p>
-    <!-- DATA AND COMMAND LINE -->
-    <p><span class="label">DATA:</span> <a href="data/unconnected_001.data">unconnected_001.data</a></p>
-    <p><span class="label">COMMAND LINE:</span><input type="text" value='madeline2 unconnected_001.data'></input></p>
-    <p><span class="label">RESULT FILE:</span> <a href="results/unconnected_001_pedigree.svg">unconnected_001_pedigree.svg</a></p>
-    <div class="svg_image">
-     <object type="image/svg+xml" data="results/unconnected_001_pedigree.svg">
-      <span class="warning">SVG FILE NOT FOUND</span>
-     </object>
-    </div>
-   </div>
-   <!-- END CASE CONTAINER -->
-
    <!-- MULTIPLE SPOUSES -->
-   <h1>Multiple Spouses</h1>
+   <h1 id="MultipleSpouses">Multiple Spouses</h1>
    <p>
     The following check Madeline's drawing of multiple spouses.
    </p>
@@ -1268,7 +902,7 @@
    <div class="case_container">
     <h2>Multiple Spouse 001</h2>
     <p>
-     This data set is used to test the drawing of a multiple spouse pedigree. 
+     This data set is used to test the drawing of a multiple spouse pedigree.
      One man is married to two women and there are a total of seven offspring.
     </p>
     <!-- DATA AND COMMAND LINE -->
@@ -1287,7 +921,7 @@
    <div class="case_container">
     <h2>Multiple Spouse 002</h2>
     <p>
-     This data set is used to test the drawing of a multiple spouse pedigree. 
+     This data set is used to test the drawing of a multiple spouse pedigree.
      Both men in this pedigree have multiple spouses. One has five spouses, the other four spouses.
     </p>
     <!-- DATA AND COMMAND LINE -->
@@ -1341,7 +975,388 @@
    </div>
    <!-- END CASE CONTAINER -->
 
+   <!-- PREGNANCIES -->
+   <h1 id="Pregnancies">Pregnancies</h1>
+   <!-- STT CASE CONTAINER -->
+   <div class="case_container">
+    <h2>Pregnancies 001</h2>
+    <p>
+     Users may now include a column called <b>Pregnancy</b> in order to
+     indicate pregnancies. In order to avoid confusion, pregnancies are
+     displayed using a unique double-struck P, “ℙ”. Since the “ℙ” is printed
+     in the center of the icons, be sure to set the <em>--noiconlabels</em> flag so
+     that the “ℙ” will not over-print on top of affection status code letters.
+    </p>
+    <!-- DATA AND COMMAND LINE -->
+    <p><span class="label">DATA:</span> <a href="data/pregnancies_001.data">pregnancies_001.data</a></p>
+    <p><span class="label">COMMAND LINE:</span><input type="text" value='madeline2 --noiconlabels --Labels "Gestation DOB" pregnancies_001.data'></input></p>
+    <p><span class="label">RESULT FILE:</span> <a href="results/pregnancies_001_pedigree.svg">pregnancies_001_pedigree.svg</a></p>
+    <div class="svg_image">
+     <object type="image/svg+xml" data="results/pregnancies_001_pedigree.svg">
+      <span class="warning">SVG FILE NOT FOUND</span>
+     </object>
+    </div>
+   </div>
+   <!-- END CASE CONTAINER -->
 
+   <!-- QUADRANT SHADING -->
+   <h1 id="QuadrantShading">Quadrant Shading</h1>
+
+   <!-- STT CASE CONTAINER -->
+   <div class="case_container">
+    <h2>Quadrant 001</h2>
+    <p>
+     Madeline supports quadrant shading of icons based on numerical or bit pattern codes
+     stored in the first <b>Affected</b> column encountered (i.e., in the <b>Affected_quadrant</b>
+     column in this test data file).
+    </p><p>
+     To use this feature, pass "<em>--quadrantshading</em>" or "<em>-q</em>" as a command line argument.
+     The first <b>Affected</b> field encountered in the data set will be used. Any additional <b>Affected</b>
+     fields will be ignored.
+    </p><p>
+     Integer codes in the range from <b>0-15</b> inclusive produce the quadrant shading patterns shown in
+     the table below. Note that zero produces an unshaded pattern. Non-integer codes as well as integer
+     codes outside of the range of <b>0-15</b> will simply be displayed in the middle of the icon without
+     a shading pattern.
+    </p>
+    <img class="figure" src="images/quadrant_symbols.jpeg" alt="table of quadrant shading patterns"/>
+    <p>
+     However four-digit integers consisting of only <b>1</b>s and <b>0</b>s are interpreted as binary bit pattern
+     flags. So, starting with the least significant binary digit, "<b>0001</b>" will shade the first quadrant,
+     "<b>0010</b>" will shade the second quadrant, "<b>0100</b>" will shade the third quadrant, "<b>0011</b>"
+     will shade the upper two quadrants, and so on, as illustrated in the table above.
+    </p><p>
+     This is illustrated in the pedigree here, where:
+    </p>
+    <ul>
+     <li>The shading code for individual 17 is a zero</li>
+     <li>The code for individual 16 is "16" for which no shading pattern exists</li>
+     <li>The code for individual 18 is a missing value, and thus a dot is printed</li>
+     <li>The code for individual 19 is the letter "I" which is thus printed as shown</li>
+     <li>Individuals 09,10,11,12 and 13 are assigned binary bit-patterns.</li>
+     <li>The code for individual 20 is "@" which is likewise just printed as shown since
+         no other interpretation exists for this symbol in this context.</li>
+    </ul>
+    </p><p>
+     <b>NOTA BENE:</b> This is not the only way to shade quadrants in Madeline. The other option, which
+     is also the more flexible option, is to have four individual <b>Affected_xxx</b> columns. You can
+     assign specific colors to specific levels in each of those <b>Affected_xxx</b> columns. This is
+     illustrated in the <a href="#CustomColor">Custom Color</a> pedigrees.
+    <!-- DATA AND COMMAND LINE -->
+    <p><span class="label">DATA:</span> <a href="data/quadrant_001.data">quadrant_001.data</a></p>
+    <p><span class="label">COMMAND LINE:</span><input type="text" value='madeline2 -q -L "IndividualId Affected_quadrant" quadrant_001.data'></input></p>
+    <p><span class="label">RESULT FILE:</span> <a href="results/quadrant_001_pedigree.svg">quadrant_001_pedigree.svg</a></p>
+    <div class="svg_image">
+     <object type="image/svg+xml" data="results/quadrant_001_pedigree.svg">
+      <span class="warning">SVG FILE NOT FOUND</span>
+     </object>
+    </div>
+   </div>
+   <!-- END CASE CONTAINER -->
+
+  <!-- SIMPLE PEDIGREE TESTS -->
+  <h1 id="Simple">Simple Pedigrees</h1>
+  <p>
+   The following test various aspects of Madeline 2.0's ability to draw simple pedigrees.
+  </p>
+
+   <!-- STT CASE CONTAINER -->
+   <div class="case_container">
+    <h2>Simple 001</h2>
+    <p>
+     This data set contains a simple nuclear family with five siblings,
+     of which two are affected. Four of the siblings are sampled, one is unsampled.
+     The proband is marked. Two of the siblings have approximated dates of birth:
+     the month is known, but the precise day is unknown. Madeline2 treats these
+     dates as ranged dates. Both parents are missing from the data set: <b>Madeline2</b>
+     is smart enough to create them as virtual individuals.
+    </p>
+    <p>
+     This pedigree tests:
+    </p>
+    <p>
+    <ul>
+     <li>
+      Handling of missing parents when both parents are not present in the data file.
+     </li>
+     <li>
+      Display of icons, including gender unknown individuals.
+     </li>
+     <li>
+      Basic icon shading.
+     </li>
+     <li>
+      Display of sampled individuals.
+     </li>
+     <li>
+      Display of proband.
+     </li>
+     <li>
+      Display of data labels.
+     </li>
+     <li>
+      Display of encircled birth-order numerals.
+     </li>
+     <li>
+      Display of ranged dates
+     </li>
+    </ul>
+    </p>
+
+    <!-- DATA AND COMMAND LINE -->
+    <p><span class="label">DATA:</span> <a href="data/simple_001.data">simple_001.data</a></p>
+    <p><span class="label">COMMAND LINE:</span><input type="text" value='madeline2 -L "IndividualID DOB" simple_001.data'></input></p>
+    <p><span class="label">RESULT FILE:</span> <a href="results/simple_001_pedigree.svg">simple_001_pedigree.svg</a></p>
+
+    <div class="svg_image">
+     <object type="image/svg+xml" data="results/simple_001_pedigree.svg">
+      <span class="warning">SVG FILE NOT FOUND</span>
+     </object>
+    </div>
+   </div>
+   <!-- END CASE CONTAINER -->
+
+   <!-- STT CASE CONTAINER -->
+   <div class="case_container">
+    <h2>Simple 002</h2>
+    <p>
+     This data set contains a simple nuclear family with 13 offspring.
+     The affection variable records unaffected (U), moderate (M), severe (S)
+     and unknown/missing (.) condition states.
+    </p>
+    <p>
+     This pedigree tests:
+    </p>
+    <ul>
+     <li>Large number of offspring in a single nuclear family.</li>
+     <li>Categorical Affected variable with more than two levels.</li>
+     <li>--color switch.</li>
+    </ul>
+    <!-- DATA AND COMMAND LINE -->
+    <p><span class="label">DATA:</span> <a href="data/simple_002.data">simple_002.data</a></p>
+    <p><span class="label">COMMAND LINE:</span><input type="text" value='madeline2 --color -L "IndividualID DOB" simple_002.data'></input></p>
+    <p><span class="label">RESULT FILE:</span> <a href="results/simple_002_pedigree.svg">simple_002_pedigree.svg</a></p>
+
+    <div class="svg_image">
+     <object type="image/svg+xml" data="results/simple_002_pedigree.svg">
+      <span class="warning">SVG FILE NOT FOUND</span>
+     </object>
+    </div>
+   </div>
+   <!-- END CASE CONTAINER -->
+
+   <!-- STT CASE CONTAINER -->
+   <div class="case_container">
+    <h2>Simple 003</h2>
+    <p>
+     This simple pedigree data set contains multiple generations. In most of the generations there is only one offspring in a nuclear family.
+    </p>
+    <p>
+     This pedigree demonstrates how single married offspring are drawn. A single unmarried offspring is drawn centered directly below both parents. But when married, a single offspring is shifted so the nuclear family subtree remains centered.
+    </p>
+    <!-- DATA AND COMMAND LINE -->
+    <p><span class="label">DATA:</span> <a href="data/simple_003.data">simple_003.data</a></p>
+    <p><span class="label">COMMAND LINE:</span><input type="text" value='madeline2 simple_003.data'></input></p>
+    <p><span class="label">RESULT FILE:</span> <a href="results/simple_003_pedigree.svg">simple_003_pedigree.svg</a></p>
+
+    <div class="svg_image">
+     <object type="image/svg+xml" data="results/simple_003_pedigree.svg">
+      <span class="warning">SVG FILE NOT FOUND</span>
+     </object>
+    </div>
+   </div>
+   <!-- END CASE CONTAINER -->
+
+   <!-- STT CASE CONTAINER -->
+   <div class="case_container">
+    <h2>Simple 004</h2>
+    <p>
+     This is a simple pedigree which contains non-ASCII Unicode strings. In addition to having Chinese name strings, the Gender column is coded using "男" and "女" and dates in the DOB column are in Chinese format (e.g., "1999年04月10日").
+    </p>
+    <!-- DATA AND COMMAND LINE -->
+    <p><span class="label">DATA:</span> <a href="data/simple_004.data">simple_004.data</a></p>
+    <p><span class="label">COMMAND LINE:</span><input type="text" value='madeline2 -L "IndividualId DOB 姓名" simple_004.data'></input></p>
+    <p><span class="label">RESULT FILE:</span> <a href="results/simple_004_pedigree.svg">simple_004_pedigree.svg</a></p>
+
+    <div class="svg_image">
+     <object type="image/svg+xml" data="results/simple_004_pedigree.svg">
+      <span class="warning">SVG FILE NOT FOUND</span>
+     </object>
+    </div>
+   </div>
+   <!-- END CASE CONTAINER -->
+
+   <!-- STT CASE CONTAINER -->
+   <div class="case_container">
+    <h2>Simple 005</h2>
+    <p>
+     This is a simple pedigree which contains non-ASCII Unicode strings.
+     In addition to having Thai strings, the DOB column contains dates in Thai digits.
+    </p>
+    <!-- DATA AND COMMAND LINE -->
+    <p><span class="label">DATA:</span> <a href="data/simple_005.ods">simple_005.ods</a></p>
+    <p><span class="label">LABELS FILE:</span> <a href="data/simple_005.labels">simple_005.labels</a></p>
+    <p><span class="label">COMMAND LINE:</span><input type="text" value='madeline2 -L "IndividualId DOB ชื่อ นามสกุล ตำบล อำเภอ จังหวัด" simple_005.ods'></input></p>
+    <p><span class="label">RESULT FILE:</span> <a href="results/simple_005_pedigree.svg">simple_005_pedigree.svg</a></p>
+
+    <div class="svg_image">
+     <object type="image/svg+xml" data="results/simple_005_pedigree.svg">
+      <span class="warning">SVG FILE NOT FOUND</span>
+     </object>
+    </div>
+   </div>
+   <!-- END CASE CONTAINER -->
+
+   <!-- STT CASE CONTAINER -->
+   <div class="case_container">
+    <h2>Simple_006</h2>
+    <p>
+     This is a simple pedigree which demonstrates Madeline 2.0 PED's ability to draw special types of individuals. Special types of "nuclear families" such as marriages without offspring are also shown. Special types of annotations are also shown.
+    </p><p>
+     Madeline 2.0 uses a superset of the recommendations of the Pedigree Standardization Task Force (PSTF: Benett, RL et al (1995) Am J Hum Genet. 56: 745-752) for drawing special types of individuals and other special situations.
+    </p><p>
+     Spontaneous abortions (SAB) and terminations of pregnancies (TOP) are designated by prefixing individual IDs with the "@" symbol. Madeline follows the PSTF by drawing a triangular icon, but differs from the PSTF recommendations by also drawing a small square or circle below the triangle to indicate gender iconically when known.
+    </p><p>
+     Individuals who are adopted out are designated by prefixing individual IDs with "-" minus signs. Here again Madeline 2.0 differs from the PSTF recommendations by making the brackets surrounding the individual face outward in this case. Individuals who are adopted in are designated by prefixing individual IDs with "+" plus signs: brackets in this case face inward (just as in the PSTF recommendations).
+    </p><p>
+     A marriage with no offspring due to infertility is realized by inserting a "marker" individual into the database with an ID prefixed by "&". A marriage with no offspring for other reasons is realized in a similar way with a marker individual whose ID is prefixed with a "^" instead.
+    </p><p>
+     Inclusion of a Carrier column in the data table allows individuals such as S00110 to be marked as carriers. Inclusion of a Consultand column in the data table allows individuals such as S00111 to be marked as a consultand.
+    </p><p>
+     Finally, inclusion of a Superscript column in the data table permits the display of short strings of letters, numerals, or Unicode symbols just off to the right and slightly above the icons. These superscripts provide a convenient way to annotate pedigree drawings with additional information. A random assortment of superscripts is shown in the example reproduced here.
+    </p>
+    <!-- DATA AND COMMAND LINE -->
+    <p><span class="label">DATA:</span> <a href="data/simple_006.data">simple_006.data</a></p>
+    <p><span class="label">COMMAND LINE:</span><input type="text" value='madeline2 simple_006.data'></input></p>
+    <p><span class="label">RESULT FILE:</span> <a href="results/simple_006_pedigree.svg">simple_006_pedigree.svg</a></p>
+
+    <div class="svg_image">
+     <object type="image/svg+xml" data="results/simple_006_pedigree.svg">
+      <span class="warning">SVG FILE NOT FOUND</span>
+     </object>
+    </div>
+   </div>
+   <!-- END CASE CONTAINER -->
+
+   <!-- TWIN GROUPS -->
+   <h1 id="TwinGroups">Twin Groups</h1>
+
+   <p>The following pedigrees test Madeline's ability to draw twin groups.</p>
+
+   <!-- STT CASE CONTAINER -->
+   <div class="case_container">
+    <h2>Twin 001</h2>
+    <p>
+     This data set contains two siblings (Sandy and Sarah) with the same date of birth but the twin columns are not coded to indicate twins.
+    </p><p>
+     This data set tests Madeline's ability to detect twinships based on date of birth alone.
+    </p><p>
+     Madeline automatically draws the pair as twins. However, an encircled question
+     mark is displayed because twin zygosity is unknown. The program alerts the user
+     with warning messages. The MZTwin or DZTwin column in the data set should be
+     completed in order to code the data set unambiguously.
+    </p>
+    <!-- DATA AND COMMAND LINE -->
+    <p><span class="label">DATA:</span> <a href="data/twin_001.data">twin_001.data</a></p>
+    <p><span class="label">COMMAND LINE:</span><input type="text" value='madeline2 -L "IndividualId Name DOB" twin_001.data'></input></p>
+    <p><span class="label">RESULT FILE:</span> <a href="results/twin_001_pedigree.svg">twin_001_pedigree.svg</a></p>
+    <div class="svg_image">
+     <object type="image/svg+xml" data="results/twin_001_pedigree.svg">
+      <span class="warning">SVG FILE NOT FOUND</span>
+     </object>
+    </div>
+   </div>
+   <!-- END CASE CONTAINER -->
+
+   <!-- STT CASE CONTAINER -->
+   <div class="case_container">
+    <h2>Twin 002</h2>
+    <p>
+     This data set tests the program's rendering of two twin groups in a single nuclear family --one monozygotic and one dizygotic group.
+    </p><p>
+     This pedigree is not realistic for humans, but might be possible for mice or other animals.
+    </p>
+    <!-- DATA AND COMMAND LINE -->
+    <p><span class="label">DATA:</span> <a href="data/twin_002.data">twin_002.data</a></p>
+    <p><span class="label">COMMAND LINE:</span><input type="text" value='madeline2 -L "IndividualId DOB" twin_002.data'></input></p>
+    <p><span class="label">RESULT FILE:</span> <a href="results/twin_002_pedigree.svg">twin_002_pedigree.svg</a></p>
+    <div class="svg_image">
+     <object type="image/svg+xml" data="results/twin_002_pedigree.svg">
+      <span class="warning">SVG FILE NOT FOUND</span>
+     </object>
+    </div>
+   </div>
+   <!-- END CASE CONTAINER -->
+
+   <!-- STT CASE CONTAINER -->
+   <div class="case_container">
+    <h2>Twin 003</h2>
+    <p>
+     This data set tests the program's rendering of a single very large twin group.
+     This pedigree is not realistic for humans, but might be possible for mice or
+     other animals. This pedigree demonstrates that the program does not impose
+     limits on the number of twins in a twin group.
+    </p>
+    <!-- DATA AND COMMAND LINE -->
+    <p><span class="label">DATA:</span> <a href="data/twin_003.data">twin_003.data</a></p>
+    <p><span class="label">COMMAND LINE:</span><input type="text" value='madeline2 twin_003.data'></input></p>
+    <p><span class="label">RESULT FILE:</span> <a href="results/twin_003_pedigree.svg">twin_003_pedigree.svg</a></p>
+    <div class="svg_image">
+     <object type="image/svg+xml" data="results/twin_003_pedigree.svg">
+      <span class="warning">SVG FILE NOT FOUND</span>
+     </object>
+    </div>
+   </div>
+   <!-- END CASE CONTAINER -->
+
+   <!-- STT CASE CONTAINER -->
+   <div class="case_container">
+    <h2>Twin 004</h2>
+    <p>
+     This data set tests the program's rendering of twin groups
+     where the siblings are married and have children of their own.
+    </p>
+    <!-- DATA AND COMMAND LINE -->
+    <p><span class="label">DATA:</span> <a href="data/twin_004.data">twin_004.data</a></p>
+    <p><span class="label">COMMAND LINE:</span><input type="text" value='madeline2 twin_004.data'></input></p>
+    <p><span class="label">RESULT FILE:</span> <a href="results/twin_004_pedigree.svg">twin_004_pedigree.svg</a></p>
+    <div class="svg_image">
+     <object type="image/svg+xml" data="results/twin_004_pedigree.svg">
+      <span class="warning">SVG FILE NOT FOUND</span>
+     </object>
+    </div>
+   </div>
+   <!-- END CASE CONTAINER -->
+
+   <!-- UNCONNECTEDS -->
+   <h1 id="Unconnecteds">Unconnecteds</h1>
+   <p>
+    The program is expected to identify unconnected individuals
+    in data files for users to review.
+   </p>
+
+   <!-- STT CASE CONTAINER -->
+   <div class="case_container">
+    <h2>Unconnected 001</h2>
+    <p>
+     In this test pedigree, all individuals with IDs in the 100s
+     are unconnected and will not be drawn. The program is expected
+     to issue warning statements in these cases.
+     Only individual “202” (who has parents identified
+     but not actually present in the data file) is considered minimally
+     connected by the program and drawn on the pedigree.
+    </p>
+    <!-- DATA AND COMMAND LINE -->
+    <p><span class="label">DATA:</span> <a href="data/unconnected_001.data">unconnected_001.data</a></p>
+    <p><span class="label">COMMAND LINE:</span><input type="text" value='madeline2 unconnected_001.data'></input></p>
+    <p><span class="label">RESULT FILE:</span> <a href="results/unconnected_001_pedigree.svg">unconnected_001_pedigree.svg</a></p>
+    <div class="svg_image">
+     <object type="image/svg+xml" data="results/unconnected_001_pedigree.svg">
+      <span class="warning">SVG FILE NOT FOUND</span>
+     </object>
+    </div>
+   </div>
+   <!-- END CASE CONTAINER -->
 
    <div class="invisible">
    <!-- STT CASE CONTAINER -->
@@ -1367,5 +1382,3 @@
  </div><!-- END MAIN CONTENT -->
 </body>
 </html>
-
-
