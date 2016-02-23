@@ -1,0 +1,24 @@
+FamilyID	IndividualId	Gender	Father	Mother	Deceased	DOB	Proband	Affected	Superscript	DZTwin	MZTwin	SampleQuantity	TUBE_ID	TM_Info_1	SBD	ASRE	SDE	
+descent_tree_008	99099	M						0										
+descent_tree_008	99098	M						0										
+descent_tree_008	99097	M						0										
+descent_tree_008	99096	F			Y			0										
+descent_tree_008	99095	M			Y			0										
+descent_tree_008	99094	F						0										
+descent_tree_008	99093	M			Y			0										
+descent_tree_008	99092	F			Y			0										
+descent_tree_008	99091	M	99082	99094		1987/12/31		0										
+descent_tree_008	99090	F	99082	99094		1990/12/31		0										
+descent_tree_008	99089	F	99082	99094		1995/12/31		0										
+descent_tree_008	99088	M	99082	99094		1998/12/31		0										
+descent_tree_008	99087	F	99099	99077		1925/1/01		0								ABHS		
+descent_tree_008	99086	F	99099	99077	Y			0										
+descent_tree_008	99085	M	99098	99084	Y			0										
+descent_tree_008	99084	F	99097	99083				0										
+descent_tree_008	99083	F	99095	99096				0										
+descent_tree_008	99082	M	99085	99087		1966/2/22	Y	15					X78743	#1234.70	SkinBiopsy			
+descent_tree_008	99081	F	99085	99087				0										
+descent_tree_008	99080	M	99085	99087				0										
+descent_tree_008	99079	M	99085	99087				0										
+descent_tree_008	99078	M	99085	99087				0										
+descent_tree_008	99077	F	99093	99092				0										

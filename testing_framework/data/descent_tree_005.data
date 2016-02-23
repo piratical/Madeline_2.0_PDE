@@ -21,5 +21,5 @@ Age
 226747 descent_tree_005 F .      .      . . . .
 226751 descent_tree_005 . 226743 226744 . . . .
 226752 descent_tree_005 . 226743 226744 . . . .
-226761 descent_tree_005 M .      226727 . . . .
-226762 descent_tree_005 F .      226727 . . . .
+226761 descent_tree_005 M 000998 226727 . . . .
+226762 descent_tree_005 F 000999 226727 . . . .

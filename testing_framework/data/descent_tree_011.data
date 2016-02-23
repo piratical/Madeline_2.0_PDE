@@ -1,0 +1,29 @@
+//
+// descent_tree_011
+//
+FamilyID
+IndividualId
+Gender
+Father
+Mother
+Deceased
+DOB
+Proband
+Affected
+
+descent_tree_011 01 F  .  . . .          .  0
+descent_tree_011 02 F  .  . . .          .  0
+descent_tree_011 03 F  .  . Y .          .  0
+descent_tree_011 04 F  .  . . .          .  0
+descent_tree_011 05 M  .  . Y .          .  0
+descent_tree_011 06 M  .  . Y .          .  0
+descent_tree_011 07 F  .  . Y .          .  0
+descent_tree_011 08 M 11 01 . 1977/06/11 .  2
+descent_tree_011 09 F 11 01 . 1980/10/12 . 15
+descent_tree_011 10 M 16 02 . .          .  0
+descent_tree_011 11 M 10 03 . .          .  0
+descent_tree_011 12 M 10 04 . 1958/07/28 .  2
+descent_tree_011 13 F 10 04 . 1954/08/05 Y 15
+descent_tree_011 14 F 10 04 . 1966/01/13 .  2
+descent_tree_011 15 F 05 04 . .          .  0
+descent_tree_011 16 M 06 07 . .          .  0

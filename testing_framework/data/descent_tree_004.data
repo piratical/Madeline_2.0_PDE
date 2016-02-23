@@ -1,5 +1,5 @@
 IndividualID	FamilyID	Gender	Mother	Father	Proband	Pregnancy	Deceased	Age
-226762	descent_tree_004	F	.	226727	Y	.	.	.
+226762	descent_tree_004	F	000999	226727	Y	.	.	.
 226727	descent_tree_004	M	226743	226744	.	.	.	.
 226743	descent_tree_004	F	.	.	.	.	.	.
 226748	descent_tree_004	F	226743	226745	.	.	.	.
@@ -11,4 +11,4 @@ IndividualID	FamilyID	Gender	Mother	Father	Proband	Pregnancy	Deceased	Age
 226750	descent_tree_004	F	226747	226744	.	.	.	.
 226747	descent_tree_004	F	.	.	.	.	.	.
 226752	descent_tree_004	.	226743	226744	.	.	.	.
-226761	descent_tree_004	M	.	226727	.	.	.	.
+226761	descent_tree_004	M	000999	226727	.	.	.	.

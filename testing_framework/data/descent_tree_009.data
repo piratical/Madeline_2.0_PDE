@@ -1,0 +1,62 @@
+FamilyID	IndividualId	Gender	Father	Mother	Deceased	DOB	Proband	Affected
+descent_tree_009	90001	M	90003	90002			Y	
+descent_tree_009	90002	F						
+descent_tree_009	90003	M	90050	90051				
+descent_tree_009	90004	F	90003	90002				
+descent_tree_009	90005	M	90006	90014				
+descent_tree_009	90006	M	90013	90052				
+descent_tree_009	90007	M	90017	90016				
+descent_tree_009	90008	M	90009	90022				
+descent_tree_009	90009	M	90015	90053				
+descent_tree_009	90010	F	90011	90023				
+descent_tree_009	90011	M	90015	90053				
+descent_tree_009	90012	M	90049	90048				
+descent_tree_009	90013	M	90050	90051				
+descent_tree_009	90014	F	90041	90040				
+descent_tree_009	90015	M	90050	90051				
+descent_tree_009	90016	F	90050	90051				
+descent_tree_009	90017	M	90037	90036				
+descent_tree_009	90018	F	90020	90019				
+descent_tree_009	90019	F						
+descent_tree_009	90020	M	90041	90040				
+descent_tree_009	90021	F	90003	90002				
+descent_tree_009	90022	F						
+descent_tree_009	90023	F						
+descent_tree_009	90024	F						
+descent_tree_009	90025	M						
+descent_tree_009	90026	F	90025	90024				
+descent_tree_009	90027	M						
+descent_tree_009	90028	F						
+descent_tree_009	90029	M	90027	90026				
+descent_tree_009	90030	M	90029	90028				
+descent_tree_009	90031	F	90032	90033				
+descent_tree_009	90032	M	90034	90035				
+descent_tree_009	90033	F						
+descent_tree_009	90034	M						
+descent_tree_009	90035	F						
+descent_tree_009	90036	F						
+descent_tree_009	90037	M	90038	90039				
+descent_tree_009	90038	M						
+descent_tree_009	90039	F						
+descent_tree_009	90040	F	90043	90042				
+descent_tree_009	90041	M						
+descent_tree_009	90042	F						
+descent_tree_009	90043	M	90045	90044				
+descent_tree_009	90044	F						
+descent_tree_009	90045	M						
+descent_tree_009	90046	F	90045	90044				
+descent_tree_009	90047	M						
+descent_tree_009	90048	F	90047	90046				
+descent_tree_009	90049	M						
+descent_tree_009	90050	M						
+descent_tree_009	90051	F						
+descent_tree_009	90052	F	90030	90031					2
+descent_tree_009	90053	F						
+descent_tree_009	90054	M	90006	90014				
+descent_tree_009	90055	F	90006	90014				
+descent_tree_009	90056	F	90011	90023				
+descent_tree_009	90057	F	90001	90059				
+descent_tree_009	90058	F	90004	90061				
+descent_tree_009	90059	F						
+descent_tree_009	90060	M	90001	90059				
+descent_tree_009	90061	M						

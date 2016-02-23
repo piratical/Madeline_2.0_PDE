@@ -220,14 +220,13 @@ text{
  <g class="pedigree" transform="translate(-41.58)">
 
  <g id="bottomLayer" class="layer" >
-<path class="curvedConnector" d="M136.08 50 C265.178 221.694 605.378 353.627 816.48 313.865 " />
 
  </g>
  <g id="layer0" class="layer" >
  </g>
 
   <g class="drawing">
-  <text x="512" y="30" text-anchor="middle"  class="header" >0997_family</text>
+  <text x="512" y="30" text-anchor="middle"  class="header" >descent_tree_011</text>
 <g>
 </g>
 <circle cx="362.88" cy="50" r="11.34" id="04" class="solid">
@@ -336,10 +335,6 @@ text{
   <text x="907.2" y="224.517" text-anchor="middle" >02</text>
   <line class="mating" id="02:16" x1="861.84" y1="181.933" x2="861.84" y2="274.175" />
   <line class="solid" x1="816.48" y1="274.175" x2="816.48" y2="302.525" />
-  <rect x="805.14" y="302.525" width="22.68" height="22.68" id="10" class="dashed">
-	<title>10</title>
-</rect>
-  <text x="816.48" y="356.45" text-anchor="middle" >10</text>
   <line x1="827.82" y1="313.865" x2="895.86" y2="313.865" />
 <g>
 </g>
