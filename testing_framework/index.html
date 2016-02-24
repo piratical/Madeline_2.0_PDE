@@ -15,6 +15,7 @@
   <a href="#Intro">Intro</a>
   <a href="#Summary">Summary</a>
   <a href="#Collapsed">Collapsed</a>
+  <a href="#Color">Color</a>
   <a href="#Compression">Compression</a>
   <a href="#Consanguinous">Consanguinous</a>
   <a href="#CustomColor">Custom Colors</a>
@@ -170,6 +171,102 @@
      </div>
     </div>
     <!-- END CASE CONTAINER -->
+
+    <!-- COLOR -->
+    <h1 id="Color">Color Pedigrees</h1>
+    <p>
+     When a data file contains more than one <em>Affected_xxx</em> field, Madeline automatically divides the
+     icon shading region into "pie slice" sections and automatically switches into color mode for any affection
+     column with two or more non-missing categorical levels. <em>(Note that the missing level, ".", is always printed
+     without color, i.e., with a white background).</em> When custom
+     colors are not specified, Madeline automatically uses bichromatic color series. The bichromatic color series were
+     selected to be as contrasting as possible for people with normal color vision. The
+     letter or symbol indicating each level of an affection variable will be printed in black ink if the background color
+     is a light color, and in white ink if the background color is a dark color.
+    </p>
+    <p>
+     The distinctness in color between adjacent levels within a single bichromatic series should be quite clear 
+     for people with normal vision when there are only 2-4 levels. When there are more than 4 levels for any one
+     affection variable, the distinctness in the color value between adjacent levels naturally declines. This is
+     equally true for grayscale coloring.
+    </p>
+    <p>
+     Note that it is possible to force a pedigree with multiple affection variables to be printed in 
+     black-and-white using the optional 
+     <em>--bw</em> or <em>-b</em> switch. If you want absolute control over colors, then just use the 
+     <em>--custom-icon-colors</em> or <em>-C</em> switch as described in the <a href="#CustomColor">Custom Color</a>
+     section.
+    </p>
+
+   <!-- STT CASE CONTAINER -->
+   <div class="case_container">
+    <h2>Color 001</h2>
+    <p>
+     In this pedigree there are two affection columns, <em>Affected</em> and 
+     <em>Affected_T</em>. Madeline automatically divides the icons into pie-sliced regions. 
+     In the absence of custom color assignments, bichromatic color series are automatically 
+     assigned to each categorical variable. 
+     The first affected column appears on the left, the second on the right.
+    </p>
+    <!-- DATA AND COMMAND LINE -->
+    <p><span class="label">DATA:</span> <a href="data/color_001.data">color_001.data</a></p>
+    <p><span class="label">COMMAND LINE:</span><input type="text" value='madeline2 color_001.data'></input></p>
+    <p><span class="label">RESULT FILE:</span> <a href="results/color_001_pedigree.svg">color_001_pedigree.svg</a></p>
+
+    <div class="svg_image">
+     <object type="image/svg+xml" data="results/color_001_pedigree.svg">
+      <span class="warning">SVG FILE NOT FOUND</span>
+     </object>
+    </div>
+   </div>
+
+   <!-- STT CASE CONTAINER -->
+   <div class="case_container">
+    <h2>Color 002</h2>
+    <p>
+      In this pedigree there are three affection columns, 
+      <em>Affected</em>, <em>Affected_A</em> and <em>Affected_B</em>. 
+      Madeline automatically divides the icons into pie-sliced regions. 
+      Bichromatic color series are automatically assigned to each categorical variable. 
+      The first categorical variable always occupies the upper left-hand third. 
+      The second variable follows clockwise on the upper right. 
+      The third variable follows clockwise at the bottom.
+    </p>
+    <!-- DATA AND COMMAND LINE -->
+    <p><span class="label">DATA:</span> <a href="data/color_002.data">color_002.data</a></p>
+    <p><span class="label">COMMAND LINE:</span><input type="text" value='madeline2 color_002.data'></input></p>
+    <p><span class="label">RESULT FILE:</span> <a href="results/color_002_pedigree.svg">color_002_pedigree.svg</a></p>
+
+    <div class="svg_image">
+     <object type="image/svg+xml" data="results/color_002_pedigree.svg">
+      <span class="warning">SVG FILE NOT FOUND</span>
+     </object>
+    </div>
+   </div>
+
+   <!-- STT CASE CONTAINER -->
+   <div class="case_container">
+    <h2>Color 003</h2>
+    <p>
+     In this pedigree there are five affection columns. 
+     In practice, more than four affection columns may make the graph 
+     difficult to read. However this example demonstrates that Madeline 
+     imposes no limit on the number of pie-sliced regions into which 
+     icons may be divided. Bichromatic color series are automatically 
+     assigned to each categorical variable. Variables are arranged visually 
+     from the upper left-hand corner and proceed in order clockwise.
+    </p>
+    <!-- DATA AND COMMAND LINE -->
+    <p><span class="label">DATA:</span> <a href="data/color_003.data">color_003.data</a></p>
+    <p><span class="label">COMMAND LINE:</span><input type="text" value='madeline2 -N color_003.data'></input></p>
+    <p><span class="label">RESULT FILE:</span> <a href="results/color_003_pedigree.svg">color_003_pedigree.svg</a></p>
+
+    <div class="svg_image">
+     <object type="image/svg+xml" data="results/color_003_pedigree.svg">
+      <span class="warning">SVG FILE NOT FOUND</span>
+     </object>
+    </div>
+   </div>
 
    <!-- COMPRESSION -->
    <h1 id="Compression">Compression Tests</h1>

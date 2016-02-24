@@ -1,0 +1,16 @@
+Individualid	Familyid	Gender	Father	Mother	Affected	Afected_Other	Affected_A	Affected_B
+M100	color_002	M	.	.	.	.	.	.
+M101	color_002	F	.	.	.	.	.	.
+M102	color_002	F	M100	M101	U	U	A	I
+M103	color_002	M	M100	M101	A	A	A	U
+M104	color_002	F	M100	M101	A	A	U	I
+M105	color_002	M	.	.	U	.	U	.
+M106	color_002	M	M105	M102	U	U	.	.
+M107	color_002	F	M105	M102	U	I	A	U
+M108	color_002	F	.	.	A	I	U	A
+M109	color_002	F	M104	M108	A	U	I	A
+M110	color_002	M	.	.	U	.	.	.
+M111	color_002	.	M110	M107	A	.	A	U
+M112	color_002	F	.	.	A	A	A	I
+M113	color_002	M	M104	M112	A	.	.	.
+!M114	color_002	.	M104	M112	.	.	.	.
