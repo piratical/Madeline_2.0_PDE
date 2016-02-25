@@ -1,0 +1,493 @@
+<?xml version="1.0" standalone="no"?>
+ <svg version="1.1"  id="svgDC" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"  viewBox="0 0 2184 699"  onload="init()" >
+ <defs>
+  <style type="text/css"><![CDATA[
+
+line{
+	stroke:#000;
+	stroke-width:0.5mm;
+	stroke-linejoin:miter;
+	stroke-linecap:square;
+}
+
+rect{
+	stroke:#000;
+	stroke-width:0.5mm;
+	stroke-linejoin:miter;
+	stroke-linecap:square;
+}
+
+ellipse{
+	stroke: #000;
+    fill: #fff;
+	stroke-width:0.25mm;
+}
+
+text{
+	font-family:"DejaVu Sans",sans-serif;
+	font-size:12px;
+}
+
+.smallText{
+	font-family:"DejaVu Sans",sans-serif;
+	font-size:9px;
+	fill:#444;
+}
+
+.layer text{
+	fill:#930;
+}
+
+.layer line{
+	stroke:#000;
+}
+
+.birthOrder,.unknownTwins{
+	font-size: 8px;
+}
+
+.header{
+	font-size:18px;
+	font-weight:bold;
+}
+
+.keyBox{
+	fill:#e5e5e5;
+	stroke:#000;
+	stroke-width:0.5mm;
+	stroke-linejoin:miter;
+	stroke-linecap:square;
+}
+
+.mating:hover{
+	stroke-width:1mm;
+	stroke:#d56300;
+}
+
+.selectedIndividual{
+	stroke-width:1mm;
+	stroke-linecap:square;
+	stroke-linejoin:miter;
+	stroke:#d00;
+    fill:none;
+}
+
+.selectedIndividual:hover{
+	stroke:#d00;
+	fill:#ffbbbb;
+	fill-opacity:0.70;
+}
+
+.solid{
+	stroke-width:0.5mm;
+	stroke-linecap:square;
+	stroke-linejoin:miter;
+	stroke:#000;
+	fill:none;
+}
+
+.dashed{
+	stroke-width:0.5mm;
+	stroke-linecap:square;
+	stroke-linejoin:miter;
+	stroke:#98afc7;
+	stroke-dasharray:2mm,1mm;
+	stroke-dashoffset:1.0mm;
+	fill:none;
+}
+
+.solid:hover{
+	fill:#ffb787;
+	fill-opacity:0.70;
+	stroke:#d56300;
+	stroke-width:1mm;
+}
+
+.dashed:hover{
+	fill:#ffb787;
+	fill-opacity:0.70;
+	stroke:#d56300;
+	stroke-width:1mm;
+}
+
+.filled{
+	stroke-width:0.5mm;
+	stroke-linecap:square;
+	stroke-linejoin:miter;
+	stroke:#000;
+	fill:#000;
+}
+
+.specialIcons{
+	stroke-width:0.25mm;
+	stroke-linecap:round;
+	stroke-linejoin:miter;
+	stroke:#000;
+	fill:#fff;
+}
+
+.specialLines{
+	stroke-linecap:square;
+	stroke-linejoin:miter;
+	stroke:#000;
+	stroke-width:0.5mm;
+	fill:none;
+}
+
+.thinLine{
+	fill:none;
+	stroke: #000;
+	stroke-width:0.25mm;
+}
+
+.curvedConnector{
+	stroke-linecap:square;
+	stroke-linejoin:miter;
+	stroke:#98afc7;
+	stroke-width:0.5mm;
+	stroke-dasharray:2mm,1mm;
+	stroke-dashoffset:1.0mm;
+	fill:none;
+}
+
+.curvedConnector:hover{
+	stroke:#d56300;
+}
+
+.whiteInkLetter_1{
+	font-size: 12px;
+	fill: #fff;
+}
+
+.whiteInkLetter_2{
+	font-size: 10px;
+	fill: #fff;
+}
+
+.whiteInkLetter_3{
+	font-size: 8px;
+	fill: #fff;
+}
+
+.whiteInkLetter{
+	font-size: 8px;
+	fill: #fff;
+}
+
+.blackInkLetter_1{
+	font-size: 12px;
+}
+
+.blackInkLetter_2{
+	font-size: 10px;
+}
+
+.blackInkLetter_3{
+	font-size: 8px;
+}
+
+.blackInkLetter{
+	font-size: 8px;
+	fill: #000;
+}
+
+.blackInk{
+	fill: #000;
+}
+
+.whiteInk{
+	fill: #fff;
+}
+
+.counter{
+	font-size: 14px;
+	fill: #000;
+}
+
+.counterFill{
+	fill: #fff;
+}
+
+.sampleLevel{
+	stroke:none;
+	fill:#f99;
+}
+
+]]></style>
+ <script type="text/javascript" xlink:href="javascript/madeline.js"></script>
+ <marker id="endArrow" viewBox="0 0 10 10" refX="1" refY="5" markerUnits="strokeWidth" orient="auto" markerWidth="5" markerHeight="4">  <polyline points="0,0 10,5 0,10 1,5" fill="#000" /> </marker>
+ </defs>
+ <g class="pedigree" transform="translate(-41.58)">
+
+ <g id="bottomLayer" class="layer" >
+<path class="curvedConnector" d="M1360.8 181.933 C1065.96 68.5325 476.28 68.5325 181.44 181.933 " />
+
+ </g>
+ <g id="layer0" class="layer" >
+  <line x1="1735.02" y1="180.043" x2="1782.27" y2="180.043" />
+  <line x1="1735.02" y1="183.823" x2="1778.49" y2="183.823" />
+  <line x1="1782.27" y1="180.043" x2="1782.27" y2="311.975" />
+  <line x1="1778.49" y1="183.823" x2="1778.49" y2="315.755" />
+  <line x1="1782.27" y1="311.975" x2="1825.74" y2="311.975" />
+  <line x1="1778.49" y1="315.755" x2="1825.74" y2="315.755" />
+  <text x="181.44" y="224.517" text-anchor="middle" >Indv0009</text>
+  <text x="181.44" y="206.181" text-anchor="middle" >A</text>
+  <text x="1360.8" y="206.181" text-anchor="middle" >A</text>
+  <line x1="1122.66" y1="181.933" x2="1349.46" y2="181.933" />
+  <line x1="464.94" y1="181.933" x2="283.5" y2="181.933" />
+  <line x1="714.42" y1="311.975" x2="757.89" y2="311.975" />
+  <line x1="714.42" y1="315.755" x2="761.67" y2="315.755" />
+  <line x1="761.67" y1="183.823" x2="761.67" y2="315.755" />
+  <line x1="757.89" y1="180.043" x2="757.89" y2="311.975" />
+  <line x1="757.89" y1="180.043" x2="805.14" y2="180.043" />
+  <line x1="761.67" y1="183.823" x2="805.14" y2="183.823" />
+  <line x1="1984.5" y1="443.908" x2="2027.97" y2="443.908" />
+  <line x1="1984.5" y1="447.688" x2="2031.75" y2="447.688" />
+  <line x1="2031.75" y1="315.755" x2="2031.75" y2="447.688" />
+  <line x1="2027.97" y1="311.975" x2="2027.97" y2="443.908" />
+  <line x1="2027.97" y1="311.975" x2="2075.22" y2="311.975" />
+  <line x1="2031.75" y1="315.755" x2="2075.22" y2="315.755" />
+ </g>
+
+  <g class="drawing">
+  <text x="512" y="30" text-anchor="middle"  class="header" >complex_001</text>
+  <rect x="124.74" y="38.66" width="22.68" height="22.68" id="Indv0003" class="solid">
+	<title>Indv0003</title>
+</rect>
+  <text x="136.08" y="92.5845" text-anchor="middle" >Indv0003</text>
+  <line x1="147.42" y1="50" x2="215.46" y2="50" />
+<circle cx="226.8" cy="50" r="11.34" id="Indv0004" class="solid">
+	<title>Indv0004</title>
+</circle>
+  <text x="226.8" y="92.5845" text-anchor="middle" >Indv0004</text>
+  <line class="mating" id="Indv0004:Indv0003" x1="181.44" y1="50" x2="181.44" y2="142.243" />
+  <line class="solid" x1="90.72" y1="142.243" x2="90.72" y2="170.593" />
+<circle cx="90.72" cy="181.933" r="11.34" id="Indv0010" class="solid">
+	<title>Indv0010</title>
+</circle>
+  <text x="90.72" y="224.517" text-anchor="middle" >Indv0010</text>
+  <line x1="102.06" y1="181.933" x2="170.1" y2="181.933" />
+  <line class="mating" id="Indv0010:Indv0009" x1="136.08" y1="181.933" x2="136.08" y2="274.175" />
+  <line class="solid" x1="90.72" y1="274.175" x2="90.72" y2="302.525" />
+<circle cx="90.72" cy="313.865" r="11.34" id="Indv0023" class="solid">
+	<title>Indv0023</title>
+</circle>
+  <text x="90.72" y="356.45" text-anchor="middle" >Indv0023</text>
+  <line class="solid" x1="181.44" y1="274.175" x2="181.44" y2="302.525" />
+  <rect x="170.1" y="302.525" width="22.68" height="22.68" id="Indv0024" class="solid">
+	<title>Indv0024</title>
+</rect>
+  <text x="181.44" y="356.45" text-anchor="middle" >Indv0024</text>
+  <line x1="90.72" y1="274.175" x2="181.44" y2="274.175" />
+  <line class="solid" x1="272.16" y1="142.243" x2="272.16" y2="170.593" />
+  <rect x="260.82" y="170.593" width="22.68" height="22.68" id="Indv0011" class="solid">
+	<title>Indv0011</title>
+</rect>
+  <text x="272.16" y="224.517" text-anchor="middle" >Indv0011</text>
+  <line x1="90.72" y1="142.243" x2="272.16" y2="142.243" />
+  <rect x="623.7" y="38.66" width="22.68" height="22.68" id="Indv0005" class="solid">
+	<title>Indv0005</title>
+</rect>
+  <text x="635.04" y="92.5845" text-anchor="middle" >Indv0005</text>
+  <line x1="646.38" y1="50" x2="714.42" y2="50" />
+<circle cx="725.76" cy="50" r="11.34" id="Indv0006" class="solid">
+	<title>Indv0006</title>
+</circle>
+  <text x="725.76" y="92.5845" text-anchor="middle" >Indv0006</text>
+  <line class="mating" id="Indv0006:Indv0005" x1="680.4" y1="50" x2="680.4" y2="142.243" />
+  <line class="solid" x1="544.32" y1="142.243" x2="544.32" y2="170.593" />
+<circle cx="544.32" cy="181.933" r="11.34" id="Indv0013" class="solid">
+	<title>Indv0013</title>
+</circle>
+  <text x="544.32" y="224.517" text-anchor="middle" >Indv0013</text>
+  <line x1="464.94" y1="181.933" x2="532.98" y2="181.933" />
+  <line class="mating" id="Indv0013:Indv0011" x1="498.96" y1="181.933" x2="498.96" y2="274.175" />
+  <line class="solid" x1="362.88" y1="274.175" x2="362.88" y2="302.525" />
+<circle cx="362.88" cy="313.865" r="11.34" id="Indv0025" class="solid">
+	<title>Indv0025</title>
+</circle>
+  <text x="362.88" y="356.45" text-anchor="middle" >Indv0025</text>
+  <line class="solid" x1="453.6" y1="274.175" x2="453.6" y2="302.525" />
+<circle cx="453.6" cy="313.865" r="11.34" id="Indv0026" class="solid">
+	<title>Indv0026</title>
+</circle>
+  <text x="453.6" y="356.45" text-anchor="middle" >Indv0026</text>
+  <line class="solid" x1="544.32" y1="274.175" x2="544.32" y2="302.525" />
+  <rect x="532.98" y="302.525" width="22.68" height="22.68" id="Indv0027" class="solid">
+	<title>Indv0027</title>
+</rect>
+  <line x1="529.2" y1="328.985" x2="559.44" y2="298.745" />
+  <text x="544.32" y="356.45" text-anchor="middle" >Indv0027</text>
+  <line class="solid" x1="635.04" y1="274.175" x2="635.04" y2="302.525" />
+<circle cx="635.04" cy="313.865" r="11.34" id="Indv0033" class="solid">
+	<title>Indv0033</title>
+</circle>
+  <text x="635.04" y="356.45" text-anchor="middle" >Indv0033</text>
+  <line x1="646.38" y1="315.755" x2="714.42" y2="315.755" />
+  <line x1="646.38" y1="311.975" x2="714.42" y2="311.975" />
+  <line class="mating" id="Indv0033:Indv0014" x1="680.4" y1="315.755" x2="680.4" y2="404.218" />
+  <line class="solid" x1="635.04" y1="406.108" x2="635.04" y2="434.458" />
+<circle cx="635.04" cy="445.798" r="11.34" id="Indv0036" class="solid">
+	<title>Indv0036</title>
+</circle>
+  <text x="635.04" y="488.382" text-anchor="middle" >Indv0036</text>
+  <line class="solid" x1="725.76" y1="406.108" x2="725.76" y2="434.458" />
+  <rect x="714.42" y="434.458" width="22.68" height="22.68" id="Indv0037" class="solid">
+	<title>Indv0037</title>
+</rect>
+  <text x="725.76" y="488.382" text-anchor="middle" >Indv0037</text>
+  <line x1="635.04" y1="406.108" x2="725.76" y2="406.108" />
+  <line x1="362.88" y1="274.175" x2="635.04" y2="274.175" />
+  <line class="solid" x1="816.48" y1="142.243" x2="816.48" y2="170.593" />
+  <rect x="805.14" y="170.593" width="22.68" height="22.68" id="Indv0014" class="solid">
+	<title>Indv0014</title>
+</rect>
+  <text x="816.48" y="224.517" text-anchor="middle" >Indv0014</text>
+  <line class="solid" x1="1043.28" y1="142.243" x2="1043.28" y2="170.593" />
+<circle cx="1043.28" cy="181.933" r="11.34" id="Indv0012" class="solid">
+	<title>Indv0012</title>
+</circle>
+  <text x="1043.28" y="224.517" text-anchor="middle" >Indv0012</text>
+  <line x1="1054.62" y1="181.933" x2="1122.66" y2="181.933" />
+  <line class="mating" id="Indv0012:Indv0009" x1="1088.64" y1="181.933" x2="1088.64" y2="274.175" />
+  <line x1="907.2" y1="298.745" x2="907.2" y2="302.525" />
+<circle cx="907.2" cy="313.865" r="11.34" id="Indv0028" class="solid">
+	<title>Indv0028</title>
+</circle>
+  <text x="907.2" y="356.45" text-anchor="middle" >Indv0028</text>
+  <line x1="997.92" y1="298.745" x2="997.92" y2="302.525" />
+<circle cx="997.92" cy="313.865" r="11.34" id="Indv0029" class="solid">
+	<title>Indv0029</title>
+</circle>
+  <text x="997.92" y="356.45" text-anchor="middle" >Indv0029</text>
+  <line x1="1088.64" y1="298.745" x2="1088.64" y2="302.525" />
+<circle cx="1088.64" cy="313.865" r="11.34" id="Indv0030" class="solid">
+	<title>Indv0030</title>
+</circle>
+  <text x="1088.64" y="356.45" text-anchor="middle" >Indv0030</text>
+  <line x1="1179.36" y1="298.745" x2="1179.36" y2="302.525" />
+  <rect x="1168.02" y="302.525" width="22.68" height="22.68" id="Indv0031" class="solid">
+	<title>Indv0031</title>
+</rect>
+  <text x="1179.36" y="356.45" text-anchor="middle" >Indv0031</text>
+  <line x1="1270.08" y1="298.745" x2="1270.08" y2="302.525" />
+<circle cx="1270.08" cy="313.865" r="11.34" id="Indv0032" class="solid">
+	<title>Indv0032</title>
+</circle>
+  <text x="1270.08" y="356.45" text-anchor="middle" >Indv0032</text>
+  <line x1="997.92" y1="274.175" x2="997.92" y2="277.955" />
+  <line x1="907.2" y1="298.745" x2="997.92" y2="277.955" />
+  <line x1="997.92" y1="298.745" x2="997.92" y2="277.955" />
+  <line x1="1088.64" y1="298.745" x2="997.92" y2="277.955" />
+  <line x1="907.2" y1="298.745" x2="1088.64" y2="298.745" />
+  <line x1="1224.72" y1="274.175" x2="1224.72" y2="277.955" />
+  <line x1="1179.36" y1="298.745" x2="1224.72" y2="277.955" />
+  <line x1="1270.08" y1="298.745" x2="1224.72" y2="277.955" />
+  <line x1="997.92" y1="274.175" x2="1224.72" y2="274.175" />
+  <line x1="544.32" y1="142.243" x2="1043.28" y2="142.243" />
+  <rect x="1576.26" y="38.66" width="22.68" height="22.68" id="Indv0001" class="solid">
+	<title>Indv0001</title>
+</rect>
+  <text x="1587.6" y="92.5845" text-anchor="middle" >Indv0001</text>
+  <line x1="1598.94" y1="50" x2="1666.98" y2="50" />
+<circle cx="1678.32" cy="50" r="11.34" id="Indv0002" class="solid">
+	<title>Indv0002</title>
+</circle>
+  <line x1="1663.2" y1="65.12" x2="1693.44" y2="34.88" />
+  <text x="1678.32" y="92.5845" text-anchor="middle" >Indv0002</text>
+  <line class="mating" id="Indv0002:Indv0001" x1="1632.96" y1="50" x2="1632.96" y2="142.243" />
+  <line class="solid" x1="1360.8" y1="142.243" x2="1360.8" y2="170.593" />
+  <rect x="1349.46" y="170.593" width="22.68" height="22.68" id="Indv0009" class="solid">
+	<title>Indv0009</title>
+</rect>
+  <text x="1360.8" y="224.517" text-anchor="middle" >Indv0009</text>
+  <line class="solid" x1="1723.68" y1="142.243" x2="1723.68" y2="170.593" />
+  <rect x="1712.34" y="170.593" width="22.68" height="22.68" id="Indv0008" class="solid">
+	<title>Indv0008</title>
+</rect>
+  <text x="1723.68" y="224.517" text-anchor="middle" >Indv0008</text>
+<circle cx="1496.88" cy="181.933" r="11.34" id="Indv0015" class="solid">
+	<title>Indv0015</title>
+</circle>
+  <line x1="1481.76" y1="197.053" x2="1512" y2="166.813" />
+  <text x="1496.88" y="224.517" text-anchor="middle" >Indv0015</text>
+  <line x1="1508.22" y1="181.933" x2="1576.26" y2="181.933" />
+  <line class="mating" id="Indv0015:Indv0008" x1="1542.24" y1="181.933" x2="1542.24" y2="274.175" />
+  <line class="solid" x1="1451.52" y1="274.175" x2="1451.52" y2="302.525" />
+<circle cx="1451.52" cy="313.865" r="11.34" id="Indv0020" class="solid">
+	<title>Indv0020</title>
+</circle>
+  <text x="1451.52" y="356.45" text-anchor="middle" >Indv0020</text>
+  <line class="solid" x1="1542.24" y1="274.175" x2="1542.24" y2="302.525" />
+  <rect x="1530.9" y="302.525" width="22.68" height="22.68" id="Indv0021" class="solid">
+	<title>Indv0021</title>
+</rect>
+  <text x="1542.24" y="356.45" text-anchor="middle" >Indv0021</text>
+  <line class="solid" x1="1632.96" y1="274.175" x2="1632.96" y2="302.525" />
+  <rect x="1621.62" y="302.525" width="22.68" height="22.68" id="Indv0022" class="solid">
+	<title>Indv0022</title>
+</rect>
+  <text x="1632.96" y="356.45" text-anchor="middle" >Indv0022</text>
+  <line x1="1451.52" y1="274.175" x2="1632.96" y2="274.175" />
+  <line x1="1712.34" y1="181.933" x2="1576.26" y2="181.933" />
+  <line class="solid" x1="1950.48" y1="142.243" x2="1950.48" y2="170.593" />
+<circle cx="1950.48" cy="181.933" r="11.34" id="Indv0007" class="solid">
+	<title>Indv0007</title>
+</circle>
+  <text x="1950.48" y="224.517" text-anchor="middle" >Indv0007</text>
+  <line x1="1961.82" y1="181.933" x2="2029.86" y2="181.933" />
+  <rect x="2029.86" y="170.593" width="22.68" height="22.68" id="Indv0016" class="solid">
+	<title>Indv0016</title>
+</rect>
+  <text x="2041.2" y="224.517" text-anchor="middle" >Indv0016</text>
+  <line class="mating" id="Indv0007:Indv0016" x1="1995.84" y1="181.933" x2="1995.84" y2="274.175" />
+  <line class="solid" x1="1905.12" y1="274.175" x2="1905.12" y2="302.525" />
+<circle cx="1905.12" cy="313.865" r="11.34" id="Indv0019" class="solid">
+	<title>Indv0019</title>
+</circle>
+  <text x="1905.12" y="356.45" text-anchor="middle" >Indv0019</text>
+  <line x1="1825.74" y1="315.755" x2="1893.78" y2="315.755" />
+  <line x1="1825.74" y1="311.975" x2="1893.78" y2="311.975" />
+  <line class="mating" id="Indv0019:Indv0008" x1="1859.76" y1="315.755" x2="1859.76" y2="404.218" />
+  <line class="solid" x1="1814.4" y1="406.108" x2="1814.4" y2="434.458" />
+  <rect x="1803.06" y="434.458" width="22.68" height="22.68" id="Indv0035" class="solid">
+	<title>Indv0035</title>
+</rect>
+  <text x="1814.4" y="488.382" text-anchor="middle" >Indv0035</text>
+  <line class="solid" x1="1905.12" y1="406.108" x2="1905.12" y2="434.458" />
+<circle cx="1905.12" cy="445.798" r="11.34" id="Indv0034" class="solid">
+	<title>Indv0034</title>
+</circle>
+  <text x="1905.12" y="488.382" text-anchor="middle" >Indv0034</text>
+  <line x1="1916.46" y1="447.688" x2="1984.5" y2="447.688" />
+  <line x1="1916.46" y1="443.908" x2="1984.5" y2="443.908" />
+  <line class="mating" id="Indv0034:Indv0018" x1="1950.48" y1="447.688" x2="1950.48" y2="536.15" />
+  <line class="solid" x1="1950.48" y1="538.04" x2="1950.48" y2="566.39" />
+<circle cx="1950.48" cy="577.73" r="11.34" id="Indv0038" class="solid">
+	<title>Indv0038</title>
+</circle>
+<path d="M 1937.25 590.96 l -8.7318 3.7422 l 1.8711 1.8711 l -3.1185 3.1185 l 1.2474 1.2474 l 3.1185 -3.1185 l 1.8711 1.8711 z" />
+  <text x="1921.37" y="603.056" text-anchor="middle" >P</text>
+  <text x="1950.48" y="620.315" text-anchor="middle" >Indv0038</text>
+  <line x1="1814.4" y1="406.108" x2="1905.12" y2="406.108" />
+  <line class="solid" x1="2086.56" y1="274.175" x2="2086.56" y2="302.525" />
+  <rect x="2075.22" y="302.525" width="22.68" height="22.68" id="Indv0018" class="solid">
+	<title>Indv0018</title>
+</rect>
+  <line x1="2071.44" y1="328.985" x2="2101.68" y2="298.745" />
+  <text x="2086.56" y="356.45" text-anchor="middle" >Indv0018</text>
+  <line class="solid" x1="2177.28" y1="274.175" x2="2177.28" y2="302.525" />
+<circle cx="2177.28" cy="313.865" r="11.34" id="Indv0017" class="solid">
+	<title>Indv0017</title>
+</circle>
+  <text x="2177.28" y="356.45" text-anchor="middle" >Indv0017</text>
+  <line x1="1905.12" y1="274.175" x2="2177.28" y2="274.175" />
+  <line x1="1360.8" y1="142.243" x2="1950.48" y2="142.243" />
+  </g>
+  <rect x="170.1" y="170.593" width="22.68" height="22.68" id="Indv0009" class="dashed">
+	<title>Indv0009</title>
+</rect>
+
+ </g>
+ </svg>
+
