@@ -1,0 +1,17 @@
+Individualid	Familyid	Gender	Mother	Father
+1	consanguinous_multiple_spouse_004	m	.	.
+2	consanguinous_multiple_spouse_004	f	.	.
+3	consanguinous_multiple_spouse_004	m	2	1
+4	consanguinous_multiple_spouse_004	f	.	.
+5	consanguinous_multiple_spouse_004	f	2	1
+6	consanguinous_multiple_spouse_004	m	.	.
+7	consanguinous_multiple_spouse_004	f	2	1
+8	consanguinous_multiple_spouse_004	m	.	.
+9	consanguinous_multiple_spouse_004	f	4	3
+10	consanguinous_multiple_spouse_004	m	4	3
+11	consanguinous_multiple_spouse_004	f	5	6
+12	consanguinous_multiple_spouse_004	f	5	6
+13	consanguinous_multiple_spouse_004	m	7	8
+14	consanguinous_multiple_spouse_004	f	7	8
+15	consanguinous_multiple_spouse_004	m	11	10
+16	consanguinous_multiple_spouse_004	f	11	13

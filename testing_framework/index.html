@@ -18,6 +18,7 @@
   <a href="#Color">Color</a>
   <a href="#Compression">Compression</a>
   <a href="#Consanguinous">Consanguinous</a>
+  <a href="#ConsanguinousMultipleSpouse">CS+MS</a>
   <a href="#CustomColor">Custom Colors</a>
   <a href="#DescentTrees">Descent Trees</a>
   <a href="#Donor">Donor</a>
@@ -46,7 +47,7 @@
     <b>How Testing is Performed</b>. A script is used to extract the <b>COMMAND LINE</b>s directly from this web
     document. These command lines not only reference the correct data files, but also contain specific
     command-line switches that are necessary for testing specific features.  Once the script has obtained the
-    set of command lines, the "<em>-S</em>" switch is added to each command line to insure that the output SVG
+    set of command lines, the <em>-S</em> switch is added to each command line to insure that the output SVG
     results will be scalable so that they can be more easily embedded in this web document. Data files are
     stored in the <em>data</em> directory, so the data file names are prefixed with the proper relative paths,
     and then the command lines are executed to produce the output that you see here.
@@ -62,9 +63,11 @@
      may differ, so a "<span class="red">DIFFER</span>" does not necessarily mean that the program has failed to
      produce suitable output. For example, the program generates randomized string identifiers (IDs) for
      missing parents, so the "names" of those unnamed parents will change every time the program is invoked.
-     This currently occurs, for example, in the <em>descent_tree_004</em> and <em>descent_tree_005</em> test
-     pedigrees. In addition, the way that Madeline produces SVG output may change between versions. In addition,
-     the layout of certain pedigrees may also change over time as Madeline becomes better at optimizing chart
+     This currently occurs, for example, in the <em>missing_parent</em> test pedigrees because randomized IDs
+     are generated for anonymous parents.
+    </p><p>
+     In addition, the way that Madeline produces SVG output may change between versions. The layout of 
+     certain pedigrees may also change over time as Madeline becomes better at optimizing chart
      layouts. The test script report, while useful, is not capable of interpreting differences in the same way
      as you, a human, are able to do. Thus, the best thing to do is to visually inspect the results presented here,
      paying special attention to pedigrees that are reported to "<span class="red">DIFFER</span>".
@@ -534,6 +537,79 @@
      </object>
     </div>
    </div>
+
+   <!-- CONSANGUINOUS MULTIPLE SPOUSE -->
+   <h1 id="ConsanguinousMultipleSpouse">CS+MS: Consanguinous Multiple Spouse Pedigrees</h1>
+   <p>
+    These pedigrees have both consanguinity and multiple spouses present.
+   </p>
+   <!-- STT CASE CONTAINER -->
+   <div class="case_container">
+    <h2>Consanguinous Multiple Spouse 001</h2>
+    <p>
+    This data set has both consanguinous and multiple spouse matings present. Male m103 is married to both a female founder m106 as well as to his own niece m102.
+    </p>
+    <!-- DATA AND COMMAND LINE -->
+    <p><span class="label">DATA:</span> <a href="data/consanguinous_multiple_spouse_001.data">consanguinous_multiple_spouse_001.data</a></p>
+    <p><span class="label">COMMAND LINE:</span><input type="text" value='madeline2 consanguinous_multiple_spouse_001.data'></input></p>
+    <p><span class="label">RESULT FILE:</span> <a href="results/consanguinous_multiple_spouse_001_pedigree.svg">consanguinous_multiple_spouse_001_pedigree.svg</a></p>
+    <div class="svg_image">
+     <object type="image/svg+xml" data="results/consanguinous_multiple_spouse_001_pedigree.svg">
+      <span class="warning">SVG FILE NOT FOUND</span>
+     </object>
+    </div>
+   </div>
+   <!-- STT CASE CONTAINER -->
+   <div class="case_container">
+    <h2>Consanguinous Multiple Spouse 002</h2>
+    <p>
+     This data set has both consanguinous and multiple spouse matings present. 
+     m108 has three wives, one of whom is his niece.
+     In this pedigree we also see the rare case (for humans) of an aunt m103 married to her nephew, m102.
+    </p>
+    <!-- DATA AND COMMAND LINE -->
+    <p><span class="label">DATA:</span> <a href="data/consanguinous_multiple_spouse_002.data">consanguinous_multiple_spouse_002.data</a></p>
+    <p><span class="label">COMMAND LINE:</span><input type="text" value='madeline2 consanguinous_multiple_spouse_002.data'></input></p>
+    <p><span class="label">RESULT FILE:</span> <a href="results/consanguinous_multiple_spouse_002_pedigree.svg">consanguinous_multiple_spouse_002_pedigree.svg</a></p>
+    <div class="svg_image">
+     <object type="image/svg+xml" data="results/consanguinous_multiple_spouse_002_pedigree.svg">
+      <span class="warning">SVG FILE NOT FOUND</span>
+     </object>
+    </div>
+   </div>
+   <!-- STT CASE CONTAINER -->
+   <div class="case_container">
+    <h2>Consanguinous Multiple Spouse 003</h2>
+    <p>
+     This data set has both consanguinous and multiple spouse matings present. The consanguinous marriage is between half-siblings in this example.
+    </p>
+    <!-- DATA AND COMMAND LINE -->
+    <p><span class="label">DATA:</span> <a href="data/consanguinous_multiple_spouse_003.data">consanguinous_multiple_spouse_003.data</a></p>
+    <p><span class="label">COMMAND LINE:</span><input type="text" value='madeline2 consanguinous_multiple_spouse_003.data'></input></p>
+    <p><span class="label">RESULT FILE:</span> <a href="results/consanguinous_multiple_spouse_003_pedigree.svg">consanguinous_multiple_spouse_003_pedigree.svg</a></p>
+    <div class="svg_image">
+     <object type="image/svg+xml" data="results/consanguinous_multiple_spouse_003_pedigree.svg">
+      <span class="warning">SVG FILE NOT FOUND</span>
+     </object>
+    </div>
+   </div>
+   <!-- STT CASE CONTAINER -->
+   <div class="case_container">
+    <h2>Consanguinous Multiple Spouse 004</h2>
+    <p>
+     This data set has both consanguinous and multiple spouse matings present. Individual 11 is married to two first cousins. The marriage to individual 10 would result in line crossing, and thus individual 10 is marked with an "A" and drawn twice.
+    </p>
+    <!-- DATA AND COMMAND LINE -->
+    <p><span class="label">DATA:</span> <a href="data/consanguinous_multiple_spouse_004.data">consanguinous_multiple_spouse_004.data</a></p>
+    <p><span class="label">COMMAND LINE:</span><input type="text" value='madeline2 consanguinous_multiple_spouse_004.data'></input></p>
+    <p><span class="label">RESULT FILE:</span> <a href="results/consanguinous_multiple_spouse_004_pedigree.svg">consanguinous_multiple_spouse_004_pedigree.svg</a></p>
+    <div class="svg_image">
+     <object type="image/svg+xml" data="results/consanguinous_multiple_spouse_004_pedigree.svg">
+      <span class="warning">SVG FILE NOT FOUND</span>
+     </object>
+    </div>
+   </div>
+
 
    <!-- CUSTOM COLORS -->
    <h1 id="CustomColor">Custom Color Pedigrees</h1>

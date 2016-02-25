@@ -1,0 +1,10 @@
+Individualid	Familyid	Gender	Mother	Father
+m100	consanguinous_multiple_spouse_003	m	.	.
+m101	consanguinous_multiple_spouse_003	f	.	.
+m102	consanguinous_multiple_spouse_003	f	.	.
+m105	consanguinous_multiple_spouse_003	f	.	.
+m104	consanguinous_multiple_spouse_003	m	m102	m100
+m103	consanguinous_multiple_spouse_003	f	m101	m100
+m106	consanguinous_multiple_spouse_003	m	m102	m100
+m107	consanguinous_multiple_spouse_003	f	m103	m104
+m108	consanguinous_multiple_spouse_003	m	m105	m104
