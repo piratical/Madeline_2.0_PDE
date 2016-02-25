@@ -1,0 +1,41 @@
+//
+// consanguinous_011.data
+//
+// A test pedigree in which a great-great-great grand parent marries a ggg grand niece.
+//
+FamilyId
+IndividualId
+Gender
+Father
+Mother
+
+consanguinous_011 01 M  .  .
+consanguinous_011 02 F  .  .
+consanguinous_011 03 M 01 02
+consanguinous_011 04 F 01 02
+consanguinous_011 05 M  .  .
+consanguinous_011 06 F 01 02
+consanguinous_011 07 M 01 02
+consanguinous_011 08 F  .  .
+consanguinous_011 09 F 05 06
+consanguinous_011 10 M 07 08
+consanguinous_011 11 F 10 09
+consanguinous_011 12 M  .  .
+consanguinous_011 13 F 12 11
+consanguinous_011 14 M  .  .
+consanguinous_011 15 F 14 13
+consanguinous_011 16 M  .  .
+consanguinous_011 17 F 16 15
+consanguinous_011 18 M 16 15
+consanguinous_011 19 F 16 15
+consanguinous_011 20 M  .  .
+consanguinous_011 21 F 03 17
+consanguinous_011 22 M 03 17
+consanguinous_011 23 F  .  .
+consanguinous_011 24 F  .  .
+consanguinous_011 25 M 20 19
+consanguinous_011 26 F 20 19
+consanguinous_011 27 F 22 23
+consanguinous_011 28 M 25 24
+consanguinous_011 29 F 28 27
+
