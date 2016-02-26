@@ -14,6 +14,7 @@
  <div id="menu">
   <a href="#Intro">Intro</a>
   <a href="#Summary">Summary</a>
+  <a href="#Adoptions">Adoptions</a>
   <a href="#Collapsed">Collapsed</a>
   <a href="#Color">Color</a>
   <a href="#Complex">Complex</a>
@@ -111,6 +112,40 @@
       <span class="warning">SUMMARY REPORT NOT FOUND</span>
      </object>
     </div>
+
+   <!-- ADOPTIONS -->
+   <h1 id="Adoptions">Adoptions</h1>
+   <p>
+    Madeline 2.0 PDE draws curved connectors in the background showing the placement of 
+    children adopted by relatives or others in a pedigree. Madeline 2.0 uses the Pedigree 
+    Standardization Task Force (PSTF) recommended graphics for children who are "adopted in".
+    For children who are adopted in, the square brackets <em>face inward</em>.
+    For showing "adopted out", Madeline uses square brackets that <em>face outward</em>. 
+  </p><p>
+    Madeline identifies "adopted in" children with individual ids prefixed with a plus sign, <em>"+"</em>.
+    "Adopted out" individual ids must be prefixed with a negative sign, <em>"-"</em>.
+   </p>
+
+   <!-- STT CASE CONTAINER -->
+   <div class="case_container">
+    <h2>Adoptions 001</h2>
+    <p>
+     In this pedigree in the family on the left, a granddaughter <em>A00188</em> is adopted by the grandparents
+     after the death of both biological parents.
+     Additionally, a son <em>A00185</em> is adopted out to another family, shown on the right.
+     In the family on the right, the grandson <em>A00196</em> is adopted into his paternal aunt's family.
+    </p>
+    <!-- DATA AND COMMAND LINE -->
+    <p><span class="label">DATA:</span> <a href="data/adoptions_001.data">adoptions_001.data</a></p>
+    <p><span class="label">COMMAND LINE:</span><input type="text" value='madeline2 adoptions_001.data'></input></p>
+    <p><span class="label">RESULT FILE:</span> <a href="results/adoptions_001_pedigree.svg">adoptions_001_pedigree.svg</a></p>
+    <div class="svg_image">
+     <object type="image/svg+xml" data="results/adoptions_001_pedigree.svg">
+      <span class="warning">SVG FILE NOT FOUND</span>
+     </object>
+    </div>
+   </div>
+   <!-- END CASE CONTAINER -->
 
     <!-- COLLAPSED -->
     <h1 id="Collapsed">Collapsed Pedigrees</h1>

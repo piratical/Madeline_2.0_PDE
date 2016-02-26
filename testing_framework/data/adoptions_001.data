@@ -1,0 +1,29 @@
+//
+// adoptions_001.data
+//
+FamilyId
+IndividualId
+Gender
+Father
+Mother
+Deceased
+
+adoptions_001  P00182 M      .      . .
+adoptions_001  P00183 F      .      . .
+adoptions_001  P00190 M      .      . .
+adoptions_001  P00191 F      .      . .
+adoptions_001  P00197 M      .      . .
+adoptions_001  P00184 M P00182 P00183 .
+adoptions_001 -A00185 M P00182 P00183 .
+adoptions_001 +A00185 M P00190 P00191 .
+adoptions_001  P00186 F P00182 P00183 D
+adoptions_001  P00187 M      .      . D
+adoptions_001 -A00188 F P00187 P00186 .
+adoptions_001 +A00188 M P00182 P00183 .
+adoptions_001  P00193 M P00190 P00191 .
+adoptions_001  P00194 F P00190 P00191 .
+adoptions_001  P00195 F      .      . .
+adoptions_001 -A00196 M P00193 P00195 .
+adoptions_001 +A00196 M P00197 P00194 .
+adoptions_001  P00199 M P00197 P00194 .
+
