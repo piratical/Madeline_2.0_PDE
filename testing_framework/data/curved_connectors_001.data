@@ -1,0 +1,41 @@
+//
+// curved_connectors_001.data
+//
+FamilyId
+IndividualId
+Gender
+Father
+Mother
+MZTwin
+
+curved_connectors_001 U00143 M      .      . .
+curved_connectors_001 U00144 F      .      . .
+curved_connectors_001 U00149 M      .      . .
+curved_connectors_001 U00150 F      .      . .
+curved_connectors_001 U00169 M      .      . .
+curved_connectors_001 U00164 M      .      . .
+curved_connectors_001 U00170 F      .      . .
+curved_connectors_001 U00145 M U00143 U00144 .
+curved_connectors_001 U00147 F U00143 U00144 .
+curved_connectors_001 U00146 M U00143 U00144 .
+curved_connectors_001 U00148 F U00143 U00144 .
+curved_connectors_001 U00152 M U00149 U00150 .
+curved_connectors_001 U00153 F U00149 U00150 .
+curved_connectors_001 U00151 M U00149 U00150 .
+curved_connectors_001 U00154 . U00149 U00150 .
+curved_connectors_001 U00172 F U00169 U00170 .
+curved_connectors_001 U00171 M U00169 U00170 .
+curved_connectors_001 U00163 F U00152 U00147 .
+curved_connectors_001 U00160 M U00151 U00148 .
+curved_connectors_001 U00159 M U00151 U00148 A
+curved_connectors_001 U00161 M U00151 U00148 A
+curved_connectors_001 U00156 M U00146 U00153 .
+curved_connectors_001 U00157 F U00146 U00153 .
+curved_connectors_001 U00180 M U00160 U00157 .
+curved_connectors_001 U00181 F U00160 U00157 .
+curved_connectors_001 U00166 F U00164 U00153 .
+curved_connectors_001 U00165 M U00164 U00153 .
+curved_connectors_001 U00174 F U00164 U00172 .
+curved_connectors_001 U00176 M U00165 U00174 .
+curved_connectors_001 U00177 F U00165 U00174 .
+curved_connectors_001 U00178 F U00165 U00174 .

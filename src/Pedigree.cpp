@@ -352,7 +352,7 @@ void Pedigree::_getSpouses(std::set<Individual*,compareIndividual>& foundingGrou
 	
 	while(it != (*pspouses).end()){
 		std::pair<std::set<Individual*,compareIndividual>::const_iterator,bool> pit = foundingGroup.insert(*it);
-		std::cout << "+++ >>> At recursion level " << _recursionLevel << " adding " << (*it)->getId() << " to founding group " << static_cast<void *>(&foundingGroup) << " ." << std::endl;
+		//std::cout << "+++ >>> At recursion level " << _recursionLevel << " adding " << (*it)->getId() << " to founding group " << static_cast<void *>(&foundingGroup) << " ." << std::endl;
 		if(pit.second) _getSpouses(foundingGroup,*it);
 		++it;
 	}
@@ -700,7 +700,7 @@ void Pedigree::_assignMultipleDescentTreeJoinerSpouses(){
 				                      std::back_inserter(vIntersect));
 				//
 				// DEBUG: 
-				std::cout << (*it)->getId() << " and " << (*spi)->getId() << " have " << vIntersect.size() << " elements in common" << std::endl;
+				//std::cout << (*it)->getId() << " and " << (*spi)->getId() << " have " << vIntersect.size() << " elements in common" << std::endl;
 				//
 				if(vIntersect.size()==0){
 					(*it)->setMultipleDescentTreeJoinerSpouse(true);
