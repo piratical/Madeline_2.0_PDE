@@ -34,13 +34,15 @@
 #include "DrawingCanvas.h"
 #include "Grid.h"
 #include "HexavigesimalConverter.h"
-#include "RandomId.h"
+//#include "RandomId.h"
 
 #include <algorithm>
 #include <map>
 #include <vector>
 #include <deque>
 #include <set>
+#include <iostream>
+#include <iomanip>
 
 /////////////////////////////////////
 //
@@ -2741,8 +2743,11 @@ void Pedigree::establishIndividualConnections(){
 	if(individualsMissingParentInformation.size()){
 		Warning(methodName,"One or more children in the pedigree have only one parent: Consider augmenting your data set.");
 	}
+	unsigned virtualParentCount=0;
+	std::string virtualParentPrefix="virtual_";
+	std::stringstream virtualParentId;
 	for(unsigned cnt=0;cnt<individualsMissingParentInformation.size();cnt++){
-		RandomId randomIdGenerator;
+		// RandomId randomIdGenerator;
 		Individual *individual = individualsMissingParentInformation[cnt];
 		if(individual->getMotherId().isMissing()){
 			//
@@ -2760,17 +2765,20 @@ void Pedigree::establishIndividualConnections(){
 					// Id of the missing mother cannot be determined.
 					// Add a virtual mother with a random id:
 					//
-					std::string randomId = randomIdGenerator.get();
+					//std::string randomId = randomIdGenerator.get();
+					virtualParentCount++;
+					virtualParentId.str(std::string()); // clear buffer
+					virtualParentId << virtualParentPrefix << std::setw(3) << std::setfill('0') << virtualParentCount;
 					std::pair<std::set<Individual*,compareIndividual>::iterator,bool> p;
-					p = _individuals.insert(new Individual(randomId,".",".","F",-1,-1));
+					p = _individuals.insert(new Individual(virtualParentId.str(),".",".","F",-1,-1));
 					(*p.first)->addChild(individual);
-					individual->setMotherId(randomId);
+					individual->setMotherId(virtualParentId.str());
 					individual->setMother(*p.first);
 					father->addSpouse(*p.first);
 					(*p.first)->addSpouse(father);
 					(*p.first)->setOrdinaryFounder(true);
 					(*p.first)->setVirtualIndividual(true);
-					Warning(methodName,"Mother of %s could not be determined from the input data file. %s has been set as the mother.",individual->getId().get().c_str(),randomId.c_str());
+					Warning(methodName,"Mother of “%s” could not be determined from the input data file. “%s” has been set as the mother.",individual->getId().get().c_str(),virtualParentId.str().c_str());
 				}
 			_checkParentsGender(individual);
 			}
@@ -2790,17 +2798,20 @@ void Pedigree::establishIndividualConnections(){
 					// Id of the missing father cannot be determined.
 					// Add a virtual father with a random id:
 					//
-					std::string randomId = randomIdGenerator.get();
+					//std::string randomId = randomIdGenerator.get();
+					virtualParentCount++;
+					virtualParentId.str(std::string()); // clear buffer
+					virtualParentId << virtualParentPrefix << std::setw(3) << std::setfill('0') << virtualParentCount;
 					std::pair<std::set<Individual*,compareIndividual>::iterator,bool> p;
-					p = _individuals.insert(new Individual(randomId,".",".","M",-1,-1));
+					p = _individuals.insert(new Individual(virtualParentId.str(),".",".","M",-1,-1));
 					(*p.first)->addChild(individual);
-					individual->setFatherId(randomId);
+					individual->setFatherId(virtualParentId.str());
 					individual->setFather(*p.first);
 					mother->addSpouse(*p.first);
 					(*p.first)->addSpouse(mother);
 					(*p.first)->setOrdinaryFounder(true);
 					(*p.first)->setVirtualIndividual(true);
-					Warning(methodName,"Father of %s could not be determined from the input data file. %s has been set as the father.",individual->getId().get().c_str(),randomId.c_str());
+					Warning(methodName,"Father of “%s” could not be determined from the input data file. “%s” has been set as the father.",individual->getId().get().c_str(),virtualParentId.str().c_str());
 				}
 			_checkParentsGender(individual);
 			}

@@ -227,16 +227,16 @@ text{
 
   <g class="drawing">
   <text x="557.36" y="30" text-anchor="middle"  class="header" >missing_parents_001</text>
-<circle cx="512" cy="50" r="11.34" id="!FAZIGI!" class="dashed">
-	<title>!FAZIGI!</title>
-</circle>
-  <text x="512" y="92.5845" text-anchor="middle" >!FAZIGI!</text>
-  <line x1="523.34" y1="50" x2="591.38" y2="50" />
-  <rect x="591.38" y="38.66" width="22.68" height="22.68" id="1" class="dashed">
+  <rect x="500.66" y="38.66" width="22.68" height="22.68" id="1" class="dashed">
 	<title>1</title>
 </rect>
-  <text x="602.72" y="92.5845" text-anchor="middle" >1</text>
-  <line class="mating" id="!FAZIGI!:1" x1="557.36" y1="50" x2="557.36" y2="142.243" />
+  <text x="512" y="92.5845" text-anchor="middle" >1</text>
+  <line x1="523.34" y1="50" x2="591.38" y2="50" />
+<circle cx="602.72" cy="50" r="11.34" id="virtual_001" class="dashed">
+	<title>virtual_001</title>
+</circle>
+  <text x="602.72" y="92.5845" text-anchor="middle" >virtual_001</text>
+  <line class="mating" id="virtual_001:1" x1="557.36" y1="50" x2="557.36" y2="142.243" />
   <line class="solid" x1="512" y1="142.243" x2="512" y2="170.593" />
 <circle cx="512" cy="181.933" r="11.34" id="2" class="solid">
 	<title>2</title>
@@ -245,22 +245,22 @@ text{
   <text x="482.894" y="207.259" text-anchor="middle" >P</text>
   <text x="512" y="224.517" text-anchor="middle" >2</text>
   <line x1="523.34" y1="181.933" x2="591.38" y2="181.933" />
-  <rect x="591.38" y="170.593" width="22.68" height="22.68" id="!LUMELO!" class="dashed">
-	<title>!LUMELO!</title>
+  <rect x="591.38" y="170.593" width="22.68" height="22.68" id="virtual_002" class="dashed">
+	<title>virtual_002</title>
 </rect>
-  <text x="602.72" y="224.517" text-anchor="middle" >!LUMELO!</text>
-  <line class="mating" id="2:!LUMELO!" x1="557.36" y1="181.933" x2="557.36" y2="274.175" />
+  <text x="602.72" y="224.517" text-anchor="middle" >virtual_002</text>
+  <line class="mating" id="2:virtual_002" x1="557.36" y1="181.933" x2="557.36" y2="274.175" />
   <line class="solid" x1="512" y1="274.175" x2="512" y2="302.525" />
   <rect x="500.66" y="302.525" width="22.68" height="22.68" id="3" class="solid">
 	<title>3</title>
 </rect>
   <text x="512" y="356.45" text-anchor="middle" >3</text>
   <line x1="523.34" y1="313.865" x2="591.38" y2="313.865" />
-<circle cx="602.72" cy="313.865" r="11.34" id="!PUPOHE!" class="dashed">
-	<title>!PUPOHE!</title>
+<circle cx="602.72" cy="313.865" r="11.34" id="virtual_003" class="dashed">
+	<title>virtual_003</title>
 </circle>
-  <text x="602.72" y="356.45" text-anchor="middle" >!PUPOHE!</text>
-  <line class="mating" id="!PUPOHE!:3" x1="557.36" y1="313.865" x2="557.36" y2="406.108" />
+  <text x="602.72" y="356.45" text-anchor="middle" >virtual_003</text>
+  <line class="mating" id="virtual_003:3" x1="557.36" y1="313.865" x2="557.36" y2="406.108" />
   <line class="solid" x1="512" y1="406.108" x2="512" y2="434.458" />
   <rect x="500.66" y="434.458" width="22.68" height="22.68" id="4" class="solid">
 	<title>4</title>
