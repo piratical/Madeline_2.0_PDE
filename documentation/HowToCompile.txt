@@ -6,12 +6,12 @@ Required Tools
 The following software tools are required before you can
 build Madeline:
 
-1. SVN: http://subversion.tigris.org/ 
+1. GIT: https://git-scm.com/
 
-You may need an SVN client in order to checkout the latest code
+You may need an GIT client in order to checkout the latest code
 from our code repository.  Please review the instructions on
-Sourceforge for information on how to checkout the code from
-SVN:
+Githube for information on how to checkout the code from
+GIT:
 
 
 
@@ -63,7 +63,7 @@ Required Libraries
    http://unifont.org/lasi/
    http://sourceforge.net/projects/lasi
    
-   Note that LASi now also uses the CMake build system.
+   Note that LASi also uses the CMake build system.
    
    Check out the latest code from the Sourceforge SVN repository.  The
    latest code and build system now automatically deals with the FreeType 2
