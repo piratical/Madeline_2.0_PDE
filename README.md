@@ -52,7 +52,7 @@ invested in finding better ways to visualize these kinds of pedigrees.
 
 In this new program, Madeline 2.0 Pedigree Drawing Engine, we have tried to create a much more robust pedigree
 drawing engine to address the limitations of the older program and to provide the worldwide research community with
-a better tool for pedgiree visualization.  We hope you will enjoy using our tool and report bugs and suggestions
+a better tool for pedigree visualization.  We hope you will enjoy using our tool and report bugs and suggestions
 for improvement to us.
 
 ---
