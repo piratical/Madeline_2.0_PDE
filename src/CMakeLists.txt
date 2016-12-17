@@ -284,9 +284,9 @@ ADD_EXECUTABLE(madeline2 ${SOURCES} )
 # Link target:
 #
 TARGET_LINK_LIBRARIES(madeline2 
+	unzip
 	${requiredLibs} 
 	${libssl} 
-	unzip 
 	${PANGO_LINK_FLAGS}
 	${PANGOFT2_LINK_FLAGS} 
 	${LASI_LINK_FLAGS}
