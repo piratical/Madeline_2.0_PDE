@@ -54,7 +54,7 @@ INCLUDE(${CMAKE_ROOT}/Modules/FindDoxygen.cmake)
 
 CONFIGURE_FILE(${MADELINE_SOURCE_DIR}/doxygen/Doxyfile.in ${MADELINE_BINARY_DIR}/doxygen/Doxyfile)
 
-#INCLUDE( FindDoxygen )
+INCLUDE( FindDoxygen )
 IF(DOXYGEN) 
 	ADD_CUSTOM_TARGET(api-docs ALL ${DOXYGEN} ${MADELINE_BINARY_DIR}/doxygen/Doxyfile DEPENDS ${MADELINE_SOURCE_DIR}/doxygen/Doxyfile.in)
 ELSE(DOXYGEN)
