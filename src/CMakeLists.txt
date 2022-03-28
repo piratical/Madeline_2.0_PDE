@@ -238,7 +238,7 @@ ENDIF(WITH_LASi)
 #
 # Check for SSL Library: SSL is required for network support.
 #
-FIND_LIBRARY(libssl NAMES ssl PATHS /usr/lib /usr/local/lib)
+FIND_LIBRARY(libssl NAMES ssl PATHS /usr/lib /usr/local/lib /usr/local/opt/openssl/lib )
 IF (NOT libssl)
 	MESSAGE(FATAL_ERROR "Missing LIBSSL library")
 ENDIF (NOT libssl)
@@ -246,7 +246,7 @@ ENDIF (NOT libssl)
 #
 # Check for crypto library:
 #
-FIND_LIBRARY(libcrypto NAMES crypto PATHS /usr/lib /usr/local/lib)
+FIND_LIBRARY(libcrypto NAMES crypto PATHS /usr/lib /usr/local/lib /usr/local/opt/openssl/lib )
 IF(NOT libcrypto)
 	MESSAGE(FATAL_ERROR "Missing libcrypto library")
 ELSE (libcrypto)
