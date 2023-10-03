@@ -8,11 +8,11 @@ A docker image for the [Docker](https://www.docker.com/) container platform.
 
 ```bash
 cd docker
-docker build -t madeline2-img .
+docker build -t madeline2 .
 ```
 
 ### Run
 
 ```bash
-docker run -it --rm madeline2-img madeline2 --help
+docker run -it --rm madeline2 --help
 ```

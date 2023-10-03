@@ -1,5 +1,7 @@
 FROM alpine:3.18
 
+LABEL version=1.0
+
 RUN apk add --update --no-cache \
     gcompat \
     musl-libintl \
@@ -34,4 +36,4 @@ RUN if ! command -v madeline2 &> /dev/null; then \
     echo "Madeline installed successfully"; \
     fi
 
-CMD ["/bin/sh"]
+ENTRYPOINT ["madeline2"]
