@@ -4,6 +4,9 @@
 
 [Build Artifacts](http://usf-hii-madeline-ci.s3-website-us-west-2.amazonaws.com/)
 
+## Docker image
+
+For convenience, a docker image can be built without the need to clone this repository locally. See the [docker](docker/README.md) directory for details.
 
 ## INTRODUCTION
 

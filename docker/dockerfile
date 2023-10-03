@@ -1,0 +1,37 @@
+FROM alpine:3.18
+
+RUN apk add --update --no-cache \
+    gcompat \
+    musl-libintl \
+    libc-dev \
+    build-base \
+    openssl-dev \
+    git \
+    clang \
+    zlib \
+    cmake \
+    gettext \
+    curl-dev \
+    libxml2-dev \
+    inkscape \
+    doxygen
+
+RUN git clone https://github.com/piratical/Madeline_2.0_PDE.git
+
+WORKDIR /Madeline_2.0_PDE
+RUN ./configure --with-include-gettext
+RUN cmake .
+RUN make
+RUN make install
+
+WORKDIR /
+RUN rm -rf /Madeline_2.0_PDE
+
+RUN if ! command -v madeline2 &> /dev/null; then \
+    echo "Madeline installation failed"; \
+    exit 1; \
+    else \
+    echo "Madeline installed successfully"; \
+    fi
+
+CMD ["/bin/sh"]
