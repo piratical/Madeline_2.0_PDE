@@ -5,8 +5,8 @@
 # 
 #     Released under the GNU GPL
 #     
+CMAKE_MINIMUM_REQUIRED(VERSION 4.2.3)
 PROJECT(MADELINE)
-CMAKE_MINIMUM_REQUIRED(VERSION 3.3)
 SET(CMAKE_CXX_STANDARD 11)
 MARK_AS_ADVANCED(CMAKE_BACKWARDS_COMPATIBILITY)
 
@@ -29,16 +29,16 @@ ENABLE_TESTING()
 #
 # Check if there exists a system-provided BZip2
 #
-INCLUDE(FindBZip2)
-IF(BZIP2_FOUND)
-        INCLUDE_DIRECTORIES(${BZIP2_INCLUDE_DIR})
-        ADD_DEFINITIONS(${BZIP2_DEFINITIONS})
-        SET(requiredLibs ${requiredLibs} ${BZIP2_LIBRARIES})
-ELSE(BZIP2_FOUND)
-	#Add bzip2 built from local copy to the requiredLibs
-	INCLUDE_DIRECTORIES(${CMAKE_SOURCE_DIR}/3rdParty/bzip2)
-        SET(requiredLibs ${requiredLibs} bzip2 )
-ENDIF(BZIP2_FOUND)
+#INCLUDE(FindBZip2)
+#IF(BZIP2_FOUND)
+#        INCLUDE_DIRECTORIES(${BZIP2_INCLUDE_DIR})
+#        ADD_DEFINITIONS(${BZIP2_DEFINITIONS})
+#        SET(requiredLibs ${requiredLibs} ${BZIP2_LIBRARIES})
+#ELSE(BZIP2_FOUND)
+#	#Add bzip2 built from local copy to the requiredLibs
+#	INCLUDE_DIRECTORIES(${CMAKE_SOURCE_DIR}/3rdParty/bzip2)
+#        SET(requiredLibs ${requiredLibs} bzip2 )
+#ENDIF(BZIP2_FOUND)
 
 
 #

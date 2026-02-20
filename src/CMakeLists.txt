@@ -154,14 +154,11 @@ IF( LIBXML2_FOUND )
 ENDIF( LIBXML2_FOUND )
 
 
-#
-# LibIntl support:
-#
-INCLUDE( FindLibintl )
-IF( LIBINTL_FOUND )
-	INCLUDE_DIRECTORIES(${LIBINTL_INCLUDE_DIR})
-	SET(optionalLibs ${optionalLibs} ${LIBINTL_LIBRARIES})
-ENDIF( LIBINTL_FOUND )
+#INCLUDE( FindLibintl )
+#IF( LIBINTL_FOUND )
+#	INCLUDE_DIRECTORIES(${LIBINTL_INCLUDE_DIR})
+#	SET(optionalLibs ${optionalLibs} ${LIBINTL_LIBRARIES})
+#ENDIF( LIBINTL_FOUND )
 
 #
 # Libcurl support:
@@ -281,6 +278,17 @@ INCLUDE_DIRECTORIES( ${MADELINE_BINARY_DIR} )
 ADD_EXECUTABLE(madeline2 ${SOURCES} )
 
 #
+# LibIntl support:
+#
+find_package(Intl REQUIRED)
+target_include_directories(madeline2 PRIVATE ${Intl_INCLUDE_DIRS})
+
+find_package(CURL REQUIRED)
+target_include_directories(madeline2 PRIVATE ${CURL_INCLUDE_DIRS})
+
+find_package(BZip2 REQUIRED)
+
+#
 # Link target:
 #
 TARGET_LINK_LIBRARIES(madeline2 
@@ -291,7 +299,10 @@ TARGET_LINK_LIBRARIES(madeline2
 	${PANGOFT2_LINK_FLAGS} 
 	${LASI_LINK_FLAGS}
 	${optionalLibs}
-	${LIBXML2_LIBRARIES} 
+	${LIBXML2_LIBRARIES}
+        ${Intl_LIBRARIES} 
+        ${CURL_LIBRARIES}
+        BZip2::BZip2
 	stdc++	
 )
 
